@@ -64,7 +64,7 @@ public class Patient implements Person {
     public Role getRole() {
         return patientDetails.getRole();
     }
-    
+
     public boolean scheduleDietitianAppointment(Dietitian dietitian, LocalDate date)
     {
         DietitianAppointment appointment = dietitian.scheduleAppointment(date, this);
@@ -133,5 +133,4 @@ public class Patient implements Person {
     public ArrayList<CounselorAppointment> getCounselorAppointments() {
         return counselorAppointments;
     }
-
 }
