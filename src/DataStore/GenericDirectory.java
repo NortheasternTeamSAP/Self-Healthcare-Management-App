@@ -5,7 +5,7 @@
  */
 package DataStore;
 
-import Personnel.Person;
+import Personnel.PersonDetails;
 import Utils.ConsoleLogger;
 import java.util.ArrayList;
 import java.util.HashMap;

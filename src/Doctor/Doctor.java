@@ -7,6 +7,8 @@ package Doctor;
 
 import Personnel.Address;
 import Personnel.Person;
+import Personnel.PersonDetails;
+import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
@@ -15,7 +17,9 @@ import java.time.LocalDate;
  *
  * @author Ankur Bywar
  */
-public class Doctor extends Person {
+public class Doctor implements Person {
+    private PersonDetails doctorDetails;
+    
     public Doctor(
             String fullName, 
             LocalDate dob, 
@@ -23,6 +27,17 @@ public class Doctor extends Person {
             Address address, 
             String phoneNumber, 
             UserAccount account) {
-        super(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR);
+        
+        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR);
+    }
+
+    @Override
+    public UserAccount getUserAccount() {
+        return doctorDetails.getUserAccount();
+    }
+
+    @Override
+    public Role getRole() {
+        return doctorDetails.getRole();
     }
 }

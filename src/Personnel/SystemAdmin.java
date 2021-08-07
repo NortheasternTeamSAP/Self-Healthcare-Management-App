@@ -5,13 +5,16 @@
  */
 package Personnel;
 
+import Personnel.PersonDetails.Gender;
 import java.time.LocalDate;
 
 /**
  *
  * @author Ankur Bywar
  */
-public class SystemAdmin extends Person {
+public class SystemAdmin implements Person {
+    private PersonDetails sysAdminDetails;
+    
     public SystemAdmin(
             String fullName, 
             LocalDate dob, 
@@ -19,6 +22,17 @@ public class SystemAdmin extends Person {
             Address address, 
             String phoneNumber, 
             UserAccount account) {
-        super(null, null, null, null, null, account, Role.SYSTEM_ADMIN);
+        
+        sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.SYSTEM_ADMIN);
+    }
+
+    @Override
+    public UserAccount getUserAccount() {
+        return sysAdminDetails.getUserAccount();
+    }
+
+    @Override
+    public Role getRole() {
+        return sysAdminDetails.getRole();
     }
 }
