@@ -73,6 +73,11 @@ public class CredentialsManager {
         }
         
         UserAccount userAccount = new UserAccount(username, password);
+        if (!isUserNameUnique(username)) {
+            log.error("username already exist");
+            return;
+            
+        }
         directory.add(username, userAccount);
         log.debug("Useraccount created for username " + userAccount);
     }
