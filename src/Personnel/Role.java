@@ -15,7 +15,9 @@ public enum Role {
     DOCTOR("Doctor"),
     DELIVERY_MAN("DeliveryMan"),
     PHARMACIST("Pharmacist"),
-    DIETITIAN("Dietitian")
+    DIETITIAN("Dietitian"),
+    TRAINER("FitnessTrainer"),
+    COUNSELOR("Counselor")
     // Add more roles here and create corresponding 
     // classes which extends Person class
     ;
