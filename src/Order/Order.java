@@ -11,6 +11,8 @@ import Medicine.MedicineDirectory;
 import Pharmacy.Pharmacy;
 import WorkQueue.WorkRequest;
 import java.util.UUID;
+import Pharmacy.Pharmacy;
+import WorkQueue.WorkRequest;
 
 /**
  *
@@ -22,9 +24,8 @@ public class Order extends WorkRequest {
     private Pharmacy pharmacy;
     private Doctor doctor;
     private String deliveryMan;
-    private int quantity;
-    private Medicine medicine;
-    private MedicineDirectory medicineDirectory;
+    private int qunatity;
+    private MedicineCatalog medicineCatalog;
     private String result;
     private boolean assign;
 
@@ -60,20 +61,20 @@ public class Order extends WorkRequest {
         this.deliveryMan = deliveryMan;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQunatity() {
+        return qunatity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQunatity(int qunatity) {
+        this.qunatity = qunatity;
     }
 
-    public MedicineDirectory getMedicineDirectory() {
-        return medicineDirectory;
+    public MedicineCatalog getMedicineCatalog() {
+        return medicineCatalog;
     }
 
-    public void setMedicineDirectory(MedicineDirectory medicineDirectory) {
-        this.medicineDirectory = medicineDirectory;
+    public void setMedicineCatalog(MedicineCatalog medicineCatalog) {
+        this.medicineCatalog = medicineCatalog;
     }
 
     public String getResult() {
@@ -107,6 +108,4 @@ public class Order extends WorkRequest {
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
     }
-    
-    
 }

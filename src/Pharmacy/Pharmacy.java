@@ -6,9 +6,11 @@
 package Pharmacy;
 
 import Medicine.Medicine;
-import Medicine.MedicineDirectory;
+import Order.Order;
 import Personnel.Address;
+import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
  *
@@ -19,6 +21,7 @@ public class Pharmacy {
     Address pharmacyAddress;
     Pharmacist pharmacist;
     HashMap<Medicine, Integer> medicineStockMap; // maps medicine to quantity
+    private ArrayList<Order> currentOrders;
 
     public Pharmacy(
             String pharmacyName, 
@@ -28,6 +31,7 @@ public class Pharmacy {
         this.pharmacyAddress = pharmacyAddress;
         this.pharmacist = pharmacist;
         this.medicineStockMap = new HashMap<>();
+        this.currentOrders = new ArrayList<>();
     }
 
     public String getPharmacyName() {
@@ -60,5 +64,10 @@ public class Pharmacy {
     
     public HashMap<Medicine, Integer> getMedicineStockMap(){
         return medicineStockMap;
+    }
+
+    @Override
+    public String toString(){
+        return this.pharmacyName + ", " + this.pharmacyAddress.getCity();
     }
 }
