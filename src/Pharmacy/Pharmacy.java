@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+
 /**
  *
  * @author Sravya
@@ -22,6 +23,7 @@ public class Pharmacy {
     Pharmacist pharmacist;
     HashMap<Medicine, Integer> medicineStockMap; // maps medicine to quantity
     private ArrayList<Order> currentOrders;
+
 
     public Pharmacy(
             String pharmacyName, 

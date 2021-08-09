@@ -12,8 +12,8 @@ import DataStore.GenericDirectory;
  * @author Sravya
  */
 public class MedicineDirectory{
-    
-    public GenericDirectory<String, Medicine> medicineCatalog; //map of <String medID, Medicine medDetails>
+
+    public GenericDirectory<String, Medicine> medicineCatalogMap; //map of <String medID, Medicine medDetails>
     private int id;
 
     public MedicineDirectory(){
@@ -25,7 +25,6 @@ public class MedicineDirectory{
         this.medicineCatalog = new GenericDirectory<String, Medicine>();
         id = 0;
     }
-
     /**
      * Method to add medicines.
      * @param medicineName
@@ -39,12 +38,12 @@ public class MedicineDirectory{
             String medicineName,
             double price, 
             LocalDate expiryDate, 
-            LocalDate mfgDate, 
-            String dosage,
-            int quantity){
-        
-        Medicine medicine = new Medicine(medicineName, price, expiryDate, mfgDate, dosage, quantity);
-        medicineCatalog.add(Integer.toString(id), medicine);
+            LocalDate mfgDate){
+ 
+        Medicine medicine = new Medicine(medicineName, price, expiryDate, mfgDate, dosage);
+        String medicineId = "Med" + Integer.toString(id);
+        medicine.setMedicineId(medicineId);
+        medicineCatalogMap.add(Integer.toString(id), medicine);
         id += 1;
         return medicine;
     }
@@ -54,13 +53,15 @@ public class MedicineDirectory{
      * @param medicine 
      */
     public void deleteMedicine(Medicine medicine){
-        medicineCatalog.remove(Integer.toString(id));
+        medicineCatalogMap.remove(Integer.toString(id));
     }
 
-    public GenericDirectory<String, Medicine> getMedicineCatalog() {
-        return medicineCatalog;
+    public GenericDirectory<String, Medicine> getMedicineCatalogMap() {
+        return medicineCatalogMap;
+    }
+
+    public void setMedicinePrice(Medicine medicine, int newPrice){
+        medicine.setPrice(newPrice);
     }
     
-    //Medicine m1 = medicineCatalog.add(1, Vitamin C);
-
 }

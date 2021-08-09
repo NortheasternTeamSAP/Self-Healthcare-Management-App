@@ -19,15 +19,40 @@ import WorkQueue.WorkRequest;
  * @author Sravya
  */
 public class Order extends WorkRequest {
-    private String orderID;  //= UUID.randomUUID().toString();
+
+
+    public enum OrderStatus{
+        INPROCESS,
+        ACCEPTED,
+        DELIVERY_REQUESTED,
+        SHIPPED,
+        DELIVERED,
+    }
+
+    private String orderId;  //= UUID.randomUUID().toString();
     private String orderStatus;
     private Pharmacy pharmacy;
     private Doctor doctor;
     private String deliveryMan;
-    private int qunatity;
-    private MedicineCatalog medicineCatalog;
+    private int quantity;
     private String result;
     private boolean assign;
+    private Medicine medicine;
+
+    public Order(
+            Pharmacy pharmacy, 
+            Doctor doctor, 
+            Patient patient,
+            int quantity, 
+            Medicine medicine) {
+        
+        this.orderStatus = OrderStatus.INPROCESS;
+        this.pharmacy = pharmacy;
+        this.doctor = doctor;
+        this.patient = patient;
+        this.quantity = quantity;
+        this.medicine = medicine;
+    }
 
     public String getOrderStatus() {
         return orderStatus;
@@ -61,20 +86,12 @@ public class Order extends WorkRequest {
         this.deliveryMan = deliveryMan;
     }
 
-    public int getQunatity() {
-        return qunatity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQunatity(int qunatity) {
-        this.qunatity = qunatity;
-    }
-
-    public MedicineCatalog getMedicineCatalog() {
-        return medicineCatalog;
-    }
-
-    public void setMedicineCatalog(MedicineCatalog medicineCatalog) {
-        this.medicineCatalog = medicineCatalog;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getResult() {
@@ -93,14 +110,6 @@ public class Order extends WorkRequest {
         this.assign = assign;
     }
 
-    public String getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    } 
-
     public Medicine getMedicine() {
         return medicine;
     }
@@ -108,4 +117,21 @@ public class Order extends WorkRequest {
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
     }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public String getOrderId() {
+            return orderId;
+    }
+    
+    public void setOrderId(String orderId) {
+            this.orderId = orderId;
+    }
+    
 }

@@ -18,6 +18,7 @@ public class Medicine {
     LocalDate expiryDate;
     LocalDate mfgDate;
    
+
     public Medicine(
             String medicineName,
             double price, 
@@ -34,7 +35,6 @@ public class Medicine {
     }
 
     public void setPrice(double price) {
-
         this.price = price;
     }
 
