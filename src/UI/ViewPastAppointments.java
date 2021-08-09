@@ -20,20 +20,27 @@ import javax.swing.table.DefaultTableModel;
  * @author preet
  */
 public class ViewPastAppointments extends javax.swing.JPanel {
-JPanel WorkArea;
-   EcoSystem system;
+    JPanel WorkArea;
+    EcoSystem system;
     ArrayList<Dietitian.DietitianAppointment> dietitianAppointments;
+    int flag=0;
     /**
      * Creates new form ViewPastAppointments
      */
-    public ViewPastAppointments(JPanel WorkArea,EcoSystem system,ArrayList<Dietitian.DietitianAppointment> k) {
+    public ViewPastAppointments(JPanel WorkArea,EcoSystem system,ArrayList<DietitianAppointment> k,int flag) {
         initComponents();
          this.WorkArea=WorkArea;
         this.system=system;
         this.dietitianAppointments=k;
-        populatepastAppointment();
+        this.flag=flag;
+        if(flag==1){  
+        populatepastDietitianAppointment();}
+        else {
+          populatepastPatientAppointment();
+        }
+      
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +53,7 @@ JPanel WorkArea;
         jScrollPane1 = new javax.swing.JScrollPane();
         tblpastAppointments = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         tblpastAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,7 +63,7 @@ JPanel WorkArea;
                 {null, null}
             },
             new String [] {
-                "Dietitian Name", "Past Appointment Date"
+                "Patient Name", "Past Appointment Date"
             }
         ));
         jScrollPane1.setViewportView(tblpastAppointments);
@@ -66,6 +74,9 @@ JPanel WorkArea;
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("My Past Appointments");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,17 +89,21 @@ JPanel WorkArea;
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jButton2)
-                .addGap(40, 40, 40)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -96,8 +111,6 @@ JPanel WorkArea;
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        PatientDieticianDashboard panel = (PatientDieticianDashboard) component;
-        panel.populateUpcomingDieticianAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
 
@@ -106,24 +119,25 @@ JPanel WorkArea;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblpastAppointments;
     // End of variables declaration//GEN-END:variables
 
-    private void populatepastAppointment() {
+    private void populatepastDietitianAppointment() {
         
-         DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
+ DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
  ArrayList<DietitianAppointment> temp=new ArrayList();
- temp=dietitianAppointments;
- model.setRowCount(0);
-        
+ tblpastAppointments.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("Dietitian Name ");
+ temp=dietitianAppointments; 
+  model.setRowCount(0);      
         for(int i=0;i<dietitianAppointments.size();i++)
     {
         if(temp.get(i).getDate().isBefore(LocalDate.now())){
        Object row[] = new Object[2];
                 row[0] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
                 row[1] = temp.get(i).getDate();
-            model.addRow(row);
+                model.addRow(row);
     }
     }  
         
@@ -131,4 +145,22 @@ JPanel WorkArea;
         
       
     }
+
+    private void populatepastPatientAppointment() {
+       
+ DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
+ ArrayList<DietitianAppointment> temp=new ArrayList();
+ temp=dietitianAppointments; 
+ model.setRowCount(0);       
+        for(int i=0;i<dietitianAppointments.size();i++)
+    {
+        if(temp.get(i).getDate().isBefore(LocalDate.now())){
+       Object row[] = new Object[2];
+                row[0] = temp.get(i).getPatient().getPatientDetails().getFullName();
+                row[1] = temp.get(i).getDate();
+                model.addRow(row);
+    }
+    
+    }
+}
 }

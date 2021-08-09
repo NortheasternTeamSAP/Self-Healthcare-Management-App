@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author preet
  */
 public class PatientDieticianDashboard extends javax.swing.JPanel {
-JPanel WorkArea;
+   JPanel WorkArea;
    EcoSystem system;
    Patient p ;
     /**
@@ -28,7 +28,7 @@ JPanel WorkArea;
      */
     public PatientDieticianDashboard(JPanel WorkArea,EcoSystem system,Patient p ) {
         initComponents();
-       this.WorkArea=WorkArea;
+        this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
        
@@ -67,6 +67,11 @@ JPanel WorkArea;
         });
 
         jButton3.setText("View Current Diet Plan");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         UpcomingDieticianAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,7 +108,7 @@ JPanel WorkArea;
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton4)))
@@ -120,9 +125,9 @@ JPanel WorkArea;
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,7 +141,7 @@ JPanel WorkArea;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
         
-          ViewPastAppointments ls= new ViewPastAppointments(WorkArea,system,p.getDietitianAppointments());
+          ViewPastAppointments ls= new ViewPastAppointments(WorkArea,system,p.getDietitianAppointments(),1);
         WorkArea.add("ViewPastAppointments",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea); 
@@ -152,6 +157,17 @@ JPanel WorkArea;
         layout.previous(WorkArea);
 
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+       PatientDietPlan ls= new PatientDietPlan(WorkArea,system,p);
+        WorkArea.add("PatientDietPlan",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);   
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
