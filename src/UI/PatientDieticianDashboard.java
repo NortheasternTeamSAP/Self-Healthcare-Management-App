@@ -132,7 +132,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   PatientDieticianBookAppointment ls= new PatientDieticianBookAppointment(WorkArea,system,p);
+   PatientDieticianBookAppointment ls= new PatientDieticianBookAppointment(WorkArea,system,p,1);
         WorkArea.add("PatientDieticianBookAppointment",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);        // TODO add your handling code here:

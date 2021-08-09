@@ -27,18 +27,33 @@ public class PatientDieticianBookAppointment extends javax.swing.JPanel {
 JPanel WorkArea;
    EcoSystem system;
    Patient p ;
+   int flag=0;
     /**
     /**
      * Creates new form PatientDieticianBookAppointment
      */
-    public PatientDieticianBookAppointment(JPanel WorkArea,EcoSystem system,Patient p) {
+    public PatientDieticianBookAppointment(JPanel WorkArea,EcoSystem system,Patient p,int flag) {
         initComponents();        
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        this.flag=flag;
+        
+        if(flag==1){
+            jLabel1.setText("Book an Appointment With your Dietitian");
+            jLabel2.setText("Select a Dietician");
         populatedietiticancombo();
+        }
+        else if (flag==2)
+        {
         
         
+        }
+        else 
+        {
+        
+        
+        }
         
     }
 
@@ -52,18 +67,18 @@ JPanel WorkArea;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        dieticiancombo = new javax.swing.JComboBox<>();
+        comboapp = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         chooser = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        jLabel1.setText("Book an Appointment with Your Dietician ");
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
 
-        dieticiancombo.addActionListener(new java.awt.event.ActionListener() {
+        comboapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dieticiancomboActionPerformed(evt);
+                comboappActionPerformed(evt);
             }
         });
 
@@ -101,11 +116,11 @@ JPanel WorkArea;
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dieticiancombo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboapp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,29 +134,30 @@ JPanel WorkArea;
                         .addComponent(jButton2)))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dieticiancombo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboapp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)))
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dieticiancomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dieticiancomboActionPerformed
+    private void comboappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboappActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dieticiancomboActionPerformed
+    }//GEN-LAST:event_comboappActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
         //Date date =chooser.getDate();
-        Dietitian selectedDietitian=(Dietitian) dieticiancombo.getSelectedItem();
+        Dietitian selectedDietitian=(Dietitian) comboapp.getSelectedItem();
         LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         p.scheduleDietitianAppointment(selectedDietitian, date);
       
@@ -167,7 +183,7 @@ JPanel WorkArea;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser chooser;
-    private javax.swing.JComboBox<Dietitian> dieticiancombo;
+    private javax.swing.JComboBox<Dietitian> comboapp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -177,12 +193,24 @@ JPanel WorkArea;
 
     private void populatedietiticancombo() {
       
-       dieticiancombo.removeAllItems();
+       comboapp.removeAllItems();
         System.out.println(""+system.getDietitianDirectory());
     
 for(Dietitian d: system.getDietitianDirectory().getDietitians()){
-    dieticiancombo.addItem(d);
+    comboapp.addItem(d);
     
     }
 }
+    
+    
+    
+    
+//        private void populateFitnessTrainercombo() {
+//      
+// comboapp.removeAllItems();
+// for(Dietitian d: system.getDietitianDirectory().getDietitians()){
+//    comboapp.addItem(d);
+//    
+//    }
+//}
 }

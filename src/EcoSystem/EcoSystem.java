@@ -8,6 +8,7 @@ package EcoSystem;
 import DataStore.CredentialsManager;
 import DataStore.GlobalUserDirectory;
 import Dietitian.DietitianDirectory;
+import FitnessTrainer.FitnessTrainerDirectory;
 import Patient.Patient;
 import Personnel.Person;
 import Personnel.PersonDetails;
@@ -25,12 +26,14 @@ public class EcoSystem {
     GlobalUserDirectory globalUserDirectory;
     CredentialsManager credentialsManager;
     DietitianDirectory dietitianDirectory;
+    FitnessTrainerDirectory fitnessTrainerDirectory;
     
     
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
         dietitianDirectory=new DietitianDirectory();
+        fitnessTrainerDirectory=new FitnessTrainerDirectory();
         
         // create new system admin user
         UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
