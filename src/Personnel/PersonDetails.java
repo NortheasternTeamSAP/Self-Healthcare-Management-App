@@ -35,7 +35,7 @@ public class PersonDetails {
         this.gender = gender;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.userAccount = userAccount;
+        this.userAccount = account;
         this.role = role;
     }
 
