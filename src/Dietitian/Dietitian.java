@@ -57,4 +57,16 @@ public class Dietitian implements Person{
         DietPlan dp= new DietPlan(p,this, mealplans);
         p.addDietplan(dp);
     }
+
+    public PersonDetails getDietitianDetails() {
+        return dietitianDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "" + dietitianDetails.getFullName();
+    }
+    
+    
+    
 }

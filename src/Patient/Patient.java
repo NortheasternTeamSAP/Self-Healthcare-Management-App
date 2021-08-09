@@ -133,4 +133,8 @@ public class Patient implements Person {
     public ArrayList<CounselorAppointment> getCounselorAppointments() {
         return counselorAppointments;
     }
+    
+    public PersonDetails getPatientDetails() {
+        return patientDetails;
+    }
 }
