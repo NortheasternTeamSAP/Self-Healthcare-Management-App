@@ -44,4 +44,10 @@ public class DietPlan {
     public void setDietitian(Dietitian dietitian) {
         this.dietitian = dietitian;
     }   
+
+    public ArrayList<String> getMealplans() {
+        return mealplans;
+    }
+       
+    
 }
