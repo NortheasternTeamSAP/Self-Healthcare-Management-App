@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 public class TestMainJFrame extends javax.swing.JFrame {
   private EcoSystem system;
   private Patient p;
+  private Dietitian d;
     /**
      * Creates new form MainJFrame
      */
@@ -41,54 +42,54 @@ public class TestMainJFrame extends javax.swing.JFrame {
         UserAccount ua_jig = new UserAccount("jig", "password");
          UserAccount ua_jit = new UserAccount("jit", "password");
         
-         p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
-        Dietitian d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
+        this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
+        this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
          Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
       FitnessTrainer f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
       Counselor c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
       system.getDietitianDirectory().AddDietitian(d);
          system.getDietitianDirectory().AddDietitian(k);
          
-         System.out.println("folowing are the dieticians : ::::::::::: "+ system.getDietitianDirectory().getDietitians());
-      //check for dietician
-      p.scheduleDietitianAppointment(d, now);
-        System.out.println("Dietitian appointments : " + d.getDietitianSchedule().getDietitianAppointments());
-        System.out.println("Patient appointments : " + p.getDietitianAppointments());
-        
-        ArrayList<String> mealplans = new ArrayList<String>();
-        mealplans.add("Yogurt");
-        mealplans.add("Rice");
-        d.addDietPlan(p, mealplans);
-        
-        System.out.println("" + p.getDietplans());
+//         System.out.println("folowing are the dieticians : ::::::::::: "+ system.getDietitianDirectory().getDietitians());
+//      //check for dietician
+//      p.scheduleDietitianAppointment(d, now);
+//        System.out.println("Dietitian appointments : " + d.getDietitianSchedule().getDietitianAppointments());
+//        System.out.println("Patient appointments : " + p.getDietitianAppointments());
+//        
+//        ArrayList<String> mealplans = new ArrayList<String>();
+//        mealplans.add("Yogurt");
+//        mealplans.add("Rice");
+//        d.addDietPlan(p, mealplans);
+//        
+//        System.out.println("" + p.getDietplans());
         
         //check for fitnesstrainer
         
-       p.scheduleFitnessAppointment(f, now);
-        System.out.println("Fitness appointments : " + f.getFitnessTrainerSchedule().getFitnessTrainerAppointments());
-        System.out.println("Patient appointments : " + p.getFitnessTrainerAppointments());
-        
-        ArrayList<String> fitnessplan = new ArrayList<String>();
-        fitnessplan.add("Yoga");
-        fitnessplan.add("Crunches");
-    f.addFitnessPlan(p, fitnessplan);
-        
-        System.out.println("" + p.getFitnessPlans());
-        
-        
-        
-           //check for Counselor
-        
-       p.scheduleCounselorAppointment(c, now);
-        System.out.println("Counselor appointments : " + c.getCounselorSchedule().getCounselorAppointments());
-        System.out.println("Patient appointments : " + p.getCounselorAppointments());
-        
-        
-   
-  
-    c.addCounsellingNote(p,"hey get well soon");
-        
-        System.out.println("" + p.getCounsellingNotes());
+//       p.scheduleFitnessAppointment(f, now);
+//        System.out.println("Fitness appointments : " + f.getFitnessTrainerSchedule().getFitnessTrainerAppointments());
+//        System.out.println("Patient appointments : " + p.getFitnessTrainerAppointments());
+//        
+//        ArrayList<String> fitnessplan = new ArrayList<String>();
+//        fitnessplan.add("Yoga");
+//        fitnessplan.add("Crunches");
+//    f.addFitnessPlan(p, fitnessplan);
+//        
+//        System.out.println("" + p.getFitnessPlans());
+//        
+//        
+//        
+//           //check for Counselor
+//        
+//       p.scheduleCounselorAppointment(c, now);
+//        System.out.println("Counselor appointments : " + c.getCounselorSchedule().getCounselorAppointments());
+//        System.out.println("Patient appointments : " + p.getCounselorAppointments());
+//        
+//        
+//   
+//  
+//    c.addCounsellingNote(p,"hey get well soon");
+//        
+//        System.out.println("" + p.getCounsellingNotes());
         
         
         
@@ -175,7 +176,7 @@ public class TestMainJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void ApplicationDashboard() {
-        ApplicationDashboard ls= new ApplicationDashboard(WorkArea,system,p);
+        ApplicationDashboard ls= new ApplicationDashboard(WorkArea,system,p,d);
         WorkArea.add("ApplicationDashboard",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);

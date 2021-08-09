@@ -19,7 +19,7 @@ public class DietitianAppointment {
 
     @Override
     public String toString() {
-        return "DietitianAppointment{" + "date=" + date + ", patient=" + patient + ", dietitian=" + dietitian + '}';
+        return " " + patient.getPatientDetails().getFullName() ;
     }        
     
     public DietitianAppointment(LocalDate date, Patient patient, Dietitian dietitian) {

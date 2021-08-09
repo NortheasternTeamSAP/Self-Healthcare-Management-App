@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import java.awt.CardLayout;
@@ -18,13 +19,15 @@ public class ApplicationDashboard extends javax.swing.JPanel {
 JPanel WorkArea;
    EcoSystem system;
    Patient p ;
+   Dietitian d;
     /**
      * Creates new form ApplicationDashboard
      */
-    public ApplicationDashboard(JPanel WorkArea,EcoSystem system,Patient p ) {
+    public ApplicationDashboard(JPanel WorkArea,EcoSystem system,Patient p,Dietitian d ) {
         initComponents();
             this.WorkArea=WorkArea;
         this.system=system;
+        this.d=d;
         this.p=p;
         
     }
@@ -48,6 +51,11 @@ JPanel WorkArea;
         jButton5.setText("FitnessTrainer Login ");
 
         jButton1.setText("Dietician Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("PatientLogin");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +99,13 @@ JPanel WorkArea;
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DietitianDashboard ls= new DietitianDashboard(WorkArea,system,d);
+        WorkArea.add("DietitianLogin",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

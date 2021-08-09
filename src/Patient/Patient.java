@@ -134,4 +134,8 @@ public class Patient implements Person {
         return counselorAppointments;
     }
 
+    public PersonDetails getPatientDetails() {
+        return patientDetails;
+    }
+
 }

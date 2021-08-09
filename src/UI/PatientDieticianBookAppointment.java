@@ -9,6 +9,8 @@ import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import com.toedter.calendar.JDateChooser;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -55,6 +57,7 @@ JPanel WorkArea;
         jLabel3 = new javax.swing.JLabel();
         chooser = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setText("Book an Appointment with Your Dietician ");
 
@@ -75,12 +78,21 @@ JPanel WorkArea;
             }
         });
 
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
@@ -98,8 +110,13 @@ JPanel WorkArea;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jButton2)))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dieticiancombo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,17 +143,33 @@ JPanel WorkArea;
         //Date date =chooser.getDate();
         Dietitian selectedDietitian=(Dietitian) dieticiancombo.getSelectedItem();
         LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         p.scheduleDietitianAppointment(selectedDietitian, date);
+        p.scheduleDietitianAppointment(selectedDietitian, date);
+      
          JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :"+ selectedDietitian.getDietitianDetails().getFullName()+" on  : "+date);
        
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+ WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        PatientDieticianDashboard panel = (PatientDieticianDashboard) component;
+        panel.populateUpcomingDieticianAppointments();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);     
+        
+  
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser chooser;
     private javax.swing.JComboBox<Dietitian> dieticiancombo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
