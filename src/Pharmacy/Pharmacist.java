@@ -5,6 +5,14 @@
  */
 package Pharmacy;
 
+import Personnel.Address;
+import Personnel.Person;
+import Personnel.PersonDetails;
+import Personnel.PersonDetails.Gender;
+import Personnel.Role;
+import Personnel.UserAccount;
+import java.time.LocalDate;
+
 /**
  *
  * @author Sravya
