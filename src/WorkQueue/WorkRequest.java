@@ -5,6 +5,7 @@
  */
 package WorkQueue;
 
+import Personnel.UserAccount;
 import java.time.LocalDate;
 
 
@@ -21,7 +22,7 @@ public abstract class WorkRequest {
     private LocalDate resolveDate;
 
     public WorkRequest() {
-        requestDate = new LocalDate(int year, short month, short dayOfMonth);
+        requestDate = LocalDate.now();
     }
 
     public String getMessage() {

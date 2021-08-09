@@ -5,6 +5,8 @@
  */
 package Order;
 
+import Doctor.Doctor;
+import Medicine.MedicineDirectory;
 import Pharmacy.Pharmacy;
 import WorkQueue.WorkRequest;
 
@@ -18,8 +20,8 @@ public class Order extends WorkRequest {
     private Pharmacy pharmacy;
     private Doctor doctor;
     private String deliveryMan;
-    private int qunatity;
-    private MedicineCatalog medicineCatalog;
+    private int quantity;
+    private MedicineDirectory medicineCatalog;
     private String result;
     private boolean assign;
 
@@ -55,19 +57,19 @@ public class Order extends WorkRequest {
         this.deliveryMan = deliveryMan;
     }
 
-    public int getQunatity() {
-        return qunatity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQunatity(int qunatity) {
-        this.qunatity = qunatity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public MedicineCatalog getMedicineCatalog() {
+    public MedicineDirectory getMedicineCatalog() {
         return medicineCatalog;
     }
 
-    public void setMedicineCatalog(MedicineCatalog medicineCatalog) {
+    public void setMedicineCatalog(MedicineDirectory medicineCatalog) {
         this.medicineCatalog = medicineCatalog;
     }
 
@@ -93,5 +95,10 @@ public class Order extends WorkRequest {
 
     public void setOrderUUID(String orderUUID) {
         this.orderUUID = orderUUID;
-    }  
+    } 
+    
+    @Override
+    public String toString() {
+        return orderUUID;
+    }
 }
