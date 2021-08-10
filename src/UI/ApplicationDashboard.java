@@ -7,6 +7,7 @@ package UI;
 
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -20,15 +21,17 @@ JPanel WorkArea;
    EcoSystem system;
    Patient p ;
    Dietitian d;
+   FitnessTrainer f;
     /**
      * Creates new form ApplicationDashboard
      */
-    public ApplicationDashboard(JPanel WorkArea,EcoSystem system,Patient p,Dietitian d ) {
+    public ApplicationDashboard(JPanel WorkArea,EcoSystem system,Patient p,Dietitian d ,FitnessTrainer f) {
         initComponents();
             this.WorkArea=WorkArea;
         this.system=system;
         this.d=d;
         this.p=p;
+        this.f=f;
         
     }
 
@@ -45,10 +48,16 @@ JPanel WorkArea;
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jButton4.setText("Counselor login");
 
         jButton5.setText("FitnessTrainer Login ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Dietician Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +73,13 @@ JPanel WorkArea;
             }
         });
 
+        jButton6.setText("Show my Stats");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +90,8 @@ JPanel WorkArea;
                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,7 +105,9 @@ JPanel WorkArea;
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -107,11 +126,26 @@ JPanel WorkArea;
         layout.next(WorkArea);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        FitnessTrainerDashBoard ls= new FitnessTrainerDashBoard(WorkArea,system,f);
+        WorkArea.add("FitnessTrainerDashBoard",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        ReportDietitian ls= new ReportDietitian(WorkArea,system,d);
+        WorkArea.add("ReportDietitian",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     // End of variables declaration//GEN-END:variables
 }

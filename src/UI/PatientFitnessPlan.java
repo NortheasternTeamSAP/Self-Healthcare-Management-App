@@ -5,35 +5,43 @@
  */
 package UI;
 
-import Dietitian.Dietitian;
+import Dietitian.DietPlan;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
  * @author preet
  */
-public class CreateDietPlan extends javax.swing.JPanel {
+public class PatientFitnessPlan extends javax.swing.JPanel {
 JPanel WorkArea;
-EcoSystem system;
-Dietitian d;
-Patient p;
+   EcoSystem system;
+   Patient p ;
     /**
-    /**
-     * Creates new form CreateMealPlan
+     * Creates new form ViewFitnessPlan
      */
-    public CreateDietPlan(JPanel WorkArea,EcoSystem system,Dietitian d,Patient p) {
-      initComponents();
-      this.WorkArea=WorkArea;
-      this.system=system;
-      this.d=d;
-      this.p=p;
-      lblPatientname.setText(p.getPatientDetails().getFullName());
+    public PatientFitnessPlan(JPanel WorkArea,EcoSystem system,Patient p) {
+            initComponents();
+        this.WorkArea=WorkArea;
+        this.system=system;
+        this.p=p;
+        lblpatientname.setText("HI  "+p.getPatientDetails().getFullName());
+        
+        for(FitnessTrainer.FitnessPlan fp: p.getFitnessPlans()){
+            ArrayList<String> temp =new ArrayList();
+            temp=fp.getFitnessplans();           
+            txtmeal1.setText(temp.get(0));
+            txtmeal2.setText(temp.get(1));
+            txtmeal3.setText(temp.get(2));
+            txtmeal4.setText(temp.get(3));
+            txtmeal5.setText(temp.get(4));
+            txtmeal6.setText(temp.get(5));
+            txtmeal7.setText(temp.get(6));
+    }
     }
 
     /**
@@ -45,69 +53,43 @@ Patient p;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblVitalSign = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtmeal1 = new javax.swing.JEditorPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtmeal4 = new javax.swing.JEditorPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtmeal2 = new javax.swing.JEditorPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        txtmeal7 = new javax.swing.JEditorPane();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        txtmeal3 = new javax.swing.JEditorPane();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         txtmeal5 = new javax.swing.JEditorPane();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        txtmeal6 = new javax.swing.JEditorPane();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtmeal2 = new javax.swing.JEditorPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtmeal1 = new javax.swing.JEditorPane();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         lblPatientname = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-
-        tblVitalSign.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblVitalSign);
-
-        jScrollPane2.setViewportView(txtmeal1);
-
-        jScrollPane3.setViewportView(txtmeal4);
-
-        jScrollPane4.setViewportView(txtmeal2);
-
-        jScrollPane5.setViewportView(txtmeal7);
-
-        jScrollPane6.setViewportView(txtmeal3);
-
-        jScrollPane7.setViewportView(txtmeal5);
-
-        jScrollPane8.setViewportView(txtmeal6);
-
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Day 1:");
-        jLabel2.setOpaque(true);
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtmeal7 = new javax.swing.JEditorPane();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtmeal6 = new javax.swing.JEditorPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtmeal3 = new javax.swing.JEditorPane();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtmeal4 = new javax.swing.JEditorPane();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        lblpatientname = new javax.swing.JLabel();
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Day 4:");
         jLabel8.setOpaque(true);
+
+        jScrollPane7.setViewportView(txtmeal5);
+
+        jScrollPane4.setViewportView(txtmeal2);
+
+        jScrollPane2.setViewportView(txtmeal1);
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,28 +101,6 @@ Patient p;
         jLabel10.setText("Day 3:");
         jLabel10.setOpaque(true);
 
-        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Day 7:");
-        jLabel11.setOpaque(true);
-
-        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Day 5:");
-        jLabel12.setOpaque(true);
-
-        jLabel13.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Day 6:");
-        jLabel13.setOpaque(true);
-
-        jButton1.setText("Create Meal  Plan");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         lblPatientname.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jButton2.setText("Back");
@@ -150,15 +110,52 @@ Patient p;
             }
         });
 
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Day 5:");
+        jLabel12.setOpaque(true);
+
+        jScrollPane5.setViewportView(txtmeal7);
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Day 7:");
+        jLabel11.setOpaque(true);
+
+        jScrollPane8.setViewportView(txtmeal6);
+
+        jScrollPane6.setViewportView(txtmeal3);
+
+        jLabel13.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Day 6:");
+        jLabel13.setOpaque(true);
+
+        jScrollPane3.setViewportView(txtmeal4);
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Day 1:");
+        jLabel2.setOpaque(true);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("We at HealthSpring Wellness  have carefully crafted your Fitness  Plan keeping in account your current health . We requst you to carefully Follow this Weekly Plan to get the best results to live a healthy and normal life .\n\n -Thank You ");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextArea1.setEnabled(false);
+        jTextArea1.setFocusable(false);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        lblpatientname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(293, 293, 293))
             .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,31 +185,39 @@ Patient p;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(221, 221, 221)
+                            .addGap(201, 201, 201)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addComponent(jButton2)
+                        .addGap(82, 82, 82)
+                        .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(126, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,49 +244,22 @@ Patient p;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        ArrayList<String> mealplan =new ArrayList<>();
-        mealplan.add(txtmeal1.getText());
-        mealplan.add(txtmeal2.getText());
-        mealplan.add(txtmeal3.getText());
-        mealplan.add(txtmeal4.getText());
-        mealplan.add(txtmeal5.getText());
-        mealplan.add(txtmeal6.getText());
-        mealplan.add(txtmeal7.getText());
-        d.addDietPlan(p, mealplan);
-        
-        JOptionPane.showMessageDialog(this, "Weekly Diet Plan has been Created for  "+p.getPatientDetails().getFullName());
-        
-         WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        DietitianDashboard d=(DietitianDashboard)component;
-        d.populateupcomingAppointments();
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DietitianDashboard d=(DietitianDashboard)component;
-        d.populateupcomingAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
+        PatientFitnessDashboard fp= (PatientFitnessDashboard)component;
+        fp.populateUpcomingFitnessTrainerAppointments();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -298,8 +276,9 @@ Patient p;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPatientname;
-    private javax.swing.JTable tblVitalSign;
+    private javax.swing.JLabel lblpatientname;
     private javax.swing.JEditorPane txtmeal1;
     private javax.swing.JEditorPane txtmeal2;
     private javax.swing.JEditorPane txtmeal3;

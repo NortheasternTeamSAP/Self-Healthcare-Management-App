@@ -20,7 +20,7 @@ public class FitnessPlan {
 
     @Override
     public String toString() {
-        return "FitnessPlan{" + "patient=" + patient + ", fitnessTrainer=" + fitnessTrainer + ", fitnessplans=" + fitnessplans + '}';
+        return "" + fitnessplans ;
     }
 
 
