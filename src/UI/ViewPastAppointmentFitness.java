@@ -22,13 +22,12 @@ import javax.swing.table.DefaultTableModel;
 public class ViewPastAppointmentFitness extends javax.swing.JPanel {
     JPanel WorkArea;
     EcoSystem system;
-    ArrayList<Dietitian.DietitianAppointment> dietitianAppointments;
     ArrayList<FitnessTrainerAppointment> fitnessTrainerAppointments;
     int flag=0;
 
      public ViewPastAppointmentFitness(JPanel WorkArea,EcoSystem system,ArrayList<FitnessTrainerAppointment> d,int flag) {
         initComponents();
-         this.WorkArea=WorkArea;
+        this.WorkArea=WorkArea;
         this.system=system;
         this.fitnessTrainerAppointments=d;
         this.flag=flag;
@@ -108,8 +107,6 @@ public class ViewPastAppointmentFitness extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backpActionPerformed
-
-
 if(flag==1){ WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -129,7 +126,6 @@ else{
     }//GEN-LAST:event_backpActionPerformed
 
  private void populatepastFitnessTrainerAppointment() {
-
  DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
  ArrayList<FitnessTrainerAppointment> temp=new ArrayList();
  temp=fitnessTrainerAppointments; 
@@ -151,9 +147,7 @@ else{
     private javax.swing.JTable tblpastAppointments;
     // End of variables declaration//GEN-END:variables
 
-    private void populatepastpaitentfitnessappointment() {
-       
-        
+    private void populatepastpaitentfitnessappointment() { 
  DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
  ArrayList<FitnessTrainerAppointment> temp=new ArrayList();
  temp=fitnessTrainerAppointments; 
@@ -167,7 +161,6 @@ else{
                 row[1] = temp.get(i).getDate();
                 model.addRow(row);
     }
-    
     }
   }
 }

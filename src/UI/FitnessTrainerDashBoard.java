@@ -141,7 +141,7 @@ FitnessTrainer f;
 
         Patient p = (Patient)tblpastapp.getValueAt(row, 0);
         CreateFitnessPlan pd=new CreateFitnessPlan(WorkArea,system,f,p);
-        WorkArea.add("CreateMealPlan",pd);
+        WorkArea.add("CreateFitnessPlan",pd);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
 

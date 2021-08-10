@@ -123,24 +123,23 @@ Counselor c;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ViewPastAppointments ls= new ViewPastAppointments(WorkArea,system,c.getCounselorSchedule().getCounselorAppointments();
-        WorkArea.add("ViewPastAppointments",ls);
+        ViewPastAppointmentCounselor ls= new ViewPastAppointmentCounselor(WorkArea,system,c.getCounselorSchedule().getCounselorAppointments(),0);
+        WorkArea.add("ViewPastAppointmentCounselor",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        int row = tblpastapp.getSelectedRow();
+      int row = tblpastapp.getSelectedRow();
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a Patient from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         Patient p = (Patient)tblpastapp.getValueAt(row, 0);
-        CreateCounselingNotes c=new CreateCounselingNotes(WorkArea,system,c,p);
-        WorkArea.add("CreateMealPlan",c);
+        CreateCounselingNotes cp=new CreateCounselingNotes(WorkArea,system,c,p);
+        WorkArea.add("CreateCounselingNotes",cp);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
 
@@ -163,7 +162,7 @@ Counselor c;
     private javax.swing.JTable tblpastapp;
     // End of variables declaration//GEN-END:variables
 
-    private void populateupcomingAppointments() {
+    public void populateupcomingAppointments() {
    DefaultTableModel model = (DefaultTableModel) tblpastapp.getModel();
    ArrayList<CounselorAppointment> temp=new ArrayList();
         try {
@@ -172,7 +171,7 @@ Counselor c;
         } catch (Exception e) {
             return;
         }
- model.setRowCount(0);
+   model.setRowCount(0);
         for(int i=0;i<temp.size();i++)
     {
         if(temp.get(i).getDate().isAfter(LocalDate.now())){

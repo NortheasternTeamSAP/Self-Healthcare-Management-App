@@ -45,9 +45,5 @@ public class CounsellingNote {
 
     public void setCounsellingNote(String counsellingNote) {
         this.counsellingNote = counsellingNote;
-    }
-
-   
-
-  
+    }  
 }

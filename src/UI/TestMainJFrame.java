@@ -13,6 +13,8 @@ import Patient.Patient;
 import Personnel.Address;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import VitalSign.Range;
+import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class TestMainJFrame extends javax.swing.JFrame {
   private Patient p;
   private Dietitian d;
   private  FitnessTrainer f ;
+  private Dietitian k ;
   Counselor c ;
     /**
      * Creates new form MainJFrame
@@ -46,12 +49,16 @@ public class TestMainJFrame extends javax.swing.JFrame {
         
         this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
         this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
-         Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
-       f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
-       c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
-      system.getDietitianDirectory().AddDietitian(d);
+         k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
+         f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
+         c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
+         system.getDietitianDirectory().AddDietitian(d);
          system.getDietitianDirectory().AddDietitian(k);
+         system.getFitnessTrainerDirectory().AddFitnessTrainer(f);
          system.getCounselorDirectory().AddCounselor(c);
+          
+        VitalSigns vs= new VitalSigns();
+         p.addNewVitalSign(vs);
          
 //         System.out.println("folowing are the dieticians : ::::::::::: "+ system.getDietitianDirectory().getDietitians());
 //      //check for dietician
@@ -183,8 +190,6 @@ public class TestMainJFrame extends javax.swing.JFrame {
         WorkArea.add("ApplicationDashboard",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
-
-
 
     }
 

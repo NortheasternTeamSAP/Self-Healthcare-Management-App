@@ -5,7 +5,8 @@
  */
 package UI;
 
-import Dietitian.DietitianAppointment;
+
+import Counselor.CounselorAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import java.awt.CardLayout;
@@ -19,19 +20,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author preet
  */
-public class PatientDieticianDashboard extends javax.swing.JPanel {
+public class PatientCounselorDashboard extends javax.swing.JPanel {
    JPanel WorkArea;
    EcoSystem system;
    Patient p ;
     /**
-     * Creates new form PatientDieticianDashboard
+     * Creates new form PatientCounselorDashborad
      */
-    public PatientDieticianDashboard(JPanel WorkArea,EcoSystem system,Patient p ) {
+    public PatientCounselorDashboard(JPanel WorkArea,EcoSystem system,Patient p ) {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
-        populateUpcomingDieticianAppointments();
+        populateUpcomingCounselorAppointments();
     }
 
     /**
@@ -43,19 +44,12 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         UpcomingDieticianAppointments = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
-
-        jButton1.setText("BookAppointment");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("View Past Appointment");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -64,10 +58,17 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("View Current Diet Plan");
+        jButton3.setText("View Latest Counselor notes");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("BookAppointment");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -79,7 +80,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Dietitian Name", "Upcoming Appointment Date"
+                "Counselor Name", "Upcoming Appointment Date"
             }
         ));
         jScrollPane1.setViewportView(UpcomingDieticianAppointments);
@@ -95,50 +96,51 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(159, 159, 159)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton4)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton1)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jButton1)
+                .addGap(28, 28, 28)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PatientBookAnAppointment ls= new PatientBookAnAppointment(WorkArea,system,p,1);
+        PatientBookAnAppointment ls= new PatientBookAnAppointment(WorkArea,system,p,3);
         WorkArea.add("PatientDieticianBookAppointment",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);        // TODO add your handling code here:
+        layout.next(WorkArea);         
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ViewPastAppointments ls= new ViewPastAppointments(WorkArea,system,p.getDietitianAppointments(),1);
-        WorkArea.add("ViewPastAppointments",ls);
+        ViewPastAppointmentCounselor ls= new ViewPastAppointmentCounselor(WorkArea,system,p.getCounselorAppointments(),1);
+        WorkArea.add("ViewPastAppointmentCounselor",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea); 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -147,16 +149,15 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-       CardLayout layout = (CardLayout)WorkArea.getLayout();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PatientDietPlan ls= new PatientDietPlan(WorkArea,system,p);
-        WorkArea.add("PatientDietPlan",ls);
+        PatientConfidentiality ls= new PatientConfidentiality(WorkArea,system,p);
+        WorkArea.add("PatientConfidentiality",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);   
-      
+        layout.next(WorkArea); 
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
@@ -169,22 +170,21 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void populateUpcomingDieticianAppointments() {
- DefaultTableModel model = (DefaultTableModel) UpcomingDieticianAppointments.getModel();
- ArrayList<DietitianAppointment> temp=new ArrayList();
+    public void populateUpcomingCounselorAppointments() {
+      DefaultTableModel model = (DefaultTableModel) UpcomingDieticianAppointments.getModel();
+      ArrayList<CounselorAppointment> temp=new ArrayList();
         try {
-            temp=p.getDietitianAppointments();
+            temp=p.getCounselorAppointments();
         } catch (Exception e) {
             return;
         }
- 
         model.setRowCount(0);
         
-        for(int i=0;i<p.getDietitianAppointments().size();i++)
+        for(int i=0;i<temp.size();i++)
     {
         if(temp.get(i).getDate().isAfter(LocalDate.now())){
                 Object row[] = new Object[2];
-                row[0] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
+                row[0] = temp.get(i).getCounselor().getPersonDetails().getFullName();
                 row[1] = temp.get(i).getDate();
                 model.addRow(row);
     }
