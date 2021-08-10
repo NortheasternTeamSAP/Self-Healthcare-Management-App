@@ -19,6 +19,7 @@ import java.time.LocalDate;
  */
 public class Doctor implements Person {
     private PersonDetails doctorDetails;
+    private String speciality;
     
     public Doctor(
             String fullName, 
@@ -29,6 +30,11 @@ public class Doctor implements Person {
             UserAccount account) {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR);
+        speciality = "Unknown";
+    }
+
+    public String getSpeciality() {
+        return speciality;
     }
 
     @Override
@@ -39,5 +45,10 @@ public class Doctor implements Person {
     @Override
     public Role getRole() {
         return doctorDetails.getRole();
+    }
+
+    @Override
+    public PersonDetails getPersonDetails() {
+        return doctorDetails;
     }
 }

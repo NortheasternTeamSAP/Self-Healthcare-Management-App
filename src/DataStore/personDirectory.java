@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personnel;
+package DataStore;
 
 /**
  *
  * @author Ankur Bywar
  */
-public interface Person {
+class personDirectory {
     
-    public UserAccount getUserAccount();
-    public Role getRole();
-    public PersonDetails getPersonDetails();
-
 }

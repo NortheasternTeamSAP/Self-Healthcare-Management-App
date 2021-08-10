@@ -5,6 +5,7 @@
  */
 package DataStore;
 
+import Personnel.Person;
 import Personnel.PersonDetails;
 import Utils.ConsoleLogger;
 import java.util.ArrayList;
@@ -73,5 +74,5 @@ public class GenericDirectory<Key, Value> {
     
     public List<Value> getAllValues() {
         return new ArrayList<>(directory.values());
-    }
+    }    
 }

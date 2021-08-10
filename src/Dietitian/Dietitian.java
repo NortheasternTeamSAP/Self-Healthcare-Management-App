@@ -67,6 +67,8 @@ public class Dietitian implements Person{
         return "" + dietitianDetails.getFullName();
     }
     
-    
-    
+    @Override
+    public PersonDetails getPersonDetails() {
+        return dietitianDetails;
+    }
 }

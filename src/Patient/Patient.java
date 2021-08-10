@@ -20,6 +20,8 @@ import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
+import VitalSign.VitalSignNormalRange;
+import VitalSign.VitalSigns;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,8 +37,12 @@ public class Patient implements Person {
     private ArrayList<DietitianAppointment> dietitianAppointments;
     private ArrayList<FitnessPlan> fitnessPlans;
     private ArrayList<FitnessTrainerAppointment> fitnessTrainerAppointments;
-     private ArrayList<CounsellingNote> counsellingNotes;
+    private ArrayList<CounsellingNote> counsellingNotes;
     private ArrayList<CounselorAppointment> counselorAppointments;
+    private ArrayList<VitalSigns> vitalSignsHistory;
+    private VitalSigns currentVitalSigns;
+    private VitalSignNormalRange vitalSignNormalRange;
+    
     
     public Patient(
             String fullName, 
@@ -53,8 +59,16 @@ public class Patient implements Person {
         fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
         counsellingNotes=new ArrayList<CounsellingNote>();
         counselorAppointments=new ArrayList<CounselorAppointment>();
+        this.vitalSignsHistory = new ArrayList<VitalSigns>();
+        this.currentVitalSigns = null;
+        this.vitalSignNormalRange = null;
     }
 
+    
+    @Override
+    public PersonDetails getPersonDetails() {
+        return patientDetails;
+    }
     @Override
     public UserAccount getUserAccount() {
         return patientDetails.getUserAccount();
@@ -75,7 +89,7 @@ public class Patient implements Person {
         }
         return false;
     }
-    
+   
     public void addDietplan(DietPlan dp){
         dietplans.add(dp);
     }

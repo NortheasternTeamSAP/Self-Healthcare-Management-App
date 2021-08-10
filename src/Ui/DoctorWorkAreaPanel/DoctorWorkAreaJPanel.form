@@ -283,15 +283,10 @@
                                                               <Component id="lblAddressPlaceHolder" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="1" attributes="0">
-                                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                                  <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="lblWeight" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
+                                                              <Component id="lblAge" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="lblWeightPlaceHolder" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="lblAgePlaceHolder" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
+                                                              <Component id="lblAgePlaceHolder" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="1" attributes="0">
                                                               <Component id="lblWeight1" min="-2" max="-2" attributes="0"/>
@@ -358,17 +353,12 @@
                                       <Component id="lblAge" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblAgePlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblWeight" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblWeightPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblWeight1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblWeightPlaceHolder1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" pref="70" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="104" max="-2" attributes="0"/>
@@ -474,7 +464,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Lucida Grande" size="14" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="                  Patient Profile"/>
+                            <Property name="text" type="java.lang.String" value="                  Doctor Profile"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblNamePlaceHolder">
@@ -527,19 +517,6 @@
                         <Component class="javax.swing.JLabel" name="lblAgePlaceHolder">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="AgeHolder"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblWeight">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Lucida Grande" size="13" style="1"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Weight:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblWeightPlaceHolder">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="WeightPlaceHolder"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblWeight1">

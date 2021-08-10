@@ -35,4 +35,9 @@ public class SystemAdmin implements Person {
     public Role getRole() {
         return sysAdminDetails.getRole();
     }
+
+    @Override
+    public PersonDetails getPersonDetails() {
+        return sysAdminDetails;
+    }
 }

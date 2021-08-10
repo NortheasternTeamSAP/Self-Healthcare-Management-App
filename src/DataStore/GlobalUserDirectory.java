@@ -7,7 +7,10 @@ package DataStore;
 
 import Personnel.Person;
 import Personnel.PersonDetails;
+import Personnel.Role;
 import Utils.ConsoleLogger;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -53,5 +56,16 @@ public class GlobalUserDirectory {
         credentialsManager.createNewUserAccount(
                 person.getUserAccount().getUsername(), 
                 person.getUserAccount().getPassword());
+    }
+    
+    public List<Person> getAllDoctors() {
+        List<Person> doctors = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.DOCTOR)) {
+                doctors.add(p);
+            }
+        }
+        return doctors;
     }
 }
