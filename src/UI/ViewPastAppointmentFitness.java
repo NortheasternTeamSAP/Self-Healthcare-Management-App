@@ -7,7 +7,7 @@ package UI;
 
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
-import Patient.Patient;
+import FitnessTrainer.FitnessTrainerAppointment;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -19,30 +19,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author preet
  */
-public class ViewPastAppointments extends javax.swing.JPanel {
+public class ViewPastAppointmentFitness extends javax.swing.JPanel {
     JPanel WorkArea;
     EcoSystem system;
     ArrayList<Dietitian.DietitianAppointment> dietitianAppointments;
+    ArrayList<FitnessTrainerAppointment> fitnessTrainerAppointments;
     int flag=0;
-    /**
-     * Creates new form ViewPastAppointments
-     */
-    public ViewPastAppointments(JPanel WorkArea,EcoSystem system,ArrayList<DietitianAppointment> k,int flag) {
+
+     public ViewPastAppointmentFitness(JPanel WorkArea,EcoSystem system,ArrayList<FitnessTrainerAppointment> d,int flag) {
         initComponents();
          this.WorkArea=WorkArea;
         this.system=system;
-        this.dietitianAppointments=k;
+        this.fitnessTrainerAppointments=d;
         this.flag=flag;
-        if(flag==0){
-             populatepastPatientAppointment();
-       }
+        if(flag==1){  
+        populatepastFitnessTrainerAppointment();
+          }
         else {
-         
-           populatepastDietitianAppointment();
-        }
+      populatepastpaitentfitnessappointment();
       
+        }
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,10 +50,17 @@ public class ViewPastAppointments extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backp = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblpastAppointments = new javax.swing.JTable();
-        backd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        backp.setText("Back");
+        backp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backpActionPerformed(evt);
+            }
+        });
 
         tblpastAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,13 +75,6 @@ public class ViewPastAppointments extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblpastAppointments);
 
-        backd.setText("Back");
-        backd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backdActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("My Past Appointments");
 
@@ -87,99 +85,89 @@ public class ViewPastAppointments extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backd))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(backp)))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(backd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(16, 16, 16)
+                .addComponent(backp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backdActionPerformed
-        
-        if(flag==0){
+    private void backpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backpActionPerformed
+
+
+if(flag==1){ WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+         FitnessTrainerDashBoard panel = (FitnessTrainerDashBoard) component;
+        panel.populateupcomingAppointments();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);}
+
+else{
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
+         PatientFitnessDashboard panel = (PatientFitnessDashboard) component;
+        panel.populateUpcomingFitnessTrainerAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
-        DietitianDashboard p=(DietitianDashboard)component;
-        p.populateupcomingAppointments();
-        layout.previous(WorkArea);
-       
-       }
-        else{
-        
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        PatientDieticianDashboard p=(PatientDieticianDashboard)component;
-        p.populateUpcomingDieticianAppointments();       
-        layout.previous(WorkArea);
-    
-        }
-   
-    }//GEN-LAST:event_backdActionPerformed
+        layout.previous(WorkArea);}
+    }//GEN-LAST:event_backpActionPerformed
 
+ private void populatepastFitnessTrainerAppointment() {
 
+ DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
+ ArrayList<FitnessTrainerAppointment> temp=new ArrayList();
+ temp=fitnessTrainerAppointments; 
+ model.setRowCount(0);       
+        for(int i=0;i<temp.size();i++)
+    {
+        if(temp.get(i).getDate().isBefore(LocalDate.now())){
+         Object row[] = new Object[2];
+                row[0] = temp.get(i).getPatient().getPatientDetails().getFullName();
+                row[1] = temp.get(i).getDate();
+                model.addRow(row);
+    }
+    }   
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backd;
+    private javax.swing.JButton backp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblpastAppointments;
     // End of variables declaration//GEN-END:variables
 
-    private void populatepastDietitianAppointment() {
-        
- DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
- ArrayList<DietitianAppointment> temp=new ArrayList();
- tblpastAppointments.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("Dietitian Name ");
- temp=dietitianAppointments; 
-  model.setRowCount(0);      
-        for(int i=0;i<dietitianAppointments.size();i++)
-    {
-        if(temp.get(i).getDate().isBefore(LocalDate.now())){
-       Object row[] = new Object[2];
-                row[0] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
-                row[1] = temp.get(i).getDate();
-                model.addRow(row);
-    }
-    }  
-        
-        
-        
-      
-    }
-
-    private void populatepastPatientAppointment() {
+    private void populatepastpaitentfitnessappointment() {
        
+        
  DefaultTableModel model = (DefaultTableModel) tblpastAppointments.getModel();
- ArrayList<DietitianAppointment> temp=new ArrayList();
- temp=dietitianAppointments; 
+ ArrayList<FitnessTrainerAppointment> temp=new ArrayList();
+ temp=fitnessTrainerAppointments; 
+ tblpastAppointments.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("FitnessTrainer Name");
  model.setRowCount(0);       
-        for(int i=0;i<dietitianAppointments.size();i++)
+        for(int i=0;i<temp.size();i++)
     {
         if(temp.get(i).getDate().isBefore(LocalDate.now())){
        Object row[] = new Object[2];
-                row[0] = temp.get(i).getPatient().getPatientDetails().getFullName();
+                row[0] = temp.get(i).getFitnessTrainer().getFitnessTrainerDetails().getFullName();
                 row[1] = temp.get(i).getDate();
                 model.addRow(row);
     }
     
     }
-}
+  }
 }

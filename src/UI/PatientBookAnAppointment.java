@@ -7,6 +7,7 @@ package UI;
 
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
 import com.toedter.calendar.JDateChooser;
 import java.awt.CardLayout;
@@ -23,7 +24,7 @@ import javax.swing.JPanel;
  *
  * @author preet
  */
-public class PatientDieticianBookAppointment extends javax.swing.JPanel {
+public class PatientBookAnAppointment extends javax.swing.JPanel {
 JPanel WorkArea;
    EcoSystem system;
    Patient p ;
@@ -32,7 +33,7 @@ JPanel WorkArea;
     /**
      * Creates new form PatientDieticianBookAppointment
      */
-    public PatientDieticianBookAppointment(JPanel WorkArea,EcoSystem system,Patient p,int flag) {
+    public PatientBookAnAppointment(JPanel WorkArea,EcoSystem system,Patient p,int flag) {
         initComponents();        
         this.WorkArea=WorkArea;
         this.system=system;
@@ -42,11 +43,11 @@ JPanel WorkArea;
         if(flag==1){
             jLabel1.setText("Book an Appointment With your Dietitian");
             jLabel2.setText("Select a Dietician");
-        populatedietiticancombo();
+            populatedietiticancombo();
         }
         else if (flag==2)
         {
-        
+        populatefitnesscombo();
         
         }
         else 
@@ -72,7 +73,7 @@ JPanel WorkArea;
         jLabel3 = new javax.swing.JLabel();
         chooser = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        backf = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
 
@@ -93,10 +94,10 @@ JPanel WorkArea;
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backf.setText("Back");
+        backf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backfActionPerformed(evt);
             }
         });
 
@@ -105,33 +106,33 @@ JPanel WorkArea;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboapp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboapp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backf)))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton2)))
+                .addGap(33, 33, 33)
+                .addComponent(backf)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboapp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,7 +147,7 @@ JPanel WorkArea;
                         .addComponent(chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)))
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,37 +156,68 @@ JPanel WorkArea;
     }//GEN-LAST:event_comboappActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
+    if (flag==1){
         //Date date =chooser.getDate();
         Dietitian selectedDietitian=(Dietitian) comboapp.getSelectedItem();
         LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         p.scheduleDietitianAppointment(selectedDietitian, date);
-      
-         JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :"+ selectedDietitian.getDietitianDetails().getFullName()+" on  : "+date);
-       
+        JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :"+ selectedDietitian.getDietitianDetails().getFullName()+" on  : "+date);
+        WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        PatientDieticianDashboard d=(PatientDieticianDashboard)component;
+        d.populateUpcomingDieticianAppointments();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);   
+    }
+    
+    else if (flag==2){
+    
+     FitnessTrainer selectedFitnessTrainer=(FitnessTrainer) comboapp.getSelectedItem();
+     LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+     p.scheduleFitnessAppointment(selectedFitnessTrainer, date);
+     JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with FitnessTrainer   :"+ selectedFitnessTrainer.getFitnessTrainerDetails().getFullName()+" on  : "+date);
+        WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        PatientFitnessDashboard d=(PatientFitnessDashboard)component;
+        d.populateUpcomingFitnessTrainerAppointments();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);
+    }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- WorkArea.remove(this);
+    private void backfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backfActionPerformed
+        if(flag==1){
+        WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        PatientDieticianDashboard panel = (PatientDieticianDashboard) component;
-        panel.populateUpcomingDieticianAppointments();
+        PatientDieticianDashboard d=(PatientDieticianDashboard)component;
+        d.populateUpcomingDieticianAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);     
+        }else if (flag==2){
         
+         WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        PatientFitnessDashboard d=(PatientFitnessDashboard)component;
+        d.populateUpcomingFitnessTrainerAppointments();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);
+           }
+        
+        else {}
   
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backfActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backf;
     private com.toedter.calendar.JDateChooser chooser;
-    private javax.swing.JComboBox<Dietitian> comboapp;
+    private javax.swing.JComboBox<Object> comboapp;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -205,12 +237,12 @@ for(Dietitian d: system.getDietitianDirectory().getDietitians()){
     
     
     
-//        private void populateFitnessTrainercombo() {
-//      
-// comboapp.removeAllItems();
-// for(Dietitian d: system.getDietitianDirectory().getDietitians()){
-//    comboapp.addItem(d);
-//    
-//    }
-//}
+ private void populatefitnesscombo() {
+      
+ comboapp.removeAllItems();
+ for(FitnessTrainer f: system.getFitnessTrainerDirectory().getFitnessTrainers()){
+    comboapp.addItem(f);
+    
+    }
+}
 }

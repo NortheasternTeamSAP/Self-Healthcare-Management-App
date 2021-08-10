@@ -5,10 +5,16 @@
  */
 package UI;
 
+import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
 import java.awt.CardLayout;
+import java.awt.Component;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +32,7 @@ JPanel WorkArea;
            this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        populateUpcomingFitnessTrainerAppointments();
     }
 
     /**
@@ -41,6 +48,9 @@ JPanel WorkArea;
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        UpcomingFitnessAppointments = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
 
         jButton1.setText("BookAppointment");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,26 +67,63 @@ JPanel WorkArea;
         });
 
         jButton3.setText("View Current Fitness Regime");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("View Fitness Videos");
+
+        UpcomingFitnessAppointments.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "FitnessTrainer Name", "Upcoming Appointment Date"
+            }
+        ));
+        jScrollPane1.setViewportView(UpcomingFitnessAppointments);
+
+        jButton6.setText("Back");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(276, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
@@ -89,21 +136,73 @@ JPanel WorkArea;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PatientDieticianBookAppointment ls= new PatientDieticianBookAppointment(WorkArea,system,p,2);
-        WorkArea.add("PatientDieticianBookAppointment",ls);
+        PatientBookAnAppointment ls= new PatientBookAnAppointment(WorkArea,system,p,2);
+        WorkArea.add("PatientBookAppointment",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        ViewPastAppointmentFitness ls= new ViewPastAppointmentFitness(WorkArea,system,p.getFitnessTrainerAppointments(),0);
+        WorkArea.add("ViewPastAppointmentFitness",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea); 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      
+        PatientFitnessPlan ls= new PatientFitnessPlan(WorkArea,system,p);
+        WorkArea.add("PatientFitnessPlan",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);      
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable UpcomingFitnessAppointments;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+   
+    public void populateUpcomingFitnessTrainerAppointments() {
+      
+ DefaultTableModel model = (DefaultTableModel) UpcomingFitnessAppointments.getModel();
+ ArrayList<FitnessTrainerAppointment> temp=new ArrayList();
+        try {
+            temp=p.getFitnessTrainerAppointments();
+        } catch (Exception e) {
+            return;
+        }
+ 
+ model.setRowCount(0);
+        
+        for(int i=0;i<temp.size();i++)
+    {
+        if(temp.get(i).getDate().isAfter(LocalDate.now())){
+                Object row[] = new Object[2];
+                row[0] = temp.get(i).getFitnessTrainer().getFitnessTrainerDetails().getFullName();
+                row[1] = temp.get(i).getDate();
+                model.addRow(row);
+    }
+    }   
+
+  
+    }
+
+
+
+
+
 }

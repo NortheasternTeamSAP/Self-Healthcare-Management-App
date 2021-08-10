@@ -45,7 +45,7 @@
                                   <EmptySpace min="99" pref="99" max="-2" attributes="0"/>
                                   <Component id="txtSubject" min="-2" pref="330" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="674" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" min="-2" pref="761" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

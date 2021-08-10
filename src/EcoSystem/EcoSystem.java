@@ -44,6 +44,12 @@ public class EcoSystem {
     public DietitianDirectory getDietitianDirectory() {
         return dietitianDirectory;
     }
+
+    public FitnessTrainerDirectory getFitnessTrainerDirectory() {
+        return fitnessTrainerDirectory;
+    }
+    
+    
     
     void example() {
         // How to get a user from globalUserDirectory

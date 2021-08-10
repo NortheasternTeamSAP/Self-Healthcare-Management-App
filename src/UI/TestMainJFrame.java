@@ -26,6 +26,7 @@ public class TestMainJFrame extends javax.swing.JFrame {
   private EcoSystem system;
   private Patient p;
   private Dietitian d;
+  private FitnessTrainer f;
     /**
      * Creates new form MainJFrame
      */
@@ -45,10 +46,12 @@ public class TestMainJFrame extends javax.swing.JFrame {
         this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
         this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
          Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
-      FitnessTrainer f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
+      this.f  = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
       Counselor c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
       system.getDietitianDirectory().AddDietitian(d);
-         system.getDietitianDirectory().AddDietitian(k);
+      system.getDietitianDirectory().AddDietitian(k);
+      system.getFitnessTrainerDirectory().AddFitnessTrainer(f);
+      
          
 //         System.out.println("folowing are the dieticians : ::::::::::: "+ system.getDietitianDirectory().getDietitians());
 //      //check for dietician
@@ -176,7 +179,7 @@ public class TestMainJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void ApplicationDashboard() {
-        ApplicationDashboard ls= new ApplicationDashboard(WorkArea,system,p,d);
+        ApplicationDashboard ls= new ApplicationDashboard(WorkArea,system,p,d,f);
         WorkArea.add("ApplicationDashboard",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
