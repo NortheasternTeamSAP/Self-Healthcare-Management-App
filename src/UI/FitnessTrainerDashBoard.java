@@ -8,6 +8,8 @@ package UI;
 import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainer;
+import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -21,18 +23,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author preet
  */
-public class DietitianDashboard extends javax.swing.JPanel {
+public class FitnessTrainerDashBoard extends javax.swing.JPanel {
 JPanel WorkArea;
 EcoSystem system;
-Dietitian d;
+FitnessTrainer f;
     /**
-     * Creates new form DietitianDashboard
+     * Creates new form FitnessTrainerDashBoard
      */
-    public DietitianDashboard(JPanel WorkArea,EcoSystem system,Dietitian d) {
-      initComponents();
+    public FitnessTrainerDashBoard(JPanel WorkArea,EcoSystem system,FitnessTrainer f) {
+        initComponents();
+         initComponents();
       this.WorkArea=WorkArea;
       this.system=system;
-      this.d=d;
+      this.f=f;
       populateupcomingAppointments();
     }
 
@@ -45,13 +48,32 @@ Dietitian d;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblpastapp = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+
+        jButton4.setText("Back");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Create A Fitness Regime");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("View Past Appointment");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tblpastapp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,41 +88,6 @@ Dietitian d;
         ));
         jScrollPane1.setViewportView(tblpastapp);
 
-        jButton1.setText("View Past Appointment");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Email Patient");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Create A Diet Plan");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Show my Stats");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,9 +96,7 @@ Dietitian d;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(209, 209, 209))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +106,7 @@ Dietitian d;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,37 +119,9 @@ Dietitian d;
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ViewPastAppointments ls= new ViewPastAppointments(WorkArea,system,d.getDietitianSchedule().getDietitianAppointments(),0);
-        WorkArea.add("ViewPastAppointments",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);       
-         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-        int row = tblpastapp.getSelectedRow();
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a Patient from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Patient p = (Patient)tblpastapp.getValueAt(row, 0);
-        CreateDietPlan pd=new CreateDietPlan(WorkArea,system,d,p);
-        WorkArea.add("CreateMealPlan",pd);
-            CardLayout layout= (CardLayout)WorkArea.getLayout();
-            layout.next(WorkArea);    
-         
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         WorkArea.remove(this);
@@ -174,43 +131,54 @@ Dietitian d;
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   
-        EmailAPatient ls= new EmailAPatient(WorkArea,system,d);
-        WorkArea.add("EmailAPatient",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);       
-          
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        ReportDietitian ls= new ReportDietitian(WorkArea,system,d);
-        WorkArea.add("ReportDietitian",ls);
+        int row = tblpastapp.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a Patient from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Patient p = (Patient)tblpastapp.getValueAt(row, 0);
+        CreateFitnessPlan pd=new CreateFitnessPlan(WorkArea,system,f,p);
+        WorkArea.add("CreateMealPlan",pd);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
-    }//GEN-LAST:event_jButton5ActionPerformed
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        ViewPastAppointmentFitness ls= new ViewPastAppointmentFitness(WorkArea,system,f.getFitnessTrainerSchedule().getFitnessTrainerAppointments(),1);
+        WorkArea.add("ViewPastAppointmentFitness",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblpastapp;
     // End of variables declaration//GEN-END:variables
 
-    public void populateupcomingAppointments() {         
+    public void populateupcomingAppointments() {
+               
  DefaultTableModel model = (DefaultTableModel) tblpastapp.getModel();
- ArrayList<DietitianAppointment> temp=new ArrayList();
+
+ ArrayList<FitnessTrainerAppointment> temp=new ArrayList();
         try {
-             temp=d.getDietitianSchedule().getDietitianAppointments();
-        
+             temp=f.getFitnessTrainerSchedule().getFitnessTrainerAppointments();
+             
         } catch (Exception e) {
             return;
         }
+
  model.setRowCount(0);
+        
         for(int i=0;i<temp.size();i++)
     {
         if(temp.get(i).getDate().isAfter(LocalDate.now())){
@@ -221,4 +189,5 @@ Dietitian d;
     }
     }   
    }
-}
+ }
+

@@ -52,13 +52,17 @@ public class FitnessTrainer implements Person{
     }
     
     
-    public void addFitnessPlan(Patient p, ArrayList<String> fitnessplans){    
-        FitnessPlan fp= new FitnessPlan(p,this, fitnessplans);
+    public void addFitnessPlan(Patient p, ArrayList<String> plan){    
+        FitnessPlan fp= new FitnessPlan(p,this, plan);
         p.addFitnessPlan(fp);
     }
     
     @Override
     public PersonDetails getPersonDetails() {
+        return fitnessTrainerDetails;
+    }
+
+    public PersonDetails getFitnessTrainerDetails() {
         return fitnessTrainerDetails;
     }
 }
