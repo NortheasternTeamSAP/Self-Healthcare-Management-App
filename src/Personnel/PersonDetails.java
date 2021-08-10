@@ -29,7 +29,14 @@ public class PersonDetails {
     protected UserAccount userAccount;
     protected Role role;
   
-    public PersonDetails(String fullName, LocalDate dob, Gender gender, Address address, String phoneNumber, UserAccount account, Role role) {
+    public PersonDetails(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount userAccount, 
+            Role role) {
         this.fullName = fullName;
         this.dob = dob;
         this.gender = gender;
@@ -83,4 +90,8 @@ public class PersonDetails {
         double age = ((years * 365) + (months * 30) + days)/365.0f;
         return Double.parseDouble(df.format(age));
     }
+    public Role getPersonType() {
+        return Role.INVALID;
+    }
+   
 }

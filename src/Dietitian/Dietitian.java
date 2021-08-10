@@ -66,7 +66,9 @@ public class Dietitian implements Person{
     public String toString() {
         return "" + dietitianDetails.getFullName();
     }
-    
-    
-    
+
+    @Override
+    public PersonDetails getPersonDetails() {
+        return dietitianDetails;
+    }
 }

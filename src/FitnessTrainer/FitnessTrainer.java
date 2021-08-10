@@ -56,10 +56,13 @@ public class FitnessTrainer implements Person{
         FitnessPlan fp= new FitnessPlan(p,this, plan);
         p.addFitnessPlan(fp);
     }
+    
+    @Override
+    public PersonDetails getPersonDetails() {
+        return fitnessTrainerDetails;
+    }
 
     public PersonDetails getFitnessTrainerDetails() {
         return fitnessTrainerDetails;
     }
-    
-    
 }

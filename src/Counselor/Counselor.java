@@ -61,5 +61,10 @@ public class Counselor implements Person{
         CounsellingNote dp= new CounsellingNote(p,this, CounsellingNote);
         p.addCounsellingNotes(dp);
     }
+
+    @Override
+    public PersonDetails getPersonDetails() {
+        return counselorDetails;
+    }
     
 }

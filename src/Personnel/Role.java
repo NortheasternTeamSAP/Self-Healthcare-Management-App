@@ -20,7 +20,7 @@ public enum Role {
     COUNSELOR("Counselor")
     // Add more roles here and create corresponding 
     // classes which extends Person class
-    ;
+    , INVALID("Invalid");
     
     private String value;
     
