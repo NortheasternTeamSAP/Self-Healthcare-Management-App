@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Counselor.Counselor;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
@@ -22,16 +23,18 @@ JPanel WorkArea;
    Patient p ;
    Dietitian d;
    FitnessTrainer f;
+   Counselor c ;
     /**
      * Creates new form ApplicationDashboard
      */
-    public ApplicationDashboard(JPanel WorkArea,EcoSystem system,Patient p,Dietitian d ,FitnessTrainer f) {
+    public ApplicationDashboard(JPanel WorkArea,EcoSystem system,Patient p,Dietitian d ,FitnessTrainer f,Counselor c ) {
         initComponents();
             this.WorkArea=WorkArea;
         this.system=system;
         this.d=d;
         this.p=p;
         this.f=f;
+        this.c=c;
         
     }
 
@@ -51,6 +54,11 @@ JPanel WorkArea;
         jButton6 = new javax.swing.JButton();
 
         jButton4.setText("Counselor login");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("FitnessTrainer Login ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +147,19 @@ JPanel WorkArea;
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+     
+        
+        
+         CounselorDashboard ls= new CounselorDashboard(WorkArea,system,c);
+        WorkArea.add("CounselorDashboard",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
