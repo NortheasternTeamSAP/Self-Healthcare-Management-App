@@ -21,9 +21,9 @@ import java.time.LocalDate;
  * @author Sravya
  */
 public class EcoSystem {
-    DietitianDirectory dietitianDirectory;
     public GlobalUserDirectory globalUserDirectory;
     public CredentialsManager credentialsManager;
+    DietitianDirectory dietitianDirectory;
     
     public EcoSystem() {
         credentialsManager = new CredentialsManager();

@@ -151,4 +151,8 @@ public class Patient implements Person {
     public PersonDetails getPatientDetails() {
         return patientDetails;
     }
+
+    public PersonDetails getPatientDetails() {
+        return patientDetails;
+    }
 }
