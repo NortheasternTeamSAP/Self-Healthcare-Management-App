@@ -5,6 +5,7 @@
  */
 package Doctor;
 
+import DataStore.Appointment;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
@@ -12,6 +13,10 @@ import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -20,6 +25,8 @@ import java.time.LocalDate;
 public class Doctor implements Person {
     private PersonDetails doctorDetails;
     private String speciality;
+    private ArrayList<Appointment> patientAppointments;
+    private Set<String /* Appointment Date + time */> doctorAvailability;
     
     public Doctor(
             String fullName, 
@@ -31,6 +38,8 @@ public class Doctor implements Person {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR);
         speciality = "Unknown";
+        this.patientAppointments = new ArrayList<>();
+        this.doctorAvailability = new HashSet<>();
     }
 
     public String getSpeciality() {
@@ -50,5 +59,19 @@ public class Doctor implements Person {
     @Override
     public PersonDetails getPersonDetails() {
         return doctorDetails;
+    }
+    
+    public void addPatientAppointment(Appointment appointment) {
+        patientAppointments.add(appointment);
+        // update doctor's availability
+        doctorAvailability.add(appointment.getDate().toString() + appointment.getAppointmentTimeHours());
+    }
+    
+    public boolean isDoctorAvailable(LocalDate date, int timeHours) {
+        return !doctorAvailability.contains(date.toString() + timeHours);
+    }
+    
+    public List<Appointment> getPatientAppointments() {
+        return this.patientAppointments;
     }
 }

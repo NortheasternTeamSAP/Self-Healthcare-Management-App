@@ -13,6 +13,7 @@ public enum Role {
     SYSTEM_ADMIN("SysAdmin"),
     PATIENT("Patient"),
     DOCTOR("Doctor"),
+    INSURANCE_PROVIDER_REP("InsuranceProviderRep"),
     DELIVERY_MAN("DeliveryMan"),
     PHARMACIST("Pharmacist"),
     DIETITIAN("Dietitian"),

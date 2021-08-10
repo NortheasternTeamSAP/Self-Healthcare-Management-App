@@ -8,6 +8,7 @@ package Patient;
 import Counselor.CounsellingNote;
 import Counselor.Counselor;
 import Counselor.CounselorAppointment;
+import DataStore.Appointment;
 import Dietitian.DietPlan;
 import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
@@ -41,8 +42,10 @@ public class Patient implements Person {
     private ArrayList<CounsellingNote> counsellingNotes;
     private ArrayList<CounselorAppointment> counselorAppointments;
     private ArrayList<VitalSigns> vitalSignsHistory;
-    private VitalSigns currentVitalSigns;
+    private VitalSigns mostRecentVitalSigns;
     private VitalSignNormalRange vitalSignNormalRange;
+    private ArrayList<Appointment> doctorAppointments;
+    private ArrayList<Appointment> doctorAppointmentsHistory;
     
     
     public Patient(
@@ -61,8 +64,10 @@ public class Patient implements Person {
         counsellingNotes=new ArrayList<CounsellingNote>();
         counselorAppointments=new ArrayList<CounselorAppointment>();
         this.vitalSignsHistory = new ArrayList<VitalSigns>();
-        this.currentVitalSigns = null;
+        this.mostRecentVitalSigns = null;
         this.vitalSignNormalRange = null;
+        this.doctorAppointments = new ArrayList<>();
+        this.doctorAppointmentsHistory = new ArrayList<>();
     }
 
     
@@ -160,8 +165,35 @@ public class Patient implements Person {
     public void addNewVitalSign(VitalSigns vs) {
         if (vs != null) {
             this.vitalSignsHistory.add(vs);
+            if (this.mostRecentVitalSigns == null) {
+                this.mostRecentVitalSigns = vs;
+            } else {
+                if (this.mostRecentVitalSigns.getDateForVitalSigns().isBefore(vs.getDateForVitalSigns())) {
+                    this.mostRecentVitalSigns = vs;
+                }
+            }
         } else {
             throw new RuntimeException("Trying to add a null VitalSign to vitalSignsHistory");
         }
+    }
+    
+    public VitalSigns getMostRecentVitalSigns() {
+        return this.mostRecentVitalSigns;
+    }
+
+    public void addDoctorAppointment(Appointment apt) {
+        doctorAppointments.add(apt);
+    }
+    
+    public void addAppointmentToHistory(Appointment apt) {
+        this.doctorAppointmentsHistory.add(apt);
+    }
+    
+    public List<Appointment> getDoctorAppointmentsHistory() {
+        return this.doctorAppointmentsHistory;
+    }
+    
+    public List<Appointment> getUpcomingDoctorAppointments() {
+        return this.doctorAppointments;
     }
 }

@@ -8,11 +8,23 @@ package EcoSystem;
 import DataStore.CredentialsManager;
 import DataStore.GlobalUserDirectory;
 import Dietitian.DietitianDirectory;
+import Doctor.Doctor;
+import Enterprise.Enterprise;
+import Enterprise.HealthManagementAppEnterprise;
+import Enterprise.HospitalEnterprise;
+import Enterprise.InsuranceCompanyEnterprise;
 import FitnessTrainer.FitnessTrainerDirectory;
+import Insurance.InsuranceProviderRepresentative;
+import Laboratory.LaboratoryAssistant;
+import Organization.HealthInsuranceDepartmentOrganization;
+import Organization.Organization;
+import Organization.PatientOrganization;
+import Organization.PrimaryCareOrganization;
+import Organization.SystemAdminOrganization;
 import Patient.Patient;
+import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
-import Personnel.Role;
 import Personnel.SystemAdmin;
 import Personnel.UserAccount;
 import java.time.LocalDate;
@@ -64,6 +76,61 @@ public class EcoSystem {
             default:
                 ;
         }
+    }
+    
+    void exampleCreateEnterpriseOrganizationAndRoles() {
+        Address sampleAddress = new Address("Street", "Building", "City", "Zip", "State", "Country");
+        
+        // Create Enterprise
+        Enterprise healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
+        Enterprise hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
+        Enterprise insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
+        
+        // Create Organizations and all them to enterprise
+        Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
+        healthManagementApp.addOrganization(adminOrg);
+        
+        Organization patientOrg = new PatientOrganization("Patient Org", healthManagementApp);
+        healthManagementApp.addOrganization(patientOrg);
+        
+        Organization primaryCareOrg = new PrimaryCareOrganization("Virginia Mason Primary Care Unit", hospital);
+        hospital.addOrganization(primaryCareOrg);
+
+        Organization laboratoryOrg = new PrimaryCareOrganization("Virginia Mason Lab Tests Unit", hospital);
+        hospital.addOrganization(laboratoryOrg);
+        
+        Organization healthInsuranceOrg = new HealthInsuranceDepartmentOrganization("Progressive Health Insurance Department", insuranceCompany);
+        insuranceCompany.addOrganization(healthInsuranceOrg);
+        
+        // Create roles
+        // Admin
+        Person sysAdmin = new SystemAdmin(null, null, null, null, null, new UserAccount("sysadmin", "sysadmin"));
+        this.globalUserDirectory.createNewUser(sysAdmin);
+        adminOrg.addEmployee(sysAdmin);
+        
+        // Patient
+        Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("pat1", "pat1"));
+        this.globalUserDirectory.createNewUser(patient);
+        patientOrg.addEmployee(patient);
+        
+        // Doctor
+        Person doctor = new Doctor("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("doc1", "doc1"));
+        this.globalUserDirectory.createNewUser(doctor);
+        primaryCareOrg.addEmployee(doctor);
+        
+        // Lab Assistant
+        Person labAssistant = new LaboratoryAssistant("Lab Assistant-1", LocalDate.now(), PersonDetails.Gender.MALE,
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("labassist1", "labassist1"));
+        this.globalUserDirectory.createNewUser(labAssistant);
+        laboratoryOrg.addEmployee(labAssistant);
+        
+        // Insurance provider representative
+        Person insuranceRep = new InsuranceProviderRepresentative("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("insrep1", "insrep1"));
+        this.globalUserDirectory.createNewUser(insuranceRep);
+        healthInsuranceOrg.addEmployee(insuranceRep);
     }
     
 }
