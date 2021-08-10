@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ui.PatientWorkAreaPanel;
+package PatientCoreWorkFlowUI;
 
 import EcoSystem.EcoSystem;
 import Patient.Patient;
@@ -141,8 +141,8 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
     CardLayout layout = (CardLayout) WorkAreaPanel.getLayout();
-    WorkAreaPanel.add("patientWorkAreaJPanel" , new PatientWorkAreaJPanel(WorkAreaPanel, ecoSystem, patient));
-   // WorkAreaPanel.add("patientWorkAreaJPanel", new PatientWorkAreaJPanel(WorkAreaPanel, patient);
+    WorkAreaPanel.add("patientWorkAreaJPanel" , new PatientHomePagePanel(WorkAreaPanel, ecoSystem, patient));
+   // WorkAreaPanel.add("patientWorkAreaJPanel", new PatientHomePagePanel(WorkAreaPanel, patient);
     layout.next(WorkAreaPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 

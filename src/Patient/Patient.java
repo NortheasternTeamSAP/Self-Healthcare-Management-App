@@ -25,6 +25,7 @@ import VitalSign.VitalSigns;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -152,7 +153,15 @@ public class Patient implements Person {
         return patientDetails;
     }
 
-    public PersonDetails getPatientDetails() {
-        return patientDetails;
+    public List<VitalSigns> getVitalSignsHistory() {
+        return this.vitalSignsHistory;
+    }
+
+    public void addNewVitalSign(VitalSigns vs) {
+        if (vs != null) {
+            this.vitalSignsHistory.add(vs);
+        } else {
+            throw new RuntimeException("Trying to add a null VitalSign to vitalSignsHistory");
+        }
     }
 }

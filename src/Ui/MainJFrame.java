@@ -7,7 +7,7 @@ package Ui;
 
 import DataStore.GenericDirectory;
 import DataStore.GlobalUserDirectory;
-import Ui.PatientWorkAreaPanel.PatientWorkAreaJPanel;
+import PatientCoreWorkFlowUI.PatientHomePagePanel;
 
 /**
  *
@@ -23,7 +23,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         genericDirectory = new GenericDirectory();
         
-       // nextScreen(new PatientWorkAreaJPanel (WorkAreaPanel, this), "PatientWorkAreaJPanel" );
+       // nextScreen(new PatientHomePagePanel (WorkAreaPanel, this), "PatientHomePagePanel" );
        
         
     }
