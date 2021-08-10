@@ -1,4 +1,6 @@
 # NetBeans specific #
+nbproject*
+nbproject/*
 nbproject/private/
 build/
 nbbuild/
@@ -9,6 +11,3 @@ nb-configuration.xml
 
 # Class Files #
 *.class
-
-# Package Files #
-*.jar

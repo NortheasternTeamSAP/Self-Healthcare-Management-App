@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ui.DoctorWorkAreaPanel;
+package PatientCoreWorkFlowUI;
 
-import Ui.PatientWorkAreaPanel.*;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
-import Ui.MainJFrame;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,23 +15,19 @@ import javax.swing.JPanel;
  *
  * @author Ankur Bywar
  */
-public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
+public class PatientHomePagePanel extends javax.swing.JPanel {
     JPanel WorkAreaPanel;
     Patient patient;
-    JFrame mainJFrame;
     EcoSystem ecoSystem;
     /**
      * Creates new form PatientWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel(JPanel WorkAreaPanel, Patient patient) {
+    public PatientHomePagePanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Patient patient) {
         initComponents();
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;
-        this.ecoSystem =ecoSystem;
+        this.ecoSystem = ecoSystem;
     }
-
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,6 +67,8 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
         lblAgePlaceHolder = new javax.swing.JLabel();
+        lblWeight = new javax.swing.JLabel();
+        lblWeightPlaceHolder = new javax.swing.JLabel();
         lblWeight1 = new javax.swing.JLabel();
         lblWeightPlaceHolder1 = new javax.swing.JLabel();
 
@@ -202,7 +198,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         imgLogo.setText("<<No Image>>");
 
         lblPatientDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        lblPatientDetails.setText("                  Doctor Profile");
+        lblPatientDetails.setText("                  Patient Profile");
 
         lblNamePlaceHolder.setText("NamePlaceHolder");
 
@@ -223,6 +219,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         lblAge.setText("Age:");
 
         lblAgePlaceHolder.setText("AgeHolder");
+
+        lblWeight.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblWeight.setText("Weight:");
+
+        lblWeightPlaceHolder.setText("WeightPlaceHolder");
 
         lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight1.setText("EmailId:");
@@ -264,10 +265,13 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(lblAddressPlaceHolder))
                                         .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addComponent(lblAge)
+                                            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblAge)
+                                                .addComponent(lblWeight))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(lblAgePlaceHolder)
-                                            .addGap(51, 51, 51))
+                                            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblWeightPlaceHolder)
+                                                .addComponent(lblAgePlaceHolder)))
                                         .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                                             .addComponent(lblWeight1)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -313,11 +317,15 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAge)
                     .addComponent(lblAgePlaceHolder))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWeight)
+                    .addComponent(lblWeightPlaceHolder))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWeight1)
                     .addComponent(lblWeightPlaceHolder1))
-                .addGap(154, 154, 154)
+                .addGap(144, 144, 144)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,12 +373,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             jPatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPatientPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, Short.MAX_VALUE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1138, Short.MAX_VALUE))
         );
         jPatientPanelLayout.setVerticalGroup(
             jPatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPatientPanelLayout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 917, Short.MAX_VALUE)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -425,7 +433,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnBookFamilyDoctorAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookFamilyDoctorAppointmentActionPerformed
         // TODO add your handling code here:
-        BookDoctorAppointmentJPanel bookFamilyDoctorAppointmentJPanel=new BookDoctorAppointmentJPanel(WorkAreaPanel, patient);
+        BookDoctorAppointmentJPanel bookFamilyDoctorAppointmentJPanel=new BookDoctorAppointmentJPanel(WorkAreaPanel, ecoSystem, patient);
         WorkAreaPanel.add("BookFamilyDoctorAppointmentJPanel", bookFamilyDoctorAppointmentJPanel);
         CardLayout layout=(CardLayout)WorkAreaPanel.getLayout();
         layout.next(WorkAreaPanel);
@@ -479,7 +487,9 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPatientDetails;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblPhoneNumberPlaceHolder;
+    private javax.swing.JLabel lblWeight;
     private javax.swing.JLabel lblWeight1;
+    private javax.swing.JLabel lblWeightPlaceHolder;
     private javax.swing.JLabel lblWeightPlaceHolder1;
     private javax.swing.JTable tblUpcomingAppointments;
     // End of variables declaration//GEN-END:variables

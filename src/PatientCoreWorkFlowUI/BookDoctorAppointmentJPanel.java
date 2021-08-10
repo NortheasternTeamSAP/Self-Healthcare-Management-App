@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ui.PatientWorkAreaPanel;
+package PatientCoreWorkFlowUI;
 
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
@@ -61,7 +61,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
     void populateDoctorTable() {
         DefaultTableModel  model = (DefaultTableModel) tblDoctorList.getModel();
         model.setRowCount(0);
-        List<Person> doctors = ecoSystem.globalUserDirectory.getAllDoctors();
+        List<Person> doctors = this.ecoSystem.globalUserDirectory.getAllDoctors();
         if (doctors == null || doctors.isEmpty()) {
             log.error("No doctors exists for ecosystem");
             return;
