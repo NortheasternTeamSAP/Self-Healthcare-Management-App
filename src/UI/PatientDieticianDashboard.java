@@ -170,11 +170,13 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void populateUpcomingDieticianAppointments() {
+          
  DefaultTableModel model = (DefaultTableModel) UpcomingDieticianAppointments.getModel();
  ArrayList<DietitianAppointment> temp=new ArrayList();
         try {
             temp=p.getDietitianAppointments();
         } catch (Exception e) {
+           model.setRowCount(0);
             return;
         }
  

@@ -36,15 +36,15 @@ public class TestMainJFrame extends javax.swing.JFrame {
         
         system= new EcoSystem();
         
-//        LocalDate now = LocalDate.now();
-//        Address addr = new Address("1", "2", "3", "4", "5", "6");
-//        UserAccount ua_john = new UserAccount("john", "password");
+        LocalDate now = LocalDate.now();
+        Address addr = new Address("1", "2", "3", "4", "5", "6");
+        UserAccount ua_john = new UserAccount("john", "password");
 //        UserAccount ua_jill = new UserAccount("jill", "password");
 //        UserAccount ua_jam = new UserAccount("jam", "password");
 //        UserAccount ua_jig = new UserAccount("jig", "password");
 //         UserAccount ua_jit = new UserAccount("jit", "password");
 //        
-//        this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
+       this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
 //        this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
 //         Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
 //       f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
