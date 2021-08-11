@@ -6,22 +6,25 @@
 package Order;
 
 import Doctor.Doctor;
+import Medicine.Medicine;
 import Medicine.MedicineDirectory;
 import Pharmacy.Pharmacy;
 import WorkQueue.WorkRequest;
+import java.util.UUID;
 
 /**
  *
  * @author Sravya
  */
 public class Order extends WorkRequest {
-    private String orderUUID;
+    private String orderID;  //= UUID.randomUUID().toString();
     private String orderStatus;
     private Pharmacy pharmacy;
     private Doctor doctor;
     private String deliveryMan;
     private int quantity;
-    private MedicineDirectory medicineCatalog;
+    private Medicine medicine;
+    private MedicineDirectory medicineDirectory;
     private String result;
     private boolean assign;
 
@@ -65,12 +68,12 @@ public class Order extends WorkRequest {
         this.quantity = quantity;
     }
 
-    public MedicineDirectory getMedicineCatalog() {
-        return medicineCatalog;
+    public MedicineDirectory getMedicineDirectory() {
+        return medicineDirectory;
     }
 
-    public void setMedicineCatalog(MedicineDirectory medicineCatalog) {
-        this.medicineCatalog = medicineCatalog;
+    public void setMedicineDirectory(MedicineDirectory medicineDirectory) {
+        this.medicineDirectory = medicineDirectory;
     }
 
     public String getResult() {
@@ -89,16 +92,21 @@ public class Order extends WorkRequest {
         this.assign = assign;
     }
 
-    public String getOrderUUID() {
-        return orderUUID;
+    public String getOrderID() {
+        return orderID;
     }
 
-    public void setOrderUUID(String orderUUID) {
-        this.orderUUID = orderUUID;
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     } 
-    
-    @Override
-    public String toString() {
-        return orderUUID;
+
+    public Medicine getMedicine() {
+        return medicine;
     }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
+    
+    
 }

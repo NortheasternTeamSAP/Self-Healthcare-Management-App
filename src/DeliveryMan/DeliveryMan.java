@@ -40,4 +40,8 @@ public class DeliveryMan implements Person {
     public Role getRole(){
         return deliveryManDetails.getRole();
     }
+
+    public PersonDetails getDeliveryManDetails() {
+        return deliveryManDetails;
+    }
 }

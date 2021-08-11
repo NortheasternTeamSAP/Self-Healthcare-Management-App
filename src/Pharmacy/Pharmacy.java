@@ -6,7 +6,9 @@
 package Pharmacy;
 
 import Medicine.Medicine;
+import Medicine.MedicineDirectory;
 import Personnel.Address;
+import java.util.HashMap;
 
 /**
  *
@@ -16,17 +18,16 @@ public class Pharmacy {
     String pharmacyName;
     Address pharmacyAddress;
     Pharmacist pharmacist;
-    Medicine medicine;
+    HashMap<Medicine, Integer> medicineStockMap; // maps medicine to quantity
 
     public Pharmacy(
             String pharmacyName, 
             Address pharmacyAddress, 
-            Pharmacist pharmacist, 
-            Medicine medicine) {
+            Pharmacist pharmacist) {
         this.pharmacyName = pharmacyName;
         this.pharmacyAddress = pharmacyAddress;
         this.pharmacist = pharmacist;
-        this.medicine = medicine;
+        this.medicineStockMap = new HashMap<>();
     }
 
     public String getPharmacyName() {
@@ -52,12 +53,12 @@ public class Pharmacy {
     public void setPharmacist(Pharmacist pharmacist) {
         this.pharmacist = pharmacist;
     }
-
-    public Medicine getMedicine() {
-        return medicine;
+    
+    public void addMedicineStock(Medicine medicine, int quantity){
+        this.medicineStockMap.put(medicine, quantity);
     }
-
-    public void setMedicine(Medicine medicine) {
-        this.medicine = medicine;
-    }  
+    
+    public HashMap<Medicine, Integer> getMedicineStockMap(){
+        return medicineStockMap;
+    }
 }

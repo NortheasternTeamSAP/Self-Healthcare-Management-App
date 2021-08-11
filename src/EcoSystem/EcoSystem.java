@@ -28,6 +28,9 @@ import Organization.Organization;
 import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
+import DeliveryMan.DeliveryManDirectory;
+import Medicine.MedicineDirectory;
+import Order.OrderDirectory;
 import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
@@ -46,6 +49,12 @@ public class EcoSystem {
     public CredentialsManager credentialsManager;
     public EnterpriseDirectory enterpriseDirectory;
 
+    DietitianDirectory dietitianDirectory;
+    FitnessTrainerDirectory fitnessTrainerDirectory;
+    CounselorDirectory counselorDirectory;
+    OrderDirectory orderDirectory;
+    MedicineDirectory medicineDirectory;
+    DeliveryManDirectory deliveryManDirectory;
 
     // Testing
     public Enterprise healthManagementApp;
@@ -58,9 +67,42 @@ public class EcoSystem {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
         enterpriseDirectory = new EnterpriseDirectory();
-  
+        dietitianDirectory=new DietitianDirectory();
+        fitnessTrainerDirectory=new FitnessTrainerDirectory();
+        counselorDirectory= new CounselorDirectory();
+        orderDirectory = new OrderDirectory();
+        medicineDirectory = new MedicineDirectory();
+        deliveryManDirectory = new DeliveryManDirectory();
+
+        // create new system admin user
+        UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
+        Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
+        globalUserDirectory.createNewUser(sysAdmin);
+    }
+
+    public CounselorDirectory getCounselorDirectory() {
+        return counselorDirectory;
+    }
 
         exampleCreateEnterpriseOrganizationAndRoles();
+    }
+
+    public FitnessTrainerDirectory getFitnessTrainerDirectory() {
+        return fitnessTrainerDirectory;
+    }
+    
+    
+    
+    public OrderDirectory getOrderDirectory() {
+        return orderDirectory;
+    }
+    
+    public MedicineDirectory getMedicineDirectory() {
+        return medicineDirectory;
+    }
+
+    public DeliveryManDirectory getDeliveryManDirectory() {
+        return deliveryManDirectory;
     }
 
     void example() {
