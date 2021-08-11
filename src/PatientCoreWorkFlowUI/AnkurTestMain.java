@@ -12,6 +12,7 @@ import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.time.Instant;
@@ -25,7 +26,7 @@ import javax.swing.SwingConstants;
  *
  * @author Ankur Bywar
  */
-public class AnkurTestMain extends javax.swing.JFrame {
+public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
 
     EcoSystem ecosystem;
     
@@ -46,7 +47,7 @@ public class AnkurTestMain extends javax.swing.JFrame {
                 new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("ankur", "ankur"));
         this.ecosystem.globalUserDirectory.createNewUser(p2);
         
-        Person p3 = new Patient("Preeti Gopal", LocalDate.now(), PersonDetails.Gender.FEMALE,
+        Person p3 = new Patient("Preeti Gopal", LocalDate.now().minusYears(29), PersonDetails.Gender.FEMALE,
                 new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("preeti", "preeti"));
         this.ecosystem.globalUserDirectory.createNewUser(p3);
        
@@ -62,8 +63,8 @@ public class AnkurTestMain extends javax.swing.JFrame {
                 new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("sush", "sush"));
         this.ecosystem.globalUserDirectory.createNewUser(d3);
         
-
-        nextScreen(new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
+        nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
+        //nextScreen(this, mainWorkArea, new GeneratePatientBillJPanel(), "xxx");
         
     }
 
@@ -139,17 +140,6 @@ public class AnkurTestMain extends javax.swing.JFrame {
                 new AnkurTestMain().setVisible(true);
             }
         });
-    }
-    
-    private void nextScreen(JPanel nextScreen, String screenName) {
-        mainWorkArea.removeAll();
-        mainWorkArea.add(screenName , nextScreen);
-        mainWorkArea.setAlignmentX(SwingConstants.CENTER);
-        mainWorkArea.setAlignmentY(SwingConstants.CENTER);
-        CardLayout layout = (CardLayout)mainWorkArea.getLayout();
-        Dimension d = nextScreen.getLayout().preferredLayoutSize(nextScreen);
-        this.setSize(d);
-        layout.next(mainWorkArea); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

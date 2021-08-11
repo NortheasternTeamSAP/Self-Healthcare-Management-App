@@ -15,6 +15,8 @@ import Dietitian.DietitianAppointment;
 import FitnessTrainer.FitnessPlan;
 import FitnessTrainer.FitnessTrainer;
 import FitnessTrainer.FitnessTrainerAppointment;
+import Insurance.InsuranceDetails;
+import Laboratory.LaboratoryTestReport;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
@@ -46,7 +48,9 @@ public class Patient implements Person {
     private VitalSignNormalRange vitalSignNormalRange;
     private ArrayList<Appointment> doctorAppointments;
     private ArrayList<Appointment> doctorAppointmentsHistory;
+    private ArrayList<LaboratoryTestReport> labTestReports;
     
+    private InsuranceDetails insuranceDetails;
     
     public Patient(
             String fullName, 
@@ -68,6 +72,7 @@ public class Patient implements Person {
         this.vitalSignNormalRange = null;
         this.doctorAppointments = new ArrayList<>();
         this.doctorAppointmentsHistory = new ArrayList<>();
+        this.labTestReports = new ArrayList<>();
     }
 
     
@@ -195,5 +200,13 @@ public class Patient implements Person {
     
     public List<Appointment> getUpcomingDoctorAppointments() {
         return this.doctorAppointments;
+    }
+    
+    public InsuranceDetails getInsuranceDetails() {
+        return insuranceDetails;
+    }
+
+    public void setInsuranceDetails(InsuranceDetails insuranceDetails) {
+        this.insuranceDetails = insuranceDetails;
     }
 }

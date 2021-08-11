@@ -72,8 +72,8 @@ public abstract class Enterprise {
         return enterpriseAddress;
     }
     
-    public Collection<Organization> getOrganizations() {
-        return organizations.values();
+    public List<Organization> getOrganizations() {
+        return new ArrayList<>(organizations.values());
     }
 
 }
