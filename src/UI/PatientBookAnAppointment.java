@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Counselor.Counselor;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
@@ -25,7 +26,7 @@ import javax.swing.JPanel;
  * @author preet
  */
 public class PatientBookAnAppointment extends javax.swing.JPanel {
-JPanel WorkArea;
+   JPanel WorkArea;
    EcoSystem system;
    Patient p ;
    int flag=0;
@@ -47,12 +48,15 @@ JPanel WorkArea;
         }
         else if (flag==2)
         {
+        jLabel1.setText("Book an Appointment With your Fitness Trainer");
+        jLabel2.setText("Select a FitnessTrainer");
         populatefitnesscombo();
-        
         }
-        else 
+       if(flag==3)
         {
-        
+        jLabel1.setText("Book an Appointment With your Counselor");
+        jLabel2.setText("Select a Counselor");
+        populatecounselorcombo();
         
         }
         
@@ -172,20 +176,32 @@ JPanel WorkArea;
     }
     
     else if (flag==2){
-    
      FitnessTrainer selectedFitnessTrainer=(FitnessTrainer) comboapp.getSelectedItem();
      LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
      p.scheduleFitnessAppointment(selectedFitnessTrainer, date);
      JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with FitnessTrainer   :"+ selectedFitnessTrainer.getFitnessTrainerDetails().getFullName()+" on  : "+date);
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        PatientFitnessDashboard d=(PatientFitnessDashboard)component;
-        d.populateUpcomingFitnessTrainerAppointments();
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+     WorkArea.remove(this);
+     Component[] componentArray = WorkArea.getComponents();
+     Component component = componentArray[componentArray.length - 1];
+     PatientFitnessDashboard d=(PatientFitnessDashboard)component;
+     d.populateUpcomingFitnessTrainerAppointments();
+     CardLayout layout = (CardLayout)WorkArea.getLayout();
+     layout.previous(WorkArea);
     }
-        
+    else 
+    {
+     Counselor selectedCounselor=(Counselor) comboapp.getSelectedItem();
+     LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+     p.scheduleCounselorAppointment(selectedCounselor, date);
+     JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with selectedCounselor   :"+ selectedCounselor.getPersonDetails().getFullName()+" on  : "+date);
+     WorkArea.remove(this);
+     Component[] componentArray = WorkArea.getComponents();
+     Component component = componentArray[componentArray.length - 1];
+     PatientCounselorDashboard d=(PatientCounselorDashboard)component;
+     d.populateUpcomingCounselorAppointments();
+     CardLayout layout = (CardLayout)WorkArea.getLayout();
+     layout.previous(WorkArea);
+    }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backfActionPerformed
@@ -197,18 +213,25 @@ JPanel WorkArea;
         d.populateUpcomingDieticianAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);     
-        }else if (flag==2){
-        
-         WorkArea.remove(this);
+        }
+        else if (flag==2){
+        WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
         PatientFitnessDashboard d=(PatientFitnessDashboard)component;
         d.populateUpcomingFitnessTrainerAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
-           }
+        }
         
-        else {}
+        else {
+        WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        PatientCounselorDashboard d=(PatientCounselorDashboard)component;
+        d.populateUpcomingCounselorAppointments();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);}
   
     }//GEN-LAST:event_backfActionPerformed
 
@@ -223,10 +246,9 @@ JPanel WorkArea;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    private void populatedietiticancombo() {
-      
-       comboapp.removeAllItems();
-        System.out.println(""+system.getDietitianDirectory());
+private void populatedietiticancombo() {
+comboapp.removeAllItems();
+System.out.println(""+system.getDietitianDirectory());
     
 for(Dietitian d: system.getDietitianDirectory().getDietitians()){
     comboapp.addItem(d);
@@ -234,15 +256,17 @@ for(Dietitian d: system.getDietitianDirectory().getDietitians()){
     }
 }
     
-    
-    
-    
  private void populatefitnesscombo() {
-      
  comboapp.removeAllItems();
  for(FitnessTrainer f: system.getFitnessTrainerDirectory().getFitnessTrainers()){
-    comboapp.addItem(f);
-    
+ comboapp.addItem(f);   
+    }
+}
+
+ private void populatecounselorcombo() {
+ comboapp.removeAllItems();
+ for(Counselor c: system.getCounselorDirectory().getCounselors()){
+ comboapp.addItem(c);  
     }
 }
 }

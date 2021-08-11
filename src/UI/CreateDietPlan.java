@@ -8,11 +8,13 @@ package UI;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +36,7 @@ Patient p;
       this.d=d;
       this.p=p;
       lblPatientname.setText(p.getPatientDetails().getFullName());
+      showmostrecentVitalSign();
     }
 
     /**
@@ -278,7 +281,19 @@ Patient p;
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+private void showmostrecentVitalSign() {
+ DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
+ VitalSigns temp=p.getMostRecentVitalSigns(); 
+ model.setRowCount(0);       
+ Object row[] = new Object[5];
+                row[0] = temp.getDateForVitalSigns();
+                row[1] = temp.getBloodPressure();
+                row[2] = temp.getHeartRate();
+                row[3] = temp.getRespiratoryRate();
+                row[4] = temp.getWeight();
+                model.addRow(row);
+   
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
