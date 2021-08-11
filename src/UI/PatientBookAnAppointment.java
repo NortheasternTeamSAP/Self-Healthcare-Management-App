@@ -161,11 +161,14 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     if (flag==1){
-        //Date date =chooser.getDate();
-        Dietitian selectedDietitian=(Dietitian) comboapp.getSelectedItem();
+
+         Dietitian selectedDietitian=(Dietitian) comboapp.getSelectedItem();
         LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         p.scheduleDietitianAppointment(selectedDietitian, date);
         JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :"+ selectedDietitian.getDietitianDetails().getFullName()+" on  : "+date);
+      
+       
+        
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
