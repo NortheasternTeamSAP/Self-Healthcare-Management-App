@@ -12,6 +12,7 @@ import Order.Order;
 import Order.OrderDirectory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,7 +44,12 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     //write methods to populate Order table and deliveryManOrderTable
-    
+    public void populateOrderTable(){
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        model.setRowCount(0);
+        for(Order order: ecoSystem.getOrderDirectory().)
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -60,5 +60,7 @@ public class MedicineDirectory{
     public GenericDirectory<String, Medicine> getMedicineCatalog() {
         return medicineCatalog;
     }
+    
+    //Medicine m1 = medicineCatalog.add(1, Vitamin C);
 
 }

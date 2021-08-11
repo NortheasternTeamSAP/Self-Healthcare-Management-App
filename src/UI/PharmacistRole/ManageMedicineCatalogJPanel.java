@@ -18,15 +18,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sravya
  */
-public class ManageMedicineCatalog extends javax.swing.JPanel {
+public class ManageMedicineCatalogJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
     private Pharmacy pharmacy;
     private EcoSystem ecoSystem;
     
-    public ManageMedicineCatalog(JPanel wa, Pharmacy pharmacy, EcoSystem ecoSystem) {
+    public ManageMedicineCatalogJPanel(JPanel workArea, Pharmacy pharmacy, EcoSystem ecoSystem) {
         initComponents();
-        workArea = wa;
+        workArea = workArea;
         pharmacy = pharmacy;
         ecoSystem = ecoSystem;
         lblPharmacy.setText("Pharmacy: " + pharmacy.getPharmacyName());
@@ -173,8 +173,8 @@ public class ManageMedicineCatalog extends javax.swing.JPanel {
 
     private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed
 
-        AddMedicineStockJPanel cnpjp = new AddMedicineStockJPanel(workArea, pharmacy, ecoSystem);
-        workArea.add("CreateNewProductJPanel", cnpjp);
+        AddMedicineStockJPanel amsjp = new AddMedicineStockJPanel(workArea, pharmacy, ecoSystem);
+        workArea.add("AddMedicineStockJPanel", amsjp);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
     }//GEN-LAST:event_btnAddStockActionPerformed
