@@ -12,12 +12,13 @@ import java.time.LocalDate;
  * @author Sravya 
  */
 public class Medicine {
-    String medicineName;
+    private String medicineName;
     private double price;
     LocalDate expiryDate;
     LocalDate mfgDate;
-    //String medicineID;
-    String dosage;
+    private String dosage;
+    private int quantity;
+    private static int count = 0;
     
 
     public Medicine(
@@ -25,13 +26,15 @@ public class Medicine {
             double price, 
             LocalDate expiryDate, 
             LocalDate mfgDate, 
-            String dosage) {
+            String dosage,
+            int quantity
+    ) {
         this.medicineName = medicineName;
         this.price = price;
         this.expiryDate = expiryDate;
         this.mfgDate = mfgDate;
-        //this.medicineID = medicineID;
         this.dosage = dosage;
+        this.quantity = quantity;
     }
 
     public double getPrice() {
@@ -62,15 +65,27 @@ public class Medicine {
 //        return medicineID;
 //    }
 //
-//    public void setMedicineID(String medicineID) {
-//        this.medicineID = medicineID;
-//    }
-
     public String getDosage() {
         return dosage;
     }
 
     public void setDosage(String dosage) {
         this.dosage = dosage;
-    }  
+    }
+
+    public String getMedicineName() {
+        return medicineName;
+    }
+
+    public void setMedicineName(String medicineName) {
+        this.medicineName = medicineName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

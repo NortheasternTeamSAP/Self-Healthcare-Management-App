@@ -16,10 +16,14 @@ import java.util.Map;
 /**
  *
  * @author Ankur Bywar
+ * @author Sravya
  * 
  * A generic directory with key-value pairs. 
  * 
  */
+
+
+
 public class GenericDirectory<Key, Value> {
     
     private Map<Key, Value> directory;
@@ -74,5 +78,13 @@ public class GenericDirectory<Key, Value> {
     
     public List<Value> getAllValues() {
         return new ArrayList<>(directory.values());
-    }    
+    }
+    
+    public ArrayList<ItemTuple> getAllItems() {
+        ArrayList<ItemTuple> a = new ArrayList<>();
+        for (Key key: directory.keySet()){
+            a.add(new ItemTuple(key, directory.get(key)));
+        }
+        return a;
+    }
 }

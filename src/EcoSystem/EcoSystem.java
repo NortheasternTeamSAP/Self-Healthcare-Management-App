@@ -22,6 +22,9 @@ import Organization.Organization;
 import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
+import DeliveryMan.DeliveryManDirectory;
+import Medicine.MedicineDirectory;
+import Order.OrderDirectory;
 import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
@@ -35,11 +38,15 @@ import java.time.LocalDate;
  * @author Sravya
  */
 public class EcoSystem {
+
     public GlobalUserDirectory globalUserDirectory;
     public CredentialsManager credentialsManager;
     DietitianDirectory dietitianDirectory;
     FitnessTrainerDirectory fitnessTrainerDirectory;
     CounselorDirectory counselorDirectory;
+    OrderDirectory orderDirectory;
+    MedicineDirectory medicineDirectory;
+    DeliveryManDirectory deliveryManDirectory;
     
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
@@ -47,7 +54,10 @@ public class EcoSystem {
         dietitianDirectory=new DietitianDirectory();
         fitnessTrainerDirectory=new FitnessTrainerDirectory();
         counselorDirectory= new CounselorDirectory();
-        
+        orderDirectory = new OrderDirectory();
+        medicineDirectory = new MedicineDirectory();
+        deliveryManDirectory = new DeliveryManDirectory();
+
         // create new system admin user
         UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
         Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
@@ -67,6 +77,18 @@ public class EcoSystem {
     }
     
     
+    
+    public OrderDirectory getOrderDirectory() {
+        return orderDirectory;
+    }
+    
+    public MedicineDirectory getMedicineDirectory() {
+        return medicineDirectory;
+    }
+
+    public DeliveryManDirectory getDeliveryManDirectory() {
+        return deliveryManDirectory;
+    }
     
     void example() {
         // How to get a user from globalUserDirectory
