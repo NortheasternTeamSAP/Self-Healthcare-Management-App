@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.Icon;
 
 /**
  *
@@ -58,10 +59,11 @@ public class Patient implements Person {
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber, 
+            String phoneNumber,
+            Icon logoImage,
             UserAccount account) {
         
-        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT);
+        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account,logoImage, Role.PATIENT);
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
         fitnessPlans=new ArrayList<FitnessPlan>();

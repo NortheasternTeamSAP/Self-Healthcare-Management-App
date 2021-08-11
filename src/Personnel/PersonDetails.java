@@ -8,6 +8,7 @@ package Personnel;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import javax.swing.Icon;
 
 /**
  *
@@ -28,6 +29,7 @@ public class PersonDetails {
     protected String phoneNumber;
     protected UserAccount userAccount;
     protected Role role;
+    private Icon logoImage;
   
     public PersonDetails(
             String fullName, 
@@ -35,7 +37,8 @@ public class PersonDetails {
             Gender gender, 
             Address address, 
             String phoneNumber, 
-            UserAccount userAccount, 
+            UserAccount userAccount,
+            Icon logoImage,
             Role role) {
         this.fullName = fullName;
         this.dob = dob;
@@ -44,6 +47,7 @@ public class PersonDetails {
         this.phoneNumber = phoneNumber;
         this.userAccount = userAccount;
         this.role = role;
+        this.logoImage = logoImage;
     }
 
     public String getFullName() {
@@ -121,7 +125,13 @@ public class PersonDetails {
     public void setRole(Role role) {
         this.role = role;
     }
-    
-    
+
+    public Icon getLogoImage() {
+        return logoImage;
+    }
+
+    public void setLogoImage(Icon logoImage) {
+        this.logoImage = logoImage;
+    }
    
 }
