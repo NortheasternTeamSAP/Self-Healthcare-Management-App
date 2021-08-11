@@ -5,6 +5,7 @@
  */
 package EcoSystem;
 
+import Counselor.CounselorDirectory;
 import DataStore.CredentialsManager;
 import DataStore.EnterpriseDirectory;
 import DataStore.GlobalUserDirectory;
@@ -41,6 +42,7 @@ public class EcoSystem {
     DietitianDirectory dietitianDirectory;
     FitnessTrainerDirectory fitnessTrainerDirectory;
     public EnterpriseDirectory enterpriseDirectory;
+    CounselorDirectory counselorDirectory;
     
     
     // Testing
@@ -54,13 +56,13 @@ public class EcoSystem {
         dietitianDirectory=new DietitianDirectory();
         fitnessTrainerDirectory=new FitnessTrainerDirectory();
         enterpriseDirectory = new EnterpriseDirectory();
-        
-//        // create new system admin user
-//        UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
-//        Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
-//        globalUserDirectory.createNewUser(sysAdmin);
+        counselorDirectory= new CounselorDirectory();
         
         exampleCreateEnterpriseOrganizationAndRoles();
+    }
+
+    public CounselorDirectory getCounselorDirectory() {
+        return counselorDirectory;
     }
 
     public DietitianDirectory getDietitianDirectory() {

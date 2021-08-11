@@ -328,7 +328,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 "Health Care Provider Name: " + appointment.getDoctor().getPersonDetails().getFullName() + "</br>" +
                 "Appointment Date: " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs" + "</br>" +
                 "</html>";
-        
+
         int dialogResult = JOptionPane.showConfirmDialog (this, placeHolderValue, "Warning", 1);
         if(dialogResult == JOptionPane.YES_OPTION){
           jButtonSubmitInsuranceClaim.setEnabled(false);

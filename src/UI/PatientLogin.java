@@ -102,23 +102,21 @@ JPanel WorkArea;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
-        
-        PatientDieticianDashboard ls= new PatientDieticianDashboard(WorkArea,system,p);
+     PatientDieticianDashboard ls= new PatientDieticianDashboard(WorkArea,system,p);
         WorkArea.add("PatientDieticianDashboard",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      PatientFitnessDashboard ls= new PatientFitnessDashboard(WorkArea,system,p);
+        PatientFitnessDashboard ls= new PatientFitnessDashboard(WorkArea,system,p);
         WorkArea.add("PatientFitnessDashboard",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      PatientCounselorDashborad ls= new PatientCounselorDashborad(WorkArea,system,p);
+        PatientCounselorDashboard ls= new PatientCounselorDashboard(WorkArea,system,p);
         WorkArea.add("PatientCounselorDashborad",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
@@ -128,9 +126,8 @@ JPanel WorkArea;
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-          CardLayout layout = (CardLayout)WorkArea.getLayout();
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
-
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
