@@ -58,5 +58,28 @@ public class Address {
     public String getCountry() {
         return country;
     }
-  
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setApartment(String apartment) {
+        this.apartment = apartment;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }  
 }
