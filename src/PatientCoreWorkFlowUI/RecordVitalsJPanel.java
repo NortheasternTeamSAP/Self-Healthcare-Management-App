@@ -5,6 +5,7 @@
  */
 package PatientCoreWorkFlowUI;
 
+import EcoSystem.EcoSystem;
 import Patient.Patient;
 import Ui.MainJFrame;
 import VitalSign.Range;
@@ -29,14 +30,16 @@ public class RecordVitalsJPanel extends javax.swing.JPanel {
     JPanel WorkAreaPanel;
     Patient patient;
     MainJFrame mainJFrame;
+    EcoSystem ecoSystem;
     
     /**
      * Creates new form RecordVitalsJPanel
      */
-    public RecordVitalsJPanel( JPanel WorkAreaPanel,Patient patient) {
+    public RecordVitalsJPanel( JPanel WorkAreaPanel, EcoSystem ecoSystem, Patient patient) {
         initComponents();
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;
+        this.ecoSystem = ecoSystem;
         displayPersonDetail();
     }
 
@@ -340,7 +343,7 @@ public class RecordVitalsJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
     CardLayout layout = (CardLayout) WorkAreaPanel.getLayout();
-    WorkAreaPanel.add("dataOfPatientVitalSignJPanel" , new PatientVitalsHistoryPanel(WorkAreaPanel, patient));
+    WorkAreaPanel.add("dataOfPatientVitalSignJPanel" , new PatientVitalsHistoryPanel(WorkAreaPanel, ecoSystem, patient));
    // WorkAreaPanel.add("patientWorkAreaJPanel", new PatientWorkAreaJPanel(WorkAreaPanel, patient);
     layout.next(WorkAreaPanel);
     

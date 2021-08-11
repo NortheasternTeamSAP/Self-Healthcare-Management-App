@@ -53,8 +53,8 @@ public abstract class Organization {
         employeesMap.put(p.getUserAccount().getUsername(), p);
     }
     
-    public Collection<Person> getAllEmployees() {
-        return employeesMap.values();
+    public List<Person> getAllEmployees() {
+        return new ArrayList<>(employeesMap.values());
     }
     
     public String getName() {

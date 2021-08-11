@@ -27,7 +27,7 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
     /**
      * Creates new form DataOfPatientVitalSignJPanel
      */
-    public PatientVitalsHistoryPanel(JPanel WorkAreaPanel, Patient patient) {
+    public PatientVitalsHistoryPanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Patient patient) {
         initComponents();
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;

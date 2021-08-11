@@ -27,6 +27,9 @@ import java.util.Set;
 public class LaboratoryAssistant implements Person {
     private PersonDetails labAssistantDetails;
     
+    private List<LaboratoryTestReport> pendingLabTests;
+    private List<LaboratoryTestReport> completedLabTests;
+    
     public LaboratoryAssistant(
             String fullName, 
             LocalDate dob, 
@@ -36,7 +39,10 @@ public class LaboratoryAssistant implements Person {
             UserAccount account) {
         
         labAssistantDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.INSURANCE_PROVIDER_REP);
+        pendingLabTests = new ArrayList<>();
+        completedLabTests = new ArrayList<>();
     }
+    
 
     @Override
     public UserAccount getUserAccount() {
@@ -48,8 +54,26 @@ public class LaboratoryAssistant implements Person {
         return labAssistantDetails.getRole();
     }
 
+    public List<LaboratoryTestReport> getPendingLabTests() {
+        return pendingLabTests;
+    }
+
+    public List<LaboratoryTestReport> getCompletedLabTests() {
+        return completedLabTests;
+    }
+
     @Override
     public PersonDetails getPersonDetails() {
         return labAssistantDetails;
+    }
+    
+    public void assignLabTest(LaboratoryTestReport labTest) {
+        pendingLabTests.add(labTest);
+    }
+    
+    public void finishLabTest(LaboratoryTestReport labTest) {
+        labTest.setLabTestStatus(LaboratoryTestReport.LabTestStatus.COMPLETED);
+        pendingLabTests.remove(labTest);
+        completedLabTests.add(labTest);
     }
 }

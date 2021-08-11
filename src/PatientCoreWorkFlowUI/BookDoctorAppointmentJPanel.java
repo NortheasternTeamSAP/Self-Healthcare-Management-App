@@ -5,11 +5,13 @@
  */
 package PatientCoreWorkFlowUI;
 
+import DataStore.Appointment;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import Personnel.Person;
 import Utils.ConsoleLogger;
+import Utils.NextScreen;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -26,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Ankur Bywar
  */
-public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
+public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements NextScreen {
     JPanel WorkAreaPanel;
     Patient patient;
     JFrame mainJFrame;
@@ -122,6 +124,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
         lblCheckAvailability = new javax.swing.JLabel();
         lblDoctorGender = new javax.swing.JLabel();
         lblDoctorGenderValue = new javax.swing.JLabel();
+        jCheckBoxAttachPreviousLabReports = new javax.swing.JCheckBox();
 
         lblDoctorTxt.setText("Select Doctor to check the availability");
 
@@ -308,6 +311,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
 
         lblDoctorGenderValue.setText("Not Available");
 
+        jCheckBoxAttachPreviousLabReports.setText("Attach all previous lab reports");
+        jCheckBoxAttachPreviousLabReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAttachPreviousLabReportsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jBookAppointmentLayout = new javax.swing.GroupLayout(jBookAppointment);
         jBookAppointment.setLayout(jBookAppointmentLayout);
         jBookAppointmentLayout.setHorizontalGroup(
@@ -332,8 +342,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
                                     .addGroup(jBookAppointmentLayout.createSequentialGroup()
                                         .addGap(9, 9, 9)
                                         .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblOtherAppointmentDetails)
-                                            .addComponent(jTextFieldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jBookAppointmentLayout.createSequentialGroup()
                                                 .addGap(25, 25, 25)
                                                 .addComponent(btnConfirmDoctorAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -371,22 +379,28 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
                                                 .addComponent(jDateChooserDoctorAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jBookAppointmentLayout.createSequentialGroup()
                                                 .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(jBookAppointmentLayout.createSequentialGroup()
-                                                        .addComponent(btn1pm)
-                                                        .addGap(33, 33, 33)
-                                                        .addComponent(btn2pm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(jBookAppointmentLayout.createSequentialGroup()
-                                                        .addComponent(btn9am)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(btn10am)))
-                                                .addGap(27, 27, 27)
+                                                    .addComponent(btn1pm)
+                                                    .addComponent(btn9am))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(btn11am, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(btn3pm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBookAppointmentLayout.createSequentialGroup()
+                                                        .addComponent(btn10am)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(btn11am)
+                                                        .addGap(42, 42, 42))
+                                                    .addGroup(jBookAppointmentLayout.createSequentialGroup()
+                                                        .addComponent(btn2pm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(btn3pm, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGroup(jBookAppointmentLayout.createSequentialGroup()
+                                        .addComponent(lblOtherAppointmentDetails)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jCheckBoxAttachPreviousLabReports)))))
                     .addGroup(jBookAppointmentLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jBookAppointmentLayout.setVerticalGroup(
             jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,17 +431,16 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
                                     .addComponent(lblDoctorAddress)
                                     .addComponent(lblDoctorAddressValue)))
                             .addGroup(jBookAppointmentLayout.createSequentialGroup()
-                                .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jBookAppointmentLayout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(btn9am)
-                                            .addComponent(btn10am)))
-                                    .addGroup(jBookAppointmentLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btn11am)))
+                                .addGap(9, 9, 9)
+                                .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btn9am)
+                                    .addComponent(btn10am)
+                                    .addComponent(btn11am))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn3pm))
+                                .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btn1pm)
+                                    .addComponent(btn2pm)
+                                    .addComponent(btn3pm)))
                             .addGroup(jBookAppointmentLayout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -435,8 +448,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
                                     .addComponent(lblDoctorGenderValue))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn1pm)
-                                    .addComponent(btn2pm)
                                     .addComponent(btnDoctorReviews, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblDoctorReviews)))))
                     .addComponent(jDateChooserDoctorAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -444,13 +455,15 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
                 .addComponent(jCheckBoxAttachVitalsToEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxAttachPrescriptionToEmail)
-                .addGap(7, 7, 7)
-                .addComponent(lblOtherAppointmentDetails)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxAttachPreviousLabReports)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOtherAppointmentDetails))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxAttachInsuranceDetailsToEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jCheckBoxSendAppointmentEmailConfirmation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxSendAppointmentTextConfirmation)
@@ -531,11 +544,21 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
             log.error("Selected jCheckBoxSendAppointmentTextConfirmation");
         }
         
+        if (jCheckBoxAttachPreviousLabReports.isSelected()) {
+            log.error("Selected jCheckBoxAttachPreviousLabReports");
+        }
+        
         String otherAppointmentDetails = jTextFieldAppointmentDetails.getText();
         
         log.error("** Appointment booked for patient " + patient.getPersonDetails().getFullName() + 
-                " with doctor " + selectedDoctor.getPersonDetails().getFullName() + " on date " + selectedAppointmentDate + " and time " + selectedAppointmentTime + ":00 hrs**");
+                " with doctor " + selectedDoctor.getPersonDetails().getFullName() + " on date " + 
+                selectedAppointmentDate + " and time " + selectedAppointmentTime + ":00 hrs**");
         
+        
+        Appointment apt = new Appointment(patient, otherAppointmentDetails, selectedDoctor, selectedAppointmentDate, selectedAppointmentTime);
+        selectedDoctor.addPatientAppointment(apt);
+        patient.addDoctorAppointment(apt);
+        btnConfirmDoctorAppointment.setEnabled(false);
     }//GEN-LAST:event_btnConfirmDoctorAppointmentActionPerformed
 
     private void btn1pmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1pmActionPerformed
@@ -663,6 +686,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
         jCheckBoxSendAppointmentEmailConfirmation.setEnabled(isEnabled);
         jCheckBoxSendAppointmentRemiender.setEnabled(isEnabled);
         jCheckBoxSendAppointmentTextConfirmation.setEnabled(isEnabled);
+        jCheckBoxAttachPreviousLabReports.setEnabled(isEnabled);
         lblOtherAppointmentDetails.setEnabled(isEnabled);
         jTextFieldAppointmentDetails.setEnabled(isEnabled);
         btnConfirmDoctorAppointment.setEnabled(isEnabled);
@@ -694,8 +718,12 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
     }
     
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        nextScreen(WorkAreaPanel, new PatientHomePagePanel(WorkAreaPanel, ecoSystem, patient), "PatientHomePagePanel");
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void jCheckBoxAttachPreviousLabReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachPreviousLabReportsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxAttachPreviousLabReportsActionPerformed
 
     private void setupDoctorAppointmentCalander() {
         jDateChooserDoctorAvailability.setMinSelectableDate(Date.from(Instant.now()));
@@ -711,18 +739,45 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
                     log.debug("Selected appointment date = " + (Date) newValue);
                     selectedAppointmentDate = LocalDate.ofInstant(((Date) newValue).toInstant(), ZoneId.systemDefault()); ;
                     updateDoctorAvailabilityButtons((Date) newValue);
+                    btnConfirmDoctorAppointment.setEnabled(true);
                 }
             }
         });
     }
     
     private void updateDoctorAvailabilityButtons(Date selectedAppointmentDate) {
-        btn9am.setEnabled(true);
+        btn9am.setEnabled(false);
         btn10am.setEnabled(false);      
-        btn11am.setEnabled(true);
+        btn11am.setEnabled(false);
         btn1pm.setEnabled(false);
-        btn2pm.setEnabled(true);
+        btn2pm.setEnabled(false);
         btn3pm.setEnabled(false);
+        
+        
+        LocalDate localDate = selectedAppointmentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if (selectedDoctor.isDoctorAvailable(localDate, 9)) {
+            btn9am.setEnabled(true);
+        }
+        
+        if (selectedDoctor.isDoctorAvailable(localDate, 10)) {
+            btn10am.setEnabled(true);
+        }
+        
+        if (selectedDoctor.isDoctorAvailable(localDate, 11)) {
+            btn11am.setEnabled(true);
+        }
+        
+        if (selectedDoctor.isDoctorAvailable(localDate, 13)) {
+            btn1pm.setEnabled(true);
+        }
+        
+        if (selectedDoctor.isDoctorAvailable(localDate, 14)) {
+            btn2pm.setEnabled(true);
+        }
+        
+        if (selectedDoctor.isDoctorAvailable(localDate, 15)) {
+            btn3pm.setEnabled(true);
+        }
     }
 
     
@@ -742,6 +797,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JCalendarBeanInfo jCalendarBeanInfo2;
     private javax.swing.JCheckBox jCheckBoxAttachInsuranceDetailsToEmail;
     private javax.swing.JCheckBox jCheckBoxAttachPrescriptionToEmail;
+    private javax.swing.JCheckBox jCheckBoxAttachPreviousLabReports;
     private javax.swing.JCheckBox jCheckBoxAttachVitalsToEmail;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentEmailConfirmation;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentRemiender;

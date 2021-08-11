@@ -18,6 +18,7 @@ import FitnessTrainer.FitnessTrainerDirectory;
 import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
 import Organization.HealthInsuranceDepartmentOrganization;
+import Organization.LaboratoryOrganization;
 import Organization.Organization;
 import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
@@ -41,6 +42,12 @@ public class EcoSystem {
     FitnessTrainerDirectory fitnessTrainerDirectory;
     CounselorDirectory counselorDirectory;
     
+    
+    // Testing
+    public Enterprise healthManagementApp;
+    public Enterprise hospital;
+    public Enterprise insuranceCompany;
+    
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
@@ -48,10 +55,12 @@ public class EcoSystem {
         fitnessTrainerDirectory=new FitnessTrainerDirectory();
         counselorDirectory= new CounselorDirectory();
         
-        // create new system admin user
-        UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
-        Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
-        globalUserDirectory.createNewUser(sysAdmin);
+//        // create new system admin user
+//        UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
+//        Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
+//        globalUserDirectory.createNewUser(sysAdmin);
+        
+        exampleCreateEnterpriseOrganizationAndRoles();
     }
 
     public CounselorDirectory getCounselorDirectory() {
@@ -89,9 +98,9 @@ public class EcoSystem {
         Address sampleAddress = new Address("Street", "Building", "City", "Zip", "State", "Country");
         
         // Create Enterprise
-        Enterprise healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
-        Enterprise hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
-        Enterprise insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
+        healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
+        hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
+        insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
         
         // Create Organizations and all them to enterprise
         Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
@@ -103,7 +112,7 @@ public class EcoSystem {
         Organization primaryCareOrg = new PrimaryCareOrganization("Virginia Mason Primary Care Unit", hospital);
         hospital.addOrganization(primaryCareOrg);
 
-        Organization laboratoryOrg = new PrimaryCareOrganization("Virginia Mason Lab Tests Unit", hospital);
+        Organization laboratoryOrg = new LaboratoryOrganization("Virginia Mason Lab Tests Unit", hospital);
         hospital.addOrganization(laboratoryOrg);
         
         Organization healthInsuranceOrg = new HealthInsuranceDepartmentOrganization("Progressive Health Insurance Department", insuranceCompany);
