@@ -96,6 +96,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         btnLogout1 = new javax.swing.JButton();
         btnUpdatePersonalInformation = new javax.swing.JButton();
         btnTestDoctorLogin = new javax.swing.JButton();
+        btnTestInsuranceProvider = new javax.swing.JButton();
         jWorkAreaPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPatientDetailPanel = new javax.swing.JPanel();
@@ -187,6 +188,13 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
             }
         });
 
+        btnTestInsuranceProvider.setText("Test Insurance Provider Login");
+        btnTestInsuranceProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestInsuranceProviderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jControlPanelLayout = new javax.swing.GroupLayout(jControlPanel);
         jControlPanel.setLayout(jControlPanelLayout);
         jControlPanelLayout.setHorizontalGroup(
@@ -203,7 +211,8 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                         .addGap(6, 6, 6)
                         .addComponent(btnViewOlderAppointments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnMyMedicinePrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTestLabAssistantLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnTestLabAssistantLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTestInsuranceProvider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jControlPanelLayout.createSequentialGroup()
@@ -234,9 +243,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 .addComponent(btnMyMedicinePrescription)
                 .addGap(12, 12, 12)
                 .addComponent(btnViewOlderAppointments)
-                .addGap(145, 145, 145)
+                .addGap(179, 179, 179)
                 .addComponent(btnTestLabAssistantLogin)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnTestInsuranceProvider)
+                .addContainerGap(291, Short.MAX_VALUE))
             .addGroup(jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jControlPanelLayout.createSequentialGroup()
                     .addGap(430, 430, 430)
@@ -625,6 +636,12 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 ecoSystem.hospital, (Doctor) ecoSystem.globalUserDirectory.get("doc1"), this), "DoctorHomePagePanel");
     }//GEN-LAST:event_btnTestDoctorLoginActionPerformed
 
+    private void btnTestInsuranceProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestInsuranceProviderActionPerformed
+        // TODO add your handling code here:
+        nextScreen(WorkAreaPanel, new InsuranceProviderRepresentativeHomePageJPanel(WorkAreaPanel, ecoSystem
+                , ecoSystem.globalUserDirectory.get("insrep1"), this), "InsuranceProviderRepresentativeHomePageJPanel");
+    }//GEN-LAST:event_btnTestInsuranceProviderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBookFamilyDoctorAppointment;
@@ -632,6 +649,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JButton btnMyMedicinePrescription;
     private javax.swing.JButton btnRecordPersonalVitals;
     private javax.swing.JButton btnTestDoctorLogin;
+    private javax.swing.JButton btnTestInsuranceProvider;
     private javax.swing.JButton btnTestLabAssistantLogin;
     private javax.swing.JButton btnUpdatePersonalInformation;
     private javax.swing.JButton btnViewOlderAppointments;

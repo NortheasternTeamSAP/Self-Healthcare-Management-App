@@ -8,9 +8,15 @@ package PatientCoreWorkFlowUI;
 import DataStore.Appointment;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
+import Enterprise.Enterprise;
+import Insurance.PrimaryCareInsuranceClaim;
+import Organization.HealthInsuranceDepartmentOrganization;
+import Organization.Organization;
+import Organization.OrganizationType;
 import Patient.Patient;
 import Utils.NextScreen;
 import java.awt.Color;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,7 +30,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     EcoSystem ecosystem;
     Appointment appointment;
     JPanel backPage;
-    boolean billSentToInsuranceProvider;
     
     double totalAppointmentCharges = 0.0;
 
@@ -97,7 +102,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         jButtonCalculateTotalCost = new javax.swing.JButton();
         jLabelLabAssistantPlaceHolder5 = new javax.swing.JLabel();
         jLabelLabAssistantPlaceHolder7 = new javax.swing.JLabel();
-        jLabelLabAssistantPlaceHolder8 = new javax.swing.JLabel();
         jLabelClaimAlreadySubmittedMessage = new javax.swing.JLabel();
 
         jLabel1.setText(" Patient Billing Dashboard");
@@ -159,8 +163,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
 
         jLabelLabAssistantPlaceHolder7.setText("USD");
 
-        jLabelLabAssistantPlaceHolder8.setText("USD");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -189,9 +191,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelLabAssistantPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,8 +253,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelLabAssistantPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jButtonSubmitInsuranceClaim)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -296,12 +295,40 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private void jButtonSubmitInsuranceClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitInsuranceClaimActionPerformed
         // TODO add your handling code here:
         
+        String id = jTextFieldInsuranceCompanyCode.getText();
+        if (id == null || id.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Please enter a valid insurance provider ID", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int insuranceCompanyId = Integer.parseInt(id);
+        // Get Insurance Company from ID
+        Enterprise insuranceCompany = ecosystem.enterpriseDirectory.getEnterprise(insuranceCompanyId);
+        if (insuranceCompany == null) {
+            JOptionPane.showMessageDialog(null,"No insurance company found for id " + insuranceCompanyId, "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Organization healthInsuranceDepartment = null;
+        for (Organization organization : insuranceCompany.getOrganizations()) {
+            if (organization.getOrganizationType().equals(OrganizationType.HEALTH_INSURANCE_DEPARTMENT)) {
+                healthInsuranceDepartment = organization;
+                break;
+            }
+        }
+        
+        if (healthInsuranceDepartment == null) {
+            JOptionPane.showMessageDialog(null,"No health insurance department found for company with id " + insuranceCompanyId, "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String placeHolderValue = 
                 "<html>" +
                 "Patient Name: " + appointment.getPatient().getPersonDetails().getFullName() + "</br>" +
                 "Health Care Provider Name: " + appointment.getDoctor().getPersonDetails().getFullName() + "</br>" +
                 "Appointment Date: " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs" + "</br>" +
                 "</html>";
+
         int dialogResult = JOptionPane.showConfirmDialog (this, placeHolderValue, "Warning", 1);
         if(dialogResult == JOptionPane.YES_OPTION){
           jButtonSubmitInsuranceClaim.setEnabled(false);
@@ -312,9 +339,21 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
           jLabelTotalAppointmentCostPlaceHolder.setText("Total Appointment Cost = " + appointment.getTotalAppointmentCharges() + " USD");
             jLabelClaimAlreadySubmittedMessage.setText("Claim of " + appointment.getTotalAppointmentCharges() + 
                     " USD has been submitted to the insurance provider. Cannot be changed now.");
-            jLabelClaimAlreadySubmittedMessage.setBackground(Color.red);
-        } else {
+            jLabelClaimAlreadySubmittedMessage.setForeground(Color.red);
             
+            PrimaryCareInsuranceClaim primaryCareInsuranceClaim = new PrimaryCareInsuranceClaim(
+                    appointment.getPrimaryCareProviderCost(), 
+                    appointment.getLabTestReport().getLabTestCost(),
+                    appointment.getLabTestReport().getLaboratoryTestResult().getTestNames(),
+                    appointment.getLabTestReport().getLab().getName(),
+                    appointment.getDoctor(),
+                    appointment.getPatient(),
+                    LocalDate.now(),
+                    healthInsuranceDepartment);
+            
+            
+            HealthInsuranceDepartmentOrganization healthInsuranceDepartmentOrganization = (HealthInsuranceDepartmentOrganization)healthInsuranceDepartment;
+            healthInsuranceDepartmentOrganization.addMedicalInsuranceClaim(primaryCareInsuranceClaim);
         }
         
     }//GEN-LAST:event_jButtonSubmitInsuranceClaimActionPerformed
@@ -330,9 +369,10 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private void jButtonCalculateTotalCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalculateTotalCostActionPerformed
         // TODO add your handling code here:
         double primaryCareCost = Double.parseDouble(jTextFieldPrimaryCareCost.getText());
-        double primaryCareOtherCharges = Double.parseDouble(jTextFieldPrimaryCareOtherCharges.getText()); 
+        primaryCareCost += Double.parseDouble(jTextFieldPrimaryCareOtherCharges.getText()); 
         
-        totalAppointmentCharges = primaryCareCost + primaryCareOtherCharges + appointment.getLabTestReport().getLabTestCost();
+        appointment.setPrimaryCareProviderCost(primaryCareCost);
+        totalAppointmentCharges = primaryCareCost + appointment.getLabTestReport().getLabTestCost();
         jLabelTotalAppointmentCostPlaceHolder.setText("Total Appointment Cost = " + totalAppointmentCharges + " USD");  
     }//GEN-LAST:event_jButtonCalculateTotalCostActionPerformed
 
@@ -351,7 +391,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder5;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder6;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder7;
-    private javax.swing.JLabel jLabelLabAssistantPlaceHolder8;
     private javax.swing.JLabel jLabelLabTestCostPlaceHolder;
     private javax.swing.JLabel jLabelTotalAppointmentCostPlaceHolder;
     private javax.swing.JPanel jPanel1;

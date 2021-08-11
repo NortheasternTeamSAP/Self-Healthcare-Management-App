@@ -29,6 +29,7 @@ public class Appointment implements Comparable<Appointment> {
     private int appointmentTimeHours;
     private String doctorFeedback;
     private LaboratoryTestReport labTestReport;
+    private double primaryCareProviderCost;
 
     private double totalAppointmentCharges;
     
@@ -105,6 +106,14 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setTotalAppointmentCharges(double totalAppointmentCharges) {
         this.totalAppointmentCharges = totalAppointmentCharges;
+    }
+
+    public double getPrimaryCareProviderCost() {
+        return primaryCareProviderCost;
+    }
+
+    public void setPrimaryCareProviderCost(double primaryCareProviderCost) {
+        this.primaryCareProviderCost = primaryCareProviderCost;
     }
     
     

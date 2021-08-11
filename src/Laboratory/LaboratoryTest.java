@@ -5,7 +5,9 @@
  */
 package Laboratory;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,5 +40,9 @@ public class LaboratoryTest {
     
     public Double get(TestType testType) {
         return testResults.get(testType);
+    }
+    
+    public List<String> getTestNames() {
+        return Arrays.asList("Hemoglobin Test", "Thyroid Test", "Vitamin-D Test", "Vitamin-B12 Test", "Blood Sugar Test");
     }
 }
