@@ -85,6 +85,7 @@
                               </Group>
                               <Component id="btnMyMedicinePrescription" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnTestLabAssistantLogin" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTestInsuranceProvider" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -124,9 +125,11 @@
                           <Component id="btnMyMedicinePrescription" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="btnViewOlderAppointments" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                           <Component id="btnTestLabAssistantLogin" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="372" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnTestInsuranceProvider" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="291" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -223,6 +226,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestDoctorLoginActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnTestInsuranceProvider">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Test Insurance Provider Login"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestInsuranceProviderActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

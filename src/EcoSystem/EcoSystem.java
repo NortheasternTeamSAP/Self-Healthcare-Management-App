@@ -6,6 +6,7 @@
 package EcoSystem;
 
 import DataStore.CredentialsManager;
+import DataStore.EnterpriseDirectory;
 import DataStore.GlobalUserDirectory;
 import Dietitian.DietitianDirectory;
 import Doctor.Doctor;
@@ -39,6 +40,7 @@ public class EcoSystem {
     public CredentialsManager credentialsManager;
     DietitianDirectory dietitianDirectory;
     FitnessTrainerDirectory fitnessTrainerDirectory;
+    public EnterpriseDirectory enterpriseDirectory;
     
     
     // Testing
@@ -51,6 +53,7 @@ public class EcoSystem {
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
         dietitianDirectory=new DietitianDirectory();
         fitnessTrainerDirectory=new FitnessTrainerDirectory();
+        enterpriseDirectory = new EnterpriseDirectory();
         
 //        // create new system admin user
 //        UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
@@ -94,6 +97,10 @@ public class EcoSystem {
         healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
         hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
         insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
+        
+        enterpriseDirectory.addEnterprise(healthManagementApp);
+        enterpriseDirectory.addEnterprise(hospital);
+        enterpriseDirectory.addEnterprise(insuranceCompany);
         
         // Create Organizations and all them to enterprise
         Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
@@ -140,6 +147,7 @@ public class EcoSystem {
                 new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("insrep1", "insrep1"));
         this.globalUserDirectory.createNewUser(insuranceRep);
         healthInsuranceOrg.addEmployee(insuranceRep);
+        ((InsuranceProviderRepresentative)insuranceRep).setOrganization(healthInsuranceOrg);
     }
     
 }

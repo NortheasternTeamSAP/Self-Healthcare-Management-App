@@ -7,6 +7,7 @@ package Insurance;
 
 import Doctor.*;
 import DataStore.Appointment;
+import Organization.Organization;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
@@ -25,6 +26,7 @@ import java.util.Set;
  */
 public class InsuranceProviderRepresentative implements Person {
     private PersonDetails insuranceProviderRepDetails;
+    private Organization organization;
     
     public InsuranceProviderRepresentative(
             String fullName, 
@@ -35,6 +37,14 @@ public class InsuranceProviderRepresentative implements Person {
             UserAccount account) {
         
         insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.INSURANCE_PROVIDER_REP);
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     @Override
