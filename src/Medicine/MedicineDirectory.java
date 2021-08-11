@@ -12,10 +12,8 @@ import DataStore.GenericDirectory;
  * @author Sravya
  */
 public class MedicineDirectory{
-    
     public GenericDirectory<String, Medicine> medicineCatalog; //map of <String medID, Medicine medDetails>
     private int id;
-
     public MedicineDirectory(){
         /**
          * example usage:
@@ -25,7 +23,6 @@ public class MedicineDirectory{
         this.medicineCatalog = new GenericDirectory<String, Medicine>();
         id = 0;
     }
-
     /**
      * Method to add medicines.
      * @param medicineName
@@ -62,5 +59,4 @@ public class MedicineDirectory{
     }
     
     //Medicine m1 = medicineCatalog.add(1, Vitamin C);
-
 }

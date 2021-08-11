@@ -61,4 +61,5 @@ public class Pharmacy {
     public HashMap<Medicine, Integer> getMedicineStockMap(){
         return medicineStockMap;
     }
+
 }

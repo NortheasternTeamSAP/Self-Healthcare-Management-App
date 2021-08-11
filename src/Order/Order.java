@@ -107,6 +107,4 @@ public class Order extends WorkRequest {
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
     }
-    
-    
 }
