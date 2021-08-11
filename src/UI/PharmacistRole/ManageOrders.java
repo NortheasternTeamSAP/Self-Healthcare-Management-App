@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sravya
  */
+//Add patient name and address in order table
+
 public class ManageOrders extends javax.swing.JPanel {
 
     private JPanel workArea;
@@ -141,11 +143,11 @@ public class ManageOrders extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Order ID", "Medicine Name", "Quantity", "Order Status"
+                "Order ID", "Patient Name", "Patient Address", "Medicine Name", "Quantity", "Order Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, true, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -237,19 +239,17 @@ public class ManageOrders extends javax.swing.JPanel {
         }
 
         Order order = (Order)tblOrder1.getValueAt(selectedRow, 0);
-        if(order.getOrderStatus().equals("Order has been accepted!")) {
-            order.setOrderStatus("Order is ready for delivery");
-            order.setAssign(true);
-        }
-
-        else if(order.getOrderStatus().equals("Order has been placed!")) {
-            JOptionPane.showMessageDialog(null, "Order should be accepted first");
-            return;
-        }
-
-        else {
-            JOptionPane.showMessageDialog(null, "Order is ready for delivery");
-            return;
+        switch (order.getOrderStatus()) {
+            case "Order has been accepted!":
+                order.setOrderStatus("Order is ready for delivery");
+                order.setAssign(true);
+                break;
+            case "Order has been placed!":
+                JOptionPane.showMessageDialog(null, "Order should be accepted first");
+                return;
+            default:
+                JOptionPane.showMessageDialog(null, "Order is ready for delivery");
+                return;
         }
 
         populateTable();

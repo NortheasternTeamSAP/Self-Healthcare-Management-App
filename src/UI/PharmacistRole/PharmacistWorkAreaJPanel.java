@@ -5,17 +5,45 @@
  */
 package ui.PharmacistRole;
 
+import EcoSystem.EcoSystem;
+import Medicine.MedicineDirectory;
+import Order.OrderDirectory;
+import Personnel.UserAccount;
+import Pharmacy.Pharmacy;
+import Pharmacy.PharmacyDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Sravya
  */
 public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PharmacistWorkAreaJPanel
-     */
-    public PharmacistWorkAreaJPanel() {
+    private JPanel workArea;
+    private EcoSystem ecoSystem;
+    private UserAccount account;
+    private PharmacyDirectory pharmacyDirectory;
+    private MedicineDirectory medicineDirectory;
+    private OrderDirectory orderDirectory;
+    private Pharmacy pharmacy;
+    
+    public PharmacistWorkAreaJPanel(
+            JPanel workArea,
+            UserAccount account, 
+            EcoSystem ecoSystem, 
+            PharmacyDirectory pharmacyDirectory, 
+            MedicineDirectory medicineDirectory, 
+            OrderDirectory orderDirectory) {
+        
         initComponents();
+        this.workArea = workArea;
+        this.ecoSystem = ecoSystem;
+        this.account = account;
+        this.pharmacy = pharmacy;
+        this.pharmacyDirectory = pharmacyDirectory;
+        this.medicineDirectory = medicineDirectory;
+        this.orderDirectory = orderDirectory;
     }
 
     /**
@@ -28,8 +56,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnManageOrders = new javax.swing.JButton();
-        btnManageMenu = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnManageMedicines = new javax.swing.JButton();
 
         btnManageOrders.setBackground(new java.awt.Color(255, 255, 255));
         btnManageOrders.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -44,35 +71,28 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageMenu.setBackground(new java.awt.Color(255, 255, 255));
-        btnManageMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnManageMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\mng res menu.png")); // NOI18N
-        btnManageMenu.setText("Manage Medicines");
-        btnManageMenu.setContentAreaFilled(false);
-        btnManageMenu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnManageMenu.setOpaque(true);
-        btnManageMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnManageMedicines.setBackground(new java.awt.Color(255, 255, 255));
+        btnManageMedicines.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnManageMedicines.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\mng res menu.png")); // NOI18N
+        btnManageMedicines.setText("Manage Medicine Catalog ");
+        btnManageMedicines.setContentAreaFilled(false);
+        btnManageMedicines.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnManageMedicines.setOpaque(true);
+        btnManageMedicines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageMenuActionPerformed(evt);
+                btnManageMedicinesActionPerformed(evt);
             }
         });
-
-        jButton1.setText("Manage Medicine Stock");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnManageMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnManageOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnManageMedicines, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(482, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,34 +101,30 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(53, 53, 53)
                 .addComponent(btnManageOrders)
                 .addGap(18, 18, 18)
-                .addComponent(btnManageMenu)
-                .addGap(28, 28, 28)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(394, Short.MAX_VALUE))
+                .addComponent(btnManageMedicines)
+                .addContainerGap(473, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrdersActionPerformed
 
-        ManageOrders manageOrderJPanel = new ManageOrders(userProcessContainer,account, ecoSystem, restaurantDirectory, menuDirectory, orderDirectory);
-        userProcessContainer.add("ManageOrderJPanel", manageOrderJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        ManageOrders manageOrderJPanel = new ManageOrders(workArea,account, ecoSystem, pharmacyDirectory, medicineDirectory, orderDirectory);
+        workArea.add("ManageOrderJPanel", manageOrderJPanel);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_btnManageOrdersActionPerformed
 
-    private void btnManageMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMenuActionPerformed
+    private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
 
-        ManageMenu manageMenuJPanel = new ManageMenu(userProcessContainer, account, ecoSystem, restaurantDirectory, menuDirectory);
-        userProcessContainer.add("manageMenuJPanel", manageMenuJPanel);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManageMenuActionPerformed
+        ManageMedicineCatalogJPanel manageMedicineCatalogJPanel = new ManageMedicineCatalogJPanel(workArea, pharmacy, ecoSystem);
+        workArea.add("manageMedicineCatalogJPanel", manageMedicineCatalogJPanel);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
+    }//GEN-LAST:event_btnManageMedicinesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnManageMenu;
+    private javax.swing.JButton btnManageMedicines;
     private javax.swing.JButton btnManageOrders;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
