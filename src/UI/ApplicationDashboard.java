@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * @author preet
  */
 public class ApplicationDashboard extends javax.swing.JPanel {
-JPanel WorkArea;
+   JPanel WorkArea;
    EcoSystem system;
    Patient p ;
    Dietitian d;
@@ -46,6 +46,7 @@ JPanel WorkArea;
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         jButton4.setText("Counselor login");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +83,13 @@ JPanel WorkArea;
             }
         });
 
+        jButton7.setText("Dietitian directory");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,8 +101,9 @@ JPanel WorkArea;
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,16 +114,17 @@ JPanel WorkArea;
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButton7)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      
         PatientLogin ls= new PatientLogin(WorkArea,system,p);
         WorkArea.add("PatientLogin",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
@@ -149,6 +159,14 @@ JPanel WorkArea;
         layout.next(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    
+        DietitianDirectory ls= new DietitianDirectory(WorkArea,system);
+        WorkArea.add("DietitianDirectory",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);   
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -156,5 +174,6 @@ JPanel WorkArea;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     // End of variables declaration//GEN-END:variables
 }
