@@ -154,7 +154,6 @@ public class DietitianDirectory extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
         int row = tbldietitians.getSelectedRow();
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a Dietitian from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
