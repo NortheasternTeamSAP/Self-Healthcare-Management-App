@@ -81,7 +81,7 @@ JPanel WorkArea;
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton4)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -95,9 +95,9 @@ JPanel WorkArea;
                 .addComponent(jButton1)
                 .addGap(31, 31, 31)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(jButton2)
-                .addGap(93, 93, 93))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

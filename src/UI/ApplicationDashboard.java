@@ -168,7 +168,7 @@ public class ApplicationDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        ReportDietitian ls= new ReportDietitian(WorkArea,system,d);
+        ReportDietitian ls= new ReportDietitian(WorkArea,system,p);
         WorkArea.add("ReportDietitian",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
