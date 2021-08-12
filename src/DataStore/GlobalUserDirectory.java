@@ -50,6 +50,23 @@ public class GlobalUserDirectory {
         personDirectory.add(person.getUserAccount().getUsername(), person);
     }
     
+    public void remove(Person person) {
+        if (person == null) {
+            log.error("Person is null. Cannot remove from global user directory.");
+            return;
+        } 
+        
+        if (person.getUserAccount() == null || 
+                person.getUserAccount().getUsername() == null) {
+            log.error("Person's useraccount OR username is null. "
+                    + "Cannot remove from global user directory.");
+            return;
+        }        
+        
+        personDirectory.remove(person.getUserAccount().getUsername());
+        credentialsManager.removeUserAccount(person.getUserAccount().getUsername());
+    }
+    
     // Use this method to create a new user after collecting user data from console
     public void createNewUser(Person person) {
         add(person);
@@ -68,4 +85,15 @@ public class GlobalUserDirectory {
         }
         return doctors;
     }
+    
+    public List<Person> getAllDietitians() {
+        List<Person> dietitians = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.DIETITIAN)) {
+                dietitians.add(p);
+            }
+        }
+        return dietitians;
+    }    
 }

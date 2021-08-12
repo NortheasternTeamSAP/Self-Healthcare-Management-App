@@ -10,6 +10,7 @@ import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
+import Personnel.Person;
 import com.toedter.calendar.JDateChooser;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -248,27 +249,25 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-private void populatedietiticancombo() {
-comboapp.removeAllItems();
-System.out.println(""+system.getDietitianDirectory());
-    
-for(Dietitian d: system.getDietitianDirectory().getDietitians()){
-    comboapp.addItem(d);
-    
-    }
-}
-    
- private void populatefitnesscombo() {
- comboapp.removeAllItems();
- for(FitnessTrainer f: system.getFitnessTrainerDirectory().getFitnessTrainers()){
- comboapp.addItem(f);   
-    }
-}
+    private void populatedietiticancombo() {
+        comboapp.removeAllItems();
 
- private void populatecounselorcombo() {
- comboapp.removeAllItems();
- for(Counselor c: system.getCounselorDirectory().getCounselors()){
- comboapp.addItem(c);  
+        for (Person p : system.globalUserDirectory.getAllDietitians()) {
+            comboapp.addItem(p);
+        }
     }
-}
+
+    private void populatefitnesscombo() {
+        comboapp.removeAllItems();
+        for (FitnessTrainer f : system.getFitnessTrainerDirectory().getFitnessTrainers()) {
+            comboapp.addItem(f);
+        }
+    }
+
+    private void populatecounselorcombo() {
+        comboapp.removeAllItems();
+        for (Counselor c : system.getCounselorDirectory().getCounselors()) {
+            comboapp.addItem(c);
+        }
+    }
 }
