@@ -68,4 +68,15 @@ public class GlobalUserDirectory {
         }
         return doctors;
     }
+    
+    public List<Person> getAllDietitians() {
+        List<Person> dietitians = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.DIETITIAN)) {
+                dietitians.add(p);
+            }
+        }
+        return dietitians;
+    }    
 }

@@ -11,11 +11,15 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
 import Personnel.Address;
+import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import VitalSign.Range;
+import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -46,13 +50,23 @@ public class TestMainJFrame extends javax.swing.JFrame {
         UserAccount ua_jig = new UserAccount("jig", "password");
         UserAccount ua_jit = new UserAccount("jit", "password");
 
-        this.p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);
+        this.p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
         this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
         Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
         f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
         c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
-        system.getDietitianDirectory().AddDietitian(d);
-        system.getDietitianDirectory().AddDietitian(k);
+        
+        Range bp= new Range(10,50);
+        VitalSigns vs= new VitalSigns();
+        vs.setBloodPressure(bp);
+        vs.setDateForVitalSigns(now);
+        vs.setHeartRate(10);
+        vs.setRespiratoryRate(10);
+        vs.setWeight(10);
+        p.addNewVitalSign(vs);
+        
+        //system.getDietitianDirectory().AddDietitian(d);
+        //system.getDietitianDirectory().AddDietitian(k);       
         
         ApplicationDashboard();
     }
@@ -130,7 +144,11 @@ public class TestMainJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void ApplicationDashboard() {
-        ApplicationDashboard ls = new ApplicationDashboard(WorkArea, system, p, d, f, c);
+        List<Person> dietitians = system.globalUserDirectory.getAllDietitians();
+        
+        Dietitian dietitian0 = (Dietitian) dietitians.get(0);
+        
+        ApplicationDashboard ls = new ApplicationDashboard(WorkArea, system, p, dietitian0, f, c);
         WorkArea.add("ApplicationDashboard", ls);
         CardLayout layout = (CardLayout) WorkArea.getLayout();
         layout.next(WorkArea);
