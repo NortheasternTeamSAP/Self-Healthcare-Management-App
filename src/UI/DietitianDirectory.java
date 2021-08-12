@@ -155,16 +155,17 @@ public class DietitianDirectory extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-//        int row = tbldietitians.getSelectedRow();
-//        if(row<0) {
-//            JOptionPane.showMessageDialog(null, "Please select a Dietitian from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        
-//        Dietitian p = (Dietitian)tbldietitians.getValueAt(row, 0);
-//        system.getDietitianDirectory().deleteDeititian(p);
-//         JOptionPane.showMessageDialog(this, "This dietician  has been deleted ");
-//         ShowDietitians();
+        int row = tbldietitians.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a Dietitian from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Dietitian p = (Dietitian)tbldietitians.getValueAt(row, 0);
+        system.globalUserDirectory.remove(p);
+        //system.getDietitianDirectory().deleteDeititian(p);
+         JOptionPane.showMessageDialog(this, "This dietician  has been deleted ");
+         ShowDietitians();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
