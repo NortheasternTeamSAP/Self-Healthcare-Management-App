@@ -95,5 +95,27 @@ public class GlobalUserDirectory {
             }
         }
         return dietitians;
-    }    
+    }  
+    
+       public List<Person> getAllFitnessTrainers() {
+        List<Person> fitnessTrainers = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.TRAINER)) {
+                fitnessTrainers.add(p);
+            }
+        }
+        return fitnessTrainers;
+    }  
+       
+        public List<Person> getAllCounselors() {
+        List<Person> counselors = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.COUNSELOR)) {
+                counselors.add(p);
+            }
+        }
+        return counselors;
+    } 
 }

@@ -61,6 +61,7 @@ public class CreateCounselor extends javax.swing.JPanel {
         txtphoneno.setText(d.getPersonDetails().getPhoneNumber());
         UserAccount us=d.getPersonDetails().getUserAccount();
         txtuname.setText(us.getUsername());
+         txtpswd.setText(us.getPassword());
         LocalDate localDate=d.getPersonDetails().getDob();
         Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jDateChooser1.setDate(date);
@@ -326,7 +327,7 @@ public class CreateCounselor extends javax.swing.JPanel {
                 Gender gender =(Gender)combogender1.getSelectedItem();
                 LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Counselor counselor = new Counselor(txtname1.getText(),date,gender,addr,txtphoneno.getText(),account);
-                system.getCounselorDirectory().AddCounselor(counselor);
+                system.globalUserDirectory.createNewUser(counselor);
                 JOptionPane.showMessageDialog(this, "Details have been saved : "+txtname1.getText());
                 WorkArea.remove(this);
                 Component[] componentArray = WorkArea.getComponents();

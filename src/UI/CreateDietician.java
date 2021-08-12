@@ -320,7 +320,6 @@ public class CreateDietician extends javax.swing.JPanel {
       Gender gender =(Gender)combogender1.getSelectedItem();
       LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
       Dietitian dietitian = new Dietitian(txtname1.getText(),date,gender,addr,txtphoneno.getText(),account);
-      //system.getDietitianDirectory().AddDietitian(dietitian);
       system.globalUserDirectory.createNewUser(dietitian);
       JOptionPane.showMessageDialog(this, "Details have been saved : "+txtname1.getText());
       

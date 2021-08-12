@@ -5,7 +5,7 @@
  */
 package EcoSystem;
 
-import Counselor.CounselorDirectory;
+import Counselor.Counselor;
 import DataStore.CredentialsManager;
 import DataStore.EnterpriseDirectory;
 import DataStore.GlobalUserDirectory;
@@ -15,10 +15,12 @@ import Enterprise.Enterprise;
 import Enterprise.HealthManagementAppEnterprise;
 import Enterprise.HospitalEnterprise;
 import Enterprise.InsuranceCompanyEnterprise;
+import Enterprise.MentalWellnessEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
-import FitnessTrainer.FitnessTrainerDirectory;
+import FitnessTrainer.FitnessTrainer;
 import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
+import Organization.GymOrganization;
 import Organization.HealthInsuranceDepartmentOrganization;
 import Organization.LaboratoryOrganization;
 import Organization.NutritionDepartmentOrganization;
@@ -42,38 +44,23 @@ public class EcoSystem {
 
     public GlobalUserDirectory globalUserDirectory;
     public CredentialsManager credentialsManager;
-    //DietitianDirectory dietitianDirectory;
-    FitnessTrainerDirectory fitnessTrainerDirectory;
     public EnterpriseDirectory enterpriseDirectory;
-    CounselorDirectory counselorDirectory;
+
 
     // Testing
     public Enterprise healthManagementApp;
     public Enterprise hospital;
     public Enterprise insuranceCompany;
     public Enterprise physicalWellness;
+    public Enterprise mentalWellness;
 
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
-        //dietitianDirectory = new DietitianDirectory();
-        fitnessTrainerDirectory = new FitnessTrainerDirectory();
         enterpriseDirectory = new EnterpriseDirectory();
-        counselorDirectory = new CounselorDirectory();
+  
 
         exampleCreateEnterpriseOrganizationAndRoles();
-    }
-
-    public CounselorDirectory getCounselorDirectory() {
-        return counselorDirectory;
-    }
-
-    /*public DietitianDirectory getDietitianDirectory() {
-        return dietitianDirectory;
-    }*/
-
-    public FitnessTrainerDirectory getFitnessTrainerDirectory() {
-        return fitnessTrainerDirectory;
     }
 
     void example() {
@@ -101,11 +88,14 @@ public class EcoSystem {
         hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
         insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
         physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
+        mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
+        
 
         enterpriseDirectory.addEnterprise(healthManagementApp);
         enterpriseDirectory.addEnterprise(hospital);
         enterpriseDirectory.addEnterprise(insuranceCompany);
         enterpriseDirectory.addEnterprise(physicalWellness);
+        enterpriseDirectory.addEnterprise(mentalWellness);
 
         // Create Organizations and all them to enterprise
         Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
@@ -125,6 +115,12 @@ public class EcoSystem {
 
         Organization nutritionDepartmentOrg = new NutritionDepartmentOrganization("Nutrition Department", physicalWellness);
         physicalWellness.addOrganization(nutritionDepartmentOrg);
+        
+        Organization gymOrg=new GymOrganization("Fitness Trainer Department",physicalWellness);
+        physicalWellness.addOrganization(gymOrg);
+        
+        Organization phychiatristOrg=new GymOrganization("Counselor Department",mentalWellness);
+        physicalWellness.addOrganization(phychiatristOrg);
 
         // Create roles
         // Admin
@@ -151,9 +147,19 @@ public class EcoSystem {
         laboratoryOrg.addEmployee(labAssistant);
 
         // Dietitian
-        Person dietitian = new Dietitian("Jan", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("jill", "password"));
+        Person dietitian = new Dietitian("Jan", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitan1"));
         this.globalUserDirectory.createNewUser(dietitian);
         nutritionDepartmentOrg.addEmployee(dietitian);
+        
+         // FitnessTrainer
+        Person fitnessTrainer = new FitnessTrainer("Jim", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("fitnesstrainer", "fitnesstrainer1"));
+        this.globalUserDirectory.createNewUser(fitnessTrainer);
+        gymOrg.addEmployee(fitnessTrainer);
+        
+         // Counselor
+        Person counselor = new Counselor("zena", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("counselor", "counselor1"));
+        this.globalUserDirectory.createNewUser(counselor);
+        phychiatristOrg.addEmployee(counselor);
 
         // Insurance provider representative
         Person insuranceRep = new InsuranceProviderRepresentative("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,

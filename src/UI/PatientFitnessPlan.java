@@ -50,6 +50,7 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         this.WorkArea = WorkArea;
         this.system = system;
         this.p = p;
+        report3.setVisible(false);
         lblpatientname.setText("HI  " + p.getPatientDetails().getFullName());
         for (FitnessTrainer.FitnessPlan fp : p.getFitnessPlans()) {
             ArrayList<String> temp = new ArrayList();
@@ -146,10 +147,25 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         jLabel8.setText("Day 4:");
         jLabel8.setOpaque(true);
 
+        jScrollPane7.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane7.setDoubleBuffered(true);
+        jScrollPane7.setEnabled(false);
+
+        txtmeal5.setEnabled(false);
         jScrollPane7.setViewportView(txtmeal5);
 
+        jScrollPane4.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane4.setDoubleBuffered(true);
+        jScrollPane4.setEnabled(false);
+
+        txtmeal2.setEnabled(false);
         jScrollPane4.setViewportView(txtmeal2);
 
+        jScrollPane2.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane2.setDoubleBuffered(true);
+        jScrollPane2.setEnabled(false);
+
+        txtmeal1.setEnabled(false);
         jScrollPane2.setViewportView(txtmeal1);
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
@@ -176,6 +192,11 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         jLabel12.setText("Day 5:");
         jLabel12.setOpaque(true);
 
+        jScrollPane5.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane5.setDoubleBuffered(true);
+        jScrollPane5.setEnabled(false);
+
+        txtmeal7.setEnabled(false);
         jScrollPane5.setViewportView(txtmeal7);
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
@@ -183,8 +204,18 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         jLabel11.setText("Day 7:");
         jLabel11.setOpaque(true);
 
+        jScrollPane8.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane8.setDoubleBuffered(true);
+        jScrollPane8.setEnabled(false);
+
+        txtmeal6.setEnabled(false);
         jScrollPane8.setViewportView(txtmeal6);
 
+        jScrollPane6.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane6.setDoubleBuffered(true);
+        jScrollPane6.setEnabled(false);
+
+        txtmeal3.setEnabled(false);
         jScrollPane6.setViewportView(txtmeal3);
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
@@ -192,6 +223,11 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         jLabel13.setText("Day 6:");
         jLabel13.setOpaque(true);
 
+        jScrollPane3.setForeground(new java.awt.Color(204, 204, 204));
+        jScrollPane3.setDoubleBuffered(true);
+        jScrollPane3.setEnabled(false);
+
+        txtmeal4.setEnabled(false);
         jScrollPane3.setViewportView(txtmeal4);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -231,23 +267,40 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
             }
         });
 
+        e1.setForeground(new java.awt.Color(255, 204, 204));
+        e1.setEnabled(false);
+
+        e2.setForeground(new java.awt.Color(255, 204, 204));
+        e2.setEnabled(false);
+
+        e3.setForeground(new java.awt.Color(255, 204, 204));
+        e3.setEnabled(false);
+
+        e4.setForeground(new java.awt.Color(255, 204, 204));
+        e4.setEnabled(false);
+
+        e5.setForeground(new java.awt.Color(255, 204, 204));
+        e5.setEnabled(false);
+
+        e6.setForeground(new java.awt.Color(255, 204, 204));
+        e6.setEnabled(false);
+
+        e7.setForeground(new java.awt.Color(255, 204, 204));
+        e7.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(573, 573, 573))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton2)
-                                .addGap(110, 110, 110)
+                                .addGap(208, 208, 208)
                                 .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,12 +342,10 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
                                     .addComponent(e3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(e4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(e5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(e6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(e7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(e2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(44, 44, 44)
+                                    .addComponent(e2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(e6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(54, 54, 54)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(c2)
                                     .addComponent(c5)
@@ -304,31 +355,38 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
                                     .addComponent(c4)
                                     .addComponent(c3)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(report3, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(368, Short.MAX_VALUE))
+                        .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(report3, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 471, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton2)))
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(report1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                    .addComponent(report1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                     .addComponent(report3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -413,6 +471,7 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
     }//GEN-LAST:event_c3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        report3.setVisible(true);
         populateTrackMyFitnessChart();
     }//GEN-LAST:event_jButton1ActionPerformed
 
