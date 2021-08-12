@@ -15,11 +15,13 @@ import Enterprise.Enterprise;
 import Enterprise.HealthManagementAppEnterprise;
 import Enterprise.HospitalEnterprise;
 import Enterprise.InsuranceCompanyEnterprise;
+import Enterprise.PhysicalWellnessEnterprise;
 import FitnessTrainer.FitnessTrainerDirectory;
 import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
 import Organization.HealthInsuranceDepartmentOrganization;
 import Organization.LaboratoryOrganization;
+import Organization.NutritionDepartmentOrganization;
 import Organization.Organization;
 import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
@@ -49,6 +51,7 @@ public class EcoSystem {
     public Enterprise healthManagementApp;
     public Enterprise hospital;
     public Enterprise insuranceCompany;
+    public Enterprise physicalWellness;
     
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
@@ -99,10 +102,12 @@ public class EcoSystem {
         healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
         hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
         insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
+        physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
         
         enterpriseDirectory.addEnterprise(healthManagementApp);
         enterpriseDirectory.addEnterprise(hospital);
         enterpriseDirectory.addEnterprise(insuranceCompany);
+        enterpriseDirectory.addEnterprise(physicalWellness);
         
         // Create Organizations and all them to enterprise
         Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
@@ -120,6 +125,9 @@ public class EcoSystem {
         Organization healthInsuranceOrg = new HealthInsuranceDepartmentOrganization("Progressive Health Insurance Department", insuranceCompany);
         insuranceCompany.addOrganization(healthInsuranceOrg);
         
+        Organization nutritionDepartmentOrg = new NutritionDepartmentOrganization("Nutrition Department", physicalWellness);
+        physicalWellness.addOrganization(nutritionDepartmentOrg);
+        
         // Create roles
         // Admin
         Person sysAdmin = new SystemAdmin(null, null, null, null, null, new UserAccount("sysadmin", "sysadmin"));
@@ -130,7 +138,7 @@ public class EcoSystem {
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
                 new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("pat1", "pat1"));
         this.globalUserDirectory.createNewUser(patient);
-        patientOrg.addEmployee(patient);
+        patientOrg.addEmployee(patient);                
         
         // Doctor
         Person doctor = new Doctor("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
