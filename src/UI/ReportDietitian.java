@@ -5,9 +5,12 @@
  */
 package UI;
 
+import Dietitian.DietPlan;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
+import Patient.Patient;
 import java.awt.Color;
+import java.util.Locale;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -16,6 +19,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -24,16 +28,16 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class ReportDietitian extends javax.swing.JPanel {
 JPanel WorkArea;
 EcoSystem system;
-Dietitian d;
+Patient p;
     /**
      * Creates new form ReportDietitian
      */
-    public ReportDietitian(JPanel WorkArea,EcoSystem system,Dietitian d) {
+    public ReportDietitian(JPanel WorkArea,EcoSystem system,Patient p) {
         initComponents();
         initComponents();
       this.WorkArea=WorkArea;
       this.system=system;
-      this.d=d;
+      this.p=p;
     }
 
     /**
@@ -64,39 +68,46 @@ Dietitian d;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(254, 254, 254))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(54, 54, 54)
                 .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(45, 45, 45)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-DefaultCategoryDataset dcd=new DefaultCategoryDataset();
+        DefaultPieDataset dcd=new DefaultPieDataset();
+int fatnum=0;
+int carbnum=0;
+int protientnum=0;
+int fibernum=0;
+for (DietPlan d: p.getDietplans()){
+fatnum=d.getFat();
+carbnum=d.getCarbohydrates();
+protientnum=d.getProtein();
+fibernum=d.getFiber();
+}
 
-dcd.setValue(78.80, "Marks", "preeti");
-dcd.setValue(68.80, "Marks", "a");
-dcd.setValue(90.80, "Marks", "b");
-dcd.setValue(87.80, "Marks", "c");
-dcd.setValue(44.80, "Marks", "d");
+dcd.setValue( "Fat Percent",fatnum);
+dcd.setValue( "Crabs Percent",carbnum);
+dcd.setValue( "Protein Percent",protientnum);
+dcd.setValue( "Fiber Percent",fibernum);
 
-JFreeChart jchart=ChartFactory.createBarChart("Studentrecord", "Student Name", "Studentmarks", dcd, PlotOrientation.VERTICAL,true , true, false);
-   CategoryPlot plot=jchart.getCategoryPlot();
-   plot.setRangeGridlinePaint(Color.black);
-   ChartFrame cf=new ChartFrame("Student Record",jchart,true);
+
+JFreeChart jchart=ChartFactory.createPieChart3D("Percentage of Daily Balanced Nutrients", dcd, true, true, false);
+   ChartFrame cf=new ChartFrame("Percentage of Nutrients",jchart,true);
    cf.setVisible(true);
    cf.setSize(500, 400);
    

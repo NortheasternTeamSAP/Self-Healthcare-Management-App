@@ -53,8 +53,8 @@ public class Dietitian implements Person{
     }
     
     
-    public void addDietPlan(Patient p, ArrayList<String> mealplans){    
-        DietPlan dp= new DietPlan(p,this, mealplans);
+    public void addDietPlan(Patient p, ArrayList<String> mealplans,int c,int pro, int fiber, int fat){    
+        DietPlan dp= new DietPlan(p,this, mealplans,c,fat, pro, fiber);
         p.addDietplan(dp);
     }
 

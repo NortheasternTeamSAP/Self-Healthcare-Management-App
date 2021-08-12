@@ -7,33 +7,53 @@ package UI;
 
 import Dietitian.DietPlan;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessPlan;
+import FitnessTrainer.FitnessPlan.Excercise;
 import Patient.Patient;
 import java.awt.CardLayout;
+import java.awt.Color;
+import static java.awt.Color.white;
 import java.awt.Component;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
  * @author preet
  */
 public class PatientFitnessPlan extends javax.swing.JPanel {
-JPanel WorkArea;
-   EcoSystem system;
-   Patient p ;
+
+    JPanel WorkArea;
+    EcoSystem system;
+    Patient p;
+    ArrayList<Excercise> temp2;
+    int cardio = 0;
+    int weight = 0;
+    int crosstraining = 0;
+
     /**
      * Creates new form ViewFitnessPlan
      */
-    public PatientFitnessPlan(JPanel WorkArea,EcoSystem system,Patient p) {
-            initComponents();
-        this.WorkArea=WorkArea;
-        this.system=system;
-        this.p=p;
-        lblpatientname.setText("HI  "+p.getPatientDetails().getFullName());
-        
-        for(FitnessTrainer.FitnessPlan fp: p.getFitnessPlans()){
-            ArrayList<String> temp =new ArrayList();
-            temp=fp.getFitnessplans();           
+    public PatientFitnessPlan(JPanel WorkArea, EcoSystem system, Patient p) {
+        initComponents();
+        this.WorkArea = WorkArea;
+        this.system = system;
+        this.p = p;
+        lblpatientname.setText("HI  " + p.getPatientDetails().getFullName());
+        for (FitnessTrainer.FitnessPlan fp : p.getFitnessPlans()) {
+            ArrayList<String> temp = new ArrayList();
+            temp = fp.getFitnessplans();
             txtmeal1.setText(temp.get(0));
             txtmeal2.setText(temp.get(1));
             txtmeal3.setText(temp.get(2));
@@ -41,7 +61,32 @@ JPanel WorkArea;
             txtmeal5.setText(temp.get(4));
             txtmeal6.setText(temp.get(5));
             txtmeal7.setText(temp.get(6));
-    }
+
+            temp2 = fp.getExcercises();
+            System.out.println("ssssssss" + temp2);
+            e1.setText(temp2.get(0).getValue());
+            e2.setText(temp2.get(1).getValue());
+            e3.setText(temp2.get(2).getValue());
+            e4.setText(temp2.get(3).getValue());
+            e5.setText(temp2.get(4).getValue());
+            e6.setText(temp2.get(5).getValue());
+            e7.setText(temp2.get(6).getValue());
+
+            for (Excercise e : fp.getExcercises()) {
+                if (e.getValue().contentEquals("Cardio")) {
+                    cardio = cardio + 1;
+                } else if (e.getValue().contentEquals("CrossTraining")) {
+                    crosstraining = crosstraining + 1;
+                } else {
+                    weight = weight + 1;
+                }
+            }
+
+        }
+
+        populatechart();
+        populateTrackMyFitnessChart();
+
     }
 
     /**
@@ -76,9 +121,25 @@ JPanel WorkArea;
         jScrollPane3 = new javax.swing.JScrollPane();
         txtmeal4 = new javax.swing.JEditorPane();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         lblpatientname = new javax.swing.JLabel();
+        report1 = new javax.swing.JPanel();
+        c1 = new javax.swing.JCheckBox();
+        c2 = new javax.swing.JCheckBox();
+        c3 = new javax.swing.JCheckBox();
+        c4 = new javax.swing.JCheckBox();
+        c5 = new javax.swing.JCheckBox();
+        c6 = new javax.swing.JCheckBox();
+        c7 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        report3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        e1 = new javax.swing.JTextField();
+        e2 = new javax.swing.JTextField();
+        e3 = new javax.swing.JTextField();
+        e4 = new javax.swing.JTextField();
+        e5 = new javax.swing.JTextField();
+        e6 = new javax.swing.JTextField();
+        e7 = new javax.swing.JTextField();
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,113 +199,197 @@ JPanel WorkArea;
         jLabel2.setText("Day 1:");
         jLabel2.setOpaque(true);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("We at HealthSpring Wellness  have carefully crafted your Fitness  Plan keeping in account your current health . We requst you to carefully Follow this Weekly Plan to get the best results to live a healthy and normal life .\n\n -Thank You ");
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextArea1.setEnabled(false);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
-
         lblpatientname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        report1.setBackground(new java.awt.Color(204, 255, 255));
+        report1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        report1.setLayout(new javax.swing.BoxLayout(report1, javax.swing.BoxLayout.LINE_AXIS));
+
+        c1.setMaximumSize(new java.awt.Dimension(22, 22));
+        c1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c1ActionPerformed(evt);
+            }
+        });
+
+        c3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c3ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Mark Your Goals");
+
+        report3.setBackground(new java.awt.Color(204, 255, 255));
+        report3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        report3.setLayout(new javax.swing.BoxLayout(report3, javax.swing.BoxLayout.LINE_AXIS));
+
+        jButton1.setText("Generate My Weekly Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(201, 201, 201)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(82, 82, 82)
-                        .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160))
+                .addComponent(jLabel1)
+                .addGap(573, 573, 573))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton2)
+                                .addGap(110, 110, 110)
+                                .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(e1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(e3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(e4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(e5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(e6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(e7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(e2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(c2)
+                                    .addComponent(c5)
+                                    .addComponent(c6)
+                                    .addComponent(c7)
+                                    .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(c4)
+                                    .addComponent(c3)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(report3, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(jButton2)
+                    .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(report1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                    .addComponent(report3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(e1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(e2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(e3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(c3)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(c2)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(e4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(224, 224, 224)
+                        .addComponent(c4)))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(c5)
+                        .addGap(74, 74, 74)
+                        .addComponent(c6)
+                        .addGap(78, 78, 78)
+                        .addComponent(c7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(e5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(e6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(e7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -252,15 +397,44 @@ JPanel WorkArea;
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        PatientFitnessDashboard fp= (PatientFitnessDashboard)component;
+        CardLayout layout = (CardLayout) WorkArea.getLayout();
+        PatientFitnessDashboard fp = (PatientFitnessDashboard) component;
         fp.populateUpcomingFitnessTrainerAppointments();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
+
+
+    }//GEN-LAST:event_c1ActionPerformed
+
+    private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        populateTrackMyFitnessChart();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox c1;
+    private javax.swing.JCheckBox c2;
+    private javax.swing.JCheckBox c3;
+    private javax.swing.JCheckBox c4;
+    private javax.swing.JCheckBox c5;
+    private javax.swing.JCheckBox c6;
+    private javax.swing.JCheckBox c7;
+    private javax.swing.JTextField e1;
+    private javax.swing.JTextField e2;
+    private javax.swing.JTextField e3;
+    private javax.swing.JTextField e4;
+    private javax.swing.JTextField e5;
+    private javax.swing.JTextField e6;
+    private javax.swing.JTextField e7;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -268,7 +442,6 @@ JPanel WorkArea;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -276,9 +449,10 @@ JPanel WorkArea;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPatientname;
     private javax.swing.JLabel lblpatientname;
+    private javax.swing.JPanel report1;
+    private javax.swing.JPanel report3;
     private javax.swing.JEditorPane txtmeal1;
     private javax.swing.JEditorPane txtmeal2;
     private javax.swing.JEditorPane txtmeal3;
@@ -287,4 +461,146 @@ JPanel WorkArea;
     private javax.swing.JEditorPane txtmeal6;
     private javax.swing.JEditorPane txtmeal7;
     // End of variables declaration//GEN-END:variables
+
+    private void populatechart() {
+        double cardiopercent = 0;
+        double weightpercent = 0;
+        double crosstrainingpercent = 0;
+
+        cardiopercent = ((cardio * 100) / 7);
+
+        weightpercent = ((weight * 100) / 7);
+
+        crosstrainingpercent = ((crosstraining * 100) / 7);
+
+        DefaultPieDataset dcd = new DefaultPieDataset();
+        dcd.setValue("Cardio Percent", cardiopercent);
+        dcd.setValue("Weights Percent", weightpercent);
+        dcd.setValue("CrossTraining Percent", crosstrainingpercent);
+        JFreeChart jchart = ChartFactory.createPieChart3D("Percentage of Daily Recommended Fitness Routine", dcd, true, true, true);
+        PiePlot piechrt = (PiePlot) jchart.getPlot();
+        piechrt.setBackgroundPaint(white);
+        ChartFrame cf = new ChartFrame("Percentage of Daily Recommended Fitness Routine", jchart);
+        cf.setVisible(true);
+        cf.setSize(500, 400);
+        ChartPanel cp = new ChartPanel(jchart);
+        report1.removeAll();
+        report1.add(cp);
+        report1.updateUI();
+        cf.dispose();
+    }
+
+    private void populateTrackMyFitnessChart() {
+        int checkcardio = 0;
+        int checkweight = 0;
+        int checkcrosstraining = 0;
+        if (c1.isSelected()) {
+            if (e1.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e1.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+
+        if (c2.isSelected()) {
+            if (e2.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e2.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+
+        if (c3.isSelected()) {
+            if (e3.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e3.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+
+        if (c4.isSelected()) {
+            if (e4.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e4.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+
+        if (c5.isSelected()) {
+            if (e5.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e5.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+
+        if (c6.isSelected()) {
+            if (e6.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e6.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+
+        if (c7.isSelected()) {
+            if (e7.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Cardio.toString())) {
+                checkcardio = checkcardio + 1;
+            } else if (e7.getText().equals(FitnessTrainer.FitnessPlan.Excercise.Weight.toString())) {
+                checkweight = checkweight + 1;
+            } else {
+                checkcrosstraining = checkcrosstraining + 1;
+            }
+        }
+        System.out.println("cardio = " + cardio);
+        //Add Graph Details
+        int cardiopercent = 0;
+        int weightpercent = 0;
+        int crosstrainingpercent = 0;
+
+        if (cardio == 0) {
+            cardiopercent = 0;
+        } else {
+            cardiopercent = ((checkcardio * 100) / cardio);
+        }
+        if (weight == 0) {
+            weightpercent = 0;
+        } else {
+            weightpercent = ((checkweight * 100) / weight);
+        }
+        if (crosstraining == 0) {
+            crosstrainingpercent = 0;
+        } else {
+            crosstrainingpercent = ((checkcrosstraining * 100) / crosstraining);
+        }
+
+        System.out.println("cardiopercent" + cardiopercent + "weightpercent " + weightpercent + "ctpecent " + crosstrainingpercent);
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+
+        dcd.setValue(cardiopercent, "Excercise done", "Cardio Done");
+        dcd.setValue(weightpercent, "Excercise done", "Weight Done");
+        dcd.setValue(crosstrainingpercent, "Excercise done", "CrossTraining Done");
+        JFreeChart jchart = ChartFactory.createBarChart3D("Excercise Completed", "Excercise Type", "Achieved", dcd, PlotOrientation.VERTICAL, true, true, false);
+        CategoryPlot plot = jchart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.black);
+        ChartFrame cf = new ChartFrame("ExcerciseDone", jchart, true);
+        cf.setVisible(true);
+        cf.setSize(500, 400);
+        ChartPanel cp = new ChartPanel(jchart);
+        report3.removeAll();
+        report3.add(cp);
+        report3.updateUI();
+        cf.dispose();
+    }
 }

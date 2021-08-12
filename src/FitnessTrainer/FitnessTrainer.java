@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package FitnessTrainer;
+import FitnessTrainer.FitnessPlan.Excercise;
 import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
@@ -52,8 +53,8 @@ public class FitnessTrainer implements Person{
     }
     
     
-    public void addFitnessPlan(Patient p, ArrayList<String> plan){    
-        FitnessPlan fp= new FitnessPlan(p,this, plan);
+    public void addFitnessPlan(Patient p, ArrayList<String> plan,ArrayList<Excercise> e){    
+        FitnessPlan fp= new FitnessPlan(p,this, plan,e);
         p.addFitnessPlan(fp);
     }
     
