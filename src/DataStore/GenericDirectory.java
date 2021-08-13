@@ -75,4 +75,8 @@ public class GenericDirectory<Key, Value> {
     public List<Value> getAllValues() {
         return new ArrayList<>(directory.values());
     }    
+
+    void remove(Person p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
