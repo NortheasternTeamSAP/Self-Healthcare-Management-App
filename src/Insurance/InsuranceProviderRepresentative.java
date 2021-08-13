@@ -38,7 +38,8 @@ public class InsuranceProviderRepresentative implements Person {
             Icon logoImage,
             UserAccount account) {
         
-        insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account,logoImage, Role.INSURANCE_PROVIDER_REP);
+        insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, 
+                phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage);
     }
 
     public Organization getOrganization() {

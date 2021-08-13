@@ -5,6 +5,7 @@
  */
 package DataStore;
 
+import Doctor.Doctor;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.Role;

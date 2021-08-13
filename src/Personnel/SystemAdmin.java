@@ -25,7 +25,8 @@ public class SystemAdmin implements Person {
             Icon logoImage,
             UserAccount account) {
         
-        sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, logoImage, Role.SYSTEM_ADMIN);
+        sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, 
+                Role.SYSTEM_ADMIN, logoImage);
     }
 
     @Override
