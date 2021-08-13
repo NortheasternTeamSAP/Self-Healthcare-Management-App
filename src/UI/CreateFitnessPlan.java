@@ -344,7 +344,9 @@ Patient p;
 
  private void showmostrecentVitalSign() {
  DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
- VitalSigns temp=p.getMostRecentVitalSigns(); 
+ 
+     try {
+         VitalSigns temp=p.getMostRecentVitalSigns(); 
  model.setRowCount(0);       
  Object row[] = new Object[5];
                 row[0] = temp.getDateForVitalSigns();
@@ -354,6 +356,9 @@ Patient p;
                 row[4] = temp.getWeight();
                 model.addRow(row);
    
+     } catch (Exception e) {
+          JOptionPane.showMessageDialog(this, "Patient has not recorded his vitalSigns yet");
+     }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

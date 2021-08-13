@@ -16,6 +16,12 @@ public class DietitianAppointment {
     private LocalDate date;
     Patient patient;
     Dietitian dietitian;
+        int time;
+    
+       public enum DietitianAppointmentStatus {
+        PENDING,
+        COMPLETED
+    }
 
     @Override
     public String toString() {

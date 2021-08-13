@@ -358,7 +358,9 @@ Patient p;
     }//GEN-LAST:event_jButton2ActionPerformed
 private void showmostrecentVitalSign() {
  DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
- VitalSigns temp=p.getMostRecentVitalSigns(); 
+ 
+    try {
+        VitalSigns temp=p.getMostRecentVitalSigns(); 
  model.setRowCount(0);       
  Object row[] = new Object[5];
                 row[0] = temp.getDateForVitalSigns();
@@ -367,6 +369,9 @@ private void showmostrecentVitalSign() {
                 row[3] = temp.getRespiratoryRate();
                 row[4] = temp.getWeight();
                 model.addRow(row);
+    } catch (Exception e) {
+    }
+ JOptionPane.showMessageDialog(this, "Patient has not recorded his vitalSigns yet");
    
     }
 
