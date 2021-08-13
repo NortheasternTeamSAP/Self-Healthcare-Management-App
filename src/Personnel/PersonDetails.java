@@ -38,8 +38,19 @@ public class PersonDetails {
             Address address, 
             String phoneNumber, 
             UserAccount userAccount,
-            Icon logoImage,
             Role role) {
+        this(fullName, dob, gender, address, phoneNumber, userAccount, role, null);
+    }
+    
+    public PersonDetails(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount userAccount,
+            Role role,
+            Icon logoImage) {
         this.fullName = fullName;
         this.dob = dob;
         this.gender = gender;

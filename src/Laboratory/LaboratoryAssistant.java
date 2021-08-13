@@ -40,7 +40,8 @@ public class LaboratoryAssistant implements Person {
             Icon logoImage,
             UserAccount account) {
         
-        labAssistantDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account,logoImage, Role.INSURANCE_PROVIDER_REP);
+        labAssistantDetails = new PersonDetails(fullName, dob, gender, 
+                address, phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage);
         pendingLabTests = new ArrayList<>();
         completedLabTests = new ArrayList<>();
     }

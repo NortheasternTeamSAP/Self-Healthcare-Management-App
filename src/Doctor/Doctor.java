@@ -38,7 +38,7 @@ public class Doctor implements Person {
             Icon logoImage,
             UserAccount account) {
         
-        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account,logoImage, Role.DOCTOR);
+        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage);
         speciality = "Unknown";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
