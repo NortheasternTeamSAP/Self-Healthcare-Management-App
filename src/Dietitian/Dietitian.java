@@ -13,6 +13,8 @@ import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -22,6 +24,7 @@ public class Dietitian implements Person{
 
     private PersonDetails dietitianDetails;
     private DietitianSchedule dietitianSchedule;
+    private Set<String /* Appointment Date + time */> availability;
     
     public Dietitian(
             String fullName, 
@@ -32,6 +35,7 @@ public class Dietitian implements Person{
             UserAccount account) {
         dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN);
         dietitianSchedule = new DietitianSchedule();
+        this.availability = new HashSet<>();
     }
 
     @Override
@@ -44,7 +48,12 @@ public class Dietitian implements Person{
         return dietitianDetails.getRole();
     }
     
-    public DietitianAppointment scheduleAppointment (LocalDate d,Patient p ){
+    public boolean isDietitianAvailable(LocalDate date, int timeHours) {
+        return !availability.contains(date.toString() + timeHours);
+    }    
+    
+    public DietitianAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ){
+        availability.add(d.toString() + timeHours);
         return dietitianSchedule.ScheduleAppointment(d, p, this);
     }
 

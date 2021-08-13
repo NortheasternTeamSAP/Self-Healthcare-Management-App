@@ -91,9 +91,13 @@ public class Patient implements Person {
         return patientDetails.getRole();
     }
 
-    public boolean scheduleDietitianAppointment(Dietitian dietitian, LocalDate date)
+    public boolean scheduleDietitianAppointment(Dietitian dietitian, LocalDate date, int timeHours)
     {
-        DietitianAppointment appointment = dietitian.scheduleAppointment(date, this);
+        if (!dietitian.isDietitianAvailable(date, timeHours))
+        {
+            return false;
+        }
+        DietitianAppointment appointment = dietitian.scheduleAppointment(date, this, timeHours);
         if (appointment != null)
         {
             dietitianAppointments.add(appointment);
@@ -114,9 +118,13 @@ public class Patient implements Person {
         return dietitianAppointments;
     }
        
-   public boolean scheduleFitnessAppointment(FitnessTrainer fitnessTrainer, LocalDate date)
+   public boolean scheduleFitnessAppointment(FitnessTrainer fitnessTrainer, LocalDate date, int timeHours)
     {
-        FitnessTrainerAppointment appointment = fitnessTrainer.scheduleAppointment(date, this);
+        if (!fitnessTrainer.isFitnessTrainerAvailable(date, timeHours))
+        {
+            return false;
+        }        
+        FitnessTrainerAppointment appointment = fitnessTrainer.scheduleAppointment(date, this, timeHours);
         if (appointment != null)
         {
             fitnessTrainerAppointments.add(appointment);
@@ -137,9 +145,13 @@ public class Patient implements Person {
         return fitnessTrainerAppointments;
     }
     
-     public boolean scheduleCounselorAppointment(Counselor counselor, LocalDate date)
+     public boolean scheduleCounselorAppointment(Counselor counselor, LocalDate date, int timeHours)
     {
-        CounselorAppointment appointment = counselor.scheduleAppointment(date, this);
+        if (!counselor.isCounselorAvailable(date, timeHours))
+        {
+            return false;
+        }           
+        CounselorAppointment appointment = counselor.scheduleAppointment(date, this, timeHours);
         if (appointment != null)
         {
             counselorAppointments.add(appointment);

@@ -16,7 +16,15 @@ public class CounselorAppointment {
     private LocalDate date;
     Patient patient;
     Counselor counselor;
+    int time;
 
+    
+       public enum CounselorAppointmentStatus {
+        PENDING,
+        COMPLETED
+    }
+
+    
     @Override
     public String toString() {
         return "CounselorAppointment{" + "date=" + date + ", patient=" + patient + ", counselor=" + counselor + '}';

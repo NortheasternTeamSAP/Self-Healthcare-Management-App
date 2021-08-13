@@ -120,7 +120,7 @@ public class EcoSystem {
         physicalWellness.addOrganization(gymOrg);
         
         Organization phychiatristOrg=new GymOrganization("Counselor Department",mentalWellness);
-        physicalWellness.addOrganization(phychiatristOrg);
+        mentalWellness.addOrganization(phychiatristOrg);
 
         // Create roles
         // Admin

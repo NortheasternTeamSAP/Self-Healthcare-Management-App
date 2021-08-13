@@ -17,6 +17,12 @@ public class FitnessTrainerAppointment {
   private LocalDate date;
     Patient patient;
     FitnessTrainer fitnessTrainer;
+        int time;
+
+       public enum FitnessAppointmentStatus {
+        PENDING,
+        COMPLETED
+    }
 
     @Override
     public String toString() {
