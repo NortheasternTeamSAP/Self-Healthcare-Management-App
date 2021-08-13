@@ -163,7 +163,6 @@ public class DietitianDirectory extends javax.swing.JPanel {
         
         Dietitian p = (Dietitian)tbldietitians.getValueAt(row, 0);
         system.globalUserDirectory.remove(p);
-        //system.getDietitianDirectory().deleteDeititian(p);
          JOptionPane.showMessageDialog(this, "This dietician  has been deleted ");
          ShowDietitians();
     }//GEN-LAST:event_jButton2ActionPerformed

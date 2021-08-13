@@ -108,6 +108,7 @@ public class PatientDietPlan extends javax.swing.JPanel {
         jLabel9.setText("Day 2:");
         jLabel9.setOpaque(true);
 
+        jScrollPane5.setEnabled(false);
         jScrollPane5.setViewportView(txtmeal7);
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
@@ -120,6 +121,7 @@ public class PatientDietPlan extends javax.swing.JPanel {
         jLabel11.setText("Day 7:");
         jLabel11.setOpaque(true);
 
+        jScrollPane6.setEnabled(false);
         jScrollPane6.setViewportView(txtmeal3);
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
@@ -132,12 +134,16 @@ public class PatientDietPlan extends javax.swing.JPanel {
         jLabel13.setText("Day 6:");
         jLabel13.setOpaque(true);
 
+        jScrollPane7.setEnabled(false);
         jScrollPane7.setViewportView(txtmeal5);
 
+        jScrollPane2.setEnabled(false);
         jScrollPane2.setViewportView(txtmeal1);
 
+        jScrollPane8.setEnabled(false);
         jScrollPane8.setViewportView(txtmeal6);
 
+        jScrollPane3.setEnabled(false);
         jScrollPane3.setViewportView(txtmeal4);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -145,6 +151,7 @@ public class PatientDietPlan extends javax.swing.JPanel {
         jLabel2.setText("Day 1:");
         jLabel2.setOpaque(true);
 
+        jScrollPane4.setEnabled(false);
         jScrollPane4.setViewportView(txtmeal2);
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
@@ -209,22 +216,21 @@ public class PatientDietPlan extends javax.swing.JPanel {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jButton2)
-                        .addGap(186, 186, 186)
-                        .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(201, Short.MAX_VALUE))
+                        .addComponent(jButton2)))
+                .addContainerGap(226, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 249, Short.MAX_VALUE)
+                .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57)
+                .addGap(39, 39, 39)
+                .addComponent(jButton2)
+                .addGap(9, 9, 9)
+                .addComponent(report1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)

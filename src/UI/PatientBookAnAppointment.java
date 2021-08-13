@@ -259,14 +259,14 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
 
     private void populatefitnesscombo() {
         comboapp.removeAllItems();
-        for (FitnessTrainer f : system.getFitnessTrainerDirectory().getFitnessTrainers()) {
+        for (Person f : system.globalUserDirectory.getAllFitnessTrainers()) {
             comboapp.addItem(f);
         }
     }
 
     private void populatecounselorcombo() {
         comboapp.removeAllItems();
-        for (Counselor c : system.getCounselorDirectory().getCounselors()) {
+        for (Person c : system.globalUserDirectory.getAllCounselors()) {
             comboapp.addItem(c);
         }
     }
