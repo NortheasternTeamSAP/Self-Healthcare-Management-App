@@ -8,17 +8,11 @@ package UI;
 import Counselor.Counselor;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
-
-import java.awt.CardLayout;
-import java.awt.Component;
-import java.util.ArrayList;
-
 import Personnel.Person;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -165,11 +159,7 @@ public class CounselorDirectory extends javax.swing.JPanel {
         }
 
         Counselor p = (Counselor)tblcounselor.getValueAt(row, 0);
-
-        system.getCounselorDirectory().deleteDCounselor(p);
-
         system.globalUserDirectory.remove(p);
-
         JOptionPane.showMessageDialog(this, "This Counselor  has been deleted ");
         ShowCounselors();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -194,11 +184,6 @@ public class CounselorDirectory extends javax.swing.JPanel {
 
     public void ShowCounselors() {
     DefaultTableModel model = (DefaultTableModel) tblcounselor.getModel();
-
- ArrayList<Counselor> temp=new ArrayList();
-        try {
-            temp=system.getCounselorDirectory().getCounselors();
-
      List<Person> temp;    
         try {
             temp = system.globalUserDirectory.getAllCounselors();

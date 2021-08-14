@@ -269,55 +269,6 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboappActionPerformed
 
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    if (flag==1){
-
-         Dietitian selectedDietitian=(Dietitian) comboapp.getSelectedItem();
-        LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        p.scheduleDietitianAppointment(selectedDietitian, date);
-        JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :"+ selectedDietitian.getDietitianDetails().getFullName()+" on  : "+date);
-      
-       
-        
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        PatientDieticianDashboard d=(PatientDieticianDashboard)component;
-        d.populateUpcomingDieticianAppointments();
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);   
-    }
-    
-    else if (flag==2){
-     FitnessTrainer selectedFitnessTrainer=(FitnessTrainer) comboapp.getSelectedItem();
-     LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-     p.scheduleFitnessAppointment(selectedFitnessTrainer, date);
-     JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with FitnessTrainer   :"+ selectedFitnessTrainer.getFitnessTrainerDetails().getFullName()+" on  : "+date);
-     WorkArea.remove(this);
-     Component[] componentArray = WorkArea.getComponents();
-     Component component = componentArray[componentArray.length - 1];
-     PatientFitnessDashboard d=(PatientFitnessDashboard)component;
-     d.populateUpcomingFitnessTrainerAppointments();
-     CardLayout layout = (CardLayout)WorkArea.getLayout();
-     layout.previous(WorkArea);
-    }
-    else 
-    {
-     Counselor selectedCounselor=(Counselor) comboapp.getSelectedItem();
-     LocalDate date =(LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-     p.scheduleCounselorAppointment(selectedCounselor, date);
-     JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with selectedCounselor   :"+ selectedCounselor.getPersonDetails().getFullName()+" on  : "+date);
-     WorkArea.remove(this);
-     Component[] componentArray = WorkArea.getComponents();
-     Component component = componentArray[componentArray.length - 1];
-     PatientCounselorDashboard d=(PatientCounselorDashboard)component;
-     d.populateUpcomingCounselorAppointments();
-     CardLayout layout = (CardLayout)WorkArea.getLayout();
-     layout.previous(WorkArea);
-    }    
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void confirmappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmappActionPerformed
         if (flag == 1) {
 
@@ -368,7 +319,6 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
             layout.previous(WorkArea);
         }
     }//GEN-LAST:event_confirmappActionPerformed
-
 
     private void backfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backfActionPerformed
         if(flag==1){

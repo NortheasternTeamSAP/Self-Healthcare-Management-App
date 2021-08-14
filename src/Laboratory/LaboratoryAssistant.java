@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.swing.Icon;
 
 /**
  *
@@ -36,12 +35,10 @@ public class LaboratoryAssistant implements Person {
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber,
-            Icon logoImage,
+            String phoneNumber, 
             UserAccount account) {
         
-        labAssistantDetails = new PersonDetails(fullName, dob, gender, 
-                address, phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage);
+        labAssistantDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.INSURANCE_PROVIDER_REP);
         pendingLabTests = new ArrayList<>();
         completedLabTests = new ArrayList<>();
     }

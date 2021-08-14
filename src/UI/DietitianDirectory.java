@@ -9,17 +9,12 @@ import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
-
 import Personnel.Person;
-
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-
 import java.util.List;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -167,11 +162,7 @@ public class DietitianDirectory extends javax.swing.JPanel {
         }
         
         Dietitian p = (Dietitian)tbldietitians.getValueAt(row, 0);
-
-        system.getDietitianDirectory().deleteDeititian(p);
-
         system.globalUserDirectory.remove(p);
-
          JOptionPane.showMessageDialog(this, "This dietician  has been deleted ");
          ShowDietitians();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -194,27 +185,6 @@ public class DietitianDirectory extends javax.swing.JPanel {
     private javax.swing.JTable tbldietitians;
     // End of variables declaration//GEN-END:variables
 
-
- public void ShowDietitians() {
- DefaultTableModel model = (DefaultTableModel) tbldietitians.getModel();
- ArrayList<Dietitian> temp=new ArrayList();
-        try {
-            temp=system.getDietitianDirectory().getDietitians();
-        } catch (Exception e) {
-            return;
-        }
- 
-        model.setRowCount(0);
-        
-        for(int i=0;i<temp.size();i++)
-    {
-        Object row[] = new Object[1];
-        row[0] = temp.get(i);
-        model.addRow(row);
-     
-    }       
-   }
-
     public void ShowDietitians() {
         DefaultTableModel model = (DefaultTableModel) tbldietitians.getModel();
         List<Person> temp;       
@@ -234,5 +204,4 @@ public class DietitianDirectory extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-
 }

@@ -5,7 +5,6 @@
  */
 package PatientCoreWorkFlowUI;
 
-import DataStore.GlobalUserDirectory;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
@@ -30,8 +29,6 @@ import javax.swing.SwingConstants;
 public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
 
     EcoSystem ecosystem;
-   GlobalUserDirectory globalUserDirectory;
-    
     
     /**
      * Creates new form AnkurTestMain
@@ -40,36 +37,34 @@ public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
         initComponents();
         
         this.ecosystem = new EcoSystem();
-        this.globalUserDirectory = globalUserDirectory;
         
-        
-//        // Create temporary patient and doctor
+        // Create temporary patient and doctor
         Person p1 = new Patient("Anurag Katey", LocalDate.now(), PersonDetails.Gender.MALE,
-               new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("anurag", "anurag"));
-            this.ecosystem.globalUserDirectory.createNewUser(p1);
-       
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("anurag", "anurag"));
+        this.ecosystem.globalUserDirectory.createNewUser(p1);
+        
         Person p2 = new Patient("Ankur Bywar", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("ankur", "ankur"));
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("ankur", "ankur"));
         this.ecosystem.globalUserDirectory.createNewUser(p2);
-       
-       Person p3 = new Patient("Preeti Gopal", LocalDate.now().minusYears(29), PersonDetails.Gender.FEMALE,
-                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("preeti", "preeti"));
+        
+        Person p3 = new Patient("Preeti Gopal", LocalDate.now().minusYears(29), PersonDetails.Gender.FEMALE,
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("preeti", "preeti"));
         this.ecosystem.globalUserDirectory.createNewUser(p3);
-      
-        Person d1 = new Doctor("Dr. Anaya Katey", LocalDate.now(), PersonDetails.Gender.FEMALE,
-               new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("anaya", "anaya"));
-        this.ecosystem.globalUserDirectory.createNewUser(d1);
        
+        Person d1 = new Doctor("Dr. Anaya Katey", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("anaya", "anaya"));
+        this.ecosystem.globalUserDirectory.createNewUser(d1);
+        
         Person d2 = new Doctor("Dr. Sanjay Katey", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("sanjay", "sanjay"));
-       this.ecosystem.globalUserDirectory.createNewUser(d2);
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("sanjay", "sanjay"));
+        this.ecosystem.globalUserDirectory.createNewUser(d2);
         
         Person d3 = new Doctor("Dr. Sushama Katey", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("sush", "sush"));
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("sush", "sush"));
         this.ecosystem.globalUserDirectory.createNewUser(d3);
-       
-       // nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
-        nextScreen(this, mainWorkArea, new ManageDoctorJPanel(mainWorkArea, ecosystem ,globalUserDirectory) , " ManageDoctorJPanel");
+        
+        nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
+        //nextScreen(this, mainWorkArea, new GeneratePatientBillJPanel(), "xxx");
         
     }
 

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.swing.Icon;
 
 /**
  *
@@ -35,10 +34,9 @@ public class Doctor implements Person {
             Gender gender, 
             Address address, 
             String phoneNumber, 
-            Icon logoImage,
             UserAccount account) {
         
-        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage);
+        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR);
         speciality = "Unknown";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();

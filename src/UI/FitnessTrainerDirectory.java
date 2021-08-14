@@ -8,11 +8,6 @@ package UI;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
-
-import java.awt.CardLayout;
-import java.awt.Component;
-import java.util.ArrayList;
-
 import Personnel.Person;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -172,11 +167,7 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
         }
 
         FitnessTrainer p = (FitnessTrainer)tblFitnesstrainers.getValueAt(row, 0);
-
-        system.getFitnessTrainerDirectory().deleteFitnessTrainer(p);
-
         system.globalUserDirectory.remove(p);
-
         JOptionPane.showMessageDialog(this, "This FitnessTrainer  has been deleted ");
         ShowFitnessTrainers();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -193,15 +184,9 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
 
     public void ShowFitnessTrainers() {
         DefaultTableModel model = (DefaultTableModel) tblFitnesstrainers.getModel();
-
-         ArrayList<FitnessTrainer> temp=new ArrayList();
-        try {
-            temp=system.getFitnessTrainerDirectory().getFitnessTrainers();
-
         List<Person> temp;
         try {
            temp=system.globalUserDirectory.getAllFitnessTrainers();
-
         } catch (Exception e) {
             return;
         }

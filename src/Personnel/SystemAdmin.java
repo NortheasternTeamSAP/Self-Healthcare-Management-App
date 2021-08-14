@@ -7,7 +7,6 @@ package Personnel;
 
 import Personnel.PersonDetails.Gender;
 import java.time.LocalDate;
-import javax.swing.Icon;
 
 /**
  *
@@ -21,12 +20,10 @@ public class SystemAdmin implements Person {
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber,
-            Icon logoImage,
+            String phoneNumber, 
             UserAccount account) {
         
-        sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, 
-                Role.SYSTEM_ADMIN, logoImage);
+        sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.SYSTEM_ADMIN);
     }
 
     @Override
