@@ -47,6 +47,7 @@ public class RecordVitalsJPanel extends javax.swing.JPanel {
     MainJFrame mainJFrame;
     EcoSystem ecoSystem;
     
+    
     /**
      * Creates new form RecordVitalsJPanel
      */

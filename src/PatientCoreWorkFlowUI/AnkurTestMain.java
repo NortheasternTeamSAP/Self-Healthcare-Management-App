@@ -30,7 +30,7 @@ import javax.swing.SwingConstants;
 public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
 
     EcoSystem ecosystem;
-    GlobalUserDirectory globalUserDirectory;
+   GlobalUserDirectory globalUserDirectory;
     
     
     /**
@@ -68,8 +68,8 @@ public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
                 new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("sush", "sush"));
         this.ecosystem.globalUserDirectory.createNewUser(d3);
        
-        nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
-        //nextScreen(this, mainWorkArea, new CreateDoctorJPanel(mainWorkArea, ecosystem ,(doctor) d1)) , " CreateDoctorJPanel");
+       // nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
+        nextScreen(this, mainWorkArea, new ManageDoctorJPanel(mainWorkArea, ecosystem ,globalUserDirectory) , " ManageDoctorJPanel");
         
     }
 
