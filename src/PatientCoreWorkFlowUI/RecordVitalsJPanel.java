@@ -7,7 +7,7 @@ package PatientCoreWorkFlowUI;
 
 import EcoSystem.EcoSystem;
 import Patient.Patient;
-import Ui.MainJFrame;
+import SysAdminUI.MainJFrame;
 import VitalSign.Range;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;

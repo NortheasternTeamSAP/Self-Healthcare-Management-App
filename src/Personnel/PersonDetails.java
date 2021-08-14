@@ -137,6 +137,7 @@ public class PersonDetails {
         this.role = role;
     }
 
+
     public Icon getLogoImage() {
         return logoImage;
     }

@@ -9,10 +9,17 @@ import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+
+import Personnel.Person;
+
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+
+import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -152,6 +159,7 @@ public class DietitianDirectory extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         int row = tbldietitians.getSelectedRow();
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a Dietitian from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -159,7 +167,11 @@ public class DietitianDirectory extends javax.swing.JPanel {
         }
         
         Dietitian p = (Dietitian)tbldietitians.getValueAt(row, 0);
+
         system.getDietitianDirectory().deleteDeititian(p);
+
+        system.globalUserDirectory.remove(p);
+
          JOptionPane.showMessageDialog(this, "This dietician  has been deleted ");
          ShowDietitians();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -182,6 +194,7 @@ public class DietitianDirectory extends javax.swing.JPanel {
     private javax.swing.JTable tbldietitians;
     // End of variables declaration//GEN-END:variables
 
+
  public void ShowDietitians() {
  DefaultTableModel model = (DefaultTableModel) tbldietitians.getModel();
  ArrayList<Dietitian> temp=new ArrayList();
@@ -201,4 +214,25 @@ public class DietitianDirectory extends javax.swing.JPanel {
      
     }       
    }
+
+    public void ShowDietitians() {
+        DefaultTableModel model = (DefaultTableModel) tbldietitians.getModel();
+        List<Person> temp;       
+                
+        try {
+            //temp = system.getDietitianDirectory().getDietitians();
+            temp = system.globalUserDirectory.getAllDietitians();
+        } catch (Exception e) {
+            return;
+        }
+
+        model.setRowCount(0);
+
+        for (int i = 0; i < temp.size(); i++) {
+            Object row[] = new Object[1];
+            row[0] = temp.get(i);
+            model.addRow(row);
+        }
+    }
+
 }

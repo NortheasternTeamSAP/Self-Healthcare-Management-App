@@ -34,8 +34,19 @@ public class GlobalUserDirectory {
     public Person get(String username) {
         return personDirectory.get(username);
     }
-    
+
     public void add(Person person) {
+
+    public Person get(String username, String password) {
+        if (credentialsManager.authenticateUser(username, password))
+        {
+            return get(username);
+        }
+        return null;
+    }
+    
+    void add(Person person) {
+
         if (person == null) {
             log.error("Person is null. Cannot add to global user directory.");
             return;
@@ -50,6 +61,24 @@ public class GlobalUserDirectory {
         
         personDirectory.add(person.getUserAccount().getUsername(), person);
     }
+    
+    public void remove(Person person) {
+        if (person == null) {
+            log.error("Person is null. Cannot remove from global user directory.");
+            return;
+        } 
+        
+        if (person.getUserAccount() == null || 
+                person.getUserAccount().getUsername() == null) {
+            log.error("Person's useraccount OR username is null. "
+                    + "Cannot remove from global user directory.");
+            return;
+        }        
+        
+        personDirectory.remove(person.getUserAccount().getUsername());
+        credentialsManager.removeUserAccount(person.getUserAccount().getUsername());
+    }
+        
     
     // Use this method to create a new user after collecting user data from console
     public void createNewUser(Person person) {
@@ -69,6 +98,7 @@ public class GlobalUserDirectory {
         }
         return doctors;
     }
+
 
     public void deletePerson(Person p) {
         String person = null;
@@ -91,5 +121,38 @@ public class GlobalUserDirectory {
         return LaboratoryAssistants;
     }
 
+ 
     
+    public List<Person> getAllDietitians() {
+        List<Person> dietitians = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.DIETITIAN)) {
+                dietitians.add(p);
+            }
+        }
+        return dietitians;
+    }  
+    
+       public List<Person> getAllFitnessTrainers() {
+        List<Person> fitnessTrainers = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.TRAINER)) {
+                fitnessTrainers.add(p);
+            }
+        }
+        return fitnessTrainers;
+    }  
+       
+        public List<Person> getAllCounselors() {
+        List<Person> counselors = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.COUNSELOR)) {
+                counselors.add(p);
+            }
+        }
+        return counselors;
+
 }

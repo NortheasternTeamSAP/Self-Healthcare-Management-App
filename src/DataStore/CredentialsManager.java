@@ -82,6 +82,16 @@ public class CredentialsManager {
         log.debug("Useraccount created for username " + userAccount);
     }
     
+    public void removeUserAccount(String username) {
+        
+        if (username == null) {
+            log.error("Cannot remove null username");
+            return;
+        }        
+        log.debug("Deleting user " + username);        
+        directory.remove(username);
+    }
+    
     // Checks if the username already exists in the system.
     // This should be used while a new user is being created.
     // Usernames must be unique across all users in the system since

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package FitnessTrainer;
+import FitnessTrainer.FitnessPlan.Excercise;
 import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
@@ -12,6 +13,8 @@ import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -21,6 +24,7 @@ public class FitnessTrainer implements Person{
     
     private PersonDetails fitnessTrainerDetails;
     private FitnessTrainerSchedule fitnessTrainerSchedule;
+    private Set<String /* Appointment Date + time */> availability;
     
     public FitnessTrainer(
             String fullName, 
@@ -31,6 +35,7 @@ public class FitnessTrainer implements Person{
             UserAccount account) {
         fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER);
         fitnessTrainerSchedule = new FitnessTrainerSchedule();
+        this.availability = new HashSet<>();
     }
 
     @Override
@@ -43,7 +48,12 @@ public class FitnessTrainer implements Person{
         return fitnessTrainerDetails.getRole();
     }
     
-    public FitnessTrainerAppointment scheduleAppointment (LocalDate d,Patient p ){
+    public boolean isFitnessTrainerAvailable(LocalDate date, int timeHours) {
+        return !availability.contains(date.toString() + timeHours);
+    }        
+    
+    public FitnessTrainerAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ){
+        availability.add(d.toString() + timeHours);
         return fitnessTrainerSchedule.ScheduleAppointment(d, p, this);
     }
 
@@ -52,8 +62,8 @@ public class FitnessTrainer implements Person{
     }
     
     
-    public void addFitnessPlan(Patient p, ArrayList<String> plan){    
-        FitnessPlan fp= new FitnessPlan(p,this, plan);
+    public void addFitnessPlan(Patient p, ArrayList<String> plan,ArrayList<Excercise> e){    
+        FitnessPlan fp= new FitnessPlan(p,this, plan,e);
         p.addFitnessPlan(fp);
     }
     

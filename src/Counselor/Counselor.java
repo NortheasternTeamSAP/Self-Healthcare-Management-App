@@ -16,6 +16,8 @@ import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -26,6 +28,7 @@ public class Counselor implements Person{
     
      private PersonDetails counselorDetails;
     private CounselorSchedule counselorSchedule;
+    private Set<String /* Appointment Date + time */> availability;
     
     public Counselor(
             String fullName, 
@@ -36,6 +39,7 @@ public class Counselor implements Person{
             UserAccount account) {
         counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR);
         counselorSchedule = new CounselorSchedule();
+        this.availability = new HashSet<>();
     }
 
     @Override
@@ -48,7 +52,12 @@ public class Counselor implements Person{
         return counselorDetails.getRole();
     }
     
-    public CounselorAppointment scheduleAppointment (LocalDate d,Patient p ){
+    public boolean isCounselorAvailable(LocalDate date, int timeHours) {
+        return !availability.contains(date.toString() + timeHours);
+    }    
+    
+    public CounselorAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ){
+        availability.add(d.toString() + timeHours);
         return counselorSchedule.ScheduleAppointment(d, p, this);
     }
 

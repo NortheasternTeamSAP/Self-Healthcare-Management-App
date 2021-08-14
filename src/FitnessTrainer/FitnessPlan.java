@@ -17,6 +17,35 @@ public class FitnessPlan {
      private Patient patient ;
     private FitnessTrainer fitnessTrainer;
     ArrayList<String> fitnessplans;
+    ArrayList<Excercise> excercises;
+
+    public FitnessTrainer getFitnessTrainer() {
+        return fitnessTrainer;
+    }
+
+    public ArrayList<Excercise> getExcercises() {
+        return excercises;
+    }
+    
+    
+    
+ public enum Excercise{
+        Cardio("Cardio"),
+        Weight("Weight"),
+        CrossTraining("CrossTraining");
+        private String value;
+        
+        private Excercise(String value){
+            this.value=value;
+        }
+        public String getValue() {
+            return value;
+        }
+        @Override
+        public String toString(){
+        return value;
+    }
+    }
 
     @Override
     public String toString() {
@@ -25,11 +54,12 @@ public class FitnessPlan {
 
 
     
-    public FitnessPlan(Patient patient, FitnessTrainer fitnessTrainer, ArrayList<String> fitnessplans)
+    public FitnessPlan(Patient patient, FitnessTrainer fitnessTrainer, ArrayList<String> fitnessplans,ArrayList<Excercise> e)
     {        
         this.patient = patient;
         this.fitnessTrainer = fitnessTrainer;
         this.fitnessplans = fitnessplans;
+        this.excercises=e;
     }
 
     public Patient getPatient() {

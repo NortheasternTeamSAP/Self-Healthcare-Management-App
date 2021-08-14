@@ -26,8 +26,7 @@ public class VitalSigns {
         this.respiratoryRate = 0;
         this.heartRate = 0;
         this.bloodPressure = new Range();
-        this.weight=0;
-        
+        this.weight=0;        
         this.dateForVitalSigns = null;
 
 
