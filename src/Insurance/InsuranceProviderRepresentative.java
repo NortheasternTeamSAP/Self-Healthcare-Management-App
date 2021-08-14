@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.swing.Icon;
 
 /**
  *
@@ -33,10 +34,12 @@ public class InsuranceProviderRepresentative implements Person {
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber, 
+            String phoneNumber,
+            Icon logoImage,
             UserAccount account) {
         
-        insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.INSURANCE_PROVIDER_REP);
+        insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, 
+                phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage);
     }
 
     public Organization getOrganization() {

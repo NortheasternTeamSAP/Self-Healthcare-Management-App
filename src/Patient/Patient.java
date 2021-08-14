@@ -28,8 +28,11 @@ import VitalSign.VitalSigns;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.Icon;
 
 /**
  *
@@ -44,7 +47,7 @@ public class Patient implements Person {
     private ArrayList<FitnessTrainerAppointment> fitnessTrainerAppointments;
     private ArrayList<CounsellingNote> counsellingNotes;
     private ArrayList<CounselorAppointment> counselorAppointments;
-    private ArrayList<VitalSigns> vitalSignsHistory;
+    private Map<LocalDate, VitalSigns> vitalSignsHistory;
     private VitalSigns mostRecentVitalSigns;
     private VitalSignNormalRange vitalSignNormalRange;
     private ArrayList<Appointment> doctorAppointments;
@@ -58,17 +61,18 @@ public class Patient implements Person {
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber, 
+            String phoneNumber,
+            Icon logoImage,
             UserAccount account) {
         
-        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT);
+        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage);
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
         fitnessPlans=new ArrayList<FitnessPlan>();
         fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
         counsellingNotes=new ArrayList<CounsellingNote>();
         counselorAppointments=new ArrayList<CounselorAppointment>();
-        this.vitalSignsHistory = new ArrayList<VitalSigns>();
+        this.vitalSignsHistory = new HashMap<>();
         this.mostRecentVitalSigns = null;
         this.vitalSignNormalRange = null;
         this.doctorAppointments = new ArrayList<>();
@@ -177,12 +181,12 @@ public class Patient implements Person {
     }
 
     public List<VitalSigns> getVitalSignsHistory() {
-        return this.vitalSignsHistory;
+        return new ArrayList<>(this.vitalSignsHistory.values());
     }
 
     public void addNewVitalSign(VitalSigns vs) {
         if (vs != null) {
-            this.vitalSignsHistory.add(vs);
+            this.vitalSignsHistory.put(vs.getDateForVitalSigns(), vs);
             if (this.mostRecentVitalSigns == null) {
                 this.mostRecentVitalSigns = vs;
             } else {

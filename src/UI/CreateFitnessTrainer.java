@@ -315,7 +315,11 @@ JPanel WorkArea;
                 Gender gender =(Gender)combogender1.getSelectedItem();
                 LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 FitnessTrainer fitnessTrainer = new FitnessTrainer(txtname1.getText(),date,gender,addr,txtphoneno.getText(),account);
+
+                system.getFitnessTrainerDirectory().AddFitnessTrainer(fitnessTrainer);
+
                 system.globalUserDirectory.createNewUser(fitnessTrainer);
+
                 JOptionPane.showMessageDialog(this, "Details have been saved : "+txtname1.getText());
 
                 WorkArea.remove(this);

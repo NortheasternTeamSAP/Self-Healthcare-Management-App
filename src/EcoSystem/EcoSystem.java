@@ -63,6 +63,19 @@ public class EcoSystem {
         exampleCreateEnterpriseOrganizationAndRoles();
     }
 
+
+    public FitnessTrainerDirectory getFitnessTrainerDirectory() {
+        return fitnessTrainerDirectory;
+    }
+
+    public GlobalUserDirectory getGlobalUserDirectory() {
+        return globalUserDirectory;
+    }
+    
+    
+    
+    
+
     void example() {
         // How to get a user from globalUserDirectory
         Person person = globalUserDirectory.get("sysadmin");
@@ -124,25 +137,25 @@ public class EcoSystem {
 
         // Create roles
         // Admin
-        Person sysAdmin = new SystemAdmin(null, null, null, null, null, new UserAccount("sysadmin", "sysadmin"));
+        Person sysAdmin = new SystemAdmin(null, null, null, null, null, null ,new UserAccount("sysadmin", "sysadmin") );
         this.globalUserDirectory.createNewUser(sysAdmin);
         adminOrg.addEmployee(sysAdmin);
 
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("pat1", "pat1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("pat1", "pat1"));
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
         // Doctor
         Person doctor = new Doctor("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("doc1", "doc1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("doc1", "doc1"));
         this.globalUserDirectory.createNewUser(doctor);
         primaryCareOrg.addEmployee(doctor);
 
         // Lab Assistant
         Person labAssistant = new LaboratoryAssistant("Lab Assistant-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("labassist1", "labassist1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null , new UserAccount("labassist1", "labassist1"));
         this.globalUserDirectory.createNewUser(labAssistant);
         laboratoryOrg.addEmployee(labAssistant);
 
@@ -163,7 +176,7 @@ public class EcoSystem {
 
         // Insurance provider representative
         Person insuranceRep = new InsuranceProviderRepresentative("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("insrep1", "insrep1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("insrep1", "insrep1"));
         this.globalUserDirectory.createNewUser(insuranceRep);
         healthInsuranceOrg.addEmployee(insuranceRep);
         ((InsuranceProviderRepresentative) insuranceRep).setOrganization(healthInsuranceOrg);

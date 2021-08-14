@@ -5,6 +5,7 @@
  */
 package DataStore;
 
+import Doctor.Doctor;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.Role;
@@ -33,7 +34,9 @@ public class GlobalUserDirectory {
     public Person get(String username) {
         return personDirectory.get(username);
     }
-    
+
+    public void add(Person person) {
+
     public Person get(String username, String password) {
         if (credentialsManager.authenticateUser(username, password))
         {
@@ -43,6 +46,7 @@ public class GlobalUserDirectory {
     }
     
     void add(Person person) {
+
         if (person == null) {
             log.error("Person is null. Cannot add to global user directory.");
             return;
@@ -94,6 +98,30 @@ public class GlobalUserDirectory {
         }
         return doctors;
     }
+
+
+    public void deletePerson(Person p) {
+        String person = null;
+        personDirectory.remove(person);
+       
+        
+       
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+    
+    public List<Person> getAllLabAssistants() {
+        List<Person> LaboratoryAssistants = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.LABASSISTANT)) {
+                LaboratoryAssistants.add(p);
+            }
+        }
+        return LaboratoryAssistants;
+    }
+
+ 
     
     public List<Person> getAllDietitians() {
         List<Person> dietitians = new ArrayList<>();
@@ -126,5 +154,5 @@ public class GlobalUserDirectory {
             }
         }
         return counselors;
-    } 
+
 }

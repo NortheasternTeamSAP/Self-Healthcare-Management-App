@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,13 +8,25 @@ package PatientCoreWorkFlowUI;
 
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+import Utils.GraphPlotterUtils;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -44,11 +57,14 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        levelRenderer1 = new org.jfree.chart.renderer.category.LevelRenderer();
         jDataOfPatientVitalSignPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatientsEncounterHistory = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btnLineChart = new javax.swing.JButton();
 
         jLabel1.setText("Data Of Patient Vital Sign");
 
@@ -88,6 +104,17 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 248, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jDataOfPatientVitalSignPanelLayout = new javax.swing.GroupLayout(jDataOfPatientVitalSignPanel);
         jDataOfPatientVitalSignPanel.setLayout(jDataOfPatientVitalSignPanelLayout);
         jDataOfPatientVitalSignPanelLayout.setHorizontalGroup(
@@ -100,6 +127,10 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
                         .addGap(168, 168, 168)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jDataOfPatientVitalSignPanelLayout.createSequentialGroup()
+                .addGap(162, 162, 162)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDataOfPatientVitalSignPanelLayout.setVerticalGroup(
             jDataOfPatientVitalSignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,23 +141,38 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
                     .addComponent(btnBack))
                 .addGap(120, 120, 120)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        btnLineChart.setText("Show Trend");
+        btnLineChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLineChartActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(295, 295, 295)
+                        .addComponent(btnLineChart)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(btnLineChart)
+                .addGap(53, 53, 53))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,12 +192,87 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
     layout.next(WorkAreaPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnLineChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineChartActionPerformed
+        // TODO add your handling code here:
+//       String chartTitle = "Record Vital Signs";
+//       String CategoryAxisLabel = "DateForVitals";
+//       String ValueAxisLabel  = "Ranges";
+//       VitalSigns vs = null;
+//       patient.addNewVitalSign(vs);
+//       
+////       String HighBp = txtHighBp.getText();
+////       String heartRate = txtHeartRate.getText();
+////       String respiratoryRate = txtRespirtoryRate.getText();
+////       String weight = txtWeight.getText();
+//   
+//       //XYSeriesCollection dataset = new XYSeriesCollection();
+//         
+//        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+//        dcd.addValue(12,"weight", "2021-8-15");
+//        dcd.addValue(50,"lowbp", "2021-8-15");
+//        dcd.addValue(110,"highbp", "2021-8-15");
+//        dcd.addValue(90,"respiratoryrate", "2021-8-15");
+//        dcd.addValue(60,"heartrate", "2021-8-15");
+//       
+////        dcd.setValue(new Integer(weight), "values" , "weight" );
+////      dcd.setValue(new Integer(lowBp) , "values" , "lowBp");
+////        dcd.setValue(new Integer(HighBp) , "values" , "highBp");
+////        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
+////        dcd.setValue(new Integer(heartRate) , "values" , "heatrate");
+////        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
+//       
+//        JFreeChart jchart = ChartFactory.createLineChart ("Record Vitals", "Dateforvitals", "Ranges", dcd, PlotOrientation.VERTICAL, true, true, false);
+//        CategoryPlot plot = jchart.getCategoryPlot();
+//        plot.setRangeGridlinePaint(Color.black);
+//        ChartFrame cf = new ChartFrame("Vital sign", jchart, true);
+//        cf.setVisible(true);
+//        cf.setSize(500, 400);
+//        ChartPanel cp = new ChartPanel(jchart);
+//        jPanel1.removeAll();
+//        jPanel1.add(cp);
+//        jPanel1.updateUI();
+//        
+        
+//    String series1 = "weight";
+//    String series2 = "lowBp";
+//    String series3 = "HighBp";
+//    String series4 = "RespiratoryRate";
+//    String series5 = "HeartRate";
+ 
+        List<VitalSigns> vitalSignsHistory = patient.getVitalSignsHistory();
+        Map<LocalDate, Double> lowBloodPressureVitalSignMap = new TreeMap<>();
+        Map<LocalDate, Double> highBloodPressureVitalSignMap = new TreeMap<>();
+        Map<LocalDate, Double> heartRateVitalSignMap = new TreeMap<>();
+        Map<LocalDate, Double> respiratoryRateVitalSignMap = new TreeMap<>();
+        Map<LocalDate, Double> weightVitalSignMap = new TreeMap<>();
+        for (VitalSigns vs : vitalSignsHistory) {
+            lowBloodPressureVitalSignMap.put(vs.getDateForVitalSigns(), vs.getBloodPressure().getLow());
+            highBloodPressureVitalSignMap.put(vs.getDateForVitalSigns(), vs.getBloodPressure().getHigh());
+            heartRateVitalSignMap.put(vs.getDateForVitalSigns(), vs.getHeartRate() * 1.0);
+            respiratoryRateVitalSignMap.put(vs.getDateForVitalSigns(), vs.getRespiratoryRate() * 1.0);
+            weightVitalSignMap.put(vs.getDateForVitalSigns(), vs.getWeight() * 1.0);
+        }
+
+       DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+       GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
+       graphPlotterUtils.addToDataSet(lowBloodPressureVitalSignMap, "LowBP", dataset);
+       graphPlotterUtils.addToDataSet(highBloodPressureVitalSignMap, "HighBP", dataset);
+       graphPlotterUtils.addToDataSet(heartRateVitalSignMap, "HeartRate", dataset);
+       graphPlotterUtils.addToDataSet(respiratoryRateVitalSignMap, "RespiratoryRate", dataset);
+       graphPlotterUtils.addToDataSet(weightVitalSignMap, "Weight", dataset);
+
+       graphPlotterUtils.createLineChart("Dateforvitals", "Ranges", "All vital Signs trend", "Vital sign", dataset, jPanel1);
+    }//GEN-LAST:event_btnLineChartActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnLineChart;
     private javax.swing.JPanel jDataOfPatientVitalSignPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private org.jfree.chart.renderer.category.LevelRenderer levelRenderer1;
     private javax.swing.JTable tblPatientsEncounterHistory;
     // End of variables declaration//GEN-END:variables
 
