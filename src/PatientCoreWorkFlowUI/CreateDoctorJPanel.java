@@ -17,6 +17,7 @@ import Personnel.UserAccount;
 import UI.DietitianDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
     GlobalUserDirectory gud;
     EcoSystem system;
     Doctor doctor;
-    int flag=0;
+    //int flag=0;
     /**
      * Creates new form CreateDoctorJPanel
      */
@@ -44,28 +45,29 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
         this.system=system;
         this.doctor = doctor;
         combogender1.setModel(new DefaultComboBoxModel(PersonDetails.Gender.values()));
-        flag=1;
-        combogender1.setModel(new DefaultComboBoxModel(PersonDetails.Gender.values()));
-        jLabel1.setText("Modify Doctor");
-        jButton1.setText("Modify");
-        txtname1.setText(doctor.getPersonDetails().getFullName());
-        combogender1.setSelectedItem(doctor.getPersonDetails().getGender());
-        Address addr =doctor.getPersonDetails().getAddress();
-        txtadd1.setText(addr.getStreet());
-        txtadd2.setText(addr.getApartment());
-        txtadd3.setText(addr.getCity());
-        txtadd4.setText(addr.getZipcode());
-        txtadd6.setText(addr.getState());
-        txtadd5.setText(addr.getCountry());
-        txtphoneno.setText(doctor.getPersonDetails().getPhoneNumber());
-        UserAccount us=doctor.getPersonDetails().getUserAccount();
-        txtuname.setText(us.getUsername());
-        txtpswd.setText(us.getPassword());
-        LocalDate localDate=doctor.getPersonDetails().getDob();
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        jDateChooser1.setDate(date);
-        flag=2;
+       // flag=1;
+//        combogender1.setModel(new DefaultComboBoxModel(PersonDetails.Gender.values()));
+//        jLabel1.setText("Modify Doctor");
+//        jButton1.setText("Modify");
+//        txtname1.setText(doctor.getPersonDetails().getFullName());
+//        combogender1.setSelectedItem(doctor.getPersonDetails().getGender());
+//        Address addr =doctor.getPersonDetails().getAddress();
+//        txtadd1.setText(addr.getStreet());
+//        txtadd2.setText(addr.getApartment());
+//        txtadd3.setText(addr.getCity());
+//        txtadd4.setText(addr.getZipcode());
+//        txtadd6.setText(addr.getState());
+//        txtadd5.setText(addr.getCountry());
+//        txtphoneno.setText(doctor.getPersonDetails().getPhoneNumber());
+//        UserAccount us=doctor.getPersonDetails().getUserAccount();
+//        txtuname.setText(us.getUsername());
+//        txtpswd.setText(us.getPassword());
+//        LocalDate localDate=doctor.getPersonDetails().getDob();
+//        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+//        jDateChooser1.setDate(date);
+       // flag=2;
     }
+
    
 
     /**
@@ -329,57 +331,77 @@ public class CreateDoctorJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtname1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-//        try {
-//            
-//       if(flag==1){
-//       
-//      UserAccount account = new UserAccount(txtuname.getText(),txtpswd.getText()); 
-//      Address addr= new Address(txtadd1.getText(),txtadd2.getText(),txtadd3.getText(),txtadd4.getText(),txtadd6.getText(),txtadd5.getText());
-//      Gender gender =(Gender)combogender1.getSelectedItem();
-//      LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//      Doctor doctor = new Doctor(txtuname.getText(),);
-//      //system.getDietitianDirectory().AddDietitian(dietitian);
-//      system.globalUserDirectory.add(doctor);
-//      JOptionPane.showMessageDialog(this, "Details have been saved : "+txtname1.getText());
-//      
-//        WorkArea.remove(this);
-//        Component[] componentArray = WorkArea.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        GlobalUserDirectory gud= (GlobalUserDirectory)component;
-//        gud.ShowDoctors();
-//        CardLayout layout = (CardLayout)WorkArea.getLayout();
-//        layout.previous(WorkArea);   
-//      
-//       
-//       }
-//       else {
-//       doctor.getPersonDetails().setFullName(txtname1.getText());
-//       LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//       doctor.getPersonDetails().setDob(date);
-//       Gender gender =(Gender)combogender1.getSelectedItem();
-//       doctor.getPersonDetails().setGender(gender);
-//       doctor.getPersonDetails().setPhoneNumber(txtphoneno.getText());
-//       doctor.getPersonDetails().getUserAccount().setUsername(txtuname.getText());
-//       doctor.getPersonDetails().getUserAccount().setPassword(txtpswd.getText());
-//       Address addr= new Address(txtadd1.getText(),txtadd2.getText(),txtadd3.getText(),txtadd4.getText(),txtadd6.getText(),txtadd5.getText());
-//       doctor.getPersonDetails().setAddress(addr);
-//       JOptionPane.showMessageDialog(this, "Details have been Modified  : "+txtname1.getText());
-//       
-//          }
-//       
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Please add all details correctly ..");
-//        }
+       GlobalUserDirectory gud = system.getGlobalUserDirectory();
+        String name = txtname1.getText();
+        if (name == null || name.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "name cannot be empty");
+            return;
+        }
+        
+        String userName = txtuname.getText();
+        if (userName == null || userName.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "username cannot be empty");
+            return;
+        }
+       
+                
+        String password = new String(txtpswd.getText());
+        if (password == null || password.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "password cannot be empty");
+            return;
+        }
+        
+        String phoneNumber = txtphoneno.getText();
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "phone number cannot be empty");
+            return;
+        }
+        Date dob = jDateChooser1.getDate();
+        Date currentDate = Date.from(Instant.now());
+        if (dob.after(currentDate)) {
+            JOptionPane.showMessageDialog(jPanel1, "Date of Birth must be older than current date");
+            return; 
+        }
+        
+        try {
+            Long.parseLong(phoneNumber);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jPanel1, "Invalid phone number. Expected numbers only.");
+            return;
+        }
+        
+        if (phoneNumber.length() != 10) {
+            JOptionPane.showMessageDialog(jPanel1, "Invalid phone number. Expected 10 digit number.");
+            return;
+        }
+
+        String addrCommunity = txtadd1.getText();
+        String addrCity = txtadd2.getText();
+        String addrZip = txtadd3.getText();
+        String addrCountry = txtadd4.getText();
+   
+        doctor.getPersonDetails().getFullName();
+        Gender gender =(Gender)combogender1.getSelectedItem();
+        doctor.getPersonDetails().getGender();
+        doctor.getPersonDetails().getPhoneNumber();
+        doctor.getPersonDetails().getUserAccount().getUsername();
+        doctor.getPersonDetails().getUserAccount().getPassword();
+        Address addr= new Address(txtadd1.getText(),txtadd2.getText(),txtadd3.getText(),txtadd4.getText(),txtadd6.getText(),txtadd5.getText());
+        doctor.getPersonDetails().setAddress(addr);
+        
+        
+        JOptionPane.showMessageDialog(null, "doctor Profile Created");
+        
+        
+        System.out.println("size" + system.getGlobalUserDirectory().getAllDoctors().size());
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        GlobalUserDirectory gud= (GlobalUserDirectory)component;
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+       CardLayout layout = (CardLayout) WorkArea.getLayout();
+       WorkArea.add("workArea", new ManageDoctorJPanel(WorkArea, system, gud));
+       layout.next(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
