@@ -51,7 +51,25 @@ public class GraphPlotterUtils {
         panel.add(cp);
         panel.updateUI();
    }
+    public void createBarChart3D(
+            String xAxisLabel, 
+            String yAxisLabel, 
+            String chartName, 
+            String frameTitle, 
+            DefaultCategoryDataset dataset, 
+            JPanel panel) {
+        JFreeChart jchart = ChartFactory.createBarChart3D(chartName, xAxisLabel, yAxisLabel, dataset, PlotOrientation.VERTICAL, true, true, false);
+        CategoryPlot plot = jchart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.black);
+        ChartFrame cf = new ChartFrame(frameTitle, jchart, true);
+        cf.setVisible(true);
+        cf.setSize(500, 400);
+        ChartPanel cp = new ChartPanel(jchart);
+        panel.removeAll();
+        panel.add(cp);
+        panel.updateUI();
     
     
     
+}
 }

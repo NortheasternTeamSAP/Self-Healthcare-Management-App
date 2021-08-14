@@ -11,10 +11,20 @@ import Laboratory.LaboratoryTest;
 import Laboratory.LaboratoryTest.TestType;
 import Laboratory.LaboratoryTestReport;
 import Patient.Patient;
+import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
+import java.awt.Color;
+import static javax.swing.GroupLayout.Alignment.values;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -46,6 +56,7 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        defaultCategoryDataset1 = new org.jfree.data.category.DefaultCategoryDataset();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -64,6 +75,8 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
         btnCompleteLabTest = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextLabTestCost = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        btnShowTrend = new javax.swing.JButton();
 
         jLabel1.setText("Laboratory Test Page");
 
@@ -102,46 +115,28 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
 
         jLabel8.setText("Lab Test Cost");
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
+
+        btnShowTrend.setText("Show Trend");
+        btnShowTrend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTrendActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldVitaminB12, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(245, 245, 245))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLabTestsSave, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCompleteLabTest, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldHemoglobin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldVitaminD, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jTextFieldThyroid, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldBloodSugar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -158,6 +153,48 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
                         .addGap(18, 18, 18)
                         .addComponent(jTextLabTestCost, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addComponent(btnShowTrend)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldHemoglobin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextFieldVitaminD, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jTextFieldThyroid, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldVitaminB12, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldBloodSugar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnLabTestsSave, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCompleteLabTest, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 191, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,11 +217,11 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldVitaminD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldVitaminB12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldBloodSugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,20 +233,24 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLabTestsSave)
                     .addComponent(btnCompleteLabTest))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(btnShowTrend)
+                .addGap(51, 51, 51)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGap(0, 686, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGap(0, 862, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -257,11 +298,58 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
         JOptionPane.showMessageDialog(null,"Lab Tests Results Saved.", "Information", JOptionPane.INFORMATION_MESSAGE );
     }//GEN-LAST:event_btnCompleteLabTestActionPerformed
 
+    private void btnShowTrendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTrendActionPerformed
+        // TODO add your handling code here:
+       String Hemoglobin = jTextFieldHemoglobin.getText();
+       String Thyroid = jTextFieldThyroid.getText();
+       String VitaminD = jTextFieldVitaminD.getText();
+       String VitaminB12 = jTextFieldVitaminB12.getText();
+       String BloodSugar = jTextFieldBloodSugar.getText();
+       DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+       GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
+       dcd.setValue(new Integer(Hemoglobin), "values", "hemoglobin");
+       dcd.setValue(new Integer(Thyroid), "values", "thyroid");
+       dcd.setValue(new Integer(VitaminD), "values", "VitaminD");
+       dcd.setValue(new Integer(VitaminB12), "values", "VitaminB12");
+       dcd.setValue(new Integer(BloodSugar), "values", "BloodSugar");
+       graphPlotterUtils.createBarChart3D("lab tests", "Ranges", "All lab tests trends", "lab test", dcd, jPanel2);
+       //graphPlotterUtils.addToDataSet(values, VitaminD, dcd);
+       
+       
+       
+       
+   
+     
+         
+//        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+//       
+//        dcd.setValue(new Integer(weight), "values" , "weight" );
+//        dcd.setValue(new Integer(lowBp) , "values" , "lowBp");
+//        dcd.setValue(new Integer(HighBp) , "values" , "highBp");
+//        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
+//        dcd.setValue(new Integer(heartRate) , "values" , "heatrate");
+//        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
+//       
+//        JFreeChart jchart = ChartFactory.createBarChart3D("Record Vitals", "Vital sign", "Ranges", dcd, PlotOrientation.VERTICAL, true, true, false);
+//        CategoryPlot plot = jchart.getCategoryPlot();
+//        plot.setRangeGridlinePaint(Color.black);
+//        ChartFrame cf = new ChartFrame("Vital sign", jchart, true);
+//        cf.setVisible(true);
+//        cf.setSize(500, 400);
+//        ChartPanel cp = new ChartPanel(jchart);
+//        jPanel2.removeAll();
+//        jPanel2.add(cp);
+//        jPanel2.updateUI();
+        
+    }//GEN-LAST:event_btnShowTrendActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCompleteLabTest;
     private javax.swing.JButton btnLabTestsSave;
+    private javax.swing.JButton btnShowTrend;
+    private org.jfree.data.category.DefaultCategoryDataset defaultCategoryDataset1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -271,6 +359,7 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldBloodSugar;
     private javax.swing.JTextField jTextFieldHemoglobin;
     private javax.swing.JTextField jTextFieldThyroid;

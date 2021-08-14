@@ -86,24 +86,18 @@
                               <Component id="btnMyMedicinePrescription" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnTestLabAssistantLogin" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnTestInsuranceProvider" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnLogout1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnLogout1" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnUpdatePersonalInformation" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
+                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnTestDoctorLogin" max="32767" attributes="0"/>
@@ -125,7 +119,9 @@
                           <Component id="btnMyMedicinePrescription" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="btnViewOlderAppointments" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="btnLogout1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                           <Component id="btnTestLabAssistantLogin" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnTestInsuranceProvider" min="-2" max="-2" attributes="0"/>
@@ -133,19 +129,12 @@
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="430" max="-2" attributes="0"/>
-                              <Component id="btnLogout1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="454" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
                               <Component id="btnUpdatePersonalInformation" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="713" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
+                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="478" max="32767" attributes="0"/>
                               <Component id="btnTestDoctorLogin" min="-2" max="-2" attributes="0"/>

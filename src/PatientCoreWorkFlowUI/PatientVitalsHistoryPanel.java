@@ -194,50 +194,7 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
 
     private void btnLineChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineChartActionPerformed
         // TODO add your handling code here:
-//       String chartTitle = "Record Vital Signs";
-//       String CategoryAxisLabel = "DateForVitals";
-//       String ValueAxisLabel  = "Ranges";
-//       VitalSigns vs = null;
-//       patient.addNewVitalSign(vs);
-//       
-////       String HighBp = txtHighBp.getText();
-////       String heartRate = txtHeartRate.getText();
-////       String respiratoryRate = txtRespirtoryRate.getText();
-////       String weight = txtWeight.getText();
-//   
-//       //XYSeriesCollection dataset = new XYSeriesCollection();
-//         
-//        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-//        dcd.addValue(12,"weight", "2021-8-15");
-//        dcd.addValue(50,"lowbp", "2021-8-15");
-//        dcd.addValue(110,"highbp", "2021-8-15");
-//        dcd.addValue(90,"respiratoryrate", "2021-8-15");
-//        dcd.addValue(60,"heartrate", "2021-8-15");
-//       
-////        dcd.setValue(new Integer(weight), "values" , "weight" );
-////      dcd.setValue(new Integer(lowBp) , "values" , "lowBp");
-////        dcd.setValue(new Integer(HighBp) , "values" , "highBp");
-////        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
-////        dcd.setValue(new Integer(heartRate) , "values" , "heatrate");
-////        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
-//       
-//        JFreeChart jchart = ChartFactory.createLineChart ("Record Vitals", "Dateforvitals", "Ranges", dcd, PlotOrientation.VERTICAL, true, true, false);
-//        CategoryPlot plot = jchart.getCategoryPlot();
-//        plot.setRangeGridlinePaint(Color.black);
-//        ChartFrame cf = new ChartFrame("Vital sign", jchart, true);
-//        cf.setVisible(true);
-//        cf.setSize(500, 400);
-//        ChartPanel cp = new ChartPanel(jchart);
-//        jPanel1.removeAll();
-//        jPanel1.add(cp);
-//        jPanel1.updateUI();
-//        
-        
-//    String series1 = "weight";
-//    String series2 = "lowBp";
-//    String series3 = "HighBp";
-//    String series4 = "RespiratoryRate";
-//    String series5 = "HeartRate";
+
  
         List<VitalSigns> vitalSignsHistory = patient.getVitalSignsHistory();
         Map<LocalDate, Double> lowBloodPressureVitalSignMap = new TreeMap<>();
