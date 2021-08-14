@@ -68,8 +68,8 @@ public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
                 new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("sush", "sush"));
         this.ecosystem.globalUserDirectory.createNewUser(d3);
        
-       // nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
-        nextScreen(this, mainWorkArea, new ManageDoctorJPanel(mainWorkArea, ecosystem ,globalUserDirectory) , " ManageDoctorJPanel");
+       nextScreen(this, mainWorkArea, new PatientHomePagePanel(mainWorkArea, ecosystem, (Patient) p1), "PatientHomePagePanel");
+        //nextScreen(this, mainWorkArea, new ManageDoctorJPanel(mainWorkArea, ecosystem ,globalUserDirectory) , " ManageDoctorJPanel");
         
     }
 
@@ -92,21 +92,21 @@ public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 435, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(220, Short.MAX_VALUE)
+                    .addContainerGap(237, Short.MAX_VALUE)
                     .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(180, Short.MAX_VALUE)))
+                    .addContainerGap(198, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 346, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(177, Short.MAX_VALUE)
+                    .addContainerGap(200, Short.MAX_VALUE)
                     .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(123, Short.MAX_VALUE)))
+                    .addContainerGap(146, Short.MAX_VALUE)))
         );
 
         pack();
