@@ -72,8 +72,24 @@ public class GlobalUserDirectory {
 
     public void deletePerson(Person p) {
         String person = null;
-        personDirectory.remove(p);
+        personDirectory.remove(person);
+       
+        
        
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   
+    
+    public List<Person> getAllLabAssistants() {
+        List<Person> LaboratoryAssistants = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(Role.LABASSISTANT)) {
+                LaboratoryAssistants.add(p);
+            }
+        }
+        return LaboratoryAssistants;
+    }
+
+    
 }

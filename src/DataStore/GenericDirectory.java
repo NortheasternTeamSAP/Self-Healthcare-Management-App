@@ -76,7 +76,11 @@ public class GenericDirectory<Key, Value> {
         return new ArrayList<>(directory.values());
     }    
 
-    void remove(Person p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+
+//    void remove(Person p) {
+//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//       this.remove(p);
+//    
+//    }
 }

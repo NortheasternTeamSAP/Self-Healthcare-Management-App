@@ -21,7 +21,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
- * @author mrs.katey
+ * @author  Ankur Bywar
  */
 public class GraphPlotterUtils {
     

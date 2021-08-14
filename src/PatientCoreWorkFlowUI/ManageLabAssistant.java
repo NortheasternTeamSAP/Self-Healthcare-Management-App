@@ -6,14 +6,13 @@
 package PatientCoreWorkFlowUI;
 
 import DataStore.GlobalUserDirectory;
-import Dietitian.Dietitian;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
+import Laboratory.LaboratoryAssistant;
 import Personnel.Person;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -22,25 +21,22 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mrs.katey
  */
-public class ManageDoctorJPanel extends javax.swing.JPanel {
+public class ManageLabAssistant extends javax.swing.JPanel {
    JPanel WorkArea;
    EcoSystem system;
-   Doctor doctor;
+   LaboratoryAssistant la;
    GlobalUserDirectory gud;
-   
     /**
-     * Creates new form ManageDoctorJPanel
+     * Creates new form ManageLabAssistant
      */
-    public ManageDoctorJPanel(JPanel WorkArea, EcoSystem system, GlobalUserDirectory gud) {
+    public ManageLabAssistant(JPanel WorkArea, EcoSystem system, GlobalUserDirectory gud) {
         initComponents();
-        this.WorkArea=WorkArea;
-        this.system=system;
+        this.WorkArea = WorkArea;
         this.gud = gud;
-        this.doctor = doctor;
-        ShowDoctors();
+        this.system = system;
+        showLabAssistant();
     }
 
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,12 +47,25 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDoctor = new javax.swing.JTable();
-        btnAddDoctor = new javax.swing.JButton();
-        btnEditDoctor = new javax.swing.JButton();
+        tblla = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
+        btnEditLabAssistant = new javax.swing.JButton();
+        btnAddLabAss = new javax.swing.JButton();
         btnDeleteDoctor = new javax.swing.JButton();
+
+        tblla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Lab Assistant"
+            }
+        ));
+        jScrollPane1.setViewportView(tblla);
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -65,34 +74,21 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Doctor"
-            }
-        ));
-        jScrollPane1.setViewportView(tblDoctor);
-
-        btnAddDoctor.setText("Add Doctor");
-        btnAddDoctor.addActionListener(new java.awt.event.ActionListener() {
+        btnEditLabAssistant.setText("Edit Lab Assistant");
+        btnEditLabAssistant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddDoctorActionPerformed(evt);
+                btnEditLabAssistantActionPerformed(evt);
             }
         });
 
-        btnEditDoctor.setText("Edit Doctor");
-        btnEditDoctor.addActionListener(new java.awt.event.ActionListener() {
+        btnAddLabAss.setText("Add Lab Assistant");
+        btnAddLabAss.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditDoctorActionPerformed(evt);
+                btnAddLabAssActionPerformed(evt);
             }
         });
 
-        btnDeleteDoctor.setText("Delete Doctor");
+        btnDeleteDoctor.setText("Delete Lab Assistant");
         btnDeleteDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteDoctorActionPerformed(evt);
@@ -107,9 +103,9 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAddDoctor)
+                        .addComponent(btnAddLabAss)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEditDoctor)
+                        .addComponent(btnEditLabAssistant)
                         .addGap(31, 31, 31)
                         .addComponent(btnDeleteDoctor))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +115,7 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(btnBack))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,27 +126,27 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditDoctor)
-                    .addComponent(btnAddDoctor)
+                    .addComponent(btnEditLabAssistant)
+                    .addComponent(btnAddLabAss)
                     .addComponent(btnDeleteDoctor))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 638, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addGap(0, 434, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,82 +158,70 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
         layout.previous(WorkArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnAddDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDoctorActionPerformed
-        CreateDoctorJPanel cdjp= new CreateDoctorJPanel(WorkArea,system, gud);
-        WorkArea.add("CreateDoctorJPanel",cdjp);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);
-    }//GEN-LAST:event_btnAddDoctorActionPerformed
-
-    private void btnEditDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDoctorActionPerformed
-        int row = tblDoctor.getSelectedRow();
+    private void btnEditLabAssistantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditLabAssistantActionPerformed
+        int row = tblla.getSelectedRow();
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a Doctor from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Doctor d = (Doctor)tblDoctor.getValueAt(row, 0);
-        CreateDoctorJPanel cdjp= new CreateDoctorJPanel(WorkArea,system,gud);
-        WorkArea.add("CreateDoctorJPanel",cdjp);
+        LaboratoryAssistant la = (LaboratoryAssistant)tblla.getValueAt(row, 0);
+        CreateLabAssistantJPanel clajp= new CreateLabAssistantJPanel(WorkArea,system, gud);
+        WorkArea.add("CreateLabAssistantJPanel",clajp);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
-        
 
-       
-    }//GEN-LAST:event_btnEditDoctorActionPerformed
+    }//GEN-LAST:event_btnEditLabAssistantActionPerformed
+
+    private void btnAddLabAssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLabAssActionPerformed
+        CreateLabAssistantJPanel clajp= new CreateLabAssistantJPanel(WorkArea,system, gud);
+        WorkArea.add("CreateLabAssistantJPanel",clajp);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+    }//GEN-LAST:event_btnAddLabAssActionPerformed
 
     private void btnDeleteDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDoctorActionPerformed
-        int row = tblDoctor.getSelectedRow();
+        int row = tblla.getSelectedRow();
         if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a doctor from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a Dietitian from the Table", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-          Doctor d = (Doctor)tblDoctor.getValueAt(row, 0);
-          system.globalUserDirectory.deletePerson(d);
-          //system.getGlobalUserDirectory().deletePerson(d);
-          JOptionPane.showMessageDialog(this, "This doctor  has been deleted ");
-          ShowDoctors();
-          
-          
-          
-        
+        Doctor d = (Doctor)tblla.getValueAt(row, 0);
+        system.getGlobalUserDirectory().deletePerson(d);
+        JOptionPane.showMessageDialog(this, "This doctor  has been deleted ");
+        showLabAssistant();
     }//GEN-LAST:event_btnDeleteDoctorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddDoctor;
+    private javax.swing.JButton btnAddLabAss;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteDoctor;
-    private javax.swing.JButton btnEditDoctor;
+    private javax.swing.JButton btnEditLabAssistant;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDoctor;
+    private javax.swing.JTable tblla;
     // End of variables declaration//GEN-END:variables
 
-    private void ShowDoctors() {
-        DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
-        model.setRowCount(0);
-        System.out.println("** Size: " + system.getGlobalUserDirectory().getAllDoctors().size());
-        
+    private void showLabAssistant() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    DefaultTableModel model = (DefaultTableModel) tblla.getModel();
         ArrayList<Person> temp=new ArrayList();
-       try {
-        temp=(ArrayList<Person>) system.getGlobalUserDirectory().getAllDoctors();
+        try {
+       temp=(ArrayList<Person>) system.getGlobalUserDirectory().getAllLabAssistants();
+            //temp=system.getDietitianDirectory().getDietitians();
         } catch (Exception e) {
             return;
         }
  
-       // model.setRowCount(0);
-        for(Person doctor : system.getGlobalUserDirectory().getAllDoctors()) {
+        model.setRowCount(0);
         
-        //for(int i=0;i<temp.size();i++)
-    
+        for(int i=0;i<temp.size();i++)
+    {
        Object row[] = new Object[1];
-            int i = 0;
        row[0] = temp.get(i);
        model.addRow(row);
      
     }       
    }
-        
-    
 }

@@ -27,11 +27,11 @@ public class CreateLabAssistantJPanel extends javax.swing.JPanel {
     GlobalUserDirectory gud;
     EcoSystem system;
     LaboratoryAssistant la;
-    int flag=0;
+    //int flag=0;
     /**
      * Creates new form CreateLabAssistantJPanel
      */
-    public CreateLabAssistantJPanel(JPanel WorkArea,EcoSystem system, LaboratoryAssistant la) {
+    public CreateLabAssistantJPanel(JPanel WorkArea,EcoSystem system,GlobalUserDirectory gud ) {
         initComponents();
         this.WorkArea = WorkArea;
         this.system = system;
@@ -39,6 +39,7 @@ public class CreateLabAssistantJPanel extends javax.swing.JPanel {
         
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -307,12 +308,12 @@ public class CreateLabAssistantJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        GlobalUserDirectory gud=(GlobalUserDirectory)component;
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+//        WorkArea.remove(this);
+//        Component[] componentArray = WorkArea.getComponents();
+//        Component component = componentArray[componentArray.length - 1];
+//        GlobalUserDirectory gud=(GlobalUserDirectory)component;
+//        CardLayout layout = (CardLayout)WorkArea.getLayout();
+//        layout.previous(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname1ActionPerformed
@@ -325,46 +326,8 @@ public class CreateLabAssistantJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        try {
-
-            if(flag==1){
-
-                UserAccount account = new UserAccount(txtuname.getText(),txtpswd.getText());
-                Address addr= new Address(txtadd1.getText(),txtadd2.getText(),txtadd3.getText(),txtadd4.getText(),txtadd6.getText(),txtadd5.getText());
-                Gender gender =(Gender)combogender1.getSelectedItem();
-                LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                LaboratoryAssistant la = new LaboratoryAssistant(txtname1.getText(),date,gender,addr,txtphoneno.getText(),account);
-                //system.getDietitianDirectory().//AddDietitian(dietitian);
-                system.getGlobalUserDirectory().add(la);
-                JOptionPane.showMessageDialog(this, "Details have been saved : "+txtname1.getText());
-
-                WorkArea.remove(this);
-                Component[] componentArray = WorkArea.getComponents();
-                Component component = componentArray[componentArray.length - 1];
-                GlobalUserDirectory gud=(GlobalUserDirectory)component;
-//                gud.ShowDietitians();
-                CardLayout layout = (CardLayout)WorkArea.getLayout();
-                layout.previous(WorkArea);
-
-            }
-            else {
-                doctor.getPersonDetails().setFullName(txtname1.getText());
-                LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                doctor.getPersonDetails().setDob(date);
-                Gender gender =(Gender)combogender1.getSelectedItem();
-                doctor.getPersonDetails().setGender(gender);
-                doctor.getPersonDetails().setPhoneNumber(txtphoneno.getText());
-                doctor.getPersonDetails().getUserAccount().setUsername(txtuname.getText());
-                doctor.getPersonDetails().getUserAccount().setPassword(txtpswd.getText());
-                Address addr= new Address(txtadd1.getText(),txtadd2.getText(),txtadd3.getText(),txtadd4.getText(),txtadd6.getText(),txtadd5.getText());
-                doctor.getPersonDetails().setAddress(addr);
-                JOptionPane.showMessageDialog(this, "Details have been Modified  : "+txtname1.getText());
-
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Please add all details correctly ..");
-        }
+       
+ 
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
