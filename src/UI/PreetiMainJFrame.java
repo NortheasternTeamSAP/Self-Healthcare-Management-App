@@ -46,7 +46,7 @@ public class PreetiMainJFrame extends javax.swing.JFrame {
         UserAccount ua_jig = new UserAccount("jig", "password");
          UserAccount ua_jit = new UserAccount("jit", "password");
         
-        this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", ua_john);        
+        this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", null /* image logo */, ua_john);        
         this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
          Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
       FitnessTrainer f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);

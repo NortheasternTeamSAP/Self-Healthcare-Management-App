@@ -348,7 +348,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         
-        GlobalUserDirectory gd = ecoSystem.getGlobalUserDirectory();
+        GlobalUserDirectory gd = ecoSystem.globalUserDirectory;
         String name = txtName.getText();
         if (name == null || name.isEmpty()) {
             JOptionPane.showMessageDialog(jRegistrationpanel, "name cannot be empty");
@@ -419,7 +419,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
         Person person = null;
 
         
-        gd.add(person);
+        gd.createNewUser(person);
         JOptionPane.showMessageDialog(this,"registered info saved");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
