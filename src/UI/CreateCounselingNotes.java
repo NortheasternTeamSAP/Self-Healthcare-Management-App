@@ -58,13 +58,13 @@ Patient p ;
 
         tblVitalSign.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Date VitalSigns Recorded", "Bloodpressure Range", "HeartRate", "Resipiratory Rate", "Weight"
             }
         ));
         jScrollPane1.setViewportView(tblVitalSign);
@@ -163,7 +163,11 @@ Patient p ;
 
  private void showmostrecentVitalSign() {
  DefaultTableModel model = (DefaultTableModel) tblVitalSign.getModel();
- VitalSigns temp=p.getMostRecentVitalSigns(); 
+ 
+ 
+ 
+     try {
+          VitalSigns temp=p.getMostRecentVitalSigns(); 
  model.setRowCount(0);       
  Object row[] = new Object[5];
                 row[0] = temp.getDateForVitalSigns();
@@ -172,6 +176,9 @@ Patient p ;
                 row[3] = temp.getRespiratoryRate();
                 row[4] = temp.getWeight();
                 model.addRow(row);
-   
-    }
+     } catch (Exception e) {
+         JOptionPane.showMessageDialog(this, "Patient has not entered his vital signs ");
+         return;
+     }
+ }
 }

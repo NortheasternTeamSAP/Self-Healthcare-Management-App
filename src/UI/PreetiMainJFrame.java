@@ -14,6 +14,8 @@ import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import VitalSign.Range;
+import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -49,6 +51,15 @@ public class PreetiMainJFrame extends javax.swing.JFrame {
          Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
       FitnessTrainer f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
       Counselor c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
+      
+      Range r =new Range(10,50);
+      VitalSigns vs = new VitalSigns();
+      vs.setBloodPressure(r);
+      vs.setDateForVitalSigns(LocalDate.now());
+      vs.setHeartRate(40);
+      vs.setRespiratoryRate(20);
+      vs.setWeight(60);
+      p.addNewVitalSign(vs);
    
          
 //         System.out.println("folowing are the dieticians : ::::::::::: "+ system.getDietitianDirectory().getDietitians());

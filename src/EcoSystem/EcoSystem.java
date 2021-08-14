@@ -147,7 +147,7 @@ public class EcoSystem {
         laboratoryOrg.addEmployee(labAssistant);
 
         // Dietitian
-        Person dietitian = new Dietitian("Jan", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitan1"));
+        Person dietitian = new Dietitian("Jan", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitian1"));
         this.globalUserDirectory.createNewUser(dietitian);
         nutritionDepartmentOrg.addEmployee(dietitian);
         

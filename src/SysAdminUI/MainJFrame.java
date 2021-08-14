@@ -3,29 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ui;
+package SysAdminUI;
 
+import Counselor.Counselor;
 import DataStore.GenericDirectory;
 import DataStore.GlobalUserDirectory;
+import Dietitian.Dietitian;
+import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainer;
 import PatientCoreWorkFlowUI.PatientHomePagePanel;
+import UI.ApplicationDashboard;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Ankur Bywar
  */
 public class MainJFrame extends javax.swing.JFrame {
-    GenericDirectory genericDirectory;
-    GlobalUserDirectory globalUserDirectory;
+
+   EcoSystem system;
+
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
-        genericDirectory = new GenericDirectory();
-        
-       // nextScreen(new PatientHomePagePanel (WorkAreaPanel, this), "PatientHomePagePanel" );
-       
-        
+        system= new EcoSystem();
+        Login();
     }
 
     /**
@@ -37,41 +42,13 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WorkAreaPanel = new javax.swing.JPanel();
+        WorkArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout WorkAreaPanelLayout = new javax.swing.GroupLayout(WorkAreaPanel);
-        WorkAreaPanel.setLayout(WorkAreaPanelLayout);
-        WorkAreaPanelLayout.setHorizontalGroup(
-            WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        WorkAreaPanelLayout.setVerticalGroup(
-            WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(WorkAreaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(WorkAreaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        WorkArea.setLayout(new java.awt.CardLayout());
+        getContentPane().add(WorkArea, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,8 +89,15 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel WorkAreaPanel;
+    private javax.swing.JPanel WorkArea;
     // End of variables declaration//GEN-END:variables
+
+    private void Login() {
+        Login ls= new Login(WorkArea,system);
+        WorkArea.add("Login",ls);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);  
+    }
 
   
 }

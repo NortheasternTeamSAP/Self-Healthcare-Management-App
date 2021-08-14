@@ -312,7 +312,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
             }
             WorkArea.remove(this);
             Component[] componentArray = WorkArea.getComponents();
-            Component component = componentArray[componentArray.length];       
+            Component component = componentArray[componentArray.length-1];       
             PatientCounselorDashboard d = (PatientCounselorDashboard) component;
             d.populateUpcomingCounselorAppointments();
             CardLayout layout = (CardLayout) WorkArea.getLayout();
