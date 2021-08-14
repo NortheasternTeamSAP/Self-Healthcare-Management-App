@@ -34,6 +34,14 @@ public class GlobalUserDirectory {
         return personDirectory.get(username);
     }
     
+    public Person get(String username, String password) {
+        if (credentialsManager.authenticateUser(username, password))
+        {
+            return get(username);
+        }
+        return null;
+    }
+    
     void add(Person person) {
         if (person == null) {
             log.error("Person is null. Cannot add to global user directory.");
@@ -66,6 +74,7 @@ public class GlobalUserDirectory {
         personDirectory.remove(person.getUserAccount().getUsername());
         credentialsManager.removeUserAccount(person.getUserAccount().getUsername());
     }
+        
     
     // Use this method to create a new user after collecting user data from console
     public void createNewUser(Person person) {

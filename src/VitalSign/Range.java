@@ -30,5 +30,11 @@ public class Range {
     public double getHigh() {
         return high;
     }
+
+    @Override
+    public String toString() {
+        return "low=" + low + ", high=" + high;
+    }
+    
     
 }

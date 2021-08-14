@@ -93,12 +93,11 @@ public class PatientCounsellingNote extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        PatientCounselorDashboard ls= new PatientCounselorDashboard(WorkArea,system,p);
-        WorkArea.add("PatientCounselorDashborad",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);  
-        
-        
+       WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 2];
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

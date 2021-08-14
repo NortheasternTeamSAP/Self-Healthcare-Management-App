@@ -10,7 +10,7 @@ import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
 import Patient.Patient;
-import Ui.MainJFrame;
+import SysAdminUI.MainJFrame;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import VitalSign.VitalSigns;
