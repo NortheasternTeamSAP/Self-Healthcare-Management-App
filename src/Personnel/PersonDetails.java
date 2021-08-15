@@ -13,6 +13,7 @@ import javax.swing.Icon;
 /**
  *
  * @author Ankur Bywar
+ * @author sravy
  */
 public class PersonDetails {
     
@@ -26,6 +27,8 @@ public class PersonDetails {
     protected LocalDate dob;
     protected Gender gender;
     protected Address address;
+
+
     protected String phoneNumber;
     protected UserAccount userAccount;
     protected Role role;
@@ -113,14 +116,6 @@ public class PersonDetails {
         this.fullName = fullName;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
     public void setAddress(Address address) {
         this.address = address;
     }
@@ -144,5 +139,12 @@ public class PersonDetails {
     public void setLogoImage(Icon logoImage) {
         this.logoImage = logoImage;
     }
-   
+    
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 }
