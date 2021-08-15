@@ -5,8 +5,14 @@
  */
 package SysAdminUI;
 
+import Counselor.Counselor;
+import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainer;
 import Personnel.Person;
+import UI.CounselorDashboard;
+import UI.DietitianDashboard;
+import UI.FitnessTrainerDashBoard;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -159,13 +165,22 @@ public class Login extends javax.swing.JPanel {
                 // redirect to pharmacist dashboard
                 break;
             case DIETITIAN:
-                // redirect to dietitian dashboard
+                 DietitianDashboard dd= new DietitianDashboard(WorkArea,system,(Dietitian)p);
+                WorkArea.add("DietitianDashboard",dd);
+                CardLayout layoutd= (CardLayout)WorkArea.getLayout();
+                layoutd.next(WorkArea); 
                 break;
             case TRAINER:
-                // redirect to trainer dashboard
+                FitnessTrainerDashBoard fd= new FitnessTrainerDashBoard(WorkArea,system,(FitnessTrainer)p);
+                WorkArea.add("FitnessTrainerDashBoard",fd);
+                CardLayout layoutft= (CardLayout)WorkArea.getLayout();
+                layoutft.next(WorkArea); 
                 break;
             case COUNSELOR:
-                // redirect to counselor dashboard
+                CounselorDashboard cd= new CounselorDashboard(WorkArea,system,(Counselor)p);
+                WorkArea.add("CounselorDashboard",cd);
+                CardLayout layoutcd= (CardLayout)WorkArea.getLayout();
+                layoutcd.next(WorkArea); 
                 break;
             case INVALID:
             default:

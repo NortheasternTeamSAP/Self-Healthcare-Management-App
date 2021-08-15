@@ -74,6 +74,11 @@ JPanel WorkArea;
         });
 
         jButton4.setText("View Fitness Videos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         UpcomingFitnessAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,9 +135,9 @@ JPanel WorkArea;
                 .addComponent(jButton2)
                 .addGap(28, 28, 28)
                 .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(jButton4)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,6 +170,16 @@ JPanel WorkArea;
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);      
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         FitnessVideo fv= new FitnessVideo(WorkArea,system,p);
+        WorkArea.add("FitnessVideo",fv);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);  
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

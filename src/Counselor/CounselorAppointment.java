@@ -17,11 +17,30 @@ public class CounselorAppointment {
     Patient patient;
     Counselor counselor;
     int time;
+    String pastmentalhealth;
+    String cheifcomplaints;
+    String patientMedication;
 
     
        public enum CounselorAppointmentStatus {
         PENDING,
         COMPLETED
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public String getPastmentalhealth() {
+        return pastmentalhealth;
+    }
+
+    public String getCheifcomplaints() {
+        return cheifcomplaints;
+    }
+
+    public String getPatientMedication() {
+        return patientMedication;
     }
 
     
@@ -30,10 +49,13 @@ public class CounselorAppointment {
         return "CounselorAppointment{" + "date=" + date + ", patient=" + patient + ", counselor=" + counselor + '}';
     }
 
-    public CounselorAppointment(LocalDate date, Patient patient, Counselor counselor) {
+    public CounselorAppointment(LocalDate date, Patient patient, Counselor counselor,String r,String m,String c) {
         this.date = date;
         this.patient = patient;
         this.counselor = counselor;
+        this.cheifcomplaints=c;
+        this.pastmentalhealth=r;
+        this.patientMedication=m;
     }
 
     public LocalDate getDate() {
