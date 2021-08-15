@@ -24,7 +24,6 @@ public class Pharmacy {
     HashMap<Medicine, Integer> medicineStockMap; // maps medicine to quantity
     private ArrayList<Order> currentOrders;
 
-
     public Pharmacy(
             String pharmacyName, 
             Address pharmacyAddress, 

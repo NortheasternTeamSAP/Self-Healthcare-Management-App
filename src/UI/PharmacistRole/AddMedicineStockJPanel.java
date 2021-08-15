@@ -43,25 +43,25 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblAddMedicineStock = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
+        btnAddMedicineStock = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cmbMedicineId = new javax.swing.JComboBox<>();
-        spnQuantity = new javax.swing.JSpinner();
+        spnAddMedicineQuantity = new javax.swing.JSpinner();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("Add Medicine Stock");
+        lblAddMedicineStock.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lblAddMedicineStock.setText("Add Medicine Stock");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel2.setText("Medicine ID:");
+        jLabel2.setText("Medicine:");
 
-        btnAdd.setBackground(new java.awt.Color(204, 255, 204));
-        btnAdd.setText("Add ");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMedicineStock.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddMedicineStock.setText("Add ");
+        btnAddMedicineStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnAddMedicineStockActionPerformed(evt);
             }
         });
 
@@ -75,7 +75,6 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel4.setText("Quantity:");
 
-        cmbMedicineId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbMedicineId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMedicineIdActionPerformed(evt);
@@ -97,7 +96,7 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
                         .addComponent(cmbMedicineId, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(spnAddMedicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(265, 265, 265))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,10 +104,10 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
                         .addGap(15, 15, 15)
                         .addComponent(btnBack)
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel1))
+                        .addComponent(lblAddMedicineStock))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(btnAdd)))
+                        .addComponent(btnAddMedicineStock)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,7 +116,7 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(jLabel1))
+                    .addComponent(lblAddMedicineStock))
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,25 +124,25 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnAddMedicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(btnAdd)
+                .addComponent(btnAddMedicineStock)
                 .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddMedicineStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMedicineStockActionPerformed
 
         int quantity = 0;
         try {
-            if(spnQuantity.getValue()!=null){
-                quantity = (Integer)spnQuantity.getValue();
+            if(spnAddMedicineQuantity.getValue()!=null){
+                quantity = (Integer)spnAddMedicineQuantity.getValue();
                 if (quantity <= 0) {
                     JOptionPane.showMessageDialog(this, "Quantity must always be positive.");
                     return;
                 }
-                String medicineId = cmbMedicineId.getSelectedItem().toString().split(" -- ")[0];
-                pharmacy.addMedicineStock(ecoSystem.getMedicineDirectory().getMedicineCatalog().get(medicineId), quantity);
+                Medicine medicine = (Medicine) cmbMedicineId.getSelectedItem();
+                pharmacy.addMedicineStock(medicine, quantity);
             } else{
                 JOptionPane.showMessageDialog(this, "Please enter a valid quantity.");
                 return;
@@ -153,16 +152,16 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
         }
 
         JOptionPane.showMessageDialog(this, "Medicine added!", "Info", JOptionPane.INFORMATION_MESSAGE);
-        spnQuantity.setValue(0);
+        spnAddMedicineQuantity.setValue(0);
         populatecmbMedicineId();
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnAddMedicineStockActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         workArea.remove(this);
         Component[] componentArray = workArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManageMedicineCatalogJPanel manageMedicineCatalogJPanel = (ManageMedicineCatalogJPanel) component;
+        ManageMedicineStockJPanel manageMedicineCatalogJPanel = (ManageMedicineStockJPanel) component;
         manageMedicineCatalogJPanel.refreshTable();
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
@@ -170,28 +169,26 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
 
     public void populatecmbMedicineId() {
         cmbMedicineId.removeAllItems();
-        cmbMedicineId.addItem("  ");
-        for(ItemTuple tup : ecoSystem.getMedicineDirectory().medicineCatalog.getAllItems()) {
-            String display = tup.getKey().toString() + " -- " + tup.getValue().toString();
-            cmbMedicineId.addItem(display);
+        for(Medicine med : ecoSystem.getMedicineDirectory().medicineCatalogMap.getAllValues()) {
+            cmbMedicineId.addItem(med);
         }
     }
 
     
     private void cmbMedicineIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicineIdActionPerformed
         // TODO add your handling code here:
-        
+        populatecmbMedicineId();
     }//GEN-LAST:event_cmbMedicineIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddMedicineStock;
     private javax.swing.JButton btnBack;
-    private javax.swing.JComboBox<String> cmbMedicineId;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<Medicine> cmbMedicineId;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSpinner spnQuantity;
+    private javax.swing.JLabel lblAddMedicineStock;
+    private javax.swing.JSpinner spnAddMedicineQuantity;
     // End of variables declaration//GEN-END:variables
 
    

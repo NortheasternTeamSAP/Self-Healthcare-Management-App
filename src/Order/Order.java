@@ -5,9 +5,11 @@
  */
 package Order;
 
+import DeliveryMan.DeliveryMan;
 import Doctor.Doctor;
 import Medicine.Medicine;
 import Medicine.MedicineDirectory;
+import Patient.Patient;
 import Pharmacy.Pharmacy;
 import WorkQueue.WorkRequest;
 import java.util.UUID;
@@ -20,7 +22,6 @@ import WorkQueue.WorkRequest;
  */
 public class Order extends WorkRequest {
 
-
     public enum OrderStatus{
         INPROCESS,
         ACCEPTED,
@@ -29,15 +30,16 @@ public class Order extends WorkRequest {
         DELIVERED,
     }
 
-    private String orderId;  //= UUID.randomUUID().toString();
-    private String orderStatus;
+    private OrderStatus orderStatus;
     private Pharmacy pharmacy;
     private Doctor doctor;
-    private String deliveryMan;
+    private Patient patient;
+    private DeliveryMan deliveryMan;
     private int quantity;
+    private Medicine medicine;
     private String result;
     private boolean assign;
-    private Medicine medicine;
+    private String orderId;
 
     public Order(
             Pharmacy pharmacy, 
@@ -54,11 +56,11 @@ public class Order extends WorkRequest {
         this.medicine = medicine;
     }
 
-    public String getOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
 
@@ -78,11 +80,11 @@ public class Order extends WorkRequest {
         this.doctor = doctor;
     }
 
-    public String getDeliveryMan() {
+    public DeliveryMan getDeliveryMan() {
         return deliveryMan;
     }
 
-    public void setDeliveryMan(String deliveryMan) {
+    public void setDeliveryMan(DeliveryMan deliveryMan) {
         this.deliveryMan = deliveryMan;
     }
 
@@ -127,11 +129,11 @@ public class Order extends WorkRequest {
     }
 
     public String getOrderId() {
-            return orderId;
+        return orderId;
     }
-    
+
     public void setOrderId(String orderId) {
-            this.orderId = orderId;
+        this.orderId = orderId;
     }
     
 }

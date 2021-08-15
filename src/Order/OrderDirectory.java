@@ -6,9 +6,13 @@
 package Order;
 
 import DataStore.GenericDirectory;
+import DeliveryMan.DeliveryMan;
 import Doctor.Doctor;
+import Medicine.Medicine;
 import Medicine.MedicineDirectory;
+import Patient.Patient;
 import Pharmacy.Pharmacy;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +20,7 @@ import Pharmacy.Pharmacy;
  */
 public class OrderDirectory {
     
-    public static GenericDirectory<String, Order> orderMap; //map for <String orderID, Order orderDetails>
+    public GenericDirectory<String, Order> orderMap; //map for <String orderID, Order orderDetails>
     private int id;
     
     public OrderDirectory(){
@@ -24,16 +28,32 @@ public class OrderDirectory {
         id = 0;
     }
     
-    public Order addOrder(){
-        Order order = new Order();
-        OrderDirectory.orderMap.add(Integer.toString(id), order);
+    // return the order Id.
+    public String addOrder(
+            Pharmacy pharmacy, 
+            Doctor doctor, 
+            Patient patient,
+            int quantity, 
+            Medicine medicine){
+        
+        Order order = new Order(
+                pharmacy,
+                doctor,
+                patient,
+                quantity,
+                medicine);
+        String orderId = "Order" + Integer.toString(id);
+        orderMap.add(orderId, order);
+        order.setOrderId(orderId);
         id += 1;
-        return order;
+        return orderId;
     }
 
     public void deleteOrder(Order order){
-        OrderDirectory.orderMap.remove(Integer.toString(id));
+        orderMap.remove(Integer.toString(id));
     }
+    
+    
     
 //    public Order getOrderID(String orderUUID){
 //        for(int i = 0; i < 15; i = i + 1){
@@ -43,5 +63,38 @@ public class OrderDirectory {
 //        }
 //        return null;
 //    }
+
+    public GenericDirectory<String, Order> getOrderMap() {
+        return orderMap;
+    }
     
+    
+    public ArrayList<Order> getOrdersByPharmacy(Pharmacy pharmacy) {
+        ArrayList<Order> ret_list = new ArrayList<>();
+        for (Order order: orderMap.getAllValues()){
+            if (order.getPharmacy() == pharmacy){
+                ret_list.add(order);
+            }
+        }
+        return ret_list;
+    }
+
+    public ArrayList<Order> getOrdersByDelMan(DeliveryMan delMan) {
+        ArrayList<Order> ret_list = new ArrayList<>();
+        for (Order order: orderMap.getAllValues()){
+            if (order.getDeliveryMan()== delMan){
+                ret_list.add(order);
+            }
+        }
+        return ret_list;
+    }
+
+    public Order findMedicine(Medicine med){
+        for(Order order: orderMap.getAllValues()){
+            if(order.getMedicine().equals(med)){
+                return order;
+            }
+        }
+        return null;
+    }
 }

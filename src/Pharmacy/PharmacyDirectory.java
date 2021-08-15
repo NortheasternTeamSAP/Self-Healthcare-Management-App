@@ -15,7 +15,7 @@ import Personnel.Address;
  * @author Sravya
  */
 public class PharmacyDirectory {
-    public static GenericDirectory<String, Pharmacy> pharmacyMap;
+    public  GenericDirectory<String, Pharmacy> pharmacyMap; //maps String Pharmacy ID to Pharmacy
     private int id;
     
     public PharmacyDirectory(){
@@ -29,21 +29,21 @@ public class PharmacyDirectory {
                                 Pharmacist pharmacist){
         
         Pharmacy pharmacy = new Pharmacy(pharmacyName, pharmacyAddress, pharmacist);
-        PharmacyDirectory.pharmacyMap.add(Integer.toString(id), pharmacy);
+        pharmacyMap.add(Integer.toString(id), pharmacy);
         id += 1;
         return pharmacy;
     }  
     
     public void deletePharmacy(Pharmacy pharmacy){
-        PharmacyDirectory.pharmacyMap.remove(Integer.toString(id));
+        pharmacyMap.remove(Integer.toString(id));
     }
 
-    public static GenericDirectory<String, Pharmacy> getPharmacyMap() {
+    public GenericDirectory<String, Pharmacy> getPharmacyMap() {
         return pharmacyMap;
     }
 
-    public static void setPharmacyMap(GenericDirectory<String, Pharmacy> pharmacyMap) {
-        PharmacyDirectory.pharmacyMap = pharmacyMap;
+    public void setPharmacyMap(GenericDirectory<String, Pharmacy> pharmacyMap) {
+        this.pharmacyMap = pharmacyMap;
     }
     
 }

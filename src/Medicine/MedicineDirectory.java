@@ -12,7 +12,6 @@ import DataStore.GenericDirectory;
  * @author Sravya
  */
 public class MedicineDirectory{
-
     public GenericDirectory<String, Medicine> medicineCatalogMap; //map of <String medID, Medicine medDetails>
     private int id;
 
@@ -22,7 +21,7 @@ public class MedicineDirectory{
          * 
          * MedicineDirectory.medicineCatalog.add(str, medicine);
          */
-        this.medicineCatalog = new GenericDirectory<String, Medicine>();
+        this.medicineCatalogMap = new GenericDirectory<String, Medicine>();
         id = 0;
     }
     /**
@@ -38,18 +37,19 @@ public class MedicineDirectory{
             String medicineName,
             double price, 
             LocalDate expiryDate, 
-            LocalDate mfgDate){
- 
-        Medicine medicine = new Medicine(medicineName, price, expiryDate, mfgDate, dosage);
+            LocalDate mfgDate
+    ){
+        
+        Medicine medicine = new Medicine(medicineName, price, expiryDate, mfgDate);
         String medicineId = "Med" + Integer.toString(id);
         medicine.setMedicineId(medicineId);
-        medicineCatalogMap.add(Integer.toString(id), medicine);
+        medicineCatalogMap.add(medicineId, medicine);
         id += 1;
         return medicine;
     }
     
     /**
-     * Method to delete medicine from medicineCatalog.
+     * Method to delete medicine from medicineCatalogMap.
      * @param medicine 
      */
     public void deleteMedicine(Medicine medicine){
@@ -59,9 +59,9 @@ public class MedicineDirectory{
     public GenericDirectory<String, Medicine> getMedicineCatalogMap() {
         return medicineCatalogMap;
     }
-
+    
     public void setMedicinePrice(Medicine medicine, int newPrice){
         medicine.setPrice(newPrice);
     }
-    
+
 }

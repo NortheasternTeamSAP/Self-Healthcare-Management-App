@@ -17,13 +17,13 @@ public class Medicine {
     private double price;
     LocalDate expiryDate;
     LocalDate mfgDate;
-   
 
     public Medicine(
             String medicineName,
             double price, 
             LocalDate expiryDate, 
             LocalDate mfgDate) {
+
         this.medicineName = medicineName;
         this.price = price;
         this.expiryDate = expiryDate;
@@ -74,4 +74,5 @@ public class Medicine {
     public void setMedicineId(String medicineId) {
         this.medicineId = medicineId;
     }
+
 }

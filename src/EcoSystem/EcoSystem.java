@@ -37,6 +37,8 @@ import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.SystemAdmin;
 import Personnel.UserAccount;
+import Pharmacy.Pharmacy;
+import Pharmacy.PharmacyDirectory;
 import java.time.LocalDate;
 
 /**
@@ -48,20 +50,13 @@ public class EcoSystem {
     public GlobalUserDirectory globalUserDirectory;
     public CredentialsManager credentialsManager;
     public EnterpriseDirectory enterpriseDirectory;
-
     DietitianDirectory dietitianDirectory;
     FitnessTrainerDirectory fitnessTrainerDirectory;
     CounselorDirectory counselorDirectory;
     OrderDirectory orderDirectory;
     MedicineDirectory medicineDirectory;
     DeliveryManDirectory deliveryManDirectory;
-
-    // Testing
-    public Enterprise healthManagementApp;
-    public Enterprise hospital;
-    public Enterprise insuranceCompany;
-    public Enterprise physicalWellness;
-    public Enterprise mentalWellness;
+    PharmacyDirectory pharmacyDirectory;
 
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
@@ -73,11 +68,16 @@ public class EcoSystem {
         orderDirectory = new OrderDirectory();
         medicineDirectory = new MedicineDirectory();
         deliveryManDirectory = new DeliveryManDirectory();
+        pharmacyDirectory = new PharmacyDirectory();
 
         // create new system admin user
         UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
         Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
         globalUserDirectory.createNewUser(sysAdmin);
+    }
+
+    public PharmacyDirectory getPharmacyDirectory() {
+        return pharmacyDirectory;
     }
 
     public CounselorDirectory getCounselorDirectory() {
@@ -172,7 +172,7 @@ public class EcoSystem {
 
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("pat1", "pat1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("pat1", "pat1"), new Pharmacy("testoahr", "earth", new Pharmacist()));
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 

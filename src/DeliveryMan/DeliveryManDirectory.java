@@ -18,7 +18,7 @@ import java.time.LocalDate;
  */
 public class DeliveryManDirectory {
     
-    public static GenericDirectory<String, DeliveryMan> deliveryManMap; //map for delivery man <id, details>
+    public GenericDirectory<String, DeliveryMan> deliveryManMap; //map for delivery man <id, details>
     private int id;
     
     public DeliveryManDirectory(){
@@ -35,16 +35,16 @@ public class DeliveryManDirectory {
                                 UserAccount account){
         
         DeliveryMan delMan = new DeliveryMan(fullName, dob, gender, address, phoneNumber, account);
-        DeliveryManDirectory.deliveryManMap.add(Integer.toString(id), delMan);
+        deliveryManMap.add(Integer.toString(id), delMan);
         id += 1;
         return delMan;
     }  
     
     public void deleteDeliveryMan(DeliveryMan deliveryMan){
-        DeliveryManDirectory.deliveryManMap.remove(Integer.toString(id));
+        deliveryManMap.remove(Integer.toString(id));
     }
 
-    public static GenericDirectory<String, DeliveryMan> getDeliveryManMap() {
+    public GenericDirectory<String, DeliveryMan> getDeliveryManMap() {
         return deliveryManMap;
     }  
 }

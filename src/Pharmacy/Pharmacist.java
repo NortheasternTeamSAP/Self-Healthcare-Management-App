@@ -27,7 +27,7 @@ public class Pharmacist implements Person{
             Address address,
             String phoneNumber,
             UserAccount account){
-        
+
         pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST);
     }
     
@@ -39,6 +39,16 @@ public class Pharmacist implements Person{
     @Override
     public Role getRole(){
         return pharmacistDetails.getRole();
+    }
+
+    @Override
+    public PersonDetails getPersonDetails() {
+        return pharmacistDetails;
+    }
+  
+    @Override
+    public String toString() {
+        return getPersonDetails().getFullName();
     }
     
 }
