@@ -3,12 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PatientCoreWorkFlowUI;
+package SysAdminUI;
 
+import PatientCoreWorkFlowUI.*;
 import DataStore.GlobalUserDirectory;
+import Doctor.Doctor;
 import EcoSystem.EcoSystem;
+import Patient.Patient;
+import Personnel.Address;
 import Personnel.Person;
+import Personnel.UserAccount;
 import Utils.ConsoleLogger;
+import Utils.NextScreen;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 //import com.github.sarxos.webcam.Webcam;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -23,6 +32,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -30,21 +41,24 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Ankur Bywar
  */
-public class NewRegistrationJPanel extends javax.swing.JPanel {
+public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScreen {
     EcoSystem ecoSystem;
+    JPanel WorkArea;
     GlobalUserDirectory globalUserDirectory;
     private final JFileChooser fileChooser = new JFileChooser();
     ImageIcon logoImage;
     ConsoleLogger log = ConsoleLogger.getLogger();
+    private int organizationId;
     
      
     /**
      * Creates new form NewRegistrationJPanel
      */
-    public NewRegistrationJPanel(EcoSystem ecoSystem ,GlobalUserDirectory globalUserDirectory) {
+    public NewRegistrationJPanel(JPanel WorkArea, EcoSystem ecoSystem) {
         initComponents();
         this.ecoSystem = ecoSystem;
         this.globalUserDirectory = globalUserDirectory;
+        this.WorkArea = WorkArea;
         //boolean Visible;
         
         FileFilter jpegFilter = new FileNameExtensionFilter("JPEG file" , "jpg" , "jpeg");
@@ -84,12 +98,30 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
         btnRegister = new javax.swing.JButton();
         btnLoginRedirect = new javax.swing.JButton();
         btnRemove1 = new javax.swing.JButton();
+        lblAddrZip = new javax.swing.JLabel();
+        txtAddressCity = new javax.swing.JTextField();
+        lblAddrState = new javax.swing.JLabel();
+        txtAddressCountry = new javax.swing.JTextField();
+        lblAddrCountry = new javax.swing.JLabel();
+        lblAddrStreet = new javax.swing.JLabel();
+        jComboBoxAddrState = new javax.swing.JComboBox<>();
+        txtAddressZip = new javax.swing.JTextField();
+        txtAddressStreet = new javax.swing.JTextField();
+        lblAddrCity = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         btnTakeShot.setBackground(new java.awt.Color(204, 204, 255));
         btnTakeShot.setText("Take shot");
         btnTakeShot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTakeShotActionPerformed(evt);
+            }
+        });
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
             }
         });
 
@@ -163,6 +195,35 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblAddrZip.setText("Zip");
+
+        lblAddrState.setText("State");
+
+        txtAddressCountry.setText("USA");
+
+        lblAddrCountry.setText("Country");
+
+        lblAddrStreet.setText("Community/Street");
+
+        jComboBoxAddrState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MA", "WA", "TX", "CA", " " }));
+        jComboBoxAddrState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAddrStateActionPerformed(evt);
+            }
+        });
+
+        lblAddrCity.setText("City");
+
+        lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblAddress.setText("Address:");
+
+        jButton4.setText("Back");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jRegistrationpanelLayout = new javax.swing.GroupLayout(jRegistrationpanel);
         jRegistrationpanel.setLayout(jRegistrationpanelLayout);
         jRegistrationpanelLayout.setHorizontalGroup(
@@ -173,96 +234,143 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                .addComponent(jPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(330, 330, 330))
+                                .addGap(6, 6, 6)
+                                .addComponent(jPasswordTextField))
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                         .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                .addGap(157, 157, 157)
-                                .addComponent(lblTitleRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jRegistrationpanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(78, 78, 78)))
-                        .addGap(271, 271, 271))
-                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(lblDob)
-                            .addComponent(jLabel3))
-                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPhoneNumber)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(8, 8, 8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jRegistrationpanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                            .addGap(6, 6, 6)
-                                            .addComponent(btnRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                        .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnTakeShot)))
-                                .addGap(147, 147, 147))))))
+                                .addGap(130, 130, 130)
+                                .addComponent(jLabel1))
+                            .addComponent(lblDob, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(58, 58, 58)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(txtDobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPhoneNumber))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLoginRedirect, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(lblTitleRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLoginRedirect, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jRegistrationpanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAddrCity)
+                            .addComponent(lblAddrZip)
+                            .addComponent(lblAddrCountry)))
+                    .addComponent(lblAddrStreet))
+                .addGap(12, 12, 12)
+                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAddressStreet)
+                    .addComponent(txtAddressCity, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                        .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAddrState)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jSelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton4)))
+                .addGap(131, 131, 131)
+                .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTakeShot, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(btnRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(166, 166, 166))
         );
         jRegistrationpanelLayout.setVerticalGroup(
             jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                        .addComponent(lblTitleRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(197, 197, 197)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblDob))
                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
                         .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                                 .addComponent(jSelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addGap(0, 12, Short.MAX_VALUE)
                                 .addComponent(btnAttach)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnRemove1)))
                         .addGap(18, 18, 18)
                         .addComponent(btnTakeShot)
-                        .addGap(32, 32, 32)))
-                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(86, 86, 86))
                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDob)
+                        .addContainerGap()
+                        .addComponent(lblTitleRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3))
-                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(27, 27, 27)
+                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAddress)
+                    .addGroup(jRegistrationpanelLayout.createSequentialGroup()
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddrStreet))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddrCity))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(156, 156, 156)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAddrZip)
+                            .addComponent(lblAddrState)
+                            .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAddrCountry)
+                            .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(14, 14, 14)
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,24 +379,24 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
                     .addComponent(jPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(btnRegister)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLoginRedirect, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159))
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLoginRedirect, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jRegistrationpanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jRegistrationpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jRegistrationpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -391,14 +499,14 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
             return;
         }
 
-//        String addrCommunity = txtAddressStreet.getText();
-//        String addrCity = txtAddressCity.getText();
-//        String addrZip = txtAddressZip.getText();
-//        String addrState = String.valueOf(jComboBoxAddrState.getSelectedItem());
-//        if (addrState.equals("Select")) {
-//            JOptionPane.showMessageDialog(jRegisterPannel, "Select a valid state.");
-//            return;
-//        }
+        String addrCommunity = txtAddressStreet.getText();
+        String addrCity = txtAddressCity.getText();
+        String addrZip = txtAddressZip.getText();
+        String addrState = String.valueOf(jComboBoxAddrState.getSelectedItem());
+        if (addrState.equals("Select")) {
+            JOptionPane.showMessageDialog(jRegistrationpanel, "Select a valid state.");
+            return;
+        }
         //String addrCountry = txtAddressCountry.getText();
 
         if (gd.get(userName) != null) {
@@ -407,25 +515,30 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
         }
 
         System.out.println("Date: " + dob.toString());
+         Address sampleAddress = new Address(txtAddressStreet.getText(),null, txtAddressCity.getText(), txtAddressZip.getText(), null, txtAddressCountry.getText());
        // House house = new House(addrCommunity, addrZip,  addrCity,  addrState,  addrCountry);
 
-    
+        
 
         Icon logo = imgLogo.getIcon();
-
-        Person p = null;
-
-
-        Person person = null;
+        UserAccount userAccount = new UserAccount(userName, password);
+       // int organizationId = null;
+       // int organizationId = selectedOrganization.getOrganizationId();
+        
+        Person patient = new Patient(name, null, null, sampleAddress, phoneNumber, logo, userAccount, organizationId);
+                ecoSystem.globalUserDirectory.createNewUser(patient);
 
         
-        gd.createNewUser(person);
+         gd.createNewUser(patient);
+        
+       // gd.createNewUser(person);
         JOptionPane.showMessageDialog(this,"registered info saved");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginRedirectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginRedirectActionPerformed
         // TODO add your handling code here:
         //nextScreen(new Login(dataStore, mainWorkArea, mainJFrame), "Login");
+        nextScreen(new Login(WorkArea, ecoSystem), "Login");
     }//GEN-LAST:event_btnLoginRedirectActionPerformed
 
     private void btnRemove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemove1ActionPerformed
@@ -433,6 +546,22 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
         logoImage = null;
         imgLogo.setIcon(logoImage);
     }//GEN-LAST:event_btnRemove1ActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void jComboBoxAddrStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddrStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAddrStateActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        WorkArea.remove(this);
+        Component[] componentArray = WorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        layout.previous(WorkArea);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -442,6 +571,8 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRemove1;
     private javax.swing.JButton btnTakeShot;
     private javax.swing.JLabel imgLogo;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBoxAddrState;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jPasswordLabel;
@@ -449,11 +580,32 @@ public class NewRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jRegistrationpanel;
     private javax.swing.JLabel jSelectRoleLabel;
     private javax.swing.JLabel jUsernameLabel;
+    private javax.swing.JLabel lblAddrCity;
+    private javax.swing.JLabel lblAddrCountry;
+    private javax.swing.JLabel lblAddrState;
+    private javax.swing.JLabel lblAddrStreet;
+    private javax.swing.JLabel lblAddrZip;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblTitleRegister;
+    private javax.swing.JTextField txtAddressCity;
+    private javax.swing.JTextField txtAddressCountry;
+    private javax.swing.JTextField txtAddressStreet;
+    private javax.swing.JTextField txtAddressZip;
     private com.toedter.calendar.JDateChooser txtDobDateChooser;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+        private void nextScreen(JPanel nextScreen, String screenName) {
+        WorkArea.removeAll();
+        WorkArea.add(screenName , nextScreen);
+        WorkArea.setAlignmentX(SwingConstants.CENTER);
+        WorkArea.setAlignmentY(SwingConstants.CENTER);
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        Dimension d = nextScreen.getLayout().preferredLayoutSize(nextScreen);
+        WorkArea.setSize(d);
+        layout.next(WorkArea); 
+    }
 }

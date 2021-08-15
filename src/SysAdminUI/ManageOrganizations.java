@@ -14,10 +14,14 @@ import Enterprise.InsuranceCompanyEnterprise;
 import Enterprise.MentalWellnessEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
 import Organization.GymOrganization;
+import Organization.HealthInsuranceDepartmentOrganization;
+import Organization.LaboratoryOrganization;
 import Organization.NutritionDepartmentOrganization;
 import Organization.Organization;
 import Organization.OrganizationType;
 import Organization.PsychiatristOrganization;
+import Organization.PatientOrganization;
+import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
 import Personnel.Address;
 import java.awt.CardLayout;
@@ -186,23 +190,23 @@ public class ManageOrganizations extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
@@ -219,66 +223,58 @@ public class ManageOrganizations extends javax.swing.JPanel {
         OrganizationType type = (OrganizationType) comboorgtype.getSelectedItem();
         Enterprise enterprise = (Enterprise) comboenterprise.getSelectedItem();
 
+        Organization organization = null;
         switch (type) {
             case ADMIN_ORGANIZATION:
-
-                Organization adminOrg = new SystemAdminOrganization("System Admin Org", enterprise);
-                enterprise.addOrganization(adminOrg);
-                LoadOrganization();
+                organization = new SystemAdminOrganization("System Admin Org", enterprise);
                 break;
 
             case PATIENT_ORGANIZATION:
-
-                //add a way to create your organization
-                LoadOrganization();
+                organization = new PatientOrganization("patient Org", enterprise);
                  break;
 
             case HEALTH_INSURANCE_DEPARTMENT:
                 //add a way to create your organization
-                LoadOrganization();
+                organization = new HealthInsuranceDepartmentOrganization("health insurance Org", enterprise);
                  break;
 
             case LABORATORY:
-                //add a way to create your organization
-                LoadOrganization();
+                organization = new LaboratoryOrganization("lab Org", enterprise);
                  break;
             case PRIMARY_CARE:
-                //add a way to create your organization
-                LoadOrganization();
+                organization = new PrimaryCareOrganization("lab Org", enterprise);
                  break;
 
             case MEDICINE_INVENTORY:
                 //add a way to create your organization
-                LoadOrganization();
                  break;
 
             case LOGISTICS:
                 //add a way to create your organization
-                LoadOrganization();
                  break;
 
             case NUTRITION_DEPARTMENT:
-                Organization nutritionDepartmentOrg = new NutritionDepartmentOrganization(txtname.getText(), enterprise);
-                enterprise.addOrganization(nutritionDepartmentOrg);
-                LoadOrganization();
+                organization = new NutritionDepartmentOrganization(txtname.getText(), enterprise);
                  break;
 
             case GYM:
-                Organization GYMOrganization = new GymOrganization(txtname.getText(), enterprise);
-                enterprise.addOrganization(GYMOrganization);
-                LoadOrganization();
+                organization = new GymOrganization(txtname.getText(), enterprise);
                  break;
 
             case PSYCHIATRY_DEPARTMENT:
-
-                Organization phychiatristOrg = new PsychiatristOrganization(txtname.getText(), enterprise);
-                enterprise.addOrganization(phychiatristOrg);
-                LoadOrganization();
+                organization = new GymOrganization(txtname.getText(), enterprise);
                  break;
 
-           
+            case INVALID:
+                JOptionPane.showMessageDialog(this, "Invalid Enterprise Details ");
+                 break;
+        }
+        
+        enterprise.addOrganization(organization);
+        system.organizationDirectory.addOrganization(organization);
+        LoadOrganization();
     }//GEN-LAST:event_jButton1ActionPerformed
-    }
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();

@@ -9,13 +9,9 @@ import DataStore.Appointment;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
-import Patient.Patient;
 import Personnel.PersonDetails;
-import SysAdminUI.MainJFrame;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
-import VitalSign.VitalSigns;
-import java.awt.CardLayout;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JFrame;
@@ -25,96 +21,27 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ankur Bywar
+ * @author mrs.katey
  */
-public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScreen {
+public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScreen{
     JPanel WorkAreaPanel;
     Doctor doctor;
     JFrame mainJFrame;
     EcoSystem ecoSystem;
     Enterprise hospital;
-    
     ConsoleLogger log = ConsoleLogger.getLogger();
     /**
-     * Creates new form PatientWorkAreaJPanel
+     * Creates new form DoctorWorkAreaPanel
      */
-    public DoctorHomePagePanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Enterprise hospital, Doctor doctor) {
+    public DoctorWorkAreaPanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Enterprise hospital, Doctor doctor) {
         initComponents();
         this.WorkAreaPanel = WorkAreaPanel;
         this.doctor = doctor;
         this.ecoSystem =ecoSystem;
         this.hospital = hospital;
-        
         populateUpcomingAppointments();
         populateDoctorInfoPlaceholders();
         populateCompletedAppointments(null);
-    }
-    
-   
-
-    void populateCompletedAppointments(String patientUserNameFilter) {
-        DefaultTableModel  model = (DefaultTableModel) tblCompletedPatientAppointments.getModel();
-        model.setRowCount(0);
-        
-        List<Appointment> upComingAppointments = doctor.getPatientAppointments();
-        // Sort upComingAppointments based on date
-        Collections.sort(upComingAppointments);
-        
-       // model.setRowCount(0);
-        if ((upComingAppointments == null) || upComingAppointments.isEmpty()) {
-          log.debug("No appointments found for doctor : " + doctor.getPersonDetails().getUserAccount().getUsername());
-          return; 
-       }
-        for (Appointment appointment : upComingAppointments) {
-            if (!appointment.getStatus().equals(Appointment.AppointmentStatus.COMPLETED)) {
-                continue;
-            }
-            
-            if (patientUserNameFilter != null && !appointment.getPatient().getUserAccount().getUsername().equals(patientUserNameFilter)) {
-                continue;
-            }
-            
-            Object row[] = new Object[4];
-            row[0] = appointment.getId();
-            row[1] = appointment.getPatient().getPersonDetails().getFullName();
-            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
-            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
-            model.addRow(row);
-        }
-        
-    }
-
-    void reload() {
-        populateUpcomingAppointments();
-        populateCompletedAppointments(null);
-    }
-
-    void populateUpcomingAppointments() {      
-        DefaultTableModel  model = (DefaultTableModel) tblUpcomingPatientAppointments.getModel();
-        model.setRowCount(0);
-        
-        List<Appointment> upComingAppointments = doctor.getPatientAppointments();
-        // Sort upComingAppointments based on date
-        Collections.sort(upComingAppointments);
-        
-       // model.setRowCount(0);
-        if ((upComingAppointments == null) || upComingAppointments.isEmpty()) {
-          log.debug("No appointments found for doctor : " + doctor.getPersonDetails().getUserAccount().getUsername());
-          return; 
-       }
-        for (Appointment appointment : upComingAppointments) {
-            
-            if (!appointment.getStatus().equals(Appointment.AppointmentStatus.PENDING)) {
-                continue;
-            }
-            
-            Object row[] = new Object[4];
-            row[0] = appointment.getId();
-            row[1] = appointment.getPatient().getPersonDetails().getFullName();
-            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
-            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
-            model.addRow(row);
-        }
     }
 
     /**
@@ -126,9 +53,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPatientPanel = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jWorkAreaPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jPatientDetailPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCompletedPatientAppointments = new javax.swing.JTable();
@@ -156,7 +81,6 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
         btnNewAppointmentDetails2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblUpcomingPatientAppointments = new javax.swing.JTable();
-        controlpanel = new javax.swing.JPanel();
 
         jPatientDetailPanel.setBackground(new java.awt.Color(204, 255, 255));
         jPatientDetailPanel.setPreferredSize(new java.awt.Dimension(1000, 1000));
@@ -188,12 +112,6 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
             }
         });
         jScrollPane1.setViewportView(tblCompletedPatientAppointments);
-        if (tblCompletedPatientAppointments.getColumnModel().getColumnCount() > 0) {
-            tblCompletedPatientAppointments.getColumnModel().getColumn(0).setResizable(false);
-            tblCompletedPatientAppointments.getColumnModel().getColumn(1).setResizable(false);
-            tblCompletedPatientAppointments.getColumnModel().getColumn(2).setResizable(false);
-            tblCompletedPatientAppointments.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAddress.setText("Address:");
@@ -301,12 +219,6 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
             }
         });
         jScrollPane3.setViewportView(tblUpcomingPatientAppointments);
-        if (tblUpcomingPatientAppointments.getColumnModel().getColumnCount() > 0) {
-            tblUpcomingPatientAppointments.getColumnModel().getColumn(0).setResizable(false);
-            tblUpcomingPatientAppointments.getColumnModel().getColumn(1).setResizable(false);
-            tblUpcomingPatientAppointments.getColumnModel().getColumn(2).setResizable(false);
-            tblUpcomingPatientAppointments.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPatientDetailPanelLayout = new javax.swing.GroupLayout(jPatientDetailPanel);
         jPatientDetailPanel.setLayout(jPatientDetailPanelLayout);
@@ -446,104 +358,46 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
                     .addGap(418, 418, 418)))
         );
 
-        javax.swing.GroupLayout jWorkAreaPanelLayout = new javax.swing.GroupLayout(jWorkAreaPanel);
-        jWorkAreaPanel.setLayout(jWorkAreaPanelLayout);
-        jWorkAreaPanelLayout.setHorizontalGroup(
-            jWorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jWorkAreaPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPatientDetailPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jWorkAreaPanelLayout.setVerticalGroup(
-            jWorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jWorkAreaPanelLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPatientDetailPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 53, Short.MAX_VALUE))
-        );
-
-        jSplitPane1.setRightComponent(jWorkAreaPanel);
-
-        javax.swing.GroupLayout controlpanelLayout = new javax.swing.GroupLayout(controlpanel);
-        controlpanel.setLayout(controlpanelLayout);
-        controlpanelLayout.setHorizontalGroup(
-            controlpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
-        );
-        controlpanelLayout.setVerticalGroup(
-            controlpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1059, Short.MAX_VALUE)
-        );
-
-        jSplitPane1.setLeftComponent(controlpanel);
-
-        javax.swing.GroupLayout jPatientPanelLayout = new javax.swing.GroupLayout(jPatientPanel);
-        jPatientPanel.setLayout(jPatientPanelLayout);
-        jPatientPanelLayout.setHorizontalGroup(
-            jPatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPatientPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1))
-        );
-        jPatientPanelLayout.setVerticalGroup(
-            jPatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPatientPanelLayout.createSequentialGroup()
-                .addComponent(jSplitPane1)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1189, Short.MAX_VALUE)
+            .addGap(0, 887, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPatientPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1069, Short.MAX_VALUE)
+            .addGap(0, 1006, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPatientPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        //nextScreen(WorkAreaPanel, temporaryBack, "Patient Home Page");
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnOldAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOldAppointmentDetailsActionPerformed
+    private void txtPatientUserNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientUserNameSearchActionPerformed
         // TODO add your handling code here:
-                
-        int selectedRow = tblCompletedPatientAppointments.getSelectedRow();
-        if (selectedRow < 0) {
-            log.error("Selected row from tblDoctorList is not >= 0");
-            return;
-        }
-        
-        int appointmentId = (int) tblCompletedPatientAppointments.getModel().getValueAt(selectedRow, 0);
-        Appointment selectedAppointment = null;
-        for (Appointment apt : doctor.getPatientAppointments()) {
-            if (apt.getId() == appointmentId) {
-                selectedAppointment = apt;
-                break;
-            }
-        }
-        
-        if (selectedAppointment == null) {
-            log.error("No patient appointment found for id " + appointmentId);
-            return;
-        }
-        
-        nextScreen(WorkAreaPanel, new PatientAppointmentDetailsPanel(WorkAreaPanel, ecoSystem, hospital, selectedAppointment, this), "PatientAppointmentDetailsPanel");
-    }//GEN-LAST:event_btnOldAppointmentDetailsActionPerformed
+    }//GEN-LAST:event_txtPatientUserNameSearchActionPerformed
 
     private void jUserNameSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserNameSearchBtnActionPerformed
         // TODO add your handling code here:
-        
+
         String patientUserName = txtPatientUserNameSearch.getText();
         if (patientUserName == null || patientUserName.isBlank()) {
             JOptionPane.showMessageDialog(null,"Please enter a valid username", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -552,9 +406,35 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
         populateCompletedAppointments(patientUserName);
     }//GEN-LAST:event_jUserNameSearchBtnActionPerformed
 
-    private void txtPatientUserNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientUserNameSearchActionPerformed
+    private void btnOldAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOldAppointmentDetailsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientUserNameSearchActionPerformed
+
+        int selectedRow = tblCompletedPatientAppointments.getSelectedRow();
+        if (selectedRow < 0) {
+            log.error("Selected row from tblDoctorList is not >= 0");
+            return;
+        }
+
+        int appointmentId = (int) tblCompletedPatientAppointments.getModel().getValueAt(selectedRow, 0);
+        Appointment selectedAppointment = null;
+        for (Appointment apt : doctor.getPatientAppointments()) {
+            if (apt.getId() == appointmentId) {
+                selectedAppointment = apt;
+                break;
+            }
+        }
+
+        if (selectedAppointment == null) {
+            log.error("No patient appointment found for id " + appointmentId);
+            return;
+        }
+
+        nextScreen(WorkAreaPanel, new PatientAppointmentDetailsPanel(WorkAreaPanel, ecoSystem, hospital, selectedAppointment, this), "PatientAppointmentDetailsPanel");
+    }//GEN-LAST:event_btnOldAppointmentDetailsActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        //nextScreen(WorkAreaPanel, temporaryBack, "Patient Home Page");
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNewAppointmentDetails2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewAppointmentDetails2ActionPerformed
         // TODO add your handling code here:
@@ -563,7 +443,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
             log.error("Selected row from tblDoctorList is not >= 0");
             return;
         }
-        
+
         int appointmentId = (int) tblUpcomingPatientAppointments.getModel().getValueAt(selectedRow, 0);
         Appointment selectedAppointment = null;
         for (Appointment apt : doctor.getPatientAppointments()) {
@@ -572,12 +452,12 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
                 break;
             }
         }
-        
+
         if (selectedAppointment == null) {
             log.error("No patient appointment found for id " + appointmentId);
             return;
         }
-        
+
         nextScreen(WorkAreaPanel, new PatientAppointmentDetailsPanel(WorkAreaPanel, ecoSystem, hospital, selectedAppointment, this), "PatientAppointmentDetailsPanel");
     }//GEN-LAST:event_btnNewAppointmentDetails2ActionPerformed
 
@@ -586,17 +466,14 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNewAppointmentDetails2;
     private javax.swing.JButton btnOldAppointmentDetails;
-    private javax.swing.JPanel controlpanel;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPatientDetailPanel;
-    private javax.swing.JPanel jPatientPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton jUserNameSearchBtn;
-    private javax.swing.JPanel jWorkAreaPanel;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAddressPlaceHolder;
     private javax.swing.JLabel lblAge;
@@ -616,20 +493,81 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
     private javax.swing.JTextField txtPatientUserNameSearch;
     // End of variables declaration//GEN-END:variables
 
-    private void populateDoctorInfoPlaceholders() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    PersonDetails pd = doctor.getPersonDetails();
-        lblAddressPlaceHolder.setText(pd.getAddress().toString());
-        lblAgePlaceHolder.setText(pd.getAge() + "years");
-         
-        lblAgePlaceHolder.setText(pd.getDob() + "years");
-        lblEmailId.setText("Not Available");  
-        lblNamePlaceHolder.setText(pd.getFullName()); 
-        lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
-    
-    
+    private void populateUpcomingAppointments() {
+            
+        DefaultTableModel  model = (DefaultTableModel) tblUpcomingPatientAppointments.getModel();
+        model.setRowCount(0);
+        
+        List<Appointment> upComingAppointments = doctor.getPatientAppointments();
+        // Sort upComingAppointments based on date
+        Collections.sort(upComingAppointments);
+        
+       // model.setRowCount(0);
+        if ((upComingAppointments == null) || upComingAppointments.isEmpty()) {
+          log.debug("No appointments found for doctor : " + doctor.getPersonDetails().getUserAccount().getUsername());
+          return; 
+       }
+        for (Appointment appointment : upComingAppointments) {
+            
+            if (!appointment.getStatus().equals(Appointment.AppointmentStatus.PENDING)) {
+                continue;
+            }
+            
+            Object row[] = new Object[4];
+            row[0] = appointment.getId();
+            row[1] = appointment.getPatient().getPersonDetails().getFullName();
+            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
+            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
+            model.addRow(row);
+        }
+        
     }
 
+    private void populateDoctorInfoPlaceholders() {
+        PersonDetails pd = doctor.getPersonDetails();
+        lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
+        //lblAgePlaceHolder.setText(pd.getAge() + " years");  
+        lblAgePlaceHolder.setText(pd.getDob() + "years");
+        lblEmailId.setText("Not Available");   
+        lblNamePlaceHolder.setText(pd.getFullName()); 
+        lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
+       
+    }
 
-  
+    private void populateCompletedAppointments(String patientUserNameFilter) {
+       DefaultTableModel  model = (DefaultTableModel) tblCompletedPatientAppointments.getModel();
+        model.setRowCount(0);
+        
+        List<Appointment> upComingAppointments = doctor.getPatientAppointments();
+        // Sort upComingAppointments based on date
+        Collections.sort(upComingAppointments);
+        
+       // model.setRowCount(0);
+        if ((upComingAppointments == null) || upComingAppointments.isEmpty()) {
+          log.debug("No appointments found for doctor : " + doctor.getPersonDetails().getUserAccount().getUsername());
+          return; 
+       }
+        for (Appointment appointment : upComingAppointments) {
+            if (!appointment.getStatus().equals(Appointment.AppointmentStatus.COMPLETED)) {
+                continue;
+            }
+            
+            if (patientUserNameFilter != null && !appointment.getPatient().getUserAccount().getUsername().equals(patientUserNameFilter)) {
+                continue;
+            }
+            
+            Object row[] = new Object[4];
+            row[0] = appointment.getId();
+            row[1] = appointment.getPatient().getPersonDetails().getFullName();
+            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
+            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
+            model.addRow(row);
+        }
+    }
+    void reload() {
+        populateUpcomingAppointments();
+        populateCompletedAppointments(null);
+    }
+    
+   
 }

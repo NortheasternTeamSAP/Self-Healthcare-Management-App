@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.Icon;
 
 /**
  *
@@ -34,6 +35,20 @@ public class Dietitian implements Person{
             String phoneNumber, 
             UserAccount account) {
         dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN);
+        dietitianSchedule = new DietitianSchedule();
+        this.availability = new HashSet<>();
+    }
+    
+    public Dietitian(
+            String fullName, 
+            LocalDate dob, 
+            PersonDetails.Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount account,
+            Icon icon,
+            int organizationId) {
+        dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN,icon, organizationId);
         dietitianSchedule = new DietitianSchedule();
         this.availability = new HashSet<>();
     }
@@ -80,6 +95,9 @@ public class Dietitian implements Person{
     public PersonDetails getPersonDetails() {
         return dietitianDetails;
     }
-    
-    
+
+    @Override
+    public int getOrganizationId() {
+        return getPersonDetails().getOrganizationId();
+    }
 }
