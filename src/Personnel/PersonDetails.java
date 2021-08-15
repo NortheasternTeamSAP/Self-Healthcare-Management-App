@@ -139,4 +139,12 @@ public class PersonDetails {
     public void setLogoImage(Icon logoImage) {
         this.logoImage = logoImage;
     }
+    
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 }

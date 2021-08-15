@@ -50,9 +50,6 @@ public class EcoSystem {
     public GlobalUserDirectory globalUserDirectory;
     public CredentialsManager credentialsManager;
     public EnterpriseDirectory enterpriseDirectory;
-    DietitianDirectory dietitianDirectory;
-    FitnessTrainerDirectory fitnessTrainerDirectory;
-    CounselorDirectory counselorDirectory;
     OrderDirectory orderDirectory;
     MedicineDirectory medicineDirectory;
     DeliveryManDirectory deliveryManDirectory;
@@ -62,36 +59,18 @@ public class EcoSystem {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
         enterpriseDirectory = new EnterpriseDirectory();
-        dietitianDirectory=new DietitianDirectory();
-        fitnessTrainerDirectory=new FitnessTrainerDirectory();
-        counselorDirectory= new CounselorDirectory();
         orderDirectory = new OrderDirectory();
         medicineDirectory = new MedicineDirectory();
         deliveryManDirectory = new DeliveryManDirectory();
         pharmacyDirectory = new PharmacyDirectory();
 
         // create new system admin user
-        UserAccount sysAdminUserAccount = new UserAccount("sysadmin", "sysadmin");
-        Person sysAdmin = new SystemAdmin(null, null, null, null, null, sysAdminUserAccount);
-        globalUserDirectory.createNewUser(sysAdmin);
+        exampleCreateEnterpriseOrganizationAndRoles();
     }
 
     public PharmacyDirectory getPharmacyDirectory() {
         return pharmacyDirectory;
     }
-
-    public CounselorDirectory getCounselorDirectory() {
-        return counselorDirectory;
-    }
-
-        exampleCreateEnterpriseOrganizationAndRoles();
-    }
-
-    public FitnessTrainerDirectory getFitnessTrainerDirectory() {
-        return fitnessTrainerDirectory;
-    }
-    
-    
     
     public OrderDirectory getOrderDirectory() {
         return orderDirectory;
@@ -105,7 +84,7 @@ public class EcoSystem {
         return deliveryManDirectory;
     }
 
-    void example() {
+        void example() {
         // How to get a user from globalUserDirectory
         Person person = globalUserDirectory.get("sysadmin");
         switch (person.getRole()) {
@@ -126,11 +105,11 @@ public class EcoSystem {
         Address sampleAddress = new Address("Street", "Building", "City", "Zip", "State", "Country");
 
         // Create Enterprise
-        healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
-        hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
-        insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
-        physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
-        mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
+        HealthManagementAppEnterprise healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
+        HospitalEnterprise hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
+        InsuranceCompanyEnterprise insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
+        PhysicalWellnessEnterprise physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
+        MentalWellnessEnterprise mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
         
 
         enterpriseDirectory.addEnterprise(healthManagementApp);
@@ -172,7 +151,7 @@ public class EcoSystem {
 
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", new UserAccount("pat1", "pat1"), new Pharmacy("testoahr", "earth", new Pharmacist()));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,null, null);
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
@@ -210,5 +189,4 @@ public class EcoSystem {
         healthInsuranceOrg.addEmployee(insuranceRep);
         ((InsuranceProviderRepresentative) insuranceRep).setOrganization(healthInsuranceOrg);
     }
-
 }

@@ -41,7 +41,6 @@ public class DeliveryMan implements Person {
         return deliveryManDetails.getRole();
     }
 
-    @Override
     public PersonDetails getDeliveryManDetails() {
         return deliveryManDetails;
     }

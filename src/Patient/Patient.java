@@ -63,10 +63,11 @@ public class Patient implements Person {
             Gender gender, 
             Address address, 
             String phoneNumber, 
+            Icon logoImage,
             UserAccount account,
             Pharmacy preferredPharmacy) {
 
-        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT);
+        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage);
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
         fitnessPlans=new ArrayList<FitnessPlan>();
