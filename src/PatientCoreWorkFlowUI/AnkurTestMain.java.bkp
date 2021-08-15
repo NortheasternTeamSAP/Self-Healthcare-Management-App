@@ -13,6 +13,8 @@ import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import Pharmacy.Pharmacist;
+import Pharmacy.Pharmacy;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -45,15 +47,31 @@ public class AnkurTestMain extends javax.swing.JFrame implements NextScreen {
         
 //        // Create temporary patient and doctor
         Person p1 = new Patient("Anurag Katey", LocalDate.now(), PersonDetails.Gender.MALE,
-               new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("anurag", "anurag"));
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,
+                    new UserAccount("anurag", "anurag"), 
+                    new Pharmacy("Bartell Drugs", new Address("124", "L43", "Seattle", "98109", "WA", "USA"), 
+                    new Pharmacist("Sravya", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                        new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
+                            new UserAccount("pharmacist1", "pharmacist1"))));
             this.ecosystem.globalUserDirectory.createNewUser(p1);
        
         Person p2 = new Patient("Ankur Bywar", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("ankur", "ankur"));
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,
+                new UserAccount("ankur", "ankur"),
+                new Pharmacy("CVS Pharmacy", new Address("124", "L43", "Seattle", "98109", "WA", "USA"), 
+                    new Pharmacist("Ram", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                        new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
+                            new UserAccount("pharmacist2", "pharmacist2"))));
+       
         this.ecosystem.globalUserDirectory.createNewUser(p2);
        
        Person p3 = new Patient("Preeti Gopal", LocalDate.now().minusYears(29), PersonDetails.Gender.FEMALE,
-                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("preeti", "preeti"));
+                new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,
+                new UserAccount("preeti", "preeti"),
+                new Pharmacy("Bartell Drugs", new Address("124", "L43", "Seattle", "98109", "WA", "USA"), 
+                    new Pharmacist("Sree", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                        new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
+                            new UserAccount("pharmacist3", "pharmacist3"))));
         this.ecosystem.globalUserDirectory.createNewUser(p3);
       
         Person d1 = new Doctor("Dr. Anaya Katey", LocalDate.now(), PersonDetails.Gender.FEMALE,
