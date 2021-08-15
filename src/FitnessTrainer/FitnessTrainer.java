@@ -52,9 +52,9 @@ public class FitnessTrainer implements Person{
         return !availability.contains(date.toString() + timeHours);
     }        
     
-    public FitnessTrainerAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ){
+    public FitnessTrainerAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours,String restriction,String medication,String cheifcomplaint ){
         availability.add(d.toString() + timeHours);
-        return fitnessTrainerSchedule.ScheduleAppointment(d, p, this);
+        return fitnessTrainerSchedule.ScheduleAppointment(d, p, this,restriction,medication,cheifcomplaint);
     }
 
     public FitnessTrainerSchedule getFitnessTrainerSchedule() {
@@ -70,6 +70,11 @@ public class FitnessTrainer implements Person{
     @Override
     public PersonDetails getPersonDetails() {
         return fitnessTrainerDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "" + fitnessTrainerDetails.getFullName();
     }
 
     public PersonDetails getFitnessTrainerDetails() {

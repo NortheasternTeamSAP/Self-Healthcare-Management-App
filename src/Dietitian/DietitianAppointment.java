@@ -16,7 +16,11 @@ public class DietitianAppointment {
     private LocalDate date;
     Patient patient;
     Dietitian dietitian;
-        int time;
+    int time;
+    String restriction;
+    String cheifcomplaints;
+    String patientMedication;
+    
     
        public enum DietitianAppointmentStatus {
         PENDING,
@@ -28,10 +32,13 @@ public class DietitianAppointment {
         return " " + patient.getPatientDetails().getFullName() ;
     }        
     
-    public DietitianAppointment(LocalDate date, Patient patient, Dietitian dietitian) {
+    public DietitianAppointment(LocalDate date, Patient patient, Dietitian dietitian,String restriction,String medication,String cheifcomplaint) {
         this.date = date;
         this.patient = patient;
         this.dietitian = dietitian;
+        this.restriction=restriction;
+        this.patientMedication=medication;
+        this.cheifcomplaints=cheifcomplaint;
     }
     
 
@@ -57,6 +64,22 @@ public class DietitianAppointment {
 
     public void setDietitian(Dietitian dietitian) {
         this.dietitian = dietitian;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public String getRestriction() {
+        return restriction;
+    }
+
+    public String getCheifcomplaints() {
+        return cheifcomplaints;
+    }
+
+    public String getPatientMedication() {
+        return patientMedication;
     }
     
 }

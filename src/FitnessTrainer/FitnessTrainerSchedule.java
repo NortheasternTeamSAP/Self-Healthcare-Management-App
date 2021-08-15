@@ -26,8 +26,8 @@ public class FitnessTrainerSchedule {
         return fitnessTrainerAppointments;
     }
 
-    public FitnessTrainerAppointment ScheduleAppointment(LocalDate date,Patient p, FitnessTrainer d){
-        FitnessTrainerAppointment appointment=new FitnessTrainerAppointment(date,p,d);
+    public FitnessTrainerAppointment ScheduleAppointment(LocalDate date,Patient p, FitnessTrainer d,String restriction,String medication,String cheifcomplaint){
+        FitnessTrainerAppointment appointment=new FitnessTrainerAppointment(date,p,d,restriction,medication,cheifcomplaint);
         fitnessTrainerAppointments.add(appointment);
         return appointment;
     }

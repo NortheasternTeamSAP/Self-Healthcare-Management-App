@@ -191,7 +191,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         lblDoctorReviews.setText("Reviews:");
 
         btnDoctorReviews.setBackground(new java.awt.Color(51, 255, 153));
-        btnDoctorReviews.setIcon(new javax.swing.ImageIcon("/Users/mrs.katey/Desktop/Sap Images/3d check mark.png")); // NOI18N
         btnDoctorReviews.setText("See detailed reviews");
         btnDoctorReviews.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnDoctorReviews.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +256,11 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
 
         jCheckBoxAttachPrescriptionToEmail.setText("Attach Current Prescription Report in email to send to primary care");
+        jCheckBoxAttachPrescriptionToEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAttachPrescriptionToEmailActionPerformed(evt);
+            }
+        });
 
         jCheckBoxAttachInsuranceDetailsToEmail.setText("Attach insurance details in the email to be sent to primary care");
         jCheckBoxAttachInsuranceDetailsToEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -724,6 +728,10 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     private void jCheckBoxAttachPreviousLabReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachPreviousLabReportsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxAttachPreviousLabReportsActionPerformed
+
+    private void jCheckBoxAttachPrescriptionToEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachPrescriptionToEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxAttachPrescriptionToEmailActionPerformed
 
     private void setupDoctorAppointmentCalander() {
         jDateChooserDoctorAvailability.setMinSelectableDate(Date.from(Instant.now()));

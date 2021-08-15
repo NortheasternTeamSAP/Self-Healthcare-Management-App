@@ -6,6 +6,7 @@
 package Enterprise;
 
 import Organization.Organization;
+import Organization.OrganizationType;
 import Personnel.Address;
 import Utils.ConsoleLogger;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -24,7 +26,7 @@ public abstract class Enterprise {
     private Address enterpriseAddress;
     private EnterpriseType enterpriseType;
     private int enterpriseId;
-    private Map<Integer, Organization> organizations;
+    private HashMap<Integer, Organization> organizations;
     
     static int countId = 1;
     
@@ -73,7 +75,13 @@ public abstract class Enterprise {
     }
     
     public List<Organization> getOrganizations() {
+       
         return new ArrayList<>(organizations.values());
     }
+    
+    // derived classes should implement as required
+    public ArrayList<OrganizationType> getSupportedOrgTypes() {
+        return null;
+    }        
 
 }

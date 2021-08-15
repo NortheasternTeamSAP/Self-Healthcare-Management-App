@@ -27,6 +27,7 @@ import Organization.NutritionDepartmentOrganization;
 import Organization.Organization;
 import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
+import Organization.PsychiatristOrganization;
 import Organization.SystemAdminOrganization;
 import DeliveryMan.DeliveryManDirectory;
 import Medicine.MedicineDirectory;
@@ -147,7 +148,7 @@ public class EcoSystem {
         Organization gymOrg=new GymOrganization("Fitness Trainer Department",physicalWellness);
         physicalWellness.addOrganization(gymOrg);
         
-        Organization phychiatristOrg=new GymOrganization("Counselor Department",mentalWellness);
+        Organization phychiatristOrg=new PsychiatristOrganization("Counselor Department",mentalWellness);
         mentalWellness.addOrganization(phychiatristOrg);
 
         // Create roles

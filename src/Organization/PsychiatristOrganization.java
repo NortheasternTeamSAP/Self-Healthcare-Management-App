@@ -14,5 +14,5 @@ import Enterprise.Enterprise;
 public class PsychiatristOrganization extends Organization{
      public PsychiatristOrganization(String name, Enterprise enterprise) {
         super(name, enterprise, OrganizationType.PSYCHIATRY_DEPARTMENT);
-    } 
+    }      
 }

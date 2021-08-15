@@ -5,7 +5,9 @@
  */
 package Enterprise;
 
+import Organization.OrganizationType;
 import Personnel.Address;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,4 +17,11 @@ public class MentalWellnessEnterprise extends Enterprise {
      public MentalWellnessEnterprise(String enterpriseName, Address enterpriseAddress) {
         super(enterpriseName, enterpriseAddress, EnterpriseType.MENTAL_HEALTH);
     }
+     
+    @Override
+    public ArrayList<Organization.OrganizationType> getSupportedOrgTypes() {
+        ArrayList<OrganizationType> types = new ArrayList<OrganizationType>();
+        types.add(OrganizationType.PSYCHIATRY_DEPARTMENT);
+        return types;
+    }     
 }

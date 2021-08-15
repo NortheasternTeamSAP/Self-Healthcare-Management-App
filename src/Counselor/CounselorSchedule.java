@@ -26,8 +26,8 @@ public class CounselorSchedule {
 
 
 
-    public CounselorAppointment ScheduleAppointment(LocalDate date,Patient p, Counselor c){
-        CounselorAppointment appointment=new CounselorAppointment(date,p,c);
+    public CounselorAppointment ScheduleAppointment(LocalDate date,Patient p, Counselor c,String restriction,String medication,String cheifcomplaint){
+        CounselorAppointment appointment=new CounselorAppointment(date,p,c,restriction,medication,cheifcomplaint);
         counselorAppointments.add(appointment);
         return appointment;
     }  

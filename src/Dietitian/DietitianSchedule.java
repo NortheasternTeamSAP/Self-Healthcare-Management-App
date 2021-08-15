@@ -26,8 +26,8 @@ public class DietitianSchedule {
         return dietitianAppointments;
     }
 
-    public DietitianAppointment ScheduleAppointment(LocalDate date,Patient p, Dietitian d){
-        DietitianAppointment appointment=new DietitianAppointment(date,p,d);
+    public DietitianAppointment ScheduleAppointment(LocalDate date,Patient p, Dietitian d,String r,String m,String c){
+        DietitianAppointment appointment=new DietitianAppointment(date,p,d,r,m,c);
         dietitianAppointments.add(appointment);
         return appointment;
     }
