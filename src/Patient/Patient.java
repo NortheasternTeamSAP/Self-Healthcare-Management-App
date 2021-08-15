@@ -95,15 +95,16 @@ public class Patient implements Person {
         return patientDetails.getRole();
     }
 
-    public boolean scheduleDietitianAppointment(Dietitian dietitian, LocalDate date, int timeHours)
+    public boolean scheduleDietitianAppointment(Dietitian dietitian, LocalDate date, int timeHours,String restriction,String medication,String cheifcomplaint)
     {
         if (!dietitian.isDietitianAvailable(date, timeHours))
         {
             return false;
         }
-        DietitianAppointment appointment = dietitian.scheduleAppointment(date, this, timeHours);
+        DietitianAppointment appointment = dietitian.scheduleAppointment(date, this, timeHours,restriction,medication,cheifcomplaint);
         if (appointment != null)
         {
+          
             dietitianAppointments.add(appointment);
             return true;
         }
@@ -122,16 +123,17 @@ public class Patient implements Person {
         return dietitianAppointments;
     }
        
-   public boolean scheduleFitnessAppointment(FitnessTrainer fitnessTrainer, LocalDate date, int timeHours)
+   public boolean scheduleFitnessAppointment(FitnessTrainer fitnessTrainer, LocalDate date, int timeHours,String restriction,String medication,String cheifcomplaint )
     {
         if (!fitnessTrainer.isFitnessTrainerAvailable(date, timeHours))
         {
             return false;
         }        
-        FitnessTrainerAppointment appointment = fitnessTrainer.scheduleAppointment(date, this, timeHours);
+        FitnessTrainerAppointment appointment = fitnessTrainer.scheduleAppointment(date, this, timeHours,restriction,medication,cheifcomplaint);
         if (appointment != null)
         {
             fitnessTrainerAppointments.add(appointment);
+           
             return true;
         }
         return false;
@@ -149,13 +151,13 @@ public class Patient implements Person {
         return fitnessTrainerAppointments;
     }
     
-     public boolean scheduleCounselorAppointment(Counselor counselor, LocalDate date, int timeHours)
+     public boolean scheduleCounselorAppointment(Counselor counselor, LocalDate date, int timeHours,String restriction,String medication,String cheifcomplaint)
     {
         if (!counselor.isCounselorAvailable(date, timeHours))
         {
             return false;
         }           
-        CounselorAppointment appointment = counselor.scheduleAppointment(date, this, timeHours);
+        CounselorAppointment appointment = counselor.scheduleAppointment(date, this, timeHours,restriction,medication,cheifcomplaint);
         if (appointment != null)
         {
             counselorAppointments.add(appointment);
@@ -226,4 +228,13 @@ public class Patient implements Person {
     public void setInsuranceDetails(InsuranceDetails insuranceDetails) {
         this.insuranceDetails = insuranceDetails;
     }
+
+    @Override
+    public String toString() {
+        return "" + patientDetails.getFullName() ;
+    }
+    
+    
+    
+    
 }

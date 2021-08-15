@@ -56,9 +56,9 @@ public class Counselor implements Person{
         return !availability.contains(date.toString() + timeHours);
     }    
     
-    public CounselorAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ){
+    public CounselorAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours,String restriction,String medication,String cheifcomplaint ){
         availability.add(d.toString() + timeHours);
-        return counselorSchedule.ScheduleAppointment(d, p, this);
+        return counselorSchedule.ScheduleAppointment(d, p, this,restriction,medication,cheifcomplaint);
     }
 
     public CounselorSchedule getCounselorSchedule() {
@@ -69,6 +69,11 @@ public class Counselor implements Person{
     public void addCounsellingNote(Patient p, String CounsellingNote){    
         CounsellingNote dp= new CounsellingNote(p,this, CounsellingNote);
         p.addCounsellingNotes(dp);
+    }
+
+    @Override
+    public String toString() {
+        return "" + counselorDetails.getFullName();
     }
 
     @Override

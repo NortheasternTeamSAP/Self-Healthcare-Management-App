@@ -17,10 +17,13 @@ import Personnel.UserAccount;
 import VitalSign.Range;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -45,6 +48,10 @@ public class PreetiMainJFrame extends javax.swing.JFrame {
         UserAccount ua_jam = new UserAccount("jam", "password");
         UserAccount ua_jig = new UserAccount("jig", "password");
          UserAccount ua_jit = new UserAccount("jit", "password");
+         
+         
+
+   
         
         this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", null /* image logo */, ua_john);        
         this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);

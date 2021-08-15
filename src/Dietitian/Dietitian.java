@@ -52,9 +52,9 @@ public class Dietitian implements Person{
         return !availability.contains(date.toString() + timeHours);
     }    
     
-    public DietitianAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ){
+    public DietitianAppointment scheduleAppointment (LocalDate d,Patient p, int timeHours ,String r,String m,String c){
         availability.add(d.toString() + timeHours);
-        return dietitianSchedule.ScheduleAppointment(d, p, this);
+        return dietitianSchedule.ScheduleAppointment(d, p, this,r,m,c);
     }
 
     public DietitianSchedule getDietitianSchedule() {
@@ -80,4 +80,6 @@ public class Dietitian implements Person{
     public PersonDetails getPersonDetails() {
         return dietitianDetails;
     }
+    
+    
 }

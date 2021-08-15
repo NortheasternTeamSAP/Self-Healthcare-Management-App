@@ -17,13 +17,16 @@ import Organization.GymOrganization;
 import Organization.NutritionDepartmentOrganization;
 import Organization.Organization;
 import Organization.OrganizationType;
+import Organization.PsychiatristOrganization;
 import Organization.SystemAdminOrganization;
 import Personnel.Address;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -183,29 +186,32 @@ public class ManageOrganizations extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(299, 299, 299))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -265,14 +271,12 @@ public class ManageOrganizations extends javax.swing.JPanel {
 
             case PSYCHIATRY_DEPARTMENT:
 
-                Organization phychiatristOrg = new GymOrganization(txtname.getText(), enterprise);
+                Organization phychiatristOrg = new PsychiatristOrganization(txtname.getText(), enterprise);
                 enterprise.addOrganization(phychiatristOrg);
                 LoadOrganization();
                  break;
 
-            case INVALID:
-                JOptionPane.showMessageDialog(this, "Invalid Enterprise Details ");
-                 break;
+           
     }//GEN-LAST:event_jButton1ActionPerformed
     }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -307,11 +311,16 @@ public class ManageOrganizations extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) tblOrg.getModel();
         model.setRowCount(0);
+        
         for (Enterprise e : system.enterpriseDirectory.getAllEnterprise()) {
-            for (Organization o : e.getOrganizations()) {
-                Object row[] = new Object[2];
-                row[0] = o.getOrganizationId();
-                row[1] = o.getName();
+           
+            List<Organization> temp = e.getOrganizations();
+           
+            
+            for (Organization o : temp) {
+                System.out.println("Org is " + o.getName());
+                Object row[] = new Object[1];
+                row[0] = o.getName();
                 model.addRow(row);
 
             }
@@ -333,9 +342,16 @@ public class ManageOrganizations extends javax.swing.JPanel {
         comboorgtype.removeAllItems();
         Enterprise e;
         e = (Enterprise) comboenterprise.getSelectedItem();
-        for (Organization o : e.getOrganizations()) {
-            comboorgtype.addItem(o.getOrganizationType());
-
+        
+        ArrayList<OrganizationType> types = e.getSupportedOrgTypes();
+        if (types != null) {
+            for (OrganizationType ot : types) {
+                comboorgtype.addItem(ot);
+            }
+        }
+        else
+        {
+            comboorgtype.removeAll();
         }
 
     }

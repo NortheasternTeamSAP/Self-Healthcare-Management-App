@@ -15,9 +15,12 @@ import java.time.LocalDate;
  */
 public class FitnessTrainerAppointment {
   private LocalDate date;
-    Patient patient;
-    FitnessTrainer fitnessTrainer;
-        int time;
+ Patient patient;
+ FitnessTrainer fitnessTrainer;
+ int time;
+ String injuries;
+ String cheifcomplaints;
+ String patientMedication;
 
        public enum FitnessAppointmentStatus {
         PENDING,
@@ -30,10 +33,13 @@ public class FitnessTrainerAppointment {
     }
     
     
-    public FitnessTrainerAppointment(LocalDate date, Patient patient,  FitnessTrainer fitnessTrainer) {
+    public FitnessTrainerAppointment(LocalDate date, Patient patient,  FitnessTrainer fitnessTrainer,String injuries,String medication,String cheifcomplait) {
         this.date = date;
         this.patient = patient;
         this.fitnessTrainer = fitnessTrainer;
+        this.cheifcomplaints=cheifcomplait;
+        this.injuries=injuries;
+        this.patientMedication=medication;
     }
     
 
@@ -59,6 +65,38 @@ public class FitnessTrainerAppointment {
 
     public void setFitnessTrainer(FitnessTrainer fitnessTrainer) {
         this.fitnessTrainer = fitnessTrainer;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getInjuries() {
+        return injuries;
+    }
+
+    public void setInjuries(String injuries) {
+        this.injuries = injuries;
+    }
+
+    public String getCheifcomplaints() {
+        return cheifcomplaints;
+    }
+
+    public void setCheifcomplaints(String cheifcomplaints) {
+        this.cheifcomplaints = cheifcomplaints;
+    }
+
+    public String getPatientMedication() {
+        return patientMedication;
+    }
+
+    public void setPatientMedication(String patientMedication) {
+        this.patientMedication = patientMedication;
     }
 
   

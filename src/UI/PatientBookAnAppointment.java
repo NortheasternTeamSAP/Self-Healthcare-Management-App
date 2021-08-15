@@ -36,6 +36,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
    Patient p ;
    int flag=0;
    int selectedAppointmentTime = -1;
+   String restrictions;
+   String cheifcomplaint;
+   String medication;
     /**
     /**
      * Creates new form PatientDieticianBookAppointment
@@ -56,13 +59,15 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         {
         jLabel1.setText("Book an Appointment With your Fitness Trainer");
         jLabel2.setText("Select a FitnessTrainer");
+        jLabel4.setText("Please indiacte any Body Ailments or Injuries ");
         populatefitnesscombo();
         }
        if(flag==3)
         {
         jLabel1.setText("Book an Appointment With your Counselor");
         jLabel2.setText("Select a Counselor");
-        populatecounselorcombo();
+        jLabel4.setText("Please Indicate of any previous Diagnosis \n or Mental health Conditions");
+              populatecounselorcombo();
         
         }
         
@@ -91,6 +96,15 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtmedication = new javax.swing.JTextField();
+        txtallergies = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        txtDietrestrict1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
 
@@ -181,11 +195,11 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         timepanelLayout.setHorizontalGroup(
             timepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(timepanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn9, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(24, 24, 24)
                 .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,14 +223,45 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
                 .addGap(17, 17, 17))
         );
 
+        jLabel4.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel4.setText("Specify any food allergies or Diet Restrictions");
+        jLabel4.setOpaque(true);
+
+        jLabel5.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel5.setText("Please add Any Medications you are currently on :");
+        jLabel5.setOpaque(true);
+
+        txtmedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmedicationActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setText("I Agree to Recieve Marketing Email ");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox4.setText(" I Agree To Terms and Conditions ");
+
+        jCheckBox3.setText("I Agree to the Privacy Policy ");
+
+        txtDietrestrict1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDietrestrict1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel6.setText("Chief Complaints");
+        jLabel6.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(309, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -225,43 +270,76 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboapp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(chooser, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))))
-                .addContainerGap(279, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(timepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(confirmapp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboapp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(chooser, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(timepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(confirmapp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCheckBox4)
+                                        .addComponent(jCheckBox3)
+                                        .addComponent(jCheckBox1))
+                                    .addGap(39, 39, 39)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtmedication, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtallergies, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtDietrestrict1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(701, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(backf)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboapp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(36, 36, 36)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(41, 41, 41)
                 .addComponent(timepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtallergies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmedication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDietrestrict1)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jCheckBox1)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox3)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox4)
+                .addGap(28, 28, 28)
                 .addComponent(confirmapp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(211, 211, 211))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -270,12 +348,20 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
     }//GEN-LAST:event_comboappActionPerformed
 
     private void confirmappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmappActionPerformed
+       
+            String restrictions=txtallergies.getText();
+            String cheifcomplaint=txtDietrestrict1.getText();
+            String medication=txtmedication.getText();
+        
+  if(Checkconstraint()==true){      
         if (flag == 1) {
 
             Dietitian selectedDietitian = (Dietitian) comboapp.getSelectedItem();
             LocalDate date = (LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (p.scheduleDietitianAppointment(selectedDietitian, date, selectedAppointmentTime) == true) {
-                JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
+            
+            if (p.scheduleDietitianAppointment(selectedDietitian, date, selectedAppointmentTime,restrictions,cheifcomplaint,medication) == true) {
+             
+           JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             } else {
                 JOptionPane.showMessageDialog(chooser, "The appointment is Not available with dietitian  :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             }
@@ -290,7 +376,8 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         } else if (flag == 2) {
             FitnessTrainer selectedFitnessTrainer = (FitnessTrainer) comboapp.getSelectedItem();
             LocalDate date = (LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (p.scheduleFitnessAppointment(selectedFitnessTrainer, date, selectedAppointmentTime) == true) {
+            if (p.scheduleFitnessAppointment(selectedFitnessTrainer, date, selectedAppointmentTime,restrictions,cheifcomplaint,medication) == true) {
+                
                 JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with FitnessTrainer   :" + selectedFitnessTrainer.getFitnessTrainerDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             } else {
                 JOptionPane.showMessageDialog(chooser, "The appointment is Not available with FitnessTrainer   :" + selectedFitnessTrainer.getFitnessTrainerDetails().getFullName() + " on  : " + date + " and Time : "+selectedAppointmentTime+":00 hrs");
@@ -305,7 +392,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         } else {
             Counselor selectedCounselor = (Counselor) comboapp.getSelectedItem();
             LocalDate date = (LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (p.scheduleCounselorAppointment(selectedCounselor, date, selectedAppointmentTime) == true) {
+            if (p.scheduleCounselorAppointment(selectedCounselor, date, selectedAppointmentTime,restrictions,cheifcomplaint,medication) == true) {
                 JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with selectedCounselor   :" + selectedCounselor.getPersonDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             } else {
                 JOptionPane.showConfirmDialog(chooser, "The appointment is Not available with Counselor   :" + selectedCounselor.getPersonDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
@@ -318,6 +405,8 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
             CardLayout layout = (CardLayout) WorkArea.getLayout();
             layout.previous(WorkArea);
         }
+  }
+ 
     }//GEN-LAST:event_confirmappActionPerformed
 
     private void backfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backfActionPerformed
@@ -359,8 +448,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1.setBackground(Color.GRAY);
         btn2.setBackground(Color.GRAY);
         btn3.setBackground(Color.GRAY);
-        
         confirmapp.setEnabled(true);
+        
+
         
     }//GEN-LAST:event_btn9ActionPerformed
 
@@ -372,7 +462,8 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1.setBackground(Color.GRAY);
         btn2.setBackground(Color.GRAY);
         btn3.setBackground(Color.GRAY);
-          confirmapp.setEnabled(true);
+       confirmapp.setEnabled(true);
+    
     }//GEN-LAST:event_btn10ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
@@ -383,8 +474,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1.setBackground(Color.GRAY);
         btn2.setBackground(Color.YELLOW);
         btn3.setBackground(Color.GRAY);
+        confirmapp.setEnabled(true);
         
-     confirmapp.setEnabled(true);
+
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn11ActionPerformed
@@ -395,8 +487,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1.setBackground(Color.GRAY);
         btn2.setBackground(Color.GRAY);
         btn3.setBackground(Color.GRAY);
-        
         confirmapp.setEnabled(true);
+        
+       
     }//GEN-LAST:event_btn11ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
@@ -407,8 +500,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1.setBackground(Color.YELLOW);
         btn2.setBackground(Color.GRAY);
         btn3.setBackground(Color.GRAY);
-        
         confirmapp.setEnabled(true);
+        
+        
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
@@ -419,9 +513,20 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         btn1.setBackground(Color.GRAY);
         btn2.setBackground(Color.GRAY);
         btn3.setBackground(Color.YELLOW);
-        
-    confirmapp.setEnabled(true);
+       confirmapp.setEnabled(true);
     }//GEN-LAST:event_btn3ActionPerformed
+
+    private void txtmedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmedicationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmedicationActionPerformed
+
+    private void txtDietrestrict1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDietrestrict1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDietrestrict1ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -435,10 +540,19 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser chooser;
     private javax.swing.JComboBox<Object> comboapp;
     private javax.swing.JButton confirmapp;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel timepanel;
+    private javax.swing.JTextField txtDietrestrict1;
+    private javax.swing.JTextField txtallergies;
+    private javax.swing.JTextField txtmedication;
     // End of variables declaration//GEN-END:variables
 
     private void populatedietiticancombo() {
@@ -463,5 +577,22 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         }
     }
        
-    
+    private boolean Checkconstraint() {
+        if (txtmedication.getText().isEmpty()|| txtallergies.getText().isEmpty()||txtDietrestrict1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please provide all the details ");
+            return false;
+        } else {
+
+            if ( jCheckBox3.isSelected() && jCheckBox4.isSelected()) {
+
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Please Agree to our privacy policy and Terms & Conditions");
+                return false;
+
+            }
+
+        }
+    }
+
 }
