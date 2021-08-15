@@ -23,6 +23,7 @@ import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Pharmacy.Pharmacy;
 import VitalSign.VitalSignNormalRange;
 import VitalSign.VitalSigns;
 import java.time.LocalDate;
@@ -53,7 +54,7 @@ public class Patient implements Person {
     private ArrayList<Appointment> doctorAppointments;
     private ArrayList<Appointment> doctorAppointmentsHistory;
     private ArrayList<LaboratoryTestReport> labTestReports;
-    
+    private Pharmacy preferredPharmacy;
     private InsuranceDetails insuranceDetails;
     
     public Patient(
@@ -61,10 +62,11 @@ public class Patient implements Person {
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber,
+            String phoneNumber, 
             Icon logoImage,
-            UserAccount account) {
-        
+            UserAccount account,
+            Pharmacy preferredPharmacy) {
+
         patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage);
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
@@ -78,9 +80,18 @@ public class Patient implements Person {
         this.doctorAppointments = new ArrayList<>();
         this.doctorAppointmentsHistory = new ArrayList<>();
         this.labTestReports = new ArrayList<>();
+
+        this.preferredPharmacy = preferredPharmacy;
     }
 
-    
+    public void setPreferredPharmacy(Pharmacy preferredPharmacy) {
+        this.preferredPharmacy = preferredPharmacy;
+    }
+
+    public Pharmacy getPreferredPharmacy() {
+        return preferredPharmacy;
+    }
+
     @Override
     public PersonDetails getPersonDetails() {
         return patientDetails;

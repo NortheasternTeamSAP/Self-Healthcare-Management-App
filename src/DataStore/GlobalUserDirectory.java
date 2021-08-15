@@ -85,6 +85,18 @@ public class GlobalUserDirectory {
                 person.getUserAccount().getPassword());
     }
     
+    
+    public List<Person> getByRole(Role role) {
+        List<Person> spcificRolePersons = new ArrayList<>();
+        List<Person> allPersons = personDirectory.getAllValues();
+        for (Person p : allPersons) {
+            if (p.getRole().equals(role)) {
+                spcificRolePersons.add(p);
+            }
+        }
+        return spcificRolePersons;
+    }
+    
     public List<Person> getAllDoctors() {
         List<Person> doctors = new ArrayList<>();
         List<Person> allPersons = personDirectory.getAllValues();

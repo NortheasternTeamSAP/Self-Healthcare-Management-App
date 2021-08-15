@@ -28,12 +28,17 @@ import Organization.Organization;
 import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
+import DeliveryMan.DeliveryManDirectory;
+import Medicine.MedicineDirectory;
+import Order.OrderDirectory;
 import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.SystemAdmin;
 import Personnel.UserAccount;
+import Pharmacy.Pharmacy;
+import Pharmacy.PharmacyDirectory;
 import java.time.LocalDate;
 
 /**
@@ -45,7 +50,10 @@ public class EcoSystem {
     public GlobalUserDirectory globalUserDirectory;
     public CredentialsManager credentialsManager;
     public EnterpriseDirectory enterpriseDirectory;
-
+    OrderDirectory orderDirectory;
+    MedicineDirectory medicineDirectory;
+    DeliveryManDirectory deliveryManDirectory;
+    PharmacyDirectory pharmacyDirectory;
 
     // Testing
     public Enterprise healthManagementApp;
@@ -53,17 +61,37 @@ public class EcoSystem {
     public Enterprise insuranceCompany;
     public Enterprise physicalWellness;
     public Enterprise mentalWellness;
-
+ 
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
         enterpriseDirectory = new EnterpriseDirectory();
-  
+        orderDirectory = new OrderDirectory();
+        medicineDirectory = new MedicineDirectory();
+        deliveryManDirectory = new DeliveryManDirectory();
+        pharmacyDirectory = new PharmacyDirectory();
 
+        // create new system admin user
         exampleCreateEnterpriseOrganizationAndRoles();
     }
 
-    void example() {
+    public PharmacyDirectory getPharmacyDirectory() {
+        return pharmacyDirectory;
+    }
+    
+    public OrderDirectory getOrderDirectory() {
+        return orderDirectory;
+    }
+    
+    public MedicineDirectory getMedicineDirectory() {
+        return medicineDirectory;
+    }
+
+    public DeliveryManDirectory getDeliveryManDirectory() {
+        return deliveryManDirectory;
+    }
+
+        void example() {
         // How to get a user from globalUserDirectory
         Person person = globalUserDirectory.get("sysadmin");
         switch (person.getRole()) {
@@ -130,7 +158,7 @@ public class EcoSystem {
 
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("pat1", "pat1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,null, null);
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
@@ -168,5 +196,4 @@ public class EcoSystem {
         healthInsuranceOrg.addEmployee(insuranceRep);
         ((InsuranceProviderRepresentative) insuranceRep).setOrganization(healthInsuranceOrg);
     }
-
 }
