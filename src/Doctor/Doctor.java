@@ -43,7 +43,22 @@ public class Doctor implements Person {
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
     }
-
+   
+    public Doctor(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            Icon logoImage,
+            UserAccount account,
+            int organizationId) {
+        
+        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage, organizationId);
+        speciality = "Unknown";
+        this.patientAppointments = new ArrayList<>();
+        this.doctorAvailability = new HashSet<>();
+    }
     public String getSpeciality() {
         return speciality;
     }
@@ -75,5 +90,11 @@ public class Doctor implements Person {
     
     public List<Appointment> getPatientAppointments() {
         return this.patientAppointments;
+    }
+
+    @Override
+    public int getOrganizationId() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getPersonDetails().getOrganizationId();
     }
 }

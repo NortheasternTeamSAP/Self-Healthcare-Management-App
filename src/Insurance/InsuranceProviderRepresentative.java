@@ -41,6 +41,20 @@ public class InsuranceProviderRepresentative implements Person {
         insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, 
                 phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage);
     }
+    
+     public InsuranceProviderRepresentative(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId) {
+        
+        insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, 
+                phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage,organizationId );
+    }
 
     public Organization getOrganization() {
         return organization;
@@ -63,5 +77,11 @@ public class InsuranceProviderRepresentative implements Person {
     @Override
     public PersonDetails getPersonDetails() {
         return insuranceProviderRepDetails;
+    }
+
+    @Override
+    public int getOrganizationId() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getPersonDetails().getOrganizationId();
     }
 }

@@ -13,15 +13,32 @@ import Personnel.Person;
 import UI.CounselorDashboard;
 import UI.DietitianDashboard;
 import UI.FitnessTrainerDashBoard;
+import Doctor.Doctor;
+import EcoSystem.EcoSystem;
+import Enterprise.Enterprise;
+import Insurance.InsuranceProviderRepresentative;
+import Laboratory.LaboratoryAssistant;
+import Organization.Organization;
+import Patient.Patient;
+import PatientCoreWorkFlowUI.DoctorHomePagePanel;
+import PatientCoreWorkFlowUI.DoctorWorkAreaPanel;
+import PatientCoreWorkFlowUI.InsuranceProviderRepresentativeHomePageJPanel;
+import PatientCoreWorkFlowUI.LaboratoryAssistantHomePagePanel;
+import PatientCoreWorkFlowUI.PatientHomePagePanel;
+import Personnel.Person;
+import Personnel.Role;
+import Utils.NextScreen;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author preet
  */
-public class Login extends javax.swing.JPanel {
+public class Login extends javax.swing.JPanel implements NextScreen {
   JPanel WorkArea;
    EcoSystem system;
     /**
@@ -31,6 +48,7 @@ public class Login extends javax.swing.JPanel {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
+        
     }
 
     /**
@@ -131,12 +149,13 @@ public class Login extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String username = jTextField1.getText();
-        String password = jPasswordField1.getText();
-        
+        String password = new String(jPasswordField1.getPassword());
+
         Person p = system.globalUserDirectory.get(username, password);
-        if (p == null)
-        {
+        if (p == null) {
             JOptionPane.showMessageDialog(this, "Invalid user credentials!");
+            jTextField1.setText("");
+            jPasswordField1.setText("");
             return;
         }
         
@@ -150,13 +169,37 @@ public class Login extends javax.swing.JPanel {
                 layout.next(WorkArea);  
                 break;
             case PATIENT:
+                nextScreen(WorkArea, new PatientHomePagePanel(WorkArea, system, (Patient) p), "PatientHomePagePanel");
+                //PatientHomePagePanel phpp= new PatientHomePagePanel(WorkArea,system,(Patient)p);
+               
+//                
                 // redirect to patient dashboard
                 break;
             case DOCTOR:
+              
                 // redirect to doctor dashboard
+                int organizationId = p.getOrganizationId();
+                Organization organization = system.organizationDirectory.getOrganization(organizationId);
+                Enterprise enterprise = organization.getEnterprise();
+                nextScreen(WorkArea, new DoctorWorkAreaPanel(WorkArea, system, enterprise, (Doctor) p), "DoctorWorkAreaPanel");
                 break;
+             
+            case LABASSISTANT:
+             
+             //system.globalUserDirectory.get("labassist1")
+               nextScreen(WorkArea, new LaboratoryAssistantHomePagePanel(WorkArea, system,(LaboratoryAssistant)p), "LaboratoryAssistantHomePagePanel");
+                break;
+             
+                
             case INSURANCE_PROVIDER_REP:
-                // redirect to insurance provider dashboard
+                 nextScreen(WorkArea, new InsuranceProviderRepresentativeHomePageJPanel(WorkArea, system,(InsuranceProviderRepresentative)p), "InsuranceProviderRepresentativeHomePageJPanel");
+//                try {
+//                nextScreen(WorkArea, new InsuranceProviderRepresentativeHomePageJPanel(WorkArea, system,(InsuranceProviderRepresentative)p), "InsuranceProviderRepresentativeHomePageJPanel");
+//                } catch (Exception e) {
+//                    System.out.println(e);
+//                    
+//                }
+// redirect to insurance provider dashboard
                 break;
             case DELIVERY_MAN:
                 // redirect to delivery man dashboard
@@ -196,6 +239,7 @@ public class Login extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+              nextScreen(new NewRegistrationJPanel(WorkArea, system), "NewRegistrationJPanel");
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -208,4 +252,15 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+   private void nextScreen(JPanel nextScreen, String screenName) {
+        WorkArea.removeAll();
+        WorkArea.add(screenName , nextScreen);
+        WorkArea.setAlignmentX(SwingConstants.CENTER);
+        WorkArea.setAlignmentY(SwingConstants.CENTER);
+        CardLayout layout = (CardLayout)WorkArea.getLayout();
+        Dimension d = nextScreen.getLayout().preferredLayoutSize(nextScreen);
+        WorkArea.setSize(d);
+        layout.next(WorkArea); 
+   }
 }

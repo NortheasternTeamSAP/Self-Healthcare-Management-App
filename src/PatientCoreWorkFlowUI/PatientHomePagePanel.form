@@ -70,37 +70,31 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="btnBookFamilyDoctorAppointment" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnLogout1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnDietitianSession" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btnViewVitalSoignHistory" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnRecordPersonalVitals" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="btnViewOlderAppointments" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="btnMyMedicinePrescription" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTestLabAssistantLogin" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnTestInsuranceProvider" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnLogout1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnUpdatePersonalInformation" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnBookFamilyDoctorAppointment" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="btnViewOlderAppointments" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnTestLabAssistantLogin" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnPharmacy" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnCouncellorSession" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnUpdatePersonalInformation" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnTestDoctorLogin" max="32767" attributes="0"/>
+                              <Component id="btnFitnessInstructor" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -109,36 +103,37 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                          <Component id="btnRecordPersonalVitals" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnViewVitalSoignHistory" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="btnBookFamilyDoctorAppointment" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="btnRecordPersonalVitals" min="-2" pref="43" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnMyMedicinePrescription" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="btnViewOlderAppointments" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="btnLogout1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                          <Component id="btnTestLabAssistantLogin" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUpdatePersonalInformation" min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnViewVitalSoignHistory" min="-2" pref="42" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnTestInsuranceProvider" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="291" max="32767" attributes="0"/>
+                          <Component id="btnBookFamilyDoctorAppointment" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnMyMedicinePrescription" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="btnViewOlderAppointments" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="btnTestLabAssistantLogin" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="btnTestInsuranceProvider" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnDietitianSession" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace pref="67" max="32767" attributes="0"/>
+                          <Component id="btnCouncellorSession" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnPharmacy" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnLogout1" min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                              <Component id="btnUpdatePersonalInformation" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="713" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="478" max="32767" attributes="0"/>
-                              <Component id="btnTestDoctorLogin" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="406" max="-2" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
+                              <Component id="btnFitnessInstructor" min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -155,6 +150,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnBookFamilyDoctorAppointment">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Lucida Grande" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Book Family Doctor Appointment"/>
                   </Properties>
                   <Events>
@@ -171,7 +172,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTestLabAssistantLogin">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Test Lab Assistant Login"/>
+                    <Property name="text" type="java.lang.String" value="Lab Assistant"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestLabAssistantLoginActionPerformed"/>
@@ -209,20 +210,44 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdatePersonalInformationActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnTestDoctorLogin">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Test Doctor Login"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestDoctorLoginActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnTestInsuranceProvider">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Test Insurance Provider Login"/>
+                    <Property name="text" type="java.lang.String" value="Insurance Provider "/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestInsuranceProviderActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnPharmacy">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="pharmacy"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPharmacyActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnDietitianSession">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Dietitian Session"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDietitianSessionActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnCouncellorSession">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Councellor session"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCouncellorSessionActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnFitnessInstructor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fitness Instructor Session"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFitnessInstructorActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

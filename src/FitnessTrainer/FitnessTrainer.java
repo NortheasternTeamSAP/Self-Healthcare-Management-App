@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.Icon;
 
 /**
  *
@@ -34,6 +35,20 @@ public class FitnessTrainer implements Person{
             String phoneNumber, 
             UserAccount account) {
         fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER);
+        fitnessTrainerSchedule = new FitnessTrainerSchedule();
+        this.availability = new HashSet<>();
+    }
+    
+    public FitnessTrainer(
+            String fullName, 
+            LocalDate dob, 
+            PersonDetails.Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount account,
+            Icon icon,
+            int organizationId) {
+        fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER,icon, organizationId);
         fitnessTrainerSchedule = new FitnessTrainerSchedule();
         this.availability = new HashSet<>();
     }
@@ -79,5 +94,11 @@ public class FitnessTrainer implements Person{
 
     public PersonDetails getFitnessTrainerDetails() {
         return fitnessTrainerDetails;
+    }
+
+    @Override
+    public int getOrganizationId() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return getPersonDetails().getOrganizationId();
     }
 }
