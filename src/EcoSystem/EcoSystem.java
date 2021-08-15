@@ -55,6 +55,13 @@ public class EcoSystem {
     DeliveryManDirectory deliveryManDirectory;
     PharmacyDirectory pharmacyDirectory;
 
+    // Testing
+    public Enterprise healthManagementApp;
+    public Enterprise hospital;
+    public Enterprise insuranceCompany;
+    public Enterprise physicalWellness;
+    public Enterprise mentalWellness;
+ 
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
         globalUserDirectory = new GlobalUserDirectory(credentialsManager);
@@ -105,11 +112,11 @@ public class EcoSystem {
         Address sampleAddress = new Address("Street", "Building", "City", "Zip", "State", "Country");
 
         // Create Enterprise
-        HealthManagementAppEnterprise healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
-        HospitalEnterprise hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
-        InsuranceCompanyEnterprise insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
-        PhysicalWellnessEnterprise physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
-        MentalWellnessEnterprise mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
+        healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
+        hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
+        insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
+        physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
+        mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
         
 
         enterpriseDirectory.addEnterprise(healthManagementApp);
