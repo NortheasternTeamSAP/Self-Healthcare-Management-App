@@ -195,7 +195,11 @@ public class Login extends javax.swing.JPanel implements NextScreen {
              
                 
             case INSURANCE_PROVIDER_REP:
+<<<<<<< HEAD
                 InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system, system.organizationDirectory.getOrganization(p.getOrganizationId()), (InsuranceProviderRepresentative)p);
+=======
+                InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system,(InsuranceProviderRepresentative)p);
+>>>>>>> 864243c ( and added label place holder to fill details of doctors, laboratory assistant , patient, insurance provider representative and Fix broken registration panel form (#32))
                 WorkArea.add("InsuranceProviderRepresentativeHomePageJPanel",insuranceprovider);
                 CardLayout layoutd= (CardLayout)WorkArea.getLayout();
                 layoutd.next(WorkArea); 
