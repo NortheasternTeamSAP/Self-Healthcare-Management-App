@@ -13,6 +13,7 @@ import Laboratory.LaboratoryAssistant;
 import Laboratory.LaboratoryTestReport;
 import Patient.Patient;
 import Personnel.Person;
+import Personnel.PersonDetails;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.util.List;
@@ -46,6 +47,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         
         populatePendingLabTestsTable();
         populateCompletedLabTestsTable();
+        populateLabAssistantInfoPlaceholders();
         
     }
 
@@ -107,7 +109,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         lblNamePlaceHolder = new javax.swing.JLabel();
         lblDob1 = new javax.swing.JLabel();
         lblWeight1 = new javax.swing.JLabel();
-        lblAge = new javax.swing.JLabel();
+        lblGender = new javax.swing.JLabel();
         lblAddressPlaceHolder = new javax.swing.JLabel();
         imgLogo = new javax.swing.JLabel();
         lblPatientDetails = new javax.swing.JLabel();
@@ -116,7 +118,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCompletedLabTests = new javax.swing.JTable();
         lblEmailPlaceHolder = new javax.swing.JLabel();
-        lblAgePlaceHolder = new javax.swing.JLabel();
+        lblGenderPlaceHolder = new javax.swing.JLabel();
         lblDobPlaceHolder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
@@ -138,8 +140,8 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight1.setText("EmailId:");
 
-        lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblAge.setText("Age:");
+        lblGender.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblGender.setText("Gender");
 
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
 
@@ -190,7 +192,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
 
         lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
 
-        lblAgePlaceHolder.setText("AgeHolder");
+        lblGenderPlaceHolder.setText("GenderPlaceHolder");
 
         lblDobPlaceHolder.setText("DobPlaceHolder");
 
@@ -289,11 +291,11 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(lblWeight1)
-                                                    .addComponent(lblAge))
+                                                    .addComponent(lblGender))
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(lblAgePlaceHolder))
+                                                        .addComponent(lblGenderPlaceHolder))
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGap(4, 4, 4)
                                                         .addComponent(lblEmailPlaceHolder)))
@@ -342,8 +344,8 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
                             .addComponent(lblAddressPlaceHolder))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAge)
-                            .addComponent(lblAgePlaceHolder))
+                            .addComponent(lblGender)
+                            .addComponent(lblGenderPlaceHolder))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblWeight1)
@@ -407,11 +409,11 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAddressPlaceHolder;
-    private javax.swing.JLabel lblAge;
-    private javax.swing.JLabel lblAgePlaceHolder;
     private javax.swing.JLabel lblDob1;
     private javax.swing.JLabel lblDobPlaceHolder;
     private javax.swing.JLabel lblEmailPlaceHolder;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblGenderPlaceHolder;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNamePlaceHolder;
     private javax.swing.JLabel lblPatientDetails;
@@ -421,4 +423,18 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
     private javax.swing.JTable tblCompletedLabTests;
     private javax.swing.JTable tblPendingLabTests;
     // End of variables declaration//GEN-END:variables
+
+    private void populateLabAssistantInfoPlaceholders() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          PersonDetails pd = laboratoryAssistant.getPersonDetails();
+          lblNamePlaceHolder.setText(pd.getFullName());
+          lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
+          //lblEmailPlaceHolder.setText(pd.);
+          lblDobPlaceHolder.setText(pd.getDob().toString());
+          lblAddressPlaceHolder.setText(pd.getAddress().toString());
+          lblGenderPlaceHolder.setText(pd.getGender().FEMALE.toString());
+          imgLogo.setIcon(pd.getLogoImage());
+          
+
+    }
 }

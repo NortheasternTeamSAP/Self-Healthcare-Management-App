@@ -192,14 +192,12 @@ public class Login extends javax.swing.JPanel implements NextScreen {
              
                 
             case INSURANCE_PROVIDER_REP:
-                 nextScreen(WorkArea, new InsuranceProviderRepresentativeHomePageJPanel(WorkArea, system,(InsuranceProviderRepresentative)p), "InsuranceProviderRepresentativeHomePageJPanel");
-//                try {
-//                nextScreen(WorkArea, new InsuranceProviderRepresentativeHomePageJPanel(WorkArea, system,(InsuranceProviderRepresentative)p), "InsuranceProviderRepresentativeHomePageJPanel");
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                    
-//                }
-// redirect to insurance provider dashboard
+                InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system,(InsuranceProviderRepresentative)p);
+                WorkArea.add("InsuranceProviderRepresentativeHomePageJPanel",insuranceprovider);
+                CardLayout layoutd= (CardLayout)WorkArea.getLayout();
+                layoutd.next(WorkArea); 
+                 //nextScreen(WorkArea, new InsuranceProviderRepresentativeHomePageJPanel(WorkArea, system,(InsuranceProviderRepresentative)p), "InsuranceProviderRepresentativeHomePageJPanel");
+
                 break;
             case DELIVERY_MAN:
                 // redirect to delivery man dashboard
@@ -208,10 +206,10 @@ public class Login extends javax.swing.JPanel implements NextScreen {
                 // redirect to pharmacist dashboard
                 break;
             case DIETITIAN:
-                 DietitianDashboard dd= new DietitianDashboard(WorkArea,system,(Dietitian)p);
+                DietitianDashboard dd= new DietitianDashboard(WorkArea,system,(Dietitian)p);
                 WorkArea.add("DietitianDashboard",dd);
-                CardLayout layoutd= (CardLayout)WorkArea.getLayout();
-                layoutd.next(WorkArea); 
+                CardLayout layoutdd= (CardLayout)WorkArea.getLayout();
+                layoutdd.next(WorkArea); 
                 break;
             case TRAINER:
                 FitnessTrainerDashBoard fd= new FitnessTrainerDashBoard(WorkArea,system,(FitnessTrainer)p);
