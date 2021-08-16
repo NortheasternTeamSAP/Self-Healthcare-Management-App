@@ -33,7 +33,8 @@ public class PersonDetails {
     protected UserAccount userAccount;
     protected Role role;
     private Icon logoImage;
-  
+    private int organizationId;
+    
     public PersonDetails(
             String fullName, 
             LocalDate dob, 
@@ -42,7 +43,7 @@ public class PersonDetails {
             String phoneNumber, 
             UserAccount userAccount,
             Role role) {
-        this(fullName, dob, gender, address, phoneNumber, userAccount, role, null);
+        this(fullName, dob, gender, address, phoneNumber, userAccount, role, null, -1);
     }
     
     public PersonDetails(
@@ -54,6 +55,19 @@ public class PersonDetails {
             UserAccount userAccount,
             Role role,
             Icon logoImage) {
+        this(fullName, dob, gender, address, phoneNumber, userAccount, role, logoImage, -1);
+    }
+    
+    public PersonDetails(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount userAccount,
+            Role role,
+            Icon logoImage,
+            int organizationId) {
         this.fullName = fullName;
         this.dob = dob;
         this.gender = gender;
@@ -62,6 +76,7 @@ public class PersonDetails {
         this.userAccount = userAccount;
         this.role = role;
         this.logoImage = logoImage;
+        this.organizationId = organizationId;
     }
 
     public String getFullName() {
@@ -147,4 +162,8 @@ public class PersonDetails {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+    public int getOrganizationId() {
+        return this.organizationId;
+    }
+   
 }

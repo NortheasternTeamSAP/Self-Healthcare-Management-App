@@ -50,5 +50,10 @@ public class Pharmacist implements Person{
     public String toString() {
         return getPersonDetails().getFullName();
     }
+
+    @Override
+    public int getOrganizationId() {
+        return this.pharmacistDetails.getOrganizationId();
+    }
     
 }

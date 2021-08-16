@@ -57,6 +57,8 @@ public class Patient implements Person {
     private Pharmacy preferredPharmacy;
     private InsuranceDetails insuranceDetails;
     
+   
+    
     public Patient(
             String fullName, 
             LocalDate dob, 
@@ -91,7 +93,32 @@ public class Patient implements Person {
     public Pharmacy getPreferredPharmacy() {
         return preferredPharmacy;
     }
-
+    
+    public Patient(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId) {
+        
+        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
+        dietplans = new ArrayList<DietPlan>();
+        dietitianAppointments = new ArrayList<DietitianAppointment> ();
+        fitnessPlans=new ArrayList<FitnessPlan>();
+        fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
+        counsellingNotes=new ArrayList<CounsellingNote>();
+        counselorAppointments=new ArrayList<CounselorAppointment>();
+        this.vitalSignsHistory = new HashMap<>();
+        this.mostRecentVitalSigns = null;
+        this.vitalSignNormalRange = null;
+        this.doctorAppointments = new ArrayList<>();
+        this.doctorAppointmentsHistory = new ArrayList<>();
+        this.labTestReports = new ArrayList<>();
+    }
+    
     @Override
     public PersonDetails getPersonDetails() {
         return patientDetails;
@@ -248,4 +275,7 @@ public class Patient implements Person {
     
     
     
+    public int getOrganizationId() {
+        return getPersonDetails().getOrganizationId();
+    }
 }

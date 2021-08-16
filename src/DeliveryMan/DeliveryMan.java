@@ -49,4 +49,9 @@ public class DeliveryMan implements Person {
     public PersonDetails getPersonDetails() {
         return deliveryManDetails;
     }
+
+    @Override
+    public int getOrganizationId() {
+        return this.deliveryManDetails.getOrganizationId();
+    }
 }

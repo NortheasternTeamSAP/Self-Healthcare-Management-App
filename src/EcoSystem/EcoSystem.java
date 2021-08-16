@@ -9,6 +9,7 @@ import Counselor.Counselor;
 import DataStore.CredentialsManager;
 import DataStore.EnterpriseDirectory;
 import DataStore.GlobalUserDirectory;
+import DataStore.OrganizationDirectory;
 import Dietitian.Dietitian;
 import Doctor.Doctor;
 import Enterprise.Enterprise;
@@ -55,6 +56,7 @@ public class EcoSystem {
     MedicineDirectory medicineDirectory;
     DeliveryManDirectory deliveryManDirectory;
     PharmacyDirectory pharmacyDirectory;
+    public OrganizationDirectory organizationDirectory;
 
     // Testing
     public Enterprise healthManagementApp;
@@ -73,6 +75,8 @@ public class EcoSystem {
         pharmacyDirectory = new PharmacyDirectory();
 
         // create new system admin user
+        organizationDirectory = new OrganizationDirectory();
+ 
         exampleCreateEnterpriseOrganizationAndRoles();
     }
 
@@ -128,27 +132,35 @@ public class EcoSystem {
 
         // Create Organizations and all them to enterprise
         Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
+        organizationDirectory.addOrganization(adminOrg);
         healthManagementApp.addOrganization(adminOrg);
 
         Organization patientOrg = new PatientOrganization("Patient Org", healthManagementApp);
+        organizationDirectory.addOrganization(patientOrg);
         healthManagementApp.addOrganization(patientOrg);
 
         Organization primaryCareOrg = new PrimaryCareOrganization("Virginia Mason Primary Care Unit", hospital);
+        organizationDirectory.addOrganization(primaryCareOrg);
         hospital.addOrganization(primaryCareOrg);
 
         Organization laboratoryOrg = new LaboratoryOrganization("Virginia Mason Lab Tests Unit", hospital);
+        organizationDirectory.addOrganization(laboratoryOrg);
         hospital.addOrganization(laboratoryOrg);
 
         Organization healthInsuranceOrg = new HealthInsuranceDepartmentOrganization("Progressive Health Insurance Department", insuranceCompany);
+        organizationDirectory.addOrganization(healthInsuranceOrg);
         insuranceCompany.addOrganization(healthInsuranceOrg);
 
         Organization nutritionDepartmentOrg = new NutritionDepartmentOrganization("Nutrition Department", physicalWellness);
+        organizationDirectory.addOrganization(nutritionDepartmentOrg);
         physicalWellness.addOrganization(nutritionDepartmentOrg);
         
         Organization gymOrg=new GymOrganization("Fitness Trainer Department",physicalWellness);
+        organizationDirectory.addOrganization(gymOrg);
         physicalWellness.addOrganization(gymOrg);
         
         Organization phychiatristOrg=new PsychiatristOrganization("Counselor Department",mentalWellness);
+        organizationDirectory.addOrganization(phychiatristOrg);
         mentalWellness.addOrganization(phychiatristOrg);
 
         // Create roles

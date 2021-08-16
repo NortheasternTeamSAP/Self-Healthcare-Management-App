@@ -28,6 +28,20 @@ public class SystemAdmin implements Person {
         sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, 
                 Role.SYSTEM_ADMIN, logoImage);
     }
+    
+    public SystemAdmin(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId) {
+        
+        sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, 
+                Role.SYSTEM_ADMIN, logoImage, organizationId);
+    }
 
     @Override
     public UserAccount getUserAccount() {
@@ -43,4 +57,10 @@ public class SystemAdmin implements Person {
     public PersonDetails getPersonDetails() {
         return sysAdminDetails;
     }
+
+    @Override
+    public int getOrganizationId() {
+       return getPersonDetails().getOrganizationId();
+    }
+    
 }

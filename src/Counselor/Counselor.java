@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.Icon;
 
 /**
  *
@@ -26,7 +27,7 @@ import java.util.Set;
 public class Counselor implements Person{
     
     
-     private PersonDetails counselorDetails;
+    private PersonDetails counselorDetails;
     private CounselorSchedule counselorSchedule;
     private Set<String /* Appointment Date + time */> availability;
     
@@ -38,6 +39,20 @@ public class Counselor implements Person{
             String phoneNumber, 
             UserAccount account) {
         counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR);
+        counselorSchedule = new CounselorSchedule();
+        this.availability = new HashSet<>();
+    }
+    
+    public Counselor(
+            String fullName, 
+            LocalDate dob, 
+            PersonDetails.Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount account,
+            Icon icon,
+            int organizationId) {
+        counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR, icon, organizationId);
         counselorSchedule = new CounselorSchedule();
         this.availability = new HashSet<>();
     }
@@ -80,5 +95,12 @@ public class Counselor implements Person{
     public PersonDetails getPersonDetails() {
         return counselorDetails;
     }
+
+    @Override
+    public int getOrganizationId() {
+        return getPersonDetails().getOrganizationId();
+    }
+    
+    
     
 }

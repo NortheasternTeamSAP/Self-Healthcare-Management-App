@@ -41,19 +41,20 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     Person insuranceProviderRepresentative;
     private JPanel temporaryBack;
     
-    HealthInsuranceDepartmentOrganization healthInsuranceOrganization = null;
+    HealthInsuranceDepartmentOrganization healthInsuranceOrganization;
     ConsoleLogger log = ConsoleLogger.getLogger();
     
     /**
      * Creates new form LaboratoryAssistantHomePagePanel
      */
-    public InsuranceProviderRepresentativeHomePageJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Person insuranceProviderRepresentative, JPanel temporaryBack) {
+    public InsuranceProviderRepresentativeHomePageJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Person insuranceProviderRepresentative) {
         initComponents();
         this.workAreaPanel = workAreaPanel;
         this.ecoSystem = ecoSystem;
         this.laboratoryAssistant = (LaboratoryAssistant) laboratoryAssistant;
         this.insuranceProviderRepresentative = insuranceProviderRepresentative;
         this.temporaryBack = temporaryBack;
+        this.healthInsuranceOrganization = healthInsuranceOrganization;
         
         healthInsuranceOrganization = getHealthInsuranceOrganization(insuranceProviderRepresentative);
         
@@ -104,7 +105,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         }
 
         for (PrimaryCareInsuranceClaim claim : processedClaims) {
-            if (!claim.getClaimSatus().equals(ClaimStatus.PENDING)) {
+            if (!claim.getClaimSatus().equals(ClaimStatus.PROCESSED)) {
                 Object row[] = new Object[3];
                 row[0] = claim.getClaimId();
                 row[1] = claim.getPatient().getPersonDetails().getFullName();
