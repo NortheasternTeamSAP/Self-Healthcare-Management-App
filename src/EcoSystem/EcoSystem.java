@@ -186,6 +186,7 @@ public class EcoSystem {
                     new Pharmacist("Sravya", LocalDate.now(), PersonDetails.Gender.FEMALE,
                         new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
                             new UserAccount("pharmacist1", "pharmacist1"))));
+
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
