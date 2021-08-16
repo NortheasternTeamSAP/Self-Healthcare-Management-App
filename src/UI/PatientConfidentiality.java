@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Counselor.CounsellingNote;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import java.awt.CardLayout;
@@ -19,14 +20,16 @@ public class PatientConfidentiality extends javax.swing.JPanel {
    JPanel WorkArea;
    EcoSystem system;
    Patient p ;
+   CounsellingNote c;
     /**
      * Creates new form PatientCounsellingNote
      */
-    public PatientConfidentiality(JPanel WorkArea,EcoSystem system,Patient p) {
+    public PatientConfidentiality(JPanel WorkArea,EcoSystem system,Patient p,CounsellingNote c) {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        this.c=c;
     }
 
     /**
@@ -111,7 +114,7 @@ public class PatientConfidentiality extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PatientCounsellingNote ls= new PatientCounsellingNote(WorkArea,system,p);
+        PatientCounsellingNote ls= new PatientCounsellingNote(WorkArea,system,p,c);
         WorkArea.add("PatientCounsellingNote",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea); 

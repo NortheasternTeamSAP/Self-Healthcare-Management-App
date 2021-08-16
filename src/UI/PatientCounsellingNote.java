@@ -21,18 +21,20 @@ public class PatientCounsellingNote extends javax.swing.JPanel {
    JPanel WorkArea;
    EcoSystem system;
    Patient p ;
+   CounsellingNote c;
     /**
      * Creates new form PatientCounsellingNote
      */
-    public PatientCounsellingNote(JPanel WorkArea,EcoSystem system,Patient p) {
+    public PatientCounsellingNote(JPanel WorkArea,EcoSystem system,Patient p,CounsellingNote cn) {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        this.c=cn;
           
-        for(CounsellingNote c: p.getCounsellingNotes()){
+      //for(CounsellingNote c: p.getCounsellingNotes()){
             txtmeal1.setText(c.getCounsellingNote());
-    }
+    //}
     }
 
     /**

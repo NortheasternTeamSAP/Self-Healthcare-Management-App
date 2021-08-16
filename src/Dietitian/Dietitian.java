@@ -27,17 +27,7 @@ public class Dietitian implements Person{
     private DietitianSchedule dietitianSchedule;
     private Set<String /* Appointment Date + time */> availability;
     
-    public Dietitian(
-            String fullName, 
-            LocalDate dob, 
-            PersonDetails.Gender gender, 
-            Address address, 
-            String phoneNumber, 
-            UserAccount account) {
-        dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN);
-        dietitianSchedule = new DietitianSchedule();
-        this.availability = new HashSet<>();
-    }
+  
     
     public Dietitian(
             String fullName, 

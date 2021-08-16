@@ -53,11 +53,9 @@ public class PreetiMainJFrame extends javax.swing.JFrame {
 
    
         
-        this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", null /* image logo */, ua_john, -1);        
-        this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill);
-         Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit);
-      FitnessTrainer f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam);
-      Counselor c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig);
+        this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", null /* image logo */, ua_john, -1, null);        
+       
+     
       
       Range r =new Range(10,50);
       VitalSigns vs = new VitalSigns();
@@ -202,6 +200,7 @@ public class PreetiMainJFrame extends javax.swing.JFrame {
         List<Person> dietitians=system.globalUserDirectory.getAllDietitians();
           List<Person> fitnesstrainers=system.globalUserDirectory.getAllFitnessTrainers();
             List<Person> counselors=system.globalUserDirectory.getAllCounselors();
+            System.out.println(""+dietitians+ ""+fitnesstrainers+""+counselors);
         ApplicationDashboard ls= new ApplicationDashboard(WorkArea,system,p,(Dietitian)dietitians.get(0),(FitnessTrainer)fitnesstrainers.get(0),(Counselor)counselors.get(0));
         WorkArea.add("ApplicationDashboard",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();

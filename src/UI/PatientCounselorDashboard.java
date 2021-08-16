@@ -62,7 +62,7 @@ public class PatientCounselorDashboard extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("View Latest Counselor notes");
+        jButton3.setText("View  Counselor notes");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -85,7 +85,6 @@ public class PatientCounselorDashboard extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buddha.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         UpcomingDieticianAppointments.setBackground(new java.awt.Color(0, 0, 0));
@@ -102,7 +101,6 @@ public class PatientCounselorDashboard extends javax.swing.JPanel {
                 "Counselor Name", "Upcoming Appointment Date"
             }
         ));
-        UpcomingDieticianAppointments.setColumnSelectionAllowed(false);
         UpcomingDieticianAppointments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UpcomingDieticianAppointments.setEnabled(false);
         UpcomingDieticianAppointments.setGridColor(new java.awt.Color(255, 153, 0));
@@ -195,8 +193,8 @@ public class PatientCounselorDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PatientConfidentiality ls= new PatientConfidentiality(WorkArea,system,p);
-        WorkArea.add("PatientConfidentiality",ls);
+        AllCounsellingNotes ls= new AllCounsellingNotes(WorkArea,system,p);
+        WorkArea.add("AllCounsellingNotes",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea); 
     }//GEN-LAST:event_jButton3ActionPerformed

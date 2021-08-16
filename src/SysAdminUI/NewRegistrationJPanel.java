@@ -525,7 +525,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
        // int organizationId = null;
        // int organizationId = selectedOrganization.getOrganizationId();
         
-        Person patient = new Patient(name, null, null, sampleAddress, phoneNumber, logo, userAccount, organizationId);
+        Person patient = new Patient(name, null, null, sampleAddress, phoneNumber, logo, userAccount, organizationId, null);
                 ecoSystem.globalUserDirectory.createNewUser(patient);
 
         

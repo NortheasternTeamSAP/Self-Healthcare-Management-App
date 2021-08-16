@@ -8,6 +8,7 @@ package UI;
 import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
+import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
 import Personnel.Person;
 import java.awt.CardLayout;
@@ -47,7 +48,6 @@ public class DietitianDirectory extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbldietitians = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -64,13 +64,6 @@ public class DietitianDirectory extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(tbldietitians);
-
-        jButton1.setText("Add Dietitian");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Delete Dietitian ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,45 +91,35 @@ public class DietitianDirectory extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton5)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(46, 46, 46)
-                .addComponent(jButton2)
-                .addGap(68, 68, 68))
+                .addContainerGap(70, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addGap(3, 3, 3)))
+                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jButton5)
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CreateDietician ls= new CreateDietician(WorkArea,system);
-        WorkArea.add("CreateDietician",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);   
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int row = tbldietitians.getSelectedRow();
@@ -146,10 +129,10 @@ public class DietitianDirectory extends javax.swing.JPanel {
         }
         
         Dietitian p = (Dietitian)tbldietitians.getValueAt(row, 0);
-        CreateDietician ls= new CreateDietician(WorkArea,system,p);
-        WorkArea.add("CreateDietician",ls);
+        ModifyDietitian ls= new ModifyDietitian(WorkArea,system,p);
+        WorkArea.add("FitnessTrainer",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea); 
+        layout.next(WorkArea);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -176,7 +159,6 @@ public class DietitianDirectory extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;

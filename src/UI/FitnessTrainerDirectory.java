@@ -43,19 +43,11 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFitnesstrainers = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
-        jButton1.setText("Add Fitness Trainer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         tblFitnesstrainers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,10 +89,8 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
@@ -123,18 +113,10 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addContainerGap(303, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CreateFitnessTrainer ls= new CreateFitnessTrainer(WorkArea,system);
-        WorkArea.add("CreateDietician",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         WorkArea.remove(this);
@@ -152,7 +134,7 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
         }
 
         FitnessTrainer p = (FitnessTrainer)tblFitnesstrainers.getValueAt(row, 0);
-        CreateFitnessTrainer ls= new CreateFitnessTrainer(WorkArea,system,p);
+        ModifyFitnessTrainer ls= new ModifyFitnessTrainer(WorkArea,system,p);
         WorkArea.add("FitnessTrainer",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
@@ -174,7 +156,6 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
