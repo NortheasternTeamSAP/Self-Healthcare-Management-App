@@ -50,85 +50,53 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cmbMedicineId = new javax.swing.JComboBox<>();
         spnAddMedicineQuantity = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblAddMedicineStock.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddMedicineStock.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblAddMedicineStock.setText("Add Medicine Stock");
+        add(lblAddMedicineStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Medicine:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, 30));
 
-        btnAddMedicineStock.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddMedicineStock.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddMedicineStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAddMedicineStock.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-add-30.png")); // NOI18N
         btnAddMedicineStock.setText("Add ");
+        btnAddMedicineStock.setContentAreaFilled(false);
         btnAddMedicineStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddMedicineStockActionPerformed(evt);
             }
         });
+        add(btnAddMedicineStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 90, 30));
 
-        btnBack.setText("<< Back");
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-back-30.png")); // NOI18N
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Quantity:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, 30));
 
         cmbMedicineId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMedicineIdActionPerformed(evt);
             }
         });
+        add(cmbMedicineId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 210, -1));
+        add(spnAddMedicineQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 80, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(cmbMedicineId, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(spnAddMedicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(265, 265, 265))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnBack)
-                        .addGap(55, 55, 55)
-                        .addComponent(lblAddMedicineStock))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btnAddMedicineStock)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblAddMedicineStock))
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMedicineId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnAddMedicineQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(btnAddMedicineStock)
-                .addGap(27, 27, 27))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\polygonal-bg1100X850.jpg")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 840));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddMedicineStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMedicineStockActionPerformed
@@ -185,6 +153,7 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddMedicineStock;
     private javax.swing.JButton btnBack;
     private javax.swing.JComboBox<Medicine> cmbMedicineId;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblAddMedicineStock;
