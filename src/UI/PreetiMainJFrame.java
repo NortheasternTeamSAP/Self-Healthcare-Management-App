@@ -47,15 +47,17 @@ public class PreetiMainJFrame extends javax.swing.JFrame {
         UserAccount ua_jill = new UserAccount("jill", "password");
         UserAccount ua_jam = new UserAccount("jam", "password");
         UserAccount ua_jig = new UserAccount("jig", "password");
-         UserAccount ua_jit = new UserAccount("jit", "password");
+        UserAccount ua_jit = new UserAccount("jit", "password");
          
          
 
    
         
         this. p = new Patient("John", now, PersonDetails.Gender.MALE, addr, "1234567890", null /* image logo */, ua_john, -1, null);        
-       
-     
+        this.d = new Dietitian("Jill", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jill, null, -1);
+        Dietitian k = new Dietitian("Jit", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jit, null, -1);
+        FitnessTrainer f = new FitnessTrainer("Jam", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jam, null, -1);
+        Counselor c = new Counselor("Jig", now, PersonDetails.Gender.FEMALE, addr, "1234567890", ua_jig, null, -1);
       
       Range r =new Range(10,50);
       VitalSigns vs = new VitalSigns();
