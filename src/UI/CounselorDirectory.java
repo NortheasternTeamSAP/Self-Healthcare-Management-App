@@ -46,7 +46,6 @@ public class CounselorDirectory extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcounselor = new javax.swing.JTable();
 
@@ -68,13 +67,6 @@ public class CounselorDirectory extends javax.swing.JPanel {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Add Counselor");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -103,8 +95,6 @@ public class CounselorDirectory extends javax.swing.JPanel {
                 .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
@@ -122,7 +112,6 @@ public class CounselorDirectory extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addContainerGap(243, Short.MAX_VALUE))
         );
@@ -144,7 +133,7 @@ public class CounselorDirectory extends javax.swing.JPanel {
         }
 
         Counselor p = (Counselor)tblcounselor.getValueAt(row, 0);
-        CreateCounselor ls= new CreateCounselor(WorkArea,system,p);
+        ModifyCounselor ls= new ModifyCounselor(WorkArea,system,p);
         WorkArea.add("CreateCounselor",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
@@ -164,16 +153,8 @@ public class CounselorDirectory extends javax.swing.JPanel {
         ShowCounselors();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CreateCounselor ls= new CreateCounselor(WorkArea,system);
-        WorkArea.add("CreateCounselor",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;

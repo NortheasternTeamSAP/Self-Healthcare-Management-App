@@ -39,16 +39,18 @@ public class PatientDietPlan extends javax.swing.JPanel {
    int carbnum=0;
    int protientnum=0;
    int fibernum=0;
+   DietPlan d;
     /**
      * Creates new form PatientDietPlan
      */
-    public PatientDietPlan(JPanel WorkArea,EcoSystem system,Patient p) {
+    public PatientDietPlan(JPanel WorkArea,EcoSystem system,Patient p,DietPlan dp) {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        d=dp;
         lblpatientname.setText("HI  "+p.getPatientDetails().getFullName());
-            for(DietPlan d :p.getDietplans()){
+       //     for(DietPlan d :p.getDietplans()){
             ArrayList<String> temp =new ArrayList();
             temp=d.getMealplans();           
             txtmeal1.setText(temp.get(0));
@@ -64,7 +66,7 @@ public class PatientDietPlan extends javax.swing.JPanel {
             fibernum=d.getFiber();
             
             
-    }
+    //}
     
  populateDierChart();
     }
@@ -269,8 +271,6 @@ public class PatientDietPlan extends javax.swing.JPanel {
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        PatientDieticianDashboard panel = (PatientDieticianDashboard) component;
-        panel.populateUpcomingDieticianAppointments();
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
 

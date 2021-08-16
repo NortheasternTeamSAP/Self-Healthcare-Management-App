@@ -12,9 +12,11 @@ import Enterprise.Enterprise;
 import Laboratory.LaboratoryAssistant;
 import Patient.Patient;
 import Personnel.PersonDetails;
+import UI.FitnessTrainerDirectory;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.awt.CardLayout;
+import static java.time.Clock.system;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JFrame;
@@ -662,15 +664,24 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     }//GEN-LAST:event_btnPharmacyActionPerformed
 
     private void btnDietitianSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDietitianSessionActionPerformed
-        // TODO add your handling code here:
+        UI.PatientDieticianDashboard dd= new UI.PatientDieticianDashboard(WorkAreaPanel,ecoSystem,patient);
+        WorkAreaPanel.add("DietitanDashboard",dd);
+        CardLayout layout= (CardLayout)WorkAreaPanel.getLayout();
+        layout.next(WorkAreaPanel);
     }//GEN-LAST:event_btnDietitianSessionActionPerformed
 
     private void btnCouncellorSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCouncellorSessionActionPerformed
-        // TODO add your handling code here:
+          UI.PatientCounselorDashboard cd= new UI.PatientCounselorDashboard(WorkAreaPanel,ecoSystem,patient);
+        WorkAreaPanel.add("PatientCounselorDashboard",cd);
+        CardLayout layout= (CardLayout)WorkAreaPanel.getLayout();
+        layout.next(WorkAreaPanel);
     }//GEN-LAST:event_btnCouncellorSessionActionPerformed
 
     private void btnFitnessInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFitnessInstructorActionPerformed
-        // TODO add your handling code here:
+         UI.PatientFitnessDashboard fd= new UI.PatientFitnessDashboard(WorkAreaPanel,ecoSystem,patient);
+        WorkAreaPanel.add("PatientFitnessDashboard",fd);
+        CardLayout layout= (CardLayout)WorkAreaPanel.getLayout();
+        layout.next(WorkAreaPanel);
     }//GEN-LAST:event_btnFitnessInstructorActionPerformed
 
 

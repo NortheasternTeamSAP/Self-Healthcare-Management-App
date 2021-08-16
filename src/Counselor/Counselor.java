@@ -31,17 +31,7 @@ public class Counselor implements Person{
     private CounselorSchedule counselorSchedule;
     private Set<String /* Appointment Date + time */> availability;
     
-    public Counselor(
-            String fullName, 
-            LocalDate dob, 
-            PersonDetails.Gender gender, 
-            Address address, 
-            String phoneNumber, 
-            UserAccount account) {
-        counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR);
-        counselorSchedule = new CounselorSchedule();
-        this.availability = new HashSet<>();
-    }
+  
     
     public Counselor(
             String fullName, 

@@ -8,8 +8,10 @@ package SysAdminUI;
 import EcoSystem.EcoSystem;
 import UI.ViewPastAppointments;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -25,7 +27,7 @@ public class SysAdminDashboard extends javax.swing.JPanel {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
-    }
+          }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,29 +38,29 @@ public class SysAdminDashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bntmanageenterprise = new javax.swing.JButton();
+        bntmanageorg = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        manageemp = new javax.swing.JButton();
 
-        jButton1.setText("Manage Employees");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bntmanageenterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/enterprise-mobility.jpg"))); // NOI18N
+        bntmanageenterprise.setToolTipText("Manage your enterprise");
+        bntmanageenterprise.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 204), new java.awt.Color(0, 153, 153), new java.awt.Color(0, 204, 204), null));
+        bntmanageenterprise.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bntmanageenterprise.setOpaque(true);
+        bntmanageenterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bntmanageenterpriseActionPerformed(evt);
             }
         });
 
-        jButton2.setText("ManageEnterprise ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bntmanageorg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/oo.jpg"))); // NOI18N
+        bntmanageorg.setToolTipText("Manage Organizations");
+        bntmanageorg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 204), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 204, 204), null));
+        bntmanageorg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bntmanageorg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Manage Organization");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bntmanageorgActionPerformed(evt);
             }
         });
 
@@ -69,46 +71,52 @@ public class SysAdminDashboard extends javax.swing.JPanel {
             }
         });
 
+        manageemp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/ee3.jpg"))); // NOI18N
+        manageemp.setToolTipText("Manage Employees");
+        manageemp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 204), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 204, 204), null));
+        manageemp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        manageemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageempActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton4)))
-                .addContainerGap(267, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(249, 249, 249)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(269, Short.MAX_VALUE)))
+                .addGap(29, 29, 29)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(bntmanageenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105)
+                .addComponent(bntmanageorg, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(117, 117, 117)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(472, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bntmanageenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bntmanageorg, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bntmanageenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntmanageenterpriseActionPerformed
       
         ManageEnterprises ls= new ManageEnterprises(WorkArea,system);
         WorkArea.add("ManageEnterprises",ls);
@@ -116,9 +124,9 @@ public class SysAdminDashboard extends javax.swing.JPanel {
         layout.next(WorkArea);  
         
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bntmanageenterpriseActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bntmanageorgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntmanageorgActionPerformed
       
         ManageOrganizations ls= new ManageOrganizations(WorkArea,system);
         WorkArea.add("ManageOrganizations",ls);
@@ -126,16 +134,7 @@ public class SysAdminDashboard extends javax.swing.JPanel {
         layout.next(WorkArea);  
         
         
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        ManageRoles mr= new ManageRoles(WorkArea,system);
-        WorkArea.add("ManageRoles",mr);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea); 
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bntmanageorgActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         WorkArea.remove(this);
@@ -145,11 +144,21 @@ public class SysAdminDashboard extends javax.swing.JPanel {
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void manageempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageempActionPerformed
+     
+        ManageEmployees ll= new ManageEmployees(WorkArea,system);
+        WorkArea.add("ManageOrganizations",ll);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);  
+        
+        
+    }//GEN-LAST:event_manageempActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bntmanageenterprise;
+    private javax.swing.JButton bntmanageorg;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton manageemp;
     // End of variables declaration//GEN-END:variables
 }

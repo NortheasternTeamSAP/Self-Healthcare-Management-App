@@ -64,7 +64,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("View Current Diet Plan");
+        jButton3.setText("View All Diet Plan");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -152,8 +152,8 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PatientDietPlan ls= new PatientDietPlan(WorkArea,system,p);
-        WorkArea.add("PatientDietPlan",ls);
+        AllDietPlan ls= new AllDietPlan(WorkArea,system,p);
+        WorkArea.add("AllDietPlan",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);   
       

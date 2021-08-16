@@ -38,6 +38,7 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
     EcoSystem system;
     Patient p;
     ArrayList<Excercise> temp2;
+    FitnessPlan fp;
     int cardio = 0;
     int weight = 0;
     int crosstraining = 0;
@@ -45,14 +46,15 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
     /**
      * Creates new form ViewFitnessPlan
      */
-    public PatientFitnessPlan(JPanel WorkArea, EcoSystem system, Patient p) {
+    public PatientFitnessPlan(JPanel WorkArea, EcoSystem system, Patient p,FitnessPlan fp) {
         initComponents();
         this.WorkArea = WorkArea;
         this.system = system;
         this.p = p;
+        this.fp=fp;
         report3.setVisible(false);
         lblpatientname.setText("HI  " + p.getPatientDetails().getFullName());
-        for (FitnessTrainer.FitnessPlan fp : p.getFitnessPlans()) {
+        //for (FitnessTrainer.FitnessPlan fp : p.getFitnessPlans()) {
             ArrayList<String> temp = new ArrayList();
             temp = fp.getFitnessplans();
             txtmeal1.setText(temp.get(0));
@@ -83,7 +85,7 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
                 }
             }
 
-        }
+       // }
 
         populatechart();
         populateTrackMyFitnessChart();
@@ -456,8 +458,6 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CardLayout layout = (CardLayout) WorkArea.getLayout();
-        PatientFitnessDashboard fp = (PatientFitnessDashboard) component;
-        fp.populateUpcomingFitnessTrainerAppointments();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
 

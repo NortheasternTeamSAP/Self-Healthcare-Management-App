@@ -17,81 +17,80 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="309" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
-                  </Group>
+              <EmptySpace pref="110" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel2" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
-                              </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel2" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtname1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtphoneno" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDateChooser1" alignment="0" pref="208" max="32767" attributes="0"/>
+                          <Component id="combogender1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtadd1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtuname" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel8" min="-2" pref="112" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtpswd" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel10" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtname1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtphoneno" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jDateChooser1" alignment="0" pref="208" max="32767" attributes="0"/>
-                                  <Component id="combogender1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtadd1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtuname" alignment="1" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="txtadd3" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" pref="112" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtpswd" max="32767" attributes="0"/>
+                              <Component id="jLabel9" min="-2" pref="81" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="txtadd2" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel10" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtadd3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtadd2" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel12" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtadd5" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel11" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtadd4" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel13" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtadd6" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel12" min="-2" pref="81" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="txtadd5" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel11" min="-2" pref="81" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="txtadd4" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel13" min="-2" pref="81" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="txtadd6" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="181" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -189,7 +188,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Create Dietician"/>
+        <Property name="text" type="java.lang.String" value="Modify Fitness Trainer"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
@@ -259,7 +258,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Create"/>
+        <Property name="text" type="java.lang.String" value="Modify"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

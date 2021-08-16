@@ -179,6 +179,7 @@ public class EcoSystem {
                     new Pharmacist("Sravya", LocalDate.now(), PersonDetails.Gender.FEMALE,
                         new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
                             new UserAccount("pharmacist1", "pharmacist1"))));
+
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
@@ -194,18 +195,18 @@ public class EcoSystem {
         this.globalUserDirectory.createNewUser(labAssistant);
         laboratoryOrg.addEmployee(labAssistant);
 
-        // Dietitian
-        Person dietitian = new Dietitian("Jan", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitian1"));
+         // FitnessTrainer
+        Person dietitian = new Dietitian("Jim", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitian1"),null,0);
         this.globalUserDirectory.createNewUser(dietitian);
-        nutritionDepartmentOrg.addEmployee(dietitian);
+        gymOrg.addEmployee(dietitian);
         
          // FitnessTrainer
-        Person fitnessTrainer = new FitnessTrainer("Jim", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("fitnesstrainer", "fitnesstrainer1"));
+        Person fitnessTrainer = new FitnessTrainer("jack", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("fitnesstrainer", "fitnesstrainer1"),null,0);
         this.globalUserDirectory.createNewUser(fitnessTrainer);
         gymOrg.addEmployee(fitnessTrainer);
         
          // Counselor
-        Person counselor = new Counselor("zena", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("counselor", "counselor1"));
+        Person counselor = new Counselor("zena", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("counselor", "counselor1"),null ,0);
         this.globalUserDirectory.createNewUser(counselor);
         phychiatristOrg.addEmployee(counselor);
 
