@@ -17,6 +17,7 @@ import Organization.HealthInsuranceDepartmentOrganization;
 import Organization.Organization;
 import Patient.Patient;
 import Personnel.Person;
+import Personnel.PersonDetails;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.util.List;
@@ -60,6 +61,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         
         populatePendingHealthInsuranceClaimsTable();
         populateProcessedHealthInsuranceClaimsTable();
+        populateInsuranceProviderRepresentativeInfoPlaceholders();
         
     }
     
@@ -129,14 +131,14 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         lblNamePlaceHolder = new javax.swing.JLabel();
         lblDob1 = new javax.swing.JLabel();
         lblWeight1 = new javax.swing.JLabel();
-        lblAge = new javax.swing.JLabel();
+        lblGender = new javax.swing.JLabel();
         lblAddressPlaceHolder = new javax.swing.JLabel();
         imgLogo = new javax.swing.JLabel();
         lblPatientDetails = new javax.swing.JLabel();
         lblPhoneNumber = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         lblEmailPlaceHolder = new javax.swing.JLabel();
-        lblAgePlaceHolder = new javax.swing.JLabel();
+        lblGenderPlaceHolder = new javax.swing.JLabel();
         lblDobPlaceHolder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
@@ -159,8 +161,8 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight1.setText("EmailId:");
 
-        lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblAge.setText("Age:");
+        lblGender.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblGender.setText("Gender");
 
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
 
@@ -177,7 +179,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
 
         lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
 
-        lblAgePlaceHolder.setText("AgeHolder");
+        lblGenderPlaceHolder.setText("GenderHolder");
 
         lblDobPlaceHolder.setText("DobPlaceHolder");
 
@@ -316,11 +318,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(lblWeight1)
-                                                    .addComponent(lblAge))
+                                                    .addComponent(lblGender))
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(lblAgePlaceHolder))
+                                                        .addComponent(lblGenderPlaceHolder))
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGap(4, 4, 4)
                                                         .addComponent(lblEmailPlaceHolder)))
@@ -377,8 +379,8 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                             .addComponent(lblAddressPlaceHolder))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAge)
-                            .addComponent(lblAgePlaceHolder))
+                            .addComponent(lblGender)
+                            .addComponent(lblGenderPlaceHolder))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblWeight1)
@@ -488,11 +490,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAddressPlaceHolder;
-    private javax.swing.JLabel lblAge;
-    private javax.swing.JLabel lblAgePlaceHolder;
     private javax.swing.JLabel lblDob1;
     private javax.swing.JLabel lblDobPlaceHolder;
     private javax.swing.JLabel lblEmailPlaceHolder;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblGenderPlaceHolder;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNamePlaceHolder;
     private javax.swing.JLabel lblPatientDetails;
@@ -502,4 +504,16 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private javax.swing.JTable tblPendingHealthInsuranceClaims;
     private javax.swing.JTable tblProcessedHealthInsuranceClaims;
     // End of variables declaration//GEN-END:variables
+
+    private void populateInsuranceProviderRepresentativeInfoPlaceholders() {
+        PersonDetails pd = insuranceProviderRepresentative.getPersonDetails();
+        lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
+        //lblAgePlaceHolder.setText(pd.getAge() + " years");  
+        lblGenderPlaceHolder.setText(pd.getDob().toString());
+        //lblEmailId.setText("Not Available");   
+        lblNamePlaceHolder.setText(pd.getFullName()); 
+        lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
+        lblGenderPlaceHolder.setText(pd.getGender().MALE.toString());
+        imgLogo.setIcon(pd.getLogoImage());
+    }
 }

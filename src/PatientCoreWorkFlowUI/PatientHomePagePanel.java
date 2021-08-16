@@ -48,11 +48,12 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     void populatePatientInfoPlaceholders() {
         PersonDetails pd = patient.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
-       // lblAgePlaceHolder.setText(pd.getAge() + " years");  
-        lblAgePlaceHolder.setText(pd.getDob() + "years");
+        lblAgePlaceHolder.setText(pd.getAge() + " years");  
+        lblAgePlaceHolder.setText(pd.getDob().toString());
         lblEmailPlaceHolder.setText("Not Available");  
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
+        imgLogo.setIcon(pd.getLogoImage());
     }
     
     void populateUpComingAppointments() {
