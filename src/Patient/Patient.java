@@ -59,47 +59,17 @@ public class Patient implements Person {
     
    
     
-//    public Patient(
-//            String fullName, 
-//            LocalDate dob, 
-//            Gender gender, 
-//            Address address, 
-//            String phoneNumber, 
-//            Icon logoImage,
-//            UserAccount account,
-//            int organizationId,
-//            Pharmacy preferredPharmacy) {
-//
-//        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
-//        dietplans = new ArrayList<DietPlan>();
-//        dietitianAppointments = new ArrayList<DietitianAppointment> ();
-//        fitnessPlans=new ArrayList<FitnessPlan>();
-//        fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
-//        counsellingNotes=new ArrayList<CounsellingNote>();
-//        counselorAppointments=new ArrayList<CounselorAppointment>();
-//        this.vitalSignsHistory = new HashMap<>();
-//        this.mostRecentVitalSigns = null;
-//        this.vitalSignNormalRange = null;
-//        this.doctorAppointments = new ArrayList<>();
-//        this.doctorAppointmentsHistory = new ArrayList<>();
-//        this.labTestReports = new ArrayList<>();
-//
-//        this.preferredPharmacy = preferredPharmacy;
-//    }
-
-    
-    
     public Patient(
             String fullName, 
             LocalDate dob, 
             Gender gender, 
             Address address, 
-            String phoneNumber,
+            String phoneNumber, 
             Icon logoImage,
             UserAccount account,
-            int organizationId, 
+            int organizationId,
             Pharmacy preferredPharmacy) {
-        
+
         patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
@@ -113,8 +83,38 @@ public class Patient implements Person {
         this.doctorAppointments = new ArrayList<>();
         this.doctorAppointmentsHistory = new ArrayList<>();
         this.labTestReports = new ArrayList<>();
+
         this.preferredPharmacy = preferredPharmacy;
     }
+
+    
+    
+//    public Patient(
+//            String fullName, 
+//            LocalDate dob, 
+//            Gender gender, 
+//            Address address, 
+//            String phoneNumber,
+//            Icon logoImage,
+//            UserAccount account,
+//            int organizationId, 
+//            Pharmacy preferredPharmacy) {
+//        
+//        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
+//        dietplans = new ArrayList<DietPlan>();
+//        dietitianAppointments = new ArrayList<DietitianAppointment> ();
+//        fitnessPlans=new ArrayList<FitnessPlan>();
+//        fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
+//        counsellingNotes=new ArrayList<CounsellingNote>();
+//        counselorAppointments=new ArrayList<CounselorAppointment>();
+//        this.vitalSignsHistory = new HashMap<>();
+//        this.mostRecentVitalSigns = null;
+//        this.vitalSignNormalRange = null;
+//        this.doctorAppointments = new ArrayList<>();
+//        this.doctorAppointmentsHistory = new ArrayList<>();
+//        this.labTestReports = new ArrayList<>();
+//        this.preferredPharmacy = preferredPharmacy;
+//    }
     
     @Override
     public PersonDetails getPersonDetails() {
