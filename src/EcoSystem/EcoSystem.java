@@ -39,6 +39,7 @@ import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.SystemAdmin;
 import Personnel.UserAccount;
+import Pharmacy.Pharmacist;
 import Pharmacy.Pharmacy;
 import Pharmacy.PharmacyDirectory;
 import java.time.LocalDate;
@@ -123,6 +124,7 @@ public class EcoSystem {
         physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
         mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
         
+        
 
         enterpriseDirectory.addEnterprise(healthManagementApp);
         enterpriseDirectory.addEnterprise(hospital);
@@ -171,7 +173,12 @@ public class EcoSystem {
 
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,null, null);
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null,
+                    new UserAccount("anurag", "anurag"), 12,
+                    new Pharmacy("Bartell Drugs", new Address("124", "L43", "Seattle", "98109", "WA", "USA"), 
+                    new Pharmacist("Sravya", LocalDate.now(), PersonDetails.Gender.FEMALE,
+                        new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
+                            new UserAccount("pharmacist1", "pharmacist1"))));
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
