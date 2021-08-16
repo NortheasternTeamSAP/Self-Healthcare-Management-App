@@ -16,6 +16,7 @@ import Organization.Organization;
 import Organization.OrganizationType;
 import Patient.Patient;
 import Personnel.Person;
+import UI.PDoctorRole.PrescribeMedicinesJPanel;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.awt.Desktop;
@@ -221,6 +222,11 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         lblName3.setText("Perform new Lab Test");
 
         btnPrescribeNewMedicines.setText("Prescribe new medicines");
+        btnPrescribeNewMedicines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrescribeNewMedicinesActionPerformed(evt);
+            }
+        });
 
         lblWeight2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight2.setText("Appointment Date:");
@@ -542,6 +548,11 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         nextScreen(workAreaPanel, new GeneratePatientBillJPanel(workAreaPanel, ecosystem, appointment, this), TOOL_TIP_TEXT_KEY);
         
     }//GEN-LAST:event_btnGeneratePatientBillActionPerformed
+
+    private void btnPrescribeNewMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescribeNewMedicinesActionPerformed
+        // TODO add your handling code here:
+        nextScreen(workAreaPanel, new PrescribeMedicinesJPanel(workAreaPanel, ecosystem, appointment, this), "PrescribeMedicinesJPanel");
+    }//GEN-LAST:event_btnPrescribeNewMedicinesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

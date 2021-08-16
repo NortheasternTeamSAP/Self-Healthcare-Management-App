@@ -35,7 +35,7 @@ public class OrderDirectory {
             Patient patient,
             int quantity, 
             Medicine medicine, 
-            String appointmentID){
+            int appointmentID){
         
         Order order = new Order(
                 pharmacy,
