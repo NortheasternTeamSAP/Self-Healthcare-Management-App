@@ -59,40 +59,35 @@ public class Patient implements Person {
     
    
     
-    public Patient(
-            String fullName, 
-            LocalDate dob, 
-            Gender gender, 
-            Address address, 
-            String phoneNumber, 
-            Icon logoImage,
-            UserAccount account,
-            Pharmacy preferredPharmacy) {
+//    public Patient(
+//            String fullName, 
+//            LocalDate dob, 
+//            Gender gender, 
+//            Address address, 
+//            String phoneNumber, 
+//            Icon logoImage,
+//            UserAccount account,
+//            int organizationId,
+//            Pharmacy preferredPharmacy) {
+//
+//        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
+//        dietplans = new ArrayList<DietPlan>();
+//        dietitianAppointments = new ArrayList<DietitianAppointment> ();
+//        fitnessPlans=new ArrayList<FitnessPlan>();
+//        fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
+//        counsellingNotes=new ArrayList<CounsellingNote>();
+//        counselorAppointments=new ArrayList<CounselorAppointment>();
+//        this.vitalSignsHistory = new HashMap<>();
+//        this.mostRecentVitalSigns = null;
+//        this.vitalSignNormalRange = null;
+//        this.doctorAppointments = new ArrayList<>();
+//        this.doctorAppointmentsHistory = new ArrayList<>();
+//        this.labTestReports = new ArrayList<>();
+//
+//        this.preferredPharmacy = preferredPharmacy;
+//    }
 
-        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage);
-        dietplans = new ArrayList<DietPlan>();
-        dietitianAppointments = new ArrayList<DietitianAppointment> ();
-        fitnessPlans=new ArrayList<FitnessPlan>();
-        fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
-        counsellingNotes=new ArrayList<CounsellingNote>();
-        counselorAppointments=new ArrayList<CounselorAppointment>();
-        this.vitalSignsHistory = new HashMap<>();
-        this.mostRecentVitalSigns = null;
-        this.vitalSignNormalRange = null;
-        this.doctorAppointments = new ArrayList<>();
-        this.doctorAppointmentsHistory = new ArrayList<>();
-        this.labTestReports = new ArrayList<>();
-
-        this.preferredPharmacy = preferredPharmacy;
-    }
-
-    public void setPreferredPharmacy(Pharmacy preferredPharmacy) {
-        this.preferredPharmacy = preferredPharmacy;
-    }
-
-    public Pharmacy getPreferredPharmacy() {
-        return preferredPharmacy;
-    }
+    
     
     public Patient(
             String fullName, 
@@ -102,7 +97,8 @@ public class Patient implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId) {
+            int organizationId, 
+            Pharmacy preferredPharmacy) {
         
         patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
         dietplans = new ArrayList<DietPlan>();
@@ -117,6 +113,7 @@ public class Patient implements Person {
         this.doctorAppointments = new ArrayList<>();
         this.doctorAppointmentsHistory = new ArrayList<>();
         this.labTestReports = new ArrayList<>();
+        this.preferredPharmacy = preferredPharmacy;
     }
     
     @Override
@@ -270,6 +267,14 @@ public class Patient implements Person {
     @Override
     public String toString() {
         return "" + patientDetails.getFullName() ;
+    }
+    
+    public void setPreferredPharmacy(Pharmacy preferredPharmacy) {
+        this.preferredPharmacy = preferredPharmacy;
+    }
+
+    public Pharmacy getPreferredPharmacy() {
+        return preferredPharmacy;
     }
     
     
