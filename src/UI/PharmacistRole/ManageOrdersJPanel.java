@@ -82,6 +82,8 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         btnAcceptOrder = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -92,18 +94,21 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAcceptedOrders = new javax.swing.JTable();
         lblCurrentAcceptedOrders = new javax.swing.JLabel();
-        btnDeliverOrder = new javax.swing.JButton();
+        btnShipOrder = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cmbDeliveryMan = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+
+        jScrollPane3.setViewportView(jTextPane1);
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Manage Orders");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 186, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 186, -1));
 
         btnAcceptOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnAcceptOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\3d check mark.png")); // NOI18N
+        btnAcceptOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\accept.png")); // NOI18N
         btnAcceptOrder.setText("Accept");
         btnAcceptOrder.setToolTipText("Accept Order");
         btnAcceptOrder.setContentAreaFilled(false);
@@ -113,7 +118,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
                 btnAcceptOrderActionPerformed(evt);
             }
         });
-        add(btnAcceptOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 100, 30));
+        add(btnAcceptOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 100, 30));
 
         tblOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
@@ -136,9 +141,9 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         tblOrder.setSelectionForeground(new java.awt.Color(102, 102, 255));
         jScrollPane1.setViewportView(tblOrder);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 98, 822, 131));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 970, 220));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-back-30.png")); // NOI18N
         btnBack.setToolTipText("Back");
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -146,19 +151,24 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 40, 30));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Pending Orders to be processed:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 20));
 
+        btnCheckMedAvailability.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnCheckMedAvailability.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\check_avail.png")); // NOI18N
         btnCheckMedAvailability.setText("Check Availability");
+        btnCheckMedAvailability.setContentAreaFilled(false);
         btnCheckMedAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckMedAvailabilityActionPerformed(evt);
             }
         });
-        add(btnCheckMedAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        add(btnCheckMedAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
+        tblAcceptedOrders.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblAcceptedOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -177,33 +187,38 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblAcceptedOrders);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 810, 140));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 970, 230));
 
+        lblCurrentAcceptedOrders.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCurrentAcceptedOrders.setText("Current Accepted Orders:");
-        add(lblCurrentAcceptedOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        add(lblCurrentAcceptedOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
-        btnDeliverOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnDeliverOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\deliver order.png")); // NOI18N
-        btnDeliverOrder.setText("Deliver Order");
-        btnDeliverOrder.setContentAreaFilled(false);
-        btnDeliverOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDeliverOrder.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnDeliverOrder.addActionListener(new java.awt.event.ActionListener() {
+        btnShipOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnShipOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-shipped-30.png")); // NOI18N
+        btnShipOrder.setText("Ship Order");
+        btnShipOrder.setContentAreaFilled(false);
+        btnShipOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnShipOrder.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnShipOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeliverOrderActionPerformed(evt);
+                btnShipOrderActionPerformed(evt);
             }
         });
-        add(btnDeliverOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 140, 40));
+        add(btnShipOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 750, 120, 40));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setText("Select Delivery Man");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 107, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, 107, -1));
 
         cmbDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbDeliveryManActionPerformed(evt);
             }
         });
-        add(cmbDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 550, 130, 20));
+        add(cmbDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 730, 150, 20));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\polygonal-bg1100X850.jpg")); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptOrderActionPerformed
@@ -250,7 +265,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCheckMedAvailabilityActionPerformed
 
-    private void btnDeliverOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliverOrderActionPerformed
+    private void btnShipOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShipOrderActionPerformed
         // TODO add your handling code here:
         DeliveryMan delMan = (DeliveryMan) cmbDeliveryMan.getSelectedItem();
         for(Order order: ecoSystem.getOrderDirectory().getOrdersByPharmacy(pharmacy)){
@@ -261,7 +276,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         }
         
         populateAcceptedOrdersTable();        
-    }//GEN-LAST:event_btnDeliverOrderActionPerformed
+    }//GEN-LAST:event_btnShipOrderActionPerformed
 
     private void cmbDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDeliveryManActionPerformed
         // TODO add your handling code here:
@@ -280,13 +295,16 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAcceptOrder;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheckMedAvailability;
-    private javax.swing.JButton btnDeliverOrder;
+    private javax.swing.JButton btnShipOrder;
     private javax.swing.JComboBox<Person> cmbDeliveryMan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lblCurrentAcceptedOrders;
     private javax.swing.JTable tblAcceptedOrders;
     private javax.swing.JTable tblOrder;
