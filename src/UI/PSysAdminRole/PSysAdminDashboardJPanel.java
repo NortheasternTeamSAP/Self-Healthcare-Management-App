@@ -40,11 +40,23 @@ public class PSysAdminDashBoardJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         btnManagePharmacy = new javax.swing.JButton();
         btnManageDeliveryMan = new javax.swing.JButton();
         btnManageMedicines = new javax.swing.JButton();
         btnMngPharmacist = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,9 +72,7 @@ public class PSysAdminDashBoardJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageDeliveryMan.setBackground(new java.awt.Color(255, 255, 255));
         btnManageDeliveryMan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnManageDeliveryMan.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\icons8-user-male-64.png")); // NOI18N
         btnManageDeliveryMan.setText("Manage Delivery Men");
         btnManageDeliveryMan.setContentAreaFilled(false);
         btnManageDeliveryMan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -159,6 +169,7 @@ public class PSysAdminDashBoardJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageMedicines;
     private javax.swing.JButton btnManagePharmacy;
     private javax.swing.JButton btnMngPharmacist;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

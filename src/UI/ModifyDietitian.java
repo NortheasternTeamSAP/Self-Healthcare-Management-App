@@ -24,23 +24,16 @@ import javax.swing.JPanel;
  *
  * @author preet
  */
-public class CreateDietician extends javax.swing.JPanel {
+public class ModifyDietitian extends javax.swing.JPanel {
  JPanel WorkArea;
  EcoSystem system;
  Dietitian d;
- int flag=0;
+
     /**
      * Creates new form CreateDietician
      */
-    public CreateDietician(JPanel WorkArea,EcoSystem system) {
-        initComponents();
-        this.WorkArea=WorkArea;
-        this.system=system;
-        combogender1.setModel(new DefaultComboBoxModel(PersonDetails.Gender.values()));
-        flag=1;
-       
-    }
-        public CreateDietician(JPanel WorkArea,EcoSystem system,Dietitian d) {
+
+        public ModifyDietitian(JPanel WorkArea,EcoSystem system,Dietitian d) {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
@@ -64,7 +57,7 @@ public class CreateDietician extends javax.swing.JPanel {
        LocalDate localDate=d.getPersonDetails().getDob();
        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
        jDateChooser1.setDate(date);
-       flag=2;
+    
         
     }
 
@@ -312,27 +305,7 @@ public class CreateDietician extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             
-       if(flag==1){
-       
-      UserAccount account = new UserAccount(txtuname.getText(),txtpswd.getText()); 
-      Address addr= new Address(txtadd1.getText(),txtadd2.getText(),txtadd3.getText(),txtadd4.getText(),txtadd6.getText(),txtadd5.getText());
-      Gender gender =(Gender)combogender1.getSelectedItem();
-      LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-      Dietitian dietitian = new Dietitian(txtname1.getText(),date,gender,addr,txtphoneno.getText(),account);
-      system.globalUserDirectory.createNewUser(dietitian);
-      JOptionPane.showMessageDialog(this, "Details have been saved : "+txtname1.getText());
-      
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        DietitianDirectory d=(DietitianDirectory)component;
-        d.ShowDietitians();
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);   
-      
-       
-       }
-       else {
+   
        d.getPersonDetails().setFullName(txtname1.getText());
        LocalDate date =(LocalDate) jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        d.getPersonDetails().setDob(date);
@@ -345,7 +318,7 @@ public class CreateDietician extends javax.swing.JPanel {
        d.getPersonDetails().setAddress(addr);
        JOptionPane.showMessageDialog(this, "Details have been Modified  : "+txtname1.getText());
        
-          }
+        
        
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please add all details correctly ..");

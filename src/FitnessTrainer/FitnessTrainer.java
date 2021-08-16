@@ -27,18 +27,7 @@ public class FitnessTrainer implements Person{
     private FitnessTrainerSchedule fitnessTrainerSchedule;
     private Set<String /* Appointment Date + time */> availability;
     
-    public FitnessTrainer(
-            String fullName, 
-            LocalDate dob, 
-            PersonDetails.Gender gender, 
-            Address address, 
-            String phoneNumber, 
-            UserAccount account) {
-        fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER);
-        fitnessTrainerSchedule = new FitnessTrainerSchedule();
-        this.availability = new HashSet<>();
-    }
-    
+
     public FitnessTrainer(
             String fullName, 
             LocalDate dob, 

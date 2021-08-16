@@ -5,8 +5,10 @@
  */
 package SysAdminUI;
 
+import Counselor.Counselor;
 import DataStore.CredentialsManager;
 import DataStore.GlobalUserDirectory;
+import Dietitian.Dietitian;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
@@ -16,6 +18,7 @@ import Enterprise.HospitalEnterprise;
 import Enterprise.InsuranceCompanyEnterprise;
 import Enterprise.MentalWellnessEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
+import FitnessTrainer.FitnessTrainer;
 import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
 import Organization.Organization;
@@ -634,6 +637,22 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                 Person insuranceProvider = new InsuranceProviderRepresentative(name, null, null, address, phoneNumber, logo, userAccount, organizationId);
                 system.globalUserDirectory.createNewUser(insuranceProvider);
                  break;
+                 
+                 case DIETITIAN:
+                 Person dietitian = new Dietitian(name, null, null, address, phoneNumber,userAccount,logo, organizationId);
+                system.globalUserDirectory.createNewUser(dietitian);
+                break;
+                
+                  case TRAINER:
+                 Person trainer = new FitnessTrainer(name, null, null, address, phoneNumber,userAccount,logo, organizationId);
+                system.globalUserDirectory.createNewUser(trainer);
+                break;
+                
+                  case COUNSELOR:
+                 Person counselor = new Counselor(name, null, null, address, phoneNumber,userAccount,logo, organizationId);
+                system.globalUserDirectory.createNewUser(counselor);
+                break;
+                
 
             case INVALID:
                 JOptionPane.showMessageDialog(this, "Invalid Enterprise Details ");
