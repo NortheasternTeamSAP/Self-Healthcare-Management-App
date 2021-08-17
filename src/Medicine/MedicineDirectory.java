@@ -30,7 +30,6 @@ public class MedicineDirectory{
      * @param price
      * @param expiryDate
      * @param mfgDate
-     * @param dosage
      * @return medicine
      */
     public Medicine addMedicine(
