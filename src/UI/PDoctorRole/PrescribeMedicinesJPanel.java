@@ -5,6 +5,7 @@
  */
 package UI.PDoctorRole;
 
+import DataStore.Appointment;
 import DataStore.ItemTuple;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
@@ -14,6 +15,7 @@ import Patient.Patient;
 import Personnel.Person;
 import Personnel.Role;
 import Pharmacy.Pharmacy;
+import Utils.NextScreen;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,20 +24,24 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author sravy
  */
-public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
+public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements NextScreen {
 
     private EcoSystem ecosys;
     private Doctor doctor;
     private JPanel workArea;
     private ArrayList<String> currentOrders;
+    private Appointment appointment;
+    private JPanel backPage;
     /**
      * Creates new form ViewPPatientsJPanel
      */
-    public PrescribeMedicinesJPanel(JPanel workArea, EcoSystem ecoSystem, Doctor doctor) {
+    public PrescribeMedicinesJPanel(JPanel workArea, EcoSystem ecoSystem, Appointment appointment, JPanel backPage) {
         this.workArea = workArea;
         this.ecosys = ecoSystem;
-        this.doctor = doctor;
+        this.doctor = (Doctor) appointment.getDoctor();
         this.currentOrders = new ArrayList<>();
+        this.appointment = appointment;
+        this.backPage = backPage;
         initComponents();
         populateCmbSelectPatientName();
         populateTblMedicineTableAddPres();
@@ -71,6 +77,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
         tblCurrentPres = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         txtPatientPharmName = new javax.swing.JTextField();
+        jButtonBack = new javax.swing.JButton();
 
         jLabel1.setText("Patient Details");
 
@@ -141,6 +148,13 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Current Prescription Table:");
 
+        jButtonBack.setText("Back");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,15 +208,19 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
                                 .addComponent(btnAddQuantity))
                             .addComponent(jLabel8)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
+                        .addGap(23, 23, 23)
+                        .addComponent(jButtonBack)
+                        .addGap(136, 136, 136)
                         .addComponent(jLabel9)))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jButtonBack))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -285,9 +303,14 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
         Pharmacy pharmacy = patient.getPreferredPharmacy();
         this.currentOrders.add(ecosys
                 .getOrderDirectory()
-                .addOrder(pharmacy, doctor, patient, quantity, med, appointmentID)); //check aptID
+                .addOrder(pharmacy, doctor, patient, quantity, med, appointment.getId())); //check aptID
 
     }//GEN-LAST:event_btnAddQuantityActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+        nextScreen(workArea, backPage, "PatientAppoiontmentDetailsPage");
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void populateCmbSelectPatientName(){
         
@@ -334,6 +357,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddQuantity;
     private javax.swing.JComboBox<Person> cmbSelectPatientName1;
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
