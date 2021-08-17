@@ -23,7 +23,7 @@ public enum OrganizationType {
     
     // Pharmacy enterprise
     MEDICINE_INVENTORY("MedicineInventory"), // Will contain pharmacist/pharmacy manager roles
-    LOGISTICS("Logistics"), // Will contain delivery man roles
+    DELIVERY_DEPARTMENT("DeliveryDepartment"), // Will contain delivery man roles
     
     // Physical wellness enterprise
     NUTRITION_DEPARTMENT("NutritionDepartment"), // Will contain dietitian roles
