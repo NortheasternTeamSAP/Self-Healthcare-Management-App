@@ -123,7 +123,7 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                              <Component id="btnBack" min="-2" pref="144" max="-2" attributes="0"/>
+                                              <Component id="btnLogout" min="-2" pref="144" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -230,7 +230,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="btnBack" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Component id="btnLogout" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="imgLogo" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
@@ -466,12 +466,12 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOldAppointmentDetailsActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBack">
+                    <Component class="javax.swing.JButton" name="btnLogout">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Back"/>
+                        <Property name="text" type="java.lang.String" value="Logout"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnNewAppointmentDetails2">

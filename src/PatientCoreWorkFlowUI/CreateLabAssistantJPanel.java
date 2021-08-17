@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author mrs.katey
+ * @author Ankur Bywar
  */
 public class CreateLabAssistantJPanel extends javax.swing.JPanel {
    JPanel WorkArea;

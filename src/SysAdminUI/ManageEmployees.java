@@ -6,7 +6,7 @@
 package SysAdminUI;
 
 import EcoSystem.EcoSystem;
-import Pharmacy.PharmacyDirectory;
+import PatientCoreWorkFlowUI.DoctoryDirectory;
 import UI.CounselorDirectory;
 import UI.DietitianDirectory;
 import UI.FitnessTrainerDirectory;
@@ -56,10 +56,10 @@ public class ManageEmployees extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnPatientDirectory = new javax.swing.JButton();
+        btnDoctorDirectory = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        btnLaboratoryAssistantDirectory = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         jButton5.setText("Back");
@@ -70,7 +70,7 @@ public class ManageEmployees extends javax.swing.JPanel {
         });
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manage Directories ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(255, 102, 102))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manage Directories ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(255, 102, 102))); // NOI18N
 
         jButton12.setBackground(new java.awt.Color(204, 255, 255));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-weightlifting-30.png"))); // NOI18N
@@ -123,12 +123,12 @@ public class ManageEmployees extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Paitent Directory");
+        btnPatientDirectory.setText("Paitent Directory");
 
-        jButton10.setText("Doctor Directory");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnDoctorDirectory.setText("Doctor Directory");
+        btnDoctorDirectory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnDoctorDirectoryActionPerformed(evt);
             }
         });
 
@@ -139,7 +139,7 @@ public class ManageEmployees extends javax.swing.JPanel {
             }
         });
 
-        jButton11.setText("Lab Assistant Directory ");
+        btnLaboratoryAssistantDirectory.setText("Lab Assistant Directory ");
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
         jButton4.setForeground(new java.awt.Color(255, 204, 204));
@@ -187,9 +187,9 @@ public class ManageEmployees extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnPatientDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnDoctorDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(24, 24, 24)))))
                         .addGap(9, 9, 9))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -197,7 +197,7 @@ public class ManageEmployees extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnLaboratoryAssistantDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23))))
         );
@@ -228,14 +228,14 @@ public class ManageEmployees extends javax.swing.JPanel {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPatientDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDoctorDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLaboratoryAssistantDirectory, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -333,15 +333,22 @@ public class ManageEmployees extends javax.swing.JPanel {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
+    private void btnDoctorDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorDirectoryActionPerformed
+        // TODO add your handling code here:
+        DoctoryDirectory dd= new DoctoryDirectory(WorkArea,system);
+        WorkArea.add("DietitianDirectory",dd);
+        CardLayout layout= (CardLayout)WorkArea.getLayout();
+        layout.next(WorkArea);
+    }//GEN-LAST:event_btnDoctorDirectoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDoctorDirectory;
+    private javax.swing.JButton btnLaboratoryAssistantDirectory;
+    private javax.swing.JButton btnPatientDirectory;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

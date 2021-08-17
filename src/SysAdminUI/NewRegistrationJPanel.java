@@ -556,11 +556,12 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
     }//GEN-LAST:event_jComboBoxAddrStateActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+//        WorkArea.remove(this);
+//        Component[] componentArray = WorkArea.getComponents();
+//        Component component = componentArray[componentArray.length - 1];
+//        CardLayout layout = (CardLayout)WorkArea.getLayout();
+//        layout.previous(WorkArea);
+         nextScreen(WorkArea, new Login(WorkArea, ecoSystem), "Login   ");
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

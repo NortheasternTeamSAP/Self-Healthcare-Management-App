@@ -12,6 +12,7 @@ import Enterprise.Enterprise;
 import Laboratory.LaboratoryAssistant;
 import Patient.Patient;
 import Personnel.PersonDetails;
+import SysAdminUI.Login;
 import UI.FitnessTrainerDirectory;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
@@ -48,8 +49,8 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     void populatePatientInfoPlaceholders() {
         PersonDetails pd = patient.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
-        lblAgePlaceHolder.setText(pd.getAge() + " years");  
-        lblAgePlaceHolder.setText(pd.getDob().toString());
+//        lblAgePlaceHolder.setText(pd.getAge() + " years");  
+//        lblAgePlaceHolder.setText(pd.getDob().toString());
         lblEmailPlaceHolder.setText("Not Available");  
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
@@ -88,6 +89,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPatientPanel = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jControlPanel = new javax.swing.JPanel();
@@ -99,11 +101,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         btnViewOlderAppointments = new javax.swing.JButton();
         btnLogout1 = new javax.swing.JButton();
         btnUpdatePersonalInformation = new javax.swing.JButton();
-        btnTestInsuranceProvider = new javax.swing.JButton();
         btnPharmacy = new javax.swing.JButton();
         btnDietitianSession = new javax.swing.JButton();
         btnCouncellorSession = new javax.swing.JButton();
         btnFitnessInstructor = new javax.swing.JButton();
+        jButtonUpdatePatientInsurance = new javax.swing.JButton();
         jWorkAreaPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPatientDetailPanel = new javax.swing.JPanel();
@@ -131,6 +133,8 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jLabel3 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblUpcomingFitnessAppointments = new javax.swing.JTable();
+
+        jButton1.setText("jButton1");
 
         btnRecordPersonalVitals.setText("Record personal vitals");
         btnRecordPersonalVitals.addActionListener(new java.awt.event.ActionListener() {
@@ -190,13 +194,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
             }
         });
 
-        btnTestInsuranceProvider.setText("Insurance Provider ");
-        btnTestInsuranceProvider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTestInsuranceProviderActionPerformed(evt);
-            }
-        });
-
         btnPharmacy.setText("pharmacy");
         btnPharmacy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +222,8 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
             }
         });
 
+        jButtonUpdatePatientInsurance.setText("Update Insurance Details");
+
         javax.swing.GroupLayout jControlPanelLayout = new javax.swing.GroupLayout(jControlPanel);
         jControlPanel.setLayout(jControlPanelLayout);
         jControlPanelLayout.setHorizontalGroup(
@@ -237,15 +236,15 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                     .addComponent(btnViewVitalSoignHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRecordPersonalVitals, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMyMedicinePrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTestInsuranceProvider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUpdatePersonalInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jControlPanelLayout.createSequentialGroup()
-                        .addComponent(btnBookFamilyDoctorAppointment)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnViewOlderAppointments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTestLabAssistantLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPharmacy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCouncellorSession, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCouncellorSession, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addComponent(btnBookFamilyDoctorAppointment)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonUpdatePatientInsurance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jControlPanelLayout.createSequentialGroup()
@@ -268,11 +267,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 .addComponent(btnMyMedicinePrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnViewOlderAppointments, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btnTestLabAssistantLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnTestInsuranceProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jButtonUpdatePatientInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(btnTestLabAssistantLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(btnDietitianSession, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(btnCouncellorSession, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -645,6 +644,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
     private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
         // TODO add your handling code here:
+        nextScreen(WorkAreaPanel, new Login(WorkAreaPanel, ecoSystem), "Login Page");
     }//GEN-LAST:event_btnLogout1ActionPerformed
 
     private void btnUpdatePersonalInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePersonalInformationActionPerformed
@@ -653,12 +653,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         nextScreen(WorkAreaPanel, updatePersonalInfo, "updatePersonalInfo");
         
     }//GEN-LAST:event_btnUpdatePersonalInformationActionPerformed
-
-    private void btnTestInsuranceProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestInsuranceProviderActionPerformed
-        // TODO add your handling code here:
-        nextScreen(WorkAreaPanel, new InsuranceProviderRepresentativeHomePageJPanel(WorkAreaPanel, ecoSystem
-               , ecoSystem.globalUserDirectory.get("insrep1")), "InsuranceProviderRepresentativeHomePageJPanel");
-    }//GEN-LAST:event_btnTestInsuranceProviderActionPerformed
 
     private void btnPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPharmacyActionPerformed
         // TODO add your handling code here:
@@ -695,12 +689,13 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JButton btnMyMedicinePrescription;
     private javax.swing.JButton btnPharmacy;
     private javax.swing.JButton btnRecordPersonalVitals;
-    private javax.swing.JButton btnTestInsuranceProvider;
     private javax.swing.JButton btnTestLabAssistantLogin;
     private javax.swing.JButton btnUpdatePersonalInformation;
     private javax.swing.JButton btnViewOlderAppointments;
     private javax.swing.JButton btnViewVitalSoignHistory;
     private javax.swing.JLabel imgLogo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonUpdatePatientInsurance;
     private javax.swing.JPanel jControlPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

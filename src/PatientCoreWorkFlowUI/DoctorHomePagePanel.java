@@ -11,6 +11,7 @@ import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
 import Patient.Patient;
 import Personnel.PersonDetails;
+import SysAdminUI.Login;
 import SysAdminUI.MainJFrame;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
@@ -152,7 +153,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
         txtPatientUserNameSearch = new javax.swing.JTextField();
         jUserNameSearchBtn = new javax.swing.JButton();
         btnOldAppointmentDetails = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         btnNewAppointmentDetails2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblUpcomingPatientAppointments = new javax.swing.JTable();
@@ -260,10 +261,10 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
             }
         });
 
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -331,7 +332,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
                                 .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                                 .addGap(89, 89, 89)
@@ -410,7 +411,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
                             .addComponent(lblAddressPlaceHolder)))
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -511,9 +512,9 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        //nextScreen(WorkAreaPanel, temporaryBack, "Patient Home Page");
-    }//GEN-LAST:event_btnBackActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        nextScreen(WorkAreaPanel, new Login(WorkAreaPanel, ecoSystem), "Login Page");
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnOldAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOldAppointmentDetailsActionPerformed
         // TODO add your handling code here:
@@ -583,7 +584,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnNewAppointmentDetails2;
     private javax.swing.JButton btnOldAppointmentDetails;
     private javax.swing.JPanel controlpanel;

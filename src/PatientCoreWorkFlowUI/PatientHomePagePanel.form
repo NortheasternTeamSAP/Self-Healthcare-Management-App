@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -78,16 +85,16 @@
                               <Component id="btnViewVitalSoignHistory" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnRecordPersonalVitals" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnMyMedicinePrescription" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTestInsuranceProvider" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnUpdatePersonalInformation" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnBookFamilyDoctorAppointment" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="btnViewOlderAppointments" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnTestLabAssistantLogin" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnPharmacy" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnCouncellorSession" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnBookFamilyDoctorAppointment" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jButtonUpdatePatientInsurance" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -115,11 +122,11 @@
                           <Component id="btnMyMedicinePrescription" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="btnViewOlderAppointments" min="-2" pref="41" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="btnTestLabAssistantLogin" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="btnTestInsuranceProvider" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButtonUpdatePatientInsurance" min="-2" pref="49" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="btnTestLabAssistantLogin" min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="btnDietitianSession" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace pref="67" max="32767" attributes="0"/>
                           <Component id="btnCouncellorSession" min="-2" pref="35" max="-2" attributes="0"/>
@@ -210,14 +217,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdatePersonalInformationActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnTestInsuranceProvider">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Insurance Provider "/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestInsuranceProviderActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnPharmacy">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="pharmacy"/>
@@ -249,6 +248,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFitnessInstructorActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonUpdatePatientInsurance">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Update Insurance Details"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -376,7 +380,7 @@
                                           <Component id="lblPatientDetails" min="-2" pref="319" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="257" max="32767" attributes="0"/>
+                                  <EmptySpace pref="248" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -456,7 +460,7 @@
                                   <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" pref="104" max="-2" attributes="0"/>
-                                  <EmptySpace pref="164" max="32767" attributes="0"/>
+                                  <EmptySpace pref="176" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
