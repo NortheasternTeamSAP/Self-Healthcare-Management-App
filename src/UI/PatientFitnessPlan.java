@@ -644,6 +644,10 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
             crosstrainingpercent = ((checkcrosstraining * 100) / crosstraining);
         }
 
+        fp.setCardiotaken(checkcardio);
+        fp.setCrosstrainingtaken(checkcrosstraining);
+        fp.setWeightstaken(checkweight);
+        
         System.out.println("cardiopercent" + cardiopercent + "weightpercent " + weightpercent + "ctpecent " + crosstrainingpercent);
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
 

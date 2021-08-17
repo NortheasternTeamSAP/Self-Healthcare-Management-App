@@ -14,10 +14,15 @@ import java.util.ArrayList;
  * @author preet
  */
 public class FitnessPlan {
+    
      private Patient patient ;
     private FitnessTrainer fitnessTrainer;
     ArrayList<String> fitnessplans;
     ArrayList<Excercise> excercises;
+    int weightstaken;
+    int cardiotaken;
+    int crosstrainingtaken;
+    
 
     public FitnessTrainer getFitnessTrainer() {
         return fitnessTrainer;
@@ -72,6 +77,30 @@ public class FitnessPlan {
 
     public ArrayList<String> getFitnessplans() {
         return fitnessplans;
+    }
+
+    public int getWeightstaken() {
+        return weightstaken;
+    }
+
+    public int getCardiotaken() {
+        return cardiotaken;
+    }
+
+    public int getCrosstrainingtaken() {
+        return crosstrainingtaken;
+    }
+
+    public void setWeightstaken(int weightstaken) {
+        this.weightstaken = weightstaken;
+    }
+
+    public void setCardiotaken(int cardiotaken) {
+        this.cardiotaken = cardiotaken;
+    }
+
+    public void setCrosstrainingtaken(int crosstrainingtaken) {
+        this.crosstrainingtaken = crosstrainingtaken;
     }
 
    
