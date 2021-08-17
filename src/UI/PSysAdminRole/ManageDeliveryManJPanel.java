@@ -8,6 +8,7 @@ package UI.PSysAdminRole;
 import DeliveryMan.DeliveryMan;
 import EcoSystem.EcoSystem;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -202,6 +203,8 @@ public class ManageDeliveryManJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         workArea.remove(this);
+        Component[] compArray = workArea.getComponents();
+        Component component = compArray[compArray.length -1];
         CardLayout layout2 = (CardLayout) workArea.getLayout();
         layout2.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
