@@ -440,6 +440,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Prescribe new medicines"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrescribeNewMedicinesActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblWeight2">
               <Properties>
