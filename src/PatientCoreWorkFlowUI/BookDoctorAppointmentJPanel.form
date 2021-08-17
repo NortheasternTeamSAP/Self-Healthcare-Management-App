@@ -73,14 +73,14 @@
                                                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                                   <Component id="btnConfirmDoctorAppointment" min="-2" pref="270" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jCheckBoxAttachInsuranceDetailsToEmail" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jCheckBoxShareInsuranceDetailsWithDoctor" min="-2" max="-2" attributes="0"/>
                                               <Component id="jCheckBoxSendAppointmentTextConfirmation" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jCheckBoxSendAppointmentRemiender" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jCheckBoxSendAppointmentEmailConfirmation" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jCheckBoxAttachPrescriptionToEmail" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBoxAttachVitalsToEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBoxShareCurrentPrescriptionWithDoctor" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBoxShareVitalsWithDoctor" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -141,7 +141,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jTextFieldAppointmentDetails" min="-2" pref="332" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jCheckBoxAttachPreviousLabReports" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCheckBoxSharePreviousLabReportsWithDoctor" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -218,18 +218,18 @@
                       <Component id="jDateChooserDoctorAvailability" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxAttachVitalsToEmail" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxShareVitalsWithDoctor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBoxAttachPrescriptionToEmail" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxShareCurrentPrescriptionWithDoctor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxAttachPreviousLabReports" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxSharePreviousLabReportsWithDoctor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextFieldAppointmentDetails" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
                       <Component id="lblOtherAppointmentDetails" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBoxAttachInsuranceDetailsToEmail" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxShareInsuranceDetailsWithDoctor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="38" max="32767" attributes="0"/>
                   <Component id="jCheckBoxSendAppointmentEmailConfirmation" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -445,20 +445,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmDoctorAppointmentActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxAttachPrescriptionToEmail">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxShareCurrentPrescriptionWithDoctor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Attach Current Prescription Report in email to send to primary care"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxAttachPrescriptionToEmailActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxAttachInsuranceDetailsToEmail">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxShareInsuranceDetailsWithDoctor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Attach insurance details in the email to be sent to primary care"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxAttachInsuranceDetailsToEmailActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxSendAppointmentEmailConfirmation">
@@ -495,12 +495,12 @@
             <Property name="text" type="java.lang.String" value="Other details:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxAttachVitalsToEmail">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxShareVitalsWithDoctor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Attach vitals report in email to send to primary care"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxAttachVitalsToEmailActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxShareVitalsWithDoctorActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDoctorAddress">
@@ -528,12 +528,12 @@
             <Property name="text" type="java.lang.String" value="Not Available"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxAttachPreviousLabReports">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxSharePreviousLabReportsWithDoctor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Attach all previous lab reports"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxAttachPreviousLabReportsActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

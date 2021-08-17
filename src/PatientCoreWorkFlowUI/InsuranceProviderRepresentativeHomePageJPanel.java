@@ -42,22 +42,22 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     Person insuranceProviderRepresentative;
     private JPanel temporaryBack;
     
-    HealthInsuranceDepartmentOrganization healthInsuranceOrganization;
+    HealthInsuranceDepartmentOrganization healthInsuranceOrganization ;
     ConsoleLogger log = ConsoleLogger.getLogger();
     
     /**
      * Creates new form LaboratoryAssistantHomePagePanel
      */
-    public InsuranceProviderRepresentativeHomePageJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Person insuranceProviderRepresentative) {
+    public InsuranceProviderRepresentativeHomePageJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Organization healthInsuranceOrganization, Person insuranceProviderRepresentative) {
         initComponents();
         this.workAreaPanel = workAreaPanel;
         this.ecoSystem = ecoSystem;
         this.laboratoryAssistant = (LaboratoryAssistant) laboratoryAssistant;
         this.insuranceProviderRepresentative = insuranceProviderRepresentative;
         this.temporaryBack = temporaryBack;
-        this.healthInsuranceOrganization = healthInsuranceOrganization;
+        this.healthInsuranceOrganization = (HealthInsuranceDepartmentOrganization) healthInsuranceOrganization;
         
-        healthInsuranceOrganization = getHealthInsuranceOrganization(insuranceProviderRepresentative);
+         healthInsuranceOrganization = getHealthInsuranceOrganization(insuranceProviderRepresentative);
         
         populatePendingHealthInsuranceClaimsTable();
         populateProcessedHealthInsuranceClaimsTable();

@@ -20,7 +20,6 @@ import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
 import Organization.Organization;
 import Patient.Patient;
-import PatientCoreWorkFlowUI.DoctorHomePagePanel;
 import PatientCoreWorkFlowUI.DoctorWorkAreaPanel;
 import PatientCoreWorkFlowUI.InsuranceProviderRepresentativeHomePageJPanel;
 import PatientCoreWorkFlowUI.LaboratoryAssistantHomePagePanel;
@@ -28,8 +27,12 @@ import PatientCoreWorkFlowUI.PatientHomePagePanel;
 import Personnel.Person;
 import Personnel.Role;
 import Utils.NextScreen;
+import Utils.AwsS3Helper;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -192,7 +195,7 @@ public class Login extends javax.swing.JPanel implements NextScreen {
              
                 
             case INSURANCE_PROVIDER_REP:
-                InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system,(InsuranceProviderRepresentative)p);
+                InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system, system.organizationDirectory.getOrganization(p.getOrganizationId()), (InsuranceProviderRepresentative)p);
                 WorkArea.add("InsuranceProviderRepresentativeHomePageJPanel",insuranceprovider);
                 CardLayout layoutd= (CardLayout)WorkArea.getLayout();
                 layoutd.next(WorkArea); 

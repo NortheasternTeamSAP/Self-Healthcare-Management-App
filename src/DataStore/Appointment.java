@@ -33,6 +33,8 @@ public class Appointment implements Comparable<Appointment> {
 
     private double totalAppointmentCharges;
     
+    private String patientVitalSignsHistoryS3ObjectPath;
+    
     static int idCounter = 1;
 
     public Appointment(Person patient, String cheifComplain, Person doctor, LocalDate date, int appointmentTimeHours) {
@@ -45,6 +47,7 @@ public class Appointment implements Comparable<Appointment> {
         this.labTestReport = null;
         this.id = idCounter++;
         this.status = AppointmentStatus.PENDING;
+        this.patientVitalSignsHistoryS3ObjectPath = null; // Null because this will be set after the appointment is booked
     }
 
     public AppointmentStatus getStatus() {
@@ -114,6 +117,14 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setPrimaryCareProviderCost(double primaryCareProviderCost) {
         this.primaryCareProviderCost = primaryCareProviderCost;
+    }
+
+    public String getPatientVitalSignsHistoryS3ObjectPath() {
+        return patientVitalSignsHistoryS3ObjectPath;
+    }
+
+    public void setPatientVitalSignsHistoryS3ObjectPath(String patientVitalSignsHistoryS3ObjectPath) {
+        this.patientVitalSignsHistoryS3ObjectPath = patientVitalSignsHistoryS3ObjectPath;
     }
     
     

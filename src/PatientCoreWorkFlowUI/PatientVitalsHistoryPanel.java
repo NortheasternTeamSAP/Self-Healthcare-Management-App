@@ -196,29 +196,12 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
  
+
         List<VitalSigns> vitalSignsHistory = patient.getVitalSignsHistory();
-        Map<LocalDate, Double> lowBloodPressureVitalSignMap = new TreeMap<>();
-        Map<LocalDate, Double> highBloodPressureVitalSignMap = new TreeMap<>();
-        Map<LocalDate, Double> heartRateVitalSignMap = new TreeMap<>();
-        Map<LocalDate, Double> respiratoryRateVitalSignMap = new TreeMap<>();
-        Map<LocalDate, Double> weightVitalSignMap = new TreeMap<>();
-        for (VitalSigns vs : vitalSignsHistory) {
-            lowBloodPressureVitalSignMap.put(vs.getDateForVitalSigns(), vs.getBloodPressure().getLow());
-            highBloodPressureVitalSignMap.put(vs.getDateForVitalSigns(), vs.getBloodPressure().getHigh());
-            heartRateVitalSignMap.put(vs.getDateForVitalSigns(), vs.getHeartRate() * 1.0);
-            respiratoryRateVitalSignMap.put(vs.getDateForVitalSigns(), vs.getRespiratoryRate() * 1.0);
-            weightVitalSignMap.put(vs.getDateForVitalSigns(), vs.getWeight() * 1.0);
-        }
-
-       DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-       GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
-       graphPlotterUtils.addToDataSet(lowBloodPressureVitalSignMap, "LowBP", dataset);
-       graphPlotterUtils.addToDataSet(highBloodPressureVitalSignMap, "HighBP", dataset);
-       graphPlotterUtils.addToDataSet(heartRateVitalSignMap, "HeartRate", dataset);
-       graphPlotterUtils.addToDataSet(respiratoryRateVitalSignMap, "RespiratoryRate", dataset);
-       graphPlotterUtils.addToDataSet(weightVitalSignMap, "Weight", dataset);
-
-       graphPlotterUtils.createLineChart("Dateforvitals", "Ranges", "All vital Signs trend", "Vital sign", dataset, jPanel1);
+        GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
+        DefaultCategoryDataset dataset = 
+                new PatientVitalSignHistoryHelper().createPatientVitalsSignsDefaultCategoryDataSet(graphPlotterUtils, vitalSignsHistory);
+        graphPlotterUtils.createLineChart("Dateforvitals", "Ranges", "All vital Signs trend", "Vital sign", dataset, jPanel1);
     }//GEN-LAST:event_btnLineChartActionPerformed
 
 

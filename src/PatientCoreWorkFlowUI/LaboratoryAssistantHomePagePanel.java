@@ -430,7 +430,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
           lblNamePlaceHolder.setText(pd.getFullName());
           lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
           //lblEmailPlaceHolder.setText(pd.);
-          lblDobPlaceHolder.setText(pd.getDob().toString());
+//          lblDobPlaceHolder.setText(pd.getDob().toString());
           lblAddressPlaceHolder.setText(pd.getAddress().toString());
           lblGenderPlaceHolder.setText(pd.getGender().FEMALE.toString());
           imgLogo.setIcon(pd.getLogoImage());

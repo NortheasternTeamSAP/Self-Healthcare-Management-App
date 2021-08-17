@@ -63,7 +63,7 @@ public class InsuranceProviderRepresentative implements Person {
     public void setOrganization(Organization organization) {
         this.organization = organization;
     }
-
+    
     @Override
     public UserAccount getUserAccount() {
         return insuranceProviderRepDetails.getUserAccount();
