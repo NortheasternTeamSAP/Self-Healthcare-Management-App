@@ -11,12 +11,20 @@ import FitnessTrainer.FitnessPlan;
 import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -34,6 +42,7 @@ Patient p;
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        report3.setVisible(false);
         DefaultTableModel model = (DefaultTableModel) fitnessplan.getModel();
         ArrayList<FitnessPlan> temp=p.getFitnessPlans();
         
@@ -62,6 +71,8 @@ Patient p;
         fitnessplan = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        report3 = new javax.swing.JPanel();
 
         fitnessplan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,23 +101,38 @@ Patient p;
             }
         });
 
+        jButton3.setText("View Complete Workout data");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        report3.setBackground(new java.awt.Color(204, 255, 255));
+        report3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        report3.setLayout(new javax.swing.BoxLayout(report3, javax.swing.BoxLayout.LINE_AXIS));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(551, 551, 551))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jButton2)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addGap(62, 62, 62)
+                        .addComponent(report3, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))))
+                .addGap(201, 201, 201))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,10 +140,17 @@ Patient p;
                 .addGap(61, 61, 61)
                 .addComponent(jButton2)
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jButton1)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(report3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,11 +182,46 @@ Patient p;
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        report3.setVisible(true);
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+         int cardio=0;
+         int weight=0;
+         int crosstraining=0;
+         for(FitnessPlan fp: p.getFitnessPlans())
+         {
+         cardio=cardio+fp.getCardiotaken();
+         weight=weight+fp.getWeightstaken();
+         crosstraining=crosstraining+fp.getCrosstrainingtaken();       
+         
+         }
+         
+         
+        dcd.setValue(cardio, "Excercise done", "Overall Cardio Done");
+        dcd.setValue(weight, "Excercise done", "Overall Weight Done");
+        dcd.setValue(crosstraining, "Excercise done", "Overall CrossTraining Done");
+        JFreeChart jchart = ChartFactory.createBarChart3D("Excercise Completed", "Excercise Type", "Achieved", dcd, PlotOrientation.VERTICAL, true, true, false);
+        CategoryPlot plot = jchart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.black);
+        ChartFrame cf = new ChartFrame("ExcerciseDone", jchart, true);
+        cf.setVisible(true);
+        cf.setSize(500, 400);
+        ChartPanel cp = new ChartPanel(jchart);
+        report3.removeAll();
+        report3.add(cp);
+        report3.updateUI();
+        cf.dispose();    
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable fitnessplan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel report3;
     // End of variables declaration//GEN-END:variables
 }
