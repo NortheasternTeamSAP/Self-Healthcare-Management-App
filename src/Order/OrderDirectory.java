@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class OrderDirectory {
     
     public GenericDirectory<String, Order> orderMap; //map for <String orderID, Order orderDetails>
-    private int id;
+    private int id; //for Order ID
     
     public OrderDirectory(){
         this.orderMap = new GenericDirectory<>();
@@ -34,14 +34,16 @@ public class OrderDirectory {
             Doctor doctor, 
             Patient patient,
             int quantity, 
-            Medicine medicine){
+            Medicine medicine, 
+            String appointmentID){
         
         Order order = new Order(
                 pharmacy,
                 doctor,
                 patient,
                 quantity,
-                medicine);
+                medicine,
+                appointmentID);
         String orderId = "Order" + Integer.toString(id);
         orderMap.add(orderId, order);
         order.setOrderId(orderId);

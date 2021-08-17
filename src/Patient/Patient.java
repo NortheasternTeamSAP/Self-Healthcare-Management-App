@@ -24,6 +24,7 @@ import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
 import Pharmacy.Pharmacy;
+import Prescription.Prescription;
 import VitalSign.VitalSignNormalRange;
 import VitalSign.VitalSigns;
 import java.time.LocalDate;
@@ -56,21 +57,33 @@ public class Patient implements Person {
     private ArrayList<LaboratoryTestReport> labTestReports;
     private Pharmacy preferredPharmacy;
     private InsuranceDetails insuranceDetails;
+    private ArrayList<Prescription> prescriptionsList;
     
    
     
     public Patient(
-            String fullName, 
-            LocalDate dob, 
-            Gender gender, 
-            Address address, 
-            String phoneNumber, 
-            Icon logoImage,
-            UserAccount account,
-            int organizationId,
-            Pharmacy preferredPharmacy) {
+                String fullName, 
+                LocalDate dob, 
+                Gender gender, 
+                Address address, 
+                String phoneNumber, 
+                Icon logoImage,
+                UserAccount account,
+                int organizationId,
+                Pharmacy preferredPharmacy
+            ) {
 
-        patientDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PATIENT, logoImage, organizationId);
+        patientDetails = new PersonDetails(
+                                    fullName, 
+                                    dob, 
+                                    gender, 
+                                    address, 
+                                    phoneNumber, 
+                                    account, 
+                                    Role.PATIENT, 
+                                    logoImage, 
+                                    organizationId
+                                );
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
         fitnessPlans=new ArrayList<FitnessPlan>();
@@ -83,8 +96,8 @@ public class Patient implements Person {
         this.doctorAppointments = new ArrayList<>();
         this.doctorAppointmentsHistory = new ArrayList<>();
         this.labTestReports = new ArrayList<>();
-
         this.preferredPharmacy = preferredPharmacy;
+        this.prescriptionsList = new ArrayList<Prescription>();
     }
 
     
@@ -283,4 +296,13 @@ public class Patient implements Person {
     public int getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
+
+    public ArrayList<Prescription> getPrescriptionsList() {
+        return prescriptionsList;
+    }
+
+    public void setPrescriptionsList(ArrayList<Prescription> prescriptionsList) {
+        this.prescriptionsList = prescriptionsList;
+    }
+    
 }
