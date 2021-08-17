@@ -80,7 +80,6 @@
                               <Component id="btnAddQuantity" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSendPrescription" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -140,9 +139,7 @@
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="96" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="btnSendPrescription" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -178,14 +175,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Preferred Pharmacy:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnSendPrescription">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Send Prescription"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendPrescriptionActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSelectPatient1">
       <Properties>

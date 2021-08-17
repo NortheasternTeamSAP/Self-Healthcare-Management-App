@@ -58,7 +58,6 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtViewPatientAddress = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        btnSendPrescription = new javax.swing.JButton();
         lblSelectPatient1 = new javax.swing.JLabel();
         cmbSelectPatientName1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -82,13 +81,6 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
         jLabel5.setText("Address:");
 
         jLabel7.setText("Preferred Pharmacy:");
-
-        btnSendPrescription.setText("Send Prescription");
-        btnSendPrescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendPrescriptionActionPerformed(evt);
-            }
-        });
 
         lblSelectPatient1.setText("Select Patient:");
 
@@ -200,8 +192,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
                                 .addComponent(jSpinQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAddQuantity))
-                            .addComponent(jLabel8)
-                            .addComponent(btnSendPrescription)))
+                            .addComponent(jLabel8)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(256, 256, 256)
                         .addComponent(jLabel9)))
@@ -248,9 +239,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnSendPrescription)
-                .addContainerGap())
+                .addGap(71, 71, 71))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -294,17 +283,11 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
                 );
         
         Pharmacy pharmacy = patient.getPreferredPharmacy();
-
         this.currentOrders.add(ecosys
                 .getOrderDirectory()
-                .addOrder(pharmacy, doctor, patient, quantity, med));
+                .addOrder(pharmacy, doctor, patient, quantity, med, appointmentID)); //check aptID
 
     }//GEN-LAST:event_btnAddQuantityActionPerformed
-
-    private void btnSendPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendPrescriptionActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnSendPrescriptionActionPerformed
 
     private void populateCmbSelectPatientName(){
         
@@ -350,7 +333,6 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddQuantity;
-    private javax.swing.JButton btnSendPrescription;
     private javax.swing.JComboBox<Person> cmbSelectPatientName1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
