@@ -35,7 +35,7 @@
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               <Component id="btnUpdatePharmacist" min="-2" pref="102" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="btnDeletePharmacist" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="btnDeletePharmacist1" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -60,7 +60,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAddPharmacist" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="btnUpdatePharmacist" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="btnDeletePharmacist" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="btnDeletePharmacist1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="320" max="32767" attributes="0"/>
           </Group>
@@ -68,13 +68,13 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnDeletePharmacist">
+    <Component class="javax.swing.JButton" name="btnDeletePharmacist1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete "/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletePharmacistActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletePharmacist1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -116,18 +116,12 @@
               <Font name="Segoe UI" size="12" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="2" rowCount="0">
-                <Column editable="false" title="Pharmacy Name" type="java.lang.Object"/>
+              <Table columnCount="1" rowCount="0">
                 <Column editable="false" title="Pharmacist" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
