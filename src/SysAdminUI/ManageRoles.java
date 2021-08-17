@@ -261,7 +261,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
 
         jRadioButtonGymTrainer.setText("Gym Instructor/Trainer");
 
-        jRadioButtonPharmacist.setText("Pharmacy Manager");
+        jRadioButtonPharmacist.setText("Pharmacist");
 
         jRadioButtonDeliveryMan.setText("Shipping/Delivery Representative");
 
@@ -906,7 +906,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                 jRadioButtonPharmacist.setEnabled(true);
                 jRadioButtonPharmacist.setSelected(true);
                 break;
-            case LOGISTICS:
+            case DELIVERY_DEPARTMENT:
                 jRadioButtonDeliveryMan.setEnabled(true);
                 jRadioButtonDeliveryMan.setSelected(true);
                 break;
