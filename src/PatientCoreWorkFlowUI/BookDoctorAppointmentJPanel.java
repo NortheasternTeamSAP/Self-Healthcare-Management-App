@@ -11,7 +11,10 @@ import EcoSystem.EcoSystem;
 import Patient.Patient;
 import Personnel.Person;
 import Utils.ConsoleLogger;
+import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
+import Utils.AwsS3Helper;
+import VitalSign.VitalSigns;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -23,6 +26,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -40,6 +44,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     LocalDate selectedAppointmentDate = null;
     int selectedAppointmentTime = -1;
     
+    AwsS3Helper s3helper;
     /**
      * Creates new form BookFamilyDoctorAppointmentJPanel
      */
@@ -49,6 +54,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         this.patient = patient;
         this.mainJFrame = mainJFrame;
         this.ecoSystem = ecoSystem;
+        this.s3helper = new AwsS3Helper();
         
         tblDoctorList.setRowSelectionAllowed(true);
         tblDoctorList.setColumnSelectionAllowed(false);
@@ -111,20 +117,20 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         btn3pm = new javax.swing.JButton();
         btn1pm = new javax.swing.JButton();
         btnConfirmDoctorAppointment = new javax.swing.JButton();
-        jCheckBoxAttachPrescriptionToEmail = new javax.swing.JCheckBox();
-        jCheckBoxAttachInsuranceDetailsToEmail = new javax.swing.JCheckBox();
+        jCheckBoxShareCurrentPrescriptionWithDoctor = new javax.swing.JCheckBox();
+        jCheckBoxShareInsuranceDetailsWithDoctor = new javax.swing.JCheckBox();
         jCheckBoxSendAppointmentEmailConfirmation = new javax.swing.JCheckBox();
         jCheckBoxSendAppointmentTextConfirmation = new javax.swing.JCheckBox();
         jCheckBoxSendAppointmentRemiender = new javax.swing.JCheckBox();
         jTextFieldAppointmentDetails = new javax.swing.JTextField();
         lblOtherAppointmentDetails = new javax.swing.JLabel();
-        jCheckBoxAttachVitalsToEmail = new javax.swing.JCheckBox();
+        jCheckBoxShareVitalsWithDoctor = new javax.swing.JCheckBox();
         lblDoctorAddress = new javax.swing.JLabel();
         lblDoctorAddressValue = new javax.swing.JLabel();
         lblCheckAvailability = new javax.swing.JLabel();
         lblDoctorGender = new javax.swing.JLabel();
         lblDoctorGenderValue = new javax.swing.JLabel();
-        jCheckBoxAttachPreviousLabReports = new javax.swing.JCheckBox();
+        jCheckBoxSharePreviousLabReportsWithDoctor = new javax.swing.JCheckBox();
 
         lblDoctorTxt.setText("Select Doctor to check the availability");
 
@@ -255,17 +261,17 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
             }
         });
 
-        jCheckBoxAttachPrescriptionToEmail.setText("Attach Current Prescription Report in email to send to primary care");
-        jCheckBoxAttachPrescriptionToEmail.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxShareCurrentPrescriptionWithDoctor.setText("Attach Current Prescription Report in email to send to primary care");
+        jCheckBoxShareCurrentPrescriptionWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxAttachPrescriptionToEmailActionPerformed(evt);
+                jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed(evt);
             }
         });
 
-        jCheckBoxAttachInsuranceDetailsToEmail.setText("Attach insurance details in the email to be sent to primary care");
-        jCheckBoxAttachInsuranceDetailsToEmail.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxShareInsuranceDetailsWithDoctor.setText("Attach insurance details in the email to be sent to primary care");
+        jCheckBoxShareInsuranceDetailsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxAttachInsuranceDetailsToEmailActionPerformed(evt);
+                jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed(evt);
             }
         });
 
@@ -298,10 +304,10 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
 
         lblOtherAppointmentDetails.setText("Other details:");
 
-        jCheckBoxAttachVitalsToEmail.setText("Attach vitals report in email to send to primary care");
-        jCheckBoxAttachVitalsToEmail.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxShareVitalsWithDoctor.setText("Attach vitals report in email to send to primary care");
+        jCheckBoxShareVitalsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxAttachVitalsToEmailActionPerformed(evt);
+                jCheckBoxShareVitalsWithDoctorActionPerformed(evt);
             }
         });
 
@@ -315,10 +321,10 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
 
         lblDoctorGenderValue.setText("Not Available");
 
-        jCheckBoxAttachPreviousLabReports.setText("Attach all previous lab reports");
-        jCheckBoxAttachPreviousLabReports.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxSharePreviousLabReportsWithDoctor.setText("Attach all previous lab reports");
+        jCheckBoxSharePreviousLabReportsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxAttachPreviousLabReportsActionPerformed(evt);
+                jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed(evt);
             }
         });
 
@@ -349,12 +355,12 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                                             .addGroup(jBookAppointmentLayout.createSequentialGroup()
                                                 .addGap(25, 25, 25)
                                                 .addComponent(btnConfirmDoctorAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jCheckBoxAttachInsuranceDetailsToEmail)
+                                            .addComponent(jCheckBoxShareInsuranceDetailsWithDoctor)
                                             .addComponent(jCheckBoxSendAppointmentTextConfirmation)
                                             .addComponent(jCheckBoxSendAppointmentRemiender)
                                             .addComponent(jCheckBoxSendAppointmentEmailConfirmation)))
-                                    .addComponent(jCheckBoxAttachPrescriptionToEmail)
-                                    .addComponent(jCheckBoxAttachVitalsToEmail)
+                                    .addComponent(jCheckBoxShareCurrentPrescriptionWithDoctor)
+                                    .addComponent(jCheckBoxShareVitalsWithDoctor)
                                     .addGroup(jBookAppointmentLayout.createSequentialGroup()
                                         .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +406,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                                         .addComponent(lblOtherAppointmentDetails)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jCheckBoxAttachPreviousLabReports)))))
+                                    .addComponent(jCheckBoxSharePreviousLabReportsWithDoctor)))))
                     .addGroup(jBookAppointmentLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -456,17 +462,17 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                                     .addComponent(lblDoctorReviews)))))
                     .addComponent(jDateChooserDoctorAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBoxAttachVitalsToEmail)
+                .addComponent(jCheckBoxShareVitalsWithDoctor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxAttachPrescriptionToEmail)
+                .addComponent(jCheckBoxShareCurrentPrescriptionWithDoctor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBoxAttachPreviousLabReports)
+                .addComponent(jCheckBoxSharePreviousLabReportsWithDoctor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jBookAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblOtherAppointmentDetails))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxAttachInsuranceDetailsToEmail)
+                .addComponent(jCheckBoxShareInsuranceDetailsWithDoctor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jCheckBoxSendAppointmentEmailConfirmation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -496,10 +502,10 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBoxAttachVitalsToEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachVitalsToEmailActionPerformed
+    private void jCheckBoxShareVitalsWithDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShareVitalsWithDoctorActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jCheckBoxAttachVitalsToEmailActionPerformed
+    }//GEN-LAST:event_jCheckBoxShareVitalsWithDoctorActionPerformed
 
     private void jTextFieldAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAppointmentDetailsActionPerformed
         // TODO add your handling code here:
@@ -517,40 +523,12 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxSendAppointmentEmailConfirmationActionPerformed
 
-    private void jCheckBoxAttachInsuranceDetailsToEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachInsuranceDetailsToEmailActionPerformed
+    private void jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxAttachInsuranceDetailsToEmailActionPerformed
+    }//GEN-LAST:event_jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed
 
     private void btnConfirmDoctorAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmDoctorAppointmentActionPerformed
         // TODO add your handling code here:
-        
-        if (jCheckBoxAttachVitalsToEmail.isSelected()) {
-            log.error("Selected jCheckBoxAttachVitalsToEmail");
-        }
-        
-        if (jCheckBoxAttachPrescriptionToEmail.isSelected()) {
-            log.error("Selected jCheckBoxAttachPrescriptionToEmail");
-        }
-        
-        if (jCheckBoxAttachInsuranceDetailsToEmail.isSelected()) {
-            log.error("Selected jCheckBoxAttachInsuranceDetailsToEmails");
-        }
-        
-        if (jCheckBoxSendAppointmentEmailConfirmation.isSelected()) {
-            log.error("Selected jCheckBoxSendAppointmentEmailConfirmation");
-        }
-        
-        if (jCheckBoxSendAppointmentRemiender.isSelected()) {
-            log.error("Selected jCheckBoxSendAppointmentRemiender");
-        }
-        
-        if (jCheckBoxSendAppointmentTextConfirmation.isSelected()) {
-            log.error("Selected jCheckBoxSendAppointmentTextConfirmation");
-        }
-        
-        if (jCheckBoxAttachPreviousLabReports.isSelected()) {
-            log.error("Selected jCheckBoxAttachPreviousLabReports");
-        }
         
         String otherAppointmentDetails = jTextFieldAppointmentDetails.getText();
         
@@ -563,8 +541,80 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         selectedDoctor.addPatientAppointment(apt);
         patient.addDoctorAppointment(apt);
         btnConfirmDoctorAppointment.setEnabled(false);
+        
+        // Attach previous vitals report
+        // Attach current prescription
+        // Attach previous lab reports
+        // Attach insurance details'
+
+        if (jCheckBoxShareVitalsWithDoctor.isSelected()) {
+            log.debug("Selected jCheckBoxAttachVitalsToEmail");
+            uploadVitalsHistoryToS3(apt);
+        }
+        
+        if (jCheckBoxShareCurrentPrescriptionWithDoctor.isSelected()) {
+            log.debug("Selected jCheckBoxAttachPrescriptionToEmail");
+            uploadCurrentPrescriptionToS3(apt);
+        }
+        
+        if (jCheckBoxSharePreviousLabReportsWithDoctor.isSelected()) {
+            uploadLabReportsToS3(apt);
+        }
+        
+        if (jCheckBoxShareInsuranceDetailsWithDoctor.isSelected()) {
+            log.debug("Selected jCheckBoxAttachInsuranceDetailsToEmails");
+            uploadInsuranceDetailsToS3(apt);
+        }
+        
+        ecoSystem.getSMSHelper().sendSMSAsynchronous("+12067085330", "Hi! SMS functionality is working in our project! Hurray!!");
     }//GEN-LAST:event_btnConfirmDoctorAppointmentActionPerformed
 
+    private void uploadVitalsHistoryToS3(Appointment appointment) {
+        String patientUsername = appointment.getPatient().getUserAccount().getUsername();
+        String vitalsHistoryImageName = "vitals-image-" + patientUsername + "-" + appointment.getId() + "-" + appointment.getDate();
+        String localVitalsImagePath = "/tmp/patient/" + vitalsHistoryImageName; 
+        
+        // Create vital sign history graph image and write it to localVitalsImagePath path on local disk
+        List<VitalSigns> vitalSignsHistory = patient.getVitalSignsHistory();
+        GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
+        DefaultCategoryDataset dataset = 
+                new PatientVitalSignHistoryHelper().createPatientVitalsSignsDefaultCategoryDataSet(graphPlotterUtils, vitalSignsHistory);
+        boolean success = graphPlotterUtils.writeGraphAsImageToDisk("Date for vitals", "Ranges", "All vital Signs trend", "Vital sign", dataset, localVitalsImagePath);
+        if (success) {
+            log.debug("Successfully create vitals history report image on disk");
+        } else {
+            log.debug("Unable to create vitals history report image on disk. Not uploading to S3");
+            return;
+        }
+         
+        // Upload the image to S3
+        String key = "/patient/" + patientUsername + "/vital-signs-history/" + vitalsHistoryImageName + ".png";
+        success = s3helper.putObject(key, localVitalsImagePath);
+        if (success) {
+            log.debug("Successfully written vital sign history image to S3 bucket");
+        } else {
+            log.debug("Unable to write vitals history report image to S3 bucket");
+            return;
+        }
+        
+        // After the image is successfully uploaded to S3, update appointment object with the S3 image path (key).
+        // We will need S3 image path to download the image file while doctor is looking at the appointment.
+        appointment.setPatientVitalSignsHistoryS3ObjectPath(key);
+        log.debug("Updated appointment with S3 path for vital sign history file");
+    }
+    
+    private void uploadCurrentPrescriptionToS3(Appointment appointment) {
+        
+    }
+    
+    private void uploadLabReportsToS3(Appointment appointment) {
+        
+    }
+    
+    private void uploadInsuranceDetailsToS3(Appointment appointment) {
+        
+    }
+    
     private void btn1pmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1pmActionPerformed
         // TODO add your handling code here:
         selectedAppointmentTime = 13;
@@ -684,13 +734,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     }//GEN-LAST:event_tblDoctorListMouseClicked
 
     private void enableAppointmentFields(boolean isEnabled) {
-        jCheckBoxAttachInsuranceDetailsToEmail.setEnabled(isEnabled);
-        jCheckBoxAttachPrescriptionToEmail.setEnabled(isEnabled);
-        jCheckBoxAttachVitalsToEmail.setEnabled(isEnabled);
+        jCheckBoxShareInsuranceDetailsWithDoctor.setEnabled(isEnabled);
+        jCheckBoxShareCurrentPrescriptionWithDoctor.setEnabled(isEnabled);
+        jCheckBoxShareVitalsWithDoctor.setEnabled(isEnabled);
         jCheckBoxSendAppointmentEmailConfirmation.setEnabled(isEnabled);
         jCheckBoxSendAppointmentRemiender.setEnabled(isEnabled);
         jCheckBoxSendAppointmentTextConfirmation.setEnabled(isEnabled);
-        jCheckBoxAttachPreviousLabReports.setEnabled(isEnabled);
+        jCheckBoxSharePreviousLabReportsWithDoctor.setEnabled(isEnabled);
         lblOtherAppointmentDetails.setEnabled(isEnabled);
         jTextFieldAppointmentDetails.setEnabled(isEnabled);
         btnConfirmDoctorAppointment.setEnabled(isEnabled);
@@ -725,13 +775,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         nextScreen(WorkAreaPanel, new PatientHomePagePanel(WorkAreaPanel, ecoSystem, patient), "PatientHomePagePanel");
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jCheckBoxAttachPreviousLabReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachPreviousLabReportsActionPerformed
+    private void jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxAttachPreviousLabReportsActionPerformed
+    }//GEN-LAST:event_jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed
 
-    private void jCheckBoxAttachPrescriptionToEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAttachPrescriptionToEmailActionPerformed
+    private void jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxAttachPrescriptionToEmailActionPerformed
+    }//GEN-LAST:event_jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed
 
     private void setupDoctorAppointmentCalander() {
         jDateChooserDoctorAvailability.setMinSelectableDate(Date.from(Instant.now()));
@@ -803,13 +853,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     private javax.swing.JPanel jBookAppointment;
     private com.toedter.calendar.JCalendarBeanInfo jCalendarBeanInfo1;
     private com.toedter.calendar.JCalendarBeanInfo jCalendarBeanInfo2;
-    private javax.swing.JCheckBox jCheckBoxAttachInsuranceDetailsToEmail;
-    private javax.swing.JCheckBox jCheckBoxAttachPrescriptionToEmail;
-    private javax.swing.JCheckBox jCheckBoxAttachPreviousLabReports;
-    private javax.swing.JCheckBox jCheckBoxAttachVitalsToEmail;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentEmailConfirmation;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentRemiender;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentTextConfirmation;
+    private javax.swing.JCheckBox jCheckBoxShareCurrentPrescriptionWithDoctor;
+    private javax.swing.JCheckBox jCheckBoxShareInsuranceDetailsWithDoctor;
+    private javax.swing.JCheckBox jCheckBoxSharePreviousLabReportsWithDoctor;
+    private javax.swing.JCheckBox jCheckBoxShareVitalsWithDoctor;
     private com.toedter.calendar.JDateChooserCellEditor jDateChooserCellEditor1;
     private com.toedter.calendar.JDateChooser jDateChooserDoctorAvailability;
     private javax.swing.JScrollPane jScrollPane1;

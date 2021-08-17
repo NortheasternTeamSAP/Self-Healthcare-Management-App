@@ -43,6 +43,8 @@ import Pharmacy.Pharmacist;
 import Pharmacy.PharmacistDirectory;
 import Pharmacy.Pharmacy;
 import Pharmacy.PharmacyDirectory;
+import Utils.SMSSender;
+import java.io.File;
 import java.time.LocalDate;
 
 /**
@@ -60,6 +62,8 @@ public class EcoSystem {
     PharmacyDirectory pharmacyDirectory;
     PharmacistDirectory pharmacistDirectory;
     public OrganizationDirectory organizationDirectory;
+    
+    SMSSender smsHelper;
 
     // Testing
     public Enterprise healthManagementApp;
@@ -76,12 +80,23 @@ public class EcoSystem {
         medicineDirectory = new MedicineDirectory();
         deliveryManDirectory = new DeliveryManDirectory();
         pharmacyDirectory = new PharmacyDirectory();
-        pharmacistDirectory = new PharmacistDirectory();
+        smsHelper = new SMSSender();
 
         // create new system admin user
         organizationDirectory = new OrganizationDirectory();
  
         exampleCreateEnterpriseOrganizationAndRoles();
+        createLocalFolder("/tmp/patient");
+        createLocalFolder("/tmp/doctor");
+        
+    }
+    
+    private void createLocalFolder(String folder) {
+        File directory = new File(folder);
+        if (directory.exists()){
+            directory.delete();
+        }
+        directory.mkdir();
     }
 
     public PharmacyDirectory getPharmacyDirectory() {
@@ -94,6 +109,10 @@ public class EcoSystem {
     
     public MedicineDirectory getMedicineDirectory() {
         return medicineDirectory;
+    }
+    
+    public SMSSender getSMSHelper() {
+        return this.smsHelper;
     }
 
     public DeliveryManDirectory getDeliveryManDirectory() {
@@ -192,7 +211,7 @@ public class EcoSystem {
 
         // Doctor
         Person doctor = new Doctor("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("doc1", "doc1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("doc1", "doc1"), primaryCareOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(doctor);
         primaryCareOrg.addEmployee(doctor);
 
