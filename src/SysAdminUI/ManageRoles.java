@@ -8,6 +8,7 @@ package SysAdminUI;
 import Counselor.Counselor;
 import DataStore.CredentialsManager;
 import DataStore.GlobalUserDirectory;
+import DeliveryMan.DeliveryMan;
 import Dietitian.Dietitian;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
@@ -30,6 +31,7 @@ import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Pharmacy.Pharmacist;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.awt.CardLayout;
@@ -263,7 +265,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
 
         jRadioButtonPharmacist.setText("Pharmacist");
 
-        jRadioButtonDeliveryMan.setText("Shipping/Delivery Representative");
+        jRadioButtonDeliveryMan.setText("Delivery Representative");
 
         jRadioButtonDietitian.setText("Dietitian");
 
@@ -653,7 +655,32 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                 system.globalUserDirectory.createNewUser(counselor);
                 break;
                 
-
+                case PHARMACIST:
+                    //gender null for now and proper dob to be given
+                    Person pharmacist = new Pharmacist(
+                                                name, 
+                                                LocalDate.now(), 
+                                                null, 
+                                                address, 
+                                                phoneNumber, 
+                                                userAccount
+                                            );
+                    system.globalUserDirectory.createNewUser(pharmacist);
+                    break;
+                    
+                case DELIVERY_MAN:
+                    //gender null for now and proper dob to be given
+                    Person deliveryMan = new DeliveryMan(
+                                                name,
+                                                LocalDate.now(),
+                                                null,
+                                                address,
+                                                phoneNumber,
+                                                userAccount
+                                            );
+                    system.globalUserDirectory.createNewUser(deliveryMan);
+                    break;
+                    
             case INVALID:
                 JOptionPane.showMessageDialog(this, "Invalid Enterprise Details ");
              break;

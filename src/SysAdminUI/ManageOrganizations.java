@@ -13,9 +13,11 @@ import Enterprise.HospitalEnterprise;
 import Enterprise.InsuranceCompanyEnterprise;
 import Enterprise.MentalWellnessEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
+import Organization.DeliveryDepartmentOrganization;
 import Organization.GymOrganization;
 import Organization.HealthInsuranceDepartmentOrganization;
 import Organization.LaboratoryOrganization;
+import Organization.MedicineInventoryOrganization;
 import Organization.NutritionDepartmentOrganization;
 import Organization.Organization;
 import Organization.OrganizationType;
@@ -247,10 +249,12 @@ public class ManageOrganizations extends javax.swing.JPanel {
 
             case MEDICINE_INVENTORY:
                 //add a way to create your organization
+                organization = new MedicineInventoryOrganization(txtname.getText(), enterprise);
                  break;
 
             case DELIVERY_DEPARTMENT:
                 //add a way to create your organization
+                organization = new DeliveryDepartmentOrganization(txtname.getText(), enterprise);
                  break;
 
             case NUTRITION_DEPARTMENT:
