@@ -40,10 +40,9 @@ import Personnel.PersonDetails;
 import Personnel.SystemAdmin;
 import Personnel.UserAccount;
 import Pharmacy.Pharmacist;
-<<<<<<< HEAD
 import Pharmacy.PharmacistDirectory;
-=======
->>>>>>> 9c403c6 (Delivery Man panel UI update (#26))
+import Utils.SMSSender;
+import Pharmacy.PharmacistDirectory;
 import Pharmacy.Pharmacy;
 import Pharmacy.PharmacyDirectory;
 import Utils.SMSSender;
