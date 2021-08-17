@@ -561,7 +561,7 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonDeliveryMan">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Shipping/Delivery Representative"/>
+            <Property name="text" type="java.lang.String" value="Delivery Representative"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonDietitian">
