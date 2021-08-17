@@ -40,6 +40,7 @@ import Personnel.PersonDetails;
 import Personnel.SystemAdmin;
 import Personnel.UserAccount;
 import Pharmacy.Pharmacist;
+import Pharmacy.PharmacistDirectory;
 import Pharmacy.Pharmacy;
 import Pharmacy.PharmacyDirectory;
 import java.time.LocalDate;
@@ -57,6 +58,7 @@ public class EcoSystem {
     MedicineDirectory medicineDirectory;
     DeliveryManDirectory deliveryManDirectory;
     PharmacyDirectory pharmacyDirectory;
+    PharmacistDirectory pharmacistDirectory;
     public OrganizationDirectory organizationDirectory;
 
     // Testing
@@ -74,6 +76,7 @@ public class EcoSystem {
         medicineDirectory = new MedicineDirectory();
         deliveryManDirectory = new DeliveryManDirectory();
         pharmacyDirectory = new PharmacyDirectory();
+        pharmacistDirectory = new PharmacistDirectory();
 
         // create new system admin user
         organizationDirectory = new OrganizationDirectory();
@@ -97,6 +100,10 @@ public class EcoSystem {
         return deliveryManDirectory;
     }
 
+    public PharmacistDirectory getPharmacistDirectory() {
+        return pharmacistDirectory;
+    }
+    
         void example() {
         // How to get a user from globalUserDirectory
         Person person = globalUserDirectory.get("sysadmin");

@@ -6,7 +6,12 @@
 package UI.PSysAdminRole;
 
 import EcoSystem.EcoSystem;
+import Pharmacy.Pharmacist;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +26,18 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.ecoSystem = ecoSystem;
         initComponents();
+        populatePharmacistTable();
+    }
+    
+    public void populatePharmacistTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblMngPharmacist.getModel();
+        dtm.setRowCount(0);
+        
+        for(Pharmacist pharmacist: ecoSystem.getPharmacistDirectory().getPharmacistMap().getAllValues()){
+            Object[] row = new Object[4];
+            row[0] = pharmacist.getPersonDetails().getFullName();
+            dtm.addRow(row);
+        }
     }
 
     /**
@@ -32,7 +49,7 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnDeletePharmacist = new javax.swing.JButton();
+        btnDeletePharmacist1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -41,11 +58,11 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
         btnAddPharmacist = new javax.swing.JButton();
         btnUpdatePharmacist = new javax.swing.JButton();
 
-        btnDeletePharmacist.setText("Delete ");
-        btnDeletePharmacist.setContentAreaFilled(false);
-        btnDeletePharmacist.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletePharmacist1.setText("Delete ");
+        btnDeletePharmacist1.setContentAreaFilled(false);
+        btnDeletePharmacist1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeletePharmacistActionPerformed(evt);
+                btnDeletePharmacist1ActionPerformed(evt);
             }
         });
 
@@ -70,11 +87,11 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Pharmacy Name", "Pharmacist"
+                "Pharmacist"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -123,7 +140,7 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
                                 .addGap(39, 39, 39)
                                 .addComponent(btnUpdatePharmacist, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(btnDeletePharmacist, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnDeletePharmacist1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -141,32 +158,59 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddPharmacist, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdatePharmacist, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeletePharmacist, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDeletePharmacist1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(320, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeletePharmacistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePharmacistActionPerformed
-
-    }//GEN-LAST:event_btnDeletePharmacistActionPerformed
+    private void btnDeletePharmacist1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePharmacist1ActionPerformed
+        int selectedRow = tblMngPharmacist.getSelectedRow();
+        if(selectedRow < 0) {
+            JOptionPane.showMessageDialog(null,"Select a row from table.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Pharmacist pharmacist = (Pharmacist) tblMngPharmacist.getValueAt(selectedRow, 0);
+        ecoSystem.getPharmacistDirectory().deletePharmacist(pharmacist);
+        populatePharmacistTable();
+    }//GEN-LAST:event_btnDeletePharmacist1ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        workArea.remove(this);
+        Component[] compArray = workArea.getComponents();
+        Component component = compArray[compArray.length -1];
+        CardLayout layout2 = (CardLayout) workArea.getLayout();
+        layout2.previous(workArea);
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddPharmacistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPharmacistActionPerformed
 
+        AddPharmacistJPanel addPharjp = new AddPharmacistJPanel(workArea, ecoSystem);
+        workArea.add("AddPharmacistJPanel", addPharjp);
+        CardLayout layout =(CardLayout)workArea.getLayout();
+        layout.next(workArea);
+        
     }//GEN-LAST:event_btnAddPharmacistActionPerformed
 
     private void btnUpdatePharmacistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePharmacistActionPerformed
 
+        int selectedRow = tblMngPharmacist.getSelectedRow();
+        if(selectedRow < 0) {
+            JOptionPane.showMessageDialog(null,"Select a row from table.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Pharmacist pharmacist = (Pharmacist) tblMngPharmacist.getValueAt(selectedRow, 0);
+        UpdatePharmacistJPanel upPharjp = new UpdatePharmacistJPanel(workArea, ecoSystem, pharmacist);
+        workArea.add("UpdatePharmacistJPanel",upPharjp);
+        CardLayout layout =(CardLayout)workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_btnUpdatePharmacistActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddPharmacist;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDeletePharmacist;
+    private javax.swing.JButton btnDeletePharmacist1;
     private javax.swing.JButton btnUpdatePharmacist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

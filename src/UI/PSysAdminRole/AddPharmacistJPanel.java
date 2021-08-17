@@ -11,23 +11,28 @@ import Personnel.Address;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
 import Pharmacy.Pharmacist;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author sravy
  */
 public class AddPharmacistJPanel extends javax.swing.JPanel {
+    private JPanel workArea;
     private EcoSystem ecoSys;
     /**
      * Creates new form AddPharmacistJPanel
      */
-    public AddPharmacistJPanel(EcoSystem ecoSys) {
+    public AddPharmacistJPanel(JPanel workArea,EcoSystem ecoSys) {
         this.ecoSys = ecoSys;
+        this.workArea = workArea;
         initComponents();
         populatecmbPGender();
     }
@@ -272,7 +277,11 @@ public class AddPharmacistJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        workArea.remove(this);
+        Component[] compArray = workArea.getComponents();
+        Component component = compArray[compArray.length -1];
+        CardLayout layout2 = (CardLayout) workArea.getLayout();
+        layout2.previous(workArea);
 
     }//GEN-LAST:event_btnBackActionPerformed
 
