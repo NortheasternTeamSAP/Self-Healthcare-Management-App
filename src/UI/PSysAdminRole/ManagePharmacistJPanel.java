@@ -7,6 +7,7 @@ package UI.PSysAdminRole;
 
 import EcoSystem.EcoSystem;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +22,14 @@ public class ManagePharmacistJPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.ecoSystem = ecoSystem;
         initComponents();
+        populatePharmacistTable();
+    }
+    
+    public void populatePharmacistTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblMngPharmacist.getModel();
+        dtm.setRowCount(0);
+        
+        for(Pharmacist pharmacist: ecoSystem.)
     }
 
     /**
