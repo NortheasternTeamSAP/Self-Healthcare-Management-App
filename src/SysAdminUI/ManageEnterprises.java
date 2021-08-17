@@ -12,6 +12,7 @@ import Enterprise.HealthManagementAppEnterprise;
 import Enterprise.HospitalEnterprise;
 import Enterprise.InsuranceCompanyEnterprise;
 import Enterprise.MentalWellnessEnterprise;
+import Enterprise.PharmacyEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
 import Personnel.Address;
 import Personnel.PersonDetails;
@@ -93,6 +94,12 @@ public class ManageEnterprises extends javax.swing.JPanel {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -283,8 +290,11 @@ public class ManageEnterprises extends javax.swing.JPanel {
                  break;
                 
             case PHARMACY:
-            //Please add creation of pharmacy enterpise 
+                Enterprise pharEnterprise = new PharmacyEnterprise(txtname.getText(), sampleAddress);
+                system.enterpriseDirectory.addEnterprise(pharEnterprise);
+                LoadEnterprises();
                  break;
+                 
             case PHYSICAL_WELLNESS:
                 Enterprise e5 = new PhysicalWellnessEnterprise(txtname.getText(), sampleAddress);
                 system.enterpriseDirectory.addEnterprise(e5);
@@ -316,6 +326,10 @@ public class ManageEnterprises extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

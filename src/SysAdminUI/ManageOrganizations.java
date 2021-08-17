@@ -249,7 +249,7 @@ public class ManageOrganizations extends javax.swing.JPanel {
                 //add a way to create your organization
                  break;
 
-            case LOGISTICS:
+            case DELIVERY_DEPARTMENT:
                 //add a way to create your organization
                  break;
 
