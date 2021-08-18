@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.PharmacistRole;
+package ui.PharmacistRole;
 
 import DataStore.ItemTuple;
 import EcoSystem.EcoSystem;
 import Medicine.Medicine;
-import Enterprise.PharmacyEnterprise;
+import Pharmacy.Pharmacy;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -23,14 +23,14 @@ import javax.swing.JPanel;
 public class AddMedicineStockJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private PharmacyEnterprise pharmacy;
+    private Pharmacy pharmacy;
     private EcoSystem ecoSystem;
 
-    public AddMedicineStockJPanel(JPanel wa, PharmacyEnterprise ph, EcoSystem ecoSystem){
+    public AddMedicineStockJPanel(JPanel wa, Pharmacy ph, EcoSystem ecoSystem){
         initComponents();
-        this.workArea = wa;
-        this.pharmacy = ph;
-        this.ecoSystem = ecoSystem;
+        workArea = wa;
+        pharmacy = ph;
+        ecoSystem = ecoSystem;
         populatecmbMedicineId();
     }
 
@@ -64,6 +64,7 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
 
         btnAddMedicineStock.setBackground(new java.awt.Color(255, 255, 255));
         btnAddMedicineStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAddMedicineStock.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-add-30.png")); // NOI18N
         btnAddMedicineStock.setText("Add ");
         btnAddMedicineStock.setContentAreaFilled(false);
         btnAddMedicineStock.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +74,7 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
         });
         add(btnAddMedicineStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 90, 30));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-back-30.png")); // NOI18N
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +94,8 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
         });
         add(cmbMedicineId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 210, -1));
         add(spnAddMedicineQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 80, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\polygonal-bg1100X850.jpg")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 840));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,9 +136,8 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     public void populatecmbMedicineId() {
-        cmbMedicineId.removeAll();
+        cmbMedicineId.removeAllItems();
         for(Medicine med : ecoSystem.getMedicineDirectory().medicineCatalogMap.getAllValues()) {
-            System.out.println("Found med: " + med.getMedicineId() + " name: " + med.getMedicineName());
             cmbMedicineId.addItem(med);
         }
     }

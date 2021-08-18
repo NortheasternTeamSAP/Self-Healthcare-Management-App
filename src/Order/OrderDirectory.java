@@ -5,15 +5,13 @@
  */
 package Order;
 
-import DataStore.Appointment;
 import DataStore.GenericDirectory;
 import DeliveryMan.DeliveryMan;
 import Doctor.Doctor;
 import Medicine.Medicine;
 import Medicine.MedicineDirectory;
 import Patient.Patient;
-import Enterprise.PharmacyEnterprise;
-import Prescription.Dosage;
+import Pharmacy.Pharmacy;
 import java.util.ArrayList;
 
 /**
@@ -32,13 +30,12 @@ public class OrderDirectory {
     
     // return the order Id.
     public String addOrder(
-            PharmacyEnterprise pharmacy, 
+            Pharmacy pharmacy, 
             Doctor doctor, 
             Patient patient,
             int quantity, 
             Medicine medicine, 
-            Dosage dosage,
-            Appointment appointment){
+            int appointmentID){
         
         Order order = new Order(
                 pharmacy,
@@ -46,8 +43,7 @@ public class OrderDirectory {
                 patient,
                 quantity,
                 medicine,
-                dosage,
-                appointment);
+                appointmentID);
         String orderId = "Order" + Integer.toString(id);
         orderMap.add(orderId, order);
         order.setOrderId(orderId);
@@ -75,7 +71,7 @@ public class OrderDirectory {
     }
     
     
-    public ArrayList<Order> getOrdersByPharmacy(PharmacyEnterprise pharmacy) {
+    public ArrayList<Order> getOrdersByPharmacy(Pharmacy pharmacy) {
         ArrayList<Order> ret_list = new ArrayList<>();
         for (Order order: orderMap.getAllValues()){
             if (order.getPharmacy() == pharmacy){

@@ -8,7 +8,7 @@ package UI.PSysAdminRole;
 import EcoSystem.EcoSystem;
 import Medicine.Medicine;
 import Medicine.MedicineDirectory;
-import Enterprise.PharmacyEnterprise;
+import Pharmacy.Pharmacy;
 import java.awt.CardLayout;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;

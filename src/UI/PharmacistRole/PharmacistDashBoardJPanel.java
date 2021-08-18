@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.PharmacistRole;
+package ui.PharmacistRole;
 
 import EcoSystem.EcoSystem;
 import Medicine.MedicineDirectory;
 import Order.OrderDirectory;
 import Personnel.UserAccount;
-import Enterprise.PharmacyEnterprise;
+import Pharmacy.Pharmacy;
 import Pharmacy.PharmacyDirectory;
-import SysAdminUI.Login;
-import Utils.NextScreen;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -20,16 +18,16 @@ import javax.swing.JPanel;
  *
  * @author Sravya
  */
-public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements NextScreen {
+public class PharmacistDashBoardJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
     private EcoSystem ecoSystem;
-    private PharmacyEnterprise pharmacy;
+    private Pharmacy pharmacy;
     
     public PharmacistDashBoardJPanel(
             JPanel workArea,
             EcoSystem ecoSystem, 
-            PharmacyEnterprise pharmacy) {
+            Pharmacy pharmacy) {
         
 
         this.workArea = workArea;
@@ -50,10 +48,10 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
         btnManageOrders = new javax.swing.JButton();
         btnManageMedicineCatalog = new javax.swing.JButton();
         lblPharmacistDashboard = new javax.swing.JLabel();
-        jButtonLogout = new javax.swing.JButton();
 
         btnManageOrders.setBackground(new java.awt.Color(255, 255, 255));
         btnManageOrders.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnManageOrders.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\mng orders.png")); // NOI18N
         btnManageOrders.setText("Manage Orders");
         btnManageOrders.setContentAreaFilled(false);
         btnManageOrders.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -66,6 +64,7 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
 
         btnManageMedicineCatalog.setBackground(new java.awt.Color(255, 255, 255));
         btnManageMedicineCatalog.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnManageMedicineCatalog.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\A4 pics\\mng res menu.png")); // NOI18N
         btnManageMedicineCatalog.setText("Manage Medicine Stock");
         btnManageMedicineCatalog.setContentAreaFilled(false);
         btnManageMedicineCatalog.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -78,13 +77,6 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
 
         lblPharmacistDashboard.setText("Pharmacist DashBoard");
 
-        jButtonLogout.setText("Logout");
-        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogoutActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,25 +84,21 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jButtonLogout)
-                        .addGap(181, 181, 181)
+                        .addGap(331, 331, 331)
                         .addComponent(lblPharmacistDashboard))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnManageOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnManageMedicineCatalog, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPharmacistDashboard)
-                    .addComponent(jButtonLogout))
-                .addGap(70, 70, 70)
+                .addGap(19, 19, 19)
+                .addComponent(lblPharmacistDashboard)
+                .addGap(78, 78, 78)
                 .addComponent(btnManageMedicineCatalog)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageOrders)
@@ -132,16 +120,10 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
         layout.next(workArea);
     }//GEN-LAST:event_btnManageMedicineCatalogActionPerformed
 
-    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
-        // TODO add your handling code here:
-         nextScreen(workArea, new Login(workArea, ecoSystem), "Login Page");
-    }//GEN-LAST:event_jButtonLogoutActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageMedicineCatalog;
     private javax.swing.JButton btnManageOrders;
-    private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel lblPharmacistDashboard;
     // End of variables declaration//GEN-END:variables
 }

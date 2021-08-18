@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.PharmacistRole;
+package ui.PharmacistRole;
 
 import DataStore.ItemTuple;
 import EcoSystem.EcoSystem;
 import Medicine.Medicine;
-import Enterprise.PharmacyEnterprise;
-import Utils.ConsoleLogger;
+import Pharmacy.Pharmacy;
 import java.awt.CardLayout;
-import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,17 +22,15 @@ import javax.swing.table.DefaultTableModel;
 public class ManageMedicineStockJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private PharmacyEnterprise pharmacy;
+    private Pharmacy pharmacy;
     private EcoSystem ecoSystem;
     
-    ConsoleLogger log = ConsoleLogger.getLogger();
-    
-    public ManageMedicineStockJPanel(JPanel workArea, PharmacyEnterprise pharmacy, EcoSystem ecoSystem) {
+    public ManageMedicineStockJPanel(JPanel workArea, Pharmacy pharmacy, EcoSystem ecoSystem) {
         initComponents();
-        this.workArea = workArea;
-        this.pharmacy = pharmacy;
-        this.ecoSystem = ecoSystem;
-        lblPharmacy.setText("Pharmacy: " + pharmacy.getEnterpriseName());
+        workArea = workArea;
+        pharmacy = pharmacy;
+        ecoSystem = ecoSystem;
+        lblPharmacy.setText("Pharmacy: " + pharmacy.getPharmacyName());
         refreshTable();
     }
     
@@ -43,13 +39,7 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblMedicineCatalog.getModel();
         model.setRowCount(0);
 
-        Map<Medicine, Integer> stock = pharmacy.getMedicineStockMap();
-        if (stock == null || stock.isEmpty()) {
-            log.error("Medicine stock is empty");
-            return;
-        }
-        
-        for (Entry<Medicine, Integer> tup : stock.entrySet()) {
+        for (Entry<Medicine, Integer> tup : pharmacy.getMedicineStockMap().entrySet()) {
             Object row[] = new Object[4];
             row[0] = tup.getKey().getMedicineId();
             row[1] = tup.getKey().getMedicineName();
@@ -111,7 +101,8 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
 
         btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnDelete.setText("Delete");
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-delete-bin-30.png"))); // NOI18N
+        btnDelete.setText("Delete ");
         btnDelete.setBorderPainted(false);
         btnDelete.setContentAreaFilled(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +112,7 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
         });
         add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 110, 30));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-back-30.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +122,7 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 30, 40));
 
         btnAddStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAddStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-add-30.png"))); // NOI18N
         btnAddStock.setText("Add Stock");
         btnAddStock.setContentAreaFilled(false);
         btnAddStock.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +131,8 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
             }
         });
         add(btnAddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 120, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\polygonal-bg1100X850.jpg")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 

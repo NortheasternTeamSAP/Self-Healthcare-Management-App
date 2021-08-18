@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.DeliveryManRole;
+package ui.DeliveryManRole;
 
 import DataStore.CredentialsManager;
 import DeliveryMan.DeliveryMan;
@@ -12,8 +12,6 @@ import EcoSystem.EcoSystem;
 import Order.Order;
 import Order.Order.OrderStatus;
 import Order.OrderDirectory;
-import SysAdminUI.Login;
-import Utils.NextScreen;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sravya
  */
-public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements NextScreen {
+public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel workArea;
     private EcoSystem ecoSystem;
@@ -63,7 +61,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnClearTable = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,6 +94,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 880, 240));
 
         btnAssignToMe.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAssignToMe.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-connected-people-30.png")); // NOI18N
         btnAssignToMe.setText("Assign to me");
         btnAssignToMe.setContentAreaFilled(false);
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +105,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 150, 40));
 
         btnProcessOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnProcessOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-in-transit-30.png")); // NOI18N
         btnProcessOrder.setText("Deliver Order");
         btnProcessOrder.setContentAreaFilled(false);
         btnProcessOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +115,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         });
         add(btnProcessOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 140, 40));
 
+        btnRefreshOrdersTable.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-refresh-30.png")); // NOI18N
         btnRefreshOrdersTable.setContentAreaFilled(false);
         btnRefreshOrdersTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +156,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         btnClearTable.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnClearTable.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-eraser-30.png")); // NOI18N
         btnClearTable.setText("Clear ");
         btnClearTable.setBorder(null);
         btnClearTable.setContentAreaFilled(false);
@@ -163,15 +165,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 btnClearTableActionPerformed(evt);
             }
         });
-        add(btnClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 100, 30));
+        add(btnClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 100, 30));
 
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-        add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 40, -1, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\polygonal-bg1100X850.jpg")); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -231,11 +228,6 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         tblDeliveryManAssigned.removeAll();
     }//GEN-LAST:event_btnClearTableActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        nextScreen(workArea, new Login(workArea, ecoSystem), "Login Page");
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
     private void populateTblDelManOrderRequests(){
         DefaultTableModel dtm = (DefaultTableModel) tblDelManOrderRequests.getModel();
         
@@ -249,8 +241,8 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
             row[0] = order.getOrderId();
             row[1] = order.getPatient().getPersonDetails().getFullName();
             row[2] = order.getPatient().getPatientDetails().getAddress();
-            row[3] = order.getPharmacy().getEnterpriseName();
-            row[4] = order.getPharmacy().getEnterpriseAddress();
+            row[3] = order.getPharmacy().getPharmacyName();
+            row[4] = order.getPharmacy().getPharmacyAddress();
             row[5] = order.getOrderStatus();
             dtm.addRow(row);
         }
@@ -267,8 +259,8 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 row[0] = order.getOrderId();
                 row[1] = order.getPatient().getPersonDetails().getFullName();
                 row[2] = order.getPatient().getPatientDetails().getAddress();
-                row[3] = order.getPharmacy().getEnterpriseName();
-                row[4] = order.getPharmacy().getEnterpriseAddress();
+                row[3] = order.getPharmacy().getPharmacyName();
+                row[4] = order.getPharmacy().getPharmacyAddress();
                 row[5] = order.getOrderStatus();
                 dtm.addRow(row);
             }
@@ -278,12 +270,12 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnClearTable;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProcessOrder;
     private javax.swing.JButton btnRefreshOrdersTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDelManOrderRequests;

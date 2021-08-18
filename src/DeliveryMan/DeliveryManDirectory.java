@@ -26,10 +26,6 @@ public class DeliveryManDirectory {
         id = 0;
     }
     
-    public void addDeliveryMan(DeliveryMan deliveryMan) {
-        deliveryManMap.add(deliveryMan.getUserAccount().getUsername(), deliveryMan);
-    }
-    
     public DeliveryMan addDeliveryMan(
                                 String fullName,
                                 LocalDate dob,
@@ -38,7 +34,7 @@ public class DeliveryManDirectory {
                                 String phoneNumber,
                                 UserAccount account){
         
-        DeliveryMan delMan = new DeliveryMan(fullName, dob, gender, address, phoneNumber, null, account);
+        DeliveryMan delMan = new DeliveryMan(fullName, dob, gender, address, phoneNumber, account);
         deliveryManMap.add(Integer.toString(id), delMan);
         id += 1;
         return delMan;
