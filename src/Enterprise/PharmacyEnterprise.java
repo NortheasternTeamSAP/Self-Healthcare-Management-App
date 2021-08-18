@@ -24,6 +24,7 @@ public class PharmacyEnterprise extends Enterprise {
     
     public PharmacyEnterprise(String enterpriseName, Address enterpriseAddress){
         super(enterpriseName, enterpriseAddress, EnterpriseType.PHARMACY);
+        medicineStockMap = new HashMap<>();
     }
     
     @Override

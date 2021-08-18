@@ -378,7 +378,8 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         
         this.currentOrders.add(ecosys
                 .getOrderDirectory()
-                .addOrder(pharmacy, doctor, patient, quantity, med, dosage, appointment)); //check aptID
+                .addOrder(pharmacy, doctor, patient, quantity, med, dosage, appointment));
+        populateTblCurrentPrescriptions();
 
     }//GEN-LAST:event_btnAddQuantityActionPerformed
 

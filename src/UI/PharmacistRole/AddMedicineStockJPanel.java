@@ -101,7 +101,8 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
         int quantity = 0;
         try {
             if(spnAddMedicineQuantity.getValue()!=null){
-                quantity = (Integer)spnAddMedicineQuantity.getValue();
+                System.out.println("***"  + spnAddMedicineQuantity.getValue().toString());
+                quantity = Integer.parseInt(spnAddMedicineQuantity.getValue().toString());
                 if (quantity <= 0) {
                     JOptionPane.showMessageDialog(this, "Quantity must always be positive.");
                     return;
@@ -112,7 +113,8 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Please enter a valid quantity.");
                 return;
             }
-        } catch (Exception e){JOptionPane.showMessageDialog(this, "Please enter all details correctly");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Please enter all details correctly  " + e.getMessage());
             return;
         }
 
@@ -143,7 +145,6 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
     
     private void cmbMedicineIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicineIdActionPerformed
         // TODO add your handling code here:
-        populatecmbMedicineId();
     }//GEN-LAST:event_cmbMedicineIdActionPerformed
 
 

@@ -638,8 +638,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
     private void btnMyMedicinePrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyMedicinePrescriptionActionPerformed
         // TODO add your handling code here:
-        MedicalPrescriptionJPanel medicalPrescriptionJPanel=new MedicalPrescriptionJPanel(WorkAreaPanel, patient);
-        nextScreen(WorkAreaPanel, medicalPrescriptionJPanel, "medicalPrescriptionJPanel");
+        nextScreen(WorkAreaPanel, new PatientViewPrescriptionJPanel(WorkAreaPanel, ecoSystem, patient, this), "PatientViewPrescriptionJPanel");
     }//GEN-LAST:event_btnMyMedicinePrescriptionActionPerformed
 
     private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed

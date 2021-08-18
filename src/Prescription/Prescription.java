@@ -5,6 +5,7 @@
  */
 package Prescription;
 
+import DataStore.Appointment;
 import DataStore.GenericDirectory;
 import Medicine.Medicine;
 import java.time.LocalDate;
@@ -18,13 +19,14 @@ public class Prescription implements Comparable<Prescription> {
     private GenericDirectory<Medicine, Dosage> prescriptionMap; //map of <Medicine medDetails, Dosage dosage>
     private LocalDate prescriptionDate;
     private int id;
-    private int appointmentId; // appointment associated with this prescription
+    private Appointment appointment; // appointment associated with this prescription
     
     static int count = 1;
 
-    public Prescription(int appointmentId) {
+    public Prescription(Appointment appointment) {
         this.prescriptionMap = new GenericDirectory<>();
-        this.appointmentId = appointmentId;
+        this.prescriptionDate = appointment.getDate();
+        this.appointment = appointment;
         this.id = count++;
     }
 
@@ -48,13 +50,13 @@ public class Prescription implements Comparable<Prescription> {
         return id;
     }
 
-    public int getAppointmentId() {
-        return appointmentId;
+    public Appointment getAppointment() {
+        return appointment;
     }
 
     @Override
     public int compareTo(Prescription prescription) {
-        return this.getPrescriptionDate().compareTo(prescription.getPrescriptionDate());
+        return prescription.getPrescriptionDate().compareTo(this.getPrescriptionDate()); // descending order
     }
 
     // Merges meds from prescription into this.prescriptionMap
