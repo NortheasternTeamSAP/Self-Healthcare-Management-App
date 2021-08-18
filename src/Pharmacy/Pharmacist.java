@@ -12,7 +12,6 @@ import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
-import javax.swing.Icon;
 
 /**
  *
@@ -27,11 +26,9 @@ public class Pharmacist implements Person{
             Gender gender,
             Address address,
             String phoneNumber,
-            Icon logoImage,
-            UserAccount account,
-            int organizationId){
+            UserAccount account){
 
-        pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST, logoImage, organizationId);
+        pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST);
     }
     
     @Override

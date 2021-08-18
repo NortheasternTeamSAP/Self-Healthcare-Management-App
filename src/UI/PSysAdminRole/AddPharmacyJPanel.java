@@ -10,7 +10,7 @@ import Personnel.Address;
 import Personnel.Person;
 import Personnel.Role;
 import Pharmacy.Pharmacist;
-import Enterprise.PharmacyEnterprise;
+import Pharmacy.Pharmacy;
 import Pharmacy.PharmacyDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -254,7 +254,10 @@ public class AddPharmacyJPanel extends javax.swing.JPanel {
                     txtAddPharmacyCountry.getText()
             );
             
-            PharmacyEnterprise pharmacy = ecoSystem.getPharmacyDirectory().addPharmacy(txtAddPharmacyName.getText(),address);
+            Pharmacist pharmacist = (Pharmacist) cmbPharmacyPharmacistName.getSelectedItem();
+            
+            Pharmacy pharmacy = ecoSystem.getPharmacyDirectory().addPharmacy(txtAddPharmacyName.getText(),address,pharmacist);
+            pharmacy.setPharmacyName(txtAddPharmacyName.getText());
             JOptionPane.showMessageDialog(null, "Pharmacy added successfully!!", "Info", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {

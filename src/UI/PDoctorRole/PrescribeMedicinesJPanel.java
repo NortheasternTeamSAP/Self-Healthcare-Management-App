@@ -14,8 +14,7 @@ import Order.Order;
 import Patient.Patient;
 import Personnel.Person;
 import Personnel.Role;
-import Enterprise.PharmacyEnterprise;
-import Prescription.Dosage;
+import Pharmacy.Pharmacy;
 import Utils.NextScreen;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -79,14 +78,6 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         jLabel8 = new javax.swing.JLabel();
         txtPatientPharmName = new javax.swing.JTextField();
         jButtonBack = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jTextFieldDosage = new javax.swing.JTextField();
-        jCheckBoxPostLunch = new javax.swing.JCheckBox();
-        jCheckBoxPostDinner = new javax.swing.JCheckBox();
-        jTextFieldDosageNotes = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jCheckBoxPreLunch = new javax.swing.JCheckBox();
-        jCheckBoxPreDinner = new javax.swing.JCheckBox();
 
         jLabel1.setText("Patient Details");
 
@@ -128,7 +119,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
 
         jLabel2.setText("Quantity");
 
-        btnAddQuantity.setText("Add Medicine");
+        btnAddQuantity.setText("Add Quantity");
         btnAddQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddQuantityActionPerformed(evt);
@@ -163,18 +154,6 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                 jButtonBackActionPerformed(evt);
             }
         });
-
-        jLabel10.setText("Notes");
-
-        jCheckBoxPostLunch.setText("PostLunch");
-
-        jCheckBoxPostDinner.setText("PostDinner");
-
-        jLabel11.setText("Dosage");
-
-        jCheckBoxPreLunch.setText("PreLunch");
-
-        jCheckBoxPreDinner.setText("PreDinner");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -221,37 +200,19 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel11)))
+                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldDosageNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnAddQuantity))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldDosage)
-                                            .addComponent(jSpinQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jCheckBoxPreLunch)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBoxPostLunch)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCheckBoxPreDinner)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBoxPostDinner))))))
+                                .addComponent(jSpinQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAddQuantity))
+                            .addComponent(jLabel8)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jButtonBack)
                         .addGap(136, 136, 136)
                         .addComponent(jLabel9)))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,32 +247,17 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBoxPostLunch)
-                    .addComponent(jCheckBoxPostDinner)
-                    .addComponent(jLabel11)
-                    .addComponent(jCheckBoxPreLunch)
-                    .addComponent(jCheckBoxPreDinner))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextFieldDosageNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(btnAddQuantity)
-                        .addGap(22, 22, 22))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jSpinQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddQuantity)))
+                .addGap(43, 43, 43)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(71, 71, 71))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -354,31 +300,10 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                         .toString()
                 );
         
-        PharmacyEnterprise pharmacy = patient.getPreferredPharmacy();
-        
-        int dosageCount = 0;
-        try {
-            dosageCount = Integer.parseInt(jTextFieldDosage.getText());
-            if (dosageCount < 1 && dosageCount > 5) {
-                throw new RuntimeException();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Invalid dosage value. Please add a numeric value between 1 and 5", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Dosage dosage = new Dosage(
-                dosageCount, 
-                -1, 
-                jTextFieldDosageNotes.getText(), 
-                jCheckBoxPreLunch.isSelected(), 
-                jCheckBoxPostLunch.isSelected(), 
-                jCheckBoxPreDinner.isSelected(), 
-                jCheckBoxPostDinner.isSelected());
-        
+        Pharmacy pharmacy = patient.getPreferredPharmacy();
         this.currentOrders.add(ecosys
                 .getOrderDirectory()
-                .addOrder(pharmacy, doctor, patient, quantity, med, dosage, appointment)); //check aptID
+                .addOrder(pharmacy, doctor, patient, quantity, med, appointment.getId())); //check aptID
 
     }//GEN-LAST:event_btnAddQuantityActionPerformed
 
@@ -433,13 +358,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
     private javax.swing.JButton btnAddQuantity;
     private javax.swing.JComboBox<Person> cmbSelectPatientName1;
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JCheckBox jCheckBoxPostDinner;
-    private javax.swing.JCheckBox jCheckBoxPostLunch;
-    private javax.swing.JCheckBox jCheckBoxPreDinner;
-    private javax.swing.JCheckBox jCheckBoxPreLunch;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -451,8 +370,6 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinQuantity;
-    private javax.swing.JTextField jTextFieldDosage;
-    private javax.swing.JTextField jTextFieldDosageNotes;
     private javax.swing.JLabel lblSelectPatient1;
     private javax.swing.JTable tblCurrentPres;
     private javax.swing.JTable tblMedicineTableAddPres;

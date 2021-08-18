@@ -5,16 +5,15 @@
  */
 package Order;
 
-import DataStore.Appointment;
 import DeliveryMan.DeliveryMan;
 import Doctor.Doctor;
 import Medicine.Medicine;
 import Medicine.MedicineDirectory;
 import Patient.Patient;
+import Pharmacy.Pharmacy;
 import WorkQueue.WorkRequest;
 import java.util.UUID;
-import Enterprise.PharmacyEnterprise;
-import Prescription.Dosage;
+import Pharmacy.Pharmacy;
 import WorkQueue.WorkRequest;
 
 /**
@@ -32,26 +31,24 @@ public class Order extends WorkRequest {
     }
 
     private OrderStatus orderStatus;
-    private PharmacyEnterprise pharmacy;
+    private Pharmacy pharmacy;
     private Doctor doctor;
     private Patient patient;
     private DeliveryMan deliveryMan;
     private int quantity;
     private Medicine medicine;
-    private Dosage dosage;
     private String result;
     private boolean assign;
     private String orderId;
-    private Appointment appointment;
+    private int appointmentID;
 
     public Order(
-            PharmacyEnterprise pharmacy, 
+            Pharmacy pharmacy, 
             Doctor doctor, 
             Patient patient,
             int quantity, 
             Medicine medicine,
-            Dosage dosage,
-            Appointment appointment) {
+            int appointmentID) {
         
         this.orderStatus = OrderStatus.INPROCESS;
         this.pharmacy = pharmacy;
@@ -59,8 +56,7 @@ public class Order extends WorkRequest {
         this.patient = patient;
         this.quantity = quantity;
         this.medicine = medicine;
-        this.dosage = dosage;
-        this.appointment = appointment;
+        this.appointmentID = appointmentID;
     }
 
     public OrderStatus getOrderStatus() {
@@ -71,20 +67,16 @@ public class Order extends WorkRequest {
         this.orderStatus = orderStatus;
     }
 
-    public PharmacyEnterprise getPharmacy() {
+    public Pharmacy getPharmacy() {
         return pharmacy;
     }
 
-    public void setPharmacy(PharmacyEnterprise pharmacy) {
+    public void setPharmacy(Pharmacy pharmacy) {
         this.pharmacy = pharmacy;
     }
 
     public Doctor getDoctor() {
         return doctor;
-    }
-
-    public Dosage getDosage() {
-        return dosage;
     }
 
     public void setDoctor(Doctor doctor) {
@@ -147,11 +139,11 @@ public class Order extends WorkRequest {
         this.orderId = orderId;
     }
 
-    public Appointment getAppointment() {
-        return appointment;
+    public int getAppointmentID() {
+        return appointmentID;
     }
 
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
+    public void setAppointmentID(int appointmentID) {
+        this.appointmentID = appointmentID;
     } 
 }

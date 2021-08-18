@@ -6,7 +6,6 @@
 package Pharmacy;
 
 import DataStore.GenericDirectory;
-import Enterprise.PharmacyEnterprise;
 import Medicine.Medicine;
 import Medicine.MedicineDirectory;
 import Personnel.Address;
@@ -16,7 +15,7 @@ import Personnel.Address;
  * @author Sravya
  */
 public class PharmacyDirectory {
-    public  GenericDirectory<String, PharmacyEnterprise> pharmacyMap; //maps String Pharmacy ID to Pharmacy
+    public  GenericDirectory<String, Pharmacy> pharmacyMap; //maps String Pharmacy ID to Pharmacy
     private int id;
     
     public PharmacyDirectory(){
@@ -24,25 +23,26 @@ public class PharmacyDirectory {
         id = 0;
     }
     
-    public PharmacyEnterprise addPharmacy(
+    public Pharmacy addPharmacy(
                                 String pharmacyName,
-                                Address pharmacyAddress){
+                                Address pharmacyAddress,
+                                Pharmacist pharmacist){
         
-        PharmacyEnterprise pharmacy = new PharmacyEnterprise(pharmacyName, pharmacyAddress);
+        Pharmacy pharmacy = new Pharmacy(pharmacyName, pharmacyAddress, pharmacist);
         pharmacyMap.add(Integer.toString(id), pharmacy);
         id += 1;
         return pharmacy;
     }  
     
-    public void deletePharmacy(PharmacyEnterprise pharmacy){
+    public void deletePharmacy(Pharmacy pharmacy){
         pharmacyMap.remove(Integer.toString(id));
     }
 
-    public GenericDirectory<String, PharmacyEnterprise> getPharmacyMap() {
+    public GenericDirectory<String, Pharmacy> getPharmacyMap() {
         return pharmacyMap;
     }
 
-    public void setPharmacyMap(GenericDirectory<String, PharmacyEnterprise> pharmacyMap) {
+    public void setPharmacyMap(GenericDirectory<String, Pharmacy> pharmacyMap) {
         this.pharmacyMap = pharmacyMap;
     }
     

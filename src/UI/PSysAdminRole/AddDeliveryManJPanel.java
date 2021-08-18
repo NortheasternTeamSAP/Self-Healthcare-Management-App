@@ -353,7 +353,6 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
             gender,
             address,
             txtAddDelManPhNo.getText(),
-            null,
             new UserAccount(txtAddDelManUsername.getText(), txtAddDelManPW.getPassword().toString())
         );
         
