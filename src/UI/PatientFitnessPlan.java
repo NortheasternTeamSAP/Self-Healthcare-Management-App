@@ -526,6 +526,7 @@ public class PatientFitnessPlan extends javax.swing.JPanel {
         double weightpercent = 0;
         double crosstrainingpercent = 0;
 
+        
         cardiopercent = ((cardio * 100) / 7);
 
         weightpercent = ((weight * 100) / 7);
