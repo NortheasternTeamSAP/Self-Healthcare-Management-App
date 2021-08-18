@@ -23,12 +23,13 @@ import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
-import Pharmacy.Pharmacy;
+import Enterprise.PharmacyEnterprise;
 import Prescription.Prescription;
 import VitalSign.VitalSignNormalRange;
 import VitalSign.VitalSigns;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +56,7 @@ public class Patient implements Person {
     private ArrayList<Appointment> doctorAppointments;
     private ArrayList<Appointment> doctorAppointmentsHistory;
     private ArrayList<LaboratoryTestReport> labTestReports;
-    private Pharmacy preferredPharmacy;
+    private PharmacyEnterprise preferredPharmacy;
     private InsuranceDetails insuranceDetails;
     private ArrayList<Prescription> prescriptionsList;
     
@@ -70,7 +71,7 @@ public class Patient implements Person {
                 Icon logoImage,
                 UserAccount account,
                 int organizationId,
-                Pharmacy preferredPharmacy
+                PharmacyEnterprise preferredPharmacy
             ) {
 
         patientDetails = new PersonDetails(
@@ -282,16 +283,13 @@ public class Patient implements Person {
         return "" + patientDetails.getFullName() ;
     }
     
-    public void setPreferredPharmacy(Pharmacy preferredPharmacy) {
+    public void setPreferredPharmacy(PharmacyEnterprise preferredPharmacy) {
         this.preferredPharmacy = preferredPharmacy;
     }
 
-    public Pharmacy getPreferredPharmacy() {
+    public PharmacyEnterprise getPreferredPharmacy() {
         return preferredPharmacy;
     }
-    
-    
-    
     
     public int getOrganizationId() {
         return getPersonDetails().getOrganizationId();
@@ -301,8 +299,27 @@ public class Patient implements Person {
         return prescriptionsList;
     }
 
-    public void setPrescriptionsList(ArrayList<Prescription> prescriptionsList) {
-        this.prescriptionsList = prescriptionsList;
+    public void addPrescription(Prescription prescription) {
+        
+        boolean prescriptionFound = false;
+        for (Prescription p : this.prescriptionsList) {
+            if (p.getAppointmentId() == prescription.getAppointmentId()) {
+                // A prescription already exists for with the same appointment id. 
+                // This means the delivery man has delivered prescrption for the same appointment in split orders
+                // In this case, just merge the prescriptions
+                p.mergePrescription(prescription);
+                prescriptionFound = true;
+            }
+        }
+        
+        if (!prescriptionFound) {
+            // Add a new prescription in the list and sort the list by prescription date 
+            this.prescriptionsList.add(prescription);
+            Collections.sort(this.prescriptionsList);
+        }
     }
     
+    public Prescription getLatestMedicinePrescription() {
+        return this.prescriptionsList.isEmpty() ? null : this.prescriptionsList.get(0); // return 1st element since the prescriptionsList is sorted
+    }
 }

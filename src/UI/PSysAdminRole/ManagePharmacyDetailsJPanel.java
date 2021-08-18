@@ -7,7 +7,7 @@ package UI.PSysAdminRole;
 
 import DataStore.ItemTuple;
 import EcoSystem.EcoSystem;
-import Pharmacy.Pharmacy;
+import Enterprise.PharmacyEnterprise;
 import Pharmacy.PharmacyDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -36,9 +36,9 @@ public class ManagePharmacyDetailsJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         for(ItemTuple tup : ecoSystem.getPharmacyDirectory().pharmacyMap.getAllItems()) {
                 Object [] row = new Object[2];
-                Pharmacy pharmacy = (Pharmacy) tup.getValue();
+                PharmacyEnterprise pharmacy = (PharmacyEnterprise) tup.getValue();
                 row[0] = tup.getValue();
-                row[1] = pharmacy.getPharmacyAddress();
+                row[1] = pharmacy.getEnterpriseAddress();
                 dtm.addRow(row);
         }
     }   
@@ -166,7 +166,7 @@ public class ManagePharmacyDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Pharmacy p = (Pharmacy) tblPharmacy.getValueAt(row, 0);
+        PharmacyEnterprise p = (PharmacyEnterprise) tblPharmacy.getValueAt(row, 0);
         ecoSystem.getPharmacyDirectory().deletePharmacy(p);
     }//GEN-LAST:event_btnDeletePharmacyActionPerformed
 
@@ -185,7 +185,7 @@ public class ManagePharmacyDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Select a row from table!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Pharmacy pharmacy = (Pharmacy)tblPharmacy.getValueAt(selectedRow,0);
+        PharmacyEnterprise pharmacy = (PharmacyEnterprise)tblPharmacy.getValueAt(selectedRow,0);
         UpdatePharmacyDetailsJPanel updatePharmacyDetailsJPanel = new UpdatePharmacyDetailsJPanel(workArea, ecoSystem);
         workArea.add("UpdatePharmacyDetailsJPanel",updatePharmacyDetailsJPanel);
         CardLayout layout = (CardLayout)workArea.getLayout();

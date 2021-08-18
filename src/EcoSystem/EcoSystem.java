@@ -8,8 +8,10 @@ package EcoSystem;
 import Counselor.Counselor;
 import DataStore.CredentialsManager;
 import DataStore.EnterpriseDirectory;
+import DataStore.GenericDirectory;
 import DataStore.GlobalUserDirectory;
 import DataStore.OrganizationDirectory;
+import DeliveryMan.DeliveryMan;
 import Dietitian.Dietitian;
 import Doctor.Doctor;
 import Enterprise.Enterprise;
@@ -41,8 +43,12 @@ import Personnel.SystemAdmin;
 import Personnel.UserAccount;
 import Pharmacy.Pharmacist;
 import Pharmacy.PharmacistDirectory;
-import Pharmacy.Pharmacy;
+import Enterprise.PharmacyEnterprise;
+import Organization.DeliveryDepartmentOrganization;
+import Organization.MedicineInventoryOrganization;
 import Pharmacy.PharmacyDirectory;
+import Prescription.Prescription;
+import Prescription.PrescriptionDirectory;
 import Utils.SMSSender;
 import java.io.File;
 import java.time.LocalDate;
@@ -62,6 +68,8 @@ public class EcoSystem {
     PharmacyDirectory pharmacyDirectory;
     PharmacistDirectory pharmacistDirectory;
     public OrganizationDirectory organizationDirectory;
+    PrescriptionDirectory prescriptionDirectory;
+    
     
     SMSSender smsHelper;
 
@@ -71,6 +79,7 @@ public class EcoSystem {
     public Enterprise insuranceCompany;
     public Enterprise physicalWellness;
     public Enterprise mentalWellness;
+    public Enterprise pharmacy;
  
     public EcoSystem() {
         credentialsManager = new CredentialsManager();
@@ -80,7 +89,9 @@ public class EcoSystem {
         medicineDirectory = new MedicineDirectory();
         deliveryManDirectory = new DeliveryManDirectory();
         pharmacyDirectory = new PharmacyDirectory();
+        pharmacistDirectory = new PharmacistDirectory();
         smsHelper = new SMSSender();
+        this.prescriptionDirectory = new PrescriptionDirectory();
 
         // create new system admin user
         organizationDirectory = new OrganizationDirectory();
@@ -123,6 +134,10 @@ public class EcoSystem {
         return pharmacistDirectory;
     }
     
+    public PrescriptionDirectory getPrescriptionDirectory() {
+        return this.prescriptionDirectory;
+    }
+    
         void example() {
         // How to get a user from globalUserDirectory
         Person person = globalUserDirectory.get("sysadmin");
@@ -149,7 +164,7 @@ public class EcoSystem {
         insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
         physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
         mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
-        
+        pharmacy = new PharmacyEnterprise("Bartell Drugs", sampleAddress);
         
 
         enterpriseDirectory.addEnterprise(healthManagementApp);
@@ -190,6 +205,14 @@ public class EcoSystem {
         Organization phychiatristOrg=new PsychiatristOrganization("Counselor Department",mentalWellness);
         organizationDirectory.addOrganization(phychiatristOrg);
         mentalWellness.addOrganization(phychiatristOrg);
+        
+        Organization medicineInventoryOrg = new MedicineInventoryOrganization("Medicine Inventory Department", pharmacy);
+        organizationDirectory.addOrganization(medicineInventoryOrg);
+        pharmacy.addOrganization(medicineInventoryOrg);
+        
+        Organization deliveryDepartmentOrganization = new DeliveryDepartmentOrganization("Medicine delivery department", pharmacy);
+        organizationDirectory.addOrganization(deliveryDepartmentOrganization);
+        pharmacy.addOrganization(deliveryDepartmentOrganization);
 
         // Create roles
         // Admin
@@ -199,13 +222,8 @@ public class EcoSystem {
 
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null,
-                    new UserAccount("anurag", "anurag"), 12,
-                    new Pharmacy("Bartell Drugs", new Address("124", "L43", "Seattle", "98109", "WA", "USA"), 
-                    new Pharmacist("Sravya", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                        new Address("(06 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567123",
-                            new UserAccount("pharmacist1", "pharmacist1"))));
-
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), 
+                "2132921728", null, new UserAccount("pat1", "pat1"), patientOrg.getOrganizationId(), (PharmacyEnterprise) pharmacy);
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
@@ -221,7 +239,7 @@ public class EcoSystem {
         this.globalUserDirectory.createNewUser(labAssistant);
         laboratoryOrg.addEmployee(labAssistant);
 
-         // FitnessTrainer
+         // Dietitian
         Person dietitian = new Dietitian("Jim", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitian1"),null,0);
         this.globalUserDirectory.createNewUser(dietitian);
         gymOrg.addEmployee(dietitian);
@@ -242,5 +260,27 @@ public class EcoSystem {
         this.globalUserDirectory.createNewUser(insuranceRep);
         healthInsuranceOrg.addEmployee(insuranceRep);
         ((InsuranceProviderRepresentative) insuranceRep).setOrganization(healthInsuranceOrg);
+        
+        // Pharmacist
+        Person pharmacist = new Pharmacist("Pharmacist-1", LocalDate.now(), PersonDetails.Gender.MALE,
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("pharmacist1", "pharmacist1"), medicineInventoryOrg.getOrganizationId());
+        this.globalUserDirectory.createNewUser(pharmacist);
+        medicineInventoryOrg.addEmployee(pharmacist);
+        pharmacistDirectory.addPharmacist((Pharmacist)pharmacist);
+        
+        // Delivery man
+        Person deliveryMan = new DeliveryMan("Delivery-Man-1", LocalDate.now(), PersonDetails.Gender.MALE,
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("dman1", "dman1"));
+        this.globalUserDirectory.createNewUser(deliveryMan);
+        deliveryDepartmentOrganization.addEmployee(deliveryMan);
+        
+        createSampleMedicines();
+    }
+    
+    void createSampleMedicines() {
+        medicineDirectory.addMedicine("Med-1", 10, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
+        medicineDirectory.addMedicine("Med-2", 20, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
+        medicineDirectory.addMedicine("Med-3", 30, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
+        medicineDirectory.addMedicine("Med-4", 40, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
     }
 }

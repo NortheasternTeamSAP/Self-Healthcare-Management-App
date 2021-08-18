@@ -87,4 +87,8 @@ public class GenericDirectory<Key, Value> {
         }
         return a;
     }
+    
+    public Map<Key, Value> getIntermalMap() {
+        return directory;
+    }
 }

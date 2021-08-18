@@ -46,7 +46,7 @@ public class MedicineDirectory{
         id += 1;
         return medicine;
     }
-    
+
     /**
      * Method to delete medicine from medicineCatalogMap.
      * @param medicine 

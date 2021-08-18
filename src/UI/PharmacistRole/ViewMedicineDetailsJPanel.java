@@ -7,7 +7,7 @@ package UI.PharmacistRole;
 
 import EcoSystem.EcoSystem;
 import Medicine.Medicine;
-import Pharmacy.Pharmacy;
+import Enterprise.PharmacyEnterprise;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -19,7 +19,7 @@ public class ViewMedicineDetailsJPanel extends javax.swing.JPanel {
     private JPanel workArea;
     private EcoSystem ecoSystem;
     private Medicine medicine;
-    private Pharmacy pharmacy;
+    private PharmacyEnterprise pharmacy;
     
     public ViewMedicineDetailsJPanel(JPanel workArea, EcoSystem ecoSystem, Medicine medicine) {
         initComponents();
