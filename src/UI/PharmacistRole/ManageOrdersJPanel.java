@@ -251,37 +251,27 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
                 
         Medicine med = ecoSystem.getMedicineDirectory().getMedicineCatalogMap().get(tblOrder.getValueAt(selectedRow, 4).toString());
         
-        int availableQuantity = pharmacy.getMedicineStockMap().get(med);
-        int quantityRequested = Integer.parseInt(tblOrder.getValueAt(selectedRow, 6).toString());
+        Integer availableQuantity = pharmacy.getMedicineStockMap().get(med);
+        if (availableQuantity == null) {
+             JOptionPane.showMessageDialog(null,"Medicine is unavailable", "Info", JOptionPane.INFORMATION_MESSAGE);
+             return;
+        }
         
-        if (availableQuantity >= quantityRequested){
+        int quantityRequested = Integer.parseInt(tblOrder.getValueAt(selectedRow, 6).toString());
+        if (availableQuantity.intValue() >= quantityRequested){
             JOptionPane.showMessageDialog(null,"Requested quantity of the medicine is available.", "Info", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null,"Requested quantity of the medicine is unavailable. You don't have enough quantity of this medicine", "Info", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Requested quantity of the medicine is less than the available stock", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnCheckMedAvailabilityActionPerformed
 
     private void btnShipOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShipOrderActionPerformed
         // TODO add your handling code here:
         DeliveryMan delMan = (DeliveryMan) cmbDeliveryMan.getSelectedItem();
-        PrescriptionDirectory prescriptionDirectory = ecoSystem.getPrescriptionDirectory();
         for(Order order: ecoSystem.getOrderDirectory().getOrdersByPharmacy(pharmacy)){
             if (order.getOrderStatus().equals(OrderStatus.ACCEPTED)){
                 order.setDeliveryMan(delMan);
                 order.setOrderStatus(OrderStatus.DELIVERY_REQUESTED);
-                
-                // After the order is delivered, we need to update patient's prescription
-                // It is possible that delivery man delivers partial order first (few meds), then log out, come back again and then deliver the remaining meds.
-                // This is the case where both order deliveries should fall under same prescription since they are associated with a single appointment. 
-                // For such case, we need a global map of appointment-id to Prescription object.
-                Prescription prescription = prescriptionDirectory.getPrescription(order.getAppointment().getId());
-                if (prescription == null) {
-                    prescription = new Prescription(order.getAppointment().getId());
-                    prescription.setPrescriptionDate(order.getAppointment().getDate());
-                }
-                prescription.addMedicine(order.getMedicine(), null);
-                prescriptionDirectory.addPrescription(order.getAppointment().getId(), prescription);
-                order.getPatient().addPrescription(prescription);
             }
         }
         

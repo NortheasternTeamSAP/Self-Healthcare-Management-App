@@ -12,6 +12,9 @@ import EcoSystem.EcoSystem;
 import Order.Order;
 import Order.Order.OrderStatus;
 import Order.OrderDirectory;
+import Patient.Patient;
+import Prescription.Prescription;
+import Prescription.PrescriptionDirectory;
 import SysAdminUI.Login;
 import Utils.NextScreen;
 import javax.swing.JOptionPane;
@@ -220,6 +223,20 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         JOptionPane.showMessageDialog(null, "Delivered");
         
         populateTblDelManAssigned();
+        
+        PrescriptionDirectory prescriptionDirectory = ecoSystem.getPrescriptionDirectory();
+        // After the order is delivered, we need to update patient's prescription
+        // It is possible that delivery man delivers partial order first (few meds), then log out, come back again and then deliver the remaining meds.
+        // This is the case where both order deliveries should fall under same prescription since they are associated with a single appointment. 
+        // For such case, we need a global map of appointment-id to Prescription object.
+        Prescription prescription = prescriptionDirectory.getPrescription(order.getAppointment().getId());
+        if (prescription == null) {
+            prescription = new Prescription(order.getAppointment());
+            prescription.setPrescriptionDate(order.getAppointment().getDate());
+        }
+        prescription.addMedicine(order.getMedicine(), order.getDosage());
+        prescriptionDirectory.addPrescription(order.getAppointment().getId(), prescription);
+        order.getPatient().addPrescription(prescription);
     }//GEN-LAST:event_btnProcessOrderActionPerformed
 
     private void btnRefreshOrdersTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshOrdersTableActionPerformed

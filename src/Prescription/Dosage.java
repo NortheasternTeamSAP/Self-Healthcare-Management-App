@@ -76,4 +76,19 @@ public class Dosage {
     public boolean isPostDinnerDosage() {
         return postDinnerDosage;
     }
+    
+    public String getDosageTimingDetails() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(isPrelunchDosage() ? "PreLunch," : "");
+        sb.append(isPostlunchDosage() ? "PostLunch," : "");
+        sb.append(isPreDinnerDosage() ? "PreDinner," : "");
+        sb.append(isPostDinnerDosage() ? "PostDinner," : "");
+        
+        if (!sb.isEmpty()) {
+            // delete last ','
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        
+        return sb.toString();
+    }
 }

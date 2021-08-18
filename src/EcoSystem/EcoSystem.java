@@ -6,6 +6,7 @@
 package EcoSystem;
 
 import Counselor.Counselor;
+import DataStore.Appointment;
 import DataStore.CredentialsManager;
 import DataStore.EnterpriseDirectory;
 import DataStore.GenericDirectory;
@@ -44,9 +45,11 @@ import Personnel.UserAccount;
 import Pharmacy.Pharmacist;
 import Pharmacy.PharmacistDirectory;
 import Enterprise.PharmacyEnterprise;
+import Medicine.Medicine;
 import Organization.DeliveryDepartmentOrganization;
 import Organization.MedicineInventoryOrganization;
 import Pharmacy.PharmacyDirectory;
+import Prescription.Dosage;
 import Prescription.Prescription;
 import Prescription.PrescriptionDirectory;
 import Utils.SMSSender;
@@ -275,6 +278,7 @@ public class EcoSystem {
         deliveryDepartmentOrganization.addEmployee(deliveryMan);
         
         createSampleMedicines();
+        addDummyPrescriptions((Patient)patient, (Doctor)doctor);
     }
     
     void createSampleMedicines() {
@@ -282,5 +286,18 @@ public class EcoSystem {
         medicineDirectory.addMedicine("Med-2", 20, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
         medicineDirectory.addMedicine("Med-3", 30, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
         medicineDirectory.addMedicine("Med-4", 40, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
+    }
+    
+    void addDummyPrescriptions(Patient patient, Doctor doctor) {
+        for (int i = 1; i <= 5; i++) {
+            Appointment appointment = new Appointment(patient, "", doctor, LocalDate.now().minusDays(i), 9);
+            Prescription prescription = new Prescription(appointment);
+            prescription.addMedicine(new Medicine("FirstDummyMed" + i, i, LocalDate.now(), LocalDate.now().plusDays(i)), new Dosage(1, -1, "--", true, true, false, false));
+            prescription.addMedicine(new Medicine("SecondDummyMed" + i, i, LocalDate.now(), LocalDate.now().plusDays(i)), new Dosage(1, -1, "--", true, false, true, false));
+            prescription.addMedicine(new Medicine("ThirdDummyMed" + i, i, LocalDate.now(), LocalDate.now().plusDays(i)), new Dosage(2, -1, "--", false, false, true, true));
+            patient.addPrescription(prescription);
+            prescriptionDirectory.addPrescription(appointment.getId(), prescription);
+        }
+        
     }
 }

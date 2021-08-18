@@ -303,7 +303,7 @@ public class Patient implements Person {
         
         boolean prescriptionFound = false;
         for (Prescription p : this.prescriptionsList) {
-            if (p.getAppointmentId() == prescription.getAppointmentId()) {
+            if (p.getAppointment().getId()== prescription.getAppointment().getId()) {
                 // A prescription already exists for with the same appointment id. 
                 // This means the delivery man has delivered prescrption for the same appointment in split orders
                 // In this case, just merge the prescriptions
