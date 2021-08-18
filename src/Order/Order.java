@@ -40,13 +40,15 @@ public class Order extends WorkRequest {
     private String result;
     private boolean assign;
     private String orderId;
+    private int appointmentID;
 
     public Order(
             Pharmacy pharmacy, 
             Doctor doctor, 
             Patient patient,
             int quantity, 
-            Medicine medicine) {
+            Medicine medicine,
+            int appointmentID) {
         
         this.orderStatus = OrderStatus.INPROCESS;
         this.pharmacy = pharmacy;
@@ -54,6 +56,7 @@ public class Order extends WorkRequest {
         this.patient = patient;
         this.quantity = quantity;
         this.medicine = medicine;
+        this.appointmentID = appointmentID;
     }
 
     public OrderStatus getOrderStatus() {
@@ -135,5 +138,12 @@ public class Order extends WorkRequest {
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
-    
+
+    public int getAppointmentID() {
+        return appointmentID;
+    }
+
+    public void setAppointmentID(int appointmentID) {
+        this.appointmentID = appointmentID;
+    } 
 }

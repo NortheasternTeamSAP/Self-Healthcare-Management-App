@@ -104,9 +104,9 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jSeparator5" min="-2" pref="510" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton3" min="-2" pref="178" max="-2" attributes="0"/>
+                                          <Component id="btnPatientDirectory" min="-2" pref="178" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButton10" min="-2" pref="178" max="-2" attributes="0"/>
+                                          <Component id="btnDoctorDirectory" min="-2" pref="178" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -119,7 +119,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jButton9" min="-2" pref="202" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton11" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Component id="btnLaboratoryAssistantDirectory" min="-2" pref="178" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jSeparator4" min="-2" pref="510" max="-2" attributes="0"/>
                           </Group>
@@ -159,15 +159,15 @@
                   <Component id="jSeparator5" min="-2" pref="13" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton3" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="jButton10" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="btnPatientDirectory" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="btnDoctorDirectory" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jSeparator4" min="-2" pref="13" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton9" alignment="3" min="-2" pref="68" max="-2" attributes="0"/>
-                      <Component id="jButton11" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="btnLaboratoryAssistantDirectory" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="61" max="32767" attributes="0"/>
               </Group>
@@ -260,17 +260,21 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnPatientDirectory">
           <Properties>
             <Property name="text" type="java.lang.String" value="Paitent Directory"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton10">
+        <Component class="javax.swing.JButton" name="btnDoctorDirectory">
           <Properties>
             <Property name="text" type="java.lang.String" value="Doctor Directory"/>
           </Properties>
           <Events>
+<<<<<<< HEAD
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+=======
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoctorDirectoryActionPerformed"/>
+>>>>>>> d7a2deb (Add logic for uploading/downloading files from s3 and integrate it with patient appointment booking)
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton9">
@@ -281,7 +285,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton11">
+        <Component class="javax.swing.JButton" name="btnLaboratoryAssistantDirectory">
           <Properties>
             <Property name="text" type="java.lang.String" value="Lab Assistant Directory "/>
           </Properties>

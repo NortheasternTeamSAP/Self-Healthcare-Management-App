@@ -16,8 +16,10 @@ import Organization.Organization;
 import Organization.OrganizationType;
 import Patient.Patient;
 import Personnel.Person;
+import UI.PDoctorRole.PrescribeMedicinesJPanel;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
+import Utils.AwsS3Helper;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -40,9 +42,10 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
     Patient patient;
     Appointment appointment;
     Enterprise hospital;
-    DoctorHomePagePanel backpage;
+    DoctorWorkAreaPanel backpage;
     
     ConsoleLogger log = ConsoleLogger.getLogger();
+    AwsS3Helper s3helper;
     /**
      * Creates new form PatientAppointmentDetailsPanel
      */
@@ -54,7 +57,8 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         this.doctor = (Doctor) appointment.getDoctor();
         this.patient = (Patient) appointment.getPatient();
         this.hospital = hospital;
-        this.backpage = (DoctorHomePagePanel) backpage;
+        this.backpage = (DoctorWorkAreaPanel) backpage;
+        this.s3helper = new AwsS3Helper();
         
         populatePatientDetails();
         populateLabAssistantCombo();
@@ -221,6 +225,11 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         lblName3.setText("Perform new Lab Test");
 
         btnPrescribeNewMedicines.setText("Prescribe new medicines");
+        btnPrescribeNewMedicines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrescribeNewMedicinesActionPerformed(evt);
+            }
+        });
 
         lblWeight2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight2.setText("Appointment Date:");
@@ -458,12 +467,31 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            // TODO add your handling code here:
 
-            Desktop.getDesktop().open(new File("/Users/mrs.katey/Documents/testfile.xlsx"));
+
+        JOptionPane.showMessageDialog(null, "This will download file from Amazon S3 bucket");
+        
+        String vitalsHistoryImagePath = appointment.getPatientVitalSignsHistoryS3ObjectPath();
+        if (vitalsHistoryImagePath == null) {
+            JOptionPane.showMessageDialog(null, "No vitals history provided by the patient");
+            return;
+        }
+        
+        String patientUsername = appointment.getPatient().getUserAccount().getUsername();
+        String vitalsHistoryImageName = "vitals-image-" + patientUsername + "-" + appointment.getId() + "-" + appointment.getDate();
+        String localVitalsHistoryImagePath = "/tmp/doctor/" + vitalsHistoryImageName;
+        boolean success = s3helper.getObject(vitalsHistoryImagePath, localVitalsHistoryImagePath);
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "Some unexpected error downloading file from S3");
+            return;
+        }
+        
+        log.debug("Successfully downloaded patient's vital sign report from S3");
+
+        try {
+            Desktop.getDesktop().open(new File(localVitalsHistoryImagePath));
         } catch (IOException ex) {
-            Logger.getLogger(PatientAppointmentDetailsPanel.class.getName()).log(Level.SEVERE, null, ex);
+            log.debug("Error in opening patient's vital sign report file. Exception: " + ex.getMessage());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -542,6 +570,11 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         nextScreen(workAreaPanel, new GeneratePatientBillJPanel(workAreaPanel, ecosystem, appointment, this), TOOL_TIP_TEXT_KEY);
         
     }//GEN-LAST:event_btnGeneratePatientBillActionPerformed
+
+    private void btnPrescribeNewMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescribeNewMedicinesActionPerformed
+        // TODO add your handling code here:
+        nextScreen(workAreaPanel, new PrescribeMedicinesJPanel(workAreaPanel, ecosystem, appointment, this), TOOL_TIP_TEXT_KEY);
+    }//GEN-LAST:event_btnPrescribeNewMedicinesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

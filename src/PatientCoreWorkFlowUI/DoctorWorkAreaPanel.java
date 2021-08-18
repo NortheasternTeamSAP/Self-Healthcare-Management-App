@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mrs.katey
+ * @author Ankur Bywar
  */
 public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScreen{
     JPanel WorkAreaPanel;
@@ -427,7 +427,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         if (selectedAppointment == null) {
             log.error("No patient appointment found for id " + appointmentId);
             return;
-        }
+        } 
 
         nextScreen(WorkAreaPanel, new PatientAppointmentDetailsPanel(WorkAreaPanel, ecoSystem, hospital, selectedAppointment, this), "PatientAppointmentDetailsPanel");
     }//GEN-LAST:event_btnOldAppointmentDetailsActionPerformed
@@ -527,7 +527,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         PersonDetails pd = doctor.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
         //lblAgePlaceHolder.setText(pd.getAge() + " years");  
-        lblAgePlaceHolder.setText(pd.getDob().toString());
+        //lblAgePlaceHolder.setText(pd.getDob().toString());
         lblEmailId.setText("Not Available");   
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());

@@ -25,10 +25,10 @@ import Laboratory.LaboratoryAssistant;
 import Organization.Organization;
 import Organization.OrganizationType;
 import Patient.Patient;
-import PatientCoreWorkFlowUI.DoctorHomePagePanel;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
+import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
 import Pharmacy.Pharmacist;
@@ -46,6 +46,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -144,6 +145,8 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
         jRadioButtonDietitian = new javax.swing.JRadioButton();
         jRadioButtonCounseller = new javax.swing.JRadioButton();
         jRadioButtonLabAssistant = new javax.swing.JRadioButton();
+        jComboBoxGender = new javax.swing.JComboBox<>();
+        lblAddrState1 = new javax.swing.JLabel();
 
         jSelectRoleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jSelectRoleLabel.setText("Profile Picture");
@@ -273,6 +276,15 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
 
         jRadioButtonLabAssistant.setText("Medical tests laboratory assistant");
 
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MALE", "FEMALE", "OTHER" }));
+        jComboBoxGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxGenderActionPerformed(evt);
+            }
+        });
+
+        lblAddrState1.setText("Gender");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -321,7 +333,11 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                                         .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(lblAddrState1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -422,8 +438,11 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddrState1))))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddress)
                     .addComponent(lblAddrStreet)
@@ -593,7 +612,16 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
         if (addrState.equals("Select")) {
                 JOptionPane.showMessageDialog(jPanel1, "Select a valid state.");
                  return;
-            }
+         }
+        
+        String selectedGender = String.valueOf(jComboBoxGender.getSelectedItem());
+        if (selectedGender.equals("Select")) {
+                JOptionPane.showMessageDialog(jPanel1, "Select a valid gender.");
+                return;
+         }
+        
+        Gender gender = Gender.valueOf(selectedGender);
+        
         String addrCountry = txtAddressCountry.getText();
         // String street, String apartment, String city, String zipcode, String state, String country
         Address address = new Address(null, null, addrCity, addrZip, addrState, addrCountry);
@@ -623,35 +651,35 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
             return;
         }
         
-        
+        LocalDate dateOfBirth = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         
         switch (role) {
             case DOCTOR:
-                Person doctor = new Doctor(name, null, null, address, phoneNumber, logo, userAccount, organizationId);
+                Person doctor = new Doctor(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId);
                 system.globalUserDirectory.createNewUser(doctor);
                 break;
                 
             case LABASSISTANT:
-                Person labAssistant = new LaboratoryAssistant(name, null, null, address, phoneNumber, logo, userAccount, organizationId);
+                Person labAssistant = new LaboratoryAssistant(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId);
                 system.globalUserDirectory.createNewUser(labAssistant);
                  break;
              case INSURANCE_PROVIDER_REP:
-                Person insuranceProvider = new InsuranceProviderRepresentative(name, null, null, address, phoneNumber, logo, userAccount, organizationId);
+                Person insuranceProvider = new InsuranceProviderRepresentative(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId);
                 system.globalUserDirectory.createNewUser(insuranceProvider);
                  break;
                  
                  case DIETITIAN:
-                 Person dietitian = new Dietitian(name, null, null, address, phoneNumber,userAccount,logo, organizationId);
+                 Person dietitian = new Dietitian(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId);
                 system.globalUserDirectory.createNewUser(dietitian);
                 break;
                 
                   case TRAINER:
-                 Person trainer = new FitnessTrainer(name, null, null, address, phoneNumber,userAccount,logo, organizationId);
+                 Person trainer = new FitnessTrainer(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId);
                 system.globalUserDirectory.createNewUser(trainer);
                 break;
                 
                   case COUNSELOR:
-                 Person counselor = new Counselor(name, null, null, address, phoneNumber,userAccount,logo, organizationId);
+                 Person counselor = new Counselor(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId);
                 system.globalUserDirectory.createNewUser(counselor);
                 break;
                 
@@ -704,6 +732,10 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jComboBoxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxGenderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAttach;
@@ -714,6 +746,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
     private javax.swing.JLabel imgLogo;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBoxAddrState;
+    private javax.swing.JComboBox<String> jComboBoxGender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -733,6 +766,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
     private javax.swing.JLabel lblAddrCity;
     private javax.swing.JLabel lblAddrCountry;
     private javax.swing.JLabel lblAddrState;
+    private javax.swing.JLabel lblAddrState1;
     private javax.swing.JLabel lblAddrStreet;
     private javax.swing.JLabel lblAddrZip;
     private javax.swing.JLabel lblAddress;

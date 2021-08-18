@@ -75,7 +75,7 @@ public class PDoctorDashBoardJPanel extends javax.swing.JPanel {
 
     private void btnPrescribeMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescribeMedicinesActionPerformed
         // TODO add your handling code here:
-        PrescribeMedicinesJPanel prescribeMedicinesJPanel = new PrescribeMedicinesJPanel(workArea, ecoSystem, doctor);
+        PrescribeMedicinesJPanel prescribeMedicinesJPanel = new PrescribeMedicinesJPanel(workArea, ecoSystem, null, null);
         workArea.add("PrescribeMedicinesJPanel", prescribeMedicinesJPanel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);

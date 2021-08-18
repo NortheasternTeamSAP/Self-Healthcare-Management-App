@@ -18,9 +18,20 @@ import javax.swing.Icon;
 public class PersonDetails {
     
     public enum Gender {
-        MALE,
-        FEMALE,
-        OTHER
+        MALE("Male"),
+        FEMALE("Female"),
+        OTHER("Other")
+        ;
+        
+        private String value;
+
+        private Gender(String value) {
+            this.value = value;
+        }
+
+        public String toString() {
+            return value;
+        }
     }
     
     protected String fullName;
