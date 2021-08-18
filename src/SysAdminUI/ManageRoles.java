@@ -688,10 +688,12 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                     Person pharmacist = new Pharmacist(
                                                 name, 
                                                 LocalDate.now(), 
-                                                null, 
+                                                gender, 
                                                 address, 
-                                                phoneNumber, 
-                                                userAccount
+                                                phoneNumber,
+                                                logo,
+                                                userAccount,
+                                                organizationId
                                             );
                     system.globalUserDirectory.createNewUser(pharmacist);
                     break;
@@ -701,9 +703,10 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                     Person deliveryMan = new DeliveryMan(
                                                 name,
                                                 LocalDate.now(),
-                                                null,
+                                                gender,
                                                 address,
                                                 phoneNumber,
+                                                logo,
                                                 userAccount
                                             );
                     system.globalUserDirectory.createNewUser(deliveryMan);

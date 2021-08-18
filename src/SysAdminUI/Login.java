@@ -6,6 +6,7 @@
 package SysAdminUI;
 
 import Counselor.Counselor;
+import DeliveryMan.DeliveryMan;
 import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
@@ -16,6 +17,7 @@ import UI.FitnessTrainerDashBoard;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
+import Enterprise.PharmacyEnterprise;
 import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
 import Organization.Organization;
@@ -26,6 +28,9 @@ import PatientCoreWorkFlowUI.LaboratoryAssistantHomePagePanel;
 import PatientCoreWorkFlowUI.PatientHomePagePanel;
 import Personnel.Person;
 import Personnel.Role;
+import Pharmacy.Pharmacist;
+import UI.DeliveryManRole.DeliveryManWorkAreaJPanel;
+import UI.PharmacistRole.PharmacistDashBoardJPanel;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
 import java.awt.CardLayout;
@@ -204,9 +209,12 @@ public class Login extends javax.swing.JPanel implements NextScreen {
                 break;
             case DELIVERY_MAN:
                 // redirect to delivery man dashboard
+                 nextScreen(WorkArea, new DeliveryManWorkAreaJPanel(WorkArea, system, (DeliveryMan)p), "DeliveryManWorkAreaJPanel");
                 break;
             case PHARMACIST:
-                // redirect to pharmacist dashboard
+                organizationId = p.getOrganizationId();
+                organization = system.organizationDirectory.getOrganization(organizationId);
+                nextScreen(WorkArea, new PharmacistDashBoardJPanel(WorkArea, system,(PharmacyEnterprise)organization.getEnterprise()), "PharmacistDashBoardJPanel");
                 break;
             case DIETITIAN:
                 DietitianDashboard dd= new DietitianDashboard(WorkArea,system,(Dietitian)p);

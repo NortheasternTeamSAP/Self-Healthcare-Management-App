@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.PharmacistRole;
+package UI.PharmacistRole;
 
 
 import DeliveryMan.DeliveryMan;
@@ -14,7 +14,9 @@ import Order.Order;
 import Order.Order.OrderStatus;
 import Personnel.Person;
 import Personnel.Role;
-import Pharmacy.Pharmacy;
+import Enterprise.PharmacyEnterprise;
+import Prescription.Prescription;
+import Prescription.PrescriptionDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,12 +28,12 @@ import javax.swing.table.DefaultTableModel;
 public class ManageOrdersJPanel extends javax.swing.JPanel {
     private JPanel workArea;
     private EcoSystem ecoSystem;
-    private Pharmacy pharmacy;
+    private PharmacyEnterprise pharmacy;
     
     public ManageOrdersJPanel(
             JPanel workArea,
             EcoSystem ecoSystem,
-            Pharmacy pharmacy) {
+            PharmacyEnterprise pharmacy) {
         
         initComponents();
         this.workArea = workArea;
@@ -108,7 +110,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 186, -1));
 
         btnAcceptOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnAcceptOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\accept.png")); // NOI18N
         btnAcceptOrder.setText("Accept");
         btnAcceptOrder.setToolTipText("Accept Order");
         btnAcceptOrder.setContentAreaFilled(false);
@@ -143,7 +144,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 970, 220));
 
-        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-back-30.png")); // NOI18N
         btnBack.setToolTipText("Back");
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +158,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 20));
 
         btnCheckMedAvailability.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnCheckMedAvailability.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\check_avail.png")); // NOI18N
         btnCheckMedAvailability.setText("Check Availability");
         btnCheckMedAvailability.setContentAreaFilled(false);
         btnCheckMedAvailability.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +193,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         add(lblCurrentAcceptedOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
         btnShipOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnShipOrder.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\icons8-shipped-30.png")); // NOI18N
         btnShipOrder.setText("Ship Order");
         btnShipOrder.setContentAreaFilled(false);
         btnShipOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -216,8 +214,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             }
         });
         add(cmbDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 730, 150, 20));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\polygonal-bg1100X850.jpg")); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 860));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -268,10 +264,24 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
     private void btnShipOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShipOrderActionPerformed
         // TODO add your handling code here:
         DeliveryMan delMan = (DeliveryMan) cmbDeliveryMan.getSelectedItem();
+        PrescriptionDirectory prescriptionDirectory = ecoSystem.getPrescriptionDirectory();
         for(Order order: ecoSystem.getOrderDirectory().getOrdersByPharmacy(pharmacy)){
             if (order.getOrderStatus().equals(OrderStatus.ACCEPTED)){
                 order.setDeliveryMan(delMan);
                 order.setOrderStatus(OrderStatus.DELIVERY_REQUESTED);
+                
+                // After the order is delivered, we need to update patient's prescription
+                // It is possible that delivery man delivers partial order first (few meds), then log out, come back again and then deliver the remaining meds.
+                // This is the case where both order deliveries should fall under same prescription since they are associated with a single appointment. 
+                // For such case, we need a global map of appointment-id to Prescription object.
+                Prescription prescription = prescriptionDirectory.getPrescription(order.getAppointment().getId());
+                if (prescription == null) {
+                    prescription = new Prescription(order.getAppointment().getId());
+                    prescription.setPrescriptionDate(order.getAppointment().getDate());
+                }
+                prescription.addMedicine(order.getMedicine(), null);
+                prescriptionDirectory.addPrescription(order.getAppointment().getId(), prescription);
+                order.getPatient().addPrescription(prescription);
             }
         }
         

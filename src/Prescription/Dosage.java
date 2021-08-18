@@ -13,15 +13,28 @@ public class Dosage {
     int medicineDosage;
     int intervalInHours;
     String prescriptionNotes;
+    
+    boolean preLunchDosage;
+    boolean postLunchDosage;
+    boolean preDinnerDosage;
+    boolean postDinnerDosage;
 
     public Dosage(
                 int medicineDosage, 
                 int intervalInHours, 
-                String prescriptionNotes
+                String prescriptionNotes,
+                boolean preLunchDosage,
+                boolean postLunchDosage,
+                boolean preDinnerDosage,
+                boolean postDinnerDosage
             ){
         this.medicineDosage = medicineDosage;
         this.intervalInHours = intervalInHours;
         this.prescriptionNotes = prescriptionNotes;
+        this.preLunchDosage = preLunchDosage;
+        this.postLunchDosage = postLunchDosage;
+        this.preDinnerDosage = preDinnerDosage;
+        this.postDinnerDosage = postDinnerDosage;
     }
 
     public int getMedicineDosage() {
@@ -46,5 +59,21 @@ public class Dosage {
 
     public void setPrescriptionNotes(String prescriptionNotes) {
         this.prescriptionNotes = prescriptionNotes;
+    }
+    
+    public boolean isPrelunchDosage() {
+        return preLunchDosage;
+    }
+    
+    public boolean isPostlunchDosage() {
+        return postLunchDosage;
+    }
+    
+    public boolean isPreDinnerDosage() {
+        return preDinnerDosage;
+    }
+    
+    public boolean isPostDinnerDosage() {
+        return postDinnerDosage;
     }
 }
