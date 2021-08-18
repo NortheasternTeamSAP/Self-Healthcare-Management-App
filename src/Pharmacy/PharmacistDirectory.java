@@ -24,6 +24,10 @@ public class PharmacistDirectory {
         id = 0;
     }
     
+    public void addPharmacist(Pharmacist pharmacist) {
+        pharmacistMap.add(pharmacist.getUserAccount().getUsername(), pharmacist);
+    }
+    
     public Pharmacist addPharmacist(String fullName,
                                 LocalDate dob,
                                 PersonDetails.Gender gender,
@@ -37,7 +41,9 @@ public class PharmacistDirectory {
                                         gender, 
                                         address, 
                                         phoneNumber, 
-                                        account);
+                                        null,
+                                        account,
+                                        -1);
         pharmacistMap.add(Integer.toString(id), pharmacist);
         id += 1;
         return pharmacist;

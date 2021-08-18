@@ -12,6 +12,7 @@ import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
 import java.time.LocalDate;
+import javax.swing.Icon;
 
 /**
  *
@@ -26,9 +27,10 @@ public class DeliveryMan implements Person {
             Gender gender,
             Address address,
             String phoneNumber,
+            Icon logoImage,
             UserAccount account){
         
-        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN); 
+        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage); 
     }
     
     @Override
