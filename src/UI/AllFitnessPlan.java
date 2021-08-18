@@ -185,21 +185,59 @@ Patient p;
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         report3.setVisible(true);
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-         int cardio=0;
-         int weight=0;
-         int crosstraining=0;
-         for(FitnessPlan fp: p.getFitnessPlans())
-         {
-         cardio=cardio+fp.getCardiotaken();
-         weight=weight+fp.getWeightstaken();
-         crosstraining=crosstraining+fp.getCrosstrainingtaken();       
+
+        int cardiogiven = 0;
+        int weigtgiven = 0;
+        int ctgiven = 0;
+
+        for (FitnessPlan fp : p.getFitnessPlans()) {
+            for (FitnessPlan.Excercise e : fp.getExcercises()) {
+                if (e.getValue().contentEquals("Cardio")) {
+                    cardiogiven = cardiogiven + 1;
+                } else if (e.getValue().contentEquals("CrossTraining")) {
+                    ctgiven = ctgiven + 1;
+                } else {
+                    weigtgiven = weigtgiven + 1;
+                }
+            }
+        }
+
+        int cardio = 0;
+        int weight = 0;
+        int crosstraining = 0;
+        for (FitnessPlan fp : p.getFitnessPlans()) {
+            cardio = cardio + fp.getCardiotaken();
+            weight = weight + fp.getWeightstaken();
+            crosstraining = crosstraining + fp.getCrosstrainingtaken();
+
+        }
+        double cardiopercent = 0;
+        double weightpercent = 0;
+        double crosstrainingpercent = 0;
+        
+        
+        System.out.println("cardiogive "+cardiogiven+"wg"+weigtgiven+"ctg"+ctgiven);
+          System.out.println("cardio "+cardio+"w "+weight+"ctg "+crosstraining);
+        try {
+            cardiopercent = ((cardio * 100) / cardiogiven);
+        } catch (Exception e) {
          
-         }
-         
-         
-        dcd.setValue(cardio, "Excercise done", "Overall Cardio Done");
-        dcd.setValue(weight, "Excercise done", "Overall Weight Done");
-        dcd.setValue(crosstraining, "Excercise done", "Overall CrossTraining Done");
+        }
+        try {
+            weightpercent = ((weight * 100) / weigtgiven);
+
+        } catch (Exception e) {
+        
+        }
+        try {
+            crosstrainingpercent = ((crosstraining * 100) / ctgiven);
+        } catch (Exception e) {
+       
+        }
+
+        dcd.setValue(cardiopercent, "Excercise done", "Overall Cardio Done");
+        dcd.setValue(weightpercent, "Excercise done", "Overall Weight Done");
+        dcd.setValue(crosstrainingpercent, "Excercise done", "Overall CrossTraining Done");
         JFreeChart jchart = ChartFactory.createBarChart3D("Excercise Completed", "Excercise Type", "Achieved", dcd, PlotOrientation.VERTICAL, true, true, false);
         CategoryPlot plot = jchart.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.black);
@@ -210,9 +248,7 @@ Patient p;
         report3.removeAll();
         report3.add(cp);
         report3.updateUI();
-        cf.dispose();    
-        
-        
+        cf.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
