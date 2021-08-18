@@ -49,9 +49,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\sravy\OneDrive\Pictures\FinalProject-Icons\accept.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Accept"/>
         <Property name="toolTipText" type="java.lang.String" value="Accept Order"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -154,9 +151,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\sravy\OneDrive\Pictures\FinalProject-Icons\icons8-back-30.png"/>
-        </Property>
         <Property name="toolTipText" type="java.lang.String" value="Back"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -186,9 +180,6 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\sravy\OneDrive\Pictures\FinalProject-Icons\check_avail.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Check Availability"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -300,9 +291,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\sravy\OneDrive\Pictures\FinalProject-Icons\icons8-shipped-30.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Ship Order"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalAlignment" type="int" value="2"/>
@@ -349,11 +337,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\sravy\OneDrive\Pictures\FinalProject-Icons\polygonal-bg1100X850.jpg"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="1" y="-4" width="1100" height="860"/>

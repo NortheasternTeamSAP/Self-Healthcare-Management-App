@@ -345,8 +345,9 @@ public class AddPharmacistJPanel extends javax.swing.JPanel {
             gender,
             address,
             txtAddPPhNo.getText(),
-            new UserAccount(txtPUsername.getText(), txtPPassword.getPassword().toString())
-        );
+            null,
+            new UserAccount(txtPUsername.getText(), txtPPassword.getPassword().toString()),
+            -1);
         ecoSys.globalUserDirectory.createNewUser(pharmacist);
         
     }//GEN-LAST:event_btnSaveActionPerformed

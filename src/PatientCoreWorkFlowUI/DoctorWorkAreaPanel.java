@@ -10,6 +10,7 @@ import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
 import Personnel.PersonDetails;
+import SysAdminUI.Login;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.util.Collections;
@@ -433,7 +434,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
     }//GEN-LAST:event_btnOldAppointmentDetailsActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        //nextScreen(WorkAreaPanel, temporaryBack, "Patient Home Page");
+        nextScreen(WorkAreaPanel, new Login(WorkAreaPanel, ecoSystem), "Login Page");
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNewAppointmentDetails2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewAppointmentDetails2ActionPerformed
