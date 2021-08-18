@@ -29,6 +29,7 @@ public class CounselorDirectory extends javax.swing.JPanel {
      */
     public CounselorDirectory(JPanel WorkArea,EcoSystem system) {
         initComponents();
+        this.setSize(1100, 850);
         this.WorkArea=WorkArea;
         this.system=system;
         ShowCounselors();
