@@ -6,9 +6,11 @@
 package PatientCoreWorkFlowUI;
 
 import DataStore.Appointment;
+import Dietitian.DietitianAppointment;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
+import FitnessTrainer.FitnessTrainerAppointment;
 import Laboratory.LaboratoryAssistant;
 import Patient.Patient;
 import Personnel.PersonDetails;
@@ -18,6 +20,8 @@ import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import static java.time.Clock.system;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JFrame;
@@ -44,6 +48,8 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         this.ecoSystem = ecoSystem;
         populatePatientInfoPlaceholders();
         populateUpComingAppointments();
+        populatedietitianappointments();
+        populatefitnessappointments();
     }
     
     void populatePatientInfoPlaceholders() {
@@ -369,20 +375,20 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
         tblUpcomingDietitianAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Appointment id", "Patient Name", "Doctor Name", "Appointment Date"
+                "Patient Name", "Dietitian Name", "Appointment Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -400,20 +406,20 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
         tblUpcomingFitnessAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Appointment id", "Patient Name", "Doctor Name", "Appointment Date"
+                "Patient Name", "Trainer Name", "Appointment Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -469,7 +475,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
@@ -533,7 +539,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -725,6 +731,55 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JTable tblUpcomingDoctorsAppointments;
     private javax.swing.JTable tblUpcomingFitnessAppointments;
     // End of variables declaration//GEN-END:variables
+
+    private void populatedietitianappointments() {
+        DefaultTableModel model = (DefaultTableModel) tblUpcomingDietitianAppointments.getModel();
+        ArrayList<DietitianAppointment> temp = new ArrayList();
+        try {
+            temp = patient.getDietitianAppointments();
+        } catch (Exception e) {
+            model.setRowCount(0);
+            return;
+        }
+
+        model.setRowCount(0);
+
+        for (int i = 0; i < patient.getDietitianAppointments().size(); i++) {
+            if (temp.get(i).getDate().isAfter(LocalDate.now())) {
+                Object row[] = new Object[3];
+                row[0]=patient.getPersonDetails().getFullName();
+                row[1] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
+                row[2] = temp.get(i).getDate();
+                model.addRow(row);
+
+            }
+        }
+    }
+
+    private void populatefitnessappointments() {
+
+        DefaultTableModel model = (DefaultTableModel) tblUpcomingFitnessAppointments.getModel();
+        ArrayList<FitnessTrainerAppointment> temp = new ArrayList();
+        try {
+            temp = patient.getFitnessTrainerAppointments();
+        } catch (Exception e) {
+            return;
+        }
+
+        model.setRowCount(0);
+
+        for (int i = 0; i < temp.size(); i++) {
+            if (temp.get(i).getDate().isAfter(LocalDate.now())) {
+                Object row[] = new Object[3];
+                row[0] = patient.getPersonDetails().getFullName();
+                row[0] = temp.get(i).getFitnessTrainer().getFitnessTrainerDetails().getFullName();
+                row[1] = temp.get(i).getDate();
+                model.addRow(row);
+
+            }
+
+        }
+    }
 
   
 }
