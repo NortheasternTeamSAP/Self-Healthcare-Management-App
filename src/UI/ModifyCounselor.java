@@ -35,6 +35,7 @@ public class ModifyCounselor extends javax.swing.JPanel {
 
         public ModifyCounselor(JPanel WorkArea,EcoSystem system,Counselor d) {
         initComponents();
+        this.setSize(1100, 850);
         this.WorkArea=WorkArea;
         this.system=system;
         this.d=d;
