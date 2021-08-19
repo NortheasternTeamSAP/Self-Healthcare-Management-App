@@ -23,7 +23,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="124" y="128" width="863" height="147"/>
+          <AbsoluteConstraints x="124" y="128" width="863" height="120"/>
         </Constraint>
       </Constraints>
 
@@ -82,7 +82,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="297" y="477" width="530" height="141"/>
+          <AbsoluteConstraints x="310" y="480" width="510" height="141"/>
         </Constraint>
       </Constraints>
 
@@ -268,11 +268,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Latest Vital Signs:"/>
+        <Property name="text" type="java.lang.String" value="Add Counceling Notes:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="124" y="85" width="-1" height="-1"/>
+          <AbsoluteConstraints x="120" y="80" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
