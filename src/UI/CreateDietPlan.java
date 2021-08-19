@@ -377,9 +377,9 @@ private void showmostrecentVitalSign() {
                 row[4] = temp.getWeight();
                 model.addRow(row);
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Patient has not recorded his vitalSigns yet");
+        JOptionPane.showMessageDialog(this, "Patient has not recorded his vitalSigns yet", "Info", JOptionPane.INFORMATION_MESSAGE);
     }
- JOptionPane.showMessageDialog(this, "Patient has not recorded vitalSigns yet!" , "Info", JOptionPane.INFORMATION_MESSAGE);
+ //JOptionPane.showMessageDialog(this, "Patient has not recorded vitalSigns yet!" , "Info", JOptionPane.INFORMATION_MESSAGE);
  return;
    
     }
