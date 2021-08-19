@@ -63,155 +63,115 @@ Dietitian d;
         txtEmailField = new javax.swing.JTextArea();
         sendButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblpatients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Patient"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblpatients);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("To");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 104, 761, 168));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("From");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("To          :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 312, 78, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Subject");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("From      :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 356, -1, -1));
 
-        sendToTextField.setBackground(new java.awt.Color(0, 0, 0));
-        sendToTextField.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Subject  :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 409, -1, -1));
+
+        sendToTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         sendToTextField.setForeground(new java.awt.Color(255, 255, 255));
+        sendToTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         sendToTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendToTextFieldActionPerformed(evt);
             }
         });
+        add(sendToTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 312, 330, -1));
 
-        sendFromTextField.setBackground(new java.awt.Color(0, 0, 0));
-        sendFromTextField.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        sendFromTextField.setForeground(new java.awt.Color(255, 255, 255));
+        sendFromTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         sendFromTextField.setText("Mongodbuser2022@gmail.com");
+        sendFromTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         sendFromTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendFromTextFieldActionPerformed(evt);
             }
         });
+        add(sendFromTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 356, 330, -1));
 
-        txtSubject.setBackground(new java.awt.Color(0, 0, 0));
-        txtSubject.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        txtSubject.setForeground(new java.awt.Color(255, 255, 255));
+        txtSubject.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtSubject.setText("Dietician Tip Of the Day ");
+        txtSubject.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSubjectActionPerformed(evt);
             }
         });
+        add(txtSubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 409, 330, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Email body");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 470, -1, -1));
 
-        txtEmailField.setBackground(new java.awt.Color(0, 0, 0));
+        txtEmailField.setBackground(new java.awt.Color(255, 255, 255));
         txtEmailField.setColumns(20);
-        txtEmailField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        txtEmailField.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmailField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtEmailField.setRows(5);
         txtEmailField.setText("\n\n");
+        txtEmailField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane2.setViewportView(txtEmailField);
 
-        sendButton.setBackground(new java.awt.Color(255, 102, 102));
-        sendButton.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        sendButton.setForeground(new java.awt.Color(255, 255, 255));
-        sendButton.setText("Send Mail");
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 501, 790, 291));
+
+        sendButton.setBackground(new java.awt.Color(255, 255, 255));
+        sendButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        sendButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/send_mail.png"))); // NOI18N
+        sendButton.setText("Send ");
         sendButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         sendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendButtonActionPerformed(evt);
             }
         });
+        add(sendButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 800, 110, 40));
 
-        jButton2.setText("Back");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 33, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(145, 145, 145)
-                                    .addComponent(sendToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(121, 121, 121)
-                                    .addComponent(sendFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(99, 99, 99)
-                                    .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton2)))
-                .addContainerGap(127, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(sendToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addComponent(sendFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4))
-                    .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(jLabel5)
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Send Email to Patient");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 33, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendToTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToTextFieldActionPerformed
@@ -285,10 +245,12 @@ Dietitian d;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton sendButton;
