@@ -29,6 +29,7 @@ JPanel WorkArea;
      */
     public FitnessVideo(JPanel WorkArea,EcoSystem system,Patient p ) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
@@ -56,11 +57,13 @@ JPanel WorkArea;
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fitness Excercises we recommend", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 0, 153))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fitness Excercises we recommend", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(153, 153, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Videos/giphy (12).gif"))); // NOI18N
@@ -128,86 +131,26 @@ JPanel WorkArea;
                         .addComponent(jLabel5))))
         );
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 73, -1, -1));
+
         jLabel8.setBackground(new java.awt.Color(204, 204, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Videos/images.jpg"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(954, 45, 503, 220));
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 0, 204));
-        jTextField1.setText("Our Fitness Trainer Saraha\nalso recommends you to \ncheckout these links ");
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField1.setText("Our Fitness Trainer Sarah also recommends you to checkout these links ");
         jTextField1.setDoubleBuffered(true);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(954, 306, 509, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-video-60.png"))); // NOI18N
         jLabel10.setToolTipText("skipping");
         jLabel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-video-60.png"))); // NOI18N
-        jLabel11.setToolTipText("pushup");
-        jLabel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-video-60.png"))); // NOI18N
-        jLabel12.setToolTipText("weights");
-        jLabel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(116, 116, 116)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(109, 109, 109)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton4)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))))
-                .addContainerGap(341, Short.MAX_VALUE))
-        );
-
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(968, 386, 66, -1));
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -215,6 +158,11 @@ JPanel WorkArea;
                 jLabel10MouseClicked(evt);
             }
         });
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-video-60.png"))); // NOI18N
+        jLabel11.setToolTipText("pushup");
+        jLabel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 470, 66, -1));
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,6 +170,11 @@ JPanel WorkArea;
                 jLabel10MouseClicked(evt);
             }
         });
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-video-60.png"))); // NOI18N
+        jLabel12.setToolTipText("weights");
+        jLabel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 560, 66, -1));
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -229,6 +182,22 @@ JPanel WorkArea;
                 jLabel10MouseClicked(evt);
             }
         });
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 19, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setText("Fitness Videos");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 15, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg.jpg"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1460, 1010));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -283,7 +252,9 @@ private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
