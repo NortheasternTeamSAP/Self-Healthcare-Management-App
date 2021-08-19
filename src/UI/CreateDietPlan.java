@@ -195,6 +195,7 @@ DietitianAppointment app;
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 800, 180, 40));
 
         lblPatientname.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 25, 242, 30));
 
         add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 25, 242, 30));
 
@@ -279,6 +280,7 @@ DietitianAppointment app;
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jLabel15.setOpaque(true);
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 450, 27));
 
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 430, 27));
 
@@ -378,7 +380,6 @@ private void showmostrecentVitalSign() {
         JOptionPane.showMessageDialog(this, "Patient has not recorded his vitalSigns yet");
     }
  JOptionPane.showMessageDialog(this, "Patient has not recorded vitalSigns yet!" , "Info", JOptionPane.INFORMATION_MESSAGE);
-
  return;
    
     }
