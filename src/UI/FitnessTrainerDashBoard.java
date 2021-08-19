@@ -140,7 +140,8 @@ FitnessTrainer f;
         }
 
         Patient p = (Patient)tblpastapp.getValueAt(row, 0);
-        CreateFitnessPlan pd=new CreateFitnessPlan(WorkArea,system,f,p);
+           FitnessTrainerAppointment app= (FitnessTrainerAppointment) tblpastapp.getValueAt(row, 1);
+        CreateFitnessPlan pd=new CreateFitnessPlan(WorkArea,system,f,p,app);
         WorkArea.add("CreateFitnessPlan",pd);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
@@ -181,10 +182,10 @@ FitnessTrainer f;
         
         for(int i=0;i<temp.size();i++)
     {
-        if(temp.get(i).getDate().isAfter(LocalDate.now())){
+        if(temp.get(i).getDate().isAfter(LocalDate.now()) && temp.get(i).getDone()==false){
                 Object row[] = new Object[2];
                 row[0] = temp.get(i).getPatient();
-                row[1] = temp.get(i).getDate();
+                row[1] = temp.get(i);
                 model.addRow(row);
     }
     }   

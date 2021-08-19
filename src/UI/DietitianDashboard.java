@@ -148,7 +148,8 @@ Dietitian d;
         }
         
         Patient p = (Patient)tblpastapp.getValueAt(row, 0);
-        CreateDietPlan pd=new CreateDietPlan(WorkArea,system,d,p);
+         DietitianAppointment app= (DietitianAppointment) tblpastapp.getValueAt(row, 1);
+        CreateDietPlan pd=new CreateDietPlan(WorkArea,system,d,p,app);
         WorkArea.add("CreateMealPlan",pd);
             CardLayout layout= (CardLayout)WorkArea.getLayout();
             layout.next(WorkArea);    
@@ -195,12 +196,14 @@ Dietitian d;
  model.setRowCount(0);
         for(int i=0;i<temp.size();i++)
     {
-        if(temp.get(i).getDate().isAfter(LocalDate.now())){
+        if(temp.get(i).getDate().isAfter(LocalDate.now()) && temp.get(i).getDone()==false){
                 Object row[] = new Object[2];
                 row[0] = temp.get(i).getPatient();
-                row[1] = temp.get(i).getDate();
+                row[1] = temp.get(i);
                 model.addRow(row);
     }
+        else {}
+    
     }   
    }
 }

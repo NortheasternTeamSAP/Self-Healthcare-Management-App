@@ -55,7 +55,7 @@ public class CounselorAppointment {
     
     @Override
     public String toString() {
-        return "CounselorAppointment{" + "date=" + date + ", patient=" + patient + ", counselor=" + counselor + '}';
+        return "" + date;
     }
 
     public CounselorAppointment(LocalDate date, Patient patient, Counselor counselor,String r,String m,String c) {

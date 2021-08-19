@@ -28,15 +28,17 @@ JPanel WorkArea;
 EcoSystem system;
 Dietitian d;
 Patient p;
+DietitianAppointment app;
     /**
     /**
      * Creates new form CreateMealPlan
      */
-    public CreateDietPlan(JPanel WorkArea,EcoSystem system,Dietitian d,Patient p) {
+    public CreateDietPlan(JPanel WorkArea,EcoSystem system,Dietitian d,Patient p,DietitianAppointment app) {
       initComponents();
       this.WorkArea=WorkArea;
       this.system=system;
       this.d=d;
+      this.app=app;
       this.p=p;
       lblPatientname.setText(p.getPatientDetails().getFullName());
      
@@ -404,6 +406,7 @@ Patient p;
         mealplan.add(txtmeal7.getText());
 
         d.addDietPlan(p, mealplan,carbnum,fatnum,proteinnum,fibernum);
+        app.setDone(Boolean.TRUE);
 
         JOptionPane.showMessageDialog(this, "Weekly Diet Plan has been Created for  "+p.getPatientDetails().getFullName());
 

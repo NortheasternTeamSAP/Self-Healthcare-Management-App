@@ -184,7 +184,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
         
         for(int i=0;i<p.getDietitianAppointments().size();i++)
     {
-        if(temp.get(i).getDate().isAfter(LocalDate.now())){
+        if(temp.get(i).getDate().isAfter(LocalDate.now())&& temp.get(i).getDone()==false){
                 Object row[] = new Object[2];
                 row[0] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
                 row[1] = temp.get(i).getDate();

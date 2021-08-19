@@ -144,7 +144,7 @@ public class ViewPastAppointmentCounselor extends javax.swing.JPanel {
  model.setRowCount(0);       
         for(int i=0;i<temp.size();i++)
     {
-        if(temp.get(i).getDate().isBefore(LocalDate.now())){
+        if(temp.get(i).getDate().isBefore(LocalDate.now()) || temp.get(i).getDone()==true){
        Object row[] = new Object[2];
                 row[0] = temp.get(i).getCounselor().getPersonDetails().getFullName();
                 row[1] = temp.get(i).getDate();
@@ -160,7 +160,7 @@ private void populatepastpaitentcounselorappointment() {
  model.setRowCount(0);       
         for(int i=0;i<temp.size();i++)
     {
-        if(temp.get(i).getDate().isBefore(LocalDate.now())){
+        if(temp.get(i).getDate().isBefore(LocalDate.now()) || temp.get(i).getDone()==true){
          Object row[] = new Object[2];
                 row[0] = temp.get(i).getPatient().getPatientDetails().getFullName();
                 row[1] = temp.get(i).getDate();
