@@ -92,12 +92,12 @@ Patient p ;
         });
         jScrollPane1.setViewportView(tblVitalSign);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 128, 863, 147));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 128, 863, 120));
 
         txtmeal1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane2.setViewportView(txtmeal1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 477, 530, 141));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 510, 141));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -159,8 +159,8 @@ Patient p ;
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 418, 505, 27));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Latest Vital Signs:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 85, -1, -1));
+        jLabel8.setText("Add Counceling Notes:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
