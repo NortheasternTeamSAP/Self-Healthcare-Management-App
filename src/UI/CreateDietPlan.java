@@ -186,7 +186,6 @@ DietitianAppointment app;
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/create_meal.png"))); // NOI18N
         jButton1.setText("Create Meal  Plan");
-        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -195,7 +194,7 @@ DietitianAppointment app;
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 800, 180, 40));
 
         lblPatientname.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 25, 242, 30));
+        add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 242, 30));
 
         add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 25, 242, 30));
 
