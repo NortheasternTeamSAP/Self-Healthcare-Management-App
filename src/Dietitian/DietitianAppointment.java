@@ -20,7 +20,7 @@ public class DietitianAppointment {
     String restriction;
     String cheifcomplaints;
     String patientMedication;
-    Boolean done;
+    Boolean done=false;
 
     public Boolean getDone() {
         return done;
@@ -38,7 +38,7 @@ public class DietitianAppointment {
 
     @Override
     public String toString() {
-        return " " + patient.getPatientDetails().getFullName() ;
+        return " " + date ;
     }        
     
     public DietitianAppointment(LocalDate date, Patient patient, Dietitian dietitian,String restriction,String medication,String cheifcomplaint) {

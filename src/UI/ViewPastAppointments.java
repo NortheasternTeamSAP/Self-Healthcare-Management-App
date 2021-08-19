@@ -152,7 +152,7 @@ public class ViewPastAppointments extends javax.swing.JPanel {
   model.setRowCount(0);      
         for(int i=0;i<dietitianAppointments.size();i++)
     {
-        if(temp.get(i).getDate().isBefore(LocalDate.now())){
+        if(temp.get(i).getDate().isBefore(LocalDate.now()) || temp.get(i).getDone()==true){
        Object row[] = new Object[2];
                 row[0] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
                 row[1] = temp.get(i).getDate();
@@ -173,7 +173,7 @@ public class ViewPastAppointments extends javax.swing.JPanel {
  model.setRowCount(0);       
         for(int i=0;i<dietitianAppointments.size();i++)
     {
-        if(temp.get(i).getDate().isBefore(LocalDate.now())){
+        if(temp.get(i).getDate().isBefore(LocalDate.now()) || temp.get(i).getDone()==true){
        Object row[] = new Object[2];
                 row[0] = temp.get(i).getPatient().getPatientDetails().getFullName();
                 row[1] = temp.get(i).getDate();

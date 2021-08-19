@@ -40,7 +40,7 @@ public class FitnessTrainerAppointment {
 
     @Override
     public String toString() {
-        return "FitnessTrainerAppointment{" + "date=" + date + ", patient=" + patient + ", fitnessTrainer=" + fitnessTrainer + '}';
+        return "" + date ;
     }
     
     

@@ -135,7 +135,8 @@ Counselor c;
         }
 
         Patient p = (Patient)tblpastapp.getValueAt(row, 0);
-        CreateCounselingNotes cp=new CreateCounselingNotes(WorkArea,system,c,p);
+        CounselorAppointment app= (CounselorAppointment) tblpastapp.getValueAt(row, 1);
+        CreateCounselingNotes cp=new CreateCounselingNotes(WorkArea,system,c,p,app);
         WorkArea.add("CreateCounselingNotes",cp);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);
@@ -173,10 +174,10 @@ Counselor c;
    model.setRowCount(0);
         for(int i=0;i<temp.size();i++)
     {
-        if(temp.get(i).getDate().isAfter(LocalDate.now())){
+        if(temp.get(i).getDate().isAfter(LocalDate.now())&& temp.get(i).getDone()==false){
                 Object row[] = new Object[2];
                 row[0] = temp.get(i).getPatient();
-                row[1] = temp.get(i).getDate();
+                row[1] = temp.get(i);
                 model.addRow(row);
     
         }   

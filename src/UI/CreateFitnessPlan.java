@@ -31,15 +31,17 @@ JPanel WorkArea;
 EcoSystem system;
 FitnessTrainer f;
 Patient p;
+FitnessTrainerAppointment app;
     /**
      * Creates new form FitnessPlan
      */
-    public CreateFitnessPlan(JPanel WorkArea,EcoSystem system,FitnessTrainer f,Patient p) {
+    public CreateFitnessPlan(JPanel WorkArea,EcoSystem system,FitnessTrainer f,Patient p,FitnessTrainerAppointment app) {
       initComponents();
       this.f=f;
       initComponents();
       this.WorkArea=WorkArea;
       this.p=p;
+      this.app=app;
       
       e1.setModel(new DefaultComboBoxModel(FitnessPlan.Excercise.values()));
       e2.setModel(new DefaultComboBoxModel(FitnessPlan.Excercise.values()));
@@ -55,6 +57,7 @@ Patient p;
       jLabel7.setText(f1.getInjuries());
       jLabel5.setText(f1.getPatientMedication());
       jLabel3.setText(f1.getCheifcomplaints());
+      
       }
       showmostrecentVitalSign();
     }
@@ -404,7 +407,7 @@ Patient p;
                   excercise.add(ex6);
                     excercise.add(ex7);
         f.addFitnessPlan(p, fitnessplan,excercise);
-        
+        app.setDone(Boolean.TRUE);
         JOptionPane.showMessageDialog(this, "Weekly Fitness Regime has been Created for  "+p.getPatientDetails().getFullName());    
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();

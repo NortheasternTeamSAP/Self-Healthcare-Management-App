@@ -28,16 +28,18 @@ Counselor c;
 JPanel WorkArea;
 EcoSystem system;
 Patient p ;
+CounselorAppointment app;
     /**
      * Creates new form CreatCounselingNotes
      */
-    public CreateCounselingNotes(JPanel WorkArea,EcoSystem system,Counselor c,Patient p) {
+    public CreateCounselingNotes(JPanel WorkArea,EcoSystem system,Counselor c,Patient p,CounselorAppointment app) {
         initComponents();
         this.setSize(1100, 850);
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
         this.c=c;
+        this.app=app;
         
       for(CounselorAppointment c1 :c.getCounselorSchedule().getCounselorAppointments()){
       jLabel7.setText(c1.getCheifcomplaints());
@@ -178,6 +180,7 @@ Patient p ;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         c.addCounsellingNote(p,txtmeal1.getText());
+        app.setDone(Boolean.TRUE);
         JOptionPane.showMessageDialog(this, "Counselling Note has been Created for  "+p.getPatientDetails().getFullName());
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
