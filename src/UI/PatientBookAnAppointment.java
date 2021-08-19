@@ -105,19 +105,32 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         jCheckBox3 = new javax.swing.JCheckBox();
         txtDietrestrict1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 490, 50));
 
         comboapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboappActionPerformed(evt);
             }
         });
+        add(comboapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 162, 32));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Select the Dietitian :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Select a date :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 100, 20));
+        add(chooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 180, 32));
 
+        confirmapp.setBackground(new java.awt.Color(255, 255, 255));
+        confirmapp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        confirmapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view_past_appointment.png"))); // NOI18N
         confirmapp.setText("Schedule Your Appointment ");
         confirmapp.setEnabled(false);
         confirmapp.addActionListener(new java.awt.event.ActionListener() {
@@ -125,20 +138,25 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
                 confirmappActionPerformed(evt);
             }
         });
+        add(confirmapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, -1, 35));
 
-        backf.setText("Back");
+        backf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        backf.setContentAreaFilled(false);
         backf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backfActionPerformed(evt);
             }
         });
+        add(backf, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 33, -1, -1));
 
-        timepanel.setBackground(new java.awt.Color(255, 204, 204));
+        timepanel.setBackground(new java.awt.Color(255, 255, 255));
         timepanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Select A Time Slot "));
 
         btn9.setBackground(new java.awt.Color(204, 255, 255));
+        btn9.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btn9.setText("9AM");
         btn9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn9.setOpaque(false);
         btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn9ActionPerformed(evt);
@@ -146,6 +164,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
 
         btn10.setBackground(new java.awt.Color(204, 255, 255));
+        btn10.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btn10.setText("10AM");
         btn10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn10.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +174,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
 
         btn11.setBackground(new java.awt.Color(204, 255, 255));
+        btn11.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btn11.setText("11AM");
         btn11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn11.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +184,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
 
         btn1.setBackground(new java.awt.Color(204, 255, 255));
+        btn1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btn1.setText("1PM");
         btn1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +194,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
 
         btn2.setBackground(new java.awt.Color(204, 255, 255));
+        btn2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btn2.setText("2PM");
         btn2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +204,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
 
         btn3.setBackground(new java.awt.Color(204, 255, 255));
+        btn3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btn3.setText("3PM");
         btn3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -195,19 +218,19 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         timepanelLayout.setHorizontalGroup(
             timepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(timepanelLayout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addContainerGap()
+                .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         timepanelLayout.setVerticalGroup(
             timepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,129 +241,77 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
                     .addComponent(btn10)
                     .addComponent(btn11)
                     .addComponent(btn1)
-                    .addComponent(btn2)
+                    .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn3))
                 .addGap(17, 17, 17))
         );
 
-        jLabel4.setBackground(new java.awt.Color(204, 255, 255));
+        add(timepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 630, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/create_meal.png"))); // NOI18N
         jLabel4.setText("Specify any food allergies or Diet Restrictions");
         jLabel4.setOpaque(true);
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 320, 30));
 
-        jLabel5.setBackground(new java.awt.Color(204, 255, 255));
-        jLabel5.setText("Please add Any Medications you are currently on :");
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/medication.png"))); // NOI18N
+        jLabel5.setText("Specify Any Medications you are currently on ");
         jLabel5.setOpaque(true);
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 320, 30));
 
+        txtmedication.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtmedication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtmedicationActionPerformed(evt);
             }
         });
+        add(txtmedication, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 233, 30));
 
+        txtallergies.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtallergies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtallergiesActionPerformed(evt);
+            }
+        });
+        add(txtallergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 233, 30));
+
+        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jCheckBox1.setText("I Agree to Recieve Marketing Email ");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
             }
         });
+        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 590, -1, -1));
 
+        jCheckBox4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jCheckBox4.setText(" I Agree To Terms and Conditions ");
+        add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 650, -1, -1));
 
+        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jCheckBox3.setText("I Agree to the Privacy Policy ");
+        add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 620, -1, -1));
 
+        txtDietrestrict1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtDietrestrict1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDietrestrict1ActionPerformed(evt);
             }
         });
+        add(txtDietrestrict1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 233, 30));
 
-        jLabel6.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-complaint-30.png"))); // NOI18N
         jLabel6.setText("Chief Complaints");
         jLabel6.setOpaque(true);
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 320, 27));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backf))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboapp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chooser, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(timepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(confirmapp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCheckBox4)
-                                        .addComponent(jCheckBox3)
-                                        .addComponent(jCheckBox1))
-                                    .addGap(39, 39, 39)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtmedication, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtallergies, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtDietrestrict1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(701, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(backf)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboapp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(timepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtallergies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmedication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDietrestrict1)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(jCheckBox1)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox3)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox4)
-                .addGap(28, 28, 28)
-                .addComponent(confirmapp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(211, 211, 211))
-        );
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboappActionPerformed
@@ -528,6 +499,10 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void txtallergiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtallergiesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtallergiesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backf;
@@ -549,6 +524,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel timepanel;
     private javax.swing.JTextField txtDietrestrict1;
     private javax.swing.JTextField txtallergies;
