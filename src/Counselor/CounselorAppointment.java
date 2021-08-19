@@ -20,6 +20,15 @@ public class CounselorAppointment {
     String pastmentalhealth;
     String cheifcomplaints;
     String patientMedication;
+    Boolean done;
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
 
     
        public enum CounselorAppointmentStatus {
