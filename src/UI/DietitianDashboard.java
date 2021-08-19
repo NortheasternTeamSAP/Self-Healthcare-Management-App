@@ -30,6 +30,7 @@ Dietitian d;
      */
     public DietitianDashboard(JPanel WorkArea,EcoSystem system,Dietitian d) {
       initComponents();
+      this.setSize(1100,850);
       this.WorkArea=WorkArea;
       this.system=system;
       this.d=d;
