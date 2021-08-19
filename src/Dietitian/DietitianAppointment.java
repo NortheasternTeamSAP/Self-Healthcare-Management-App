@@ -20,6 +20,15 @@ public class DietitianAppointment {
     String restriction;
     String cheifcomplaints;
     String patientMedication;
+    Boolean done;
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
     
     
        public enum DietitianAppointmentStatus {
