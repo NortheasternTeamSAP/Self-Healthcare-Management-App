@@ -184,6 +184,7 @@ Patient p;
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/create_meal.png"))); // NOI18N
         jButton1.setText("Create Meal  Plan");
+        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -192,7 +193,8 @@ Patient p;
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 800, 180, 40));
 
         lblPatientname.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 242, 30));
+
+        add(lblPatientname, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 25, 242, 30));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -269,22 +271,27 @@ Patient p;
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/medication.png"))); // NOI18N
         jLabel14.setText("Medication");
+
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 110, 27));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jLabel15.setOpaque(true);
+
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 430, 27));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-meditation-30.png"))); // NOI18N
         jLabel16.setText("Mental Health History");
+
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 180, 30));
 
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jLabel17.setOpaque(true);
+        
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 430, 27));
+
 
         txtmeal6.setColumns(20);
         txtmeal6.setRows(5);
@@ -299,7 +306,9 @@ Patient p;
         add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 450, 56));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
         jLabel18.setText("Diet Plan for");
+
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
