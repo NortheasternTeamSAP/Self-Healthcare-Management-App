@@ -94,12 +94,12 @@ CounselorAppointment app;
         });
         jScrollPane1.setViewportView(tblVitalSign);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 128, 863, 147));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 128, 863, 120));
 
         txtmeal1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane2.setViewportView(txtmeal1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 477, 530, 141));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 510, 141));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -112,7 +112,7 @@ CounselorAppointment app;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/notes.png"))); // NOI18N
-        jLabel2.setText("Counseling Notes:");
+        jLabel2.setText("Counseling Notes");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 477, -1, 31));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -121,18 +121,17 @@ CounselorAppointment app;
         jButton1.setText("Add ");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
-        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 640, -1, 40));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 640, -1, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-complaint-30.png"))); // NOI18N
-        jLabel1.setText("Chief Complaint:");
+        jLabel1.setText("Chief Complaint");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 307, -1, 27));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,7 +141,7 @@ CounselorAppointment app;
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/medication.png"))); // NOI18N
-        jLabel4.setText("Medication:");
+        jLabel4.setText("Medication");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 362, 161, 27));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,7 +151,7 @@ CounselorAppointment app;
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-meditation-30.png"))); // NOI18N
-        jLabel6.setText("Mental Health History:");
+        jLabel6.setText("Mental Health History");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 418, -1, 27));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -161,8 +160,8 @@ CounselorAppointment app;
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 418, 505, 27));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Latest Vital Signs:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 85, -1, -1));
+        jLabel8.setText("Add Counceling Notes:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
