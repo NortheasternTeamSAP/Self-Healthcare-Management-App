@@ -623,7 +623,7 @@ public class DoctorHomePagePanel extends javax.swing.JPanel implements NextScree
         lblAddressPlaceHolder.setText(pd.getAddress().toString());
         lblAgePlaceHolder.setText(pd.getAge() + "years");
          
-        lblAgePlaceHolder.setText(pd.getDob() + "years");
+        lblAgePlaceHolder.setText(pd.getDob().toString());
         lblEmailId.setText("Not Available");  
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());

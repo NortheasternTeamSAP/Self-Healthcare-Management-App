@@ -97,4 +97,9 @@ public class Doctor implements Person {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return getPersonDetails().getOrganizationId();
     }
+    
+    @Override
+    public void updateDetails(PersonDetails newDoctorDetails) {
+        this.doctorDetails = newDoctorDetails;
+    }
 }

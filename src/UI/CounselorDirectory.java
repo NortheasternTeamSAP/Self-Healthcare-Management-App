@@ -145,7 +145,7 @@ public class CounselorDirectory extends javax.swing.JPanel {
         }
 
         Counselor p = (Counselor)tblcounselor.getValueAt(row, 0);
-        system.globalUserDirectory.remove(p);
+        system.globalUserDirectory.removeUser(p);
         JOptionPane.showMessageDialog(this, "This Counselor  has been deleted ");
         ShowCounselors();
     }//GEN-LAST:event_jButton2ActionPerformed

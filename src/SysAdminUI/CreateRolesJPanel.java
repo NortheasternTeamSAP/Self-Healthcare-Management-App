@@ -65,7 +65,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author mrs.katey
  */
-public class ManageRoles extends javax.swing.JPanel implements NextScreen {
+public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen {
    JPanel WorkArea;
    EcoSystem system;
    Person person;
@@ -76,7 +76,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
     /**
      * Creates new form ManageRoles
      */
-    public ManageRoles(JPanel WorkArea, EcoSystem system) {
+    public CreateRolesJPanel(JPanel WorkArea, EcoSystem system) {
         initComponents();
         this.WorkArea = WorkArea;
         this.system = system;
@@ -707,7 +707,8 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                                                 address,
                                                 phoneNumber,
                                                 logo,
-                                                userAccount
+                                                userAccount,
+                                                organizationId
                                             );
                     system.globalUserDirectory.createNewUser(deliveryMan);
                     break;
@@ -798,7 +799,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
 
         comboenterprise.addItemListener(new ItemListener() {
             
-            ManageRoles manageRole = null;
+            CreateRolesJPanel manageRole = null;
             
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -811,7 +812,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                 manageRole.populateOrganizationCombo(enterprise.getOrganizations());
             }
             
-             private ItemListener init(ManageRoles manageRole){
+             private ItemListener init(CreateRolesJPanel manageRole){
                 this.manageRole = manageRole;
                 return this;
             }
@@ -879,7 +880,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
         
         comboorgtype.addItemListener(new ItemListener() {
             
-            ManageRoles manageRole = null;
+            CreateRolesJPanel manageRole = null;
             
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -892,7 +893,7 @@ public class ManageRoles extends javax.swing.JPanel implements NextScreen {
                 
                 manageRole.enableRadioButton(organization.getOrganizationType());
             }
-             private ItemListener init(ManageRoles manageRole){
+             private ItemListener init(CreateRolesJPanel manageRole){
                 this.manageRole = manageRole;
                 return this;
             }

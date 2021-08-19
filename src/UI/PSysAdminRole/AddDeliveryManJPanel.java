@@ -354,7 +354,8 @@ public class AddDeliveryManJPanel extends javax.swing.JPanel {
             address,
             txtAddDelManPhNo.getText(),
             null,
-            new UserAccount(txtAddDelManUsername.getText(), txtAddDelManPW.getPassword().toString())
+            new UserAccount(txtAddDelManUsername.getText(), txtAddDelManPW.getPassword().toString()),
+            0
         );
         
         ecoSystem.globalUserDirectory.createNewUser(delMan);

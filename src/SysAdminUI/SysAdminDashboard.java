@@ -7,6 +7,7 @@ package SysAdminUI;
 
 import EcoSystem.EcoSystem;
 import UI.ViewPastAppointments;
+import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,7 +18,7 @@ import javax.swing.UIManager;
  *
  * @author preet
  */
-public class SysAdminDashboard extends javax.swing.JPanel {
+public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen {
    JPanel WorkArea;
    EcoSystem system;
     /**
@@ -42,6 +43,7 @@ public class SysAdminDashboard extends javax.swing.JPanel {
         bntmanageorg = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         manageemp = new javax.swing.JButton();
+        jButtonUpdateDeleteRoles = new javax.swing.JButton();
 
         bntmanageenterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/enterprise-mobility.jpg"))); // NOI18N
         bntmanageenterprise.setToolTipText("Manage your enterprise");
@@ -81,14 +83,17 @@ public class SysAdminDashboard extends javax.swing.JPanel {
             }
         });
 
+        jButtonUpdateDeleteRoles.setText("Update/Delete Roles");
+        jButtonUpdateDeleteRoles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateDeleteRolesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(bntmanageenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,6 +102,15 @@ public class SysAdminDashboard extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(709, 709, 709)
+                        .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +126,9 @@ public class SysAdminDashboard extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addGap(109, 109, 109)
+                .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,11 +170,17 @@ public class SysAdminDashboard extends javax.swing.JPanel {
         
     }//GEN-LAST:event_manageempActionPerformed
 
+    private void jButtonUpdateDeleteRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateDeleteRolesActionPerformed
+        // TODO add your handling code here:
+        nextScreen(WorkArea, new UpdateAndDeleteRolesJPanel(WorkArea, system, this), "UpdateAndDeleteRolesJPanel");
+    }//GEN-LAST:event_jButtonUpdateDeleteRolesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntmanageenterprise;
     private javax.swing.JButton bntmanageorg;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonUpdateDeleteRoles;
     private javax.swing.JButton manageemp;
     // End of variables declaration//GEN-END:variables
 }

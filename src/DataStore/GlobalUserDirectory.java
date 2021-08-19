@@ -59,7 +59,7 @@ public class GlobalUserDirectory {
         personDirectory.add(person.getUserAccount().getUsername(), person);
     }
     
-    public void remove(Person person) {
+    public void removeUser(Person person) {
         if (person == null) {
             log.error("Person is null. Cannot remove from global user directory.");
             return;
@@ -83,8 +83,7 @@ public class GlobalUserDirectory {
         credentialsManager.createNewUserAccount(
                 person.getUserAccount().getUsername(), 
                 person.getUserAccount().getPassword());
-    }
-    
+    } 
     
     public List<Person> getByRole(Role role) {
         List<Person> spcificRolePersons = new ArrayList<>();

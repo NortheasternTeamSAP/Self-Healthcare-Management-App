@@ -36,9 +36,10 @@ public class DeliveryManDirectory {
                                 PersonDetails.Gender gender,
                                 Address address,
                                 String phoneNumber,
-                                UserAccount account){
+                                UserAccount account,
+                                int organizationId){
         
-        DeliveryMan delMan = new DeliveryMan(fullName, dob, gender, address, phoneNumber, null, account);
+        DeliveryMan delMan = new DeliveryMan(fullName, dob, gender, address, phoneNumber, null, account, organizationId);
         deliveryManMap.add(Integer.toString(id), delMan);
         id += 1;
         return delMan;

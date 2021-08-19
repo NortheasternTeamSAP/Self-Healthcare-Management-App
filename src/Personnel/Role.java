@@ -13,13 +13,13 @@ public enum Role {
     SYSTEM_ADMIN("SysAdmin"),
     PATIENT("Patient"),
     DOCTOR("Doctor"),
-    INSURANCE_PROVIDER_REP("InsuranceProviderRep"),
+    INSURANCE_PROVIDER_REP("InsuranceProviderRepresentative"),
     DELIVERY_MAN("DeliveryMan"),
     PHARMACIST("Pharmacist"),
     DIETITIAN("Dietitian"),
     TRAINER("FitnessTrainer"),
-    COUNSELOR("Counselor"),
-    LABASSISTANT("Labassistant")
+    COUNSELOR("MentalCounselor"),
+    LABASSISTANT("LabortaryAssistant")
     // Add more roles here and create corresponding 
     // classes which extends Person class
     , INVALID("Invalid");

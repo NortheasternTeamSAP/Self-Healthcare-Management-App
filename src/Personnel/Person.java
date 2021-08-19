@@ -16,5 +16,6 @@ public interface Person {
     public Role getRole();
     public PersonDetails getPersonDetails();
     public int getOrganizationId();
+    public void updateDetails(PersonDetails newPersonalDetails);
 
 }

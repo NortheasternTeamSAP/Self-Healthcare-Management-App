@@ -14,6 +14,7 @@ import Laboratory.LaboratoryTestReport;
 import Patient.Patient;
 import Personnel.Person;
 import Personnel.PersonDetails;
+import SysAdminUI.Login;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import java.util.List;
@@ -50,6 +51,8 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         populateLabAssistantInfoPlaceholders();
         
     }
+
+    
 
 
     
@@ -394,7 +397,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
 
     private void btnBbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBbackActionPerformed
         // TODO add your handling code here:
-        nextScreen(workAreaPanel, temporaryBack, "Patient home page");
+         nextScreen(workAreaPanel, new Login(workAreaPanel, ecoSystem), "Login");
     }//GEN-LAST:event_btnBbackActionPerformed
 
 
@@ -430,7 +433,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
           lblNamePlaceHolder.setText(pd.getFullName());
           lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
           //lblEmailPlaceHolder.setText(pd.);
-//          lblDobPlaceHolder.setText(pd.getDob().toString());
+          lblDobPlaceHolder.setText(pd.getDob().toString());
           lblAddressPlaceHolder.setText(pd.getAddress().toString());
           lblGenderPlaceHolder.setText(pd.getGender().FEMALE.toString());
           imgLogo.setIcon(pd.getLogoImage());

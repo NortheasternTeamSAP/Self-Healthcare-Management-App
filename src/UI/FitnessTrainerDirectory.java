@@ -144,7 +144,7 @@ public class FitnessTrainerDirectory extends javax.swing.JPanel {
         }
 
         FitnessTrainer p = (FitnessTrainer)tblFitnesstrainers.getValueAt(row, 0);
-        system.globalUserDirectory.remove(p);
+        system.globalUserDirectory.removeUser(p);
         JOptionPane.showMessageDialog(this, "This FitnessTrainer  has been deleted ");
         ShowFitnessTrainers();
     }//GEN-LAST:event_jButton2ActionPerformed

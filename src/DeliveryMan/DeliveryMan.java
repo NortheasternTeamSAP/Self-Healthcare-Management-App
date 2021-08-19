@@ -28,9 +28,10 @@ public class DeliveryMan implements Person {
             Address address,
             String phoneNumber,
             Icon logoImage,
-            UserAccount account){
+            UserAccount account,
+            int organizationId){
         
-        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage); 
+        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage, organizationId); 
     }
     
     @Override
@@ -55,5 +56,10 @@ public class DeliveryMan implements Person {
     @Override
     public int getOrganizationId() {
         return this.deliveryManDetails.getOrganizationId();
+    }
+
+    @Override
+    public void updateDetails(PersonDetails newPersonalDetails) {
+        this.deliveryManDetails = newPersonalDetails;
     }
 }

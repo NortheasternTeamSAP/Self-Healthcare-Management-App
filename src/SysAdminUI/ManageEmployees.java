@@ -265,7 +265,7 @@ public class ManageEmployees extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ManageRoles ls= new ManageRoles(WorkArea,system);
+        CreateRolesJPanel ls= new CreateRolesJPanel(WorkArea,system);
         WorkArea.add("ManageEnterprises",ls);
         CardLayout layout= (CardLayout)WorkArea.getLayout();
         layout.next(WorkArea);  

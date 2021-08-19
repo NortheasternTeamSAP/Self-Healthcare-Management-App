@@ -90,4 +90,9 @@ public class Dietitian implements Person{
     public int getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
+    
+    @Override
+    public void updateDetails(PersonDetails newDietitianDetails) {
+        this.dietitianDetails = newDietitianDetails;
+    }
 }

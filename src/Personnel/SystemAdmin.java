@@ -62,5 +62,10 @@ public class SystemAdmin implements Person {
     public int getOrganizationId() {
        return getPersonDetails().getOrganizationId();
     }
+
+    @Override
+    public void updateDetails(PersonDetails newPersonalDetails) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
