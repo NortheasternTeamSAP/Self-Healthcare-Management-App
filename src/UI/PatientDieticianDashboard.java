@@ -8,6 +8,7 @@ package UI;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+import PatientCoreWorkFlowUI.PatientHomePagePanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -147,6 +148,8 @@ public class PatientDieticianDashboard extends javax.swing.JPanel {
         WorkArea.remove(this);
         Component[] componentArray = WorkArea.getComponents();
         Component component = componentArray[componentArray.length - 1];
+        PatientHomePagePanel d=(PatientHomePagePanel)component;
+        d.populatedietitianappointments();
        CardLayout layout = (CardLayout)WorkArea.getLayout();
         layout.previous(WorkArea);
     }//GEN-LAST:event_jButton4ActionPerformed
