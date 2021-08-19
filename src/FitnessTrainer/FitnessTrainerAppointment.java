@@ -21,7 +21,7 @@ public class FitnessTrainerAppointment {
  String injuries;
  String cheifcomplaints;
  String patientMedication;
- Boolean done;
+ Boolean done=false;
 
     public Boolean getDone() {
         return done;

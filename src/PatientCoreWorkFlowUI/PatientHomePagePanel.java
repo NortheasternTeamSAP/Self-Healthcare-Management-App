@@ -715,7 +715,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JTable tblUpcomingFitnessAppointments;
     // End of variables declaration//GEN-END:variables
 
-    private void populatedietitianappointments() {
+    public void populatedietitianappointments() {
         DefaultTableModel model = (DefaultTableModel) tblUpcomingDietitianAppointments.getModel();
         ArrayList<DietitianAppointment> temp = new ArrayList();
         try {
@@ -728,7 +728,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         model.setRowCount(0);
 
         for (int i = 0; i < patient.getDietitianAppointments().size(); i++) {
-            if (temp.get(i).getDate().isAfter(LocalDate.now())) {
+            if (temp.get(i).getDate().isAfter(LocalDate.now()) && temp.get(i).getDone()==false) {
                 Object row[] = new Object[3];
                 row[0]=patient.getPersonDetails().getFullName();
                 row[1] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
@@ -739,7 +739,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         }
     }
 
-    private void populatefitnessappointments() {
+    public void populatefitnessappointments() {
 
         DefaultTableModel model = (DefaultTableModel) tblUpcomingFitnessAppointments.getModel();
         ArrayList<FitnessTrainerAppointment> temp = new ArrayList();
@@ -752,11 +752,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         model.setRowCount(0);
 
         for (int i = 0; i < temp.size(); i++) {
-            if (temp.get(i).getDate().isAfter(LocalDate.now())) {
+            if (temp.get(i).getDate().isAfter(LocalDate.now()) && temp.get(i).getDone()==false) {
                 Object row[] = new Object[3];
                 row[0] = patient.getPersonDetails().getFullName();
-                row[0] = temp.get(i).getFitnessTrainer().getFitnessTrainerDetails().getFullName();
-                row[1] = temp.get(i).getDate();
+                row[1] = temp.get(i).getFitnessTrainer().getFitnessTrainerDetails().getFullName();
+                row[2] = temp.get(i).getDate();
                 model.addRow(row);
 
             }

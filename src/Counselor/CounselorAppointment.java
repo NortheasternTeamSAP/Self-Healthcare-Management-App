@@ -20,7 +20,7 @@ public class CounselorAppointment {
     String pastmentalhealth;
     String cheifcomplaints;
     String patientMedication;
-    Boolean done;
+    Boolean done=false;
 
     public Boolean getDone() {
         return done;
