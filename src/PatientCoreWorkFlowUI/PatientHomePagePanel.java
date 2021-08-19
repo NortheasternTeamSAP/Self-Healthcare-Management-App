@@ -56,7 +56,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         PersonDetails pd = patient.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
 //        lblAgePlaceHolder.setText(pd.getAge() + " years");  
-//        lblAgePlaceHolder.setText(pd.getDob().toString());
+         lblAgePlaceHolder.setText(pd.getDob().toString());
         lblEmailPlaceHolder.setText("Not Available");  
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
@@ -122,8 +122,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         imgLogo = new javax.swing.JLabel();
         lblPatientDetails = new javax.swing.JLabel();
         lblNamePlaceHolder = new javax.swing.JLabel();
-        lblDob1 = new javax.swing.JLabel();
-        lblDobPlaceHolder = new javax.swing.JLabel();
         lblPhoneNumberPlaceHolder = new javax.swing.JLabel();
         lblAddressPlaceHolder = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -319,11 +317,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
         lblNamePlaceHolder.setText("NamePlaceHolder");
 
-        lblDob1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblDob1.setText("Dob:");
-
-        lblDobPlaceHolder.setText("DobPlaceHolder");
-
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
 
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
@@ -333,9 +326,9 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jLabel4.setText("Welcome to Fred Meyer ");
 
         lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblAge.setText("Age:");
+        lblAge.setText("Dob");
 
-        lblAgePlaceHolder.setText("AgeHolder");
+        lblAgePlaceHolder.setText("Dob Place holder");
 
         lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblWeight1.setText("EmailId:");
@@ -444,10 +437,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                         .addGap(89, 89, 89)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblDob1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDobPlaceHolder))
-                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                                 .addComponent(lblPhoneNumber)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblPhoneNumberPlaceHolder))
@@ -497,6 +486,9 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,30 +496,23 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
                             .addComponent(lblNamePlaceHolder))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDob1)
-                            .addComponent(lblDobPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPhoneNumber)
                             .addComponent(lblPhoneNumberPlaceHolder))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAddress)
-                            .addComponent(lblAddressPlaceHolder)))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAge)
-                    .addComponent(lblAgePlaceHolder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight1)
-                    .addComponent(lblEmailPlaceHolder))
-                .addGap(72, 72, 72)
+                            .addComponent(lblAddressPlaceHolder))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAge)
+                            .addComponent(lblAgePlaceHolder))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblWeight1)
+                            .addComponent(lblEmailPlaceHolder))))
+                .addGap(98, 98, 98)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -718,8 +703,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JLabel lblAddressPlaceHolder;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAgePlaceHolder;
-    private javax.swing.JLabel lblDob1;
-    private javax.swing.JLabel lblDobPlaceHolder;
     private javax.swing.JLabel lblEmailPlaceHolder;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNamePlaceHolder;

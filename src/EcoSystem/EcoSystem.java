@@ -238,42 +238,48 @@ public class EcoSystem {
 
         // Lab Assistant
         Person labAssistant = new LaboratoryAssistant("Lab Assistant-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null , new UserAccount("labassist1", "labassist1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null , new UserAccount("labassist1", "labassist1"), laboratoryOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(labAssistant);
         laboratoryOrg.addEmployee(labAssistant);
 
          // Dietitian
-        Person dietitian = new Dietitian("Jim", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitian1"),null,0);
+        Person dietitian = new Dietitian("Jim", LocalDate.now(), PersonDetails.Gender.MALE, 
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("dietitian", "dietitian1"),null, gymOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(dietitian);
         gymOrg.addEmployee(dietitian);
         
          // FitnessTrainer
-        Person fitnessTrainer = new FitnessTrainer("jack", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("fitnesstrainer", "fitnesstrainer1"),null,0);
+        Person fitnessTrainer = new FitnessTrainer("jack", LocalDate.now(), PersonDetails.Gender.MALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", 
+                new UserAccount("fitnesstrainer", "fitnesstrainer1"),null, gymOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(fitnessTrainer);
         gymOrg.addEmployee(fitnessTrainer);
         
          // Counselor
-        Person counselor = new Counselor("zena", LocalDate.now(), PersonDetails.Gender.FEMALE, new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", new UserAccount("counselor", "counselor1"),null ,0);
+        Person counselor = new Counselor("zena", LocalDate.now(), PersonDetails.Gender.FEMALE, 
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "1234567890", 
+                new UserAccount("counselor", "counselor1"),null, phychiatristOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(counselor);
         phychiatristOrg.addEmployee(counselor);
 
         // Insurance provider representative
         Person insuranceRep = new InsuranceProviderRepresentative("Dr. Doctor-1", LocalDate.now(), PersonDetails.Gender.FEMALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("insrep1", "insrep1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("insrep1", "insrep1"), healthInsuranceOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(insuranceRep);
         healthInsuranceOrg.addEmployee(insuranceRep);
         ((InsuranceProviderRepresentative) insuranceRep).setOrganization(healthInsuranceOrg);
         
         // Pharmacist
         Person pharmacist = new Pharmacist("Pharmacist-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("pharmacist1", "pharmacist1"), medicineInventoryOrg.getOrganizationId());
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), 
+                "2132921728", null ,new UserAccount("pharmacist1", "pharmacist1"), medicineInventoryOrg.getOrganizationId());
         this.globalUserDirectory.createNewUser(pharmacist);
         medicineInventoryOrg.addEmployee(pharmacist);
         pharmacistDirectory.addPharmacist((Pharmacist)pharmacist);
         
         // Delivery man
         Person deliveryMan = new DeliveryMan("Delivery-Man-1", LocalDate.now(), PersonDetails.Gender.MALE,
-                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), "2132921728", null ,new UserAccount("dman1", "dman1"));
+                new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), 
+                "2132921728", null ,new UserAccount("dman1", "dman1"), deliveryDepartmentOrganization.getOrganizationId());
         this.globalUserDirectory.createNewUser(deliveryMan);
         deliveryDepartmentOrganization.addEmployee(deliveryMan);
         

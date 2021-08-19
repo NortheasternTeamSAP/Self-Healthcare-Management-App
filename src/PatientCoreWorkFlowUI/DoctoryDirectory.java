@@ -163,7 +163,7 @@ public class DoctoryDirectory extends javax.swing.JPanel {
         }
 
         Doctor d = (Doctor)tblDoctor.getValueAt(row, 0);
-        system.globalUserDirectory.remove(d);
+        system.globalUserDirectory.removeUser(d);
         JOptionPane.showMessageDialog(this, "This doctor  has been deleted ");
         populateDoctors();
     }//GEN-LAST:event_btnDeleteDoctorActionPerformed

@@ -322,4 +322,9 @@ public class Patient implements Person {
     public Prescription getLatestMedicinePrescription() {
         return this.prescriptionsList.isEmpty() ? null : this.prescriptionsList.get(0); // return 1st element since the prescriptionsList is sorted
     }
+
+    @Override
+    public void updateDetails(PersonDetails newPatientDetails) {
+        this.patientDetails = newPatientDetails;
+    }
 }

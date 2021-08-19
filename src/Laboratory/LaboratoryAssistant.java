@@ -100,4 +100,9 @@ public class LaboratoryAssistant implements Person {
     public int getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
+    
+    @Override
+    public void updateDetails(PersonDetails newLabAssistantDetails) {
+        this.labAssistantDetails = labAssistantDetails;
+    }
 }

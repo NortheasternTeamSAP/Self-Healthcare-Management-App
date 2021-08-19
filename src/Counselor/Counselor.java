@@ -90,6 +90,11 @@ public class Counselor implements Person{
     public int getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
+
+    @Override
+    public void updateDetails(PersonDetails newCounselorDetails) {
+        this.counselorDetails = newCounselorDetails;
+    }
     
     
     

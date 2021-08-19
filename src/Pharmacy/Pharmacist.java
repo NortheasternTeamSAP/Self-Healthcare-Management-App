@@ -59,4 +59,9 @@ public class Pharmacist implements Person{
         return this.pharmacistDetails.getOrganizationId();
     }
     
+    @Override
+    public void updateDetails(PersonDetails newPharmacistDetails) {
+        this.pharmacistDetails = newPharmacistDetails;
+    }
+    
 }

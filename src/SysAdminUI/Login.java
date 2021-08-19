@@ -49,6 +49,7 @@ import javax.swing.SwingConstants;
 public class Login extends javax.swing.JPanel implements NextScreen {
   JPanel WorkArea;
    EcoSystem system;
+    private JPanel temporaryBack;
     /**
      * Creates new form StaffLogin
      */
@@ -56,6 +57,7 @@ public class Login extends javax.swing.JPanel implements NextScreen {
         initComponents();
         this.WorkArea=WorkArea;
         this.system=system;
+        
         
     }
 

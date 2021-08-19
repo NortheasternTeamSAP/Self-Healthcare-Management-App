@@ -335,11 +335,6 @@
                                           <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblDob1" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="lblDobPlaceHolder" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
                                                   <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="lblPhoneNumberPlaceHolder" min="-2" max="-2" attributes="0"/>
@@ -409,6 +404,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Component id="imgLogo" min="-2" pref="120" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel4" min="-2" pref="48" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                           <Component id="lblPatientDetails" min="-2" pref="40" max="-2" attributes="0"/>
@@ -417,12 +416,7 @@
                                               <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblNamePlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="lblDob1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblDobPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="lblPhoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblPhoneNumberPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -432,23 +426,19 @@
                                               <Component id="lblAddress" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblAddressPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAgePlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblWeight1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblEmailPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                          <Component id="imgLogo" min="-2" pref="120" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblAgePlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblWeight1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEmailPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" pref="26" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="104" max="-2" attributes="0"/>
@@ -516,19 +506,6 @@
                             <Property name="text" type="java.lang.String" value="NamePlaceHolder"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblDob1">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Lucida Grande" size="13" style="1"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Dob:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="lblDobPlaceHolder">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="DobPlaceHolder"/>
-                          </Properties>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="lblPhoneNumberPlaceHolder">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Phone Number Place Holder"/>
@@ -555,12 +532,12 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Lucida Grande" size="13" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Age:"/>
+                            <Property name="text" type="java.lang.String" value="Dob"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblAgePlaceHolder">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="AgeHolder"/>
+                            <Property name="text" type="java.lang.String" value="Dob Place holder"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblWeight1">
