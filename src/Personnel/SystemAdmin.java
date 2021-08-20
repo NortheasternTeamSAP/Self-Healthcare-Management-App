@@ -6,7 +6,9 @@
 package Personnel;
 
 import Personnel.PersonDetails.Gender;
+import Utils.Rating;
 import java.time.LocalDate;
+import java.util.List;
 import javax.swing.Icon;
 
 /**
@@ -66,6 +68,16 @@ public class SystemAdmin implements Person {
     @Override
     public void updateDetails(PersonDetails newPersonalDetails) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void addRating(Rating rating) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

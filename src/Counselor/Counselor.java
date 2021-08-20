@@ -12,11 +12,14 @@ import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
+import Personnel.PersonRatings;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Utils.Rating;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.swing.Icon;
 
@@ -30,7 +33,7 @@ public class Counselor implements Person{
     private PersonDetails counselorDetails;
     private CounselorSchedule counselorSchedule;
     private Set<String /* Appointment Date + time */> availability;
-    
+    private PersonRatings personRatings;
   
     
     public Counselor(
@@ -45,6 +48,7 @@ public class Counselor implements Person{
         counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR, icon, organizationId);
         counselorSchedule = new CounselorSchedule();
         this.availability = new HashSet<>();
+        this.personRatings = new PersonRatings();
     }
 
     @Override
@@ -95,7 +99,14 @@ public class Counselor implements Person{
     public void updateDetails(PersonDetails newCounselorDetails) {
         this.counselorDetails = newCounselorDetails;
     }
-    
-    
-    
+
+    @Override
+    public void addRating(Rating rating) {
+        personRatings.addRating(rating);
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        return personRatings.getAllRatings();
+    }
 }

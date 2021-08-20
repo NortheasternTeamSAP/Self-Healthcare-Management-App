@@ -52,6 +52,7 @@ import Pharmacy.PharmacyDirectory;
 import Prescription.Dosage;
 import Prescription.Prescription;
 import Prescription.PrescriptionDirectory;
+import Utils.Rating;
 import Utils.SMSSender;
 import java.io.File;
 import java.time.LocalDate;
@@ -285,6 +286,7 @@ public class EcoSystem {
         
         createSampleMedicines();
         addDummyPrescriptions((Patient)patient, (Doctor)doctor);
+        addDummyReviews(doctor);
     }
     
     void createSampleMedicines() {
@@ -305,5 +307,23 @@ public class EcoSystem {
             prescriptionDirectory.addPrescription(appointment.getId(), prescription);
         }
         
+    }
+    
+    void addDummyReviews(Person doctor) {
+        doctor.addRating(new Rating(4, "Good service", LocalDate.now().minusDays(20)));
+        doctor.addRating(new Rating(1, "Bad service", LocalDate.now().minusDays(10)));
+        doctor.addRating(new Rating(5, "Very good service", LocalDate.now().minusDays(11)));
+        doctor.addRating(new Rating(4, "I'm happy with the doctor", LocalDate.now().minusDays(15)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(2)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(1)));
+        doctor.addRating(new Rating(2, "Good service", LocalDate.now().minusDays(8)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(7)));
+        doctor.addRating(new Rating(1, "Good service", LocalDate.now().minusDays(12)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(18)));
+        doctor.addRating(new Rating(3, "Good service", LocalDate.now().minusDays(6)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(4)));
+        doctor.addRating(new Rating(4, "Good service", LocalDate.now().minusDays(9)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(6)));
+        doctor.addRating(new Rating(5, "Good service", LocalDate.now().minusDays(3)));
     }
 }

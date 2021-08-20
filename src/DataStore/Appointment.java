@@ -7,6 +7,7 @@ package DataStore;
 
 import Laboratory.LaboratoryTestReport;
 import Personnel.Person;
+import Utils.Rating;
 import java.time.LocalDate;
 
 /**
@@ -14,7 +15,7 @@ import java.time.LocalDate;
  * @author Ankur Bywar
  */
 public class Appointment implements Comparable<Appointment> {
-    
+
     public enum AppointmentStatus {
         PENDING,
         COMPLETED
@@ -35,6 +36,7 @@ public class Appointment implements Comparable<Appointment> {
     
     private String patientVitalSignsHistoryS3ObjectPath;
     private String patientInsuranceFileS3ObjectPath;
+    private Rating rating;
     
     static int idCounter = 1;
 
@@ -50,6 +52,7 @@ public class Appointment implements Comparable<Appointment> {
         this.status = AppointmentStatus.PENDING;
         this.patientVitalSignsHistoryS3ObjectPath = null; // Null because this will be set after the appointment is booked
         this.patientInsuranceFileS3ObjectPath = null;
+        this.rating = null;
     }
 
     public AppointmentStatus getStatus() {
@@ -135,6 +138,14 @@ public class Appointment implements Comparable<Appointment> {
 
     public String getPatientInsuranceFileS3ObjectPath() {
         return patientInsuranceFileS3ObjectPath;
+    }
+    
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
     
     

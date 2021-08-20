@@ -9,11 +9,14 @@ import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
+import Personnel.PersonRatings;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Utils.Rating;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.swing.Icon;
 
@@ -26,6 +29,7 @@ public class Dietitian implements Person{
     private PersonDetails dietitianDetails;
     private DietitianSchedule dietitianSchedule;
     private Set<String /* Appointment Date + time */> availability;
+    private PersonRatings personRatings;
     
   
     
@@ -41,6 +45,7 @@ public class Dietitian implements Person{
         dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN,icon, organizationId);
         dietitianSchedule = new DietitianSchedule();
         this.availability = new HashSet<>();
+        this.personRatings = new PersonRatings();
     }
 
     @Override
@@ -94,5 +99,15 @@ public class Dietitian implements Person{
     @Override
     public void updateDetails(PersonDetails newDietitianDetails) {
         this.dietitianDetails = newDietitianDetails;
+    }
+    
+    @Override
+    public void addRating(Rating rating) {
+        personRatings.addRating(rating);
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        return personRatings.getAllRatings();
     }
 }

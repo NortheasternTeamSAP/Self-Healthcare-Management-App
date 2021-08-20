@@ -9,9 +9,12 @@ import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
+import Personnel.PersonRatings;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Utils.Rating;
 import java.time.LocalDate;
+import java.util.List;
 import javax.swing.Icon;
 
 /**
@@ -20,6 +23,7 @@ import javax.swing.Icon;
  */
 public class DeliveryMan implements Person {
     private PersonDetails deliveryManDetails;
+    private PersonRatings personRatings;
     
     public DeliveryMan(
             String fullName,
@@ -31,7 +35,8 @@ public class DeliveryMan implements Person {
             UserAccount account,
             int organizationId){
         
-        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage, organizationId); 
+        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage, organizationId);
+        this.personRatings = new PersonRatings();
     }
     
     @Override
@@ -61,5 +66,15 @@ public class DeliveryMan implements Person {
     @Override
     public void updateDetails(PersonDetails newPersonalDetails) {
         this.deliveryManDetails = newPersonalDetails;
+    }
+    
+    @Override
+    public void addRating(Rating rating) {
+        personRatings.addRating(rating);
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        return personRatings.getAllRatings();
     }
 }

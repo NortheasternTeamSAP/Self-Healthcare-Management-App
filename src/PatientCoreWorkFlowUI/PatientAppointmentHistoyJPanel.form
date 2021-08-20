@@ -47,22 +47,20 @@
                           <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblName5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lblLastAptChiefComplain" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblName4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="lbllastAptDatePlaceHolder" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblName5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblLastAptChiefComplain" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblName6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="lblLastAptDocsFeedback" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lblName7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblName8" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -76,6 +74,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnViewLabReports" max="32767" attributes="0"/>
+                              <Component id="btnAddReview" pref="287" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="93" max="32767" attributes="0"/>
@@ -98,26 +103,26 @@
                   <Component id="jLabel1" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="104" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblName4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbllastAptDatePlaceHolder" min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblName4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbllastAptDatePlaceHolder" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblName5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblLastAptChiefComplain" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblName6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblLastAptDocsFeedback" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="lblName7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="lblName8" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="btnViewLabReports" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="btnAddReview" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="138" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -150,7 +155,7 @@
                     <Column editable="false" title="Patient Name" type="java.lang.String"/>
                     <Column editable="false" title="Doctor Name" type="java.lang.String"/>
                     <Column editable="false" title="Appointment Date" type="java.lang.String"/>
-                    <Column editable="true" title="Lab test Id" type="java.lang.Integer"/>
+                    <Column editable="true" title="Lab test Id" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -236,28 +241,28 @@
             <Property name="text" type="java.lang.String" value="Not Available"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblName7">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Grande" size="13" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Add Lab Report Details"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblName8">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Grande" size="13" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Add graphs for lab test results "/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btnMoreAppointmentDetails1">
           <Properties>
             <Property name="text" type="java.lang.String" value="More Details"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoreAppointmentDetails1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnViewLabReports">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="View this appointment&apos;s lab reports"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewLabReportsActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAddReview">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Provide review for this appointment"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddReviewActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

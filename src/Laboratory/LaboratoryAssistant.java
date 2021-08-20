@@ -14,6 +14,7 @@ import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Utils.Rating;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -104,5 +105,15 @@ public class LaboratoryAssistant implements Person {
     @Override
     public void updateDetails(PersonDetails newLabAssistantDetails) {
         this.labAssistantDetails = labAssistantDetails;
+    }
+
+    @Override
+    public void addRating(Rating rating) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
