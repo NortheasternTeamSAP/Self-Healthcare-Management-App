@@ -16,13 +16,344 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonBack" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                  <Component id="lblPatientDetails" min="-2" pref="319" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
+                          <Component id="jButtonSendInsuranceRequestPlaceHolder" min="-2" pref="335" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" min="-2" pref="607" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblWeight7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblAddNewInsurance" min="-2" pref="319" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblPatientDetails1" min="-2" pref="319" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblWeight2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWeight10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jComboBoxInsuranceHealthPlan" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxInsuranceEnterprise" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtPatientName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtGroupNumber" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtInsuranceProviderName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtInsurancePlanExpiryDate" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtInsuranceType" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtInsuranceNumber" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblPatientDetails" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jButtonBack" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblPatientDetails1" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblWeight6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblWeight2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtInsuranceNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblWeight1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtGroupNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtInsuranceProviderName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblWeight3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtInsurancePlanExpiryDate" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblWeight4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtInsuranceType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblWeight5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="105" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblAddNewInsurance" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="lblWeight7" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jComboBoxInsuranceEnterprise" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblWeight8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblWeight9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxInsuranceHealthPlan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblWeight10" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="96" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButtonSendInsuranceRequestPlaceHolder" pref="44" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblPatientDetails">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Medical health Insurance Details"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insurance Provider"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPatientName">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Group Number"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtGroupNumber">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insurance Number "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInsuranceProviderName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insurance plan expiry date"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInsurancePlanExpiryDate">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insurance  Type"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Insurance Coverage Details"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInsuranceType">
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextAreaInsuranceDetails">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="lblWeight6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Patient Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInsuranceNumber">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight7">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxInsuranceEnterprise">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="Select Insurance Provider"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Select Insurance Provider"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight9">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Select Health Insurance Plan"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxInsuranceHealthPlan">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="Select Health Insurance Plan"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWeight10">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Selected Plan Coverage"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextAreaSelectedPlanCoverageDetails">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="jButtonSendInsuranceRequestPlaceHolder">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Send Request"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSendInsuranceRequestPlaceHolderActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPatientDetails1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Current Insurance Details"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAddNewInsurance">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Request Insurance Update?"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonBack">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBackActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

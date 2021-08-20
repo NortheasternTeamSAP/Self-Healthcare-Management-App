@@ -227,6 +227,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         });
 
         jButtonUpdatePatientInsurance.setText("Update Insurance Details");
+        jButtonUpdatePatientInsurance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdatePatientInsuranceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jControlPanelLayout = new javax.swing.GroupLayout(jControlPanel);
         jControlPanel.setLayout(jControlPanelLayout);
@@ -464,7 +469,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
@@ -524,7 +529,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -668,6 +673,12 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         CardLayout layout= (CardLayout)WorkAreaPanel.getLayout();
         layout.next(WorkAreaPanel);
     }//GEN-LAST:event_btnFitnessInstructorActionPerformed
+
+    private void jButtonUpdatePatientInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdatePatientInsuranceActionPerformed
+        // TODO add your handling code here:
+        
+        nextScreen(WorkAreaPanel, new PatientInsuranceDetailsJPanel(WorkAreaPanel, ecoSystem, patient, this), "PatientInsuranceDetailsJPanel");
+    }//GEN-LAST:event_jButtonUpdatePatientInsuranceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

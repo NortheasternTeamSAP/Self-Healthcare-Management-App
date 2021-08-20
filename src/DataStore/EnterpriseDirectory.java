@@ -6,7 +6,9 @@
 package DataStore;
 
 import Enterprise.Enterprise;
+import Enterprise.EnterpriseType;
 import Personnel.Person;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,5 +32,15 @@ public class EnterpriseDirectory {
     
     public List<Enterprise> getAllEnterprise() {
         return directory.getAllValues();
+    }
+    
+    public List<Enterprise> getEnterpriseByType(EnterpriseType type) {
+        List<Enterprise> selectedEnterprise = new ArrayList<>();
+        for (Enterprise enterprise : getAllEnterprise()) {
+            if (enterprise.getEnterpriseType().equals(type)) {
+                selectedEnterprise.add(enterprise);
+            }
+        }
+        return selectedEnterprise;
     }
 }
