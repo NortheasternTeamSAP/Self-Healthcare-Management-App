@@ -226,7 +226,7 @@ public class EcoSystem {
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
                 new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), 
-                "2132921728", null, new UserAccount("pat1", "pat1"), patientOrg.getOrganizationId(), (PharmacyEnterprise) pharmacy);
+                "2132921728", null, new UserAccount("pat1", "pat1"), patientOrg.getOrganizationId(), (PharmacyEnterprise) pharmacy, "ankurbywar@gmail.com");
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 

@@ -64,20 +64,9 @@
                                                   <Component id="lblAddressPlaceHolder" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="lblWeight1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblGender" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="lblGenderPlaceHolder" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                                          <Component id="lblEmailPlaceHolder" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="lblGender" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="lblGenderPlaceHolder" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -121,12 +110,12 @@
                           <Component id="imgLogo" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblNamePlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblDob1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDobPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -146,14 +135,9 @@
                               <Component id="lblGender" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblGenderPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblWeight1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmailPlaceHolder" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="26" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="104" max="-2" attributes="0"/>
@@ -185,14 +169,6 @@
               <Font name="Lucida Grande" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Dob:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblWeight1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Grande" size="13" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="EmailId:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblGender">
@@ -285,11 +261,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblEmailPlaceHolder">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="EmailIdPlaceHolder"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblGenderPlaceHolder">
           <Properties>
             <Property name="text" type="java.lang.String" value="GenderPlaceHolder"/>

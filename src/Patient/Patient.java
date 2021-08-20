@@ -59,6 +59,8 @@ public class Patient implements Person {
     private PharmacyEnterprise preferredPharmacy;
     private InsuranceDetails insuranceDetails;
     private ArrayList<Prescription> prescriptionsList;
+    private String emailId;
+    
     
    
     
@@ -100,6 +102,47 @@ public class Patient implements Person {
         this.preferredPharmacy = preferredPharmacy;
         this.prescriptionsList = new ArrayList<Prescription>();
     }
+    
+    public Patient(
+                String fullName, 
+                LocalDate dob, 
+                Gender gender, 
+                Address address, 
+                String phoneNumber, 
+                Icon logoImage,
+                UserAccount account,
+                int organizationId,
+                PharmacyEnterprise preferredPharmacy,
+                String emailId
+            ) {
+
+        patientDetails = new PersonDetails(
+                                    fullName, 
+                                    dob, 
+                                    gender, 
+                                    address, 
+                                    phoneNumber, 
+                                    account, 
+                                    Role.PATIENT, 
+                                    logoImage, 
+                                    organizationId);
+        dietplans = new ArrayList<DietPlan>();
+        dietitianAppointments = new ArrayList<DietitianAppointment> ();
+        fitnessPlans=new ArrayList<FitnessPlan>();
+        fitnessTrainerAppointments=new ArrayList<FitnessTrainerAppointment>();
+        counsellingNotes=new ArrayList<CounsellingNote>();
+        counselorAppointments=new ArrayList<CounselorAppointment>();
+        this.vitalSignsHistory = new HashMap<>();
+        this.mostRecentVitalSigns = null;
+        this.vitalSignNormalRange = null;
+        this.doctorAppointments = new ArrayList<>();
+        this.doctorAppointmentsHistory = new ArrayList<>();
+        this.labTestReports = new ArrayList<>();
+        this.preferredPharmacy = preferredPharmacy;
+        this.prescriptionsList = new ArrayList<Prescription>();
+        this.emailId = emailId;
+    }
+    
 
     
     
@@ -322,6 +365,11 @@ public class Patient implements Person {
     public Prescription getLatestMedicinePrescription() {
         return this.prescriptionsList.isEmpty() ? null : this.prescriptionsList.get(0); // return 1st element since the prescriptionsList is sorted
     }
+
+    public String getEmailId() {
+        return emailId;
+    }
+    
 
     @Override
     public void updateDetails(PersonDetails newPatientDetails) {

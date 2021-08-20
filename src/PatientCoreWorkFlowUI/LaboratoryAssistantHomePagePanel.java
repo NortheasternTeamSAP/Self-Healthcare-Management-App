@@ -111,7 +111,6 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         lblPhoneNumberPlaceHolder = new javax.swing.JLabel();
         lblNamePlaceHolder = new javax.swing.JLabel();
         lblDob1 = new javax.swing.JLabel();
-        lblWeight1 = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
         lblAddressPlaceHolder = new javax.swing.JLabel();
         imgLogo = new javax.swing.JLabel();
@@ -120,7 +119,6 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         lblAddress = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCompletedLabTests = new javax.swing.JTable();
-        lblEmailPlaceHolder = new javax.swing.JLabel();
         lblGenderPlaceHolder = new javax.swing.JLabel();
         lblDobPlaceHolder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -139,9 +137,6 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
 
         lblDob1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblDob1.setText("Dob:");
-
-        lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblWeight1.setText("EmailId:");
 
         lblGender.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblGender.setText("Gender");
@@ -192,8 +187,6 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
             tblCompletedLabTests.getColumnModel().getColumn(2).setResizable(false);
             tblCompletedLabTests.getColumnModel().getColumn(3).setResizable(false);
         }
-
-        lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
 
         lblGenderPlaceHolder.setText("GenderPlaceHolder");
 
@@ -292,16 +285,9 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lblAddressPlaceHolder))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(lblWeight1)
-                                                    .addComponent(lblGender))
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(lblGenderPlaceHolder))
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGap(4, 4, 4)
-                                                        .addComponent(lblEmailPlaceHolder)))
+                                                .addComponent(lblGender)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblGenderPlaceHolder)
                                                 .addGap(5, 5, 5)))))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,11 +315,11 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
                         .addGap(41, 41, 41)
                         .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
                             .addComponent(lblNamePlaceHolder))
-                        .addGap(16, 16, 16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDob1)
                             .addComponent(lblDobPlaceHolder))
@@ -348,12 +334,8 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblGender)
-                            .addComponent(lblGenderPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWeight1)
-                            .addComponent(lblEmailPlaceHolder))))
-                .addGap(18, 18, 18)
+                            .addComponent(lblGenderPlaceHolder))))
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,7 +396,6 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
     private javax.swing.JLabel lblAddressPlaceHolder;
     private javax.swing.JLabel lblDob1;
     private javax.swing.JLabel lblDobPlaceHolder;
-    private javax.swing.JLabel lblEmailPlaceHolder;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblGenderPlaceHolder;
     private javax.swing.JLabel lblName;
@@ -422,7 +403,6 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
     private javax.swing.JLabel lblPatientDetails;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblPhoneNumberPlaceHolder;
-    private javax.swing.JLabel lblWeight1;
     private javax.swing.JTable tblCompletedLabTests;
     private javax.swing.JTable tblPendingLabTests;
     // End of variables declaration//GEN-END:variables

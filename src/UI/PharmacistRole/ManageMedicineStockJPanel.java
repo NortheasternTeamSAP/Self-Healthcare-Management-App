@@ -147,10 +147,11 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
         int selectedRowIndex = tblMedicineCatalog.getSelectedRow();
 
         if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
+            //JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+             log.error("Selected row from Employees Table is not >= 0");
+             return;
         }
-        Medicine med = (Medicine) tblMedicineCatalog.getValueAt(selectedRowIndex, 0);
+        Medicine med = (Medicine)tblMedicineCatalog.getValueAt(selectedRowIndex, 0);
         ecoSystem.getMedicineDirectory().deleteMedicine(med);
         refreshTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
