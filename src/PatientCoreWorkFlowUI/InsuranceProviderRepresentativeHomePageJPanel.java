@@ -8,6 +8,7 @@ package PatientCoreWorkFlowUI;
 import DataStore.Appointment;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
+import Insurance.InsuranceDetails;
 import Insurance.InsuranceProviderRepresentative;
 import Insurance.PrimaryCareInsuranceClaim;
 import Insurance.PrimaryCareInsuranceClaim.ClaimStatus;
@@ -18,10 +19,15 @@ import Organization.Organization;
 import Patient.Patient;
 import Personnel.Person;
 import Personnel.PersonDetails;
+import SysAdminUI.Login;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,7 +46,6 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private EcoSystem ecoSystem;
     private LaboratoryAssistant laboratoryAssistant;
     Person insuranceProviderRepresentative;
-    private JPanel temporaryBack;
     
     HealthInsuranceDepartmentOrganization healthInsuranceOrganization ;
     ConsoleLogger log = ConsoleLogger.getLogger();
@@ -54,7 +59,6 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         this.ecoSystem = ecoSystem;
         this.laboratoryAssistant = (LaboratoryAssistant) laboratoryAssistant;
         this.insuranceProviderRepresentative = insuranceProviderRepresentative;
-        this.temporaryBack = temporaryBack;
         this.healthInsuranceOrganization = (HealthInsuranceDepartmentOrganization) healthInsuranceOrganization;
         
          healthInsuranceOrganization = getHealthInsuranceOrganization(insuranceProviderRepresentative);
@@ -62,7 +66,8 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         populatePendingHealthInsuranceClaimsTable();
         populateProcessedHealthInsuranceClaimsTable();
         populateInsuranceProviderRepresentativeInfoPlaceholders();
-        
+        populateInsuranceRequests(tblUnProcessedInsuranceRequests, this.healthInsuranceOrganization.getPendingnewInsuranceRequests());
+        populateInsuranceRequests(tblProcessedInsuranceRequests, this.healthInsuranceOrganization.getProcessedInsuranceRequests());  
     }
     
     public void reload() {
@@ -73,6 +78,26 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     HealthInsuranceDepartmentOrganization getHealthInsuranceOrganization(Person insuranceProviderRepresentative) {
         InsuranceProviderRepresentative insuranceRep = (InsuranceProviderRepresentative)insuranceProviderRepresentative;
         return (HealthInsuranceDepartmentOrganization)insuranceRep.getOrganization();
+    }
+    
+    void populateInsuranceRequests(JTable tblPendingInsuranceRequests, List<InsuranceDetails> insuranceRequests) {
+        DefaultTableModel  model = (DefaultTableModel) tblPendingInsuranceRequests.getModel();
+        model.setRowCount(0);
+
+        if (insuranceRequests == null || insuranceRequests.isEmpty()) {
+            log.debug("No requests found");
+            return;
+        }
+        
+        for (InsuranceDetails insuranceRequest : insuranceRequests) {
+            Object row[] = new Object[5];
+            row[0] = insuranceRequest.getId();
+            row[1] = insuranceRequest.getRequestDate().toString();
+            row[2] = insuranceRequest.getPatient().getPersonDetails().getFullName();
+            row[3] = insuranceRequest.getPlanDetails().getPlanName();
+            row[4] = insuranceRequest.getInsuranceRequestApprovalStatus().toString();
+            model.addRow(row);
+        }
     }
     
     void populatePendingHealthInsuranceClaimsTable() {
@@ -150,6 +175,14 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPendingHealthInsuranceClaims = new javax.swing.JTable();
         btnReviewClaim = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblUnProcessedInsuranceRequests = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        btnAcceptInsuranceRequest = new javax.swing.JButton();
+        btnDeclineInsuranceRequest = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblProcessedInsuranceRequests = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
 
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
 
@@ -223,16 +256,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             }
         });
         jScrollPane3.setViewportView(tblProcessedHealthInsuranceClaims);
-        if (tblProcessedHealthInsuranceClaims.getColumnModel().getColumnCount() > 0) {
-            tblProcessedHealthInsuranceClaims.getColumnModel().getColumn(0).setResizable(false);
-            tblProcessedHealthInsuranceClaims.getColumnModel().getColumn(1).setResizable(false);
-            tblProcessedHealthInsuranceClaims.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("Processed Health Insurance Claims");
 
-        btnBback.setText("Back");
+        btnBback.setText("Logout");
         btnBback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBbackActionPerformed(evt);
@@ -279,6 +307,82 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             }
         });
 
+        tblUnProcessedInsuranceRequests.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Request Date", "Beneficiary name", "Plan Details", "Request Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tblUnProcessedInsuranceRequests);
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setText("Pending insurance Requests");
+
+        btnAcceptInsuranceRequest.setText("Accept");
+        btnAcceptInsuranceRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptInsuranceRequestActionPerformed(evt);
+            }
+        });
+
+        btnDeclineInsuranceRequest.setText("Decline");
+        btnDeclineInsuranceRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeclineInsuranceRequestActionPerformed(evt);
+            }
+        });
+
+        tblProcessedInsuranceRequests.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Request Date", "Beneficiary name", "Plan Details", "Request Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tblProcessedInsuranceRequests);
+
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setText("Processed insurance Requests");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -290,6 +394,15 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                         .addComponent(btnBback, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(btnProcessClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(btnReviewClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,22 +445,23 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                                     .addGap(99, 99, 99)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(btnProcessClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(btnReviewClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(413, Short.MAX_VALUE))
+                        .addGap(96, 96, 96)
+                        .addComponent(btnAcceptInsuranceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnDeclineInsuranceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(432, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(79, 79, 79)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(403, Short.MAX_VALUE)))
+                    .addContainerGap(422, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,29 +509,44 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnReviewClaim)
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAcceptInsuranceRequest)
+                    .addComponent(btnDeclineInsuranceRequest))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(299, 299, 299)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(521, Short.MAX_VALUE)))
+                    .addContainerGap(684, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1013, Short.MAX_VALUE)
+            .addGap(0, 1038, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 924, Short.MAX_VALUE)
+            .addGap(0, 1087, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -449,7 +578,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
 
     private void btnBbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBbackActionPerformed
         // TODO add your handling code here:
-        nextScreen(workAreaPanel, temporaryBack, "Patient home page");
+        nextScreen(workAreaPanel, new Login(workAreaPanel, ecoSystem), "Patient home page");
     }//GEN-LAST:event_btnBbackActionPerformed
 
     private void btnReviewClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReviewClaimActionPerformed
@@ -477,17 +606,73 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         nextScreen(workAreaPanel, new PatientClaimDetailsJPanel(workAreaPanel, claimToBeProcessed, this), "PatientClaimDetailsJPanel");
     }//GEN-LAST:event_btnReviewClaimActionPerformed
 
+    private void btnAcceptInsuranceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptInsuranceRequestActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow = tblUnProcessedInsuranceRequests.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Select a pending insurance requests table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int requestId = (int) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
+        InsuranceDetails insuranceDetails = healthInsuranceOrganization.getUnprocessedInsuranceRequest(requestId);
+        if (insuranceDetails == null) {
+            JOptionPane.showMessageDialog(null, "No pending insurance found with id: " + requestId, "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        insuranceDetails.setExpiryDate(LocalDate.now().plusYears(1));
+        Random r = new Random();
+        insuranceDetails.setInsuranceNumber((long) r.nextInt(Short.MAX_VALUE + 1));
+        insuranceDetails.setGroupNumber((long) r.nextInt(Short.MAX_VALUE + 1));
+        insuranceDetails.setInsuranceRequestApprovalStatus(InsuranceDetails.InsuranceRequestApprovalStatus.APPROVED);
+        
+        healthInsuranceOrganization.processInsuranceRequest(insuranceDetails);
+        populateInsuranceRequests(tblUnProcessedInsuranceRequests, this.healthInsuranceOrganization.getPendingnewInsuranceRequests());
+        populateInsuranceRequests(tblProcessedInsuranceRequests, this.healthInsuranceOrganization.getProcessedInsuranceRequests());
+        Patient patient = (Patient) insuranceDetails.getPatient();
+        patient.setInsuranceDetails(insuranceDetails);
+    }//GEN-LAST:event_btnAcceptInsuranceRequestActionPerformed
+
+    private void btnDeclineInsuranceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineInsuranceRequestActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblUnProcessedInsuranceRequests.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Select a pending insurance request from the table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int requestId = (int) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
+        InsuranceDetails insuranceDetails = healthInsuranceOrganization.getUnprocessedInsuranceRequest(requestId);
+        if (insuranceDetails == null) {
+            JOptionPane.showMessageDialog(null, "No pending insurance found with id: " + requestId, "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        insuranceDetails.setInsuranceRequestApprovalStatus(InsuranceDetails.InsuranceRequestApprovalStatus.DECLINED);
+        
+        populateInsuranceRequests(tblUnProcessedInsuranceRequests, this.healthInsuranceOrganization.getPendingnewInsuranceRequests());
+        populateInsuranceRequests(tblProcessedInsuranceRequests, this.healthInsuranceOrganization.getProcessedInsuranceRequests());  
+    }//GEN-LAST:event_btnDeclineInsuranceRequestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcceptInsuranceRequest;
     private javax.swing.JButton btnBback;
+    private javax.swing.JButton btnDeclineInsuranceRequest;
     private javax.swing.JButton btnProcessClaim;
     private javax.swing.JButton btnReviewClaim;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAddressPlaceHolder;
     private javax.swing.JLabel lblDob1;
@@ -503,6 +688,8 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private javax.swing.JLabel lblWeight1;
     private javax.swing.JTable tblPendingHealthInsuranceClaims;
     private javax.swing.JTable tblProcessedHealthInsuranceClaims;
+    private javax.swing.JTable tblProcessedInsuranceRequests;
+    private javax.swing.JTable tblUnProcessedInsuranceRequests;
     // End of variables declaration//GEN-END:variables
 
     private void populateInsuranceProviderRepresentativeInfoPlaceholders() {

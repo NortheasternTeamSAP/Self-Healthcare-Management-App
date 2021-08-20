@@ -101,6 +101,7 @@ public class Patient implements Person {
         this.labTestReports = new ArrayList<>();
         this.preferredPharmacy = preferredPharmacy;
         this.prescriptionsList = new ArrayList<Prescription>();
+        this.insuranceDetails = null;
     }
     
     public Patient(
@@ -141,6 +142,7 @@ public class Patient implements Person {
         this.preferredPharmacy = preferredPharmacy;
         this.prescriptionsList = new ArrayList<Prescription>();
         this.emailId = emailId;
+        this.insuranceDetails = null;
     }
     
 

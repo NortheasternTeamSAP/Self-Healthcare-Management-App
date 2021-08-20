@@ -6,6 +6,7 @@
 package Organization;
 
 import Enterprise.Enterprise;
+import Insurance.InsuranceDetails;
 import Insurance.PrimaryCareInsuranceClaim;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,15 @@ public class HealthInsuranceDepartmentOrganization extends Organization {
     List<PrimaryCareInsuranceClaim> pendingMedicalInsuranceClaims;
     List<PrimaryCareInsuranceClaim> processedMedicalInsuranceClaims;
     
+    List<InsuranceDetails> pendingnewInsuranceRequests;
+    List<InsuranceDetails> processedInsuranceRequests;
+    
     public HealthInsuranceDepartmentOrganization(String name, Enterprise enterprise) {
         super(name, enterprise, OrganizationType.HEALTH_INSURANCE_DEPARTMENT);
         pendingMedicalInsuranceClaims = new ArrayList<>();
+        processedMedicalInsuranceClaims = new ArrayList<>();
+        pendingnewInsuranceRequests = new ArrayList<>();
+        processedInsuranceRequests = new ArrayList<>();
     }
     
     public void addMedicalInsuranceClaim(PrimaryCareInsuranceClaim claim) {
@@ -42,7 +49,32 @@ public class HealthInsuranceDepartmentOrganization extends Organization {
     public List<PrimaryCareInsuranceClaim> getProcessedMedicalInsuranceClaims() {
         return processedMedicalInsuranceClaims;
     }
+
+    public void addInsuranceRequest(InsuranceDetails insuranceDetails) {
+        pendingnewInsuranceRequests.add(insuranceDetails);
+    } 
+
+    public List<InsuranceDetails> getPendingnewInsuranceRequests() {
+        return pendingnewInsuranceRequests;
+    }
     
+    public List<InsuranceDetails> getProcessedInsuranceRequests() {
+        return processedInsuranceRequests;
+    }
     
+    public void processInsuranceRequest(InsuranceDetails request) {
+        if (pendingnewInsuranceRequests.remove(request)) {
+            processedInsuranceRequests.add(request);
+        }
+    }
     
+    public InsuranceDetails getUnprocessedInsuranceRequest(int id) {
+        for (InsuranceDetails insuranceDetails : pendingnewInsuranceRequests) {
+            if (insuranceDetails.getId() == id) {
+                return insuranceDetails;
+            }
+        }
+        
+        return null;
+    }
 }
