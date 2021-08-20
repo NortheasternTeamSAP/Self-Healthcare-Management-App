@@ -70,10 +70,6 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         lblPhoneNumberPlaceHolder = new javax.swing.JLabel();
         lblAddressPlaceHolder = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblAge = new javax.swing.JLabel();
-        lblAgePlaceHolder = new javax.swing.JLabel();
-        lblWeight1 = new javax.swing.JLabel();
-        lblEmailId = new javax.swing.JLabel();
         lblSearchByDate = new javax.swing.JLabel();
         txtPatientUserNameSearch = new javax.swing.JTextField();
         jUserNameSearchBtn = new javax.swing.JButton();
@@ -145,16 +141,6 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 102, 255));
         jLabel4.setText("Welcome to Fred Meyer ");
-
-        lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblAge.setText("Age:");
-
-        lblAgePlaceHolder.setText("AgeHolder");
-
-        lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblWeight1.setText("EmailId:");
-
-        lblEmailId.setText("EmailIdPlaceHolder");
 
         lblSearchByDate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblSearchByDate.setText("Filter by patient id");
@@ -228,16 +214,6 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(lblSearchByDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPatientUserNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jUserNameSearchBtn))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                                 .addGap(134, 134, 134)
@@ -261,20 +237,10 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                                         .addComponent(lblName)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblNamePlaceHolder))
-                                    .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addComponent(lblAddress)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblAddressPlaceHolder))
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addComponent(lblAge)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(lblAgePlaceHolder)
-                                            .addGap(51, 51, 51))
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addComponent(lblWeight1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(lblEmailId)))))
+                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                        .addComponent(lblAddress)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblAddressPlaceHolder))))
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,20 +248,28 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                                 .addGap(90, 90, 90)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(btnOldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(248, Short.MAX_VALUE))
-            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                    .addGap(257, 257, 257)
-                    .addComponent(btnNewAppointmentDetails2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(429, Short.MAX_VALUE)))
-            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                    .addGap(97, 97, 97)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(253, Short.MAX_VALUE)))
+                        .addGap(71, 71, 71)
+                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                .addGap(171, 171, 171)
+                                .addComponent(btnOldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnNewAppointmentDetails2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                    .addComponent(lblSearchByDate)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtPatientUserNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jUserNameSearchBtn))))))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPatientDetailPanelLayout.setVerticalGroup(
             jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,17 +300,13 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAge)
-                    .addComponent(lblAgePlaceHolder))
-                .addGap(18, 18, 18)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight1)
-                    .addComponent(lblEmailId))
-                .addGap(107, 107, 107)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(209, 209, 209)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnNewAppointmentDetails2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jUserNameSearchBtn, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -346,17 +316,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnOldAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPatientDetailPanelLayout.createSequentialGroup()
-                    .addContainerGap(600, Short.MAX_VALUE)
-                    .addComponent(btnNewAppointmentDetails2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(363, 363, 363)))
-            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPatientDetailPanelLayout.createSequentialGroup()
-                    .addContainerGap(478, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(418, 418, 418)))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -477,18 +437,14 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
     private javax.swing.JButton jUserNameSearchBtn;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAddressPlaceHolder;
-    private javax.swing.JLabel lblAge;
-    private javax.swing.JLabel lblAgePlaceHolder;
     private javax.swing.JLabel lblDob1;
     private javax.swing.JLabel lblDobPlaceHolder;
-    private javax.swing.JLabel lblEmailId;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNamePlaceHolder;
     private javax.swing.JLabel lblPatientDetails;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblPhoneNumberPlaceHolder;
     private javax.swing.JLabel lblSearchByDate;
-    private javax.swing.JLabel lblWeight1;
     private javax.swing.JTable tblCompletedPatientAppointments;
     private javax.swing.JTable tblUpcomingPatientAppointments;
     private javax.swing.JTextField txtPatientUserNameSearch;
@@ -528,8 +484,8 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         PersonDetails pd = doctor.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
         //lblAgePlaceHolder.setText(pd.getAge() + " years");  
-        //lblAgePlaceHolder.setText(pd.getDob().toString());
-        lblEmailId.setText("Not Available");   
+         lblDobPlaceHolder.setText(pd.getDob().toString());
+       
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
         imgLogo.setIcon(pd.getLogoImage());
