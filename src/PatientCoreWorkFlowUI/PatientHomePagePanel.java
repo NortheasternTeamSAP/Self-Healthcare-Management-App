@@ -57,7 +57,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
 //        lblAgePlaceHolder.setText(pd.getAge() + " years");  
          lblAgePlaceHolder.setText(pd.getDob().toString());
-        lblEmailPlaceHolder.setText("Not Available");  
+        lblEmailPlaceHolder.setText(patient.getEmailId());  
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
         imgLogo.setIcon(pd.getLogoImage());

@@ -508,12 +508,10 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private void populateInsuranceProviderRepresentativeInfoPlaceholders() {
         PersonDetails pd = insuranceProviderRepresentative.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
-        //lblAgePlaceHolder.setText(pd.getAge() + " years");  
-        lblGenderPlaceHolder.setText(pd.getDob().toString());
-        //lblEmailId.setText("Not Available");   
+        lblGenderPlaceHolder.setText(pd.getDob().toString()); 
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
-        lblGenderPlaceHolder.setText(pd.getGender().MALE.toString());
+        lblGenderPlaceHolder.setText(pd.getGender().toString());
         imgLogo.setIcon(pd.getLogoImage());
     }
 }
