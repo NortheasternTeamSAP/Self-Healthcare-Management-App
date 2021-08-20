@@ -11,7 +11,9 @@ import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Utils.Rating;
 import java.time.LocalDate;
+import java.util.List;
 import javax.swing.Icon;
 
 /**
@@ -62,6 +64,16 @@ public class Pharmacist implements Person{
     @Override
     public void updateDetails(PersonDetails newPharmacistDetails) {
         this.pharmacistDetails = newPharmacistDetails;
+    }
+
+    @Override
+    public void addRating(Rating rating) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

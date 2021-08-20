@@ -25,6 +25,7 @@ import Personnel.Role;
 import Personnel.UserAccount;
 import Enterprise.PharmacyEnterprise;
 import Prescription.Prescription;
+import Utils.Rating;
 import VitalSign.VitalSignNormalRange;
 import VitalSign.VitalSigns;
 import java.time.LocalDate;
@@ -303,8 +304,10 @@ public class Patient implements Person {
         doctorAppointments.add(apt);
     }
     
-    public void addAppointmentToHistory(Appointment apt) {
-        this.doctorAppointmentsHistory.add(apt);
+    public void completeDoctorAppointment(Appointment apt) {
+        if (this.doctorAppointments.remove(apt)) {
+            this.doctorAppointmentsHistory.add(apt);
+        }
     }
     
     public List<Appointment> getDoctorAppointmentsHistory() {
@@ -376,5 +379,15 @@ public class Patient implements Person {
     @Override
     public void updateDetails(PersonDetails newPatientDetails) {
         this.patientDetails = newPatientDetails;
+    }
+
+    @Override
+    public void addRating(Rating rating) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

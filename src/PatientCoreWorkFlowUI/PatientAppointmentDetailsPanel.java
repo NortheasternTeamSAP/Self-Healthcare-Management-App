@@ -546,9 +546,11 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         // TODO add your handling code here:
         
         appointment.setStatus(Appointment.AppointmentStatus.COMPLETED);
+        patient.completeDoctorAppointment(appointment);
+        
         btnSubmitNewLabTestRequest1.setEnabled(false);
         btnPrescribeNewMedicines.setEnabled(false);
-        
+        btnNewAppointmentDetails.setEnabled(false);
         
     }//GEN-LAST:event_btnNewAppointmentDetailsActionPerformed
 

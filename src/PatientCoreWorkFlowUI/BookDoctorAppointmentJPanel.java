@@ -14,6 +14,7 @@ import Utils.ConsoleLogger;
 import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
+import Utils.ViewPersonRatingsJPanel;
 import VitalSign.VitalSigns;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
@@ -714,6 +715,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
 
     private void btnDoctorReviewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorReviewsActionPerformed
         // TODO add your handling code here:
+        nextScreen(WorkAreaPanel, new ViewPersonRatingsJPanel(WorkAreaPanel, selectedDoctor, this), "ViewPersonRatingsJPanel");
     }//GEN-LAST:event_btnDoctorReviewsActionPerformed
 
     private void tblDoctorListMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctorListMouseExited

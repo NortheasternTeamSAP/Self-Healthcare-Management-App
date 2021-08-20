@@ -10,6 +10,9 @@ import EcoSystem.EcoSystem;
 import Patient.Patient;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
+import Utils.Rating;
+import Utils.StarRatingsUtil;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JFrame;
@@ -27,6 +30,8 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
     EcoSystem ecoSystem;
     JPanel backButtonPage;
     
+    Appointment selectedAppointment;
+    
     ConsoleLogger log = ConsoleLogger.getLogger();
     /**
     /**
@@ -38,6 +43,9 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
         this.patient = patient;
         this.workAreaPanel = workAreaPanel;
         this.backButtonPage = backButtonPage;
+        this.selectedAppointment = null;
+        btnViewLabReports.setEnabled(false);
+        btnAddReview.setEnabled(false);
         populatePatientAppointmentHistoryTable();
     }
     
@@ -62,7 +70,7 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
             row[1] = appointment.getPatient().getPersonDetails().getFullName();
             row[2] = appointment.getDoctor().getPersonDetails().getFullName();
             row[3] = appointment.getDate();
-            row[4] = appointment.getLabTestReport().getId();
+            row[4] = appointment.getLabTestReport() == null ? "N/A" : appointment.getLabTestReport().getId();
             model.addRow(row);
         }
     }
@@ -89,9 +97,9 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
         lblLastAptChiefComplain = new javax.swing.JLabel();
         lblName6 = new javax.swing.JLabel();
         lblLastAptDocsFeedback = new javax.swing.JLabel();
-        lblName7 = new javax.swing.JLabel();
-        lblName8 = new javax.swing.JLabel();
         btnMoreAppointmentDetails1 = new javax.swing.JButton();
+        btnViewLabReports = new javax.swing.JButton();
+        btnAddReview = new javax.swing.JButton();
 
         jLabel1.setText("Patient Appointment and Lab tests History");
 
@@ -107,7 +115,7 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, true
@@ -145,16 +153,24 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
 
         lblLastAptDocsFeedback.setText("Not Available");
 
-        lblName7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblName7.setText("Add Lab Report Details");
-
-        lblName8.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblName8.setText("Add graphs for lab test results ");
-
         btnMoreAppointmentDetails1.setText("More Details");
         btnMoreAppointmentDetails1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoreAppointmentDetails1ActionPerformed(evt);
+            }
+        });
+
+        btnViewLabReports.setText("View this appointment's lab reports");
+        btnViewLabReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewLabReportsActionPerformed(evt);
+            }
+        });
+
+        btnAddReview.setText("Provide review for this appointment");
+        btnAddReview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddReviewActionPerformed(evt);
             }
         });
 
@@ -168,19 +184,17 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
                         .addGap(131, 131, 131)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblName5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblLastAptChiefComplain))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblName4)
                                 .addGap(18, 18, 18)
                                 .addComponent(lbllastAptDatePlaceHolder))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblName5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblLastAptChiefComplain))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblName6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblLastAptDocsFeedback))
-                            .addComponent(lblName7)
-                            .addComponent(lblName8)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblLastAptDocsFeedback))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,7 +203,12 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(btnBack)))
+                        .addComponent(btnBack))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnViewLabReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAddReview, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))))
                 .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -206,23 +225,23 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(96, 96, 96)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName4)
                     .addComponent(lbllastAptDatePlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName5)
                     .addComponent(lblLastAptChiefComplain, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName6)
                     .addComponent(lblLastAptDocsFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(lblName7)
-                .addGap(48, 48, 48)
-                .addComponent(lblName8)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btnViewLabReports)
+                .addGap(27, 27, 27)
+                .addComponent(btnAddReview)
+                .addContainerGap(138, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(241, 241, 241)
@@ -275,17 +294,48 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
             return;
         }
         
+        this.selectedAppointment = selectedAppointment;
+        btnViewLabReports.setEnabled(true);
         lbllastAptDatePlaceHolder.setText(selectedAppointment.getDate() + " at " + selectedAppointment.getAppointmentTimeHours() + ":00");
         lblLastAptChiefComplain.setText(selectedAppointment.getCheifComplain());
-        lblLastAptDocsFeedback.setText(selectedAppointment.getDoctorFeedback());
+        lblLastAptDocsFeedback.setText(selectedAppointment.getDoctorFeedback() == null || selectedAppointment.getDoctorFeedback().isEmpty() 
+                ? "Not Available" 
+                : selectedAppointment.getDoctorFeedback());
+        
+        if (selectedAppointment.getRating() == null) {
+            btnAddReview.setEnabled(true);
+        } else {
+            if (selectedAppointment.getRating().getStatus() == Rating.RatingStatus.RATING_NOT_PROVIDED) {
+                btnAddReview.setEnabled(true);
+            } else {
+                btnAddReview.setEnabled(true);
+                btnAddReview.setText(selectedAppointment.getRating().getRating() + " star rating already provided");
+                btnAddReview.setEnabled(false);
+            }
+        }
         // Add lab test reports details
         // Add VS at that time (may be??)
     }//GEN-LAST:event_btnMoreAppointmentDetails1ActionPerformed
 
+    private void btnViewLabReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLabReportsActionPerformed
+        // TODO add your handling code here:
+        nextScreen(workAreaPanel, new PatientLabTestViewJPanel(workAreaPanel, selectedAppointment.getLabTestReport(), this), "PatientLabTestViewJPanel");
+    }//GEN-LAST:event_btnViewLabReportsActionPerformed
+
+    private void btnAddReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddReviewActionPerformed
+        // TODO add your handling code here:
+        StarRatingsUtil starRatingsUtil = new StarRatingsUtil();
+        Rating rating = new Rating();
+        selectedAppointment.setRating(rating);
+        starRatingsUtil.openRatingsJPanel("Provide Review for Primary Care Provider", selectedAppointment.getDoctor(), rating, LocalDate.now());        
+    }//GEN-LAST:event_btnAddReviewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddReview;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnMoreAppointmentDetails1;
+    private javax.swing.JButton btnViewLabReports;
     private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -295,8 +345,6 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
     private javax.swing.JLabel lblName4;
     private javax.swing.JLabel lblName5;
     private javax.swing.JLabel lblName6;
-    private javax.swing.JLabel lblName7;
-    private javax.swing.JLabel lblName8;
     private javax.swing.JLabel lbllastAptDatePlaceHolder;
     private javax.swing.JTable tblPatientAppointmentHistory;
     // End of variables declaration//GEN-END:variables

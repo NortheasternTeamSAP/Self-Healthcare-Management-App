@@ -5,6 +5,9 @@
  */
 package Personnel;
 
+import Utils.Rating;
+import java.util.List;
+
 /**
  *
  * @author Ankur Bywar
@@ -17,5 +20,7 @@ public interface Person {
     public PersonDetails getPersonDetails();
     public int getOrganizationId();
     public void updateDetails(PersonDetails newPersonalDetails);
-
+    
+    public void addRating(Rating rating);
+    public List<Rating> getAllRatings();
 }

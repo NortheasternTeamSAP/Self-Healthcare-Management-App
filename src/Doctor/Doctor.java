@@ -10,8 +10,10 @@ import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.PersonDetails.Gender;
+import Personnel.PersonRatings;
 import Personnel.Role;
 import Personnel.UserAccount;
+import Utils.Rating;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,6 +30,7 @@ public class Doctor implements Person {
     private String speciality;
     private ArrayList<Appointment> patientAppointments;
     private Set<String /* Appointment Date + time */> doctorAvailability;
+    private PersonRatings personRatings;
     
     public Doctor(
             String fullName, 
@@ -42,6 +45,7 @@ public class Doctor implements Person {
         speciality = "Unknown";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
+        this.personRatings = new PersonRatings();
     }
    
     public Doctor(
@@ -58,6 +62,7 @@ public class Doctor implements Person {
         speciality = "Unknown";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
+        this.personRatings = new PersonRatings();
     }
     public String getSpeciality() {
         return speciality;
@@ -101,5 +106,15 @@ public class Doctor implements Person {
     @Override
     public void updateDetails(PersonDetails newDoctorDetails) {
         this.doctorDetails = newDoctorDetails;
+    }
+    
+    @Override
+    public void addRating(Rating rating) {
+        personRatings.addRating(rating);
+    }
+
+    @Override
+    public List<Rating> getAllRatings() {
+        return personRatings.getAllRatings();
     }
 }
