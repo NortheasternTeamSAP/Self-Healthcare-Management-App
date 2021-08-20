@@ -8,6 +8,9 @@ package Insurance;
 import Enterprise.Enterprise;
 import Enterprise.InsuranceCompanyEnterprise;
 import Personnel.Person;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 /**
@@ -111,6 +114,26 @@ public class InsuranceDetails {
         this.insuranceRequestApprovalStatus = insuranceRequestApprovalStatus;
     }
     
+    public boolean generateFileForInsuranceDetails(String filePath) {
+        try {
+          FileWriter myWriter = new FileWriter(filePath);
+          myWriter.write("** Patient Insurance Details **");
+          myWriter.write("\n Patient Name: " + this.patient.getPersonDetails().getFullName());
+          myWriter.write("\n Patient date of birth: " + this.patient.getPersonDetails().getDob().toString());
+          myWriter.write("\n Insurance Company: " + this.insuranceProvider.getEnterpriseName());
+          myWriter.write("\n Insurance Group Number: " + this.groupNumber);
+          myWriter.write("\n Insurance number: " + this.insuranceNumber);
+          myWriter.write("\n Insurance type: Health Insurance");
+          myWriter.write("\n Insurance Plan name:" + this.planDetails.planName);
+          myWriter.write("\n Insurance Plan details:" + this.planDetails.getDetails());
+          myWriter.write("\n Insurance expiry date:" + this.getExpiryDate().toString());
+          myWriter.close();
+        } catch (IOException e) {
+            return false;
+        }
+        
+        return true;
+    }
     
     
     

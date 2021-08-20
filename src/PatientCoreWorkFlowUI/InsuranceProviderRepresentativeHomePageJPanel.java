@@ -132,7 +132,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         }
 
         for (PrimaryCareInsuranceClaim claim : processedClaims) {
-            if (!claim.getClaimSatus().equals(ClaimStatus.PROCESSED)) {
+            if (!claim.getClaimSatus().equals(ClaimStatus.PENDING)) {
                 Object row[] = new Object[3];
                 row[0] = claim.getClaimId();
                 row[1] = claim.getPatient().getPersonDetails().getFullName();
@@ -553,7 +553,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private void btnProcessClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessClaimActionPerformed
         // TODO add your handling code here:
         
-        int selectedRow = tblPendingHealthInsuranceClaims.getSelectedRow();
+        int selectedRow = tblProcessedHealthInsuranceClaims.getSelectedRow();
         if (selectedRow < 0) {
             log.error("Selected row from tblPendingHealthInsuranceClaims table is not >= 0");
             return;
@@ -625,7 +625,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         insuranceDetails.setExpiryDate(LocalDate.now().plusYears(1));
         Random r = new Random();
         insuranceDetails.setInsuranceNumber((long) r.nextInt(Short.MAX_VALUE + 1));
-        insuranceDetails.setGroupNumber((long) r.nextInt(Short.MAX_VALUE + 1));
+        insuranceDetails.setGroupNumber((long)healthInsuranceOrganization.getEnterprise().getEnterpriseId());
         insuranceDetails.setInsuranceRequestApprovalStatus(InsuranceDetails.InsuranceRequestApprovalStatus.APPROVED);
         
         healthInsuranceOrganization.processInsuranceRequest(insuranceDetails);

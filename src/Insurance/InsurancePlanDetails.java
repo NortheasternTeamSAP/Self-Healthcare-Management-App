@@ -43,5 +43,11 @@ public class InsurancePlanDetails {
                 "Deductible: " + deductible + "$, \n" +
                 "Other details: " + otherDetails;
     }
+    
+    public String getDetails() {
+        return "Monthly: " + monthly + "$, " +
+                "Deductible: " + deductible + "$, " +
+                "Other details: " + otherDetails;
+    }
         
 }

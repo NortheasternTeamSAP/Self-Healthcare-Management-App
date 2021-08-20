@@ -67,11 +67,20 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     }
     
     void populateBillingCharges() {
-        String labTestCostValue = 
+        String labTestCostValue = null;
+        if (appointment.getLabTestReport() == null) {
+            labTestCostValue = 
+                    "<html>" +
+                    "No lab tests performed. Lab Charges: 0.00$" +
+                    "</html>";
+                jLabelLabTestCostPlaceHolder.setText("0.00$");
+                return;
+        } else {
+            labTestCostValue = 
                 "<html>" +
                 appointment.getLabTestReport().getLab().getName() + " test charges: " + appointment.getLabTestReport().getLabTestCost() +
                 "</html>";
-                
+        }
         jLabelLabTestCostPlaceHolder.setText(labTestCostValue);
     }
 
@@ -102,6 +111,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         jButtonCalculateTotalCost = new javax.swing.JButton();
         jLabelLabAssistantPlaceHolder5 = new javax.swing.JLabel();
         jLabelLabAssistantPlaceHolder7 = new javax.swing.JLabel();
+        jLabelLabAssistantPlaceHolder8 = new javax.swing.JLabel();
         jLabelClaimAlreadySubmittedMessage = new javax.swing.JLabel();
 
         jLabel1.setText(" Patient Billing Dashboard");
@@ -138,7 +148,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
             }
         });
 
-        jLabel3.setText("Insurance Company Code");
+        jLabel3.setText("Insurance Group number");
 
         jTextFieldPrimaryCareCost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +172,8 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         jLabelLabAssistantPlaceHolder5.setText("Primary Care Charges");
 
         jLabelLabAssistantPlaceHolder7.setText("USD");
+
+        jLabelLabAssistantPlaceHolder8.setText("USD");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,7 +203,9 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelLabAssistantPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +267,8 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelLabAssistantPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jButtonSubmitInsuranceClaim)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -341,11 +356,12 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                     " USD has been submitted to the insurance provider. Cannot be changed now.");
             jLabelClaimAlreadySubmittedMessage.setForeground(Color.red);
             
+            boolean noLabReport = appointment.getLabTestReport() == null;
             PrimaryCareInsuranceClaim primaryCareInsuranceClaim = new PrimaryCareInsuranceClaim(
                     appointment.getPrimaryCareProviderCost(), 
-                    appointment.getLabTestReport().getLabTestCost(),
-                    appointment.getLabTestReport().getLaboratoryTestResult().getTestNames(),
-                    appointment.getLabTestReport().getLab().getName(),
+                    noLabReport ? 0.0 : appointment.getLabTestReport().getLabTestCost(),
+                    noLabReport ? null : appointment.getLabTestReport().getLaboratoryTestResult().getTestNames(),
+                    noLabReport ? "Not Available" : appointment.getLabTestReport().getLab().getName(),
                     appointment.getDoctor(),
                     appointment.getPatient(),
                     LocalDate.now(),
@@ -371,8 +387,9 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         double primaryCareCost = Double.parseDouble(jTextFieldPrimaryCareCost.getText());
         primaryCareCost += Double.parseDouble(jTextFieldPrimaryCareOtherCharges.getText()); 
         
+        double labTestCost = appointment.getLabTestReport() == null ? 0.0 : appointment.getLabTestReport().getLabTestCost();
         appointment.setPrimaryCareProviderCost(primaryCareCost);
-        totalAppointmentCharges = primaryCareCost + appointment.getLabTestReport().getLabTestCost();
+        totalAppointmentCharges = primaryCareCost + labTestCost;
         jLabelTotalAppointmentCostPlaceHolder.setText("Total Appointment Cost = " + totalAppointmentCharges + " USD");  
     }//GEN-LAST:event_jButtonCalculateTotalCostActionPerformed
 
@@ -391,6 +408,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder5;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder6;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder7;
+    private javax.swing.JLabel jLabelLabAssistantPlaceHolder8;
     private javax.swing.JLabel jLabelLabTestCostPlaceHolder;
     private javax.swing.JLabel jLabelTotalAppointmentCostPlaceHolder;
     private javax.swing.JPanel jPanel1;

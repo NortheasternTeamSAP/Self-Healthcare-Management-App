@@ -11,6 +11,7 @@ import Laboratory.LaboratoryAssistant;
 import Laboratory.LaboratoryTest;
 import Laboratory.LaboratoryTest.TestType;
 import Laboratory.LaboratoryTestReport;
+import Organization.HealthInsuranceDepartmentOrganization;
 import Patient.Patient;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
@@ -255,6 +256,8 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         log.debug("Claim Approved. Patients responsibility = " + patientResponsibility);
         setClaimProcessingMessage();
         disableClaimFields();
+        HealthInsuranceDepartmentOrganization org = (HealthInsuranceDepartmentOrganization) claim.getInsuranceCompanyOrganization();
+        org.processMedicalInsuranceClaim(claim);
         
     }//GEN-LAST:event_btnApproveClaimActionPerformed
 
