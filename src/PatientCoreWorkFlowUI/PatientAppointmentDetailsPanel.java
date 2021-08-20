@@ -562,6 +562,32 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        JOptionPane.showMessageDialog(null, "This will download insurance details file from Amazon S3 bucket");
+        
+        String s3insuranceFileKey = appointment.getPatientInsuranceFileS3ObjectPath();
+        if (s3insuranceFileKey == null) {
+            JOptionPane.showMessageDialog(null, "No insurance provided by the patient while booking appointment");
+            return;
+        }
+        
+        String patientUsername = appointment.getPatient().getUserAccount().getUsername();
+        String insuranceFileName = "insurance-detail-file-" + patientUsername;
+        String insuranceFilePath = "/tmp/doctor/" + insuranceFileName;
+        boolean success = s3helper.getObject(s3insuranceFileKey, insuranceFilePath);
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "Some unexpected error downloading file from S3");
+            return;
+        }
+        
+        log.debug("Successfully downloaded patient's insurance file from S3");
+
+        try {
+            Desktop.getDesktop().open(new File(insuranceFilePath));
+        } catch (IOException ex) {
+            log.debug("Error in opening patient's insurance file. Exception: " + ex.getMessage());
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnGeneratePatientBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneratePatientBillActionPerformed

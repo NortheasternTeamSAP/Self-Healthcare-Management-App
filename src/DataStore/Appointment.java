@@ -34,6 +34,7 @@ public class Appointment implements Comparable<Appointment> {
     private double totalAppointmentCharges;
     
     private String patientVitalSignsHistoryS3ObjectPath;
+    private String patientInsuranceFileS3ObjectPath;
     
     static int idCounter = 1;
 
@@ -48,6 +49,7 @@ public class Appointment implements Comparable<Appointment> {
         this.id = idCounter++;
         this.status = AppointmentStatus.PENDING;
         this.patientVitalSignsHistoryS3ObjectPath = null; // Null because this will be set after the appointment is booked
+        this.patientInsuranceFileS3ObjectPath = null;
     }
 
     public AppointmentStatus getStatus() {
@@ -125,6 +127,14 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setPatientVitalSignsHistoryS3ObjectPath(String patientVitalSignsHistoryS3ObjectPath) {
         this.patientVitalSignsHistoryS3ObjectPath = patientVitalSignsHistoryS3ObjectPath;
+    }
+    
+    public void setPatientInsuranceFileS3ObjectPath(String patientInsuranceFileS3ObjectPath) {
+        this.patientInsuranceFileS3ObjectPath = patientInsuranceFileS3ObjectPath;
+    }
+
+    public String getPatientInsuranceFileS3ObjectPath() {
+        return patientInsuranceFileS3ObjectPath;
     }
     
     

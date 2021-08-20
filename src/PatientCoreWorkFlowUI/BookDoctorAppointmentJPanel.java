@@ -612,7 +612,24 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     }
     
     private void uploadInsuranceDetailsToS3(Appointment appointment) {
+        String patientUsername = appointment.getPatient().getUserAccount().getUsername();
+        String insuranceFileName = "insurance-detail-file-" + patientUsername;
+        String localInsuranceFilePath = "/tmp/patient/" + insuranceFileName; 
         
+        if (patient.getInsuranceDetails().generateFileForInsuranceDetails(localInsuranceFilePath) == false) {
+            log.error("Unable to generate insurance details file to upload to S3");
+        }
+        
+        String key = "/patient/" + patientUsername + "/insurance-details/" + localInsuranceFilePath + ".txt";
+        if (s3helper.putObject(key, localInsuranceFilePath)) {
+            log.debug("Successfully written insurance file to S3 bucket");
+        } else {
+            log.debug("Unable to write insurance file to S3 bucket");
+            return;
+        }
+        
+        appointment.setPatientInsuranceFileS3ObjectPath(key);
+        log.debug("Updated appointment with S3 path for insurance file");
     }
     
     private void btn1pmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1pmActionPerformed
