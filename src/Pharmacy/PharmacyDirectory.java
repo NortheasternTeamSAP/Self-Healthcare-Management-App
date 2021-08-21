@@ -24,15 +24,15 @@ public class PharmacyDirectory {
         id = 0;
     }
     
-    public PharmacyEnterprise addPharmacy(
-                                String pharmacyName,
-                                Address pharmacyAddress){
-        
-        PharmacyEnterprise pharmacy = new PharmacyEnterprise(pharmacyName, pharmacyAddress);
-        pharmacyMap.add(Integer.toString(id), pharmacy);
-        id += 1;
-        return pharmacy;
-    }  
+//    public PharmacyEnterprise addPharmacy(
+//                                String pharmacyName,
+//                                Address pharmacyAddress){
+//        
+//        //PharmacyEnterprise pharmacy = new PharmacyEnterprise(pharmacyName, pharmacyAddress);
+//        pharmacyMap.add(Integer.toString(id), pharmacy);
+//        id += 1;
+//        return pharmacy;
+//    }  
     
     public void deletePharmacy(PharmacyEnterprise pharmacy){
         pharmacyMap.remove(Integer.toString(id));

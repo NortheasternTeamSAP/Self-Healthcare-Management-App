@@ -9,6 +9,7 @@ import Medicine.Medicine;
 import Order.Order;
 import Organization.OrganizationType;
 import Personnel.Address;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,8 +23,8 @@ public class PharmacyEnterprise extends Enterprise {
     private ArrayList<Order> currentOrders;
     
     
-    public PharmacyEnterprise(String enterpriseName, Address enterpriseAddress){
-        super(enterpriseName, enterpriseAddress, EnterpriseType.PHARMACY);
+    public PharmacyEnterprise(String enterpriseName, Address enterpriseAddress, LocalDate creationDate){
+        super(enterpriseName, enterpriseAddress, EnterpriseType.PHARMACY, creationDate);
         medicineStockMap = new HashMap<>();
     }
     

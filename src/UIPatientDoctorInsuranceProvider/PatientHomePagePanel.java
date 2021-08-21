@@ -21,11 +21,14 @@ import Utils.Rating;
 import Utils.StarRatingsUtil;
 import Utils.ViewPersonRatingsJPanel;
 import java.awt.CardLayout;
+import java.awt.Image;
 import static java.time.Clock.system;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -59,10 +62,20 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         PersonDetails pd = patient.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString());   
          lblAgePlaceHolder.setText(pd.getDob().toString());
-        lblEmailPlaceHolder.setText(patient.getEmailId());  
+        lblEmailPlaceHolder.setText(patient.getPatientDetails().getEmailId());  
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
-        imgLogo.setIcon(pd.getLogoImage());
+        
+        if (pd.getLogoImage() != null) {
+            imgLogo.setIcon(pd.getLogoImage());
+            return;
+        }
+        
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images_icons/patient-icon.png"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);  // transform it back]
+        imgLogo.setIcon(imageIcon);
     }
     
     void populateUpComingAppointments() {
@@ -305,8 +318,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
         lblName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblName.setText("Name:");
-
-        imgLogo.setText("<<No Image>>");
 
         lblPatientDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblPatientDetails.setText("                  Patient Profile");

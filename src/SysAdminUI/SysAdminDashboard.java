@@ -41,7 +41,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
 
         bntmanageenterprise = new javax.swing.JButton();
         bntmanageorg = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBtnLogout = new javax.swing.JButton();
         manageemp = new javax.swing.JButton();
         jButtonUpdateDeleteRoles = new javax.swing.JButton();
 
@@ -66,10 +66,10 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
             }
         });
 
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBtnLogout.setText("Logout");
+        jBtnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBtnLogoutActionPerformed(evt);
             }
         });
 
@@ -104,7 +104,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
                 .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jButton4)
+                .addComponent(jBtnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,7 +115,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jButton4)
+                .addComponent(jBtnLogout)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
@@ -133,35 +133,21 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
 
     private void bntmanageenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntmanageenterpriseActionPerformed
       
-        ManageEnterprises ls= new ManageEnterprises(WorkArea,system);
-        WorkArea.add("ManageEnterprises",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);  
-        
-        
+        nextScreen(WorkArea, new ManageEnterprises(WorkArea,system, this), "ManageEnterprises"); 
     }//GEN-LAST:event_bntmanageenterpriseActionPerformed
 
     private void bntmanageorgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntmanageorgActionPerformed
-      
-        ManageOrganizations ls= new ManageOrganizations(WorkArea,system);
-        WorkArea.add("ManageOrganizations",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);  
-        
-        
+     
+        nextScreen(WorkArea, new ManageOrganizations(WorkArea,system, this), "ManageOrganizations");
     }//GEN-LAST:event_bntmanageorgActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jBtnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLogoutActionPerformed
+        nextScreen(WorkArea, new Login(WorkArea, system), "Login Page");
+    }//GEN-LAST:event_jBtnLogoutActionPerformed
 
     private void manageempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageempActionPerformed
 
-        nextScreen(WorkArea, new CreateRolesJPanel(WorkArea, system), "CreateRolesJPanel");
+        nextScreen(WorkArea, new CreateRolesJPanel(WorkArea, system, this), "CreateRolesJPanel");
     }//GEN-LAST:event_manageempActionPerformed
 
     private void jButtonUpdateDeleteRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateDeleteRolesActionPerformed
@@ -173,7 +159,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntmanageenterprise;
     private javax.swing.JButton bntmanageorg;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBtnLogout;
     private javax.swing.JButton jButtonUpdateDeleteRoles;
     private javax.swing.JButton manageemp;
     // End of variables declaration//GEN-END:variables

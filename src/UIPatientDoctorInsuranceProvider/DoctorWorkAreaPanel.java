@@ -14,8 +14,10 @@ import SysAdminUI.Login;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import Utils.ViewPersonRatingsJPanel;
+import java.awt.Image;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -123,8 +125,6 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
 
         lblName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblName.setText("Name:");
-
-        imgLogo.setText("<<No Image>>");
 
         lblPatientDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblPatientDetails.setText("                  Doctor Profile");
@@ -514,6 +514,17 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
         imgLogo.setIcon(pd.getLogoImage());
+   
+        if (pd.getLogoImage() != null) {
+            imgLogo.setIcon(pd.getLogoImage());
+            return;
+        }
+        
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images_icons/doctor-icon.png"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);  // transform it back]
+        imgLogo.setIcon(imageIcon);
        
     }
 

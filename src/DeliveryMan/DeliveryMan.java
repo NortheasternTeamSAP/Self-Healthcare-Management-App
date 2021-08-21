@@ -39,6 +39,21 @@ public class DeliveryMan implements Person {
         this.personRatings = new PersonRatings();
     }
     
+    public DeliveryMan(
+            String fullName,
+            LocalDate dob,
+            Gender gender,
+            Address address,
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId,
+            String emailId){
+        
+        deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage, organizationId, emailId);
+        this.personRatings = new PersonRatings();
+    }
+    
     @Override
     public UserAccount getUserAccount(){
         return deliveryManDetails.getUserAccount();

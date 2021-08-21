@@ -64,6 +64,25 @@ public class Doctor implements Person {
         this.doctorAvailability = new HashSet<>();
         this.personRatings = new PersonRatings();
     }
+    
+    public Doctor(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            Icon logoImage,
+            UserAccount account,
+            int organizationId,
+            String emailId) {
+        
+        doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage, organizationId, emailId);
+        speciality = "Unknown";
+        this.patientAppointments = new ArrayList<>();
+        this.doctorAvailability = new HashSet<>();
+        this.personRatings = new PersonRatings();
+    }
+    
     public String getSpeciality() {
         return speciality;
     }

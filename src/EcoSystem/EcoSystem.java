@@ -163,12 +163,12 @@ public class EcoSystem {
         Address sampleAddress = new Address("Street", "Building", "City", "Zip", "State", "Country");
 
         // Create Enterprise
-        healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress);
-        hospital = new HospitalEnterprise("Virginia Mason", sampleAddress);
-        insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress);
-        physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress);
-        mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress);
-        pharmacy = new PharmacyEnterprise("Bartell Drugs", sampleAddress);
+        healthManagementApp = new HealthManagementAppEnterprise("Health Management App Company", sampleAddress, LocalDate.now().minusDays(10));
+        hospital = new HospitalEnterprise("Virginia Mason", sampleAddress, LocalDate.now().minusDays(13));
+        insuranceCompany = new InsuranceCompanyEnterprise("Progressive Insurance", sampleAddress, LocalDate.now().minusDays(5));
+        physicalWellness = new PhysicalWellnessEnterprise("Physical Wellness Institute", sampleAddress, LocalDate.now().minusDays(6));
+        mentalWellness = new MentalWellnessEnterprise("Synergy Mental Health  Institute", sampleAddress, LocalDate.now().minusDays(7));
+        pharmacy = new PharmacyEnterprise("Bartell Drugs", sampleAddress, LocalDate.now().minusDays(3));
         
 
         enterpriseDirectory.addEnterprise(healthManagementApp);
@@ -179,43 +179,43 @@ public class EcoSystem {
         enterpriseDirectory.addEnterprise(pharmacy);
 
         // Create Organizations and all them to enterprise
-        Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
+        Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(adminOrg);
         healthManagementApp.addOrganization(adminOrg);
 
-        Organization patientOrg = new PatientOrganization("Patient Org", healthManagementApp);
+        Organization patientOrg = new PatientOrganization("Patient Org", healthManagementApp, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(patientOrg);
         healthManagementApp.addOrganization(patientOrg);
 
-        Organization primaryCareOrg = new PrimaryCareOrganization("Virginia Mason Primary Care Unit", hospital);
+        Organization primaryCareOrg = new PrimaryCareOrganization("Virginia Mason Primary Care Unit", hospital, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(primaryCareOrg);
         hospital.addOrganization(primaryCareOrg);
 
-        Organization laboratoryOrg = new LaboratoryOrganization("Virginia Mason Lab Tests Unit", hospital);
+        Organization laboratoryOrg = new LaboratoryOrganization("Virginia Mason Lab Tests Unit", hospital, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(laboratoryOrg);
         hospital.addOrganization(laboratoryOrg);
 
-        Organization healthInsuranceOrg = new HealthInsuranceDepartmentOrganization("Progressive Health Insurance Department", insuranceCompany);
+        Organization healthInsuranceOrg = new HealthInsuranceDepartmentOrganization("Progressive Health Insurance Department", insuranceCompany, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(healthInsuranceOrg);
         insuranceCompany.addOrganization(healthInsuranceOrg);
 
-        Organization nutritionDepartmentOrg = new NutritionDepartmentOrganization("Nutrition Department", physicalWellness);
+        Organization nutritionDepartmentOrg = new NutritionDepartmentOrganization("Nutrition Department", physicalWellness, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(nutritionDepartmentOrg);
         physicalWellness.addOrganization(nutritionDepartmentOrg);
         
-        Organization gymOrg=new GymOrganization("Fitness Trainer Department",physicalWellness);
+        Organization gymOrg=new GymOrganization("Fitness Trainer Department",physicalWellness, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(gymOrg);
         physicalWellness.addOrganization(gymOrg);
         
-        Organization phychiatristOrg=new PsychiatristOrganization("Counselor Department",mentalWellness);
+        Organization phychiatristOrg=new PsychiatristOrganization("Counselor Department",mentalWellness, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(phychiatristOrg);
         mentalWellness.addOrganization(phychiatristOrg);
         
-        Organization medicineInventoryOrg = new MedicineInventoryOrganization("Medicine Inventory Department", pharmacy);
+        Organization medicineInventoryOrg = new MedicineInventoryOrganization("Medicine Inventory Department", pharmacy, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(medicineInventoryOrg);
         pharmacy.addOrganization(medicineInventoryOrg);
         
-        Organization deliveryDepartmentOrganization = new DeliveryDepartmentOrganization("Medicine delivery department", pharmacy);
+        Organization deliveryDepartmentOrganization = new DeliveryDepartmentOrganization("Medicine delivery department", pharmacy, LocalDate.now().minusDays(2));
         organizationDirectory.addOrganization(deliveryDepartmentOrganization);
         pharmacy.addOrganization(deliveryDepartmentOrganization);
 

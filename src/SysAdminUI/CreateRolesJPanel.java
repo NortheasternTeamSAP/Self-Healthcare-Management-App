@@ -60,6 +60,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 
 /**
  *
@@ -70,22 +72,25 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
    EcoSystem system;
    Person person;
    ImageIcon logoImage;
+   JPanel backPage;
    private final JFileChooser fileChooser = new JFileChooser();
    ConsoleLogger log = ConsoleLogger.getLogger();
    
     /**
      * Creates new form ManageRoles
      */
-    public CreateRolesJPanel(JPanel WorkArea, EcoSystem system) {
+    public CreateRolesJPanel(JPanel WorkArea, EcoSystem system, JPanel backPage) {
         initComponents();
         this.WorkArea = WorkArea;
         this.system = system;
         this.person = person;
+        this.backPage = backPage;
         GlobalUserDirectory globalUserDirectory;
         FileFilter jpegFilter = new FileNameExtensionFilter("JPEG file" , "jpg" , "jpeg");
         FileFilter pngFilter = new FileNameExtensionFilter("PNG file" , "png" , "png");
         
-       
+        txtDobDateChooser.setMaxSelectableDate(Date.from(Instant.now().minusMillis(86400000)));
+        
         fileChooser.addChoosableFileFilter(jpegFilter);
         fileChooser.addChoosableFileFilter(pngFilter);
         fileChooser.setFileFilter(pngFilter);
@@ -147,6 +152,11 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         jRadioButtonLabAssistant = new javax.swing.JRadioButton();
         jComboBoxGender = new javax.swing.JComboBox<>();
         lblAddrState1 = new javax.swing.JLabel();
+        lblAddrCity1 = new javax.swing.JLabel();
+        txtAddressApartment = new javax.swing.JTextField();
+        txtPhoneNumberAreaCode = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtEmailId = new javax.swing.JTextField();
 
         jSelectRoleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jSelectRoleLabel.setText("Profile Picture");
@@ -185,14 +195,22 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Phone Number:");
 
+        txtPhoneNumber.setText("2067085330");
+
         lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAddress.setText("Address:");
 
         lblAddrStreet.setText("Community/Street");
 
+        txtAddressStreet.setText("906 Dexter Ave N");
+
         lblAddrCity.setText("City");
 
+        txtAddressCity.setText("Seattle");
+
         lblAddrZip.setText("Zip");
+
+        txtAddressZip.setText("98109");
 
         jComboBoxAddrState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MA", "WA", "TX", "CA", " " }));
         jComboBoxAddrState.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +294,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
 
         jRadioButtonLabAssistant.setText("Medical tests laboratory assistant");
 
-        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MALE", "FEMALE", "OTHER" }));
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE", "OTHER" }));
         jComboBoxGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxGenderActionPerformed(evt);
@@ -285,20 +303,26 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
 
         lblAddrState1.setText("Gender");
 
+        lblAddrCity1.setText("Unit");
+
+        txtAddressApartment.setText("#432");
+
+        txtPhoneNumberAreaCode.setEditable(false);
+        txtPhoneNumberAreaCode.setText("+1");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setText("Email Id:");
+
+        txtEmailId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailIdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDob)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtName)
-                    .addComponent(txtDobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                .addGap(467, 467, 467))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -306,36 +330,40 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblAddrStreet)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblAddrZip)
+                                        .addComponent(lblAddrCity)
+                                        .addComponent(lblAddrCity1)))
+                                .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAddressApartment, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblAddrStreet)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblAddrZip)
-                                                .addComponent(lblAddrCity)))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(43, 43, 43)
-                                                .addComponent(lblAddrState)
-                                                .addGap(32, 32, 32)
-                                                .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(91, 91, 91)
-                                        .addComponent(lblAddrCountry)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(lblAddrState)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(lblAddrState1)
+                                .addGap(91, 91, 91)
+                                .addComponent(lblAddrCountry)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtPhoneNumberAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(lblAddrState1)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -347,18 +375,13 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                                 .addGap(21, 21, 21)
                                 .addComponent(jButton4)))
                         .addGap(71, 71, 71)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(140, 140, 140)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(167, 167, 167)
-                                .addComponent(jLabel6))))
+                                .addGap(6, 6, 6)
+                                .addComponent(btnRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,6 +422,18 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                         .addGap(245, 245, 245)
                         .addComponent(btnCreateRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(lblDob)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtName)
+                    .addComponent(txtDobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(txtEmailId))
+                .addGap(467, 467, 467))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,9 +445,9 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                         .addGap(33, 33, 33)
                         .addComponent(jSelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(26, 26, 26)
                         .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
@@ -420,44 +455,53 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRemove1)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblDob))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDob)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddrState1))))
-                .addGap(23, 23, 23)
+                            .addComponent(lblAddrState1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPhoneNumberAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddress)
                     .addComponent(lblAddrStreet)
                     .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddrCity))
-                .addGap(18, 18, 18)
+                    .addComponent(lblAddrCity1)
+                    .addComponent(txtAddressApartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddrZip)
-                    .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddrState)
-                    .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblAddrCity)
+                    .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAddrZip)
+                            .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddrState)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddrCountry)
                     .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -498,7 +542,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                     .addComponent(jPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateRoles)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -564,28 +608,37 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
 
         GlobalUserDirectory gd = system.globalUserDirectory;
         String name = txtName.getText();
-        if (name == null || name.isEmpty()) {
+        if (StringUtils.isEmpty(name)) {
             JOptionPane.showMessageDialog(jPanel1, "name cannot be empty");
             return;
         }
 
         String userName = txtUsername.getText();
-        if (userName == null || userName.isEmpty()) {
+        if (StringUtils.isEmpty(userName)) {
             JOptionPane.showMessageDialog(jPanel1, "username cannot be empty");
             return;
         }
 
         String password = new String(jPasswordTextField.getPassword());
-        if (password == null || password.isEmpty()) {
+        if (StringUtils.isEmpty(password)) {
             JOptionPane.showMessageDialog(jPanel1, "password cannot be empty");
+            return;
+        }
+        
+        EmailValidator validator = EmailValidator.getInstance();
+        String emailId = txtEmailId.getText();
+        if (StringUtils.isEmpty(emailId) || !validator.isValid(emailId)) {
+            JOptionPane.showMessageDialog(jPanel1, "Invalid email-if format. Enter Correct email id.");
             return;
         }
 
         String phoneNumber = txtPhoneNumber.getText();
-        if (phoneNumber == null || phoneNumber.isEmpty()) {
-            JOptionPane.showMessageDialog(jPanel1, "phone number cannot be empty");
+        if (StringUtils.isEmpty(phoneNumber) || !StringUtils.isNumeric(phoneNumber) || phoneNumber.length() != 10) {
+            JOptionPane.showMessageDialog(jPanel1, "Mobile number should be numeric and 10 digits in length");
             return;
-        }
+        } 
+        phoneNumber = txtPhoneNumberAreaCode.getText() + phoneNumber;
+        
         Date dob = txtDobDateChooser.getDate();
         Date currentDate = Date.from(Instant.now());
         if (dob.after(currentDate)) {
@@ -593,47 +646,34 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
             return;
         }
 
-        try {
-            Long.parseLong(phoneNumber);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(jPanel1, "Invalid phone number. Expected numbers only.");
-            return;
-        }
-
-        if (phoneNumber.length() != 10) {
-            JOptionPane.showMessageDialog(jPanel1, "Invalid phone number. Expected 10 digit number.");
-            return;
-        }
-
         String addrCommunity = txtAddressStreet.getText();
+        String addrUnit = txtAddressApartment.getText();
         String addrCity = txtAddressCity.getText();
         String addrZip = txtAddressZip.getText();
         String addrState = String.valueOf(jComboBoxAddrState.getSelectedItem());
-        if (addrState.equals("Select")) {
-                JOptionPane.showMessageDialog(jPanel1, "Select a valid state.");
-                 return;
-         }
-        
-        String selectedGender = String.valueOf(jComboBoxGender.getSelectedItem());
-        if (selectedGender.equals("Select")) {
-                JOptionPane.showMessageDialog(jPanel1, "Select a valid gender.");
-                return;
-         }
-        
-        Gender gender = Gender.valueOf(selectedGender);
-        
         String addrCountry = txtAddressCountry.getText();
-        // String street, String apartment, String city, String zipcode, String state, String country
-        Address address = new Address(null, null, addrCity, addrZip, addrState, addrCountry);
+        if ((addrCommunity == null || addrCommunity.isEmpty()) || 
+                (addrUnit == null || addrUnit.isEmpty()) || 
+                (addrCity == null || addrCity.isEmpty()) ||
+                (addrZip == null || addrZip.isEmpty()) ||
+                (addrState == null || addrState.isEmpty()) ||
+                (addrCountry == null || addrCountry.isEmpty())) {
+                JOptionPane.showMessageDialog(jPanel1, "Address fields cannot be empty.");
+                return;
+        }
+        
+        if (!StringUtils.isNumeric(addrZip) || addrZip.length() != 5) {
+            JOptionPane.showMessageDialog(jPanel1, "Zip Code should be numeric and 5 digits long");
+            return;
+        }
+        
+        Gender gender = Gender.valueOf((String)jComboBoxGender.getSelectedItem());
+        Address address = new Address(addrCommunity, addrUnit, addrCity, addrZip, addrState, addrCountry);
         
         if (gd.get(userName) != null) {
             JOptionPane.showMessageDialog(jPanel1, "Username already exists. Pick a different username.");
             return;
         }
-
-        System.out.println("Date: " + dob.toString());
-         Address sampleAddress = new Address(txtAddressStreet.getText(),null, txtAddressCity.getText(), txtAddressZip.getText(), null, txtAddressCountry.getText());
-         //Address house = new Address(addrCommunity, addrZip,  addrCity,  addrState,  addrCountry);
 
         Icon logo = imgLogo.getIcon();
           
@@ -655,31 +695,35 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         
         switch (role) {
             case DOCTOR:
-                Person doctor = new Doctor(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId);
+                Person doctor = new Doctor(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId, emailId);
+                doctor.getPersonDetails().setEmailId(emailId);
                 system.globalUserDirectory.createNewUser(doctor);
                 break;
                 
             case LABASSISTANT:
-                Person labAssistant = new LaboratoryAssistant(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId);
+                Person labAssistant = new LaboratoryAssistant(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId, emailId);
+                labAssistant.getPersonDetails().setEmailId(emailId);
                 system.globalUserDirectory.createNewUser(labAssistant);
                  break;
              case INSURANCE_PROVIDER_REP:
-                Person insuranceProvider = new InsuranceProviderRepresentative(name, dateOfBirth, gender, address, phoneNumber, logo, userAccount, organizationId);
+                Person insuranceProvider = new InsuranceProviderRepresentative(name, dateOfBirth, gender, address, 
+                        phoneNumber, logo, userAccount, organizationId, emailId);
                 system.globalUserDirectory.createNewUser(insuranceProvider);
                  break;
                  
                  case DIETITIAN:
-                 Person dietitian = new Dietitian(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId);
+                 Person dietitian = new Dietitian(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId, emailId);
+                 dietitian.getPersonDetails().setEmailId(emailId);
                 system.globalUserDirectory.createNewUser(dietitian);
                 break;
                 
                   case TRAINER:
-                 Person trainer = new FitnessTrainer(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId);
+                 Person trainer = new FitnessTrainer(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId, emailId);
                 system.globalUserDirectory.createNewUser(trainer);
                 break;
                 
                   case COUNSELOR:
-                 Person counselor = new Counselor(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId);
+                 Person counselor = new Counselor(name, dateOfBirth, gender, address, phoneNumber,userAccount,logo, organizationId, emailId);
                 system.globalUserDirectory.createNewUser(counselor);
                 break;
                 
@@ -693,7 +737,8 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                                                 phoneNumber,
                                                 logo,
                                                 userAccount,
-                                                organizationId
+                                                organizationId,
+                                                emailId
                                             );
                     system.globalUserDirectory.createNewUser(pharmacist);
                     break;
@@ -708,7 +753,8 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                                                 phoneNumber,
                                                 logo,
                                                 userAccount,
-                                                organizationId
+                                                organizationId,
+                                                emailId
                                             );
                     system.globalUserDirectory.createNewUser(deliveryMan);
                     break;
@@ -718,10 +764,8 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
              break;
        
        }
-      
 
-
-        JOptionPane.showMessageDialog(this,"user created");
+        JOptionPane.showMessageDialog(this,"user created successfully");
     }//GEN-LAST:event_btnCreateRolesActionPerformed
 
     private void comboenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboenterpriseActionPerformed
@@ -729,16 +773,16 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     }//GEN-LAST:event_comboenterpriseActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+        nextScreen(WorkArea, backPage, "SysAdminHomePage");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jComboBoxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxGenderActionPerformed
+
+    private void txtEmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -752,6 +796,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JComboBox<String> jComboBoxAddrState;
     private javax.swing.JComboBox<String> jComboBoxGender;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -768,6 +813,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JLabel jSelectRoleLabel;
     private javax.swing.JLabel jUsernameLabel;
     private javax.swing.JLabel lblAddrCity;
+    private javax.swing.JLabel lblAddrCity1;
     private javax.swing.JLabel lblAddrCountry;
     private javax.swing.JLabel lblAddrState;
     private javax.swing.JLabel lblAddrState1;
@@ -778,13 +824,16 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JLabel lblEnterprise;
     private javax.swing.JLabel lblOrg;
     private javax.swing.JLabel lblRoles;
+    private javax.swing.JTextField txtAddressApartment;
     private javax.swing.JTextField txtAddressCity;
     private javax.swing.JTextField txtAddressCountry;
     private javax.swing.JTextField txtAddressStreet;
     private javax.swing.JTextField txtAddressZip;
     private com.toedter.calendar.JDateChooser txtDobDateChooser;
+    private javax.swing.JTextField txtEmailId;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtPhoneNumberAreaCode;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
@@ -928,25 +977,25 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                  
                  
         if (jRadioButtonPharmacist.isSelected()) {
-            return Role.DOCTOR;
+            return Role.PHARMACIST;
         }
                  
                  
         if (jRadioButtonDeliveryMan.isSelected()) {
-            return Role.DOCTOR;
+            return Role.DELIVERY_MAN;
         }
                  
                  
         if (jRadioButtonDietitian.isSelected()) {
-            return Role.DOCTOR;
+            return Role.DIETITIAN;
         }
         
         if (jRadioButtonGymTrainer.isSelected()) {
-            return Role.DOCTOR;
+            return Role.TRAINER;
         }
                 
         if (jRadioButtonCounseller.isSelected()) {
-            return Role.DOCTOR;
+            return Role.COUNSELOR;
         }
         
         return null;

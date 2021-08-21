@@ -63,6 +63,23 @@ public class LaboratoryAssistant implements Person {
         completedLabTests = new ArrayList<>();
     }
     
+    public LaboratoryAssistant(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId,
+            String emailId) {
+        
+        labAssistantDetails = new PersonDetails(fullName, dob, gender, 
+                address, phoneNumber, account, Role.LABASSISTANT, logoImage, organizationId, emailId);
+        pendingLabTests = new ArrayList<>();
+        completedLabTests = new ArrayList<>();
+    }
+    
 
     @Override
     public UserAccount getUserAccount() {

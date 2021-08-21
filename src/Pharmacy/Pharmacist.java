@@ -36,6 +36,20 @@ public class Pharmacist implements Person{
         pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST, logoImage, organizationId);
     }
     
+    public Pharmacist(
+            String fullName,
+            LocalDate dob,
+            Gender gender,
+            Address address,
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId,
+            String emailId){
+
+        pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST, logoImage, organizationId, emailId);
+    }
+    
     @Override
     public UserAccount getUserAccount(){
         return pharmacistDetails.getUserAccount();
