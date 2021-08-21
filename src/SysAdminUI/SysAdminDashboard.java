@@ -6,7 +6,7 @@
 package SysAdminUI;
 
 import EcoSystem.EcoSystem;
-import UI.ViewPastAppointments;
+import UICounselorDietitianFitnessTrainer.ViewPastAppointments;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -103,14 +103,13 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
                 .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(709, 709, 709)
-                        .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(663, 663, 663))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,9 +125,9 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(109, 109, 109)
+                .addGap(110, 110, 110)
                 .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,13 +160,8 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void manageempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageempActionPerformed
-     
-        ManageEmployees ll= new ManageEmployees(WorkArea,system);
-        WorkArea.add("ManageOrganizations",ll);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);  
-        
-        
+
+        nextScreen(WorkArea, new CreateRolesJPanel(WorkArea, system), "CreateRolesJPanel");
     }//GEN-LAST:event_manageempActionPerformed
 
     private void jButtonUpdateDeleteRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateDeleteRolesActionPerformed

@@ -5,7 +5,6 @@
  */
 package SysAdminUI;
 
-import PatientCoreWorkFlowUI.*;
 import DataStore.GlobalUserDirectory;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
@@ -24,6 +23,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,9 +49,6 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
     private final JFileChooser fileChooser = new JFileChooser();
     ImageIcon logoImage;
     ConsoleLogger log = ConsoleLogger.getLogger();
-    private int organizationId;
-    
-     
     /**
      * Creates new form NewRegistrationJPanel
      */
@@ -507,7 +505,6 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
             JOptionPane.showMessageDialog(jRegistrationpanel, "Select a valid state.");
             return;
         }
-        //String addrCountry = txtAddressCountry.getText();
 
         if (gd.get(userName) != null) {
             JOptionPane.showMessageDialog(jRegistrationpanel, "Username already exists. Pick a different username.");
@@ -516,18 +513,13 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
 
         System.out.println("Date: " + dob.toString());
          Address sampleAddress = new Address(txtAddressStreet.getText(),null, txtAddressCity.getText(), txtAddressZip.getText(), null, txtAddressCountry.getText());
-       // House house = new House(addrCommunity, addrZip,  addrCity,  addrState,  addrCountry);
-
-        
 
         Icon logo = imgLogo.getIcon();
         UserAccount userAccount = new UserAccount(userName, password);
-       // int organizationId = null;
-       // int organizationId = selectedOrganization.getOrganizationId();
         
-        Person patient = new Patient(name, null, null, sampleAddress, phoneNumber, logo, userAccount, organizationId, null);
+       LocalDate dateOfBirth = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Person patient = new Patient(name, dateOfBirth, null, sampleAddress, phoneNumber, logo, userAccount, -1, null);
                 ecoSystem.globalUserDirectory.createNewUser(patient);
-
         
          gd.createNewUser(patient);
         

@@ -176,6 +176,7 @@ public class EcoSystem {
         enterpriseDirectory.addEnterprise(insuranceCompany);
         enterpriseDirectory.addEnterprise(physicalWellness);
         enterpriseDirectory.addEnterprise(mentalWellness);
+        enterpriseDirectory.addEnterprise(pharmacy);
 
         // Create Organizations and all them to enterprise
         Organization adminOrg = new SystemAdminOrganization("System Admin Org", healthManagementApp);
