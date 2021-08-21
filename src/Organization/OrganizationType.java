@@ -44,4 +44,39 @@ public enum OrganizationType {
     public String toString() {
         return value;
     }
+    
+    public static OrganizationType getOrganizationType(String organizationType) {
+        if ("AdminOrg".equals(organizationType)) {
+            return ADMIN_ORGANIZATION;
+        }
+        if ("PatientOrg".equals(organizationType)) {
+            return PATIENT_ORGANIZATION;
+        }
+        if ("PrimaryCare".equals(organizationType)) {
+            return PRIMARY_CARE;
+        }
+        if ("Laboratory".equals(organizationType)) {
+            return LABORATORY;
+        }
+        if ("HealthInsuranceDepartment".equals(organizationType)) {
+            return HEALTH_INSURANCE_DEPARTMENT;
+        }
+        if ("MedicineInventory".equals(organizationType)) {
+            return MEDICINE_INVENTORY;
+        }
+        if ("DeliveryDepartment".equals(organizationType)) {
+            return DELIVERY_DEPARTMENT;
+        }
+        if ("NutritionDepartment".equals(organizationType)) {
+            return NUTRITION_DEPARTMENT;
+        }
+        if ("Gym".equals(organizationType)) {
+            return GYM;
+        }
+        if ("PsychiatryDepartment".equals(organizationType)) {
+            return PSYCHIATRY_DEPARTMENT;
+        }
+        return INVALID;
+    }
+    
 }

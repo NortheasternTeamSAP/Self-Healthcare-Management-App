@@ -45,6 +45,7 @@ public class PersonDetails {
     protected Role role;
     private Icon logoImage;
     private int organizationId;
+    private String emailId;
     
     public PersonDetails(
             String fullName, 
@@ -88,6 +89,29 @@ public class PersonDetails {
         this.role = role;
         this.logoImage = logoImage;
         this.organizationId = organizationId;
+    }
+    
+    public PersonDetails(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount userAccount,
+            Role role,
+            Icon logoImage,
+            int organizationId,
+            String emailId) {
+        this.fullName = fullName;
+        this.dob = dob;
+        this.gender = gender;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.userAccount = userAccount;
+        this.role = role;
+        this.logoImage = logoImage;
+        this.organizationId = organizationId;
+        this.emailId = emailId;
     }
 
     public String getFullName() {
@@ -160,6 +184,14 @@ public class PersonDetails {
 
     public Icon getLogoImage() {
         return logoImage;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+   
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public void setLogoImage(Icon logoImage) {

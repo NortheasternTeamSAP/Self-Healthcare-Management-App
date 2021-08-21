@@ -8,6 +8,7 @@ package Organization;
 import Enterprise.Enterprise;
 import Insurance.InsuranceDetails;
 import Insurance.PrimaryCareInsuranceClaim;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class HealthInsuranceDepartmentOrganization extends Organization {
     List<InsuranceDetails> pendingnewInsuranceRequests;
     List<InsuranceDetails> processedInsuranceRequests;
     
-    public HealthInsuranceDepartmentOrganization(String name, Enterprise enterprise) {
-        super(name, enterprise, OrganizationType.HEALTH_INSURANCE_DEPARTMENT);
+    public HealthInsuranceDepartmentOrganization(String name, Enterprise enterprise, LocalDate organizationCreationDate) {
+        super(name, enterprise, OrganizationType.HEALTH_INSURANCE_DEPARTMENT, organizationCreationDate);
         pendingMedicalInsuranceClaims = new ArrayList<>();
         processedMedicalInsuranceClaims = new ArrayList<>();
         pendingnewInsuranceRequests = new ArrayList<>();

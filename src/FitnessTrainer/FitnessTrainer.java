@@ -46,6 +46,22 @@ public class FitnessTrainer implements Person{
         this.availability = new HashSet<>();
         this.personRatings = new PersonRatings();
     }
+    
+    public FitnessTrainer(
+            String fullName, 
+            LocalDate dob, 
+            PersonDetails.Gender gender, 
+            Address address, 
+            String phoneNumber, 
+            UserAccount account,
+            Icon icon,
+            int organizationId,
+            String emailId) {
+        fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER,icon, organizationId, emailId);
+        fitnessTrainerSchedule = new FitnessTrainerSchedule();
+        this.availability = new HashSet<>();
+        this.personRatings = new PersonRatings();
+    }
 
     @Override
     public UserAccount getUserAccount() {

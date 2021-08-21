@@ -7,6 +7,7 @@ package Enterprise;
 
 import Organization.OrganizationType;
 import Personnel.Address;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -14,8 +15,8 @@ import java.util.ArrayList;
  * @author preet
  */
 public class MentalWellnessEnterprise extends Enterprise {
-     public MentalWellnessEnterprise(String enterpriseName, Address enterpriseAddress) {
-        super(enterpriseName, enterpriseAddress, EnterpriseType.MENTAL_HEALTH);
+     public MentalWellnessEnterprise(String enterpriseName, Address enterpriseAddress, LocalDate creationDate) {
+        super(enterpriseName, enterpriseAddress, EnterpriseType.MENTAL_HEALTH, creationDate);
     }
      
     @Override

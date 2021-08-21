@@ -56,6 +56,21 @@ public class InsuranceProviderRepresentative implements Person {
         insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, 
                 phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage,organizationId );
     }
+     
+     public InsuranceProviderRepresentative(
+            String fullName, 
+            LocalDate dob, 
+            Gender gender, 
+            Address address, 
+            String phoneNumber,
+            Icon logoImage,
+            UserAccount account,
+            int organizationId,
+            String emailId) {
+        
+        insuranceProviderRepDetails = new PersonDetails(fullName, dob, gender, address, 
+                phoneNumber, account, Role.INSURANCE_PROVIDER_REP, logoImage,organizationId, emailId);
+    }
 
     public Organization getOrganization() {
         return organization;

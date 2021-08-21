@@ -313,9 +313,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="imgLogo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;&lt;No Image&gt;&gt;"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPatientDetails">
               <Properties>

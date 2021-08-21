@@ -6,6 +6,7 @@
 package Organization;
 
 import Enterprise.Enterprise;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,8 +14,8 @@ import Enterprise.Enterprise;
  */
 public class PrimaryCareOrganization extends Organization {
     
-    public PrimaryCareOrganization(String name, Enterprise enterprise) {
-        super(name, enterprise, OrganizationType.PRIMARY_CARE);
+    public PrimaryCareOrganization(String name, Enterprise enterprise, LocalDate organizationCreationDate) {
+        super(name, enterprise, OrganizationType.PRIMARY_CARE, organizationCreationDate);
     }
     
 }

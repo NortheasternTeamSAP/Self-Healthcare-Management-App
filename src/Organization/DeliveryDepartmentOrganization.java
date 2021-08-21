@@ -6,6 +6,7 @@
 package Organization;
 
 import Enterprise.Enterprise;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,7 +14,7 @@ import Enterprise.Enterprise;
  */
 public class DeliveryDepartmentOrganization extends Organization{
     
-    public DeliveryDepartmentOrganization(String name, Enterprise enterprise){
-        super(name, enterprise, OrganizationType.DELIVERY_DEPARTMENT);
+    public DeliveryDepartmentOrganization(String name, Enterprise enterprise, LocalDate organizationCreationDate){
+        super(name, enterprise, OrganizationType.DELIVERY_DEPARTMENT, organizationCreationDate);
     }
 }

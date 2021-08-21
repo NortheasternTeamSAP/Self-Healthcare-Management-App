@@ -28,4 +28,9 @@ public enum EnterpriseType {
     public String toString() {
         return value;
     }
+    
+    public static EnterpriseType[] getPublicValues() {
+        EnterpriseType[] types = {HOSPITAL, INSURANCE_COMPANY, PHARMACY, PHYSICAL_WELLNESS, MENTAL_HEALTH};
+        return types;
+    }
 }

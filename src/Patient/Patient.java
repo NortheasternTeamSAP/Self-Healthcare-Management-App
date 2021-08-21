@@ -60,7 +60,6 @@ public class Patient implements Person {
     private PharmacyEnterprise preferredPharmacy;
     private InsuranceDetails insuranceDetails;
     private ArrayList<Prescription> prescriptionsList;
-    private String emailId;
     
     
    
@@ -127,7 +126,8 @@ public class Patient implements Person {
                                     account, 
                                     Role.PATIENT, 
                                     logoImage, 
-                                    organizationId);
+                                    organizationId,
+                                    emailId);
         dietplans = new ArrayList<DietPlan>();
         dietitianAppointments = new ArrayList<DietitianAppointment> ();
         fitnessPlans=new ArrayList<FitnessPlan>();
@@ -142,7 +142,6 @@ public class Patient implements Person {
         this.labTestReports = new ArrayList<>();
         this.preferredPharmacy = preferredPharmacy;
         this.prescriptionsList = new ArrayList<Prescription>();
-        this.emailId = emailId;
         this.insuranceDetails = null;
     }
     
@@ -370,11 +369,6 @@ public class Patient implements Person {
     public Prescription getLatestMedicinePrescription() {
         return this.prescriptionsList.isEmpty() ? null : this.prescriptionsList.get(0); // return 1st element since the prescriptionsList is sorted
     }
-
-    public String getEmailId() {
-        return emailId;
-    }
-    
 
     @Override
     public void updateDetails(PersonDetails newPatientDetails) {

@@ -26,36 +26,42 @@ import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
 import Personnel.Address;
+import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.cert.CollectionCertStoreParameters;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
  * @author preet
  */
-public class ManageOrganizations extends javax.swing.JPanel {
+public class ManageOrganizations extends javax.swing.JPanel implements NextScreen {
 
     JPanel WorkArea;
     EcoSystem system;
+    JPanel backPage;
 
     /**
      * Creates new form ManageOrganizations
      */
-    public ManageOrganizations(JPanel WorkArea, EcoSystem system) {
+    public ManageOrganizations(JPanel WorkArea, EcoSystem system, JPanel backPage) {
         initComponents();
         this.WorkArea = WorkArea;
         this.system = system;
+        this.backPage = backPage;
         populateenterprise();
         comboorgtype.setModel(new DefaultComboBoxModel(OrganizationType.values()));
         LoadOrganization();
@@ -81,36 +87,49 @@ public class ManageOrganizations extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrg = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtname = new javax.swing.JTextField();
+        txtOrgName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         comboorgtype = new javax.swing.JComboBox<>();
         comboenterprise = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         tblOrg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "OrganizationID", "Name"
+                "Creation Date", "Organization Name", "Organization Type", "Enterprise Name"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblOrg);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Create An Organization");
-
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Type :");
+        jLabel2.setText("Organization Type");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Enterprise:");
@@ -131,54 +150,66 @@ public class ManageOrganizations extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setText("Create An Organization");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(45, 45, 45)
-                                .addComponent(comboenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(45, 45, 45)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(45, 45, 45)
-                                .addComponent(comboorgtype, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(4, 4, 4)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboorgtype, 0, 172, Short.MAX_VALUE)
+                            .addComponent(comboenterprise, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(104, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addGap(83, 83, 83)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(87, 87, 87)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(comboenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comboorgtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(jButton1)
-                .addContainerGap(246, Short.MAX_VALUE))
+                    .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(38, 38, 38)
+                    .addComponent(jLabel5)
+                    .addContainerGap(294, Short.MAX_VALUE)))
         );
 
         jButton4.setText("Back");
@@ -188,85 +219,101 @@ public class ManageOrganizations extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("List of all organizations within all Enterprises");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(299, 299, 299))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(17, 17, 17)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        OrganizationType type = (OrganizationType) comboorgtype.getSelectedItem();
-        Enterprise enterprise = (Enterprise) comboenterprise.getSelectedItem();
+        OrganizationType type = OrganizationType.getOrganizationType((String)comboorgtype.getSelectedItem());
+        String selectedEnterprise = (String) comboenterprise.getSelectedItem();
+        int enterpriseId = Integer.parseInt(selectedEnterprise.split(":")[1]);
+        Enterprise enterprise = system.enterpriseDirectory.getEnterprise(enterpriseId);
+        if (enterprise == null) {           
+            JOptionPane.showMessageDialog(null, "Cannot find enterprise with id: " + enterpriseId);
+            return;
+        }
+        
+        String organizationName = txtOrgName.getText();
+        if (StringUtils.isEmpty(organizationName)) {
+            JOptionPane.showMessageDialog(null, "Enter valid organization name");
+            return;
+        }
 
         Organization organization = null;
         switch (type) {
             case ADMIN_ORGANIZATION:
-                organization = new SystemAdminOrganization("System Admin Org", enterprise);
+                organization = new SystemAdminOrganization(organizationName, enterprise, LocalDate.now());
                 break;
 
             case PATIENT_ORGANIZATION:
-                organization = new PatientOrganization("patient Org", enterprise);
+                organization = new PatientOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case HEALTH_INSURANCE_DEPARTMENT:
                 //add a way to create your organization
-                organization = new HealthInsuranceDepartmentOrganization("health insurance Org", enterprise);
+                organization = new HealthInsuranceDepartmentOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case LABORATORY:
-                organization = new LaboratoryOrganization("lab Org", enterprise);
+                organization = new LaboratoryOrganization(organizationName, enterprise, LocalDate.now());
                  break;
             case PRIMARY_CARE:
-                organization = new PrimaryCareOrganization("lab Org", enterprise);
+                organization = new PrimaryCareOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case MEDICINE_INVENTORY:
                 //add a way to create your organization
-                organization = new MedicineInventoryOrganization(txtname.getText(), enterprise);
+                organization = new MedicineInventoryOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case DELIVERY_DEPARTMENT:
                 //add a way to create your organization
-                organization = new DeliveryDepartmentOrganization(txtname.getText(), enterprise);
+                organization = new DeliveryDepartmentOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case NUTRITION_DEPARTMENT:
-                organization = new NutritionDepartmentOrganization(txtname.getText(), enterprise);
+                organization = new NutritionDepartmentOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case GYM:
-                organization = new GymOrganization(txtname.getText(), enterprise);
+                organization = new GymOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case PSYCHIATRY_DEPARTMENT:
-                organization = new GymOrganization(txtname.getText(), enterprise);
+                organization = new GymOrganization(organizationName, enterprise, LocalDate.now());
                  break;
 
             case INVALID:
@@ -280,11 +327,7 @@ public class ManageOrganizations extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+        nextScreen(WorkArea, backPage, "SysAdminHomePage");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void comboenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboenterpriseActionPerformed
@@ -293,18 +336,19 @@ public class ManageOrganizations extends javax.swing.JPanel {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Enterprise> comboenterprise;
-    private javax.swing.JComboBox<OrganizationType> comboorgtype;
+    private javax.swing.JComboBox<String> comboenterprise;
+    private javax.swing.JComboBox<String> comboorgtype;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblOrg;
-    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtOrgName;
     // End of variables declaration//GEN-END:variables
 
     private void LoadOrganization() {
@@ -312,27 +356,58 @@ public class ManageOrganizations extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblOrg.getModel();
         model.setRowCount(0);
         
+        List<Organization> allOrganizations = new ArrayList<>();
         for (Enterprise e : system.enterpriseDirectory.getAllEnterprise()) {
-           
-            List<Organization> temp = e.getOrganizations();
-           
-            
-            for (Organization o : temp) {
-                System.out.println("Org is " + o.getName());
-                Object row[] = new Object[1];
-                row[0] = o.getName();
-                model.addRow(row);
-
-            }
+            List<Organization> temp = new ArrayList<>(e.getOrganizations());
+            allOrganizations.addAll(temp);
         }
+        
+        Collections.sort(allOrganizations, new Comparator<Organization>() {
+            @Override
+            public int compare(Organization o1, Organization o2) {
+                return o2.getOrganizationCreationDate().compareTo(o1.getOrganizationCreationDate());
+            }
+        });
+        
+        for (Organization o : allOrganizations) {
+            Object row[] = new Object[4];
+            row[0] = o.getOrganizationCreationDate().toString();
+            row[1] = o.getName();
+            row[2] = o.getOrganizationType().toString();
+            row[3] = o.getEnterprise().getEnterpriseName();
+            model.addRow(row);
+        }
+        
+        
+//        for (Enterprise e : system.enterpriseDirectory.getAllEnterprise()) {
+//            List<Organization> temp = new ArrayList<>(e.getOrganizations());
+//            Collections.sort(temp, new Comparator<Organization>() {
+//                @Override
+//                public int compare(Organization o1, Organization o2) {
+//                    return o1.getOrganizationCreationDate().compareTo(o2.getOrganizationCreationDate());
+//                }
+//            });
+//            for (Organization o : temp) {
+//                System.out.println("Org is " + o.getName());
+//                Object row[] = new Object[4];
+//                row[0] = o.getOrganizationCreationDate().toString();
+//                row[1] = o.getName();
+//                row[2] = o.getOrganizationType().toString();
+//                row[3] = o.getEnterprise().getEnterpriseName();
+//                model.addRow(row);
+//
+//            }
+//        }
     }
 
     private void populateenterprise() {
         comboenterprise.removeAllItems();
 
         for (Enterprise e : system.enterpriseDirectory.getAllEnterprise()) {
-            comboenterprise.addItem(e);
-
+            if (e.getEnterpriseType() == EnterpriseType.HEALTH_MANAGEMENT_APP) {
+                continue;
+            }
+            comboenterprise.addItem(e.getEnterpriseName() + ":" + e.getEnterpriseId());
         }
         populateorganization();
       }
@@ -340,19 +415,23 @@ public class ManageOrganizations extends javax.swing.JPanel {
     private void populateorganization() {
 
         comboorgtype.removeAllItems();
-        Enterprise e;
-        e = (Enterprise) comboenterprise.getSelectedItem();
+        String selectedEnterprise = (String) comboenterprise.getSelectedItem();
+        int enterpriseId = Integer.parseInt(selectedEnterprise.split(":")[1]);
+        Enterprise e = system.enterpriseDirectory.getEnterprise(enterpriseId);
+        if (e == null) {           
+            JOptionPane.showMessageDialog(null, "Cannot find enterprise with id: " + enterpriseId);
+            return;
+        }
         
-        ArrayList<OrganizationType> types = e.getSupportedOrgTypes();
+        List<OrganizationType> types = e.getSupportedOrgTypes();
         if (types != null) {
             for (OrganizationType ot : types) {
-                comboorgtype.addItem(ot);
+                comboorgtype.addItem(ot.toString());
             }
-        }
-        else
-        {
+        } else {
             comboorgtype.removeAll();
+            JOptionPane.showMessageDialog(null, "No supported organizations for selected enterprise");
+            return;
         }
-
     }
 }

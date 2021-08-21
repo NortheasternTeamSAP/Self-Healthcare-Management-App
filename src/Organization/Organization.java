@@ -8,6 +8,7 @@ package Organization;
 import Enterprise.Enterprise;
 import Personnel.Person;
 import Utils.ConsoleLogger;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +27,18 @@ public abstract class Organization {
     protected int organizationId;
     Map<String, Person> employeesMap;
     static int countId = 1;
+    LocalDate organizationCreationDate;
     
     ConsoleLogger log = ConsoleLogger.getLogger();
     
     
-    public Organization(String name, Enterprise enterprise, OrganizationType organizationType) {
+    public Organization(String name, Enterprise enterprise, OrganizationType organizationType, LocalDate organizationCreationDate) {
         this.name = name;
         this.enterprise = enterprise;
         this.organizationType = organizationType;
         this.employeesMap = new HashMap<>();
         this.organizationId = countId++;
+        this.organizationCreationDate = organizationCreationDate;
     }
     
     public void addEmployee(Person p) {
@@ -71,5 +74,9 @@ public abstract class Organization {
     
     public Enterprise getEnterprise() {
         return enterprise;
+    }
+    
+    public LocalDate getOrganizationCreationDate() {
+        return this.organizationCreationDate;
     }
 }
