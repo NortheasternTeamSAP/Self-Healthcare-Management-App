@@ -28,6 +28,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        this.setSize(1100,850);
         system= new EcoSystem();
         Login();
     }
