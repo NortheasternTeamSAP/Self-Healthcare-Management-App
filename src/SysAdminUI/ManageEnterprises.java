@@ -38,6 +38,7 @@ public class ManageEnterprises extends javax.swing.JPanel {
      */
     public ManageEnterprises(JPanel WorkArea,EcoSystem system) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkArea=WorkArea;
         this.system=system;
         jComboBox1.setModel(new DefaultComboBoxModel(EnterpriseType.values()));
@@ -53,271 +54,153 @@ public class ManageEnterprises extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtname = new javax.swing.JTextField();
-        txtstreet = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        txtapt = new javax.swing.JTextField();
-        txtstate = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtcity = new javax.swing.JTextField();
-        txtcountry = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtzip = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblenterprise = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        txtname = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtstreet = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtapt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtcity = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtzip = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtstate = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtcountry = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Create An Enterprise");
+        tblenterprise.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Type :");
+            },
+            new String [] {
+                "EnterpriseID", "Name", "Address", "Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Enterprise Name :");
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Street");
-
-        jButton1.setText("Create");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(tblenterprise);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 880, 249));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 15, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Manage an Enterprise");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Enterprise Type");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 120, 30));
 
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 200, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Enterprise Name ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 120, 30));
+
+        txtname.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 200, 20));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Street");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 120, 30));
+
+        txtstreet.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtstreet.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtstreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 200, 20));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Apartment");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 120, 30));
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("State");
+        txtapt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtapt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtapt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 200, 20));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("City");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, 120, 30));
 
+        txtcity.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtcity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 200, 20));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("ZIP");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 610, 120, 20));
+
+        txtzip.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtzip.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, 200, 20));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("State");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 650, 120, 20));
+
+        txtstate.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtstate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 650, 200, 20));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Country");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 700, 130, -1));
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Zip");
+        txtcountry.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtcountry.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 690, 200, 20));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(45, 45, 45)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtapt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtstreet)
-                                        .addComponent(txtname)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addGap(44, 44, 44)
-                                    .addComponent(txtzip, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(44, 44, 44)
-                                    .addComponent(txtcity, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(53, 53, 53))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(44, 44, 44)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtstate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcountry, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)))
-                .addContainerGap(93, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtstreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtapt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtcountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(14, 14, 14))
-        );
-
-        tblenterprise.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "EnterpriseID", "Name", "Address", "Type"
-            }
-        ));
-        jScrollPane1.setViewportView(tblenterprise);
-
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/add.png"))); // NOI18N
+        jButton1.setText("Create");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 740, 120, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jButton4)))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jButton4)
-                        .addGap(49, 49, 49)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(171, Short.MAX_VALUE))
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -4, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Address sampleAddress = new Address(txtstreet.getText(), txtapt.getText(), txtcity.getText(), txtzip.getText(), txtstate.getText(), txtcountry.getText());
-        EnterpriseType type = (EnterpriseType) jComboBox1.getSelectedItem();
-
-        switch (type) {
-            case HEALTH_MANAGEMENT_APP:
-
-                Enterprise e1 = new HealthManagementAppEnterprise(txtname.getText(), sampleAddress);
-                system.enterpriseDirectory.addEnterprise(e1);
-                LoadEnterprises();
-                break;
-                
-            case HOSPITAL:
-                Enterprise e2 = new HospitalEnterprise(txtname.getText(), sampleAddress);
-                system.enterpriseDirectory.addEnterprise(e2);
-                LoadEnterprises();
-                 break;
-
-            case INSURANCE_COMPANY:
-                Enterprise e3 = new InsuranceCompanyEnterprise(txtname.getText(), sampleAddress);
-                system.enterpriseDirectory.addEnterprise(e3);
-                LoadEnterprises();
-                 break;
-                
-            case PHARMACY:
-                Enterprise pharEnterprise = new PharmacyEnterprise(txtname.getText(), sampleAddress);
-                system.enterpriseDirectory.addEnterprise(pharEnterprise);
-                LoadEnterprises();
-                 break;
-                 
-            case PHYSICAL_WELLNESS:
-                Enterprise e5 = new PhysicalWellnessEnterprise(txtname.getText(), sampleAddress);
-                system.enterpriseDirectory.addEnterprise(e5);
-                LoadEnterprises();
-                 break;
-                
-            case MENTAL_HEALTH:               
-
-                Enterprise e6 = new MentalWellnessEnterprise(txtname.getText(), sampleAddress);
-                system.enterpriseDirectory.addEnterprise(e6);
-                LoadEnterprises();
-                 break;
-            case INVALID:
-                JOptionPane.showMessageDialog(this, "Invalid Enterprise Details ");
-             break;
-       
-       }
-               
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         WorkArea.remove(this);
@@ -331,12 +214,63 @@ public class ManageEnterprises extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Address sampleAddress = new Address(txtstreet.getText(), txtapt.getText(), txtcity.getText(), txtzip.getText(), txtstate.getText(), txtcountry.getText());
+        EnterpriseType type = (EnterpriseType) jComboBox1.getSelectedItem();
+
+        switch (type) {
+            case HEALTH_MANAGEMENT_APP:
+
+            Enterprise e1 = new HealthManagementAppEnterprise(txtname.getText(), sampleAddress);
+            system.enterpriseDirectory.addEnterprise(e1);
+            LoadEnterprises();
+            break;
+
+            case HOSPITAL:
+            Enterprise e2 = new HospitalEnterprise(txtname.getText(), sampleAddress);
+            system.enterpriseDirectory.addEnterprise(e2);
+            LoadEnterprises();
+            break;
+
+            case INSURANCE_COMPANY:
+            Enterprise e3 = new InsuranceCompanyEnterprise(txtname.getText(), sampleAddress);
+            system.enterpriseDirectory.addEnterprise(e3);
+            LoadEnterprises();
+            break;
+
+            case PHARMACY:
+            Enterprise pharEnterprise = new PharmacyEnterprise(txtname.getText(), sampleAddress);
+            system.enterpriseDirectory.addEnterprise(pharEnterprise);
+            LoadEnterprises();
+            break;
+
+            case PHYSICAL_WELLNESS:
+            Enterprise e5 = new PhysicalWellnessEnterprise(txtname.getText(), sampleAddress);
+            system.enterpriseDirectory.addEnterprise(e5);
+            LoadEnterprises();
+            break;
+
+            case MENTAL_HEALTH:
+
+            Enterprise e6 = new MentalWellnessEnterprise(txtname.getText(), sampleAddress);
+            system.enterpriseDirectory.addEnterprise(e6);
+            LoadEnterprises();
+            break;
+            case INVALID:
+            JOptionPane.showMessageDialog(this, "Invalid Enterprise Details ");
+            break;
+
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<EnterpriseType> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -345,7 +279,6 @@ public class ManageEnterprises extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblenterprise;
     private javax.swing.JTextField txtapt;
