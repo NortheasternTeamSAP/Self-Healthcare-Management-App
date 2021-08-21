@@ -67,13 +67,14 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         jLabel3 = new javax.swing.JLabel();
         btnClearTable = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Hello Delivery Man!");
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         tblDelManOrderRequests.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblDelManOrderRequests.setModel(new javax.swing.table.DefaultTableModel(
@@ -96,27 +97,31 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         tblDelManOrderRequests.setSelectionForeground(new java.awt.Color(51, 51, 255));
         jScrollPane1.setViewportView(tblDelManOrderRequests);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 880, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 880, 240));
 
-        btnAssignToMe.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAssignToMe.setBackground(new java.awt.Color(255, 255, 255));
+        btnAssignToMe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAssignToMe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-connected-people-30.png"))); // NOI18N
         btnAssignToMe.setText("Assign to me");
-        btnAssignToMe.setContentAreaFilled(false);
+        btnAssignToMe.setOpaque(false);
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 150, 40));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 150, 40));
 
-        btnProcessOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnProcessOrder.setBackground(new java.awt.Color(255, 255, 255));
+        btnProcessOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnProcessOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-in-transit-30.png"))); // NOI18N
         btnProcessOrder.setText("Deliver Order");
-        btnProcessOrder.setContentAreaFilled(false);
+        btnProcessOrder.setOpaque(false);
         btnProcessOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessOrderActionPerformed(evt);
             }
         });
-        add(btnProcessOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 140, 40));
+        add(btnProcessOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 780, 160, 40));
 
         btnRefreshOrdersTable.setContentAreaFilled(false);
         btnRefreshOrdersTable.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +129,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 btnRefreshOrdersTableActionPerformed(evt);
             }
         });
-        add(btnRefreshOrdersTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 40, 30));
+        add(btnRefreshOrdersTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 40, 30));
 
         tblDeliveryManAssigned.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblDeliveryManAssigned.setModel(new javax.swing.table.DefaultTableModel(
@@ -147,34 +152,40 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         tblDeliveryManAssigned.setSelectionForeground(new java.awt.Color(102, 102, 255));
         jScrollPane2.setViewportView(tblDeliveryManAssigned);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 880, 230));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 880, 230));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Order Requests");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("My Deliveries");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, -1));
 
-        btnClearTable.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        btnClearTable.setText("Clear ");
+        btnClearTable.setBackground(new java.awt.Color(255, 255, 255));
+        btnClearTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnClearTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-refresh-30.png"))); // NOI18N
         btnClearTable.setBorder(null);
-        btnClearTable.setContentAreaFilled(false);
         btnClearTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearTableActionPerformed(evt);
             }
         });
-        add(btnClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 100, 30));
+        add(btnClearTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 40, 30));
 
+        btnLogout.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogout.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/logout.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
-        add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 40, -1, -1));
+        add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 6, 1100, 840));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -301,6 +312,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDelManOrderRequests;
