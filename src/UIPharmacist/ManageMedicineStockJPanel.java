@@ -31,6 +31,7 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
     
     public ManageMedicineStockJPanel(JPanel workArea, PharmacyEnterprise pharmacy, EcoSystem ecoSystem) {
         initComponents();
+        this.setSize(1100,850);
         this.workArea = workArea;
         this.pharmacy = pharmacy;
         this.ecoSystem = ecoSystem;
@@ -110,18 +111,19 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         btnDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/delete.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setBorderPainted(false);
-        btnDelete.setContentAreaFilled(false);
+        btnDelete.setOpaque(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 110, 30));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 120, 40));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,15 +132,19 @@ public class ManageMedicineStockJPanel extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 30, 40));
 
-        btnAddStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAddStock.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddStock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAddStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/add.png"))); // NOI18N
         btnAddStock.setText("Add Stock");
-        btnAddStock.setContentAreaFilled(false);
+        btnAddStock.setOpaque(false);
         btnAddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddStockActionPerformed(evt);
             }
         });
-        add(btnAddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 120, -1));
+        add(btnAddStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 150, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 

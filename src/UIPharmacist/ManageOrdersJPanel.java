@@ -36,6 +36,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             PharmacyEnterprise pharmacy) {
         
         initComponents();
+        this.setSize(1100, 850);
         this.workArea = workArea;
         this.ecoSystem = ecoSystem;
         this.pharmacy = pharmacy;
@@ -107,19 +108,21 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Manage Orders");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 186, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 186, -1));
 
-        btnAcceptOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAcceptOrder.setBackground(new java.awt.Color(255, 255, 255));
+        btnAcceptOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAcceptOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/accept.png"))); // NOI18N
         btnAcceptOrder.setText("Accept");
         btnAcceptOrder.setToolTipText("Accept Order");
-        btnAcceptOrder.setContentAreaFilled(false);
         btnAcceptOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAcceptOrder.setOpaque(false);
         btnAcceptOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptOrderActionPerformed(evt);
             }
         });
-        add(btnAcceptOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 100, 30));
+        add(btnAcceptOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 120, 40));
 
         tblOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
@@ -144,6 +147,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 970, 220));
 
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setToolTipText("Back");
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -155,17 +159,19 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Pending Orders to be processed:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 20));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 20));
 
-        btnCheckMedAvailability.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnCheckMedAvailability.setBackground(new java.awt.Color(255, 255, 255));
+        btnCheckMedAvailability.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCheckMedAvailability.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/check_avail.png"))); // NOI18N
         btnCheckMedAvailability.setText("Check Availability");
-        btnCheckMedAvailability.setContentAreaFilled(false);
+        btnCheckMedAvailability.setOpaque(false);
         btnCheckMedAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckMedAvailabilityActionPerformed(evt);
             }
         });
-        add(btnCheckMedAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        add(btnCheckMedAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, 40));
 
         tblAcceptedOrders.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblAcceptedOrders.setModel(new javax.swing.table.DefaultTableModel(
@@ -190,31 +196,35 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         lblCurrentAcceptedOrders.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCurrentAcceptedOrders.setText("Current Accepted Orders:");
-        add(lblCurrentAcceptedOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
+        add(lblCurrentAcceptedOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
-        btnShipOrder.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnShipOrder.setBackground(new java.awt.Color(255, 255, 255));
+        btnShipOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnShipOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-shipped-30.png"))); // NOI18N
         btnShipOrder.setText("Ship Order");
-        btnShipOrder.setContentAreaFilled(false);
         btnShipOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnShipOrder.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnShipOrder.setOpaque(false);
         btnShipOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShipOrderActionPerformed(evt);
             }
         });
-        add(btnShipOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 750, 120, 40));
+        add(btnShipOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 770, 140, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Select Delivery Man");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, 107, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, 140, -1));
 
         cmbDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbDeliveryManActionPerformed(evt);
             }
         });
-        add(cmbDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 730, 150, 20));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 860));
+        add(cmbDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 730, 150, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1100, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptOrderActionPerformed

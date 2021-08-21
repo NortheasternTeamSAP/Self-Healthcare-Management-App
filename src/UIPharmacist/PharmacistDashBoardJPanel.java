@@ -36,6 +36,7 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
         this.ecoSystem = ecoSystem;
         this.pharmacy = pharmacy;
         initComponents();
+        this.setSize(1100, 850);
     }
 
     /**
@@ -51,71 +52,51 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
         btnManageMedicineCatalog = new javax.swing.JButton();
         lblPharmacistDashboard = new javax.swing.JLabel();
         jButtonLogout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnManageOrders.setBackground(new java.awt.Color(255, 255, 255));
         btnManageOrders.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnManageOrders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/mngOrder.png"))); // NOI18N
         btnManageOrders.setText("Manage Orders");
-        btnManageOrders.setContentAreaFilled(false);
         btnManageOrders.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnManageOrders.setOpaque(true);
         btnManageOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageOrdersActionPerformed(evt);
             }
         });
+        add(btnManageOrders, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 243, 280, -1));
 
         btnManageMedicineCatalog.setBackground(new java.awt.Color(255, 255, 255));
         btnManageMedicineCatalog.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnManageMedicineCatalog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/medication.png"))); // NOI18N
         btnManageMedicineCatalog.setText("Manage Medicine Stock");
-        btnManageMedicineCatalog.setContentAreaFilled(false);
         btnManageMedicineCatalog.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnManageMedicineCatalog.setOpaque(true);
         btnManageMedicineCatalog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageMedicineCatalogActionPerformed(evt);
             }
         });
+        add(btnManageMedicineCatalog, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 183, 280, -1));
 
-        lblPharmacistDashboard.setText("Pharmacist DashBoard");
+        lblPharmacistDashboard.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPharmacistDashboard.setText("Pharmacist Dashboard");
+        add(lblPharmacistDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 89, -1, -1));
 
+        jButtonLogout.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/logout.png"))); // NOI18N
         jButtonLogout.setText("Logout");
         jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogoutActionPerformed(evt);
             }
         });
+        add(jButtonLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 14, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jButtonLogout)
-                        .addGap(181, 181, 181)
-                        .addComponent(lblPharmacistDashboard))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnManageOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnManageMedicineCatalog, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(226, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPharmacistDashboard)
-                    .addComponent(jButtonLogout))
-                .addGap(70, 70, 70)
-                .addComponent(btnManageMedicineCatalog)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageOrders)
-                .addContainerGap(198, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrdersActionPerformed
@@ -142,6 +123,7 @@ public class PharmacistDashBoardJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JButton btnManageMedicineCatalog;
     private javax.swing.JButton btnManageOrders;
     private javax.swing.JButton jButtonLogout;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPharmacistDashboard;
     // End of variables declaration//GEN-END:variables
 }
