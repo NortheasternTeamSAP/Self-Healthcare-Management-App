@@ -3,33 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SysAdminUI;
+package UNUSEDCODE;
 
-import Counselor.Counselor;
-import DataStore.GenericDirectory;
-import DataStore.GlobalUserDirectory;
-import Dietitian.Dietitian;
+import Doctor.Doctor;
 import EcoSystem.EcoSystem;
-import FitnessTrainer.FitnessTrainer;
-import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
-import java.awt.CardLayout;
-import javax.swing.JPanel;
+import Patient.Patient;
 
 /**
  *
- * @author Ankur Bywar
+ * @author sravy
  */
-public class MainJFrame extends javax.swing.JFrame {
+public class Sree_Test_MainJFrame extends javax.swing.JFrame {
 
-   EcoSystem system;
-
-    /**
-     * Creates new form MainJFrame
-     */
-    public MainJFrame() {
+    private EcoSystem ecoSystem;
+    private Patient patient;
+    private Doctor doctor;
+    public Sree_Test_MainJFrame() {
         initComponents();
-        system= new EcoSystem();
-        Login();
     }
 
     /**
@@ -41,13 +31,18 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WorkArea = new javax.swing.JPanel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
 
-        WorkArea.setLayout(new java.awt.CardLayout());
-        getContentPane().add(WorkArea, "card2");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 551, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,34 +64,24 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sree_Test_MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sree_Test_MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sree_Test_MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sree_Test_MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                new Sree_Test_MainJFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel WorkArea;
     // End of variables declaration//GEN-END:variables
-
-    private void Login() {
-        Login ls= new Login(WorkArea,system);
-        WorkArea.add("Login",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);  
-    }
-
-  
 }

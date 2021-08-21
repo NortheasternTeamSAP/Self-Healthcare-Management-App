@@ -11,9 +11,9 @@ import Dietitian.Dietitian;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
 import Personnel.Person;
-import UI.CounselorDashboard;
-import UI.DietitianDashboard;
-import UI.FitnessTrainerDashBoard;
+import UICounselorDietitianFitnessTrainer.CounselorDashboard;
+import UICounselorDietitianFitnessTrainer.DietitianDashboard;
+import UICounselorDietitianFitnessTrainer.FitnessTrainerDashBoard;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
@@ -22,15 +22,15 @@ import Insurance.InsuranceProviderRepresentative;
 import Laboratory.LaboratoryAssistant;
 import Organization.Organization;
 import Patient.Patient;
-import PatientCoreWorkFlowUI.DoctorWorkAreaPanel;
-import PatientCoreWorkFlowUI.InsuranceProviderRepresentativeHomePageJPanel;
-import PatientCoreWorkFlowUI.LaboratoryAssistantHomePagePanel;
-import PatientCoreWorkFlowUI.PatientHomePagePanel;
+import UIPatientDoctorInsuranceProvider.DoctorWorkAreaPanel;
+import UIPatientDoctorInsuranceProvider.InsuranceProviderRepresentativeHomePageJPanel;
+import UIPatientDoctorInsuranceProvider.LaboratoryAssistantHomePagePanel;
+import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
 import Personnel.Person;
 import Personnel.Role;
 import Pharmacy.Pharmacist;
-import UI.DeliveryManRole.DeliveryManWorkAreaJPanel;
-import UI.PharmacistRole.PharmacistDashBoardJPanel;
+import UIDeliveryMan.DeliveryManWorkAreaJPanel;
+import UIPharmacist.PharmacistDashBoardJPanel;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
 import java.awt.CardLayout;
@@ -185,17 +185,10 @@ public class Login extends javax.swing.JPanel implements NextScreen {
         
         switch (p.getRole()) {
             case SYSTEM_ADMIN:
-                SysAdminDashboard ls= new SysAdminDashboard(WorkArea,system);
-                WorkArea.add("SysAdminDashboard",ls);
-                CardLayout layout= (CardLayout)WorkArea.getLayout();
-                layout.next(WorkArea);  
+                nextScreen(WorkArea, new SysAdminDashboard(WorkArea, system), "SysAdminDashboard");
                 break;
             case PATIENT:
                 nextScreen(WorkArea, new PatientHomePagePanel(WorkArea, system, (Patient) p), "PatientHomePagePanel");
-                //PatientHomePagePanel phpp= new PatientHomePagePanel(WorkArea,system,(Patient)p);
-               
-//                
-                // redirect to patient dashboard
                 break;
             case DOCTOR:
               
@@ -207,18 +200,13 @@ public class Login extends javax.swing.JPanel implements NextScreen {
                 break;
              
             case LABASSISTANT:
-             
-             //system.globalUserDirectory.get("labassist1")
                nextScreen(WorkArea, new LaboratoryAssistantHomePagePanel(WorkArea, system,(LaboratoryAssistant)p), "LaboratoryAssistantHomePagePanel");
                 break;
-             
-                
+
             case INSURANCE_PROVIDER_REP:
-                InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system, system.organizationDirectory.getOrganization(p.getOrganizationId()), (InsuranceProviderRepresentative)p);
-                WorkArea.add("InsuranceProviderRepresentativeHomePageJPanel",insuranceprovider);
-                CardLayout layoutd= (CardLayout)WorkArea.getLayout();
-                layoutd.next(WorkArea); 
-                 //nextScreen(WorkArea, new InsuranceProviderRepresentativeHomePageJPanel(WorkArea, system,(InsuranceProviderRepresentative)p), "InsuranceProviderRepresentativeHomePageJPanel");
+                InsuranceProviderRepresentativeHomePageJPanel insuranceprovider= new InsuranceProviderRepresentativeHomePageJPanel(WorkArea,system, 
+                        system.organizationDirectory.getOrganization(p.getOrganizationId()), (InsuranceProviderRepresentative)p);
+                 nextScreen(WorkArea, insuranceprovider, "InsuranceProviderRepresentativeHomePageJPanel");
 
                 break;
             case DELIVERY_MAN:
@@ -231,22 +219,13 @@ public class Login extends javax.swing.JPanel implements NextScreen {
                 nextScreen(WorkArea, new PharmacistDashBoardJPanel(WorkArea, system,(PharmacyEnterprise)organization.getEnterprise()), "PharmacistDashBoardJPanel");
                 break;
             case DIETITIAN:
-                DietitianDashboard dd= new DietitianDashboard(WorkArea,system,(Dietitian)p);
-                WorkArea.add("DietitianDashboard",dd);
-                CardLayout layoutdd= (CardLayout)WorkArea.getLayout();
-                layoutdd.next(WorkArea); 
+                nextScreen(WorkArea, new DietitianDashboard(WorkArea,system,(Dietitian)p), "DietitianDashboard");
                 break;
             case TRAINER:
-                FitnessTrainerDashBoard fd= new FitnessTrainerDashBoard(WorkArea,system,(FitnessTrainer)p);
-                WorkArea.add("FitnessTrainerDashBoard",fd);
-                CardLayout layoutft= (CardLayout)WorkArea.getLayout();
-                layoutft.next(WorkArea); 
+                nextScreen(WorkArea, new FitnessTrainerDashBoard(WorkArea,system,(FitnessTrainer)p), "FitnessTrainerDashBoard");
                 break;
             case COUNSELOR:
-                CounselorDashboard cd= new CounselorDashboard(WorkArea,system,(Counselor)p);
-                WorkArea.add("CounselorDashboard",cd);
-                CardLayout layoutcd= (CardLayout)WorkArea.getLayout();
-                layoutcd.next(WorkArea); 
+                nextScreen(WorkArea, new CounselorDashboard(WorkArea,system,(Counselor)p), "CounselorDashboard");
                 break;
             case INVALID:
             default:

@@ -103,7 +103,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
 
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jComboRoleTypes = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButtonListEmployees = new javax.swing.JButton();
@@ -147,13 +146,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Update and Delete Roles");
 
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jComboRoleTypes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Roles", "DOCTOR", "LABASSISTANT", "INSURANCE_PROVIDER_REP", "PHARMACIST", "DELIVERY_MAN", "DIETITIAN", "TRAINER", "COUNSELOR" }));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -181,7 +173,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -190,8 +182,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
                         .addGap(30, 30, 30)
                         .addComponent(jButtonListEmployees))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(141, 141, 141)
+                        .addGap(216, 216, 216)
                         .addComponent(jLabel6)))
                 .addGap(256, 256, 256))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -200,7 +191,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
                         .addGap(129, 129, 129)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(69, 69, 69)
                         .addComponent(jButtonBack)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -208,14 +199,10 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jButtonBack)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboRoleTypes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -583,14 +570,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         // TODO add your handling code here:
     }//GEN-LAST:event_comboenterpriseActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jComboBoxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxGenderActionPerformed
@@ -763,7 +742,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
     private javax.swing.JButton btnUpdateRoles;
     private javax.swing.JComboBox<String> comboenterprise;
     private javax.swing.JComboBox<String> comboorgtype;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonListEmployees;
     private javax.swing.JComboBox<String> jComboBoxAddrState;
