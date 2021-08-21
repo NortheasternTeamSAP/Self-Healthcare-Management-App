@@ -64,23 +64,24 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
 
         btnAddMedicineStock.setBackground(new java.awt.Color(255, 255, 255));
         btnAddMedicineStock.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        btnAddMedicineStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/add.png"))); // NOI18N
         btnAddMedicineStock.setText("Add ");
-        btnAddMedicineStock.setContentAreaFilled(false);
+        btnAddMedicineStock.setOpaque(false);
         btnAddMedicineStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddMedicineStockActionPerformed(evt);
             }
         });
-        add(btnAddMedicineStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 90, 30));
+        add(btnAddMedicineStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 90, 40));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Quantity:");
@@ -92,8 +93,10 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
             }
         });
         add(cmbMedicineId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 210, -1));
-        add(spnAddMedicineQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 80, -1));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 840));
+        add(spnAddMedicineQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 90, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddMedicineStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMedicineStockActionPerformed
