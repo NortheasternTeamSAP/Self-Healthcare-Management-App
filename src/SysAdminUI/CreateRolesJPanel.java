@@ -78,6 +78,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
      */
     public CreateRolesJPanel(JPanel WorkArea, EcoSystem system) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkArea = WorkArea;
         this.system = system;
         this.person = person;
@@ -104,7 +105,6 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jSelectRoleLabel = new javax.swing.JLabel();
         imgLogo = new javax.swing.JLabel();
         btnAttach = new javax.swing.JButton();
         btnRemove1 = new javax.swing.JButton();
@@ -114,7 +114,6 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         txtDobDateChooser = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         txtPhoneNumber = new javax.swing.JTextField();
-        lblAddress = new javax.swing.JLabel();
         lblAddrStreet = new javax.swing.JLabel();
         txtAddressStreet = new javax.swing.JTextField();
         lblAddrCity = new javax.swing.JLabel();
@@ -147,52 +146,87 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         jRadioButtonLabAssistant = new javax.swing.JRadioButton();
         jComboBoxGender = new javax.swing.JComboBox<>();
         lblAddrState1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
-        jSelectRoleLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jSelectRoleLabel.setText("Profile Picture");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imgLogo.setBackground(new java.awt.Color(255, 255, 204));
-        imgLogo.setText("Upload your photo here");
+        imgLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\user1new.png")); // NOI18N
+        imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 81, 120, 120));
 
-        btnAttach.setBackground(new java.awt.Color(255, 255, 102));
-        btnAttach.setText("Attach");
+        btnAttach.setBackground(new java.awt.Color(255, 255, 255));
+        btnAttach.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnAttach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-attach-30.png"))); // NOI18N
         btnAttach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAttachActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAttach, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 207, 42, -1));
 
-        btnRemove1.setBackground(new java.awt.Color(204, 204, 255));
-        btnRemove1.setText("Remove");
+        btnRemove1.setBackground(new java.awt.Color(255, 255, 255));
+        btnRemove1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnRemove1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/disagree.png"))); // NOI18N
         btnRemove1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemove1ActionPerformed(evt);
             }
         });
+        jPanel1.add(btnRemove1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 207, 40, -1));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel1.setText("Name:");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Name");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 120, -1));
 
+        txtName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 210, 30));
 
-        lblDob.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblDob.setText("Dob:");
+        lblDob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob.setText("Date Of Birth");
+        jPanel1.add(lblDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 120, -1));
+        jPanel1.add(txtDobDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 210, -1));
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel3.setText("Phone Number:");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Phone Number");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 120, -1));
 
-        lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblAddress.setText("Address:");
+        txtPhoneNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 210, 30));
 
+        lblAddrStreet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddrStreet.setText("Community/Street");
+        jPanel1.add(lblAddrStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 120, -1));
 
+        txtAddressStreet.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtAddressStreet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressStreetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtAddressStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 277, 220, 30));
+
+        lblAddrCity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddrCity.setText("City");
+        jPanel1.add(lblAddrCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 120, -1));
 
-        lblAddrZip.setText("Zip");
+        txtAddressCity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtAddressCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 220, 30));
+
+        lblAddrZip.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblAddrZip.setText("ZIP");
+        jPanel1.add(lblAddrZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 120, -1));
+
+        txtAddressZip.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtAddressZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 220, 30));
 
         jComboBoxAddrState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MA", "WA", "TX", "CA", " " }));
         jComboBoxAddrState.addActionListener(new java.awt.event.ActionListener() {
@@ -200,81 +234,117 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                 jComboBoxAddrStateActionPerformed(evt);
             }
         });
+        jPanel1.add(jComboBoxAddrState, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 230, -1));
 
+        lblAddrState.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddrState.setText("State");
+        jPanel1.add(lblAddrState, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 120, -1));
 
+        lblAddrCountry.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddrCountry.setText("Country");
+        jPanel1.add(lblAddrCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
 
         txtAddressCountry.setText("USA");
+        txtAddressCountry.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtAddressCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 220, 30));
 
-        jUsernameLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jUsernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jUsernameLabel.setText("Username");
+        jPanel1.add(jUsernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 820, 120, 29));
 
         txtUsername.setToolTipText("Enter Username");
+        txtUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
             }
         });
+        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 820, 220, 29));
 
-        jPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jPasswordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPasswordLabel.setText("Password");
+        jPanel1.add(jPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 870, 120, 29));
 
         jPasswordTextField.setToolTipText("");
+        jPasswordTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPasswordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordTextFieldActionPerformed(evt);
             }
         });
+        jPanel1.add(jPasswordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 867, 220, 30));
 
-        btnCreateRoles.setBackground(new java.awt.Color(0, 153, 153));
-        btnCreateRoles.setText("CREATE");
+        btnCreateRoles.setBackground(new java.awt.Color(255, 255, 255));
+        btnCreateRoles.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCreateRoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/add.png"))); // NOI18N
+        btnCreateRoles.setText("Create");
         btnCreateRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateRolesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCreateRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 920, 110, 40));
 
+        lblEnterprise.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnterprise.setText("Enterprise:");
+        lblEnterprise.setText("Enterprise");
+        jPanel1.add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 120, 30));
 
         comboenterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboenterpriseActionPerformed(evt);
             }
         });
+        jPanel1.add(comboenterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 220, -1));
 
+        lblOrg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblOrg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblOrg.setText("Organization");
+        jPanel1.add(lblOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 120, -1));
 
+        lblRoles.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRoles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblRoles.setText("Roles");
+        jPanel1.add(lblRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 120, -1));
+
+        jPanel1.add(comboorgtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 590, 220, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Create Roles");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 21, -1, 25));
 
-        jButton4.setText("Back");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 21, -1, 37));
 
         jRadioButtonInsuranceProviderRep.setText("Insurance Representative");
+        jPanel1.add(jRadioButtonInsuranceProviderRep, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 650, -1, -1));
 
         jRadioButtonDoctor.setText("Primary Care Provider");
+        jPanel1.add(jRadioButtonDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 630, -1, 23));
 
         jRadioButtonGymTrainer.setText("Gym Instructor/Trainer");
+        jPanel1.add(jRadioButtonGymTrainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 750, -1, -1));
 
         jRadioButtonPharmacist.setText("Pharmacist");
+        jPanel1.add(jRadioButtonPharmacist, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 690, -1, -1));
 
         jRadioButtonDeliveryMan.setText("Delivery Representative");
+        jPanel1.add(jRadioButtonDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 710, -1, -1));
 
         jRadioButtonDietitian.setText("Dietitian");
+        jPanel1.add(jRadioButtonDietitian, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 730, -1, -1));
 
         jRadioButtonCounseller.setText("Mental health counseller");
+        jPanel1.add(jRadioButtonCounseller, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 770, -1, -1));
 
         jRadioButtonLabAssistant.setText("Medical tests laboratory assistant");
+        jPanel1.add(jRadioButtonLabAssistant, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 670, -1, -1));
 
         jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MALE", "FEMALE", "OTHER" }));
         jComboBoxGender.addActionListener(new java.awt.event.ActionListener() {
@@ -282,237 +352,27 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                 jComboBoxGenderActionPerformed(evt);
             }
         });
+        jPanel1.add(jComboBoxGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 210, -1));
 
+        lblAddrState1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddrState1.setText("Gender");
+        jPanel1.add(lblAddrState1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 120, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1070, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 532, 1070, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 800, 1070, 10));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDob)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtName)
-                    .addComponent(txtDobDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
-                .addGap(467, 467, 467))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblAddrStreet)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblAddrZip)
-                                                .addComponent(lblAddrCity)))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(43, 43, 43)
-                                                .addComponent(lblAddrState)
-                                                .addGap(32, 32, 32)
-                                                .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(91, 91, 91)
-                                        .addComponent(lblAddrCountry)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(lblAddrState1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jSelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jButton4)))
-                        .addGap(71, 71, 71)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(140, 140, 140)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addComponent(btnAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(167, 167, 167)
-                                .addComponent(jLabel6))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblOrg)
-                                    .addComponent(lblEnterprise)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addComponent(lblRoles)))
-                                .addGap(45, 45, 45)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(comboenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboorgtype, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButtonLabAssistant)
-                                    .addComponent(jRadioButtonDoctor)
-                                    .addComponent(jRadioButtonPharmacist)
-                                    .addComponent(jRadioButtonGymTrainer)
-                                    .addComponent(jRadioButtonDeliveryMan)
-                                    .addComponent(jRadioButtonDietitian)
-                                    .addComponent(jRadioButtonCounseller)
-                                    .addComponent(jRadioButtonInsuranceProviderRep)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(btnCreateRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jSelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(btnAttach)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRemove1)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel1))
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblDob))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddrState1))))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddress)
-                    .addComponent(lblAddrStreet)
-                    .addComponent(txtAddressStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAddressCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddrCity))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddrZip)
-                    .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddrState)
-                    .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddrCountry)
-                    .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnterprise)
-                    .addComponent(comboenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOrg)
-                    .addComponent(comboorgtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblRoles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButtonDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonInsuranceProviderRep)
-                        .addGap(3, 3, 3)
-                        .addComponent(jRadioButtonLabAssistant)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonPharmacist)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonDeliveryMan)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonDietitian)
-                        .addGap(12, 12, 12)
-                        .addComponent(jRadioButtonGymTrainer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonCounseller)
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCreateRoles)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X960.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 970));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -740,6 +600,10 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxGenderActionPerformed
 
+    private void txtAddressStreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressStreetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressStreetActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAttach;
@@ -752,6 +616,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JComboBox<String> jComboBoxAddrState;
     private javax.swing.JComboBox<String> jComboBoxGender;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -765,7 +630,9 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JRadioButton jRadioButtonInsuranceProviderRep;
     private javax.swing.JRadioButton jRadioButtonLabAssistant;
     private javax.swing.JRadioButton jRadioButtonPharmacist;
-    private javax.swing.JLabel jSelectRoleLabel;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel jUsernameLabel;
     private javax.swing.JLabel lblAddrCity;
     private javax.swing.JLabel lblAddrCountry;
@@ -773,7 +640,6 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JLabel lblAddrState1;
     private javax.swing.JLabel lblAddrStreet;
     private javax.swing.JLabel lblAddrZip;
-    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEnterprise;
     private javax.swing.JLabel lblOrg;
