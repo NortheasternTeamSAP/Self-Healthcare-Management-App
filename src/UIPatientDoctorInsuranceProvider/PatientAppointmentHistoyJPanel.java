@@ -106,8 +106,8 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel1.setText("Patient Appointment and Lab tests History");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 29, 504, 46));
+        jLabel1.setText("Patient Primary Care Appointment and Lab tests History");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 29, 740, 46));
 
         tblPatientAppointmentHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

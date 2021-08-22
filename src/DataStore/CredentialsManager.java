@@ -52,7 +52,8 @@ public class CredentialsManager {
         }
         
         if (!userAccount.getPassword().equals(password)) {
-            log.error("Password mismatched for username " + userAccount);
+            log.error("Password mismatched for username " + userAccount.getUsername());
+            log.error("Expected password  " + userAccount.getPassword());
             return false;
         }
         

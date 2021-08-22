@@ -47,11 +47,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Patient Appointment and Lab tests History"/>
+            <Property name="text" type="java.lang.String" value="Patient Primary Care Appointment and Lab tests History"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="92" y="29" width="504" height="46"/>
+              <AbsoluteConstraints x="92" y="29" width="740" height="46"/>
             </Constraint>
           </Constraints>
         </Component>

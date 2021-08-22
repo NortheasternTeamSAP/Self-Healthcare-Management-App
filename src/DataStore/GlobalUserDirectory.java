@@ -139,4 +139,9 @@ public class GlobalUserDirectory {
         }
         return counselors;
     } 
+
+    public void updateUser(Person person) {
+        removeUser(person);
+        createNewUser(person);
+    }
 }
