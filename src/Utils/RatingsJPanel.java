@@ -26,6 +26,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
     
     RatingsJPanel(Person person, Rating rating, LocalDate ratingsDate) {
         initComponents();
+        this.setSize(1100,850);
         initizlizeRatingIcons();
         initializeRadioButtonGroup();
         this.person = person;
@@ -111,8 +112,12 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButtonSubmitReview = new javax.swing.JButton();
         jLabel5Star = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        jRadioButton5Star.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jRadioButton5Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jRadioButton5Star.setForeground(new java.awt.Color(0, 204, 102));
         jRadioButton5Star.setText("Very Satisfied");
         jRadioButton5Star.addActionListener(new java.awt.event.ActionListener() {
@@ -120,150 +125,74 @@ public class RatingsJPanel extends javax.swing.JPanel {
                 jRadioButton5StarActionPerformed(evt);
             }
         });
+        jPanel1.add(jRadioButton5Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 290, 30));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
-        jLabel1.setText("Sumbit Review");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Submit Review");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 178, 40));
 
-        jRadioButton4Star.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jRadioButton4Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jRadioButton4Star.setForeground(new java.awt.Color(102, 204, 0));
         jRadioButton4Star.setText("Somewhat Satisfied");
+        jPanel1.add(jRadioButton4Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 300, -1));
 
-        jRadioButton3Star.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jRadioButton3Star.setForeground(new java.awt.Color(153, 153, 0));
+        jRadioButton3Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton3Star.setForeground(new java.awt.Color(204, 204, 0));
         jRadioButton3Star.setText("Neither satisfied nor dissatisfied");
+        jPanel1.add(jRadioButton3Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 185, -1, 40));
 
-        jRadioButton2Star.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jRadioButton2Star.setForeground(new java.awt.Color(255, 102, 102));
+        jRadioButton2Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton2Star.setForeground(new java.awt.Color(255, 153, 0));
         jRadioButton2Star.setText("Somewhat dissatisfied");
+        jPanel1.add(jRadioButton2Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 300, -1));
 
-        jRadioButton1Star.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jRadioButton1Star.setForeground(new java.awt.Color(204, 51, 0));
+        jRadioButton1Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton1Star.setForeground(new java.awt.Color(255, 0, 51));
         jRadioButton1Star.setText("Very dissatisfied");
-
-        jLabel3Star.setIcon(new javax.swing.ImageIcon("/Users/mrs.katey/Desktop/example-3-star-icon.png")); // NOI18N
-
-        jLabel4Star.setIcon(new javax.swing.ImageIcon("/Users/mrs.katey/Desktop/example-3-star-icon.png")); // NOI18N
-
-        jLabel1Star.setIcon(new javax.swing.ImageIcon("/Users/mrs.katey/Desktop/example-3-star-icon.png")); // NOI18N
-
-        jLabel2Star.setIcon(new javax.swing.ImageIcon("/Users/mrs.katey/Desktop/example-3-star-icon.png")); // NOI18N
+        jPanel1.add(jRadioButton1Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 300, -1));
+        jPanel1.add(jLabel3Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 177, -1, 33));
+        jPanel1.add(jLabel4Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 139, -1, 26));
+        jPanel1.add(jLabel1Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 255, -1, 33));
+        jPanel1.add(jLabel2Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 216, -1, 33));
 
         jTextAreaFeedbackText.setColumns(20);
         jTextAreaFeedbackText.setRows(5);
+        jTextAreaFeedbackText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(jTextAreaFeedbackText);
 
-        jLabel3.setText("Optional Feedback");
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 320, -1));
 
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel3.setText("Optional Feedback");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
+
+        jButtonSubmitReview.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonSubmitReview.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonSubmitReview.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/submit.png"))); // NOI18N
         jButtonSubmitReview.setText("Submit Review");
         jButtonSubmitReview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSubmitReviewActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSubmitReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 170, -1));
+        jPanel1.add(jLabel5Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 113, -1, 26));
 
-        jLabel5Star.setIcon(new javax.swing.ImageIcon("/Users/mrs.katey/Desktop/example-3-star-icon.png")); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonSubmitReview, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(266, 266, 266))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(193, 193, 193)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton4Star)
-                                        .addComponent(jRadioButton3Star)
-                                        .addComponent(jRadioButton2Star)
-                                        .addComponent(jRadioButton1Star)
-                                        .addComponent(jRadioButton5Star))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(3, 3, 3)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel1Star)
-                                                .addComponent(jLabel2Star)))
-                                        .addComponent(jLabel3Star)
-                                        .addComponent(jLabel5Star)
-                                        .addComponent(jLabel4Star)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(203, 203, 203)
-                                    .addComponent(jLabel3)))
-                            .addGap(309, 309, 309)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(398, 398, 398)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jRadioButton5Star))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5Star, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton4Star)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4Star, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton3Star)
-                        .addGap(16, 16, 16)
-                        .addComponent(jRadioButton2Star))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3Star, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2Star, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1Star, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1Star))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(49, 49, 49)
-                .addComponent(jButtonSubmitReview, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/rateof250.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 220, 230));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 96, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -299,6 +228,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2Star;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel3Star;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel4Star;
     private javax.swing.JLabel jLabel5Star;
     private javax.swing.JPanel jPanel1;
