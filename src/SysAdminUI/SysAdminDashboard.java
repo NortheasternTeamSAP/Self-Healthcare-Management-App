@@ -26,6 +26,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
      */
     public SysAdminDashboard(JPanel WorkArea, EcoSystem system) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkArea=WorkArea;
         this.system=system;
           }
@@ -44,91 +45,82 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
         jBtnLogout = new javax.swing.JButton();
         manageemp = new javax.swing.JButton();
         jButtonUpdateDeleteRoles = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        bntmanageenterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/enterprise-mobility.jpg"))); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bntmanageenterprise.setBackground(new java.awt.Color(255, 255, 255));
+        bntmanageenterprise.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bntmanageenterprise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/mngEnt.png"))); // NOI18N
+        bntmanageenterprise.setText("Manage Enterprise");
         bntmanageenterprise.setToolTipText("Manage your enterprise");
-        bntmanageenterprise.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 204), new java.awt.Color(0, 153, 153), new java.awt.Color(0, 204, 204), null));
+        bntmanageenterprise.setBorder(null);
         bntmanageenterprise.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bntmanageenterprise.setOpaque(true);
         bntmanageenterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntmanageenterpriseActionPerformed(evt);
             }
         });
+        add(bntmanageenterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 250, 60));
 
-        bntmanageorg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/oo.jpg"))); // NOI18N
+        bntmanageorg.setBackground(new java.awt.Color(255, 255, 255));
+        bntmanageorg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bntmanageorg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/mngOrg.png"))); // NOI18N
+        bntmanageorg.setText("Manage Organization");
         bntmanageorg.setToolTipText("Manage Organizations");
-        bntmanageorg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 204), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 204, 204), null));
+        bntmanageorg.setBorder(null);
         bntmanageorg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bntmanageorg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntmanageorgActionPerformed(evt);
             }
         });
+        add(bntmanageorg, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 250, 60));
 
+        jBtnLogout.setBackground(new java.awt.Color(255, 255, 255));
+        jBtnLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBtnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/logout.png"))); // NOI18N
         jBtnLogout.setText("Logout");
+        jBtnLogout.setOpaque(false);
         jBtnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnLogoutActionPerformed(evt);
             }
         });
+        add(jBtnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 31, -1, -1));
 
-        manageemp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/ee3.jpg"))); // NOI18N
+        manageemp.setBackground(new java.awt.Color(255, 255, 255));
+        manageemp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        manageemp.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\createRole.png")); // NOI18N
+        manageemp.setText("Create Roles");
         manageemp.setToolTipText("Manage Employees");
-        manageemp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 204, 204), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 204, 204), null));
+        manageemp.setBorder(null);
         manageemp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         manageemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageempActionPerformed(evt);
             }
         });
+        add(manageemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 250, 50));
 
-        jButtonUpdateDeleteRoles.setText("Update/Delete Roles");
+        jButtonUpdateDeleteRoles.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonUpdateDeleteRoles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonUpdateDeleteRoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/mngRoles.png"))); // NOI18N
+        jButtonUpdateDeleteRoles.setText("Update/ Delete Roles");
         jButtonUpdateDeleteRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateDeleteRolesActionPerformed(evt);
             }
         });
+        add(jButtonUpdateDeleteRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 250, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(bntmanageenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(bntmanageorg, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jBtnLogout)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(663, 663, 663))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jBtnLogout)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bntmanageenterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bntmanageorg, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(manageemp, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(110, 110, 110)
-                .addComponent(jButtonUpdateDeleteRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("System Admin Dashboard");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 6, 1100, 840));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntmanageenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntmanageenterpriseActionPerformed
@@ -161,6 +153,8 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JButton bntmanageorg;
     private javax.swing.JButton jBtnLogout;
     private javax.swing.JButton jButtonUpdateDeleteRoles;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageemp;
     // End of variables declaration//GEN-END:variables
 }
