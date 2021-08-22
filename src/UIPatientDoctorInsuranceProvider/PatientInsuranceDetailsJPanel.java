@@ -39,6 +39,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
     
     PatientInsuranceDetailsJPanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Patient patient, JPanel backPage) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkAreaPanel = WorkAreaPanel;
         this.ecoSystem = ecoSystem;
         this.patient = patient;
@@ -212,180 +213,130 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
         lblPatientDetails1 = new javax.swing.JLabel();
         lblAddNewInsurance = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblPatientDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPatientDetails.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblPatientDetails.setText("Medical health Insurance Details");
+        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 12, 386, 40));
 
+        lblWeight.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight.setText("Insurance Provider");
+        jPanel1.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 195, -1, -1));
 
-        txtPatientName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        txtPatientName.setForeground(new java.awt.Color(255, 255, 255));
+        txtPatientName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPatientName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 104, 244, -1));
 
+        lblWeight1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight1.setText("Group Number");
+        jPanel1.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 157, -1, -1));
 
+        txtGroupNumber.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtGroupNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtGroupNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 157, 244, -1));
+
+        lblWeight2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight2.setText("Insurance Number ");
+        jPanel1.add(lblWeight2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 131, -1, -1));
 
+        txtInsuranceProviderName.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtInsuranceProviderName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtInsuranceProviderName, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 195, 244, -1));
+
+        lblWeight3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight3.setText("Insurance plan expiry date");
+        jPanel1.add(lblWeight3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 221, -1, -1));
 
+        txtInsurancePlanExpiryDate.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtInsurancePlanExpiryDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtInsurancePlanExpiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 221, 244, -1));
+
+        lblWeight4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight4.setText("Insurance  Type");
+        jPanel1.add(lblWeight4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 253, -1, -1));
 
+        lblWeight5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight5.setText("Insurance Coverage Details");
+        jPanel1.add(lblWeight5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 285, -1, -1));
+
+        txtInsuranceType.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtInsuranceType.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtInsuranceType, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 253, 244, -1));
 
         jTextAreaInsuranceDetails.setColumns(20);
         jTextAreaInsuranceDetails.setRows(5);
         jScrollPane1.setViewportView(jTextAreaInsuranceDetails);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 285, 244, 105));
+
+        lblWeight6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight6.setText("Patient Name");
+        jPanel1.add(lblWeight6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 104, -1, -1));
+
+        txtInsuranceNumber.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtInsuranceNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtInsuranceNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 131, 244, -1));
+        jPanel1.add(lblWeight7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 438, -1, -1));
 
         jComboBoxInsuranceEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        jPanel1.add(jComboBoxInsuranceEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 484, 244, -1));
 
-        lblWeight8.setText("Select Insurance Provider");
+        lblWeight8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        lblWeight8.setText("Insurance Provider");
+        jPanel1.add(lblWeight8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 487, -1, -1));
 
-        lblWeight9.setText("Select Health Insurance Plan");
+        lblWeight9.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        lblWeight9.setText("Health Insurance Plan");
+        jPanel1.add(lblWeight9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 519, -1, -1));
 
         jComboBoxInsuranceHealthPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        jPanel1.add(jComboBoxInsuranceHealthPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 516, 244, -1));
 
-        lblWeight10.setText("Selected Plan Coverage");
+        lblWeight10.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        lblWeight10.setText("Plan Coverage");
+        jPanel1.add(lblWeight10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 554, -1, -1));
 
         jTextAreaSelectedPlanCoverageDetails.setColumns(20);
         jTextAreaSelectedPlanCoverageDetails.setRows(5);
         jScrollPane2.setViewportView(jTextAreaSelectedPlanCoverageDetails);
 
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 554, 244, 96));
+
+        jButtonSendInsuranceRequestPlaceHolder.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonSendInsuranceRequestPlaceHolder.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonSendInsuranceRequestPlaceHolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/send_mail.png"))); // NOI18N
         jButtonSendInsuranceRequestPlaceHolder.setText("Send Request");
         jButtonSendInsuranceRequestPlaceHolder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSendInsuranceRequestPlaceHolderActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSendInsuranceRequestPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 668, 162, -1));
 
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 408, 1096, 24));
 
-        lblPatientDetails1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblPatientDetails1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblPatientDetails1.setText("Current Insurance Details");
+        jPanel1.add(lblPatientDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 58, 319, 40));
 
-        lblAddNewInsurance.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblAddNewInsurance.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblAddNewInsurance.setText("Request Insurance Update?");
+        jPanel1.add(lblAddNewInsurance, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 444, 319, 28));
 
-        jButtonBack.setText("Back");
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButtonBack.setContentAreaFilled(false);
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonBack)
-                .addGap(232, 232, 232)
-                .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(jButtonSendInsuranceRequestPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblWeight7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblAddNewInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblPatientDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblWeight2)
-                                    .addComponent(lblWeight)
-                                    .addComponent(lblWeight1)
-                                    .addComponent(lblWeight3)
-                                    .addComponent(lblWeight4)
-                                    .addComponent(lblWeight5)
-                                    .addComponent(lblWeight6)
-                                    .addComponent(lblWeight8)
-                                    .addComponent(lblWeight9)
-                                    .addComponent(lblWeight10))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBoxInsuranceHealthPlan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxInsuranceEnterprise, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPatientName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtGroupNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtInsuranceProviderName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtInsurancePlanExpiryDate, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtInsuranceType)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtInsuranceNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonBack))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPatientDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight6)
-                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight2)
-                    .addComponent(txtInsuranceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight1)
-                    .addComponent(txtGroupNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight)
-                    .addComponent(txtInsuranceProviderName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblWeight3)
-                    .addComponent(txtInsurancePlanExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight4)
-                    .addComponent(txtInsuranceType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblWeight5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAddNewInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWeight7))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxInsuranceEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWeight8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight9)
-                    .addComponent(jComboBoxInsuranceHealthPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblWeight10)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSendInsuranceRequestPlaceHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, -4, 1100, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -393,15 +344,15 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -458,6 +409,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
     private javax.swing.JButton jButtonSendInsuranceRequestPlaceHolder;
     private javax.swing.JComboBox<String> jComboBoxInsuranceEnterprise;
     private javax.swing.JComboBox<String> jComboBoxInsuranceHealthPlan;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
