@@ -8,15 +8,18 @@ package UIDeliveryMan;
 import DataStore.CredentialsManager;
 import DeliveryMan.DeliveryMan;
 import DeliveryMan.DeliveryManDirectory;
+import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Order.Order;
 import Order.Order.OrderStatus;
 import Order.OrderDirectory;
 import Patient.Patient;
+import Personnel.Person;
 import Prescription.Prescription;
 import Prescription.PrescriptionDirectory;
 import SysAdminUI.Login;
 import Utils.NextScreen;
+import Utils.SMSSender;
 import Utils.StarRatingsUtil;
 import java.time.Instant;
 import java.util.Date;
@@ -258,13 +261,25 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
             prescription = new Prescription(order.getAppointment());
             prescription.setPrescriptionDate(order.getAppointment().getDate());
         }
+        prescription.setPharmacyName(order.getPharmacy().getEnterpriseName());
         prescription.addMedicine(order.getMedicine(), order.getDosage());
         prescriptionDirectory.addPrescription(order.getAppointment().getId(), prescription);
         order.getPatient().addPrescription(prescription);
         prescription.setDeliveryMan(deliveryMan);
         prescription.setDeliveryDate(Date.from(Instant.now()));
+        
+        new SMSSender().sendSMSAsynchronous(order.getPatient().getPersonDetails().getPhoneNumber(), getMedicineDeliveryMessage(prescription));
     }//GEN-LAST:event_btnProcessOrderActionPerformed
 
+    private String getMedicineDeliveryMessage(Prescription prescription) {
+        Person doc = prescription.getAppointment().getDoctor();
+        Person patient = prescription.getAppointment().getPatient();
+        return "Hi " + patient.getPersonDetails().getFullName() + "! " +
+                "Your medicine prescription from doctor '" + doc.getPersonDetails().getFullName() + "' has been "
+                + "delivered from Pharmacy '" + prescription.getPharmacyName() + "' to the address '" + patient.getPersonDetails().getAddress().toString() +  
+                "' at time " + prescription.getDeliveryDate();
+    }
+    
     private void btnRefreshOrdersTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshOrdersTableActionPerformed
         populateTblDelManOrderRequests();
     }//GEN-LAST:event_btnRefreshOrdersTableActionPerformed
