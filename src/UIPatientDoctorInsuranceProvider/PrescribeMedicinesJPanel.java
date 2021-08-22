@@ -88,6 +88,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         jLabel11 = new javax.swing.JLabel();
         jCheckBoxPreLunch = new javax.swing.JCheckBox();
         jCheckBoxPreDinner = new javax.swing.JCheckBox();
+        jLabel12 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -196,7 +197,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         });
         jScrollPane3.setViewportView(tblCurrentPres);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 710, 670, 160));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 710, 670, 130));
 
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel8.setText("Current Prescription Table:");
@@ -238,6 +239,9 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
 
         jCheckBoxPreDinner.setText("PreDinner");
         add(jCheckBoxPreDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -4, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbSelectPatientName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectPatientName1ActionPerformed
@@ -366,6 +370,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
