@@ -9,6 +9,7 @@ import DataStore.Appointment;
 import DataStore.GenericDirectory;
 import Medicine.Medicine;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -20,6 +21,33 @@ public class Prescription implements Comparable<Prescription> {
     private LocalDate prescriptionDate;
     private int id;
     private Appointment appointment; // appointment associated with this prescription
+    private DeliveryMan.DeliveryMan deliveryMan;
+    boolean deliveryReviewProvided;
+    private Date deliveryDate;
+
+    public DeliveryMan.DeliveryMan getDeliveryMan() {
+        return deliveryMan;
+    }
+
+    public void setDeliveryMan(DeliveryMan.DeliveryMan deliveryMan) {
+        this.deliveryMan = deliveryMan;
+    }
+
+    public void setDeliveryReviewProvided(boolean deliveryReviewProvided) {
+        this.deliveryReviewProvided = deliveryReviewProvided;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+    
+    public boolean isDeliveryReviewProvided() {
+        return this.deliveryReviewProvided;
+    }
     
     static int count = 1;
 
@@ -27,6 +55,8 @@ public class Prescription implements Comparable<Prescription> {
         this.prescriptionMap = new GenericDirectory<>();
         this.prescriptionDate = appointment.getDate();
         this.appointment = appointment;
+        this.deliveryReviewProvided = false;
+        this.deliveryDate = null;
         this.id = count++;
     }
 

@@ -25,4 +25,12 @@ public class StarRatingsUtil {
         frame.setSize(600, 600);
     }
     
+    public void viewPersonRatings(String panelName, Person person) {
+        JFrame frame = new JFrame(panelName);
+        JPanel viewRatings = new ViewPersonRatingsJPanel(null, person, null);
+        frame.add(viewRatings);
+        viewRatings.setVisible(true);
+        frame.setVisible(true);
+        frame.setSize(600, 600);
+    }
 }

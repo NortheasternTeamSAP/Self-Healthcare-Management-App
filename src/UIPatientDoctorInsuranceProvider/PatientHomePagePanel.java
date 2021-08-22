@@ -15,12 +15,14 @@ import FitnessTrainer.FitnessTrainerAppointment;
 import Laboratory.LaboratoryAssistant;
 import Patient.Patient;
 import Personnel.PersonDetails;
+import Prescription.Prescription;
 import SysAdminUI.Login;
 import Utils.ConsoleLogger;
 import Utils.NextScreen;
 import Utils.Rating;
 import Utils.StarRatingsUtil;
 import Utils.ViewPersonRatingsJPanel;
+import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.awt.Image;
 import static java.time.Clock.system;
@@ -58,6 +60,14 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         populatedietitianappointments();
         populatefitnessappointments();
         populateUpcomingCounsellerAppointments();
+        setUpDeliveryManReviewButton();
+        updateDailyRemienders();
+    }
+    
+    public void updateDailyRemienders() {
+        VitalSigns vitals = patient.getMostRecentVitalSigns();
+        String mostRecentVitalsDate = vitals == null ? "You did not record you vitals yet." : "Last vitals recorded on " + vitals.getDateForVitalSigns();
+        jLabelRemienderToCheckVitals.setText("Do not forget to check your vitals regularly. " + mostRecentVitalsDate);
     }
     
     void populatePatientInfoPlaceholders() {
@@ -154,6 +164,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jScrollPane5 = new javax.swing.JScrollPane();
         tblUpcomingCounsellerAppointments = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
+        jLabelRemienderToTakeMeds = new javax.swing.JLabel();
+        jLabelRemienderToCheckVitals = new javax.swing.JLabel();
+        jLabelRemienderToFollowDiet = new javax.swing.JLabel();
+        jLabelRemienderToExercise = new javax.swing.JLabel();
+        jButtonDeliveryBoyReview = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -310,7 +325,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel4.setText("Welcome to Fred Meyer ");
+        jLabel4.setText("Welcome to Health Springs Self Health Management Application");
 
         lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblAge.setText("Dob");
@@ -443,15 +458,41 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel5.setText("Upcoming Counseller Appointments");
 
+        jLabelRemienderToTakeMeds.setText("Do not forget to take your daily medicines");
+
+        jLabelRemienderToCheckVitals.setText("Do not forget to check your vitals regularly. last vitals recorded on <bbb>");
+
+        jLabelRemienderToFollowDiet.setText("Do not forget to check you diet plan and stick to it!");
+
+        jLabelRemienderToExercise.setText("All progress takes place outside your comfort zone. So exercise daily!");
+
+        jButtonDeliveryBoyReview.setText("Tell us was your last medicine prescription delivery at <>?");
+        jButtonDeliveryBoyReview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeliveryBoyReviewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPatientDetailPanelLayout = new javax.swing.GroupLayout(jPatientDetailPanel);
         jPatientDetailPanel.setLayout(jPatientDetailPanelLayout);
         jPatientDetailPanelLayout.setHorizontalGroup(
             jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPatientDetailPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPatientDetailPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(133, 133, 133))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPatientDetailPanelLayout.createSequentialGroup()
+                        .addComponent(jLabelRemienderToCheckVitals)
+                        .addGap(89, 89, 89))))
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(196, 196, 196)
+                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelRemienderToExercise)
+                            .addComponent(jLabelRemienderToFollowDiet)))
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -465,58 +506,62 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                             .addComponent(jScrollPane5))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                        .addGap(134, 134, 134)
+                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblPhoneNumber)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblPhoneNumberPlaceHolder))
+                                .addGap(89, 89, 89)
+                                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addComponent(lblName)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblNamePlaceHolder))
+                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                        .addComponent(lblPhoneNumber)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblPhoneNumberPlaceHolder))
+                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblAge)
+                                            .addComponent(lblAddress)
+                                            .addComponent(lblWeight1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(lblAgePlaceHolder))
+                                            .addComponent(lblAddressPlaceHolder)
+                                            .addComponent(lblEmailPlaceHolder)))))
                             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNamePlaceHolder))
-                            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                    .addComponent(lblAddress)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblAddressPlaceHolder))
-                                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                    .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblWeight1)
-                                        .addComponent(lblAge))
-                                    .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(lblAgePlaceHolder))
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addGap(4, 4, 4)
-                                            .addComponent(lblEmailPlaceHolder)))
-                                    .addGap(5, 5, 5)))))
+                                .addGap(45, 45, 45)
+                                .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addGap(218, 218, 218)
+                        .addComponent(jLabelRemienderToTakeMeds))
+                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jButtonDeliveryBoyReview, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         jPatientDetailPanelLayout.setVerticalGroup(
             jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(30, 30, 30)
                         .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addGap(11, 11, 11)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
                             .addComponent(lblNamePlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPhoneNumber)
                             .addComponent(lblPhoneNumberPlaceHolder))
@@ -524,7 +569,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAddress)
                             .addComponent(lblAddressPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAge)
                             .addComponent(lblAgePlaceHolder))
@@ -532,23 +577,33 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                         .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblWeight1)
                             .addComponent(lblEmailPlaceHolder))))
-                .addGap(98, 98, 98)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jLabelRemienderToTakeMeds)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelRemienderToCheckVitals)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelRemienderToFollowDiet)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelRemienderToExercise)
+                .addGap(35, 35, 35)
+                .addComponent(jButtonDeliveryBoyReview)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -674,6 +729,38 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         nextScreen(WorkAreaPanel, new PatientInsuranceDetailsJPanel(WorkAreaPanel, ecoSystem, patient, this), "PatientInsuranceDetailsJPanel");
     }//GEN-LAST:event_jButtonUpdatePatientInsuranceActionPerformed
 
+    private void jButtonDeliveryBoyReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeliveryBoyReviewActionPerformed
+        // TODO add your handling code here:
+        
+        Prescription prescription = patient.getLatestMedicinePrescription();
+        DeliveryMan.DeliveryMan deliveryMan = prescription.getDeliveryMan();
+        StarRatingsUtil starRatingsUtil = new StarRatingsUtil();
+        Rating rating = new Rating();
+        starRatingsUtil.openRatingsJPanel("Provide Review for Prescription Delivery", deliveryMan, rating, LocalDate.now());
+        prescription.setDeliveryReviewProvided(true);
+        jButtonDeliveryBoyReview.setEnabled(false);
+        jButtonDeliveryBoyReview.setVisible(true);
+        jButtonDeliveryBoyReview.setText("Last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
+    }//GEN-LAST:event_jButtonDeliveryBoyReviewActionPerformed
+
+    private void setUpDeliveryManReviewButton() {
+        Prescription prescription = patient.getLatestMedicinePrescription();
+        if (prescription == null) {
+            jButtonDeliveryBoyReview.setEnabled(false);
+            jButtonDeliveryBoyReview.setVisible(false);
+            return;
+        }
+        
+        if (!prescription.isDeliveryReviewProvided()) {
+            jButtonDeliveryBoyReview.setEnabled(true);
+            jButtonDeliveryBoyReview.setVisible(true);
+            jButtonDeliveryBoyReview.setText("Tell us was your last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
+        } else {
+            jButtonDeliveryBoyReview.setEnabled(false);
+            jButtonDeliveryBoyReview.setVisible(true);
+            jButtonDeliveryBoyReview.setText("Last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBookFamilyDoctorAppointment;
@@ -687,6 +774,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JButton btnViewVitalSoignHistory;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonDeliveryBoyReview;
     private javax.swing.JButton jButtonUpdatePatientInsurance;
     private javax.swing.JPanel jControlPanel;
     private javax.swing.JLabel jLabel1;
@@ -694,6 +782,10 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelRemienderToCheckVitals;
+    private javax.swing.JLabel jLabelRemienderToExercise;
+    private javax.swing.JLabel jLabelRemienderToFollowDiet;
+    private javax.swing.JLabel jLabelRemienderToTakeMeds;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPatientDetailPanel;
     private javax.swing.JPanel jPatientPanel;

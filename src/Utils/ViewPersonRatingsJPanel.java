@@ -365,7 +365,9 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         // TODO add your handling code here:
-        
+        if (backPage == null || workArea == null) {
+            return;
+        }
         nextScreen(workArea, backPage, "Back Page");
     }//GEN-LAST:event_jButtonBackActionPerformed
 
