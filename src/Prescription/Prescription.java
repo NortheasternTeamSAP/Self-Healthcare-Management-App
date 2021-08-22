@@ -26,6 +26,27 @@ public class Prescription implements Comparable<Prescription> {
     private Date deliveryDate;
     private String pharmacyName;
 
+    public String getFormattedString() {
+        return "\nPrescription issued on date: " + prescriptionDate.toString() +
+                "\n Patient: " + appointment.getPatient().getPersonDetails().getFullName() +
+                "\n Primary Care doctor: " + appointment.getDoctor().getPersonDetails().getFullName() +
+                "\n Pharmacy Name: " + pharmacyName +
+                "\n Prescription Details: " + getFormattedPrescriptionEntries() + 
+                "\n ***********************************************************************************************";
+    }
+    
+    private String getFormattedPrescriptionEntries() {
+        StringBuilder sb = new StringBuilder();
+        Map<Medicine, Dosage> map = prescriptionMap.getIntermalMap();
+        for (Map.Entry<Medicine, Dosage>  entry : map.entrySet()) {
+            Medicine med = entry.getKey();
+            Dosage dosage = entry.getValue();
+            sb.append("\n   Medicine: " + med.getMedicineName() + ", dosage: " + dosage.getMedicineDosage() + ", timing: " + dosage.getDosageTimingDetails());
+            sb.append("\n   Notes: " + dosage.getPrescriptionNotes());
+        }
+        return sb.toString();
+    }
+    
     public DeliveryMan.DeliveryMan getDeliveryMan() {
         return deliveryMan;
     }

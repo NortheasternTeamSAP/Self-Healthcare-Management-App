@@ -79,9 +79,9 @@ public class Dosage {
     
     public String getDosageTimingDetails() {
         StringBuilder sb = new StringBuilder();
-        sb.append(isPrelunchDosage() ? "PreLunch," : "");
-        sb.append(isPostlunchDosage() ? "PostLunch," : "");
-        sb.append(isPreDinnerDosage() ? "PreDinner," : "");
+        sb.append(isPrelunchDosage() ? "PreLunch, " : "");
+        sb.append(isPostlunchDosage() ? "PostLunch, " : "");
+        sb.append(isPreDinnerDosage() ? "PreDinner, " : "");
         sb.append(isPostDinnerDosage() ? "PostDinner," : "");
         
         if (!sb.isEmpty()) {

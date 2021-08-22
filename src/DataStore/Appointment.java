@@ -36,6 +36,7 @@ public class Appointment implements Comparable<Appointment> {
     
     private String patientVitalSignsHistoryS3ObjectPath;
     private String patientInsuranceFileS3ObjectPath;
+    private String patientPrescriptionsFileS3ObjectPath;
     private Rating rating;
     
     static int idCounter = 1;
@@ -146,6 +147,14 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setRating(Rating rating) {
         this.rating = rating;
+    }
+
+    public String getPatientPrescriptionsFileS3ObjectPath() {
+        return patientPrescriptionsFileS3ObjectPath;
+    }
+
+    public void setPatientPrescriptionsFileS3ObjectPath(String patientPrescriptionsFileS3ObjectPath) {
+        this.patientPrescriptionsFileS3ObjectPath = patientPrescriptionsFileS3ObjectPath;
     }
     
     

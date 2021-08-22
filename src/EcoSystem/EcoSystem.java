@@ -240,7 +240,7 @@ public class EcoSystem {
         // Patient
         Person patient = new Patient("Patient-1", LocalDate.now(), PersonDetails.Gender.MALE,
                 new Address("906 Dexter Ane N", "L422", "Seattle", "98109", "WA", "USA"), 
-                "2132921728", null, new UserAccount("pat1", "pat1"), patientOrg.getOrganizationId(), (PharmacyEnterprise) pharmacy, "ankurbywar@gmail.com");
+                "2067085330", null, new UserAccount("pat1", "pat1"), patientOrg.getOrganizationId(), (PharmacyEnterprise) pharmacy, "ankurbywar@gmail.com");
         this.globalUserDirectory.createNewUser(patient);
         patientOrg.addEmployee(patient);
 
@@ -298,7 +298,7 @@ public class EcoSystem {
         deliveryDepartmentOrganization.addEmployee(deliveryMan);
         
         createSampleMedicines();
-        addDummyPrescriptions((Patient)patient, (Doctor)doctor, deliveryMan);
+        addDummyPrescriptions((Patient)patient, (Doctor)doctor, deliveryMan, pharmacy);
         addDummyReviews(doctor);
     }
     
@@ -309,7 +309,7 @@ public class EcoSystem {
         medicineDirectory.addMedicine("Med-4", 40, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
     }
     
-    void addDummyPrescriptions(Patient patient, Doctor doctor, Person deliveryMan) {
+    void addDummyPrescriptions(Patient patient, Doctor doctor, Person deliveryMan, Enterprise pharmacy) {
         for (int i = 1; i <= 5; i++) {
             Appointment appointment = new Appointment(patient, "", doctor, LocalDate.now().minusDays(i), 9);
             Prescription prescription = new Prescription(appointment);
@@ -319,6 +319,8 @@ public class EcoSystem {
             patient.addPrescription(prescription);
             prescription.setDeliveryDate(Date.from(Instant.now().minusSeconds(86400 * i)));
             prescription.setDeliveryMan((DeliveryMan)deliveryMan);
+            prescription.setDeliveryReviewProvided(true);
+            prescription.setPharmacyName(pharmacy.getEnterpriseName());
             prescriptionDirectory.addPrescription(appointment.getId(), prescription);
         }
         
