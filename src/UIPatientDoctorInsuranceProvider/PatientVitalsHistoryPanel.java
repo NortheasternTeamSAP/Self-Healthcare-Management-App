@@ -43,6 +43,7 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
      */
     public PatientVitalsHistoryPanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Patient patient) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;
         this.ecoSystem = ecoSystem;
@@ -66,15 +67,20 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
         btnBack = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnLineChart = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("Data Of Patient Vital Sign");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jDataOfPatientVitalSignPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Data Of Patient Vital Signs");
+        jDataOfPatientVitalSignPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 20, 310, 42));
+
+        tblPatientsEncounterHistory.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         tblPatientsEncounterHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Patient Name", "vital sign collection Date", "Weight", "Blood Pressure", "Respiratory Rate", "Heart Rate"
@@ -83,9 +89,16 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tblPatientsEncounterHistory.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,82 +111,47 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
         });
         jScrollPane1.setViewportView(tblPatientsEncounterHistory);
 
-        btnBack.setText("Back");
+        jDataOfPatientVitalSignPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 94, 893, 280));
+
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        jDataOfPatientVitalSignPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        btnLineChart.setText("Show Vitals trend");
-        btnLineChart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLineChartActionPerformed(evt);
-            }
-        });
+        jPanel1.setOpaque(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(btnLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+            .addGap(0, 362, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(btnLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+            .addGap(0, 248, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jDataOfPatientVitalSignPanelLayout = new javax.swing.GroupLayout(jDataOfPatientVitalSignPanel);
-        jDataOfPatientVitalSignPanel.setLayout(jDataOfPatientVitalSignPanelLayout);
-        jDataOfPatientVitalSignPanelLayout.setHorizontalGroup(
-            jDataOfPatientVitalSignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDataOfPatientVitalSignPanelLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addGroup(jDataOfPatientVitalSignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDataOfPatientVitalSignPanelLayout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(168, 168, 168)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jDataOfPatientVitalSignPanelLayout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jDataOfPatientVitalSignPanelLayout.setVerticalGroup(
-            jDataOfPatientVitalSignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDataOfPatientVitalSignPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jDataOfPatientVitalSignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack))
-                .addGap(120, 120, 120)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jDataOfPatientVitalSignPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 497, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
-        );
+        btnLineChart.setBackground(new java.awt.Color(255, 255, 255));
+        btnLineChart.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnLineChart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-submit-resume-30.png"))); // NOI18N
+        btnLineChart.setText("Show Vitals Trend");
+        btnLineChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLineChartActionPerformed(evt);
+            }
+        });
+        jDataOfPatientVitalSignPanel.add(btnLineChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 403, -1, 38));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jDataOfPatientVitalSignPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 6, 1100, 840));
+
+        add(jDataOfPatientVitalSignPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 1090, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblPatientsEncounterHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsEncounterHistoryMouseClicked
@@ -209,6 +187,7 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JButton btnLineChart;
     private javax.swing.JPanel jDataOfPatientVitalSignPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jfree.chart.renderer.category.LevelRenderer levelRenderer1;
