@@ -35,6 +35,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
 
     public GeneratePatientBillJPanel(JPanel workAreaPanel, EcoSystem ecosystem, Appointment appointment, JPanel backPage) {
         initComponents();
+        this.setSize(1100,850);
         this.workAreaPanel= workAreaPanel;
         this.ecosystem = ecosystem;
         this.appointment = appointment;
@@ -113,173 +114,113 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         jLabelLabAssistantPlaceHolder7 = new javax.swing.JLabel();
         jLabelLabAssistantPlaceHolder8 = new javax.swing.JLabel();
         jLabelClaimAlreadySubmittedMessage = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText(" Patient Billing Dashboard");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 33, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Appointment Details");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 77, -1, -1));
 
+        jLabelLabTestCostPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelLabTestCostPlaceHolder.setText("Lab Test Cost PH");
+        jPanel1.add(jLabelLabTestCostPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 182, 228, 25));
 
         jLabelLabAssistantPlaceHolder3.setText("USD");
+        jPanel1.add(jLabelLabAssistantPlaceHolder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 251, 38, 25));
 
-        jLabelLabAssistantPlaceHolder4.setText("Other Primary Care Provider Charges (tax etc.)");
+        jLabelLabAssistantPlaceHolder4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelLabAssistantPlaceHolder4.setText("Other Primary Care Provider Charges(tax etc.)");
+        jPanel1.add(jLabelLabAssistantPlaceHolder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 250, -1, 25));
+        jPanel1.add(jLabelTotalAppointmentCostPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 151, 281, 25));
 
+        jButtonSubmitInsuranceClaim.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonSubmitInsuranceClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonSubmitInsuranceClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-submit-resume-30.png"))); // NOI18N
         jButtonSubmitInsuranceClaim.setText("Submit Claim to Insurance Provider");
         jButtonSubmitInsuranceClaim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSubmitInsuranceClaimActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSubmitInsuranceClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 403, -1, -1));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 23, 94, -1));
 
+        jLabelAppointmentDetailsPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelAppointmentDetailsPlaceHolder.setText("Appointment Details Place Holder");
+        jPanel1.add(jLabelAppointmentDetailsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 114, -1, -1));
 
+        jLabelLabAssistantPlaceHolder6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelLabAssistantPlaceHolder6.setText("Billing Details");
+        jPanel1.add(jLabelLabAssistantPlaceHolder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 151, 228, 25));
 
+        jTextFieldInsuranceCompanyCode.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldInsuranceCompanyCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jTextFieldInsuranceCompanyCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldInsuranceCompanyCodeActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldInsuranceCompanyCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 362, 153, -1));
 
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Insurance Group number");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 357, 279, 28));
 
+        jTextFieldPrimaryCareCost.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldPrimaryCareCost.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jTextFieldPrimaryCareCost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPrimaryCareCostActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldPrimaryCareCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 222, 153, -1));
 
+        jTextFieldPrimaryCareOtherCharges.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldPrimaryCareOtherCharges.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jTextFieldPrimaryCareOtherCharges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPrimaryCareOtherChargesActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldPrimaryCareOtherCharges, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 253, 153, -1));
 
+        jButtonCalculateTotalCost.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonCalculateTotalCost.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonCalculateTotalCost.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-calculator-30.png"))); // NOI18N
         jButtonCalculateTotalCost.setText("Calculate total Cost");
         jButtonCalculateTotalCost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCalculateTotalCostActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonCalculateTotalCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 288, -1, -1));
 
+        jLabelLabAssistantPlaceHolder5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelLabAssistantPlaceHolder5.setText("Primary Care Charges");
+        jPanel1.add(jLabelLabAssistantPlaceHolder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 219, 172, 25));
 
         jLabelLabAssistantPlaceHolder7.setText("USD");
+        jPanel1.add(jLabelLabAssistantPlaceHolder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 220, 38, 25));
 
         jLabelLabAssistantPlaceHolder8.setText("USD");
+        jPanel1.add(jLabelLabAssistantPlaceHolder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 360, 38, 25));
+        jPanel1.add(jLabelClaimAlreadySubmittedMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 491, 584, 25));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabelAppointmentDetailsPlaceHolder)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldPrimaryCareCost, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabelLabAssistantPlaceHolder4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldPrimaryCareOtherCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelLabAssistantPlaceHolder3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelLabAssistantPlaceHolder7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(jLabelTotalAppointmentCostPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelLabAssistantPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addComponent(jButtonCalculateTotalCost))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelLabAssistantPlaceHolder6, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelLabTestCostPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(jButtonSubmitInsuranceClaim))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabelClaimAlreadySubmittedMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(165, 165, 165)
-                    .addComponent(jLabelLabAssistantPlaceHolder5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(417, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnBack)))
-                .addGap(60, 60, 60)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelAppointmentDetailsPlaceHolder)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                .addComponent(jLabelLabAssistantPlaceHolder6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabelLabTestCostPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelLabAssistantPlaceHolder4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldPrimaryCareOtherCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelLabAssistantPlaceHolder3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldPrimaryCareCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelLabAssistantPlaceHolder7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButtonCalculateTotalCost)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelTotalAppointmentCostPlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldInsuranceCompanyCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelLabAssistantPlaceHolder8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jButtonSubmitInsuranceClaim)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelClaimAlreadySubmittedMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(456, Short.MAX_VALUE)
-                    .addComponent(jLabelLabAssistantPlaceHolder5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(389, 389, 389)))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 4, 1090, 840));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -401,6 +342,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAppointmentDetailsPlaceHolder;
     private javax.swing.JLabel jLabelClaimAlreadySubmittedMessage;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder3;
