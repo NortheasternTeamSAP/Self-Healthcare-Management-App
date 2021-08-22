@@ -67,6 +67,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         jLabel3 = new javax.swing.JLabel();
         btnClearTable = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        btnViewRatings = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,7 +104,6 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         btnAssignToMe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAssignToMe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-connected-people-30.png"))); // NOI18N
         btnAssignToMe.setText("Assign to me");
-        btnAssignToMe.setOpaque(false);
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignToMeActionPerformed(evt);
@@ -115,7 +115,6 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         btnProcessOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnProcessOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-in-transit-30.png"))); // NOI18N
         btnProcessOrder.setText("Deliver Order");
-        btnProcessOrder.setOpaque(false);
         btnProcessOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessOrderActionPerformed(evt);
@@ -183,6 +182,17 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
             }
         });
         add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        btnViewRatings.setBackground(new java.awt.Color(255, 255, 255));
+        btnViewRatings.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnViewRatings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/review.png"))); // NOI18N
+        btnViewRatings.setText("View my Ratings");
+        btnViewRatings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewRatingsActionPerformed(evt);
+            }
+        });
+        add(btnViewRatings, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 780, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 6, 1100, 840));
@@ -264,6 +274,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         nextScreen(workArea, new Login(workArea, ecoSystem), "Login Page");
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnViewRatingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRatingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewRatingsActionPerformed
+
     private void populateTblDelManOrderRequests(){
         DefaultTableModel dtm = (DefaultTableModel) tblDelManOrderRequests.getModel();
         
@@ -309,6 +323,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProcessOrder;
     private javax.swing.JButton btnRefreshOrdersTable;
+    private javax.swing.JButton btnViewRatings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
