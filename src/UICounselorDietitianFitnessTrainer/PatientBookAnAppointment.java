@@ -325,9 +325,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
              txtallergies.setForeground(Color.white);
              txtmedication.setForeground(Color.white);
              txtDietrestrict1.setForeground(Color.white);  
-             jCheckBox1.setForeground(Color.red);
-             jCheckBox3.setForeground(Color.red);
-             jCheckBox4.setForeground(Color.red);
+             jCheckBox1.setForeground(Color.white);
+             jCheckBox3.setForeground(Color.white);
+             jCheckBox4.setForeground(Color.white);
         
             boolean error = false;
             String restrictions=txtallergies.getText();

@@ -21,6 +21,7 @@ import Personnel.Person;
 import Personnel.PersonDetails;
 import SysAdminUI.Login;
 import Utils.ConsoleLogger;
+import Utils.EmailClient;
 import Utils.NextScreen;
 import java.time.LocalDate;
 import java.util.List;
@@ -633,8 +634,39 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         populateInsuranceRequests(tblProcessedInsuranceRequests, this.healthInsuranceOrganization.getProcessedInsuranceRequests());
         Patient patient = (Patient) insuranceDetails.getPatient();
         patient.setInsuranceDetails(insuranceDetails);
+        
+        JOptionPane.showMessageDialog(null, "An email has been sent to the customer indicating an update to their insurance policy. ");
+        sendInsuranceAcceptanceUpdatePolicyEmail(patient);
     }//GEN-LAST:event_btnAcceptInsuranceRequestActionPerformed
 
+    private void sendInsuranceAcceptanceUpdatePolicyEmail(Patient patient) {
+       boolean success = new EmailClient().sendEmail(
+               patient.getPersonDetails().getEmailId(), 
+               ecoSystem.getSysAdminEmail(), 
+               ecoSystem.getSysAdmingEmailPassword(), 
+               getInsurancePolicyUpdateEmailSubject(), 
+               getInsurancePolicyAcceptanceUpdateEmailBody(patient));
+        log.debug("Insurance policy update email sent to user: " + patient.getUserAccount().getUsername() + ". Email status success: " + success);
+    }
+    
+    private String getInsurancePolicyUpdateEmailSubject() {
+        return "Your insurance policy update associated with Health Springs App";
+    }
+    
+    private String getInsurancePolicyAcceptanceUpdateEmailBody(Person patient) {
+        String enterpriseName = healthInsuranceOrganization.getEnterprise().getEnterpriseName();
+        return "Hi " + patient.getPersonDetails().getFullName() + "!\n" +
+                "There has been an update to your health insurance policy associated with Health Springs App.\n" + 
+                "Your health insurance provider, " + enterpriseName + ", " +
+                "has accepted your request to update your policy.\n" +
+                "Please check your app to see the updated policy and coverage details.\n" +
+                "For further questions, email us at healthspringapp@gmail.com OR reach out to" + enterpriseName +"'s customer service number."+
+                "\n\n\n" +
+                "Regards -\n" +
+                "Health Springs App Team";
+                
+    }
+    
     private void btnDeclineInsuranceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineInsuranceRequestActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblUnProcessedInsuranceRequests.getSelectedRow();
@@ -654,8 +686,34 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         
         populateInsuranceRequests(tblUnProcessedInsuranceRequests, this.healthInsuranceOrganization.getPendingnewInsuranceRequests());
         populateInsuranceRequests(tblProcessedInsuranceRequests, this.healthInsuranceOrganization.getProcessedInsuranceRequests());  
+        
+        JOptionPane.showMessageDialog(null, "An email has been sent to the customer indicating an update to their insurance policy.");
+        sendInsuranceDecliceUpdatePolicyEmail(insuranceDetails.getPatient());
+        
     }//GEN-LAST:event_btnDeclineInsuranceRequestActionPerformed
 
+    private void sendInsuranceDecliceUpdatePolicyEmail(Person patient) {
+       boolean success = new EmailClient().sendEmail(
+               patient.getPersonDetails().getEmailId(), 
+               ecoSystem.getSysAdminEmail(), 
+               ecoSystem.getSysAdmingEmailPassword(), 
+               getInsurancePolicyUpdateEmailSubject(), 
+               getInsurancePolicyDeclineUpdateEmailBody(patient));
+        log.debug("Insurance policy update email sent to user: " + patient.getUserAccount().getUsername() + ". Email status success: " + success);
+    }
+    
+    private String getInsurancePolicyDeclineUpdateEmailBody(Person patient) {
+        String enterpriseName = healthInsuranceOrganization.getEnterprise().getEnterpriseName();
+        return "Hi " + patient.getPersonDetails().getFullName() + "!\n" +
+                "There has been an update to your health insurance policy associated with Health Springs App.\n" + 
+                "Your health insurance provider, " + enterpriseName + ", " +
+                "has declined your request to update your policy.\n" +
+                "For further questions, email us at healthspringapp@gmail.com OR reach out to" + enterpriseName +"'s customer service number."+
+                "\n\n\n" +
+                "Regards -\n" +
+                "Health Springs App Team";
+                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceptInsuranceRequest;

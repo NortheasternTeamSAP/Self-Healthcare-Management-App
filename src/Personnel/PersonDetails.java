@@ -46,6 +46,7 @@ public class PersonDetails {
     private Icon logoImage;
     private int organizationId;
     private String emailId;
+    private String emailPassword;
     
     public PersonDetails(
             String fullName, 

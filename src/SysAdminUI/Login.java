@@ -28,11 +28,13 @@ import UIPatientDoctorInsuranceProvider.LaboratoryAssistantHomePagePanel;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
 import Personnel.Person;
 import Personnel.Role;
+import Personnel.SystemAdmin;
 import Pharmacy.Pharmacist;
 import UIDeliveryMan.DeliveryManWorkAreaJPanel;
 import UIPharmacist.PharmacistDashBoardJPanel;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
+import Utils.EmailClient;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -169,7 +171,7 @@ public class Login extends javax.swing.JPanel implements NextScreen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+        
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
 

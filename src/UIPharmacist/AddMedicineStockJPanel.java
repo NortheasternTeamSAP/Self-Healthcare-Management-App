@@ -138,7 +138,7 @@ public class AddMedicineStockJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     public void populatecmbMedicineId() {
-        cmbMedicineId.removeAll();
+        cmbMedicineId.removeAllItems();
         for(Medicine med : ecoSystem.getMedicineDirectory().medicineCatalogMap.getAllValues()) {
             System.out.println("Found med: " + med.getMedicineId() + " name: " + med.getMedicineName());
             cmbMedicineId.addItem(med);

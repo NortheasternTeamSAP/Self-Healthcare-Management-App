@@ -5,6 +5,7 @@
  */
 package Counselor;
 
+import static Counselor.CounselorAppointment.CounselorAppointmentStatus.PENDING;
 import Patient.Patient;
 import java.time.LocalDate;
 
@@ -21,6 +22,7 @@ public class CounselorAppointment {
     String cheifcomplaints;
     String patientMedication;
     Boolean done=false;
+    private CounselorAppointmentStatus status;
 
     public Boolean getDone() {
         return done;
@@ -58,6 +60,10 @@ public class CounselorAppointment {
         return "" + date;
     }
 
+    public void setStatus(CounselorAppointmentStatus status) {
+        this.status = status;
+    }
+
     public CounselorAppointment(LocalDate date, Patient patient, Counselor counselor,String r,String m,String c) {
         this.date = date;
         this.patient = patient;
@@ -65,6 +71,7 @@ public class CounselorAppointment {
         this.cheifcomplaints=c;
         this.pastmentalhealth=r;
         this.patientMedication=m;
+        this.status = PENDING;
     }
 
     public LocalDate getDate() {
