@@ -55,7 +55,9 @@ import Prescription.PrescriptionDirectory;
 import Utils.Rating;
 import Utils.SMSSender;
 import java.io.File;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -296,7 +298,7 @@ public class EcoSystem {
         deliveryDepartmentOrganization.addEmployee(deliveryMan);
         
         createSampleMedicines();
-        addDummyPrescriptions((Patient)patient, (Doctor)doctor);
+        addDummyPrescriptions((Patient)patient, (Doctor)doctor, deliveryMan);
         addDummyReviews(doctor);
     }
     
@@ -307,7 +309,7 @@ public class EcoSystem {
         medicineDirectory.addMedicine("Med-4", 40, LocalDate.now().minusDays(200), LocalDate.now().plusDays(100));
     }
     
-    void addDummyPrescriptions(Patient patient, Doctor doctor) {
+    void addDummyPrescriptions(Patient patient, Doctor doctor, Person deliveryMan) {
         for (int i = 1; i <= 5; i++) {
             Appointment appointment = new Appointment(patient, "", doctor, LocalDate.now().minusDays(i), 9);
             Prescription prescription = new Prescription(appointment);
@@ -315,6 +317,8 @@ public class EcoSystem {
             prescription.addMedicine(new Medicine("SecondDummyMed" + i, i, LocalDate.now(), LocalDate.now().plusDays(i)), new Dosage(1, -1, "--", true, false, true, false));
             prescription.addMedicine(new Medicine("ThirdDummyMed" + i, i, LocalDate.now(), LocalDate.now().plusDays(i)), new Dosage(2, -1, "--", false, false, true, true));
             patient.addPrescription(prescription);
+            prescription.setDeliveryDate(Date.from(Instant.now().minusSeconds(86400 * i)));
+            prescription.setDeliveryMan((DeliveryMan)deliveryMan);
             prescriptionDirectory.addPrescription(appointment.getId(), prescription);
         }
         

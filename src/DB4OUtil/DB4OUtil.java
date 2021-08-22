@@ -18,7 +18,7 @@ import java.nio.file.Paths;
  * @author sravy
  */
 public class DB4OUtil {
-    private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
+    private static final String FILENAME = Paths.get("/tmp/Databank.db4o").toAbsolutePath().toString();// path to the data store
     private static DB4OUtil dB4OUtil;
     
     public synchronized static DB4OUtil getInstance(){
@@ -63,18 +63,19 @@ public class DB4OUtil {
     }
     
     //commented this method for now, Will have to create ConfigureAnEcoSystem class and add getInstance() method in EcoSystem
-//    public EcoSystem retrieveSystem(){
-//        ObjectContainer conn = createConnection();
-//        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
-//        EcoSystem system;
-//        if (systems.size() == 0){
-//            system = ConfigureAnEcoSystem.configure();  // If there's no System in the record, create a new one
-//        }
-//        else{
-//            system = systems.get(systems.size() - 1);
-//        }
-//        conn.close();
-//        return system;
-//    }
+    public EcoSystem retrieveSystem(){
+        ObjectContainer conn = createConnection();
+        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
+        EcoSystem system;
+        if (systems.size() == 0){
+            System.out.println("Creating new EcoSystem");
+            system = new EcoSystem();  // If there's no System in the record, create a new one
+        } else {
+            System.out.println("Getting Existing EcoSystem");
+            system = systems.get(systems.size() - 1);
+        }
+        conn.close();
+        return system;
+    }
     
 }

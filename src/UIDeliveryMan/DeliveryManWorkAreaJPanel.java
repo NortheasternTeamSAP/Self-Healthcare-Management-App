@@ -17,6 +17,9 @@ import Prescription.Prescription;
 import Prescription.PrescriptionDirectory;
 import SysAdminUI.Login;
 import Utils.NextScreen;
+import Utils.StarRatingsUtil;
+import java.time.Instant;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -192,7 +195,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 btnViewRatingsActionPerformed(evt);
             }
         });
-        add(btnViewRatings, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 780, -1, -1));
+        add(btnViewRatings, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 6, 1100, 840));
@@ -258,6 +261,8 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         prescription.addMedicine(order.getMedicine(), order.getDosage());
         prescriptionDirectory.addPrescription(order.getAppointment().getId(), prescription);
         order.getPatient().addPrescription(prescription);
+        prescription.setDeliveryMan(deliveryMan);
+        prescription.setDeliveryDate(Date.from(Instant.now()));
     }//GEN-LAST:event_btnProcessOrderActionPerformed
 
     private void btnRefreshOrdersTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshOrdersTableActionPerformed
@@ -276,6 +281,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
 
     private void btnViewRatingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRatingsActionPerformed
         // TODO add your handling code here:
+        new StarRatingsUtil().viewPersonRatings("Delivery man reviews", deliveryMan);
     }//GEN-LAST:event_btnViewRatingsActionPerformed
 
     private void populateTblDelManOrderRequests(){
