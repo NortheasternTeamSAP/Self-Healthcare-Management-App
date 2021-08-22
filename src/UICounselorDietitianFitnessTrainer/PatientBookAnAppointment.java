@@ -25,6 +25,7 @@ import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
@@ -86,7 +87,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         comboapp = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        chooser = new com.toedter.calendar.JDateChooser();
+        datechooser = new com.toedter.calendar.JDateChooser();
         confirmapp = new javax.swing.JButton();
         backf = new javax.swing.JButton();
         timepanel = new javax.swing.JPanel();
@@ -126,7 +127,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Select a date :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 100, 20));
-        add(chooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 180, 32));
+        add(datechooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 180, 32));
 
         confirmapp.setBackground(new java.awt.Color(255, 255, 255));
         confirmapp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -319,21 +320,77 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
 
     private void confirmappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmappActionPerformed
        
+             datechooser.setForeground(Color.white);
+             comboapp.setForeground(Color.white);
+             txtallergies.setForeground(Color.white);
+             txtmedication.setForeground(Color.white);
+             txtDietrestrict1.setForeground(Color.white);  
+             jCheckBox1.setForeground(Color.red);
+             jCheckBox3.setForeground(Color.red);
+             jCheckBox4.setForeground(Color.red);
+        
+            boolean error = false;
             String restrictions=txtallergies.getText();
             String cheifcomplaint=txtDietrestrict1.getText();
             String medication=txtmedication.getText();
-        
+            
+            if (datechooser.getDate() == null) {
+                datechooser.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (comboapp.getSelectedItem() == null) {
+                comboapp.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (StringUtils.isEmpty(txtallergies.getText())) {
+                txtallergies.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (StringUtils.isEmpty(txtmedication.getText())) {
+                txtmedication.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (StringUtils.isEmpty(txtDietrestrict1.getText())) {
+                txtDietrestrict1.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (!jCheckBox1.isSelected()) {
+                jCheckBox1.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (!jCheckBox3.isSelected()) {
+                jCheckBox3.setForeground(Color.red);
+                error = true;
+            }
+            
+            if (!jCheckBox4.isSelected()) {
+                jCheckBox4.setForeground(Color.red);
+                error = true;
+            }
+            
+
+            if (error) {
+                JOptionPane.showMessageDialog(timepanel, "There are error in some field(s). Please correct them.");
+                return;
+            }
+            
   if(Checkconstraint()==true){      
         if (flag == 1) {
-
+                
             Dietitian selectedDietitian = (Dietitian) comboapp.getSelectedItem();
-            LocalDate date = (LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate date = (LocalDate) datechooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             
             if (p.scheduleDietitianAppointment(selectedDietitian, date, selectedAppointmentTime,restrictions,cheifcomplaint,medication) == true) {
              
-           JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with Dietician   :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
+           JOptionPane.showMessageDialog(datechooser, "Appointment Booked Successfully with Dietician   :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             } else {
-                JOptionPane.showMessageDialog(chooser, "The appointment is Not available with dietitian  :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
+                JOptionPane.showMessageDialog(datechooser, "The appointment is Not available with dietitian  :" + selectedDietitian.getDietitianDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             }
 
             WorkArea.remove(this);
@@ -345,12 +402,12 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
             layout.previous(WorkArea);
         } else if (flag == 2) {
             FitnessTrainer selectedFitnessTrainer = (FitnessTrainer) comboapp.getSelectedItem();
-            LocalDate date = (LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate date = (LocalDate) datechooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             if (p.scheduleFitnessAppointment(selectedFitnessTrainer, date, selectedAppointmentTime,restrictions,cheifcomplaint,medication) == true) {
                 
-                JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with FitnessTrainer   :" + selectedFitnessTrainer.getFitnessTrainerDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
+                JOptionPane.showMessageDialog(datechooser, "Appointment Booked Successfully with FitnessTrainer   :" + selectedFitnessTrainer.getFitnessTrainerDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             } else {
-                JOptionPane.showMessageDialog(chooser, "The appointment is Not available with FitnessTrainer   :" + selectedFitnessTrainer.getFitnessTrainerDetails().getFullName() + " on  : " + date + " and Time : "+selectedAppointmentTime+":00 hrs");
+                JOptionPane.showMessageDialog(datechooser, "The appointment is Not available with FitnessTrainer   :" + selectedFitnessTrainer.getFitnessTrainerDetails().getFullName() + " on  : " + date + " and Time : "+selectedAppointmentTime+":00 hrs");
             }
             WorkArea.remove(this);
             Component[] componentArray = WorkArea.getComponents();
@@ -361,11 +418,11 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
             layout.previous(WorkArea);
         } else {
             Counselor selectedCounselor = (Counselor) comboapp.getSelectedItem();
-            LocalDate date = (LocalDate) chooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate date = (LocalDate) datechooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             if (p.scheduleCounselorAppointment(selectedCounselor, date, selectedAppointmentTime,restrictions,cheifcomplaint,medication) == true) {
-                JOptionPane.showMessageDialog(chooser, "Appointment Booked Successfully with selectedCounselor   :" + selectedCounselor.getPersonDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
+                JOptionPane.showMessageDialog(datechooser, "Appointment Booked Successfully with selectedCounselor   :" + selectedCounselor.getPersonDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             } else {
-                JOptionPane.showConfirmDialog(chooser, "The appointment is Not available with Counselor   :" + selectedCounselor.getPersonDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
+                JOptionPane.showConfirmDialog(datechooser, "The appointment is Not available with Counselor   :" + selectedCounselor.getPersonDetails().getFullName() + " on  : " + date+ " and Time : "+selectedAppointmentTime+":00 hrs");
             }
             WorkArea.remove(this);
             Component[] componentArray = WorkArea.getComponents();
@@ -511,9 +568,9 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
     private javax.swing.JButton btn2;
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn9;
-    private com.toedter.calendar.JDateChooser chooser;
     private javax.swing.JComboBox<Object> comboapp;
     private javax.swing.JButton confirmapp;
+    private com.toedter.calendar.JDateChooser datechooser;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -532,7 +589,6 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
 
     private void populatedietiticancombo() {
         comboapp.removeAllItems();
-
         for (Person p : system.globalUserDirectory.getAllDietitians()) {
             comboapp.addItem(p);
         }

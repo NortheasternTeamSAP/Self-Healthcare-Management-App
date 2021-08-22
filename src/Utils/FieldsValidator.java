@@ -47,6 +47,27 @@ public class FieldsValidator {
         return error;
     }
     
+    public boolean validateLong(JTextField field, double low, double high) {
+        boolean error = false;
+        String val = field.getText();
+        try {
+            if (StringUtils.isEmpty(val) || 
+                    !StringUtils.isNumeric(val) || 
+                    Long.parseLong(val) < low ||
+                    Long.parseLong(val) > high) {
+                field.setBackground(errorColor);
+                error = true;
+            } else {
+                field.setBackground(okColor);
+            }
+        } catch (Exception e) {
+            field.setBackground(errorColor);
+            error = true;
+        }
+
+        return error;
+    }
+    
     public boolean validate(com.toedter.calendar.JDateChooser date) {
         boolean error = false;
         Date dt = date.getDate();

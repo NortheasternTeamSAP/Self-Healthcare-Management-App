@@ -9,6 +9,7 @@ package UIPatientDoctorInsuranceProvider;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import Utils.GraphPlotterUtils;
+import Utils.NextScreen;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -32,7 +33,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author Ankur Bywar
  */
-public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
+public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements NextScreen {
     JPanel WorkAreaPanel;
     Patient patient;
     JFrame mainJFrame;
@@ -104,15 +105,28 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
             }
         });
 
+        btnLineChart.setText("Show Vitals trend");
+        btnLineChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLineChartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(btnLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btnLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDataOfPatientVitalSignPanelLayout = new javax.swing.GroupLayout(jDataOfPatientVitalSignPanel);
@@ -145,34 +159,20 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnLineChart.setText("Show Trend");
-        btnLineChart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLineChartActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(btnLineChart)))
+                .addContainerGap()
+                .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDataOfPatientVitalSignPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(btnLineChart)
-                .addGap(53, 53, 53))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -186,18 +186,17 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-    CardLayout layout = (CardLayout) WorkAreaPanel.getLayout();
-    WorkAreaPanel.add("patientWorkAreaJPanel" , new PatientHomePagePanel(WorkAreaPanel, ecoSystem, patient));
-   // WorkAreaPanel.add("patientWorkAreaJPanel", new PatientHomePagePanel(WorkAreaPanel, patient);
-    layout.next(WorkAreaPanel);
+        nextScreen(WorkAreaPanel, new PatientHomePagePanel(WorkAreaPanel, ecoSystem, patient), "PatientHomePagePanel");
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLineChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineChartActionPerformed
         // TODO add your handling code here:
 
- 
-
         List<VitalSigns> vitalSignsHistory = patient.getVitalSignsHistory();
+        if (vitalSignsHistory == null || vitalSignsHistory.isEmpty()) {
+            JOptionPane.showMessageDialog(jDataOfPatientVitalSignPanel, "No vitals history exists");
+            return;
+        }
         GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
         DefaultCategoryDataset dataset = 
                 new PatientVitalSignHistoryHelper().createPatientVitalsSignsDefaultCategoryDataSet(graphPlotterUtils, vitalSignsHistory);
