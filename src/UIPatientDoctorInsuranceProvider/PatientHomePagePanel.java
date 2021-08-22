@@ -322,8 +322,9 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 .addComponent(btnFitnessInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCouncellorSession, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(311, 311, 311)
-                .addComponent(btnLogout1))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout1)
+                .addContainerGap())
         );
 
         jSplitPane1.setLeftComponent(jControlPanel);
@@ -525,18 +526,22 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jPatientDetailPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 874, 330, 30));
 
         jLabelRemienderToTakeMeds.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToTakeMeds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-pill-30.png"))); // NOI18N
         jLabelRemienderToTakeMeds.setText("Do not forget to take your daily medicines");
-        jPatientDetailPanel.add(jLabelRemienderToTakeMeds, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 261, -1, -1));
+        jPatientDetailPanel.add(jLabelRemienderToTakeMeds, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 660, -1));
 
         jLabelRemienderToCheckVitals.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToCheckVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-stethoscope-30.png"))); // NOI18N
         jLabelRemienderToCheckVitals.setText("Do not forget to check your vitals regularly. last vitals recorded on <bbb>");
-        jPatientDetailPanel.add(jLabelRemienderToCheckVitals, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 292, -1, -1));
+        jPatientDetailPanel.add(jLabelRemienderToCheckVitals, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 720, -1));
 
         jLabelRemienderToFollowDiet.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToFollowDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/create_meal.png"))); // NOI18N
         jLabelRemienderToFollowDiet.setText("Do not forget to check you diet plan and stick to it!");
-        jPatientDetailPanel.add(jLabelRemienderToFollowDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 329, -1, -1));
+        jPatientDetailPanel.add(jLabelRemienderToFollowDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 329, 660, -1));
 
         jLabelRemienderToExercise.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToExercise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view workout.png"))); // NOI18N
         jLabelRemienderToExercise.setText("All progress takes place outside your comfort zone. So exercise daily!");
         jPatientDetailPanel.add(jLabelRemienderToExercise, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 366, -1, -1));
 
@@ -548,14 +553,14 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 jButtonDeliveryBoyReviewActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(jButtonDeliveryBoyReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 397, 559, -1));
+        jPatientDetailPanel.add(jButtonDeliveryBoyReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 740, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X960.jpg"))); // NOI18N
-        jPatientDetailPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -14, 820, 1130));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg.jpg"))); // NOI18N
+        jPatientDetailPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 820, 1170));
 
         jPanel2.add(jPatientDetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 808, 1108));
 
-        jWorkAreaPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 8, 820, -1));
+        jWorkAreaPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 820, -1));
 
         jSplitPane1.setRightComponent(jWorkAreaPanel);
 
