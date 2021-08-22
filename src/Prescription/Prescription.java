@@ -24,6 +24,7 @@ public class Prescription implements Comparable<Prescription> {
     private DeliveryMan.DeliveryMan deliveryMan;
     boolean deliveryReviewProvided;
     private Date deliveryDate;
+    private String pharmacyName;
 
     public DeliveryMan.DeliveryMan getDeliveryMan() {
         return deliveryMan;
@@ -48,6 +49,14 @@ public class Prescription implements Comparable<Prescription> {
     public boolean isDeliveryReviewProvided() {
         return this.deliveryReviewProvided;
     }
+
+    public String getPharmacyName() {
+        return pharmacyName;
+    }
+
+    public void setPharmacyName(String pharmacyName) {
+        this.pharmacyName = pharmacyName;
+    }
     
     static int count = 1;
 
@@ -57,6 +66,7 @@ public class Prescription implements Comparable<Prescription> {
         this.appointment = appointment;
         this.deliveryReviewProvided = false;
         this.deliveryDate = null;
+        this.pharmacyName = null;
         this.id = count++;
     }
 
