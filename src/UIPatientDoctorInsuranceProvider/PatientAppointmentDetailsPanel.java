@@ -50,6 +50,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
      */
     public PatientAppointmentDetailsPanel(JPanel workAreaPanel, EcoSystem ecosystem, Enterprise hospital, Appointment appointment, JPanel backpage) {
         initComponents();
+        this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.ecosystem = ecosystem;
         this.appointment = appointment;
@@ -150,319 +151,212 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         btnSubmitNewLabTestRequest1 = new javax.swing.JButton();
         btnNewAppointmentDetails = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        jPatientDetailPanel.setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPatientDetailPanel.setOpaque(false);
         jPatientDetailPanel.setPreferredSize(new java.awt.Dimension(1000, 1000));
+        jPatientDetailPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddress.setText("Address:");
+        jPatientDetailPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 150, -1));
 
-        lblPhoneNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPhoneNumber.setText("Phone Number:");
+        jPatientDetailPanel.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 150, -1));
 
-        lblName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblName.setText("Name:");
+        jPatientDetailPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 150, -1));
 
-        imgLogo.setText("<<No Image>>");
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/user1new.png"))); // NOI18N
+        imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPatientDetailPanel.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 120));
 
+        lblNamePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblNamePlaceHolder.setText("NamePlaceHolder");
+        jPatientDetailPanel.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 160, 20));
 
-        lblDob1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblDob1.setText("Dob:");
+        lblDob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob1.setText("Date Of Birth:");
+        jPatientDetailPanel.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 150, -1));
 
+        lblDobPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblDobPlaceHolder.setText("DobPlaceHolder");
+        jPatientDetailPanel.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 160, 20));
 
+        lblPhoneNumberPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
+        jPatientDetailPanel.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
+        lblAddressPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
+        jPatientDetailPanel.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 180, -1));
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Appointment Details");
+        jPatientDetailPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 23, 248, 48));
 
-        lblAge.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblAge.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAge.setText("Age:");
+        jPatientDetailPanel.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 150, -1));
 
+        lblAgePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAgePlaceHolder.setText("AgeHolder");
+        jPatientDetailPanel.add(lblAgePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 180, -1));
 
-        lblWeight.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblWeight.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblWeight.setText("Weight:");
+        jPatientDetailPanel.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 150, -1));
 
+        lblWeightPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeightPlaceHolder.setText("WeightPlaceHolder");
+        jPatientDetailPanel.add(lblWeightPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 170, -1));
 
-        lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblWeight1.setText("EmailId:");
+        lblWeight1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWeight1.setText("Email ID:");
+        jPatientDetailPanel.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 150, -1));
 
+        lblEmailPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
+        jPatientDetailPanel.add(lblEmailPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 180, -1));
 
-        jButton1.setText("Prescription Hisroty");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/prescription.png"))); // NOI18N
+        jButton1.setText("Prescription History");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPatientDetailPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, 350, 48));
 
-        jButton2.setText("Patient Insurance Details");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-money-bag-30.png"))); // NOI18N
+        jButton2.setText("Insurance Details");
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 350, 48));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-graph-report-30.png"))); // NOI18N
         jButton3.setText("Historical Vitals Report");
+        jButton3.setBorderPainted(false);
+        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, 350, 40));
 
-        btnViewLabTestResults.setText("View laboratory test results");
+        btnViewLabTestResults.setBackground(new java.awt.Color(255, 255, 255));
+        btnViewLabTestResults.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnViewLabTestResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-view-details-30.png"))); // NOI18N
+        btnViewLabTestResults.setText("View Results");
         btnViewLabTestResults.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewLabTestResultsActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(btnViewLabTestResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 150, -1));
 
         jComboBoxLabAssistantList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPatientDetailPanel.add(jComboBoxLabAssistantList, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 190, -1));
 
-        lblName3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblName3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblName3.setText("Perform new Lab Test");
+        jPatientDetailPanel.add(lblName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
 
+        btnPrescribeNewMedicines.setBackground(new java.awt.Color(255, 255, 255));
+        btnPrescribeNewMedicines.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPrescribeNewMedicines.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/medication.png"))); // NOI18N
         btnPrescribeNewMedicines.setText("Prescribe new medicines");
+        btnPrescribeNewMedicines.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPrescribeNewMedicines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrescribeNewMedicinesActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(btnPrescribeNewMedicines, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 350, 48));
 
-        lblWeight2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblWeight2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblWeight2.setText("Appointment Date:");
+        jPatientDetailPanel.add(lblWeight2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 150, -1));
 
+        lblAptDatePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAptDatePlaceHolder.setText("appointment date place holder");
+        jPatientDetailPanel.add(lblAptDatePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 200, -1));
 
-        jBtnViewPreviousAppointments1.setText("View previous appointments and lab tests for this patient");
+        jBtnViewPreviousAppointments1.setBackground(new java.awt.Color(255, 255, 255));
+        jBtnViewPreviousAppointments1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBtnViewPreviousAppointments1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view_past_appointment.png"))); // NOI18N
+        jBtnViewPreviousAppointments1.setText("View previous appointments and lab tests");
         jBtnViewPreviousAppointments1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnViewPreviousAppointments1ActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(jBtnViewPreviousAppointments1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 350, -1));
 
-        btnGeneratePatientBill.setText("Generate patient bill");
+        btnGeneratePatientBill.setBackground(new java.awt.Color(255, 255, 255));
+        btnGeneratePatientBill.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGeneratePatientBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-receipt-dollar-30.png"))); // NOI18N
+        btnGeneratePatientBill.setText("View Medical Bills");
+        btnGeneratePatientBill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGeneratePatientBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGeneratePatientBillActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(btnGeneratePatientBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 350, 50));
 
-        btnSubmitNewLabTestRequest1.setText("Request a laboratory test");
+        btnSubmitNewLabTestRequest1.setBackground(new java.awt.Color(255, 255, 255));
+        btnSubmitNewLabTestRequest1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSubmitNewLabTestRequest1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-test-passed-30.png"))); // NOI18N
+        btnSubmitNewLabTestRequest1.setText("Request Test");
         btnSubmitNewLabTestRequest1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitNewLabTestRequest1ActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(btnSubmitNewLabTestRequest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 150, -1));
 
+        btnNewAppointmentDetails.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewAppointmentDetails.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnNewAppointmentDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-double-tick-30.png"))); // NOI18N
         btnNewAppointmentDetails.setText("Complete Appointment");
+        btnNewAppointmentDetails.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNewAppointmentDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewAppointmentDetailsActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(btnNewAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 470, 350, 50));
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        jPatientDetailPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 23, -1, 37));
 
-        javax.swing.GroupLayout jPatientDetailPanelLayout = new javax.swing.GroupLayout(jPatientDetailPanel);
-        jPatientDetailPanel.setLayout(jPatientDetailPanelLayout);
-        jPatientDetailPanelLayout.setHorizontalGroup(
-            jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPatientDetailPanelLayout.createSequentialGroup()
-                .addGap(0, 126, Short.MAX_VALUE)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGeneratePatientBill, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPrescribeNewMedicines, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(249, 249, 249))
-            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblDob1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDobPlaceHolder))
-                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblPhoneNumber)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblPhoneNumberPlaceHolder))
-                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNamePlaceHolder))
-                            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPatientDetailPanelLayout.createSequentialGroup()
-                                    .addComponent(lblAddress)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblAddressPlaceHolder))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPatientDetailPanelLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addComponent(lblAge, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblAgePlaceHolder))
-                                        .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                            .addComponent(lblWeight)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(lblWeightPlaceHolder))))
-                                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                        .addComponent(lblWeight2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblAptDatePlaceHolder))
-                                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                        .addComponent(lblWeight1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblEmailPlaceHolder))))))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSubmitNewLabTestRequest1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                                .addComponent(lblName3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxLabAssistantList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnViewLabTestResults, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(btnNewAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                    .addGap(87, 87, 87)
-                    .addComponent(jBtnViewPreviousAppointments1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(342, Short.MAX_VALUE)))
-        );
-        jPatientDetailPanelLayout.setVerticalGroup(
-            jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName)
-                            .addComponent(lblNamePlaceHolder))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDob1)
-                            .addComponent(lblDobPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPhoneNumber)
-                            .addComponent(lblPhoneNumberPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAddress)
-                            .addComponent(lblAddressPlaceHolder)))
-                    .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAge)
-                    .addComponent(lblAgePlaceHolder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight)
-                    .addComponent(lblWeightPlaceHolder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight1)
-                    .addComponent(lblEmailPlaceHolder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight2)
-                    .addComponent(lblAptDatePlaceHolder))
-                .addGap(32, 32, 32)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName3)
-                    .addComponent(jComboBoxLabAssistantList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmitNewLabTestRequest1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnViewLabTestResults)
-                .addGap(62, 62, 62)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPrescribeNewMedicines, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGeneratePatientBill, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNewAppointmentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
-            .addGroup(jPatientDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPatientDetailPanelLayout.createSequentialGroup()
-                    .addGap(424, 424, 424)
-                    .addComponent(jBtnViewPreviousAppointments1)
-                    .addContainerGap(547, Short.MAX_VALUE)))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPatientDetailPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPatientDetailPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPatientDetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1094, 840));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1006, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -617,6 +511,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBoxLabAssistantList;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPatientDetailPanel;
