@@ -37,6 +37,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
      */
     public PatientViewPrescriptionJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Patient patient, JPanel backPage) {
         initComponents();
+        this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.ecoSystem = ecoSystem;
         this.backPage = backPage;
@@ -110,6 +111,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
         btnShowCurrentPrescription1 = new javax.swing.JButton();
         jBtnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,14 +124,15 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
             .addGap(0, 641, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Medicine Perscription Details");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel1.setText("Medicine Prescription Details");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 27, 361, 31));
 
         tblSinglePrescriptionDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Medicine Name", "Dose", "Timing"
@@ -152,12 +155,11 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
         });
         jScrollPane4.setViewportView(tblSinglePrescriptionDetails);
 
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 149, 820, 159));
+
         tblPrescriptionHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Id", "Prescription Date", "Referred by Doctor"
@@ -180,92 +182,53 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
         });
         jScrollPane5.setViewportView(tblPrescriptionHistory);
 
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 449, 820, 148));
+
+        btnShowDetailsOfPrescription.setBackground(new java.awt.Color(255, 255, 255));
+        btnShowDetailsOfPrescription.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnShowDetailsOfPrescription.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view_notes.png"))); // NOI18N
         btnShowDetailsOfPrescription.setText("Show details of the selected prescription");
         btnShowDetailsOfPrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowDetailsOfPrescriptionActionPerformed(evt);
             }
         });
+        add(btnShowDetailsOfPrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 615, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Prescription History");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 227, 31));
 
-        jLabelPrescriptionTitlePlaceHolder.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabelPrescriptionTitlePlaceHolder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelPrescriptionTitlePlaceHolder.setText("Prescription from date <DATE>");
+        add(jLabelPrescriptionTitlePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 465, 31));
 
+        btnShowCurrentPrescription1.setBackground(new java.awt.Color(255, 255, 255));
+        btnShowCurrentPrescription1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnShowCurrentPrescription1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-submit-resume-30.png"))); // NOI18N
         btnShowCurrentPrescription1.setText("Show most recent prescription");
         btnShowCurrentPrescription1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowCurrentPrescription1ActionPerformed(evt);
             }
         });
+        add(btnShowCurrentPrescription1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
 
-        jBtnBack.setText("Back");
+        jBtnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jBtnBack.setContentAreaFilled(false);
         jBtnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnBackActionPerformed(evt);
             }
         });
+        add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, 48, 39));
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("My Current Medicine Prescription");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 113, 227, 31));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jBtnBack)
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPrescriptionTitlePlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(btnShowCurrentPrescription1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(btnShowDetailsOfPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(226, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jBtnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jLabelPrescriptionTitlePlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnShowCurrentPrescription1)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnShowDetailsOfPrescription)
-                .addGap(101, 101, 101))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowDetailsOfPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDetailsOfPrescriptionActionPerformed
@@ -304,6 +267,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelPrescriptionTitlePlaceHolder;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
