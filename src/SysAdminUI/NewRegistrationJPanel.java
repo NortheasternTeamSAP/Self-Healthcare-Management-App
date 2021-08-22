@@ -487,7 +487,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
          gd.createNewUser(patient);
         
        // gd.createNewUser(person);
-
+       JOptionPane.showMessageDialog(this,"Congradulations! You have successfully registered in the app. Use your credentials to login.");
        boolean success = new EmailClient().sendEmail(
                emailId, 
                ecoSystem.getSysAdminEmail(), 
@@ -495,7 +495,6 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                getNewUserRegistrationEmailSubject(), 
                getNewUserRegistrationEmailBody(patient));
         log.debug("Registeration email sent to user: " + userName + ". Email status success: " + success);
-        JOptionPane.showMessageDialog(this,"Congradulations! You have successfully registered in the app. Use your credentials to login.");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private String getNewUserRegistrationEmailSubject() {

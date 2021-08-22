@@ -209,5 +209,9 @@ public class PersonDetails {
     public int getOrganizationId() {
         return this.organizationId;
     }
+    
+    public void setPassword(String enteredPassword) {
+        this.userAccount.setPassword(enteredPassword);
+    }
    
 }

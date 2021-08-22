@@ -45,11 +45,6 @@ public class GenericDirectory<Key, Value> {
             return;
         }
         
-        if (directory.containsKey(key)) {
-            log.debug("Directory already "
-                    + "contains key: " + key + ". Overwriting with new value.");
-        }
-        
         directory.put(key, value);
     }
     
