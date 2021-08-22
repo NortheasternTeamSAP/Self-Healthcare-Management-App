@@ -230,6 +230,11 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/prescription.png"))); // NOI18N
         jButton1.setText("Prescription History");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPatientDetailPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, 350, 48));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
@@ -250,7 +255,6 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jButton3.setText("Historical Vitals Report");
         jButton3.setBorderPainted(false);
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -496,6 +500,36 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         // TODO add your handling code here:
         nextScreen(workAreaPanel, new PrescribeMedicinesJPanel(workAreaPanel, ecosystem, appointment, this), TOOL_TIP_TEXT_KEY);
     }//GEN-LAST:event_btnPrescribeNewMedicinesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        JOptionPane.showMessageDialog(null, "This will download file from Amazon S3 bucket");
+        
+        String prescriptionHistoryS3Path = appointment.getPatientPrescriptionsFileS3ObjectPath();
+        if (prescriptionHistoryS3Path == null) {
+            JOptionPane.showMessageDialog(null, "No prescription history found");
+            return;
+        }
+        
+        String patientUsername = appointment.getPatient().getUserAccount().getUsername();
+        String prescriptionHistoryFileName = "prescriptions-history-" + patientUsername + "-" + appointment.getId() + "-" + appointment.getDate();
+        String prescriptionHistoryFileNamePath = "/tmp/doctor/" + prescriptionHistoryFileName; 
+        
+        boolean success = s3helper.getObject(prescriptionHistoryS3Path, prescriptionHistoryFileNamePath);
+        if (!success) {
+            JOptionPane.showMessageDialog(null, "Some unexpected error downloading file from S3");
+            return;
+        }
+        
+        log.debug("Successfully downloaded patient's prescription history from S3");
+
+        try {
+            Desktop.getDesktop().open(new File(prescriptionHistoryFileNamePath));
+        } catch (IOException ex) {
+            log.debug("Error in opening patient's prescription history file. Exception: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

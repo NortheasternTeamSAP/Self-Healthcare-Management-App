@@ -8,23 +8,32 @@ package UIPatientDoctorInsuranceProvider;
 import DataStore.Appointment;
 import Doctor.Doctor;
 import EcoSystem.EcoSystem;
+import Enterprise.Enterprise;
 import Patient.Patient;
 import Personnel.Person;
+import Prescription.Prescription;
 import Utils.ConsoleLogger;
 import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
+import Utils.EmailClient;
 import Utils.ViewPersonRatingsJPanel;
 import VitalSign.VitalSigns;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -416,6 +425,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         patient.addDoctorAppointment(apt);
         btnConfirmDoctorAppointment.setEnabled(false);
         
+        
         // Attach previous vitals report
         // Attach current prescription
         // Attach previous lab reports
@@ -436,9 +446,48 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
             uploadInsuranceDetailsToS3(apt);
         }
         
-        ecoSystem.getSMSHelper().sendSMSAsynchronous("+12067085330", "Hi! SMS functionality is working in our project! Hurray!!");
+        if (jCheckBoxSendAppointmentEmailConfirmation.isSelected()) {
+            sendAppointmentConfirmationEmail(apt);
+        }
+        
+        if (jCheckBoxSendAppointmentTextConfirmation.isSelected()) {
+            sendAppointmentConfirmationText(apt);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Appointment booked with primary care and the patient has been notified!");
     }//GEN-LAST:event_btnConfirmDoctorAppointmentActionPerformed
 
+    void sendAppointmentConfirmationText(Appointment appointment) {
+        String message = getAppointmentConfirmationMessage(appointment);
+        Person patient = appointment.getPatient();
+        Person doctor = appointment.getDoctor();
+        ecoSystem.getSMSHelper().sendSMSAsynchronous(patient.getPersonDetails().getPhoneNumber(), message);
+    }
+    
+    void sendAppointmentConfirmationEmail(Appointment appointment) {
+        String message = getAppointmentConfirmationMessage(appointment);
+        Person patient = appointment.getPatient();
+        Person doctor = appointment.getDoctor();
+        boolean success = new EmailClient().sendEmail(
+               patient.getPersonDetails().getEmailId(), 
+               ecoSystem.getSysAdminEmail(), 
+               ecoSystem.getSysAdmingEmailPassword(), 
+               "Appointment booked with primary care on " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs", 
+               message);
+    }
+    
+    private String getAppointmentConfirmationMessage(Appointment appointment) {
+        Person patient = appointment.getPatient();
+        Person doctor = appointment.getDoctor();
+        Enterprise enterprise = ecoSystem.organizationDirectory.getOrganization(doctor.getOrganizationId()).getEnterprise();
+        return "Hi " + patient.getPersonDetails().getFullName() + "!\n" +
+                "Your appointment with Doctor " + doctor.getPersonDetails().getFullName() + " at " + enterprise.getEnterpriseName() + " primary care unit " + 
+                "has been booked for date " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs.\n" +
+                "\n\n\n" +
+                "Cheers -\n" +
+                "Health Springs App Team";
+    }
+    
     private void uploadVitalsHistoryToS3(Appointment appointment) {
         String patientUsername = appointment.getPatient().getUserAccount().getUsername();
         String vitalsHistoryImageName = "vitals-image-" + patientUsername + "-" + appointment.getId() + "-" + appointment.getDate();
@@ -474,13 +523,60 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     }
     
     private void uploadCurrentPrescriptionToS3(Appointment appointment) {
+        Patient patient = (Patient) appointment.getPatient();
+        List<Prescription> prescriptionList = new ArrayList<>(patient.getPrescriptionsList());
+        if (prescriptionList == null || prescriptionList.isEmpty()) {
+            appointment.setPatientPrescriptionsFileS3ObjectPath(null);
+            return;
+        }
         
+        Collections.sort(prescriptionList, new Comparator<Prescription>() {
+            @Override
+            public int compare(Prescription o1, Prescription o2) {
+                return o2.getPrescriptionDate().compareTo(o1.getPrescriptionDate());
+            }
+        });
+       
+        String patientUsername = appointment.getPatient().getUserAccount().getUsername();
+        String prescriptionHistoryFileName = "prescriptions-history-" + patientUsername + "-" + appointment.getId() + "-" + appointment.getDate();
+        String prescriptionHistoryFileNamePath = "/tmp/patient/" + prescriptionHistoryFileName; 
+        
+        FileWriter myWriter = null;
+        try {
+            myWriter = new FileWriter(prescriptionHistoryFileNamePath);
+            for (Prescription prescription : prescriptionList) {
+                myWriter.write(prescription.getFormattedString());
+            }
+            myWriter.close();
+        } catch (IOException e) {
+            log.error("Unable to create prescriptions history file. Exception - " + e.getMessage());
+            appointment.setPatientPrescriptionsFileS3ObjectPath(null);
+            return;
+        } 
+        
+        String key = "/patient/" + patientUsername + "/prescriptions-history/" + prescriptionHistoryFileName + ".txt";
+        boolean success = s3helper.putObject(key, prescriptionHistoryFileNamePath);
+        if (success) {
+            log.debug("Successfully written prescription history to S3 bucket");
+        } else {
+            log.debug("Unable to write prescription history to S3 bucket");
+            appointment.setPatientPrescriptionsFileS3ObjectPath(null);
+            return;
+        }
+        
+        appointment.setPatientPrescriptionsFileS3ObjectPath(key);
+        log.debug("Updated appointment with S3 path for prescription history file");
     }
     
     private void uploadInsuranceDetailsToS3(Appointment appointment) {
         String patientUsername = appointment.getPatient().getUserAccount().getUsername();
         String insuranceFileName = "insurance-detail-file-" + patientUsername;
         String localInsuranceFilePath = "/tmp/patient/" + insuranceFileName; 
+        
+        if (patient.getInsuranceDetails() == null) {
+            appointment.setPatientInsuranceFileS3ObjectPath(null);
+            return;
+        }
         
         if (patient.getInsuranceDetails().generateFileForInsuranceDetails(localInsuranceFilePath) == false) {
             log.error("Unable to generate insurance details file to upload to S3");
