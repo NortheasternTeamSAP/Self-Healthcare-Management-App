@@ -38,6 +38,7 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
      */
     public ViewPersonRatingsJPanel(JPanel workArea, Person person, JPanel backPage) {
         initComponents();
+        this.setSize(1100,850);
         this.workArea = workArea;
         this.person = person;
         this.backPage = backPage;
@@ -213,6 +214,9 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
         jLabelAverageRatings = new javax.swing.JLabel();
         jComboBoxSortBy = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTableReviews.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,108 +231,65 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
         ));
         jScrollPane1.setViewportView(jTableReviews);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 690, 270));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Reviews Summary");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 24, 218, 40));
 
-        jLabelNamePlaceHolder.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabelNamePlaceHolder.setText("Name: <PlaceHolder>");
+        jLabelNamePlaceHolder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelNamePlaceHolder.setText("Name:                   <PlaceHolder>");
+        jPanel1.add(jLabelNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 82, 227, -1));
 
-        jButtonBack.setText("Back");
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButtonBack.setContentAreaFilled(false);
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 22, -1, -1));
 
+        jButtonMoreDetails.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonMoreDetails.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonMoreDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-more-30.png"))); // NOI18N
         jButtonMoreDetails.setText("More Details");
         jButtonMoreDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMoreDetailsActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Review");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, -1, -1));
 
         jTextAreaReview.setColumns(20);
         jTextAreaReview.setRows(5);
         jScrollPane2.setViewportView(jTextAreaReview);
 
-        jLabelAverageRatings.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabelAverageRatings.setText("Average Rating: <PlaceHolder>");
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 291, 115));
+
+        jLabelAverageRatings.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelAverageRatings.setText("Average Rating:    <PlaceHolder>");
+        jPanel1.add(jLabelAverageRatings, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 120, -1, 27));
 
         jComboBoxSortBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Review Date", "Ratings" }));
+        jPanel1.add(jComboBoxSortBy, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 153, 163, -1));
 
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Sort By");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 160, 108, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonMoreDetails)
-                .addGap(403, 403, 403))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButtonBack)
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelNamePlaceHolder)
-                                .addGap(315, 315, 315))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelAverageRatings)
-                                .addGap(124, 124, 124)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxSortBy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(190, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButtonBack)))
-                .addGap(46, 46, 46)
-                .addComponent(jLabelNamePlaceHolder)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAverageRatings, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSortBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonMoreDetails)
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 1107, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -336,7 +297,7 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGap(0, 852, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -379,6 +340,7 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAverageRatings;
     private javax.swing.JLabel jLabelNamePlaceHolder;
     private javax.swing.JPanel jPanel1;
