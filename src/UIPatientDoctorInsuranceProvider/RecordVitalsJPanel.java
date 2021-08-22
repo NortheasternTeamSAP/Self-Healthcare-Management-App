@@ -55,6 +55,7 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
      */
     public RecordVitalsJPanel(JPanel WorkAreaPanel, EcoSystem ecoSystem, Patient patient) {
         initComponents();
+        this.setSize(1100,850);
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;
         this.ecoSystem = ecoSystem;
@@ -107,46 +108,69 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
         jTable5 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtLowBp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLowBpActionPerformed(evt);
             }
         });
+        jPanel1.add(txtLowBp, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 146, 51, -1));
+        jPanel1.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 118, 142, -1));
 
         lblWeight.setText("Weight:");
+        jPanel1.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 124, -1, -1));
 
-        btnBack.setBackground(new java.awt.Color(255, 204, 204));
-        btnBack.setText("<< Back");
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 26, -1, -1));
+        jPanel1.add(txtHeartRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 220, 142, -1));
+        jPanel1.add(txtRespirtoryRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 180, 142, -1));
 
         txtHighBp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHighBpActionPerformed(evt);
             }
         });
+        jPanel1.add(txtHighBp, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 146, 51, -1));
 
         lblRespRate.setText("Respiratory Rate:");
+        jPanel1.add(lblRespRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 186, -1, -1));
 
         lblHeartRate.setText("Heart Rate:");
+        jPanel1.add(lblHeartRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 226, -1, -1));
 
         lblWeight1.setText("kgs");
+        jPanel1.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 124, -1, -1));
 
-        lblWeight2.setText("-");
+        lblWeight2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWeight2.setText("--");
+        jPanel1.add(lblWeight2, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 149, 16, -1));
 
         lblBloodPressure.setText("Blood Pressure:");
+        jPanel1.add(lblBloodPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 152, -1, -1));
 
-        lblPatientNamePlaceholder.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblPatientNamePlaceholder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPatientNamePlaceholder.setText("Patient: <patient_placeholder>");
+        jPanel1.add(lblPatientNamePlaceholder, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 86, 442, -1));
 
-        lblTittle.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblTittle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTittle.setText("Patient's Vital Signs Collection");
+        jPanel1.add(lblTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 26, 375, 42));
 
         lblDate.setText("Date of vital sign :");
+        jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+        jPanel1.add(jDateOfVitalSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 260, 142, -1));
+
+        jPanel3.setOpaque(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -159,33 +183,45 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
             .addGap(0, 35, Short.MAX_VALUE)
         );
 
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+
         lblWeight3.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
         lblWeight3.setText("*between 1 to 200 ");
+        jPanel1.add(lblWeight3, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 128, -1, -1));
 
         lblWeight4.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
         lblWeight4.setText("*non-zero and <250 ");
+        jPanel1.add(lblWeight4, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 156, -1, -1));
 
         lblWeight5.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
         lblWeight5.setText("*non-zero and <250 ");
+        jPanel1.add(lblWeight5, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 190, -1, -1));
 
         lblWeight6.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
         lblWeight6.setText("*non-zero and <250 ");
+        jPanel1.add(lblWeight6, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 230, -1, -1));
 
-        btnSave.setBackground(new java.awt.Color(204, 255, 204));
+        btnSave.setBackground(new java.awt.Color(255, 255, 255));
+        btnSave.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/save.png"))); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 306, -1, -1));
 
-        btnBarGraph.setBackground(new java.awt.Color(204, 255, 204));
+        btnBarGraph.setBackground(new java.awt.Color(255, 255, 255));
+        btnBarGraph.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnBarGraph.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-graph-report-30.png"))); // NOI18N
         btnBarGraph.setText("Bar Graph");
         btnBarGraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBarGraphActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBarGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 306, -1, 43));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,6 +245,8 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
         });
         jScrollPane4.setViewportView(jTable4);
 
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 428, 217, 105));
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"infant", "120-60", ">4"},
@@ -230,6 +268,8 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
             }
         });
         jScrollPane2.setViewportView(jTable2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 428, 217, 105));
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -253,6 +293,8 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
         });
         jScrollPane5.setViewportView(jTable5);
 
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 563, 217, 105));
+
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"infant", "120-60", ">4"},
@@ -275,144 +317,22 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
         });
         jScrollPane3.setViewportView(jTable3);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBack))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPatientNamePlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblDate)
-                                .addGap(78, 78, 78)
-                                .addComponent(jDateOfVitalSign, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(btnBarGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblWeight)
-                                    .addComponent(lblRespRate)
-                                    .addComponent(lblHeartRate)
-                                    .addComponent(lblBloodPressure))
-                                .addGap(126, 126, 126)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtLowBp, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblWeight2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtHighBp, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblWeight4))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblWeight1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblWeight3))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtRespirtoryRate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblWeight5))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblWeight6)))))))
-                .addContainerGap(414, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(307, 307, 307)
-                    .addComponent(lblTittle, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(194, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addGap(63, 63, 63)
-                .addComponent(lblPatientNamePlaceholder)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblWeight)
-                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWeight1)
-                    .addComponent(lblWeight3))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBloodPressure)
-                    .addComponent(txtLowBp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHighBp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWeight2)
-                    .addComponent(lblWeight4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRespRate)
-                    .addComponent(txtRespirtoryRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWeight5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHeartRate)
-                    .addComponent(txtHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWeight6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDate)
-                    .addComponent(jDateOfVitalSign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBarGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(427, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(39, 39, 39)
-                    .addComponent(lblTittle, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(566, Short.MAX_VALUE)))
-        );
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 563, 217, 105));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1109, Short.MAX_VALUE)
+            .addGap(0, 1101, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1122, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -514,6 +434,7 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
     private com.toedter.calendar.demo.DateChooserPanel dateChooserPanel1;
     private com.toedter.calendar.JDateChooserBeanInfo jDateChooserBeanInfo1;
     private com.toedter.calendar.JDateChooser jDateOfVitalSign;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
