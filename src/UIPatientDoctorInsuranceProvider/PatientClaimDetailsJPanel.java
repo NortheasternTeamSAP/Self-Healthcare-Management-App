@@ -36,6 +36,7 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
      */
     public PatientClaimDetailsJPanel(JPanel workAreaPanel, PrimaryCareInsuranceClaim claim, JPanel backPage) {
         initComponents();
+        this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.claim = claim;
         this.backPage = (InsuranceProviderRepresentativeHomePageJPanel)backPage;
@@ -97,48 +98,77 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         jCheckBoxSendClaimEmailToPatient = new javax.swing.JCheckBox();
         jLabelPatientsResponsibilityPlaceHolder = new javax.swing.JLabel();
         jLabelClaimProcessingMessagePlaceHolder = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
-        jLabel1.setText("Claims detail page");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setText("Back");
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel1.setText("Patient Claims Detail page");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 311, 31));
+
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Total Amount Claimed: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 106, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Insurance Deductable");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 136, -1, 25));
 
+        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Patient Responsibility");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 168, -1, 25));
 
+        jTextFieldInsuranceCompanyDeductable.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldInsuranceCompanyDeductable.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jTextFieldInsuranceCompanyDeductable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldInsuranceCompanyDeductableActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldInsuranceCompanyDeductable, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 200, 20));
 
+        btnApproveClaim.setBackground(new java.awt.Color(255, 255, 255));
+        btnApproveClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnApproveClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/accept.png"))); // NOI18N
         btnApproveClaim.setText("Approve Claim");
         btnApproveClaim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveClaimActionPerformed(evt);
             }
         });
+        jPanel1.add(btnApproveClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 170, 40));
 
+        jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel7.setText("Add Patient, doctor and other claim details here");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
+        btnDeclineClaim.setBackground(new java.awt.Color(255, 255, 255));
+        btnDeclineClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnDeclineClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/disagree.png"))); // NOI18N
         btnDeclineClaim.setText("Decline Claim");
         btnDeclineClaim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeclineClaimActionPerformed(evt);
             }
         });
+        jPanel1.add(btnDeclineClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 160, 40));
 
+        jLabelTotalClaimAmountPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelTotalClaimAmountPlaceHolder.setText("Total Amount Claimed Place Holder");
+        jPanel1.add(jLabelTotalClaimAmountPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
+        jCheckBoxSendClaimEmailToPatient.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jCheckBoxSendClaimEmailToPatient.setSelected(true);
         jCheckBoxSendClaimEmailToPatient.setText("Send claim email details to Patient");
         jCheckBoxSendClaimEmailToPatient.addActionListener(new java.awt.event.ActionListener() {
@@ -146,96 +176,27 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
                 jCheckBoxSendClaimEmailToPatientActionPerformed(evt);
             }
         });
+        jPanel1.add(jCheckBoxSendClaimEmailToPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
+        jLabelPatientsResponsibilityPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelPatientsResponsibilityPlaceHolder.setText("Total Amount Claimed Place Holder");
+        jPanel1.add(jLabelPatientsResponsibilityPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 169, -1, 20));
+        jPanel1.add(jLabelClaimProcessingMessagePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 303, 316, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(103, 103, 103)
-                            .addComponent(btnApproveClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDeclineClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(115, 115, 115)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextFieldInsuranceCompanyDeductable, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabelTotalClaimAmountPlaceHolder))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabelPatientsResponsibilityPlaceHolder)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jCheckBoxSendClaimEmailToPatient))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelClaimProcessingMessagePlaceHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack))
-                .addGap(36, 36, 36)
-                .addComponent(jLabel7)
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabelTotalClaimAmountPlaceHolder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldInsuranceCompanyDeductable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPatientsResponsibilityPlaceHolder))
-                .addGap(28, 28, 28)
-                .addComponent(jCheckBoxSendClaimEmailToPatient)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApproveClaim)
-                    .addComponent(btnDeclineClaim))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelClaimProcessingMessagePlaceHolder)
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGap(0, 1100, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -302,6 +263,7 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelClaimProcessingMessagePlaceHolder;
     private javax.swing.JLabel jLabelPatientsResponsibilityPlaceHolder;
