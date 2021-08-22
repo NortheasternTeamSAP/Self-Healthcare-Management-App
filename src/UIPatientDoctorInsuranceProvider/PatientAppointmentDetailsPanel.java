@@ -89,7 +89,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
     
     void populateLabAssistantCombo() {
         jComboBoxLabAssistantList.removeAllItems();
-        jComboBoxLabAssistantList.addItem("Select Laboratory");
+        jComboBoxLabAssistantList.addItem("Select");
         
         List<Organization> organizations = hospital.getOrganizations();
         for (Organization org : organizations) {

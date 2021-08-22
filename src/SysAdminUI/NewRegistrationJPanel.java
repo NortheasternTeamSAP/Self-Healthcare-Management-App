@@ -11,12 +11,14 @@ import EcoSystem.EcoSystem;
 import Enterprise.Enterprise;
 import Enterprise.EnterpriseType;
 import Enterprise.PharmacyEnterprise;
+import Organization.Organization;
 import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
 import Utils.ConsoleLogger;
+import Utils.FieldsValidator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -87,7 +89,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
             return;
         }
         
-        jComboBoxPreferredPharmacy.addItem("Select Pharmacy");
+        jComboBoxPreferredPharmacy.addItem("Select");
         for (Enterprise pharmacy : pharmacies) {
             jComboBoxPreferredPharmacy.addItem(pharmacy.getEnterpriseName() + ":" + pharmacy.getEnterpriseId());
         } 
@@ -112,7 +114,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
             return;
         }
         
-        if ("Select Pharmacy".equals(selectedPharmacy)) {
+        if ("Select".equals(selectedPharmacy)) {
             lblPharmacyAddressPlaceHolder.setText("");
             return;
         }
@@ -176,6 +178,8 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
         jUsernameLabel1 = new javax.swing.JLabel();
         jComboBoxPreferredPharmacy = new javax.swing.JComboBox<>();
         lblPharmacyAddressPlaceHolder = new javax.swing.JLabel();
+        lblAddrZip1 = new javax.swing.JLabel();
+        lblAddrZip2 = new javax.swing.JLabel();
 
         jPasswordTextField.setToolTipText("");
         jPasswordTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +258,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
 
         lblAddrState1.setText("Gender");
 
-        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE", "OTHER" }));
+        jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "MALE", "FEMALE", "OTHER" }));
         jComboBoxGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxGenderActionPerformed(evt);
@@ -309,6 +313,12 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
             }
         });
 
+        lblAddrZip1.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
+        lblAddrZip1.setText("*10 digits");
+
+        lblAddrZip2.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
+        lblAddrZip2.setText("*5 digits");
+
         javax.swing.GroupLayout jRegistrationpanelLayout = new javax.swing.GroupLayout(jRegistrationpanel);
         jRegistrationpanel.setLayout(jRegistrationpanelLayout);
         jRegistrationpanelLayout.setHorizontalGroup(
@@ -338,14 +348,15 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                                         .addGap(179, 179, 179)
                                         .addComponent(lblDob)))
                                 .addGap(32, 32, 32)
-                                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtName)
+                                        .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jComboBoxGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(txtName)
-                                    .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtDobDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                                 .addGap(167, 167, 167)
                                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +380,9 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                                             .addComponent(txtAddressCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                                                 .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(40, 40, 40)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblAddrZip2)
+                                                .addGap(39, 39, 39)
                                                 .addComponent(lblAddrState)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -384,7 +397,9 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                                         .addGap(24, 24, 24)
                                         .addComponent(txtPhoneNumberAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
-                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblAddrZip1))))
                             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                                 .addGap(117, 117, 117)
                                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +415,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                                         .addComponent(jUsernameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(273, Short.MAX_VALUE))))
             .addGroup(jRegistrationpanelLayout.createSequentialGroup()
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jRegistrationpanelLayout.createSequentialGroup()
@@ -464,7 +479,8 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                     .addComponent(lblAddrZip)
                     .addComponent(txtAddressZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddrState)
-                    .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxAddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddrZip2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddrCountry)
@@ -473,7 +489,8 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhoneNumberAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPhoneNumberAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddrZip1))
                 .addGap(40, 40, 40)
                 .addGroup(jRegistrationpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,90 +561,50 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         //Person person = null ;
         // TODO add your handling code here:
-
-        GlobalUserDirectory gd = ecoSystem.globalUserDirectory;
-        String name = txtName.getText();
-        if (name == null || name.isEmpty()) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "name cannot be empty");
-            return;
-        }
-
-        String userName = txtUsername.getText();
-        if (userName == null || userName.isEmpty()) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "username cannot be empty");
-            return;
-        }
-
-        String password = new String(jPasswordTextField.getPassword());
-        if (password == null || password.isEmpty()) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "password cannot be empty");
-            return;
-        }
-
-        String phoneNumber = txtPhoneNumber.getText();
-        if (StringUtils.isEmpty(phoneNumber) || !StringUtils.isNumeric(phoneNumber)) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "Phone number must be 10 digits long");
-            return;
-        }
-        phoneNumber = txtPhoneNumberAreaCode.getText() + phoneNumber;
         
-        Date dob = txtDobDateChooser.getDate();
-        Date currentDate = Date.from(Instant.now());
-        if (dob.after(currentDate)) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "Date of Birth must be older than current date");
+        FieldsValidator fieldsValidator = new FieldsValidator();
+        boolean error = fieldsValidator.validate(txtName, txtEmailId, txtUsername, jPasswordTextField, txtPhoneNumber, txtDobDateChooser,
+                txtAddressStreet, txtAddressApartment, txtAddressCity, txtAddressZip, jComboBoxAddrState, txtAddressCountry, jComboBoxGender);
+        error |= fieldsValidator.validate(jComboBoxPreferredPharmacy);
+        if (error) {
+            JOptionPane.showMessageDialog(jRegistrationpanel, "There are error in some field(s). Please correct them.");
             return;
         }
-
+        
+        GlobalUserDirectory gd = ecoSystem.globalUserDirectory;
+ 
+        String name = txtName.getText();
+        String emailId = txtEmailId.getText();
+        String userName = txtUsername.getText();
+        String password = new String(jPasswordTextField.getPassword());
+        String phoneNumber = txtPhoneNumber.getText();
+        Date dob = txtDobDateChooser.getDate();
+        LocalDate dateOfBirth = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
         String addrCommunity = txtAddressStreet.getText();
-        String addrUnit = txtAddressApartment.getText();
         String addrCity = txtAddressCity.getText();
+        String addrUnit = txtAddressApartment.getText();
         String addrZip = txtAddressZip.getText();
         String addrState = String.valueOf(jComboBoxAddrState.getSelectedItem());
         String addrCountry = txtAddressCountry.getText();
-        if ((addrCommunity == null || addrCommunity.isEmpty()) || 
-                (addrUnit == null || addrUnit.isEmpty()) || 
-                (addrCity == null || addrCity.isEmpty()) ||
-                (addrZip == null || addrZip.isEmpty()) ||
-                (addrState == null || addrState.isEmpty()) || addrState.equals("Select") ||
-                (StringUtils.isEmpty(addrCountry))) {
-                JOptionPane.showMessageDialog(jRegistrationpanel, "Address fields cannot be empty.");
-                return;
-        }
-        
-        if (!StringUtils.isNumeric(addrZip) || addrZip.length() != 5) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "Zip Code should be numeric and 5 digits long");
-            return;
-        }
+        Address address = new Address(addrCommunity, addrUnit, addrCity, addrZip, addrState, addrCountry);
+
+        String selectedGender = String.valueOf(jComboBoxGender.getSelectedItem());
+        PersonDetails.Gender gender = PersonDetails.Gender.valueOf(selectedGender);
+
 
         if (gd.get(userName) != null) {
             JOptionPane.showMessageDialog(jRegistrationpanel, "Username already exists. Pick a different username.");
             return;
         }
 
-        Address address = new Address(addrCommunity,addrUnit, addrCity, addrZip, addrState, addrCountry);
-        PersonDetails.Gender gender = PersonDetails.Gender.valueOf((String)jComboBoxGender.getSelectedItem());
         Icon logo = imgLogo.getIcon();
+        UserAccount userAccount = new UserAccount(userName, password);
         
         String selectedPreferredPharmacy = (String)jComboBoxPreferredPharmacy.getSelectedItem();
-        if (selectedPreferredPharmacy == null || "Select Pharmacy".equals(selectedPreferredPharmacy)) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "Select a preferred pharmacy before proceeding");
-            return;
-        }
-        
         Enterprise preferredPharmacy = ecoSystem.enterpriseDirectory.getEnterprise(Integer.parseInt(selectedPreferredPharmacy.split(":")[1]));
         if (preferredPharmacy == null) {
             JOptionPane.showMessageDialog(jRegistrationpanel, "No pharmacy found for selected item: " + selectedPreferredPharmacy);
-            return;
-        }
-
-        UserAccount userAccount = new UserAccount(userName, password);
-        
-       LocalDate dateOfBirth = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-       
-        EmailValidator validator = EmailValidator.getInstance();
-        String emailId = txtEmailId.getText();
-        if (StringUtils.isEmpty(emailId) || !validator.isValid(emailId)) {
-            JOptionPane.showMessageDialog(jRegistrationpanel, "Invalid email-if format. Enter Correct email id.");
             return;
         }
         
@@ -707,6 +684,8 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
     private javax.swing.JLabel lblAddrState1;
     private javax.swing.JLabel lblAddrStreet;
     private javax.swing.JLabel lblAddrZip;
+    private javax.swing.JLabel lblAddrZip1;
+    private javax.swing.JLabel lblAddrZip2;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblPharmacyAddressPlaceHolder;

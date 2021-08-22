@@ -16,6 +16,7 @@ import Enterprise.PharmacyEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
 import Personnel.Address;
 import Personnel.PersonDetails;
+import Utils.FieldsValidator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -300,20 +301,15 @@ public class ManageEnterprises extends javax.swing.JPanel implements NextScreen 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if (StringUtils.isEmpty(txtEnterpriseName.getText())) {
-            JOptionPane.showMessageDialog(null, "Enter a valid enterprise name");
-            return;
-        }
+        FieldsValidator fieldsValidator = new FieldsValidator();
+        boolean error = fieldsValidator.validate(txtEnterpriseName) | fieldsValidator.validate(txtstreet) | fieldsValidator.validate(txtapt) | fieldsValidator.validate(txtcity)
+                | fieldsValidator.validate(txtzip, 5) | fieldsValidator.validate(txtstate) | fieldsValidator.validate(txtcountry);
         
-        if (StringUtils.isEmpty(txtstreet.getText()) || 
-                StringUtils.isEmpty(txtapt.getText()) ||
-                StringUtils.isEmpty(txtcity.getText()) ||
-                StringUtils.isEmpty(txtzip.getText()) ||
-                StringUtils.isEmpty(txtstate.getText()) ||
-                StringUtils.isEmpty(txtcountry.getText())) {
-            JOptionPane.showMessageDialog(null, "Enter valid address fields.");
+        if (error) {
+            JOptionPane.showMessageDialog(jPanel1, "There are error in some field(s). Please correct them.");
             return;
         }
+       
         
         if (!StringUtils.isNumeric(txtzip.getText()) || txtzip.getText().length() != 5) {
             JOptionPane.showMessageDialog(null, "Zip code should be numeric with lenght 5");

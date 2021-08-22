@@ -87,13 +87,13 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
     
     void updateInsuranceEnterpriseCombo() {
         List<Enterprise> insuranceEnterprises = ecoSystem.enterpriseDirectory.getEnterpriseByType(INSURANCE_COMPANY);
-        jComboBoxInsuranceEnterprise.addItem("Select Insurance Provider");
+        jComboBoxInsuranceEnterprise.addItem("Select");
         for (Enterprise enterprise : insuranceEnterprises) {
             jComboBoxInsuranceEnterprise.addItem(enterprise.getEnterpriseName() + ":" + enterprise.getEnterpriseId());
         }
         
         Set<String> planNames = new HealthInsurancePlans().getALLPlanNames();
-        jComboBoxInsuranceHealthPlan.addItem("Select Health Insurance Plan");
+        jComboBoxInsuranceHealthPlan.addItem("Select");
         for (String planName : planNames) {
             jComboBoxInsuranceHealthPlan.addItem(planName);
         }
@@ -126,7 +126,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
             return null;
         }
         
-        if ("Select Health Insurance Plan".equals(selectedPlan)) {
+        if ("Select".equals(selectedPlan)) {
             // Do nothing
             return null;
         }
@@ -218,7 +218,6 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
 
         lblWeight.setText("Insurance Provider");
 
-        txtPatientName.setBackground(new java.awt.Color(0, 204, 204));
         txtPatientName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         txtPatientName.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -238,13 +237,13 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
 
         lblWeight6.setText("Patient Name");
 
-        jComboBoxInsuranceEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Insurance Provider" }));
+        jComboBoxInsuranceEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         lblWeight8.setText("Select Insurance Provider");
 
         lblWeight9.setText("Select Health Insurance Plan");
 
-        jComboBoxInsuranceHealthPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Health Insurance Plan" }));
+        jComboBoxInsuranceHealthPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         lblWeight10.setText("Selected Plan Coverage");
 
@@ -410,7 +409,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
         // TODO add your handling code here:
         
         String selectedEnterprise = (String) jComboBoxInsuranceEnterprise.getSelectedItem();
-        if (selectedEnterprise.equals("Select Insurance Provider")) {
+        if (selectedEnterprise.equals("Select")) {
             JOptionPane.showMessageDialog(jPanel1, "Select an insurance provider");
             return; 
         }
@@ -422,7 +421,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
         }
         
         String selectedPlan = (String) jComboBoxInsuranceHealthPlan.getSelectedItem();     
-        if ("Select Health Insurance Plan".equals(selectedPlan)) {
+        if ("Select".equals(selectedPlan)) {
             JOptionPane.showMessageDialog(jPanel1, "Select an insurance plan");
             return; 
         }

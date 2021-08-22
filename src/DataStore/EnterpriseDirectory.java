@@ -34,6 +34,17 @@ public class EnterpriseDirectory {
         return directory.getAllValues();
     }
     
+    public List<Enterprise> getAllValidEnterprise() {
+        List<Enterprise> selectedEnterprise = new ArrayList<>();
+        for (Enterprise enterprise : getAllEnterprise()) {
+            if (enterprise.getEnterpriseType().equals(EnterpriseType.HEALTH_MANAGEMENT_APP)) {
+                continue;
+            }
+            selectedEnterprise.add(enterprise);
+        }
+        return selectedEnterprise;
+    }
+    
     public List<Enterprise> getEnterpriseByType(EnterpriseType type) {
         List<Enterprise> selectedEnterprise = new ArrayList<>();
         for (Enterprise enterprise : getAllEnterprise()) {

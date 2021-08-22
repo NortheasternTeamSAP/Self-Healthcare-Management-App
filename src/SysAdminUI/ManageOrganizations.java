@@ -26,6 +26,7 @@ import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
 import Personnel.Address;
+import Utils.FieldsValidator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -257,6 +258,17 @@ public class ManageOrganizations extends javax.swing.JPanel implements NextScree
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        FieldsValidator fieldsValidator = new FieldsValidator();
+        boolean error = fieldsValidator.validate(txtOrgName);
+        error |= fieldsValidator.validate(comboenterprise);
+        error |= fieldsValidator.validate(comboorgtype);
+        
+        if (error) {
+            JOptionPane.showMessageDialog(jPanel1, "There are error in some field(s). Please correct them.");
+            return;
+        }
+        
         OrganizationType type = OrganizationType.getOrganizationType((String)comboorgtype.getSelectedItem());
         String selectedEnterprise = (String) comboenterprise.getSelectedItem();
         int enterpriseId = Integer.parseInt(selectedEnterprise.split(":")[1]);
@@ -267,10 +279,6 @@ public class ManageOrganizations extends javax.swing.JPanel implements NextScree
         }
         
         String organizationName = txtOrgName.getText();
-        if (StringUtils.isEmpty(organizationName)) {
-            JOptionPane.showMessageDialog(null, "Enter valid organization name");
-            return;
-        }
 
         Organization organization = null;
         switch (type) {

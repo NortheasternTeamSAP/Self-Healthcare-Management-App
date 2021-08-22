@@ -60,9 +60,11 @@
                                       <Component id="txtAddressApartment" min="-2" pref="84" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="txtAddressZip" min="-2" pref="84" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="lblAddrState" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lblAddrZip2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="lblAddrState" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jComboBoxAddrState" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -80,11 +82,14 @@
                                           <Component id="txtPhoneNumberAreaCode" min="-2" pref="34" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtPhoneNumber" min="-2" pref="122" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                          <Component id="lblAddrState1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lblAddrZip1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="lblAddrState1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jComboBoxGender" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -124,9 +129,9 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="comboenterprise" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="comboorgtype" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="comboorgtype" max="32767" attributes="0"/>
+                                      <Component id="comboenterprise" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -164,7 +169,7 @@
                           <Component id="btnCreateRoles" min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
@@ -173,13 +178,15 @@
                       <Component id="lblDob" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtName" max="32767" attributes="0"/>
-                      <Component id="txtDobDateChooser" pref="130" max="32767" attributes="0"/>
-                      <Component id="txtEmailId" alignment="0" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtName" pref="130" max="32767" attributes="0"/>
+                          <Component id="txtEmailId" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="txtDobDateChooser" min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="467" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="436" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -233,6 +240,7 @@
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPhoneNumber" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="txtPhoneNumberAreaCode" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="lblAddrZip1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -252,21 +260,15 @@
                       <Component id="lblAddrCity" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAddressCity" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblAddrZip" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtAddressZip" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAddrState" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="jComboBoxAddrState" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAddrZip" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAddressZip" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAddrState" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAddrZip2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxAddrState" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblAddrCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAddressCountry" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -609,10 +611,11 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxGender">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="MALE"/>
-                <StringItem index="1" value="FEMALE"/>
-                <StringItem index="2" value="OTHER"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Select"/>
+                <StringItem index="1" value="MALE"/>
+                <StringItem index="2" value="FEMALE"/>
+                <StringItem index="3" value="OTHER"/>
               </StringArray>
             </Property>
           </Properties>
@@ -656,6 +659,22 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailIdActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAddrZip1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="9" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*10 digits"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAddrZip2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="9" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*5 digits"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
