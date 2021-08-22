@@ -123,7 +123,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         jCheckBoxShareInsuranceDetailsWithDoctor = new javax.swing.JCheckBox();
         jCheckBoxSendAppointmentEmailConfirmation = new javax.swing.JCheckBox();
         jCheckBoxSendAppointmentTextConfirmation = new javax.swing.JCheckBox();
-        jCheckBoxSendAppointmentRemiender = new javax.swing.JCheckBox();
         jTextFieldAppointmentDetails = new javax.swing.JTextField();
         lblOtherAppointmentDetails = new javax.swing.JLabel();
         jCheckBoxShareVitalsWithDoctor = new javax.swing.JCheckBox();
@@ -132,7 +131,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         lblCheckAvailability = new javax.swing.JLabel();
         lblDoctorGender = new javax.swing.JLabel();
         lblDoctorGenderValue = new javax.swing.JLabel();
-        jCheckBoxSharePreviousLabReportsWithDoctor = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         jBookAppointment.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -154,8 +152,8 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         jBookAppointment.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 21, 87, -1));
 
         lblAppointmentBook.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblAppointmentBook.setText("Patient new appointment booking");
-        jBookAppointment.add(lblAppointmentBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 28, 403, 35));
+        lblAppointmentBook.setText("Patient new appointment booking with Primary Care");
+        jBookAppointment.add(lblAppointmentBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 28, 690, 35));
 
         tblDoctorList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -302,7 +300,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed(evt);
             }
         });
-        jBookAppointment.add(jCheckBoxShareCurrentPrescriptionWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 426, -1, -1));
+        jBookAppointment.add(jCheckBoxShareCurrentPrescriptionWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
 
         jCheckBoxShareInsuranceDetailsWithDoctor.setText("Attach insurance details in the email to be sent to primary care");
         jCheckBoxShareInsuranceDetailsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
@@ -310,40 +308,32 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed(evt);
             }
         });
-        jBookAppointment.add(jCheckBoxShareInsuranceDetailsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 585, -1, -1));
+        jBookAppointment.add(jCheckBoxShareInsuranceDetailsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, -1, -1));
 
-        jCheckBoxSendAppointmentEmailConfirmation.setText("Send appointment confirmation email on <xxxxxx>");
+        jCheckBoxSendAppointmentEmailConfirmation.setText("Send appointment confirmation email");
         jCheckBoxSendAppointmentEmailConfirmation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxSendAppointmentEmailConfirmationActionPerformed(evt);
             }
         });
-        jBookAppointment.add(jCheckBoxSendAppointmentEmailConfirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 615, -1, -1));
+        jBookAppointment.add(jCheckBoxSendAppointmentEmailConfirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, -1, -1));
 
-        jCheckBoxSendAppointmentTextConfirmation.setText("Send appointment confirmation text on <yyyyyy>");
+        jCheckBoxSendAppointmentTextConfirmation.setText("Send appointment confirmation text");
         jCheckBoxSendAppointmentTextConfirmation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxSendAppointmentTextConfirmationActionPerformed(evt);
             }
         });
-        jBookAppointment.add(jCheckBoxSendAppointmentTextConfirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 639, -1, -1));
-
-        jCheckBoxSendAppointmentRemiender.setText("Text me appointment remiender 2 hours before the appointment");
-        jCheckBoxSendAppointmentRemiender.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxSendAppointmentRemienderActionPerformed(evt);
-            }
-        });
-        jBookAppointment.add(jCheckBoxSendAppointmentRemiender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 669, -1, -1));
+        jBookAppointment.add(jCheckBoxSendAppointmentTextConfirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 680, -1, -1));
 
         jTextFieldAppointmentDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldAppointmentDetailsActionPerformed(evt);
             }
         });
-        jBookAppointment.add(jTextFieldAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 486, 332, 87));
+        jBookAppointment.add(jTextFieldAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 332, 87));
 
-        lblOtherAppointmentDetails.setText("Other details:");
+        lblOtherAppointmentDetails.setText("Other Complaints:");
         jBookAppointment.add(lblOtherAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 521, -1, -1));
 
         jCheckBoxShareVitalsWithDoctor.setText("Attach vitals report in email to send to primary care");
@@ -352,7 +342,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 jCheckBoxShareVitalsWithDoctorActionPerformed(evt);
             }
         });
-        jBookAppointment.add(jCheckBoxShareVitalsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 402, -1, -1));
+        jBookAppointment.add(jCheckBoxShareVitalsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
 
         lblDoctorAddress.setText("Address:");
         jBookAppointment.add(lblDoctorAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 290, -1, -1));
@@ -361,21 +351,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         jBookAppointment.add(lblDoctorAddressValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 290, -1, -1));
 
         lblCheckAvailability.setText("Check Availability");
-        jBookAppointment.add(lblCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 246, -1, -1));
+        jBookAppointment.add(lblCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, -1));
 
         lblDoctorGender.setText("Gender:");
         jBookAppointment.add(lblDoctorGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 314, -1, -1));
 
         lblDoctorGenderValue.setText("Not Available");
         jBookAppointment.add(lblDoctorGenderValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 314, -1, -1));
-
-        jCheckBoxSharePreviousLabReportsWithDoctor.setText("Attach all previous lab reports");
-        jCheckBoxSharePreviousLabReportsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed(evt);
-            }
-        });
-        jBookAppointment.add(jCheckBoxSharePreviousLabReportsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 456, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jBookAppointment.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -7, 1100, 860));
@@ -406,10 +388,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     private void jTextFieldAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAppointmentDetailsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldAppointmentDetailsActionPerformed
-
-    private void jCheckBoxSendAppointmentRemienderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSendAppointmentRemienderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxSendAppointmentRemienderActionPerformed
 
     private void jCheckBoxSendAppointmentTextConfirmationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSendAppointmentTextConfirmationActionPerformed
         // TODO add your handling code here:
@@ -451,10 +429,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         if (jCheckBoxShareCurrentPrescriptionWithDoctor.isSelected()) {
             log.debug("Selected jCheckBoxAttachPrescriptionToEmail");
             uploadCurrentPrescriptionToS3(apt);
-        }
-        
-        if (jCheckBoxSharePreviousLabReportsWithDoctor.isSelected()) {
-            uploadLabReportsToS3(apt);
         }
         
         if (jCheckBoxShareInsuranceDetailsWithDoctor.isSelected()) {
@@ -500,10 +474,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     }
     
     private void uploadCurrentPrescriptionToS3(Appointment appointment) {
-        
-    }
-    
-    private void uploadLabReportsToS3(Appointment appointment) {
         
     }
     
@@ -652,9 +622,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         jCheckBoxShareCurrentPrescriptionWithDoctor.setEnabled(isEnabled);
         jCheckBoxShareVitalsWithDoctor.setEnabled(isEnabled);
         jCheckBoxSendAppointmentEmailConfirmation.setEnabled(isEnabled);
-        jCheckBoxSendAppointmentRemiender.setEnabled(isEnabled);
         jCheckBoxSendAppointmentTextConfirmation.setEnabled(isEnabled);
-        jCheckBoxSharePreviousLabReportsWithDoctor.setEnabled(isEnabled);
         lblOtherAppointmentDetails.setEnabled(isEnabled);
         jTextFieldAppointmentDetails.setEnabled(isEnabled);
         btnConfirmDoctorAppointment.setEnabled(isEnabled);
@@ -688,10 +656,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         nextScreen(WorkAreaPanel, new PatientHomePagePanel(WorkAreaPanel, ecoSystem, patient), "PatientHomePagePanel");
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed
 
     private void jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed
         // TODO add your handling code here:
@@ -768,11 +732,9 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
     private com.toedter.calendar.JCalendarBeanInfo jCalendarBeanInfo1;
     private com.toedter.calendar.JCalendarBeanInfo jCalendarBeanInfo2;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentEmailConfirmation;
-    private javax.swing.JCheckBox jCheckBoxSendAppointmentRemiender;
     private javax.swing.JCheckBox jCheckBoxSendAppointmentTextConfirmation;
     private javax.swing.JCheckBox jCheckBoxShareCurrentPrescriptionWithDoctor;
     private javax.swing.JCheckBox jCheckBoxShareInsuranceDetailsWithDoctor;
-    private javax.swing.JCheckBox jCheckBoxSharePreviousLabReportsWithDoctor;
     private javax.swing.JCheckBox jCheckBoxShareVitalsWithDoctor;
     private com.toedter.calendar.JDateChooserCellEditor jDateChooserCellEditor1;
     private com.toedter.calendar.JDateChooser jDateChooserDoctorAvailability;

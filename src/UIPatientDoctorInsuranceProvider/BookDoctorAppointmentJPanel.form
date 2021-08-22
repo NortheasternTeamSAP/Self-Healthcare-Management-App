@@ -92,11 +92,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Patient new appointment booking"/>
+            <Property name="text" type="java.lang.String" value="Patient new appointment booking with Primary Care"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="99" y="28" width="403" height="35"/>
+              <AbsoluteConstraints x="99" y="28" width="690" height="35"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -381,7 +381,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="111" y="426" width="-1" height="-1"/>
+              <AbsoluteConstraints x="110" y="460" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -394,46 +394,33 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="120" y="585" width="-1" height="-1"/>
+              <AbsoluteConstraints x="120" y="600" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxSendAppointmentEmailConfirmation">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Send appointment confirmation email on &lt;xxxxxx&gt;"/>
+            <Property name="text" type="java.lang.String" value="Send appointment confirmation email"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSendAppointmentEmailConfirmationActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="120" y="615" width="-1" height="-1"/>
+              <AbsoluteConstraints x="120" y="640" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxSendAppointmentTextConfirmation">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Send appointment confirmation text on &lt;yyyyyy&gt;"/>
+            <Property name="text" type="java.lang.String" value="Send appointment confirmation text"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSendAppointmentTextConfirmationActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="120" y="639" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxSendAppointmentRemiender">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Text me appointment remiender 2 hours before the appointment"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSendAppointmentRemienderActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="120" y="669" width="-1" height="-1"/>
+              <AbsoluteConstraints x="120" y="680" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -443,13 +430,13 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="486" width="332" height="87"/>
+              <AbsoluteConstraints x="240" y="490" width="332" height="87"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lblOtherAppointmentDetails">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Other details:"/>
+            <Property name="text" type="java.lang.String" value="Other Complaints:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -466,7 +453,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="111" y="402" width="-1" height="-1"/>
+              <AbsoluteConstraints x="110" y="420" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -496,7 +483,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="487" y="246" width="-1" height="-1"/>
+              <AbsoluteConstraints x="460" y="250" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -517,19 +504,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="205" y="314" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxSharePreviousLabReportsWithDoctor">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Attach all previous lab reports"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSharePreviousLabReportsWithDoctorActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="111" y="456" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

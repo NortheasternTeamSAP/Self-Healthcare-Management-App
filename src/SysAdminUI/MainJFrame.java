@@ -6,6 +6,7 @@
 package SysAdminUI;
 
 import Counselor.Counselor;
+import DB4OUtil.DB4OUtil;
 import DataStore.GenericDirectory;
 import DataStore.GlobalUserDirectory;
 import Dietitian.Dietitian;
@@ -13,6 +14,9 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
 import java.awt.CardLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -21,7 +25,8 @@ import javax.swing.JPanel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-   EcoSystem system;
+   public EcoSystem system;
+   DB4OUtil dB4OUtil;
 
     /**
      * Creates new form MainJFrame
@@ -29,8 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         this.setSize(1100,850);
-        system= new EcoSystem();
-        Login();
+        dB4OUtil = DB4OUtil.getInstance();
     }
 
     /**
@@ -62,41 +66,45 @@ public class MainJFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+
 
         /* Create and display the form */
+        MainJFrame mjf = new MainJFrame();
+        mjf.system = mjf.dB4OUtil.retrieveSystem();
+        
+        mjf.addWindowListener(new WindowAdapter() {
+            MainJFrame main;
+            public void windowClosing(WindowEvent e) {
+                System.out.println("Storing Ecosystem in database");
+                main.dB4OUtil.storeSystem(main.system);
+            }
+            
+            private WindowAdapter init(MainJFrame main) {
+                this.main = main;
+                return this;
+            }
+            
+        }.init(mjf));
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                mjf.setVisible(true);
+                mjf.login(mjf.WorkArea, mjf.system);
             }
         });
+        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel WorkArea;
     // End of variables declaration//GEN-END:variables
 
-    private void Login() {
-        Login ls= new Login(WorkArea,system);
-        WorkArea.add("Login",ls);
-        CardLayout layout= (CardLayout)WorkArea.getLayout();
-        layout.next(WorkArea);  
+    private void login(JPanel workArea, EcoSystem ecoSystem) {
+        Login ls= new Login(workArea, ecoSystem);
+        workArea.add("Login",ls);
+        CardLayout layout= (CardLayout)workArea.getLayout();
+        layout.next(workArea);  
     }
 
   
