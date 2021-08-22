@@ -56,6 +56,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
      */
     public InsuranceProviderRepresentativeHomePageJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Organization healthInsuranceOrganization, Person insuranceProviderRepresentative) {
         initComponents();
+        this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.ecoSystem = ecoSystem;
         this.laboratoryAssistant = (LaboratoryAssistant) laboratoryAssistant;
@@ -184,51 +185,77 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         jScrollPane6 = new javax.swing.JScrollPane();
         tblProcessedInsuranceRequests = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
+        jPanel1.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 146, -1, -1));
 
         lblNamePlaceHolder.setText("NamePlaceHolder");
+        jPanel1.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 88, -1, -1));
 
-        lblDob1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblDob1.setText("Dob:");
+        lblDob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob1.setText("Date Of Birth:");
+        jPanel1.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 121, -1, -1));
 
-        lblWeight1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblWeight1.setText("EmailId:");
+        lblWeight1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWeight1.setText("Email ID:");
+        jPanel1.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 229, -1, -1));
 
-        lblGender.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblGender.setText("Gender");
+        jPanel1.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 199, 56, -1));
 
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
+        jPanel1.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
-        imgLogo.setText("<<No Image>>");
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/user1new.png"))); // NOI18N
+        imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 120, 120));
 
-        lblPatientDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblPatientDetails.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblPatientDetails.setText("Insurance Provider Home Page");
+        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 370, 40));
 
-        lblPhoneNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPhoneNumber.setText("Phone Number:");
+        jPanel1.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, -1, -1));
 
-        lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddress.setText("Address:");
+        jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 169, 68, -1));
 
         lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
+        jPanel1.add(lblEmailPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
 
         lblGenderPlaceHolder.setText("GenderHolder");
+        jPanel1.add(lblGenderPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
 
         lblDobPlaceHolder.setText("DobPlaceHolder");
+        jPanel1.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 122, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Pending Health Insurance Claims");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 275, 330, 26));
 
-        lblName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblName.setText("Name:");
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 87, -1, -1));
 
+        btnProcessClaim.setBackground(new java.awt.Color(255, 255, 255));
+        btnProcessClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnProcessClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-process-30 (1).png"))); // NOI18N
         btnProcessClaim.setText("Process Claim");
         btnProcessClaim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessClaimActionPerformed(evt);
             }
         });
+        jPanel1.add(btnProcessClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
 
         tblProcessedHealthInsuranceClaims.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -258,15 +285,22 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         });
         jScrollPane3.setViewportView(tblProcessedHealthInsuranceClaims);
 
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 525, 104));
+
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("Processed Health Insurance Claims");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 330, 26));
 
+        btnBback.setBackground(new java.awt.Color(255, 255, 255));
+        btnBback.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnBback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/logout.png"))); // NOI18N
         btnBback.setText("Logout");
         btnBback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBbackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBback, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 6, 117, -1));
 
         tblPendingHealthInsuranceClaims.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -301,12 +335,18 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             tblPendingHealthInsuranceClaims.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 299, 525, 104));
+
+        btnReviewClaim.setBackground(new java.awt.Color(255, 255, 255));
+        btnReviewClaim.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnReviewClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/review.png"))); // NOI18N
         btnReviewClaim.setText("Review Claim");
         btnReviewClaim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReviewClaimActionPerformed(evt);
             }
         });
+        jPanel1.add(btnReviewClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, 160, -1));
 
         tblUnProcessedInsuranceRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,22 +376,33 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         });
         jScrollPane5.setViewportView(tblUnProcessedInsuranceRequests);
 
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, 525, 104));
+
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setText("Pending insurance Requests");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, 330, 26));
 
+        btnAcceptInsuranceRequest.setBackground(new java.awt.Color(255, 255, 255));
+        btnAcceptInsuranceRequest.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAcceptInsuranceRequest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/accept.png"))); // NOI18N
         btnAcceptInsuranceRequest.setText("Accept");
         btnAcceptInsuranceRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptInsuranceRequestActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAcceptInsuranceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 800, 110, -1));
 
+        btnDeclineInsuranceRequest.setBackground(new java.awt.Color(255, 255, 255));
+        btnDeclineInsuranceRequest.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnDeclineInsuranceRequest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/disagree.png"))); // NOI18N
         btnDeclineInsuranceRequest.setText("Decline");
         btnDeclineInsuranceRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeclineInsuranceRequestActionPerformed(evt);
             }
         });
+        jPanel1.add(btnDeclineInsuranceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 802, 120, 40));
 
         tblProcessedInsuranceRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -381,174 +432,16 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         });
         jScrollPane6.setViewportView(tblProcessedInsuranceRequests);
 
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 880, 525, 104));
+
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setText("Processed insurance Requests");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 850, 330, 26));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnBback, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(btnProcessClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(btnReviewClaim, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(39, 39, 39)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblDob1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblDobPlaceHolder))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblPhoneNumber)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblPhoneNumberPlaceHolder))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblName)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblNamePlaceHolder))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lblAddress)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lblAddressPlaceHolder))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(lblWeight1)
-                                                    .addComponent(lblGender))
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(lblGenderPlaceHolder))
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGap(4, 4, 4)
-                                                        .addComponent(lblEmailPlaceHolder)))
-                                                .addGap(5, 5, 5)))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(99, 99, 99)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(btnAcceptInsuranceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnDeclineInsuranceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(432, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(79, 79, 79)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(422, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBback))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName)
-                            .addComponent(lblNamePlaceHolder))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDob1)
-                            .addComponent(lblDobPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPhoneNumber)
-                            .addComponent(lblPhoneNumberPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAddress)
-                            .addComponent(lblAddressPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGender)
-                            .addComponent(lblGenderPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWeight1)
-                            .addComponent(lblEmailPlaceHolder))))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124)
-                .addComponent(btnProcessClaim)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnReviewClaim)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAcceptInsuranceRequest)
-                    .addComponent(btnDeclineInsuranceRequest))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(299, 299, 299)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(684, Short.MAX_VALUE)))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1038, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1087, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X960.jpg"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1100, 980));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessClaimActionPerformed
@@ -726,6 +619,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

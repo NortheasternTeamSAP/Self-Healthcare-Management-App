@@ -40,6 +40,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
      */
     public LaboratoryAssistantHomePagePanel(JPanel workAreaPanel, EcoSystem ecoSystem,Person laboratoryAssistant) {
         initComponents();
+        this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.ecoSystem = ecoSystem;
         this.laboratoryAssistant = (LaboratoryAssistant) laboratoryAssistant;
@@ -128,31 +129,47 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
         tblPendingLabTests = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnBback = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPhoneNumberPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
+        jPanel1.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 131, -1, -1));
 
+        lblNamePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblNamePlaceHolder.setText("NamePlaceHolder");
+        jPanel1.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 83, -1, -1));
 
-        lblDob1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblDob1.setText("Dob:");
+        lblDob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob1.setText("Date Of Birth:");
+        jPanel1.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 106, -1, -1));
 
-        lblGender.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblGender.setText("Gender");
+        jPanel1.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 184, -1, -1));
 
+        lblAddressPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
+        jPanel1.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
 
-        imgLogo.setText("<<No Image>>");
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/user1new.png"))); // NOI18N
+        imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 62, 120, 120));
 
-        lblPatientDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblPatientDetails.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblPatientDetails.setText("Laboratory Assistant Home Page");
+        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 10, 389, 40));
 
-        lblPhoneNumber.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPhoneNumber.setText("Phone Number:");
+        jPanel1.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 130, -1, -1));
 
-        lblAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblAddress.setText("Address:");
+        jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 154, -1, -1));
 
         tblCompletedLabTests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,22 +205,34 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
             tblCompletedLabTests.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        lblGenderPlaceHolder.setText("GenderPlaceHolder");
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 700, 104));
 
+        lblGenderPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        lblGenderPlaceHolder.setText("GenderPlaceHolder");
+        jPanel1.add(lblGenderPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
+
+        lblDobPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblDobPlaceHolder.setText("DobPlaceHolder");
+        jPanel1.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 107, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Pending Lab Tests");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 244, 330, 26));
 
-        lblName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblName.setText("Name:");
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 82, -1, -1));
 
+        btnPerformLabTest.setBackground(new java.awt.Color(255, 255, 255));
+        btnPerformLabTest.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnPerformLabTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-test-tube-30.png"))); // NOI18N
         btnPerformLabTest.setText("Perform Lab Test");
         btnPerformLabTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPerformLabTestActionPerformed(evt);
             }
         });
+        jPanel1.add(btnPerformLabTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 392, 195, -1));
 
         tblPendingLabTests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -238,115 +267,23 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
             tblPendingLabTests.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 276, 700, 104));
+
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("Completed Lab Tests");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 330, 26));
 
-        btnBback.setText("Back");
+        btnBback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBback.setContentAreaFilled(false);
         btnBback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBbackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBback, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 8, 45, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnBback, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(39, 39, 39)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblDob1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblDobPlaceHolder))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblPhoneNumber)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblPhoneNumberPlaceHolder))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblName)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblNamePlaceHolder))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lblAddress)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lblAddressPlaceHolder))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lblGender)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(lblGenderPlaceHolder)
-                                                .addGap(5, 5, 5)))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnPerformLabTest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(99, 99, 99)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBback))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName)
-                            .addComponent(lblNamePlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDob1)
-                            .addComponent(lblDobPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPhoneNumber)
-                            .addComponent(lblPhoneNumberPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAddress)
-                            .addComponent(lblAddressPlaceHolder))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGender)
-                            .addComponent(lblGenderPlaceHolder))))
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPerformLabTest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
 
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
@@ -389,6 +326,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
     private javax.swing.JLabel imgLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
