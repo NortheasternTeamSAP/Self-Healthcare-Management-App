@@ -44,6 +44,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         this.appointment = appointment;
         this.backPage = backPage;
         initComponents();
+        this.setSize(1100,850);
         populateCmbSelectPatientName();
         populateTblMedicineTableAddPres();
     }
@@ -88,25 +89,54 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         jCheckBoxPreLunch = new javax.swing.JCheckBox();
         jCheckBoxPreDinner = new javax.swing.JCheckBox();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Patient Details");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 73, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Insurance ID:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 150, -1, -1));
 
-        jLabel4.setText("DOB:");
+        txtViewPatientInsuranceID.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtViewPatientInsuranceID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtViewPatientInsuranceID, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 148, 138, -1));
 
+        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel4.setText("Date Of Birth:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 188, -1, -1));
+
+        txtViewPatientDOB.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtViewPatientDOB.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtViewPatientDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 186, 138, -1));
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Address:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 224, -1, -1));
 
+        txtViewPatientAddress.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtViewPatientAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtViewPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 224, 138, -1));
+
+        jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel7.setText("Preferred Pharmacy:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 140, -1));
 
+        lblSelectPatient1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblSelectPatient1.setText("Select Patient:");
+        add(lblSelectPatient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 109, -1, -1));
 
         cmbSelectPatientName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSelectPatientName1ActionPerformed(evt);
             }
         });
+        add(cmbSelectPatientName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 104, 138, -1));
 
+        jLabel9.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel9.setText("Prescribe Medicine");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 23, -1, -1));
 
         tblMedicineTableAddPres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,16 +156,27 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         });
         jScrollPane2.setViewportView(tblMedicineTableAddPres);
 
-        jLabel2.setText("Quantity");
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 680, 140));
+        add(jSpinQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 76, -1));
 
-        btnAddQuantity.setText("Add Medicine");
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setText("Quantity");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, -1, 30));
+
+        btnAddQuantity.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddQuantity.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnAddQuantity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/check_avail.png"))); // NOI18N
+        btnAddQuantity.setText("Add Prescription");
         btnAddQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddQuantityActionPerformed(evt);
             }
         });
+        add(btnAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 630, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel6.setText("Medicines Table:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 305, -1, -1));
 
         tblCurrentPres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,164 +196,48 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         });
         jScrollPane3.setViewportView(tblCurrentPres);
 
-        jLabel8.setText("Current Prescription Table:");
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 710, 670, 160));
 
-        jButtonBack.setText("Back");
+        jLabel8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel8.setText("Current Prescription Table:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 180, 30));
+
+        txtPatientPharmName.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        txtPatientPharmName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(txtPatientPharmName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 138, -1));
+
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        jButtonBack.setContentAreaFilled(false);
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
+        add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 13, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel10.setText("Notes");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, -1, -1));
+
+        jTextFieldDosage.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        add(jTextFieldDosage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 76, -1));
 
         jCheckBoxPostLunch.setText("PostLunch");
+        add(jCheckBoxPostLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, -1));
 
         jCheckBoxPostDinner.setText("PostDinner");
+        add(jCheckBoxPostDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, -1, -1));
+        add(jTextFieldDosageNotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 165, 69));
 
+        jLabel11.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel11.setText("Dosage");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, -1, 30));
 
         jCheckBoxPreLunch.setText("PreLunch");
+        add(jCheckBoxPreLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, -1, -1));
 
         jCheckBoxPreDinner.setText("PreDinner");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtViewPatientDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtViewPatientAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                            .addComponent(txtPatientPharmName)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblSelectPatient1)
-                                                .addGap(13, 13, 13)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cmbSelectPatientName1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtViewPatientInsuranceID, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel11)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldDosageNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(btnAddQuantity))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldDosage)
-                                            .addComponent(jSpinQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jCheckBoxPreLunch)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBoxPostLunch)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCheckBoxPreDinner)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBoxPostDinner))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jButtonBack)
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel9)))
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jButtonBack))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSelectPatientName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSelectPatient1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtViewPatientInsuranceID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtViewPatientDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtViewPatientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtPatientPharmName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jSpinQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBoxPostLunch)
-                    .addComponent(jCheckBoxPostDinner)
-                    .addComponent(jLabel11)
-                    .addComponent(jCheckBoxPreLunch)
-                    .addComponent(jCheckBoxPreDinner))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextFieldDosageNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(btnAddQuantity)
-                        .addGap(22, 22, 22))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
-        );
+        add(jCheckBoxPreDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbSelectPatientName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectPatientName1ActionPerformed
