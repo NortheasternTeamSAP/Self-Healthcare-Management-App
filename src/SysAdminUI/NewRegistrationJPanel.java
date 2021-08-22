@@ -16,8 +16,10 @@ import Patient.Patient;
 import Personnel.Address;
 import Personnel.Person;
 import Personnel.PersonDetails;
+import Personnel.SystemAdmin;
 import Personnel.UserAccount;
 import Utils.ConsoleLogger;
+import Utils.EmailClient;
 import Utils.FieldsValidator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
@@ -485,9 +487,30 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
          gd.createNewUser(patient);
         
        // gd.createNewUser(person);
-        JOptionPane.showMessageDialog(this,"registered info saved");
+
+       boolean success = new EmailClient().sendEmail(
+               emailId, 
+               ecoSystem.getSysAdminEmail(), 
+               ecoSystem.getSysAdmingEmailPassword(), 
+               getNewUserRegistrationEmailSubject(), 
+               getNewUserRegistrationEmailBody(patient));
+        log.debug("Registeration email sent to user: " + userName + ". Email status success: " + success);
+        JOptionPane.showMessageDialog(this,"Congradulations! You have successfully registered in the app. Use your credentials to login.");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private String getNewUserRegistrationEmailSubject() {
+        return "Welcome to Health Springs App!";
+    }
+    
+    private String getNewUserRegistrationEmailBody(Person patient) {
+        return "Hi " + patient.getPersonDetails().getFullName() + "!\n" +
+                "We're glad that you choose Health Springs App to manage your daily health.\n" + 
+                "We sincerely hope that the app will help you in achieving your health goals!\n" + 
+                "Remember, the greatest wealth is health!\n\n\n" +
+                "Cheers -\n" + 
+                "Health Springs App Team";
+    }
+    
     private void btnLoginRedirectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginRedirectActionPerformed
         // TODO add your handling code here:
         //nextScreen(new Login(dataStore, mainWorkArea, mainJFrame), "Login");

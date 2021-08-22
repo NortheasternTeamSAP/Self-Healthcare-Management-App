@@ -106,6 +106,16 @@ public class EcoSystem {
         
     }
     
+    public String getSysAdminEmail() {
+        SystemAdmin sysAdmin = (SystemAdmin) globalUserDirectory.get("sysadmin");
+        return sysAdmin.getPersonDetails().getEmailId();
+    }
+    
+    public String getSysAdmingEmailPassword() {
+       SystemAdmin sysAdmin = (SystemAdmin) globalUserDirectory.get("sysadmin");
+       return sysAdmin.getEmailPassword();
+    }
+    
     private void createLocalFolder(String folder) {
         File directory = new File(folder);
         if (directory.exists()){
@@ -221,7 +231,7 @@ public class EcoSystem {
 
         // Create roles
         // Admin
-        Person sysAdmin = new SystemAdmin(null, null, null, null, null, null ,new UserAccount("sysadmin", "sysadmin") );
+        Person sysAdmin = new SystemAdmin(null, null, null, null, null, null ,new UserAccount("sysadmin", "sysadmin"), -1, "healthspringapp@gmail.com");
         this.globalUserDirectory.createNewUser(sysAdmin);
         adminOrg.addEmployee(sysAdmin);
 

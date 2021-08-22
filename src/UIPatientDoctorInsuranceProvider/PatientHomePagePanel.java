@@ -5,6 +5,7 @@
  */
 package UIPatientDoctorInsuranceProvider;
 
+import Counselor.CounselorAppointment;
 import DataStore.Appointment;
 import Dietitian.DietitianAppointment;
 import Doctor.Doctor;
@@ -26,6 +27,7 @@ import static java.time.Clock.system;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -55,7 +57,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         populateUpComingAppointments();
         populatedietitianappointments();
         populatefitnessappointments();
-        
+        populateUpcomingCounsellerAppointments();
     }
     
     void populatePatientInfoPlaceholders() {
@@ -760,6 +762,30 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
             }
 
+        }
+    }
+    
+    void populateUpcomingCounsellerAppointments() {
+        DefaultTableModel  model = (DefaultTableModel) tblUpcomingCounsellerAppointments.getModel();
+        model.setRowCount(0);
+        
+        List<CounselorAppointment> appointments = new ArrayList<>(patient.getCounselorAppointments());
+        Collections.sort(appointments, new Comparator<CounselorAppointment>() {
+            @Override
+            public int compare(CounselorAppointment o1, CounselorAppointment o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
+        
+        for (CounselorAppointment appointment : appointments) {
+            if (appointment.getDone() == true) {
+                continue;
+            } 
+            Object row[] = new Object[3];
+            row[0] = appointment.getPatient().getPersonDetails().getFullName();
+            row[1] = appointment.getCounselor().getPersonDetails().getFullName();
+            row[2] = appointment.getDate() + " " + appointment.getTime()+ ":00 hrs";
+            model.addRow(row);
         }
     }
 

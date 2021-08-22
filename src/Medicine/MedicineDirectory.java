@@ -22,7 +22,7 @@ public class MedicineDirectory{
          * MedicineDirectory.medicineCatalog.add(str, medicine);
          */
         this.medicineCatalogMap = new GenericDirectory<String, Medicine>();
-        id = 0;
+        id = 1;
     }
     /**
      * Method to add medicines.
@@ -44,6 +44,7 @@ public class MedicineDirectory{
         medicine.setMedicineId(medicineId);
         medicineCatalogMap.add(medicineId, medicine);
         id += 1;
+        System.out.println("*** Added med : " + medicineId + "  in medicineCatalogMap");
         return medicine;
     }
 
@@ -51,12 +52,16 @@ public class MedicineDirectory{
      * Method to delete medicine from medicineCatalogMap.
      * @param medicine 
      */
-    public void deleteMedicine(Medicine medicine){
-        medicineCatalogMap.remove(Integer.toString(id));
+    public void deleteMedicine(String medicineId){
+        medicineCatalogMap.remove(medicineId);
     }
 
     public GenericDirectory<String, Medicine> getMedicineCatalogMap() {
         return medicineCatalogMap;
+    }
+    
+    public Medicine getMedicine(String medicineId) {
+        return medicineCatalogMap.get(medicineId);
     }
     
     public void setMedicinePrice(Medicine medicine, int newPrice){

@@ -62,6 +62,7 @@ public class GenericDirectory<Key, Value> {
         
         if (!directory.containsKey(key)) {
             log.debug("Directory does not contain key: " + key);
+            return;
         }
         directory.remove(key);
     }

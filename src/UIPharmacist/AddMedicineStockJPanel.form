@@ -56,7 +56,6 @@
           <Image iconType="3" name="/images_icons/add.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Add "/>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddMedicineStockActionPerformed"/>

@@ -36,8 +36,16 @@ public class PharmacyEnterprise extends Enterprise {
         return types;
     }
     
-    public void addMedicineStock(Medicine medicine, int quantity){
-        this.medicineStockMap.put(medicine, quantity);
+    public void addMedicineStock(Medicine medicine, int newquantity){
+        Integer oldQuantity = this.medicineStockMap.get(medicine);
+        if (oldQuantity == null) {
+            oldQuantity = 0;
+        }
+        this.medicineStockMap.put(medicine, oldQuantity + newquantity);
+    }
+    
+    public void deleteMedicine(Medicine medicine) {
+        this.medicineStockMap.remove(medicine);
     }
     
     public HashMap<Medicine, Integer> getMedicineStockMap(){

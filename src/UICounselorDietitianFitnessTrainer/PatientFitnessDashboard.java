@@ -10,6 +10,7 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
+import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author preet
  */
-public class PatientFitnessDashboard extends javax.swing.JPanel {
+public class PatientFitnessDashboard extends javax.swing.JPanel implements NextScreen {
 JPanel WorkArea;
    EcoSystem system;
    Patient p ;
@@ -155,13 +156,14 @@ JPanel WorkArea;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-         PatientHomePagePanel d=(PatientHomePagePanel)component;
-        d.populatefitnessappointments();
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+//        WorkArea.remove(this);
+//        Component[] componentArray = WorkArea.getComponents();
+//        Component component = componentArray[componentArray.length - 1];
+//         PatientHomePagePanel d=(PatientHomePagePanel)component;
+//        d.populatefitnessappointments();
+//        CardLayout layout = (CardLayout)WorkArea.getLayout();
+//        layout.previous(WorkArea);
+        nextScreen(WorkArea, new PatientHomePagePanel(WorkArea, system, p), "PatientHomePagePanel");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

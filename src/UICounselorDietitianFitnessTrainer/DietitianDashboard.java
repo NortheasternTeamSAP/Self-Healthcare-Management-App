@@ -9,6 +9,7 @@ import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -16,12 +17,13 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import SysAdminUI.Login;
 
 /**
  *
  * @author preet
  */
-public class DietitianDashboard extends javax.swing.JPanel {
+public class DietitianDashboard extends javax.swing.JPanel  implements NextScreen {
 JPanel WorkArea;
 EcoSystem system;
 Dietitian d;
@@ -154,11 +156,14 @@ Dietitian d;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        WorkArea.remove(this);
-        Component[] componentArray = WorkArea.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CardLayout layout = (CardLayout)WorkArea.getLayout();
-        layout.previous(WorkArea);
+//        WorkArea.remove(this);
+//        Component[] componentArray = WorkArea.getComponents();
+//        Component component = componentArray[componentArray.length - 1];
+//        CardLayout layout = (CardLayout)WorkArea.getLayout();
+//        layout.previous(WorkArea);
+        
+        nextScreen(WorkArea, new Login(WorkArea, system), "login page");
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

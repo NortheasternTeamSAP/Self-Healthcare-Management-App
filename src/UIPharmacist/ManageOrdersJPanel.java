@@ -108,7 +108,7 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Manage Orders");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 186, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 220, -1));
 
         btnAcceptOrder.setBackground(new java.awt.Color(255, 255, 255));
         btnAcceptOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -116,7 +116,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         btnAcceptOrder.setText("Accept");
         btnAcceptOrder.setToolTipText("Accept Order");
         btnAcceptOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAcceptOrder.setOpaque(false);
         btnAcceptOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptOrderActionPerformed(evt);
@@ -165,7 +164,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         btnCheckMedAvailability.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCheckMedAvailability.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/check_avail.png"))); // NOI18N
         btnCheckMedAvailability.setText("Check Availability");
-        btnCheckMedAvailability.setOpaque(false);
         btnCheckMedAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCheckMedAvailabilityActionPerformed(evt);
@@ -204,7 +202,6 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         btnShipOrder.setText("Ship Order");
         btnShipOrder.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnShipOrder.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnShipOrder.setOpaque(false);
         btnShipOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShipOrderActionPerformed(evt);
@@ -224,7 +221,13 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         add(cmbDeliveryMan, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 730, 150, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1100, 870));
+        jLabel4.setText("Decline Order");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1100, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptOrderActionPerformed
@@ -234,11 +237,17 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select a row from table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
+                        
+        Medicine med = ecoSystem.getMedicineDirectory().getMedicineCatalogMap().get(tblOrder.getValueAt(selectedRow, 4).toString());
+        int quantityRequested = Integer.parseInt(tblOrder.getValueAt(selectedRow, 6).toString());
+        if (!isMedicineAvailable(med, quantityRequested)) {
+             JOptionPane.showMessageDialog(null,"Requested quantity of the medicine is less than the available stock", "Info", JOptionPane.INFORMATION_MESSAGE);
+             return;
+        }
+        
         Order order = ecoSystem.getOrderDirectory().getOrderMap().get(tblOrder.getValueAt(selectedRow, 0).toString());
         order.setOrderStatus(OrderStatus.ACCEPTED);
         
-
         populateTableOrder();
         populateAcceptedOrdersTable();
     }//GEN-LAST:event_btnAcceptOrderActionPerformed
@@ -250,6 +259,16 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private boolean isMedicineAvailable(Medicine med, int quantityRequested) {
+        Integer availableQuantity = pharmacy.getMedicineStockMap().get(med);
+        if (availableQuantity == null) {
+             JOptionPane.showMessageDialog(null,"Medicine is unavailable", "Info", JOptionPane.INFORMATION_MESSAGE);
+             return false;
+        }
+
+        return availableQuantity.intValue() >= quantityRequested;
+    }
+    
     private void btnCheckMedAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckMedAvailabilityActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblOrder.getSelectedRow();
@@ -260,15 +279,8 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         }
                 
         Medicine med = ecoSystem.getMedicineDirectory().getMedicineCatalogMap().get(tblOrder.getValueAt(selectedRow, 4).toString());
-        
-        Integer availableQuantity = pharmacy.getMedicineStockMap().get(med);
-        if (availableQuantity == null) {
-             JOptionPane.showMessageDialog(null,"Medicine is unavailable", "Info", JOptionPane.INFORMATION_MESSAGE);
-             return;
-        }
-        
         int quantityRequested = Integer.parseInt(tblOrder.getValueAt(selectedRow, 6).toString());
-        if (availableQuantity.intValue() >= quantityRequested){
+        if (isMedicineAvailable(med, quantityRequested)) {
             JOptionPane.showMessageDialog(null,"Requested quantity of the medicine is available.", "Info", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null,"Requested quantity of the medicine is less than the available stock", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -292,6 +304,10 @@ public class ManageOrdersJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_cmbDeliveryManActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     
     private void populateCmbDeliveryMan(){

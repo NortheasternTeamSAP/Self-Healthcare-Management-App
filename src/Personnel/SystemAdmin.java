@@ -17,6 +17,7 @@ import javax.swing.Icon;
  */
 public class SystemAdmin implements Person {
     private PersonDetails sysAdminDetails;
+    private String emailPassword = "SreePreetiAnkur";
     
     public SystemAdmin(
             String fullName, 
@@ -39,10 +40,11 @@ public class SystemAdmin implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId) {
+            int organizationId,
+            String emailId) {
         
         sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, 
-                Role.SYSTEM_ADMIN, logoImage, organizationId);
+                Role.SYSTEM_ADMIN, logoImage, organizationId, emailId);
     }
 
     @Override
@@ -78,6 +80,10 @@ public class SystemAdmin implements Person {
     @Override
     public List<Rating> getAllRatings() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public String getEmailPassword() {
+        return this.emailPassword;
     }
     
 }
