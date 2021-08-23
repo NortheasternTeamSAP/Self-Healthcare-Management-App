@@ -50,8 +50,6 @@ Dietitian d;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblpatients = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -69,80 +67,59 @@ Dietitian d;
         setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblpatients.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Patient"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblpatients);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 104, 761, 168));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("To          :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 312, 78, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 78, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("From      :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 356, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Subject  :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 409, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
 
         sendToTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        sendToTextField.setForeground(new java.awt.Color(255, 255, 255));
         sendToTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         sendToTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendToTextFieldActionPerformed(evt);
             }
         });
-        add(sendToTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 312, 330, -1));
+        add(sendToTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 330, -1));
 
         sendFromTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        sendFromTextField.setText("Mongodbuser2022@gmail.com");
+        sendFromTextField.setText("healthspringapp@gmail.com");
         sendFromTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         sendFromTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendFromTextFieldActionPerformed(evt);
             }
         });
-        add(sendFromTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 356, 330, -1));
+        add(sendFromTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 330, -1));
 
         txtSubject.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtSubject.setText("Dietician Tip Of the Day ");
+        txtSubject.setText("<Enter Email Subject>");
         txtSubject.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSubjectActionPerformed(evt);
             }
         });
-        add(txtSubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 409, 330, -1));
+        add(txtSubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 330, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Email body");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 470, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
 
         txtEmailField.setColumns(20);
-        txtEmailField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtEmailField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtEmailField.setRows(5);
-        txtEmailField.setText("\n\n");
+        txtEmailField.setText("\n Hi Patient,\n\n\n\n\n\n\n \n\n Regards,\n\n\n (Dietitian at Health Springs Ltd.)");
         txtEmailField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane2.setViewportView(txtEmailField);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 501, 790, 291));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 790, 291));
 
         sendButton.setBackground(new java.awt.Color(255, 255, 255));
         sendButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -154,7 +131,7 @@ Dietitian d;
                 sendButtonActionPerformed(evt);
             }
         });
-        add(sendButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 800, 110, 40));
+        add(sendButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 650, 110, 40));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -166,7 +143,7 @@ Dietitian d;
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 33, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Send Email to Patient");
+        jLabel1.setText("Send Email from Dietitian to Patient");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 33, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
@@ -194,7 +171,7 @@ Dietitian d;
     
     String toEmailid = sendToTextField.getText();
     String fromEmailid = sendFromTextField.getText();
-    String fromEmailPassword = "Mongodb2814";
+    String fromEmailPassword = "SreePreetiAnkur";
     String EmailSubject = txtSubject.getText();    
     Properties p = new Properties();
     p.put("mail.smtp.auth","true");
@@ -250,12 +227,10 @@ Dietitian d;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton sendButton;
     private javax.swing.JTextField sendFromTextField;
     private javax.swing.JTextField sendToTextField;
-    private javax.swing.JTable tblpatients;
     private javax.swing.JTextArea txtEmailField;
     private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables

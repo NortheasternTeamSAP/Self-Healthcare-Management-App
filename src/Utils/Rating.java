@@ -33,12 +33,12 @@ public class Rating implements Comparable<Rating> {
         this.feedBack = feedBack;
         this.ratingDate = ratingDate;
         this.status = RATING_PROVIDED;
-        this.ratingId = Instant.now().toEpochMilli();
+        this.ratingId = IdProvider.getUUID();
     }
     
     public Rating() {
         this.status = RATING_NOT_PROVIDED;
-        this.ratingId = Instant.now().toEpochMilli();
+        this.ratingId = IdProvider.getUUID();
     }
 
     public long getRatingId() {

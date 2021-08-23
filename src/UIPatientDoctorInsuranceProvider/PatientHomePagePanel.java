@@ -24,6 +24,7 @@ import Utils.StarRatingsUtil;
 import Utils.ViewPersonRatingsJPanel;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Image;
 import static java.time.Clock.system;
 import java.time.LocalDate;
@@ -630,10 +631,12 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
             jButtonDeliveryBoyReview.setEnabled(true);
             jButtonDeliveryBoyReview.setVisible(true);
             jButtonDeliveryBoyReview.setText("Tell us how was your last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
+            jButtonDeliveryBoyReview.setForeground(new Color(51, 204, 255));
         } else {
             jButtonDeliveryBoyReview.setEnabled(false);
             jButtonDeliveryBoyReview.setVisible(true);
             jButtonDeliveryBoyReview.setText("Last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
+            jButtonDeliveryBoyReview.setForeground(Color.white);
         }
     }
 

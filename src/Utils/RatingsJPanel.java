@@ -112,7 +112,6 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButtonSubmitReview = new javax.swing.JButton();
         jLabel5Star = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,7 +128,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Submit Review");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 178, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 250, 40));
 
         jRadioButton4Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jRadioButton4Star.setForeground(new java.awt.Color(102, 204, 0));
@@ -178,10 +177,6 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jPanel1.add(jButtonSubmitReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 170, -1));
         jPanel1.add(jLabel5Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 113, -1, 26));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/rateof250.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 220, 230));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,7 +223,6 @@ public class RatingsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2Star;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel3Star;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel4Star;
     private javax.swing.JLabel jLabel5Star;
     private javax.swing.JPanel jPanel1;

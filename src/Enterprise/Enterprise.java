@@ -19,6 +19,7 @@ import static Organization.OrganizationType.PRIMARY_CARE;
 import static Organization.OrganizationType.PSYCHIATRY_DEPARTMENT;
 import Personnel.Address;
 import Utils.ConsoleLogger;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public abstract class Enterprise {
         this.enterpriseType = enterpriseType;
         this.enterpriseCreationDate = enterpriseCreationDate;
         organizations = new HashMap<>();
-        this.enterpriseId = Instant.now().toEpochMilli();
+        this.enterpriseId = IdProvider.getUUID();
     }
 
     public EnterpriseType getEnterpriseType() {

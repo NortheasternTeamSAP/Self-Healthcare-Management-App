@@ -8,6 +8,7 @@ package Prescription;
 import DataStore.Appointment;
 import DataStore.GenericDirectory;
 import Medicine.Medicine;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
@@ -87,7 +88,7 @@ public class Prescription implements Comparable<Prescription> {
         this.deliveryReviewProvided = false;
         this.deliveryDate = null;
         this.pharmacyName = null;
-        this.id = Instant.now().toEpochMilli();
+        this.id = IdProvider.getUUID();
     }
 
     public GenericDirectory<Medicine, Dosage> getPrescriptionMap() {

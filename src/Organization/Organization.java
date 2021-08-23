@@ -8,6 +8,7 @@ package Organization;
 import Enterprise.Enterprise;
 import Personnel.Person;
 import Utils.ConsoleLogger;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public abstract class Organization {
         this.enterprise = enterprise;
         this.organizationType = organizationType;
         this.employeesMap = new HashMap<>();
-        this.organizationId = Instant.now().toEpochMilli();
+        this.organizationId = IdProvider.getUUID();
         this.organizationCreationDate = organizationCreationDate;
     }
     

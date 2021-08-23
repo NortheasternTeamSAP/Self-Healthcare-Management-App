@@ -18,7 +18,7 @@ public class StarRatingsUtil {
     
     public void openRatingsJPanel(String panelName, Person person, Rating rating, LocalDate ratingsDate) {
         JFrame frame = new JFrame(panelName);
-        frame.setSize(700,700);
+        frame.setSize(1000,720);
         frame.setResizable(false);
         JPanel ratingsPanel = new RatingsJPanel(person, rating, ratingsDate);
         frame.add(ratingsPanel);
