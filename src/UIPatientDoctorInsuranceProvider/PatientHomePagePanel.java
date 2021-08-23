@@ -510,12 +510,12 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         });
         jPatientDetailPanel.add(jButtonDeliveryBoyReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 740, 40));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg.jpg"))); // NOI18N
-        jPatientDetailPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 820, 1170));
-
-        jPanel2.add(jPatientDetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 808, 1108));
+        jPanel2.add(jPatientDetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 6, 810, 1108));
 
         jWorkAreaPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 820, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        jWorkAreaPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 830, 860));
 
         jSplitPane1.setRightComponent(jWorkAreaPanel);
 
