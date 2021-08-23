@@ -13,26 +13,51 @@ In our study, 83% of people choose holistic healing, so we decided to design an 
 Features : 
 
 The application developed by us contains advanced features like :
-Amazon S3 Integration 
-Email to patients 
-Appointment confirmation via text message
-Fitness Tracker to help patient monitor their workouts 
-Graphs to show various statistics 
-Ratings so that patient can view ratings of the doctor before booking appointment 
-Excel downloads 
+
+Amazon S3 Integration,
+
+Email to patients,
+ 
+Appointment confirmation via text message,
+
+Fitness Tracker to help patient monitor their workouts,
+
+Graphs to show various statistics,
+
+Ratings so that patient can view ratings of the doctor before booking appointment,
+
+Excel downloads,
+
+Data Persistence,
+
+Reset password with OTP,
+
+Text notifications to user.
+
+
+
+
 
 
 Main Applications used :
 
-Teams for communication among team members 
-Twilio for text messaging 
-Aws Amazon S3
-Jfreechart for graphs
-java-mail-1.4.4. for email 
-Netbeans for development 
-Java swing for UI 
-Github for tracking of changes 
-DrawIO for sequence diagrams
+Teams, Zoom for communication among team members,
+
+Twilio for text messaging,
+
+AWS Amazon S3,
+
+Jfreechart for graphs,
+
+java-mail-1.4.4. for email,
+
+Netbeans for development,
+
+Java swing for UI,
+
+Github for tracking of changes,
+
+DrawIO for sequence diagrams.
 
 
 
