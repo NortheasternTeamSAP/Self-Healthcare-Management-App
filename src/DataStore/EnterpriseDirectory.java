@@ -16,7 +16,7 @@ import java.util.List;
  * @author Ankur Bywar
  */
 public class EnterpriseDirectory {
-    GenericDirectory<Integer, Enterprise> directory;
+    GenericDirectory<Long, Enterprise> directory;
     
     public EnterpriseDirectory() {
         directory = new GenericDirectory<>();
@@ -26,7 +26,7 @@ public class EnterpriseDirectory {
         directory.add(enterprise.getEnterpriseId(), enterprise);
     }
     
-    public Enterprise getEnterprise(int id) {
+    public Enterprise getEnterprise(long id) {
         return directory.get(id);
     }
     

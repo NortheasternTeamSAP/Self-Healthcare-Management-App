@@ -69,7 +69,7 @@ public class HealthInsuranceDepartmentOrganization extends Organization {
         }
     }
     
-    public InsuranceDetails getUnprocessedInsuranceRequest(int id) {
+    public InsuranceDetails getUnprocessedInsuranceRequest(long id) {
         for (InsuranceDetails insuranceDetails : pendingnewInsuranceRequests) {
             if (insuranceDetails.getId() == id) {
                 return insuranceDetails;

@@ -67,7 +67,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
             btnSubmitNewLabTestRequest1.setEnabled(false);
             btnNewAppointmentDetails.setEnabled(false);
             btnPrescribeNewMedicines.setEnabled(false);
-            
+            btnGeneratePatientBill.setEnabled(false);
         }
         
         if (appointment.getLabTestReport() != null) {
@@ -301,7 +301,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jPatientDetailPanel.add(lblAptDatePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 200, -1));
 
         jBtnViewPreviousAppointments1.setBackground(new java.awt.Color(255, 255, 255));
-        jBtnViewPreviousAppointments1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jBtnViewPreviousAppointments1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jBtnViewPreviousAppointments1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view_past_appointment.png"))); // NOI18N
         jBtnViewPreviousAppointments1.setText("View previous appointments and lab tests");
         jBtnViewPreviousAppointments1.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +314,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         btnGeneratePatientBill.setBackground(new java.awt.Color(255, 255, 255));
         btnGeneratePatientBill.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGeneratePatientBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-receipt-dollar-30.png"))); // NOI18N
-        btnGeneratePatientBill.setText("View Medical Bills");
+        btnGeneratePatientBill.setText("Bill the patient via insurance");
         btnGeneratePatientBill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGeneratePatientBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

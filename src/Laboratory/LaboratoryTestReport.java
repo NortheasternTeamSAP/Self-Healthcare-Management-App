@@ -8,6 +8,7 @@ package Laboratory;
 import DataStore.Appointment;
 import Organization.Organization;
 import Personnel.Person;
+import java.time.Instant;
 import java.time.LocalDate;
 
 /**
@@ -28,10 +29,9 @@ public class LaboratoryTestReport {
     private Appointment appointment;
     private LocalDate labTestDate;
     private LaboratoryTest testResults;
-    private int id;
+    private long id;
     private double labTestCost;
     private LabTestStatus labTestStatus;
-    static int idCounter = 1;
 
     public LaboratoryTestReport(
             Organization lab, 
@@ -47,7 +47,7 @@ public class LaboratoryTestReport {
         this.appointment = appointment;
         this.labTestDate = labTestDate;
         this.testResults = null;
-        this.id = idCounter++;
+        this.id = Instant.now().toEpochMilli();
         this.labTestStatus = LabTestStatus.PENDING;
     }
 
@@ -55,7 +55,7 @@ public class LaboratoryTestReport {
         return appointment;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     

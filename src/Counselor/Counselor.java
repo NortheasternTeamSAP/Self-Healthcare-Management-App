@@ -44,7 +44,7 @@ public class Counselor implements Person{
             String phoneNumber, 
             UserAccount account,
             Icon icon,
-            int organizationId) {
+            long organizationId) {
         counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR, icon, organizationId);
         counselorSchedule = new CounselorSchedule();
         this.availability = new HashSet<>();
@@ -59,7 +59,7 @@ public class Counselor implements Person{
             String phoneNumber, 
             UserAccount account,
             Icon icon,
-            int organizationId,
+            long organizationId,
             String emailId) {
         counselorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.COUNSELOR, icon, organizationId, emailId);
         counselorSchedule = new CounselorSchedule();
@@ -107,7 +107,7 @@ public class Counselor implements Person{
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
 

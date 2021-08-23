@@ -615,7 +615,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         Gender gender = Gender.valueOf(selectedGender);
 
         Organization selectedOrganization = getSelectedOrganizationFromComboList();
-        int organizationId = selectedOrganization.getOrganizationId();
+        long organizationId = selectedOrganization.getOrganizationId();
 
         UserAccount userAccount = new UserAccount(userName, password);
         Icon logo = imgLogo.getIcon();

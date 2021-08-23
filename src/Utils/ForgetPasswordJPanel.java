@@ -101,7 +101,7 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Password Reset Tool");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 32, 245, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 32, 310, 40));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Select Email OR Mobile number to receive a one time OPT to reset password");
@@ -118,7 +118,7 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
                 jRadioButtonSelectEmailActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButtonSelectEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 178, -1, -1));
+        jPanel1.add(jRadioButtonSelectEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
 
         jRadioButtonSelectMobileNumber.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jRadioButtonSelectMobileNumber.setText("Mobile number");
@@ -127,18 +127,18 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
                 jRadioButtonSelectMobileNumberActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButtonSelectMobileNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 218, -1, -1));
+        jPanel1.add(jRadioButtonSelectMobileNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Enter the OTP received");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 295, 180, 24));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 180, 24));
 
         jLabelUsernameCheck.setText("Verified!");
-        jPanel1.add(jLabelUsernameCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 204, 24));
+        jPanel1.add(jLabelUsernameCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 204, 24));
 
         jTextFieldEnterOTP.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldEnterOTP.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldEnterOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 293, 160, -1));
+        jPanel1.add(jTextFieldEnterOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel4.setText("Enter your username");
@@ -153,7 +153,7 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
                 jButtonSendOTPActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSendOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 140, 40));
+        jPanel1.add(jButtonSendOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 140, 40));
 
         jButtonCheckOTP.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCheckOTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-double-tick-30.png"))); // NOI18N
@@ -162,7 +162,7 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
                 jButtonCheckOTPActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCheckOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 63, 30));
+        jPanel1.add(jButtonCheckOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 63, 30));
 
         jButtonCheckUserName1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCheckUserName1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-double-tick-30.png"))); // NOI18N
@@ -175,14 +175,14 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel5.setText("Enter new Password");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 335, 170, 24));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 170, 24));
 
         jLabelOTPCheck.setText("Verified!");
-        jPanel1.add(jLabelOTPCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 465, 24));
+        jPanel1.add(jLabelOTPCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 465, 24));
 
         jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel6.setText("Confirm password");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 373, 170, 24));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 170, 24));
 
         jButtonResetPassword.setBackground(new java.awt.Color(255, 255, 255));
         jButtonResetPassword.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -193,7 +193,7 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
                 jButtonResetPasswordActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonResetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 180, -1));
+        jPanel1.add(jButtonResetPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 180, -1));
 
         jTextFieldMobileNumberCountryCode.setText("+1");
         jTextFieldMobileNumberCountryCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -215,11 +215,11 @@ public class ForgetPasswordJPanel extends javax.swing.JPanel {
 
         jTextFieldNewPassword.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldNewPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 333, 160, -1));
+        jPanel1.add(jTextFieldNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 160, -1));
 
         jTextConfirmPassword.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextConfirmPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 373, 160, -1));
+        jPanel1.add(jTextConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 160, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, -4, 1100, 850));

@@ -14,17 +14,17 @@ import java.util.List;
  * @author mrs.katey
  */
 public class PrescriptionDirectory {
-    GenericDirectory<Integer /* appointment id */, Prescription> directory;
+    GenericDirectory<Long /* appointment id */, Prescription> directory;
     
     public PrescriptionDirectory() {
         directory = new GenericDirectory<>();
     }
     
-    public void addPrescription(int appointmentId, Prescription prescription) {
+    public void addPrescription(long appointmentId, Prescription prescription) {
         directory.add(appointmentId, prescription);
     }
     
-    public Prescription getPrescription(int appointmentId) {
+    public Prescription getPrescription(long appointmentId) {
         return directory.get(appointmentId);
     }
 }

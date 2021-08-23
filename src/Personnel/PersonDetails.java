@@ -44,7 +44,7 @@ public class PersonDetails {
     protected UserAccount userAccount;
     protected Role role;
     private Icon logoImage;
-    private int organizationId;
+    private long organizationId;
     private String emailId;
     private String emailPassword;
     
@@ -80,7 +80,7 @@ public class PersonDetails {
             UserAccount userAccount,
             Role role,
             Icon logoImage,
-            int organizationId) {
+            long organizationId) {
         this.fullName = fullName;
         this.dob = dob;
         this.gender = gender;
@@ -101,7 +101,7 @@ public class PersonDetails {
             UserAccount userAccount,
             Role role,
             Icon logoImage,
-            int organizationId,
+            long organizationId,
             String emailId) {
         this.fullName = fullName;
         this.dob = dob;
@@ -206,7 +206,7 @@ public class PersonDetails {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return this.organizationId;
     }
     

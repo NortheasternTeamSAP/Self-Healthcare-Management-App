@@ -6,6 +6,7 @@
 package Medicine;
 import java.time.LocalDate;
 import DataStore.GenericDirectory;
+import java.time.Instant;
 
 /**
  *
@@ -13,7 +14,6 @@ import DataStore.GenericDirectory;
  */
 public class MedicineDirectory{
     public GenericDirectory<String, Medicine> medicineCatalogMap; //map of <String medID, Medicine medDetails>
-    private int id;
 
     public MedicineDirectory(){
         /**
@@ -22,7 +22,6 @@ public class MedicineDirectory{
          * MedicineDirectory.medicineCatalog.add(str, medicine);
          */
         this.medicineCatalogMap = new GenericDirectory<String, Medicine>();
-        id = 1;
     }
     /**
      * Method to add medicines.
@@ -40,10 +39,10 @@ public class MedicineDirectory{
     ){
         
         Medicine medicine = new Medicine(medicineName, price, expiryDate, mfgDate);
-        String medicineId = "Med" + Integer.toString(id);
+        long id = Instant.now().toEpochMilli();
+        String medicineId = "Med" + Long.toString(id);
         medicine.setMedicineId(medicineId);
         medicineCatalogMap.add(medicineId, medicine);
-        id += 1;
         System.out.println("*** Added med : " + medicineId + "  in medicineCatalogMap");
         return medicine;
     }

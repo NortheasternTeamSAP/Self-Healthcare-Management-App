@@ -306,7 +306,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
             return;
         }
 
-        int appointmentId = (int) tblCompletedPatientAppointments.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (long) tblCompletedPatientAppointments.getModel().getValueAt(selectedRow, 0);
         Appointment selectedAppointment = null;
         for (Appointment apt : doctor.getPatientAppointments()) {
             if (apt.getId() == appointmentId) {
@@ -335,7 +335,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
             return;
         }
 
-        int appointmentId = (int) tblUpcomingPatientAppointments.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (long) tblUpcomingPatientAppointments.getModel().getValueAt(selectedRow, 0);
         Appointment selectedAppointment = null;
         for (Appointment apt : doctor.getPatientAppointments()) {
             if (apt.getId() == appointmentId) {

@@ -507,7 +507,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         Gender gender = Gender.valueOf(selectedGender);
 
         Organization selectedOrganization = getSelectedOrganizationFromComboList();
-        int organizationId = selectedOrganization.getOrganizationId();
+        long organizationId = selectedOrganization.getOrganizationId();
 
         if (gd.get(userName) != null) {
             JOptionPane.showMessageDialog(jPanel1, "Username already exists. Pick a different username.");

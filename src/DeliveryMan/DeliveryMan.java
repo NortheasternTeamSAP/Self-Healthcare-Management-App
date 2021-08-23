@@ -33,7 +33,7 @@ public class DeliveryMan implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId){
+            long organizationId){
         
         deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage, organizationId);
         this.personRatings = new PersonRatings();
@@ -47,7 +47,7 @@ public class DeliveryMan implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId,
+            long organizationId,
             String emailId){
         
         deliveryManDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DELIVERY_MAN, logoImage, organizationId, emailId);
@@ -74,7 +74,7 @@ public class DeliveryMan implements Person {
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return this.deliveryManDetails.getOrganizationId();
     }
 

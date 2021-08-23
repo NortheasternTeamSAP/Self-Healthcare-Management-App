@@ -8,6 +8,7 @@ package Organization;
 import Enterprise.Enterprise;
 import Personnel.Person;
 import Utils.ConsoleLogger;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,9 +25,8 @@ public abstract class Organization {
     protected String name;
     protected OrganizationType organizationType;
     protected Enterprise enterprise;
-    protected int organizationId;
+    protected long organizationId;
     Map<String, Person> employeesMap;
-    static int countId = 1;
     LocalDate organizationCreationDate;
     
     ConsoleLogger log = ConsoleLogger.getLogger();
@@ -37,7 +37,7 @@ public abstract class Organization {
         this.enterprise = enterprise;
         this.organizationType = organizationType;
         this.employeesMap = new HashMap<>();
-        this.organizationId = countId++;
+        this.organizationId = Instant.now().toEpochMilli();
         this.organizationCreationDate = organizationCreationDate;
     }
     
@@ -68,7 +68,7 @@ public abstract class Organization {
         return organizationType;
     }
 
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return organizationId;
     }
     

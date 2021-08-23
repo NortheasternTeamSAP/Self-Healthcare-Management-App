@@ -19,6 +19,7 @@ import static Organization.OrganizationType.PRIMARY_CARE;
 import static Organization.OrganizationType.PSYCHIATRY_DEPARTMENT;
 import Personnel.Address;
 import Utils.ConsoleLogger;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,11 +38,10 @@ public abstract class Enterprise {
     private String enterpriseName;
     private Address enterpriseAddress;
     private EnterpriseType enterpriseType;
-    private int enterpriseId;
-    private HashMap<Integer, Organization> organizations;
+    private long enterpriseId;
+    private HashMap<Long, Organization> organizations;
     private LocalDate enterpriseCreationDate;
     
-    static int countId = 1;
     
     ConsoleLogger log = ConsoleLogger.getLogger();
 
@@ -51,7 +51,7 @@ public abstract class Enterprise {
         this.enterpriseType = enterpriseType;
         this.enterpriseCreationDate = enterpriseCreationDate;
         organizations = new HashMap<>();
-        this.enterpriseId = countId++;
+        this.enterpriseId = Instant.now().toEpochMilli();
     }
 
     public EnterpriseType getEnterpriseType() {
@@ -62,7 +62,7 @@ public abstract class Enterprise {
         return enterpriseName;
     }
 
-    public int getEnterpriseId() {
+    public long getEnterpriseId() {
         return enterpriseId;
     }
 
@@ -80,7 +80,7 @@ public abstract class Enterprise {
         organizations.put(organization.getOrganizationId(), organization);
     }
     
-    public Organization getOrganization(int id) {
+    public Organization getOrganization(long id) {
         return organizations.get(id);
     }
     

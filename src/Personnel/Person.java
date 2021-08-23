@@ -18,7 +18,7 @@ public interface Person {
     public UserAccount getUserAccount();
     public Role getRole();
     public PersonDetails getPersonDetails();
-    public int getOrganizationId();
+    public long getOrganizationId();
     public void updateDetails(PersonDetails newPersonalDetails);
     
     public void addRating(Rating rating);

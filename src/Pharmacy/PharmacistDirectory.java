@@ -9,6 +9,7 @@ import DataStore.GenericDirectory;
 import Personnel.Address;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import java.time.Instant;
 import java.time.LocalDate;
 
 /**
@@ -17,11 +18,9 @@ import java.time.LocalDate;
  */
 public class PharmacistDirectory {
     public GenericDirectory<String, Pharmacist> pharmacistMap; //map for pharmacist <id, details>
-    private int id;
     
     public PharmacistDirectory(){
         this.pharmacistMap = new GenericDirectory<>();
-        id = 0;
     }
     
     public void addPharmacist(Pharmacist pharmacist) {
@@ -44,13 +43,13 @@ public class PharmacistDirectory {
                                         null,
                                         account,
                                         -1);
-        pharmacistMap.add(Integer.toString(id), pharmacist);
-        id += 1;
+        long id = Instant.now().toEpochMilli();
+        pharmacistMap.add(pharmacist.getPersonDetails().getId(), pharmacist);
         return pharmacist;
     }
     
     public void deletePharmacist(Pharmacist pharmacist){
-        pharmacistMap.remove(Integer.toString(id));
+        pharmacistMap.remove(pharmacist.getPersonDetails().getId());
     }
 
     public GenericDirectory<String, Pharmacist> getPharmacistMap() {

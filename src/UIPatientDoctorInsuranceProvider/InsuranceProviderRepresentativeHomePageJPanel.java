@@ -453,7 +453,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        int claimId = (int) tblPendingHealthInsuranceClaims.getModel().getValueAt(selectedRow, 0);
+        long claimId = (long) tblPendingHealthInsuranceClaims.getModel().getValueAt(selectedRow, 0);
         PrimaryCareInsuranceClaim claimToBeProcessed = null;
         for (PrimaryCareInsuranceClaim claim : healthInsuranceOrganization.getPendingMedicalInsuranceClaims()) {
             if (claim.getClaimId() == claimId) {
@@ -483,7 +483,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        int claimId = (int) tblProcessedHealthInsuranceClaims.getModel().getValueAt(selectedRow, 0);
+        long claimId = (long) tblProcessedHealthInsuranceClaims.getModel().getValueAt(selectedRow, 0);
         PrimaryCareInsuranceClaim claimToBeProcessed = null;
         for (PrimaryCareInsuranceClaim claim : healthInsuranceOrganization.getPendingMedicalInsuranceClaims()) {
             if (claim.getClaimId() == claimId) {
@@ -509,7 +509,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        int requestId = (int) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
+        long requestId = (long) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
         InsuranceDetails insuranceDetails = healthInsuranceOrganization.getUnprocessedInsuranceRequest(requestId);
         if (insuranceDetails == null) {
             JOptionPane.showMessageDialog(null, "No pending insurance found with id: " + requestId, "Warning", JOptionPane.WARNING_MESSAGE);
@@ -568,7 +568,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        int requestId = (int) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
+        long requestId = (long) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
         InsuranceDetails insuranceDetails = healthInsuranceOrganization.getUnprocessedInsuranceRequest(requestId);
         if (insuranceDetails == null) {
             JOptionPane.showMessageDialog(null, "No pending insurance found with id: " + requestId, "Warning", JOptionPane.WARNING_MESSAGE);

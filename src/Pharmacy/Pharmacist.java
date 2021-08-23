@@ -31,7 +31,7 @@ public class Pharmacist implements Person{
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId){
+            long organizationId){
 
         pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST, logoImage, organizationId);
     }
@@ -44,7 +44,7 @@ public class Pharmacist implements Person{
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId,
+            long organizationId,
             String emailId){
 
         pharmacistDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.PHARMACIST, logoImage, organizationId, emailId);
@@ -71,7 +71,7 @@ public class Pharmacist implements Person{
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return this.pharmacistDetails.getOrganizationId();
     }
     
