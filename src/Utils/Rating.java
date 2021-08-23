@@ -7,6 +7,7 @@ package Utils;
 
 import static Utils.Rating.RatingStatus.RATING_NOT_PROVIDED;
 import static Utils.Rating.RatingStatus.RATING_PROVIDED;
+import java.time.Instant;
 import java.time.LocalDate;
 
 /**
@@ -20,7 +21,7 @@ public class Rating implements Comparable<Rating> {
         RATING_PROVIDED
     }
     
-    int ratingId;
+    long ratingId;
     int rating;
     String feedBack;
     LocalDate ratingDate;
@@ -32,17 +33,15 @@ public class Rating implements Comparable<Rating> {
         this.feedBack = feedBack;
         this.ratingDate = ratingDate;
         this.status = RATING_PROVIDED;
-        this.ratingId = count++;
+        this.ratingId = Instant.now().toEpochMilli();
     }
-    
-    static int count = 1;
     
     public Rating() {
         this.status = RATING_NOT_PROVIDED;
-        this.ratingId = count++;
+        this.ratingId = Instant.now().toEpochMilli();
     }
 
-    public int getRatingId() {
+    public long getRatingId() {
         return ratingId;
     }
 

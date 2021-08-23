@@ -13,7 +13,7 @@ import java.util.List;
  * @author Ankur Bywar
  */
 public class OrganizationDirectory {
-    GenericDirectory<Integer, Organization> directory;
+    GenericDirectory<Long, Organization> directory;
     
     public OrganizationDirectory() {
         directory = new GenericDirectory<>();
@@ -23,7 +23,7 @@ public class OrganizationDirectory {
         directory.add(organization.getOrganizationId(), organization);
     }
     
-    public Organization getOrganization(int id) {
+    public Organization getOrganization(long id) {
         return directory.get(id);
     }
     

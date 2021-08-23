@@ -245,11 +245,6 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
             JOptionPane.showMessageDialog(null, "Parcel already Delivered. Please select a valid row.");
             return;
         }
-        order.setOrderStatus(OrderStatus.DELIVERED);
-
-        JOptionPane.showMessageDialog(null, "Delivered");
-        
-        populateTblDelManAssigned();
         
         PrescriptionDirectory prescriptionDirectory = ecoSystem.getPrescriptionDirectory();
         // After the order is delivered, we need to update patient's prescription
@@ -267,6 +262,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         order.getPatient().addPrescription(prescription);
         prescription.setDeliveryMan(deliveryMan);
         prescription.setDeliveryDate(Date.from(Instant.now()));
+        
+        order.setOrderStatus(OrderStatus.DELIVERED);
+        populateTblDelManAssigned();
+        JOptionPane.showMessageDialog(null, "Delivered");
         
         new SMSSender().sendSMSAsynchronous(order.getPatient().getPersonDetails().getPhoneNumber(), getMedicineDeliveryMessage(prescription));
     }//GEN-LAST:event_btnProcessOrderActionPerformed

@@ -204,7 +204,7 @@ public class Login extends javax.swing.JPanel implements NextScreen {
             case DOCTOR:
               
                 // redirect to doctor dashboard
-                int organizationId = p.getOrganizationId();
+                long organizationId = p.getOrganizationId();
                 Organization organization = system.organizationDirectory.getOrganization(organizationId);
                 Enterprise enterprise = organization.getEnterprise();
                 nextScreen(WorkArea, new DoctorWorkAreaPanel(WorkArea, system, enterprise, (Doctor) p), "DoctorWorkAreaPanel");
@@ -262,7 +262,7 @@ public class Login extends javax.swing.JPanel implements NextScreen {
         frame.add(ratingsPanel);
         ratingsPanel.setVisible(true);
         frame.setVisible(true);
-        frame.setSize(600, 600);
+        frame.setSize(700, 700);
     }//GEN-LAST:event_jBtnForgetPasswordActionPerformed
 
 

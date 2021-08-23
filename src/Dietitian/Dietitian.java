@@ -41,7 +41,7 @@ public class Dietitian implements Person{
             String phoneNumber, 
             UserAccount account,
             Icon icon,
-            int organizationId) {
+            long organizationId) {
         dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN,icon, organizationId);
         dietitianSchedule = new DietitianSchedule();
         this.availability = new HashSet<>();
@@ -56,7 +56,7 @@ public class Dietitian implements Person{
             String phoneNumber, 
             UserAccount account,
             Icon icon,
-            int organizationId,
+            long organizationId,
             String emailId) {
         dietitianDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DIETITIAN,icon, organizationId, emailId);
         dietitianSchedule = new DietitianSchedule();
@@ -108,7 +108,7 @@ public class Dietitian implements Person{
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
     

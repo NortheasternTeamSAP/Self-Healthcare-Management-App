@@ -8,6 +8,7 @@ package Insurance;
 import Enterprise.Enterprise;
 import Organization.Organization;
 import Personnel.Person;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -41,15 +42,13 @@ public class PrimaryCareInsuranceClaim {
     Person doctor;
     Person patient;
     LocalDate insuranceClaimDate;
-    int claimId;
+    long claimId;
     Enterprise insuranceCompany;
     Organization insuranceCompanyOrganization;
     ClaimStatus claimSatus;
     
     double patientResponsibility;
     double insuranceDeductable;
-
-    static int countId = 1;
 
     public PrimaryCareInsuranceClaim(
             double primaryCareProviderClaimCost, 
@@ -68,7 +67,7 @@ public class PrimaryCareInsuranceClaim {
         this.patient = patient;
         this.insuranceClaimDate = insuranceClaimDate;
         this.insuranceCompanyOrganization = insuranceCompanyOrganization;
-        this.claimId = countId++;
+        this.claimId = Instant.now().toEpochMilli();
         
         this.claimSatus = ClaimStatus.PENDING;
     }
@@ -101,7 +100,7 @@ public class PrimaryCareInsuranceClaim {
         return insuranceClaimDate;
     }
 
-    public int getClaimId() {
+    public long getClaimId() {
         return claimId;
     }
 

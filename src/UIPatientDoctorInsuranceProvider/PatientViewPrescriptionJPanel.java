@@ -239,7 +239,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
             return;
         }
         
-        int appointmentId = (Integer)tblPrescriptionHistory.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (Long)tblPrescriptionHistory.getModel().getValueAt(selectedRow, 0);
         Prescription selectedPrescription = ecoSystem.getPrescriptionDirectory().getPrescription(appointmentId);
         if (selectedPrescription == null) {
             JOptionPane.showMessageDialog(null, "No prescription found for appointment id: " + appointmentId);

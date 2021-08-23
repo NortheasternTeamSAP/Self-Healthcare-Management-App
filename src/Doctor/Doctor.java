@@ -56,7 +56,7 @@ public class Doctor implements Person {
             String phoneNumber, 
             Icon logoImage,
             UserAccount account,
-            int organizationId) {
+            long organizationId) {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage, organizationId);
         speciality = "Unknown";
@@ -73,7 +73,7 @@ public class Doctor implements Person {
             String phoneNumber, 
             Icon logoImage,
             UserAccount account,
-            int organizationId,
+            long organizationId,
             String emailId) {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage, organizationId, emailId);
@@ -117,7 +117,7 @@ public class Doctor implements Person {
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return getPersonDetails().getOrganizationId();
     }

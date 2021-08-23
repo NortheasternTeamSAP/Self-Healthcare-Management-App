@@ -11,6 +11,7 @@ import Personnel.Person;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
 
 /**
@@ -25,7 +26,7 @@ public class InsuranceDetails {
         DECLINED
     }
     
-    int id;
+    long id;
     long insuranceNumber;
     long groupNumber;
     Enterprise insuranceProvider;
@@ -35,8 +36,6 @@ public class InsuranceDetails {
     LocalDate requestDate;
     
     InsuranceRequestApprovalStatus insuranceRequestApprovalStatus;
-    
-    static int count = 1;
 
     public InsuranceDetails(
             Enterprise insuranceProvider, 
@@ -51,10 +50,10 @@ public class InsuranceDetails {
         this.patient = patient;
         this.insuranceRequestApprovalStatus = insuranceRequestApprovalStatus;
         this.requestDate = requestDate;
-        this.id = count++;
+        this.id = Instant.now().toEpochMilli();
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

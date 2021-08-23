@@ -55,7 +55,7 @@ public class LaboratoryAssistant implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId) {
+            long organizationId) {
         
         labAssistantDetails = new PersonDetails(fullName, dob, gender, 
                 address, phoneNumber, account, Role.LABASSISTANT, logoImage, organizationId);
@@ -71,7 +71,7 @@ public class LaboratoryAssistant implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId,
+            long organizationId,
             String emailId) {
         
         labAssistantDetails = new PersonDetails(fullName, dob, gender, 
@@ -115,7 +115,7 @@ public class LaboratoryAssistant implements Person {
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
     

@@ -297,7 +297,7 @@ public class LaboratoryAssistantHomePagePanel extends javax.swing.JPanel impleme
             return;
         }
         
-        int labTestId = (int) tblPendingLabTests.getModel().getValueAt(selectedRow, 0);
+        long labTestId = (long) tblPendingLabTests.getModel().getValueAt(selectedRow, 0);
         LaboratoryTestReport labTestReport = null;
         for (LaboratoryTestReport ltr : laboratoryAssistant.getPendingLabTests()) {
             if (ltr.getId() == labTestId) {

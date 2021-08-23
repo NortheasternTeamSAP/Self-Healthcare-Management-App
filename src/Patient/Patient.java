@@ -31,6 +31,7 @@ import VitalSign.VitalSigns;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +73,7 @@ public class Patient implements Person {
                 String phoneNumber, 
                 Icon logoImage,
                 UserAccount account,
-                int organizationId,
+                long organizationId,
                 PharmacyEnterprise preferredPharmacy
             ) {
 
@@ -112,7 +113,7 @@ public class Patient implements Person {
                 String phoneNumber, 
                 Icon logoImage,
                 UserAccount account,
-                int organizationId,
+                long organizationId,
                 PharmacyEnterprise preferredPharmacy,
                 String emailId
             ) {
@@ -338,7 +339,7 @@ public class Patient implements Person {
         return preferredPharmacy;
     }
     
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         return getPersonDetails().getOrganizationId();
     }
 
@@ -362,8 +363,13 @@ public class Patient implements Person {
         if (!prescriptionFound) {
             // Add a new prescription in the list and sort the list by prescription date 
             this.prescriptionsList.add(prescription);
-            Collections.sort(this.prescriptionsList);
         }
+        Collections.sort(this.prescriptionsList, new Comparator<Prescription>() {
+            @Override
+            public int compare(Prescription o1, Prescription o2) {
+                return o2.getPrescriptionDate().compareTo(o1.getPrescriptionDate());
+            }
+        });
     }
     
     public Prescription getLatestMedicinePrescription() {

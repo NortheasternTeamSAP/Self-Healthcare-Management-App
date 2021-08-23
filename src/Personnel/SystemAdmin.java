@@ -40,7 +40,7 @@ public class SystemAdmin implements Person {
             String phoneNumber,
             Icon logoImage,
             UserAccount account,
-            int organizationId,
+            long organizationId,
             String emailId) {
         
         sysAdminDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, 
@@ -63,7 +63,7 @@ public class SystemAdmin implements Person {
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
        return getPersonDetails().getOrganizationId();
     }
 

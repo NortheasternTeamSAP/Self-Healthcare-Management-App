@@ -315,7 +315,7 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
             return;
         }
         
-        int ratingId = (int) jTableReviews.getModel().getValueAt(selectedRow, 0);
+        long ratingId = (long) jTableReviews.getModel().getValueAt(selectedRow, 0);
         for (Rating rating : ratings) {
             if (rating.getRatingId() == ratingId) {
                 jTextAreaReview.setText(rating.getFeedBack() == null || rating.getFeedBack().isEmpty() ? "Not Available" : rating.getFeedBack());

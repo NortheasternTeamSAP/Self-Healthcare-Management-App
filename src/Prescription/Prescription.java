@@ -8,6 +8,7 @@ package Prescription;
 import DataStore.Appointment;
 import DataStore.GenericDirectory;
 import Medicine.Medicine;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
@@ -19,7 +20,7 @@ import java.util.Map;
 public class Prescription implements Comparable<Prescription> {
     private GenericDirectory<Medicine, Dosage> prescriptionMap; //map of <Medicine medDetails, Dosage dosage>
     private LocalDate prescriptionDate;
-    private int id;
+    private long id;
     private Appointment appointment; // appointment associated with this prescription
     private DeliveryMan.DeliveryMan deliveryMan;
     boolean deliveryReviewProvided;
@@ -78,8 +79,6 @@ public class Prescription implements Comparable<Prescription> {
     public void setPharmacyName(String pharmacyName) {
         this.pharmacyName = pharmacyName;
     }
-    
-    static int count = 1;
 
     public Prescription(Appointment appointment) {
         this.prescriptionMap = new GenericDirectory<>();
@@ -88,7 +87,7 @@ public class Prescription implements Comparable<Prescription> {
         this.deliveryReviewProvided = false;
         this.deliveryDate = null;
         this.pharmacyName = null;
-        this.id = count++;
+        this.id = Instant.now().toEpochMilli();
     }
 
     public GenericDirectory<Medicine, Dosage> getPrescriptionMap() {
@@ -107,7 +106,7 @@ public class Prescription implements Comparable<Prescription> {
         prescriptionMap.add(medicine, dosage);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

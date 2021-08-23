@@ -56,11 +56,15 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;
         this.ecoSystem = ecoSystem;
+        
+        List<UIAppointmentEntry> allUpcomingAppointments = new ArrayList<>();
+        populateUpcomingDoctorAppointments(allUpcomingAppointments);
+        populateUpcomingDietitianAppointments(allUpcomingAppointments);
+        populateUpcomingFitnessAppointments(allUpcomingAppointments);
+        populateUpcomingCounsellerAppointments(allUpcomingAppointments);
+        
         populatePatientInfoPlaceholders();
-        populateUpComingAppointments();
-        populatedietitianappointments();
-        populatefitnessappointments();
-        populateUpcomingCounsellerAppointments();
+        populateUpcomingAppointmentsTable(allUpcomingAppointments);
         setUpDeliveryManReviewButton();
         updateDailyRemienders();
     }
@@ -69,6 +73,91 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         VitalSigns vitals = patient.getMostRecentVitalSigns();
         String mostRecentVitalsDate = vitals == null ? "You did not record you vitals yet." : "Last vitals recorded on " + vitals.getDateForVitalSigns();
         jLabelRemienderToCheckVitals.setText("Do not forget to check your vitals regularly. " + mostRecentVitalsDate);
+    }
+    
+    void populateUpcomingAppointmentsTable(List<UIAppointmentEntry> allUpcomingAppointments) {
+        DefaultTableModel  model = (DefaultTableModel) tblAllUpcomingAppointments.getModel();
+        model.setRowCount(0);
+        
+        if (allUpcomingAppointments == null || allUpcomingAppointments.isEmpty()) {
+            log.debug("No upcoming appointments found for patient : " + patient.getPersonDetails().getUserAccount().getUsername());
+            return; 
+        }
+
+        Collections.sort(allUpcomingAppointments, new Comparator<UIAppointmentEntry>() {
+            @Override
+            public int compare(UIAppointmentEntry o1, UIAppointmentEntry o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+            
+        });
+        
+        for (UIAppointmentEntry appointment : allUpcomingAppointments) {
+            Object row[] = new Object[4];
+            row[0] = appointment.getPatientName();
+            row[1] = appointment.getAppointmentWith();
+            row[2] = appointment.getRoleType(); 
+            row[3] = appointment.getDate() + " " + appointment.getHours()+ ":00 hrs";
+            model.addRow(row);
+        }
+        
+    }
+    
+    void populateUpcomingDoctorAppointments(List<UIAppointmentEntry> allUpcomingAppointments) {
+         List<Appointment> upComingAppointments = patient.getUpcomingDoctorAppointments();
+         for (Appointment appointment : upComingAppointments) {
+             allUpcomingAppointments.add(new UIAppointmentEntry(
+                     appointment.getPatient().getPersonDetails().getFullName(),
+                     appointment.getDoctor().getPersonDetails().getFullName(),
+                     "Primary Care (Doctor)",
+                     appointment.getDate(),
+                     appointment.getAppointmentTimeHours()));
+         }
+    }
+    
+    void populateUpcomingDietitianAppointments(List<UIAppointmentEntry> allUpcomingAppointments) {
+         List<DietitianAppointment> upComingAppointments = patient.getDietitianAppointments();
+         for (DietitianAppointment appointment : upComingAppointments) {
+             if (appointment.getDone() == true) {
+                 continue;
+             }
+             allUpcomingAppointments.add(new UIAppointmentEntry(
+                     appointment.getPatient().getPersonDetails().getFullName(),
+                     appointment.getDietitian().getPersonDetails().getFullName(),
+                     "Dietitian",
+                     appointment.getDate(),
+                     appointment.getTime()));
+         }
+    }
+    
+    void populateUpcomingFitnessAppointments(List<UIAppointmentEntry> allUpcomingAppointments) {
+         List<FitnessTrainerAppointment> upComingAppointments = patient.getFitnessTrainerAppointments();
+         for (FitnessTrainerAppointment appointment : upComingAppointments) {
+             if (appointment.getDone() == true) {
+                 continue;
+             }
+             allUpcomingAppointments.add(new UIAppointmentEntry(
+                     appointment.getPatient().getPersonDetails().getFullName(),
+                     appointment.getFitnessTrainer().getPersonDetails().getFullName(),
+                     "Fitness Trainer",
+                     appointment.getDate(),
+                     appointment.getTime()));
+         }
+    }
+    
+    void populateUpcomingCounsellerAppointments(List<UIAppointmentEntry> allUpcomingAppointments) {
+         List<CounselorAppointment> upComingAppointments = patient.getCounselorAppointments();
+         for (CounselorAppointment appointment : upComingAppointments) {
+             if (appointment.getDone() == true) {
+                 continue;
+             }
+             allUpcomingAppointments.add(new UIAppointmentEntry(
+                     appointment.getPatient().getPersonDetails().getFullName(),
+                     appointment.getCounselor().getPersonDetails().getFullName(),
+                     "Mental Health Counselor",
+                     appointment.getDate(),
+                     appointment.getTime()));
+         }
     }
     
     void populatePatientInfoPlaceholders() {
@@ -89,29 +178,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);  // transform it back]
         imgLogo.setIcon(imageIcon);
-    }
-    
-    void populateUpComingAppointments() {
-        DefaultTableModel  model = (DefaultTableModel) tblUpcomingDoctorsAppointments.getModel();
-        model.setRowCount(0);
-        
-        List<Appointment> upComingAppointments = patient.getUpcomingDoctorAppointments();
-        // Sort upComingAppointments based on date
-        Collections.sort(upComingAppointments);
-        
-       // model.setRowCount(0);
-        if ((upComingAppointments == null) || upComingAppointments.isEmpty()) {
-          log.debug("No appointments found for patient : " + patient.getPersonDetails().getUserAccount().getUsername());
-          return; 
-       }
-        for (Appointment appointment : upComingAppointments) {
-            Object row[] = new Object[4];
-            row[0] = appointment.getId();
-            row[1] = appointment.getPatient().getPersonDetails().getFullName();
-            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
-            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
-            model.addRow(row);
-        }
     }
 
     /**
@@ -155,16 +221,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         lblWeight1 = new javax.swing.JLabel();
         lblEmailPlaceHolder = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblUpcomingDoctorsAppointments = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblUpcomingDietitianAppointments = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblUpcomingFitnessAppointments = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblUpcomingCounsellerAppointments = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
+        tblAllUpcomingAppointments = new javax.swing.JTable();
         jLabelRemienderToTakeMeds = new javax.swing.JLabel();
         jLabelRemienderToCheckVitals = new javax.swing.JLabel();
         jLabelRemienderToFollowDiet = new javax.swing.JLabel();
@@ -343,8 +400,8 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jPatientDetailPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 155, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel1.setText("Upcoming Primary Care Appointments");
-        jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 434, 330, 26));
+        jLabel1.setText("Your upcoming appointments with different health providers");
+        jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 440, 26));
 
         lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhoneNumber.setText("Phone Number:");
@@ -393,7 +450,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
         jPatientDetailPanel.add(lblEmailPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 213, -1, -1));
 
-        tblUpcomingDoctorsAppointments.setModel(new javax.swing.table.DefaultTableModel(
+        tblAllUpcomingAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -401,11 +458,11 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 {null, null, null, null}
             },
             new String [] {
-                "Appointment id", "Patient Name", "Doctor Name", "Appointment Date"
+                "Patient Name", "Appointment with", "Role Type", "Appointment Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -419,111 +476,9 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblUpcomingDoctorsAppointments);
+        jScrollPane2.setViewportView(tblAllUpcomingAppointments);
 
-        jPatientDetailPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 466, 525, 104));
-
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel2.setText("Upcoming Dietitian Appointments");
-        jPatientDetailPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 576, 330, 30));
-
-        tblUpcomingDietitianAppointments.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Patient Name", "Dietitian Name", "Appointment Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tblUpcomingDietitianAppointments);
-
-        jPatientDetailPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 612, 525, 104));
-
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel3.setText("Upcoming Fitness Appointments");
-        jPatientDetailPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 728, 330, 30));
-
-        tblUpcomingFitnessAppointments.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Patient Name", "Trainer Name", "Appointment Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(tblUpcomingFitnessAppointments);
-
-        jPatientDetailPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 764, 525, 104));
-
-        tblUpcomingCounsellerAppointments.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Patient Name", "Counseller Name", "Appointment Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(tblUpcomingCounsellerAppointments);
-
-        jPatientDetailPanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 910, 525, 111));
-
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel5.setText("Upcoming Counseller Appointments");
-        jPatientDetailPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 874, 330, 30));
+        jPatientDetailPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 660, 104));
 
         jLabelRemienderToTakeMeds.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabelRemienderToTakeMeds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-pill-30.png"))); // NOI18N
@@ -553,7 +508,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
                 jButtonDeliveryBoyReviewActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(jButtonDeliveryBoyReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 740, -1));
+        jPatientDetailPanel.add(jButtonDeliveryBoyReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 740, 40));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg.jpg"))); // NOI18N
         jPatientDetailPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 820, 1170));
@@ -608,7 +563,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
     private void btnViewOlderAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOlderAppointmentsActionPerformed
         // TODO add your handling code here:
-        nextScreen(WorkAreaPanel, new PatientAppointmentHistoyJPanel(WorkAreaPanel, ecoSystem, patient, this), "PatientAppointmentHistoyJPanel");
+        nextScreen(WorkAreaPanel, new PatientAppointmentHistoyJPanel(WorkAreaPanel, ecoSystem, patient, this, false), "PatientAppointmentHistoyJPanel");
     }//GEN-LAST:event_btnViewOlderAppointmentsActionPerformed
 
     private void btnBookFamilyDoctorAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookFamilyDoctorAppointmentActionPerformed
@@ -674,7 +629,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         if (!prescription.isDeliveryReviewProvided()) {
             jButtonDeliveryBoyReview.setEnabled(true);
             jButtonDeliveryBoyReview.setVisible(true);
-            jButtonDeliveryBoyReview.setText("Tell us was your last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
+            jButtonDeliveryBoyReview.setText("Tell us how was your last medicine prescription delivery at " + prescription.getDeliveryDate().toString());
         } else {
             jButtonDeliveryBoyReview.setEnabled(false);
             jButtonDeliveryBoyReview.setVisible(true);
@@ -698,10 +653,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JButton jButtonUpdatePatientInsurance;
     private javax.swing.JPanel jControlPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelRemienderToCheckVitals;
     private javax.swing.JLabel jLabelRemienderToExercise;
@@ -711,9 +663,6 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JPanel jPatientDetailPanel;
     private javax.swing.JPanel jPatientPanel;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel jWorkAreaPanel;
     private javax.swing.JLabel lblAddress;
@@ -727,84 +676,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblPhoneNumberPlaceHolder;
     private javax.swing.JLabel lblWeight1;
-    private javax.swing.JTable tblUpcomingCounsellerAppointments;
-    private javax.swing.JTable tblUpcomingDietitianAppointments;
-    private javax.swing.JTable tblUpcomingDoctorsAppointments;
-    private javax.swing.JTable tblUpcomingFitnessAppointments;
+    private javax.swing.JTable tblAllUpcomingAppointments;
     // End of variables declaration//GEN-END:variables
-
-    public void populatedietitianappointments() {
-        DefaultTableModel model = (DefaultTableModel) tblUpcomingDietitianAppointments.getModel();
-        ArrayList<DietitianAppointment> temp = new ArrayList();
-        try {
-            temp = patient.getDietitianAppointments();
-        } catch (Exception e) {
-            model.setRowCount(0);
-            return;
-        }
-
-        model.setRowCount(0);
-
-        for (int i = 0; i < patient.getDietitianAppointments().size(); i++) {
-            if (temp.get(i).getDate().isAfter(LocalDate.now()) && temp.get(i).getDone()==false) {
-                Object row[] = new Object[3];
-                row[0]=patient.getPersonDetails().getFullName();
-                row[1] = temp.get(i).getDietitian().getDietitianDetails().getFullName();
-                row[2] = temp.get(i).getDate();
-                model.addRow(row);
-
-            }
-        }
-    }
-
-    public void populatefitnessappointments() {
-
-        DefaultTableModel model = (DefaultTableModel) tblUpcomingFitnessAppointments.getModel();
-        ArrayList<FitnessTrainerAppointment> temp = new ArrayList();
-        try {
-            temp = patient.getFitnessTrainerAppointments();
-        } catch (Exception e) {
-            return;
-        }
-
-        model.setRowCount(0);
-
-        for (int i = 0; i < temp.size(); i++) {
-            if (temp.get(i).getDate().isAfter(LocalDate.now()) && temp.get(i).getDone()==false) {
-                Object row[] = new Object[3];
-                row[0] = patient.getPersonDetails().getFullName();
-                row[1] = temp.get(i).getFitnessTrainer().getFitnessTrainerDetails().getFullName();
-                row[2] = temp.get(i).getDate();
-                model.addRow(row);
-
-            }
-
-        }
-    }
-    
-    void populateUpcomingCounsellerAppointments() {
-        DefaultTableModel  model = (DefaultTableModel) tblUpcomingCounsellerAppointments.getModel();
-        model.setRowCount(0);
-        
-        List<CounselorAppointment> appointments = new ArrayList<>(patient.getCounselorAppointments());
-        Collections.sort(appointments, new Comparator<CounselorAppointment>() {
-            @Override
-            public int compare(CounselorAppointment o1, CounselorAppointment o2) {
-                return o2.getDate().compareTo(o1.getDate());
-            }
-        });
-        
-        for (CounselorAppointment appointment : appointments) {
-            if (appointment.getDone() == true) {
-                continue;
-            } 
-            Object row[] = new Object[3];
-            row[0] = appointment.getPatient().getPersonDetails().getFullName();
-            row[1] = appointment.getCounselor().getPersonDetails().getFullName();
-            row[2] = appointment.getDate() + " " + appointment.getTime()+ ":00 hrs";
-            model.addRow(row);
-        }
-    }
-
   
 }

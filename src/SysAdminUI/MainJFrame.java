@@ -34,6 +34,8 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         this.setSize(1100,850);
+        this.setResizable(false);
+        this.setTitle("Health Springs Self Health Management Application");
         dB4OUtil = DB4OUtil.getInstance();
     }
 

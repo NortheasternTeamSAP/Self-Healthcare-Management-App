@@ -33,6 +33,7 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
     Appointment selectedAppointment;
     
     ConsoleLogger log = ConsoleLogger.getLogger();
+    boolean disableAddReview;
     /**
     /**
      * Creates new form ViewOlderAppointmentsJPanel
@@ -48,6 +49,27 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
         btnViewLabReports.setEnabled(false);
         btnAddReview.setEnabled(false);
         populatePatientAppointmentHistoryTable();
+        this.disableAddReview = true;
+        if (disableAddReview) {
+            btnAddReview.setVisible(false);
+        }
+    }
+    
+    public PatientAppointmentHistoyJPanel(JPanel workAreaPanel, EcoSystem ecoSystem, Patient patient, JPanel backButtonPage, boolean disableAddReview) {
+        initComponents();
+        this.setSize(1100,850);
+        this.ecoSystem = ecoSystem;
+        this.patient = patient;
+        this.workAreaPanel = workAreaPanel;
+        this.backButtonPage = backButtonPage;
+        this.selectedAppointment = null;
+        btnViewLabReports.setEnabled(false);
+        btnAddReview.setEnabled(false);
+        populatePatientAppointmentHistoryTable();
+        this.disableAddReview = disableAddReview;
+        if (disableAddReview) {
+            btnAddReview.setVisible(false);
+        }
     }
     
     void populatePatientAppointmentHistoryTable() {
@@ -241,7 +263,7 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
             return;
         }
         
-        int appointmentId = (int) tblPatientAppointmentHistory.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (long) tblPatientAppointmentHistory.getModel().getValueAt(selectedRow, 0);
         Appointment selectedAppointment = null;
         for (Appointment apt : patient.getDoctorAppointmentsHistory()) {
             if (apt.getId() == appointmentId) {
@@ -273,6 +295,10 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
                 btnAddReview.setText(selectedAppointment.getRating().getRating() + " star rating already provided");
                 btnAddReview.setEnabled(false);
             }
+        }
+        
+        if (disableAddReview) {
+            btnAddReview.setVisible(false);
         }
         // Add lab test reports details
         // Add VS at that time (may be??)

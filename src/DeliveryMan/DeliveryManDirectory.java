@@ -10,6 +10,7 @@ import Personnel.Address;
 import Personnel.PersonDetails;
 import Personnel.Role;
 import Personnel.UserAccount;
+import java.time.Instant;
 import java.time.LocalDate;
 
 /**
@@ -19,11 +20,9 @@ import java.time.LocalDate;
 public class DeliveryManDirectory {
     
     public GenericDirectory<String, DeliveryMan> deliveryManMap; //map for delivery man <id, details>
-    private int id;
-    
+
     public DeliveryManDirectory(){
         this.deliveryManMap = new GenericDirectory<>();
-        id = 0;
     }
     
     public void addDeliveryMan(DeliveryMan deliveryMan) {
@@ -40,13 +39,12 @@ public class DeliveryManDirectory {
                                 int organizationId){
         
         DeliveryMan delMan = new DeliveryMan(fullName, dob, gender, address, phoneNumber, null, account, organizationId);
-        deliveryManMap.add(Integer.toString(id), delMan);
-        id += 1;
+        deliveryManMap.add(delMan.getPersonDetails().getId(), delMan);
         return delMan;
     }  
     
     public void deleteDeliveryMan(DeliveryMan deliveryMan){
-        deliveryManMap.remove(Integer.toString(id));
+        deliveryManMap.remove(deliveryMan.getPersonDetails().getId());
     }
 
     public GenericDirectory<String, DeliveryMan> getDeliveryManMap() {

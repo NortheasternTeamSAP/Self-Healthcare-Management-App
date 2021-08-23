@@ -14,6 +14,7 @@ import Medicine.MedicineDirectory;
 import Patient.Patient;
 import Enterprise.PharmacyEnterprise;
 import Prescription.Dosage;
+import java.time.Instant;
 import java.util.ArrayList;
 
 /**
@@ -23,11 +24,9 @@ import java.util.ArrayList;
 public class OrderDirectory {
     
     public GenericDirectory<String, Order> orderMap; //map for <String orderID, Order orderDetails>
-    private int id; //for Order ID
     
     public OrderDirectory(){
         this.orderMap = new GenericDirectory<>();
-        id = 0;
     }
     
     // return the order Id.
@@ -48,15 +47,15 @@ public class OrderDirectory {
                 medicine,
                 dosage,
                 appointment);
-        String orderId = "Order" + Integer.toString(id);
+        long id = Instant.now().toEpochMilli();
+        String orderId = "Order" + Long.toString(id);
         orderMap.add(orderId, order);
         order.setOrderId(orderId);
-        id += 1;
         return orderId;
     }
 
     public void deleteOrder(Order order){
-        orderMap.remove(Integer.toString(id));
+        orderMap.remove(order.getOrderId());
     }
     
     

@@ -40,7 +40,7 @@ public class FitnessTrainer implements Person{
             String phoneNumber, 
             UserAccount account,
             Icon icon,
-            int organizationId) {
+            long organizationId) {
         fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER,icon, organizationId);
         fitnessTrainerSchedule = new FitnessTrainerSchedule();
         this.availability = new HashSet<>();
@@ -55,7 +55,7 @@ public class FitnessTrainer implements Person{
             String phoneNumber, 
             UserAccount account,
             Icon icon,
-            int organizationId,
+            long organizationId,
             String emailId) {
         fitnessTrainerDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.TRAINER,icon, organizationId, emailId);
         fitnessTrainerSchedule = new FitnessTrainerSchedule();
@@ -107,7 +107,7 @@ public class FitnessTrainer implements Person{
     }
 
     @Override
-    public int getOrganizationId() {
+    public long getOrganizationId() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
          return getPersonDetails().getOrganizationId();
     }
