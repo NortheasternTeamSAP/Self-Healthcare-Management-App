@@ -22,7 +22,7 @@ import org.apache.commons.validator.routines.EmailValidator;
  */
 public class FieldsValidator {
     
-    Color errorColor = Color.red;
+    Color errorColor = new Color(255, 153, 153);
     Color okColor = Color.white;
     
     public boolean validate(JTextField field) {
