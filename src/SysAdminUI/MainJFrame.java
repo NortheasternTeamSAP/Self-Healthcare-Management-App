@@ -14,8 +14,10 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
 import java.awt.CardLayout;
+import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 

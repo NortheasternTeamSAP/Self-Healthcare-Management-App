@@ -116,7 +116,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jRadioButton5Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton5Star.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButton5Star.setForeground(new java.awt.Color(0, 204, 102));
         jRadioButton5Star.setText("Very Satisfied");
         jRadioButton5Star.addActionListener(new java.awt.event.ActionListener() {
@@ -130,22 +130,22 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jLabel1.setText("Submit Review");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 250, 40));
 
-        jRadioButton4Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton4Star.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButton4Star.setForeground(new java.awt.Color(102, 204, 0));
         jRadioButton4Star.setText("Somewhat Satisfied");
         jPanel1.add(jRadioButton4Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 300, -1));
 
-        jRadioButton3Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton3Star.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButton3Star.setForeground(new java.awt.Color(204, 204, 0));
         jRadioButton3Star.setText("Neither satisfied nor dissatisfied");
-        jPanel1.add(jRadioButton3Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 185, -1, 40));
+        jPanel1.add(jRadioButton3Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, 40));
 
-        jRadioButton2Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton2Star.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButton2Star.setForeground(new java.awt.Color(255, 153, 0));
         jRadioButton2Star.setText("Somewhat dissatisfied");
         jPanel1.add(jRadioButton2Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 300, -1));
 
-        jRadioButton1Star.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jRadioButton1Star.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButton1Star.setForeground(new java.awt.Color(255, 0, 51));
         jRadioButton1Star.setText("Very dissatisfied");
         jPanel1.add(jRadioButton1Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 300, -1));
@@ -161,7 +161,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 320, -1));
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel3.setText("Optional Feedback");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
 
@@ -181,12 +181,12 @@ public class RatingsJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

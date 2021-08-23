@@ -35,6 +35,7 @@ import UIPharmacist.PharmacistDashBoardJPanel;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
 import Utils.EmailClient;
+import Utils.FieldsValidator;
 import Utils.ForgetPasswordJPanel;
 import Utils.RatingsJPanel;
 import java.awt.CardLayout;
@@ -155,6 +156,15 @@ public class Login extends javax.swing.JPanel implements NextScreen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+        
+
+        
+        FieldsValidator fieldsValidator = new FieldsValidator();
+        boolean error = fieldsValidator.validate(jTextField1) | fieldsValidator.validate(jPasswordField1);
+        if (error) {
+            JOptionPane.showMessageDialog(this, "Please enter both username and password");
+            return;
+        }
         
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
