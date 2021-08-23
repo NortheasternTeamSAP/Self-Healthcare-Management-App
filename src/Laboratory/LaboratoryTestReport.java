@@ -8,6 +8,7 @@ package Laboratory;
 import DataStore.Appointment;
 import Organization.Organization;
 import Personnel.Person;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.time.LocalDate;
 
@@ -47,7 +48,7 @@ public class LaboratoryTestReport {
         this.appointment = appointment;
         this.labTestDate = labTestDate;
         this.testResults = null;
-        this.id = Instant.now().toEpochMilli();
+        this.id = IdProvider.getUUID();
         this.labTestStatus = LabTestStatus.PENDING;
     }
 

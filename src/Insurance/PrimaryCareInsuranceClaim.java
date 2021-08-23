@@ -8,6 +8,7 @@ package Insurance;
 import Enterprise.Enterprise;
 import Organization.Organization;
 import Personnel.Person;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
@@ -67,7 +68,7 @@ public class PrimaryCareInsuranceClaim {
         this.patient = patient;
         this.insuranceClaimDate = insuranceClaimDate;
         this.insuranceCompanyOrganization = insuranceCompanyOrganization;
-        this.claimId = Instant.now().toEpochMilli();
+        this.claimId = IdProvider.getUUID();
         
         this.claimSatus = ClaimStatus.PENDING;
     }

@@ -128,13 +128,14 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         });
         add(btnProcessOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 780, 160, 40));
 
+        btnRefreshOrdersTable.setText("Refresh Orders");
         btnRefreshOrdersTable.setContentAreaFilled(false);
         btnRefreshOrdersTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshOrdersTableActionPerformed(evt);
             }
         });
-        add(btnRefreshOrdersTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 40, 30));
+        add(btnRefreshOrdersTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 130, 40));
 
         tblDeliveryManAssigned.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblDeliveryManAssigned.setModel(new javax.swing.table.DefaultTableModel(

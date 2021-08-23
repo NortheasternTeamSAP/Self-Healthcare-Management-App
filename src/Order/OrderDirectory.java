@@ -14,6 +14,7 @@ import Medicine.MedicineDirectory;
 import Patient.Patient;
 import Enterprise.PharmacyEnterprise;
 import Prescription.Dosage;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class OrderDirectory {
                 medicine,
                 dosage,
                 appointment);
-        long id = Instant.now().toEpochMilli();
+        long id = IdProvider.getUUID();
         String orderId = "Order" + Long.toString(id);
         orderMap.add(orderId, order);
         order.setOrderId(orderId);

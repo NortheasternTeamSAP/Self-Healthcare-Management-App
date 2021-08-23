@@ -7,6 +7,7 @@ package DataStore;
 
 import Laboratory.LaboratoryTestReport;
 import Personnel.Person;
+import Utils.IdProvider;
 import Utils.Rating;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -49,7 +50,7 @@ public class Appointment implements Comparable<Appointment> {
         this.appointmentTimeHours = appointmentTimeHours;
         this.doctorFeedback = "NotAvailable";
         this.labTestReport = null;
-        this.id = Instant.now().toEpochMilli();
+        this.id = IdProvider.getUUID();
         this.status = AppointmentStatus.PENDING;
         this.patientVitalSignsHistoryS3ObjectPath = null; // Null because this will be set after the appointment is booked
         this.patientInsuranceFileS3ObjectPath = null;

@@ -8,6 +8,7 @@ package Insurance;
 import Enterprise.Enterprise;
 import Enterprise.InsuranceCompanyEnterprise;
 import Personnel.Person;
+import Utils.IdProvider;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class InsuranceDetails {
         this.patient = patient;
         this.insuranceRequestApprovalStatus = insuranceRequestApprovalStatus;
         this.requestDate = requestDate;
-        this.id = Instant.now().toEpochMilli();
+        this.id = IdProvider.getUUID();
     }
 
     public long getId() {

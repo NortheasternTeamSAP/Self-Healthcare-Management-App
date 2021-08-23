@@ -9,6 +9,7 @@ import DataStore.GenericDirectory;
 import Personnel.Address;
 import Personnel.PersonDetails;
 import Personnel.UserAccount;
+import Utils.IdProvider;
 import java.time.Instant;
 import java.time.LocalDate;
 
@@ -43,7 +44,7 @@ public class PharmacistDirectory {
                                         null,
                                         account,
                                         -1);
-        long id = Instant.now().toEpochMilli();
+        long id = IdProvider.getUUID();
         pharmacistMap.add(pharmacist.getPersonDetails().getId(), pharmacist);
         return pharmacist;
     }

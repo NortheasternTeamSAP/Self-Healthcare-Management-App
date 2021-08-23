@@ -6,6 +6,7 @@
 package Medicine;
 import java.time.LocalDate;
 import DataStore.GenericDirectory;
+import Utils.IdProvider;
 import java.time.Instant;
 
 /**
@@ -39,7 +40,7 @@ public class MedicineDirectory{
     ){
         
         Medicine medicine = new Medicine(medicineName, price, expiryDate, mfgDate);
-        long id = Instant.now().toEpochMilli();
+        long id = IdProvider.getUUID();
         String medicineId = "Med" + Long.toString(id);
         medicine.setMedicineId(medicineId);
         medicineCatalogMap.add(medicineId, medicine);

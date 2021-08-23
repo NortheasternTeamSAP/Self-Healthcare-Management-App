@@ -235,11 +235,11 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Reviews Summary");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 24, 218, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 24, 290, 40));
 
         jLabelNamePlaceHolder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelNamePlaceHolder.setText("Name:                   <PlaceHolder>");
-        jPanel1.add(jLabelNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 82, 227, -1));
+        jPanel1.add(jLabelNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 82, 470, -1));
 
         jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         jButtonBack.setContentAreaFilled(false);
