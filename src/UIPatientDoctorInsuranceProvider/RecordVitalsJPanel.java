@@ -163,10 +163,10 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
         jPanel1.add(lblPatientNamePlaceholder, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 86, 442, -1));
 
         lblTittle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTittle.setText("Patient's Vital Signs Collection");
-        jPanel1.add(lblTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 26, 375, 42));
+        lblTittle.setText("Patient's Self Vital Signs Collection");
+        jPanel1.add(lblTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 26, 510, 42));
 
-        lblDate.setText("Date of vital sign :");
+        lblDate.setText("Date of vital sign:");
         jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
         jPanel1.add(jDateOfVitalSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 260, 142, -1));
 
@@ -210,7 +210,7 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
                 btnSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 306, -1, -1));
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 240, 40));
 
         btnBarGraph.setBackground(new java.awt.Color(255, 255, 255));
         btnBarGraph.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -221,7 +221,7 @@ public class RecordVitalsJPanel extends javax.swing.JPanel implements NextScreen
                 btnBarGraphActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBarGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 306, -1, 43));
+        jPanel1.add(btnBarGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 363, 240, 40));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

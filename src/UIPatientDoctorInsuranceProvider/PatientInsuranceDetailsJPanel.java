@@ -17,7 +17,9 @@ import Organization.Organization;
 import static Organization.OrganizationType.HEALTH_INSURANCE_DEPARTMENT;
 import Patient.Patient;
 import SysAdminUI.CreateRolesJPanel;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.time.LocalDate;
@@ -145,26 +147,13 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
     }
     
     void currentInsuranceFieldsEnableDisable(boolean enable) {
-        txtPatientName.setEditable(enable);
-        txtPatientName.setEnabled(enable);
-    
-        txtInsuranceNumber.setEditable(enable);
-        txtInsuranceNumber.setEnabled(enable);
-        
-        txtGroupNumber.setEditable(enable);
-        txtGroupNumber.setEnabled(enable);
-
-        txtInsuranceProviderName.setEditable(enable);
-        txtInsuranceProviderName.setEnabled(enable);
-        
-        txtInsuranceType.setEditable(enable);
-        txtInsuranceType.setEnabled(enable);
-        
-        txtInsurancePlanExpiryDate.setEditable(enable);
-        txtInsurancePlanExpiryDate.setEnabled(enable);
-        
-        jTextAreaInsuranceDetails.setEditable(enable);
-        jTextAreaInsuranceDetails.setEnabled(enable);
+        FieldsDecorator.decorate(txtPatientName, enable);
+        FieldsDecorator.decorate(txtInsuranceNumber, enable);
+        FieldsDecorator.decorate(txtGroupNumber, enable);
+        FieldsDecorator.decorate(txtInsuranceProviderName, enable);
+        FieldsDecorator.decorate(txtInsuranceType, enable);
+        FieldsDecorator.decorate(txtInsurancePlanExpiryDate, enable);
+        FieldsDecorator.decorate(jTextAreaInsuranceDetails, enable);
     }
     
     void insuranceUpdateFieldsEnableDisable(boolean enable) {
@@ -219,7 +208,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
 
         lblPatientDetails.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblPatientDetails.setText("Medical health Insurance Details");
-        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 12, 386, 40));
+        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 12, 500, 40));
 
         lblWeight.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblWeight.setText("Insurance Provider");
@@ -235,6 +224,11 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
 
         txtGroupNumber.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtGroupNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtGroupNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGroupNumberActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtGroupNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 157, 244, -1));
 
         lblWeight2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
@@ -313,16 +307,18 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
                 jButtonSendInsuranceRequestPlaceHolderActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSendInsuranceRequestPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 668, 162, -1));
+        jPanel1.add(jButtonSendInsuranceRequestPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 670, 310, 40));
 
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 408, 1096, 24));
 
-        lblPatientDetails1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lblPatientDetails1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblPatientDetails1.setForeground(new java.awt.Color(51, 153, 255));
         lblPatientDetails1.setText("Current Insurance Details");
         jPanel1.add(lblPatientDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 58, 319, 40));
 
-        lblAddNewInsurance.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lblAddNewInsurance.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lblAddNewInsurance.setForeground(new java.awt.Color(51, 153, 255));
         lblAddNewInsurance.setText("Request Insurance Update?");
         jPanel1.add(lblAddNewInsurance, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 444, 319, 28));
 
@@ -365,7 +361,7 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
             return; 
         }
         
-        Enterprise insuranceCompany = ecoSystem.enterpriseDirectory.getEnterprise(Integer.parseInt(selectedEnterprise.split(":")[1]));
+        Enterprise insuranceCompany = ecoSystem.enterpriseDirectory.getEnterprise(Long.parseLong(selectedEnterprise.split(":")[1]));
         if (insuranceCompany == null) {
             JOptionPane.showMessageDialog(jPanel1, "No insurance provider found for selected item: " + selectedEnterprise);
             return; 
@@ -402,6 +398,10 @@ public class PatientInsuranceDetailsJPanel extends javax.swing.JPanel implements
         
         nextScreen(WorkAreaPanel, backPage, "Patient home page");
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void txtGroupNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGroupNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGroupNumberActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,6 +9,7 @@ import Dietitian.Dietitian;
 import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+import Utils.FieldsDecorator;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -43,6 +44,7 @@ DietitianAppointment app;
       this.p=p;
       lblPatientname.setText(p.getPatientDetails().getFullName());
      
+      FieldsDecorator.decorateTable(tblVitalSign);
 
       for(DietitianAppointment f1 :d.getDietitianSchedule().getDietitianAppointments()){
       jLabel7.setText(f1.getRestriction());

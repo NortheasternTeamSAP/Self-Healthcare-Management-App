@@ -92,9 +92,10 @@ public class GraphPlotterUtils {
         plot.setRangeGridlinePaint(Color.black);
         ChartFrame cf = new ChartFrame(frameTitle, jchart, true);
         cf.setVisible(true);
-        cf.setSize(500, 400);
+        cf.setSize(800, 800);
         ChartPanel cp = new ChartPanel(jchart);
         panel.removeAll();
+        panel.setSize(800, 800);
         panel.add(cp);
         panel.updateUI();
    }

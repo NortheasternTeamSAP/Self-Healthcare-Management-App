@@ -9,6 +9,7 @@ import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -35,6 +36,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel implements Nex
         this.system=system;
         this.p=p;
         populateUpcomingDieticianAppointments();
+        FieldsDecorator.decorateTable(UpcomingDieticianAppointments);
     }
 
     /**
@@ -66,7 +68,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel implements Nex
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 295, 202, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 370, 50));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -77,7 +79,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel implements Nex
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 295, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 370, 50));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -88,7 +90,7 @@ public class PatientDieticianDashboard extends javax.swing.JPanel implements Nex
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 295, -1, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 370, 50));
 
         UpcomingDieticianAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

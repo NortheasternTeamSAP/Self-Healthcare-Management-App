@@ -14,7 +14,9 @@ import Patient.Patient;
 import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
 import java.awt.Color;
+import java.awt.Image;
 import static javax.swing.GroupLayout.Alignment.values;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,6 +27,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import Utils.ImagePanel;
 
 /**
  *
@@ -41,10 +44,15 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
      */
     public LaboratoryTestPageJPanel(JPanel workAreaPanel, LaboratoryTestReport labTestReport, JPanel backPage) {
         initComponents();
+
+        //jPanel1.imageUpdate(image, SOMEBITS, WIDTH, WIDTH, WIDTH, WIDTH)
         this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.labTestReport = labTestReport;
         this.backPage = backPage;
+        String patientName = labTestReport.getAppointment().getPatient().getPersonDetails().getFullName();
+        String docName = labTestReport.getAppointment().getDoctor().getPersonDetails().getFullName();
+        jLabelPatientDetails.setText("Patient " + patientName + " referred by doctor " + docName);
         labTestResult = null;
     }
 
@@ -72,19 +80,18 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
         jTextFieldVitaminD = new javax.swing.JTextField();
         jTextFieldBloodSugar = new javax.swing.JTextField();
         btnLabTestsSave = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        btnCompleteLabTest = new javax.swing.JButton();
+        jLabelPatientDetails = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        btnCompleteLabTest = new javax.swing.JButton();
         jTextLabTestCost = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        btnShowTrend = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel1.setText("Laboratory Test Page");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 15, 255, 31));
+        jLabel1.setText("Laboratory Test - Record Lab Test Results");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 15, 580, 31));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -97,43 +104,48 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
 
         jTextFieldVitaminB12.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldVitaminB12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldVitaminB12, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 209, 143, -1));
+        jPanel1.add(jTextFieldVitaminB12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 143, -1));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 153, 255));
         jLabel2.setText("Haemoglobin");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 106, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("Thyroid");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 138, 60, 25));
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 255));
         jLabel4.setText("Vitamin D");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 169, -1, 25));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 153, 255));
         jLabel5.setText("Blood Sugar");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 237, -1, 25));
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 255));
         jLabel6.setText("Vitamin B12");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 206, 82, 25));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 206, 90, 25));
 
         jTextFieldHemoglobin.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldHemoglobin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldHemoglobin, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 106, 143, -1));
+        jPanel1.add(jTextFieldHemoglobin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 143, -1));
 
         jTextFieldThyroid.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldThyroid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldThyroid, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 141, 143, -1));
+        jPanel1.add(jTextFieldThyroid, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 143, -1));
 
         jTextFieldVitaminD.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldVitaminD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldVitaminD, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 172, 143, -1));
+        jPanel1.add(jTextFieldVitaminD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 143, -1));
 
         jTextFieldBloodSugar.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldBloodSugar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextFieldBloodSugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 240, 143, -1));
+        jPanel1.add(jTextFieldBloodSugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 143, -1));
 
         btnLabTestsSave.setBackground(new java.awt.Color(255, 255, 255));
         btnLabTestsSave.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -144,11 +156,17 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
                 btnLabTestsSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLabTestsSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 312, 103, -1));
+        jPanel1.add(btnLabTestsSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 250, 50));
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel7.setText("Add patient details (name, age, etc.) and Doctor details.");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 69, -1, -1));
+        jLabelPatientDetails.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelPatientDetails.setForeground(new java.awt.Color(153, 0, 153));
+        jLabelPatientDetails.setText("Add patient details (name, age, etc.) and Doctor details.");
+        jPanel1.add(jLabelPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 69, 860, -1));
+
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(153, 0, 153));
+        jLabel8.setText("Lab Test Cost");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 275, 110, 25));
 
         btnCompleteLabTest.setBackground(new java.awt.Color(255, 255, 255));
         btnCompleteLabTest.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -159,45 +177,17 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
                 btnCompleteLabTestActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCompleteLabTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 312, 187, -1));
-
-        jLabel8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel8.setText("Lab Test Cost");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 275, 93, 25));
+        jPanel1.add(btnCompleteLabTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 250, 50));
 
         jTextLabTestCost.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextLabTestCost.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextLabTestCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 278, 143, -1));
+        jPanel1.add(jTextLabTestCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 143, -1));
 
-        jPanel2.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
-
-        btnShowTrend.setBackground(new java.awt.Color(255, 255, 255));
-        btnShowTrend.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        btnShowTrend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-graph-report-30.png"))); // NOI18N
-        btnShowTrend.setText("Show Trends");
-        btnShowTrend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowTrendActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnShowTrend, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 312, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/lab-gif-3.gif"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 800, 250));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
-        jLabel9.setToolTipText("");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1100, 850));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 980, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -255,57 +245,11 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
         JOptionPane.showMessageDialog(null,"Lab Tests Results Saved.", "Information", JOptionPane.INFORMATION_MESSAGE );
     }//GEN-LAST:event_btnCompleteLabTestActionPerformed
 
-    private void btnShowTrendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTrendActionPerformed
-        // TODO add your handling code here:
-       String Hemoglobin = jTextFieldHemoglobin.getText();
-       String Thyroid = jTextFieldThyroid.getText();
-       String VitaminD = jTextFieldVitaminD.getText();
-       String VitaminB12 = jTextFieldVitaminB12.getText();
-       String BloodSugar = jTextFieldBloodSugar.getText();
-       DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-       GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
-       dcd.setValue(new Integer(Hemoglobin), "values", "hemoglobin");
-       dcd.setValue(new Integer(Thyroid), "values", "thyroid");
-       dcd.setValue(new Integer(VitaminD), "values", "VitaminD");
-       dcd.setValue(new Integer(VitaminB12), "values", "VitaminB12");
-       dcd.setValue(new Integer(BloodSugar), "values", "BloodSugar");
-       graphPlotterUtils.createBarChart3D("lab tests", "Ranges", "All lab tests trends", "lab test", dcd, jPanel2);
-       //graphPlotterUtils.addToDataSet(values, VitaminD, dcd);
-       
-       
-       
-       
-   
-     
-         
-//        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-//       
-//        dcd.setValue(new Integer(weight), "values" , "weight" );
-//        dcd.setValue(new Integer(lowBp) , "values" , "lowBp");
-//        dcd.setValue(new Integer(HighBp) , "values" , "highBp");
-//        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
-//        dcd.setValue(new Integer(heartRate) , "values" , "heatrate");
-//        dcd.setValue(new Integer(respiratoryRate) , "values" , "respiratoryRate");
-//       
-//        JFreeChart jchart = ChartFactory.createBarChart3D("Record Vitals", "Vital sign", "Ranges", dcd, PlotOrientation.VERTICAL, true, true, false);
-//        CategoryPlot plot = jchart.getCategoryPlot();
-//        plot.setRangeGridlinePaint(Color.black);
-//        ChartFrame cf = new ChartFrame("Vital sign", jchart, true);
-//        cf.setVisible(true);
-//        cf.setSize(500, 400);
-//        ChartPanel cp = new ChartPanel(jchart);
-//        jPanel2.removeAll();
-//        jPanel2.add(cp);
-//        jPanel2.updateUI();
-        
-    }//GEN-LAST:event_btnShowTrendActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCompleteLabTest;
     private javax.swing.JButton btnLabTestsSave;
-    private javax.swing.JButton btnShowTrend;
     private org.jfree.data.category.DefaultCategoryDataset defaultCategoryDataset1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -316,8 +260,8 @@ public class LaboratoryTestPageJPanel extends javax.swing.JPanel implements Next
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelPatientDetails;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldBloodSugar;
     private javax.swing.JTextField jTextFieldHemoglobin;
     private javax.swing.JTextField jTextFieldThyroid;

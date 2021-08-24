@@ -13,6 +13,7 @@ import FitnessTrainer.FitnessTrainer;
 import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
 import Personnel.PersonDetails;
+import Utils.FieldsDecorator;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -42,6 +43,9 @@ FitnessTrainerAppointment app;
       this.WorkArea=WorkArea;
       this.p=p;
       this.app=app;
+      
+      
+      FieldsDecorator.decorateTable(tblVitalSign);
       
       e1.setModel(new DefaultComboBoxModel(FitnessPlan.Excercise.values()));
       e2.setModel(new DefaultComboBoxModel(FitnessPlan.Excercise.values()));

@@ -46,6 +46,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
         manageemp = new javax.swing.JButton();
         jButtonUpdateDeleteRoles = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,7 +83,6 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
         jBtnLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jBtnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/logout.png"))); // NOI18N
         jBtnLogout.setText("Logout");
-        jBtnLogout.setOpaque(false);
         jBtnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnLogoutActionPerformed(evt);
@@ -92,7 +92,6 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
 
         manageemp.setBackground(new java.awt.Color(255, 255, 255));
         manageemp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        manageemp.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\createRole.png")); // NOI18N
         manageemp.setText("Create Roles");
         manageemp.setToolTipText("Manage Employees");
         manageemp.setBorder(null);
@@ -119,8 +118,11 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
         jLabel1.setText("System Admin Dashboard");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/sys-admin-gif.gif"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 480, 210));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 6, 1100, 840));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntmanageenterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntmanageenterpriseActionPerformed
@@ -155,6 +157,7 @@ public class SysAdminDashboard extends javax.swing.JPanel implements NextScreen 
     private javax.swing.JButton jButtonUpdateDeleteRoles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton manageemp;
     // End of variables declaration//GEN-END:variables
 }

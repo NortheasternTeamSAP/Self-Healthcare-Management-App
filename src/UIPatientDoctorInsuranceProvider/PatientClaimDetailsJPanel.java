@@ -5,6 +5,7 @@
  */
 package UIPatientDoctorInsuranceProvider;
 
+import Doctor.Doctor;
 import EcoSystem.EcoSystem;
 import Insurance.PrimaryCareInsuranceClaim;
 import Laboratory.LaboratoryAssistant;
@@ -13,12 +14,15 @@ import Laboratory.LaboratoryTest.TestType;
 import Laboratory.LaboratoryTestReport;
 import Organization.HealthInsuranceDepartmentOrganization;
 import Patient.Patient;
+import Personnel.Person;
 import Utils.ConsoleLogger;
+import Utils.EmailClient;
 import Utils.NextScreen;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
@@ -28,17 +32,21 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
     JPanel workAreaPanel;
     PrimaryCareInsuranceClaim claim;
     InsuranceProviderRepresentativeHomePageJPanel backPage;
+    EcoSystem ecosystem;
+    String insuranceCompany;
     
     ConsoleLogger log = ConsoleLogger.getLogger();
     
     /**
      * Creates new form ViewMedicalLabTestResultJPanel
      */
-    public PatientClaimDetailsJPanel(JPanel workAreaPanel, PrimaryCareInsuranceClaim claim, JPanel backPage) {
+    public PatientClaimDetailsJPanel(JPanel workAreaPanel, EcoSystem ecosystem, PrimaryCareInsuranceClaim claim, String insuranceCompany, JPanel backPage) {
         initComponents();
         this.setSize(1100,850);
         this.workAreaPanel = workAreaPanel;
         this.claim = claim;
+        this.ecosystem = ecosystem;
+        this.insuranceCompany = insuranceCompany;
         this.backPage = (InsuranceProviderRepresentativeHomePageJPanel)backPage;
         
         populatePlaceHolders();
@@ -48,7 +56,10 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
             disableClaimFields();
             return;
         }
-
+        
+        Patient patient = (Patient) claim.getPatient();
+        int coverage = patient.getInsuranceDetails() == null ? 0 : patient.getInsuranceDetails().getCoverageDetails().getDeductible();
+        jTextFieldInsuranceCompanyDeductable.setText(coverage + "");
     }
     
     void disableClaimFields() {
@@ -59,12 +70,20 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
     }
     
     void populatePlaceHolders() {
+        Person doctor = claim.getDoctor();
+        Person patient = claim.getPatient();
+        jLabelPatientPlaceHolder.setText("Beneficiary Name: " + patient.getPersonDetails().getFullName() + ", Claim submitted by: " + doctor.getPersonDetails().getFullName());
         jLabelTotalClaimAmountPlaceHolder.setText(claim.getTotalClaimAmount() + "");
-        if (!claim.getClaimSatus().equals(PrimaryCareInsuranceClaim.ClaimStatus.PENDING)) {
-            jLabelPatientsResponsibilityPlaceHolder.setText(claim.getPatientResponsibility() + "");
+        if (claim.getClaimSatus().equals(PrimaryCareInsuranceClaim.ClaimStatus.PENDING)) {
+            if (claim.getInsuranceDeductable() >= claim.getTotalClaimAmount()) {
+                jLabelPatientsResponsibilityPlaceHolder.setText("0.00 USD");
+            } else {
+                jLabelPatientsResponsibilityPlaceHolder.setText((claim.getTotalClaimAmount() - claim.getInsuranceDeductable()) + " USD");
+            }
             jTextFieldInsuranceCompanyDeductable.setText(claim.getInsuranceDeductable() + "");
         } else {
-            jLabelPatientsResponsibilityPlaceHolder.setText(claim.getTotalClaimAmount() + "");
+            jTextFieldInsuranceCompanyDeductable.setEnabled(false);
+            jLabelClaimProcessingMessagePlaceHolder.setText("Claim has already been processed.");
         }
     }
     
@@ -92,7 +111,7 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         jLabel4 = new javax.swing.JLabel();
         jTextFieldInsuranceCompanyDeductable = new javax.swing.JTextField();
         btnApproveClaim = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelPatientPlaceHolder = new javax.swing.JLabel();
         btnDeclineClaim = new javax.swing.JButton();
         jLabelTotalClaimAmountPlaceHolder = new javax.swing.JLabel();
         jCheckBoxSendClaimEmailToPatient = new javax.swing.JCheckBox();
@@ -106,7 +125,7 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Patient Claims Detail page");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 311, 31));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 410, 31));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -117,26 +136,30 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 255));
         jLabel2.setText("Total Amount Claimed: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 106, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel3.setText("Insurance Deductable");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 136, -1, 25));
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel3.setText("*Insurance Deductable:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, 25));
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel4.setText("Patient Responsibility");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 168, -1, 25));
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel4.setText("Patient Responsibility:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, 25));
 
         jTextFieldInsuranceCompanyDeductable.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldInsuranceCompanyDeductable.setText("-");
         jTextFieldInsuranceCompanyDeductable.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jTextFieldInsuranceCompanyDeductable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldInsuranceCompanyDeductableActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldInsuranceCompanyDeductable, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 200, 20));
+        jPanel1.add(jTextFieldInsuranceCompanyDeductable, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 20));
 
         btnApproveClaim.setBackground(new java.awt.Color(255, 255, 255));
         btnApproveClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -147,11 +170,12 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
                 btnApproveClaimActionPerformed(evt);
             }
         });
-        jPanel1.add(btnApproveClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 170, 40));
+        jPanel1.add(btnApproveClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 170, 40));
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel7.setText("Add Patient, doctor and other claim details here");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+        jLabelPatientPlaceHolder.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelPatientPlaceHolder.setForeground(new java.awt.Color(153, 0, 153));
+        jLabelPatientPlaceHolder.setText("Add Patient, doctor and other claim details here");
+        jPanel1.add(jLabelPatientPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 830, -1));
 
         btnDeclineClaim.setBackground(new java.awt.Color(255, 255, 255));
         btnDeclineClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -162,11 +186,11 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
                 btnDeclineClaimActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDeclineClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 160, 40));
+        jPanel1.add(btnDeclineClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 160, 40));
 
         jLabelTotalClaimAmountPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabelTotalClaimAmountPlaceHolder.setText("Total Amount Claimed Place Holder");
-        jPanel1.add(jLabelTotalClaimAmountPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        jLabelTotalClaimAmountPlaceHolder.setText("-");
+        jPanel1.add(jLabelTotalClaimAmountPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 280, -1));
 
         jCheckBoxSendClaimEmailToPatient.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jCheckBoxSendClaimEmailToPatient.setSelected(true);
@@ -176,12 +200,14 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
                 jCheckBoxSendClaimEmailToPatientActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBoxSendClaimEmailToPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
+        jPanel1.add(jCheckBoxSendClaimEmailToPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
 
         jLabelPatientsResponsibilityPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabelPatientsResponsibilityPlaceHolder.setText("Total Amount Claimed Place Holder");
-        jPanel1.add(jLabelPatientsResponsibilityPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 169, -1, 20));
-        jPanel1.add(jLabelClaimProcessingMessagePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 303, 316, -1));
+        jLabelPatientsResponsibilityPlaceHolder.setText("-");
+        jPanel1.add(jLabelPatientsResponsibilityPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 220, 20));
+
+        jLabelClaimProcessingMessagePlaceHolder.setForeground(new java.awt.Color(153, 0, 153));
+        jPanel1.add(jLabelClaimProcessingMessagePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 460, 20));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
@@ -212,6 +238,10 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         // TODO add your handling code here:
         
         String value = jLabelPatientsResponsibilityPlaceHolder.getText();
+        if (value == null || "-".equals(value)) {
+            JOptionPane.showMessageDialog(null,"Cannot process claim. Enter the required fields", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         double patientResponsibility = Double.parseDouble(value);
         claim.setClaimSatus(PrimaryCareInsuranceClaim.ClaimStatus.PROCESSED);
         log.debug("Claim Approved. Patients responsibility = " + patientResponsibility);
@@ -220,8 +250,25 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         HealthInsuranceDepartmentOrganization org = (HealthInsuranceDepartmentOrganization) claim.getInsuranceCompanyOrganization();
         org.processMedicalInsuranceClaim(claim);
         
+        String message = "Hi " + claim.getPatient().getPersonDetails().getFullName() + "!\n" +
+                "Your insurance claim of " + claim.getTotalClaimAmount() + " USD has been processed by " + insuranceCompany + ".\n" +
+                "Your responsibility is " + patientResponsibility + " USD.\n" +
+                "To pay your bill, visit " + insuranceCompany + " company website.\n" +
+                "\n\n\n" +
+                "Cheers -\n" +
+                "Health Springs App Team";
+        sendEmail(message, claim.getPatient());        
     }//GEN-LAST:event_btnApproveClaimActionPerformed
 
+    void sendEmail(String message, Person patient) {
+        boolean success = new EmailClient().sendEmail(
+               patient.getPersonDetails().getEmailId(), 
+               ecosystem.getSysAdminEmail(), 
+               ecosystem.getSysAdmingEmailPassword(), 
+               "Insurance claim update for you recent appointment with primary care provider", 
+               message);
+    }
+    
     private void btnDeclineClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineClaimActionPerformed
         // TODO add your handling code here:
         jLabelTotalClaimAmountPlaceHolder.setText(claim.getTotalClaimAmount() + "");
@@ -229,6 +276,15 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
         claim.setClaimSatus(PrimaryCareInsuranceClaim.ClaimStatus.DECLINED);
         log.debug("Claim Declined. Patients responsibility = ");
         disableClaimFields();
+        
+        String message = "Hi " + claim.getPatient().getPersonDetails().getFullName() + "!\n" +
+                "Your insurance claim of " + claim.getTotalClaimAmount() + " USD has been declined by " + insuranceCompany + ".\n" +
+                "Your responsibility is " + claim.getTotalClaimAmount() + " USD.\n" +
+                "To pay your bill, visit " + insuranceCompany + " company website.\n" +
+                "\n\n\n" +
+                "Cheers -\n" +
+                "Health Springs App Team";
+        sendEmail(message, claim.getPatient());     
     }//GEN-LAST:event_btnDeclineClaimActionPerformed
 
     private void jCheckBoxSendClaimEmailToPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSendClaimEmailToPatientActionPerformed
@@ -237,18 +293,22 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
 
     private void jTextFieldInsuranceCompanyDeductableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsuranceCompanyDeductableActionPerformed
         // TODO add your handling code here:
-        jTextFieldInsuranceCompanyDeductable.setForeground(Color.white);
+        jTextFieldInsuranceCompanyDeductable.setBackground(Color.white);
         String value = jTextFieldInsuranceCompanyDeductable.getText();
+        if (StringUtils.isEmpty(value) || "-".equals(value)) {
+            return;
+        }
+        
         try {
             double insuranceDeductable = Double.parseDouble(value);
             if (insuranceDeductable > claim.getTotalClaimAmount()) {
-                jTextFieldInsuranceCompanyDeductable.setForeground(Color.red);
+                jLabelPatientsResponsibilityPlaceHolder.setText("0.00$");
                 return;
             }
             double patientResponsibility = claim.getTotalClaimAmount() - insuranceDeductable;
             jLabelPatientsResponsibilityPlaceHolder.setText(patientResponsibility + "");
         } catch (Exception e) {
-            jTextFieldInsuranceCompanyDeductable.setForeground(Color.red);
+            jTextFieldInsuranceCompanyDeductable.setBackground(Color.red);
         }
     }//GEN-LAST:event_jTextFieldInsuranceCompanyDeductableActionPerformed
 
@@ -264,8 +324,8 @@ public class PatientClaimDetailsJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelClaimProcessingMessagePlaceHolder;
+    private javax.swing.JLabel jLabelPatientPlaceHolder;
     private javax.swing.JLabel jLabelPatientsResponsibilityPlaceHolder;
     private javax.swing.JLabel jLabelTotalClaimAmountPlaceHolder;
     private javax.swing.JPanel jPanel1;

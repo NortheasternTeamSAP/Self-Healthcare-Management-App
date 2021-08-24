@@ -208,7 +208,7 @@ public class PatientDietPlan extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 15, -1, -1));
 
-        report1.setBackground(new java.awt.Color(204, 255, 255));
+        report1.setBackground(new java.awt.Color(222, 255, 236));
         report1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         report1.setLayout(new javax.swing.BoxLayout(report1, javax.swing.BoxLayout.LINE_AXIS));
         add(report1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 566, 252));

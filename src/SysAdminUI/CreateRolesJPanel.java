@@ -167,7 +167,6 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imgLogo.setBackground(new java.awt.Color(255, 255, 204));
-        imgLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\user1new.png")); // NOI18N
         imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 120));
 
@@ -301,7 +300,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
                 btnCreateRolesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCreateRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 800, 122, -1));
+        jPanel1.add(btnCreateRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 740, 122, -1));
 
         lblEnterprise.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -718,7 +717,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
 
         String[] splitResult = selectEnterprise.split(":");
         String enterpriseName = splitResult[0];
-        int enterpriseId = Integer.parseInt(splitResult[1]);
+        long enterpriseId = Long.parseLong(splitResult[1]);
         Enterprise enterprise = system.enterpriseDirectory.getEnterprise(enterpriseId);
         if (enterprise == null) {
             JOptionPane.showMessageDialog(jPanel1, "No enterprise found for id " + enterpriseId + "and name " + enterpriseName);
@@ -743,7 +742,7 @@ public class CreateRolesJPanel extends javax.swing.JPanel implements NextScreen 
 
         String[] splitResult = selectedOrganization.split(":");
         String orgName = splitResult[0];
-        int orgId = Integer.parseInt(splitResult[1]);
+        long orgId = Long.parseLong(splitResult[1]);
         Organization organization = selectedEnterprise.getOrganization(orgId);
         if (organization == null) {
             JOptionPane.showMessageDialog(jPanel1, "No organization found for id " + orgId + "and name " + orgName);

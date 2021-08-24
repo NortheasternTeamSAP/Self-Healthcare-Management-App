@@ -26,6 +26,7 @@ import Organization.PatientOrganization;
 import Organization.PrimaryCareOrganization;
 import Organization.SystemAdminOrganization;
 import Personnel.Address;
+import Utils.FieldsDecorator;
 import Utils.FieldsValidator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
@@ -64,6 +65,8 @@ public class ManageOrganizations extends javax.swing.JPanel implements NextScree
         this.WorkArea = WorkArea;
         this.system = system;
         this.backPage = backPage;
+        FieldsDecorator.decorateTable(tblOrg);
+        
         populateenterprise();
         comboorgtype.setModel(new DefaultComboBoxModel(OrganizationType.values()));
         LoadOrganization();
@@ -247,7 +250,7 @@ public class ManageOrganizations extends javax.swing.JPanel implements NextScree
         
         OrganizationType type = OrganizationType.getOrganizationType((String)comboorgtype.getSelectedItem());
         String selectedEnterprise = (String) comboenterprise.getSelectedItem();
-        int enterpriseId = Integer.parseInt(selectedEnterprise.split(":")[1]);
+        long enterpriseId = Long.parseLong(selectedEnterprise.split(":")[1]);
         Enterprise enterprise = system.enterpriseDirectory.getEnterprise(enterpriseId);
         if (enterprise == null) {           
             JOptionPane.showMessageDialog(null, "Cannot find enterprise with id: " + enterpriseId);
@@ -401,7 +404,7 @@ public class ManageOrganizations extends javax.swing.JPanel implements NextScree
 
         comboorgtype.removeAllItems();
         String selectedEnterprise = (String) comboenterprise.getSelectedItem();
-        int enterpriseId = Integer.parseInt(selectedEnterprise.split(":")[1]);
+        long enterpriseId = Long.parseLong(selectedEnterprise.split(":")[1]);
         Enterprise e = system.enterpriseDirectory.getEnterprise(enterpriseId);
         if (e == null) {           
             JOptionPane.showMessageDialog(null, "Cannot find enterprise with id: " + enterpriseId);

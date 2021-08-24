@@ -9,8 +9,10 @@ import DataStore.Appointment;
 import Laboratory.LaboratoryTest;
 import Laboratory.LaboratoryTestReport;
 import Personnel.Person;
+import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
 import javax.swing.JPanel;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -29,8 +31,23 @@ public class PatientLabTestViewJPanel extends javax.swing.JPanel implements Next
         this.workAreaPanel = workAreaPanel;
         this.labTestReport = labTestReport;
         this.backPage = backPage;
-        
+
+        enableTestResultFields(false);
         setLabTestValues();
+    }
+        
+    void enableTestResultFields(boolean enable) {
+        jLabelThyroid.setVisible(enable);
+        jLabelVitB12.setVisible(enable);
+        jLabelVitD.setVisible(enable);
+        jLabelBloodSugar.setVisible(enable);
+        jLabelHeamoglobin.setVisible(enable);
+        
+        jLabelThyroid.setEnabled(false);
+        jLabelVitB12.setEnabled(false);
+        jLabelVitD.setEnabled(false);
+        jLabelBloodSugar.setEnabled(false);
+        jLabelHeamoglobin.setEnabled(false);
     }
 
     /**
@@ -47,6 +64,22 @@ public class PatientLabTestViewJPanel extends javax.swing.JPanel implements Next
         jLabel1 = new javax.swing.JLabel();
         jLabelPatientDetailsPlaceHolder = new javax.swing.JLabel();
         jLabelLabResultsPlaceHolder = new javax.swing.JLabel();
+        jLabelLabResultsPlaceHolder1 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
+        jLabelHeamoglobin = new javax.swing.JLabel();
+        jTextFieldHemoglobin = new javax.swing.JTextField();
+        jLabelThyroid = new javax.swing.JLabel();
+        jTextFieldThyroid = new javax.swing.JTextField();
+        jLabelVitD = new javax.swing.JLabel();
+        jTextFieldVitaminD = new javax.swing.JTextField();
+        jLabelVitB12 = new javax.swing.JLabel();
+        jTextFieldVitaminB12 = new javax.swing.JTextField();
+        jLabelBloodSugar = new javax.swing.JLabel();
+        jTextFieldBloodSugar = new javax.swing.JTextField();
+        btnShowTrend = new javax.swing.JButton();
+        jPanelGraphPannel = new javax.swing.JPanel();
+        jLabelPatientDetailsPlaceHolder1 = new javax.swing.JLabel();
+        jLabelPatientDetailsPlaceHolder2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,39 +94,132 @@ public class PatientLabTestViewJPanel extends javax.swing.JPanel implements Next
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel1.setText("Laboratory Test Page");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 259, 31));
+        jLabel1.setText("Laboratory Test Results");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 400, 31));
 
         jLabelPatientDetailsPlaceHolder.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabelPatientDetailsPlaceHolder.setText("Patient Details Place Holder");
-        jPanel1.add(jLabelPatientDetailsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 90, 385, 55));
+        jPanel1.add(jLabelPatientDetailsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 310, 30));
 
         jLabelLabResultsPlaceHolder.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelLabResultsPlaceHolder.setForeground(new java.awt.Color(102, 0, 153));
         jLabelLabResultsPlaceHolder.setText("Lab Results Place Holder");
-        jPanel1.add(jLabelLabResultsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 173, 385, 55));
+        jPanel1.add(jLabelLabResultsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 180, 55));
+
+        jLabelLabResultsPlaceHolder1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelLabResultsPlaceHolder1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/lab-test.gif"))); // NOI18N
+        jPanel1.add(jLabelLabResultsPlaceHolder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 550, 400));
+
+        btnBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
+        btnBack1.setContentAreaFilled(false);
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 30, -1, -1));
+
+        jLabelHeamoglobin.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelHeamoglobin.setForeground(new java.awt.Color(51, 153, 255));
+        jLabelHeamoglobin.setText("Haemoglobin");
+        jPanel1.add(jLabelHeamoglobin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+
+        jTextFieldHemoglobin.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldHemoglobin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTextFieldHemoglobin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 143, -1));
+
+        jLabelThyroid.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelThyroid.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelThyroid.setText("Thyroid");
+        jPanel1.add(jLabelThyroid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 60, 25));
+
+        jTextFieldThyroid.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldThyroid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTextFieldThyroid, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 143, -1));
+
+        jLabelVitD.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelVitD.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelVitD.setText("Vitamin D");
+        jPanel1.add(jLabelVitD, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, 25));
+
+        jTextFieldVitaminD.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldVitaminD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTextFieldVitaminD, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 143, -1));
+
+        jLabelVitB12.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelVitB12.setForeground(new java.awt.Color(0, 153, 255));
+        jLabelVitB12.setText("Vitamin B12");
+        jPanel1.add(jLabelVitB12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 90, 25));
+
+        jTextFieldVitaminB12.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldVitaminB12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTextFieldVitaminB12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 143, -1));
+
+        jLabelBloodSugar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelBloodSugar.setForeground(new java.awt.Color(51, 153, 255));
+        jLabelBloodSugar.setText("Blood Sugar");
+        jPanel1.add(jLabelBloodSugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, 25));
+
+        jTextFieldBloodSugar.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jTextFieldBloodSugar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jTextFieldBloodSugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 143, -1));
+
+        btnShowTrend.setBackground(new java.awt.Color(255, 255, 255));
+        btnShowTrend.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        btnShowTrend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-graph-report-30.png"))); // NOI18N
+        btnShowTrend.setText("Show Graphical Representation");
+        btnShowTrend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTrendActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnShowTrend, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 310, -1));
+
+        javax.swing.GroupLayout jPanelGraphPannelLayout = new javax.swing.GroupLayout(jPanelGraphPannel);
+        jPanelGraphPannel.setLayout(jPanelGraphPannelLayout);
+        jPanelGraphPannelLayout.setHorizontalGroup(
+            jPanelGraphPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanelGraphPannelLayout.setVerticalGroup(
+            jPanelGraphPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanelGraphPannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 660, -1, 0));
+
+        jLabelPatientDetailsPlaceHolder1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelPatientDetailsPlaceHolder1.setText("Patient Details Place Holder");
+        jPanel1.add(jLabelPatientDetailsPlaceHolder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 310, 30));
+
+        jLabelPatientDetailsPlaceHolder2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelPatientDetailsPlaceHolder2.setText("Patient Details Place Holder");
+        jPanel1.add(jLabelPatientDetailsPlaceHolder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 310, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 850));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1120, 870));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1100, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 856, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -101,48 +227,76 @@ public class PatientLabTestViewJPanel extends javax.swing.JPanel implements Next
         nextScreen(workAreaPanel, backPage, "LabAssistantHomePage");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnShowTrendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTrendActionPerformed
+        // TODO add your handling code here:
+        String Hemoglobin = jTextFieldHemoglobin.getText();
+        String Thyroid = jTextFieldThyroid.getText();
+        String VitaminD = jTextFieldVitaminD.getText();
+        String VitaminB12 = jTextFieldVitaminB12.getText();
+        String BloodSugar = jTextFieldBloodSugar.getText();
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        GraphPlotterUtils graphPlotterUtils = new GraphPlotterUtils();
+        dcd.setValue(new Integer(Hemoglobin), "values", "hemoglobin");
+        dcd.setValue(new Integer(Thyroid), "values", "thyroid");
+        dcd.setValue(new Integer(VitaminD), "values", "VitaminD");
+        dcd.setValue(new Integer(VitaminB12), "values", "VitaminB12");
+        dcd.setValue(new Integer(BloodSugar), "values", "BloodSugar");
+        graphPlotterUtils.createBarChart3D("lab tests", "Values", "Lab test report", "lab test", dcd, jPanelGraphPannel);
+
+    }//GEN-LAST:event_btnShowTrendActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JButton btnShowTrend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelBloodSugar;
+    private javax.swing.JLabel jLabelHeamoglobin;
     private javax.swing.JLabel jLabelLabResultsPlaceHolder;
+    private javax.swing.JLabel jLabelLabResultsPlaceHolder1;
     private javax.swing.JLabel jLabelPatientDetailsPlaceHolder;
+    private javax.swing.JLabel jLabelPatientDetailsPlaceHolder1;
+    private javax.swing.JLabel jLabelPatientDetailsPlaceHolder2;
+    private javax.swing.JLabel jLabelThyroid;
+    private javax.swing.JLabel jLabelVitB12;
+    private javax.swing.JLabel jLabelVitD;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelGraphPannel;
+    private javax.swing.JTextField jTextFieldBloodSugar;
+    private javax.swing.JTextField jTextFieldHemoglobin;
+    private javax.swing.JTextField jTextFieldThyroid;
+    private javax.swing.JTextField jTextFieldVitaminB12;
+    private javax.swing.JTextField jTextFieldVitaminD;
     // End of variables declaration//GEN-END:variables
 
     private void setLabTestValues() {
-        if (labTestReport == null) {
-            jLabelLabResultsPlaceHolder.setText("No lab test ordered for this appointment.");
-            jLabelPatientDetailsPlaceHolder.setText("");
-            return;
-        }
         
         Person patient = labTestReport.getPatient();
         Person doctor = labTestReport.getDoctor();
         Appointment appointment = labTestReport.getAppointment();
-        String placeHolderValue = 
-                "<html>" +
-                "Patient Name: " + patient.getPersonDetails().getFullName() + "</br>" +
-                "Health Care Provider Name: " + doctor.getPersonDetails().getFullName() + "</br>" +
-                "Appointment Date: " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs" + "</br>" +
-                "</html>";
-        jLabelPatientDetailsPlaceHolder.setText(placeHolderValue);
+        jLabelPatientDetailsPlaceHolder.setText("Appointment Date: " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs");
+        jLabelPatientDetailsPlaceHolder1.setText("Patient Name: " + patient.getPersonDetails().getFullName());
+        jLabelPatientDetailsPlaceHolder2.setText("Health Care Provider Name: " + doctor.getPersonDetails().getFullName());
+        
+        if (labTestReport == null) {
+            jLabelLabResultsPlaceHolder.setText("No lab test ordered for this appointment.");
+            return;
+        }
         
         if (!labTestReport.getLabTestStatus().equals(LaboratoryTestReport.LabTestStatus.COMPLETED)) {
             jLabelLabResultsPlaceHolder.setText("Awaiting laboratory results. Please check after some time.");
             return;
         }
-    
-        LaboratoryTest testResult = labTestReport.getLaboratoryTestResult();
-        String labTestResultsPlaceHolderValue = 
-                "<html>" +
-                "Hemoglobin: " + labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.HEMOGLOBIN) + "</br>" +
-                "Blood Sugar: " + labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.BLOOD_SUGAR) + "</br>" +
-                "Thyroid: " + labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.THYROID) + "</br>" +
-                "Vitamin D: " + labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.VITAMIN_D) + "</br>" +
-                "Vitamin B12: " + labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.VITAMIN_B12) + "</br>" +
-                "</html>";
-        jLabelLabResultsPlaceHolder.setText(labTestResultsPlaceHolderValue);
+        
+        enableTestResultFields(true);
+        jLabelThyroid.setText(labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.THYROID).toString());
+        jLabelVitB12.setText(labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.VITAMIN_B12).toString());
+        jLabelVitD.setText(labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.VITAMIN_D).toString());
+        jLabelBloodSugar.setText(labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.BLOOD_SUGAR).toString());
+        jLabelHeamoglobin.setText(labTestReport.getLaboratoryTestResult().get(LaboratoryTest.TestType.HEMOGLOBIN).toString());
+
+        jLabelLabResultsPlaceHolder.setText("Test Results");
     }
 }

@@ -50,6 +50,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblDoctorTxt">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Select Doctor to check the availability"/>
           </Properties>
           <Constraints>
@@ -61,7 +64,13 @@
         <Component class="javax.swing.JLabel" name="lblDoctorName">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="66" red="ff" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Doctor Name:"/>
           </Properties>
@@ -116,12 +125,6 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="4">
-                    <Column editable="false" title="Id" type="java.lang.String">
-                      <Data value="doc1"/>
-                      <Data value="doc2"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                    </Column>
                     <Column editable="false" title="Doctors Name" type="java.lang.String">
                       <Data value="AAA"/>
                       <Data value="BBB"/>
@@ -131,6 +134,12 @@
                     <Column editable="false" title="Specialization" type="java.lang.String">
                       <Data value="AAA"/>
                       <Data value="BBB"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
+                    <Column editable="false" title="Id" type="java.lang.String">
+                      <Data value="doc1"/>
+                      <Data value="doc2"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
@@ -178,6 +187,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblDoctorSpeciality">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Speciality:"/>
           </Properties>
           <Constraints>
@@ -198,6 +213,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblDoctorReviews">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Reviews:"/>
           </Properties>
           <Constraints>
@@ -225,14 +246,14 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="173" y="342" width="-1" height="-1"/>
+              <AbsoluteConstraints x="170" y="350" width="-1" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserDoctorAvailability">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="587" y="246" width="184" height="-1"/>
+              <AbsoluteConstraints x="560" y="260" width="184" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -251,7 +272,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="549" y="293" width="-1" height="-1"/>
+              <AbsoluteConstraints x="610" y="290" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -270,7 +291,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="635" y="293" width="-1" height="-1"/>
+              <AbsoluteConstraints x="690" y="290" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -289,7 +310,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="808" y="293" width="64" height="-1"/>
+              <AbsoluteConstraints x="610" y="320" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -308,7 +329,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="465" y="293" width="72" height="-1"/>
+              <AbsoluteConstraints x="530" y="290" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -327,7 +348,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="890" y="293" width="73" height="-1"/>
+              <AbsoluteConstraints x="690" y="320" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -346,7 +367,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="725" y="293" width="68" height="-1"/>
+              <AbsoluteConstraints x="528" y="320" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -374,7 +395,10 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxShareCurrentPrescriptionWithDoctor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Attach Current Prescription Report in email to send to primary care"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Share prescription history with primary care"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed"/>
@@ -387,7 +411,10 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxShareInsuranceDetailsWithDoctor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Attach insurance details in the email to be sent to primary care"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Share insurance details with primary care"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed"/>
@@ -400,6 +427,9 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxSendAppointmentEmailConfirmation">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Send appointment confirmation email"/>
           </Properties>
           <Events>
@@ -413,6 +443,9 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxSendAppointmentTextConfirmation">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Send appointment confirmation text"/>
           </Properties>
           <Events>
@@ -436,6 +469,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblOtherAppointmentDetails">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Other Complaints:"/>
           </Properties>
           <Constraints>
@@ -446,7 +482,10 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxShareVitalsWithDoctor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Attach vitals report in email to send to primary care"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Share vital signs history with primary care"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxShareVitalsWithDoctorActionPerformed"/>
@@ -459,6 +498,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblDoctorAddress">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Address:"/>
           </Properties>
           <Constraints>
@@ -479,16 +524,25 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblCheckAvailability">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Check Availability"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="250" width="-1" height="-1"/>
+              <AbsoluteConstraints x="580" y="240" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDoctorGender">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Gender:"/>
           </Properties>
           <Constraints>

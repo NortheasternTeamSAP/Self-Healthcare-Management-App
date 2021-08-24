@@ -8,6 +8,7 @@ package UICounselorDietitianFitnessTrainer;
 import Counselor.CounselorAppointment;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainerAppointment;
+import Utils.FieldsDecorator;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -34,6 +35,8 @@ public class ViewPastAppointmentCounselor extends javax.swing.JPanel {
         this.system=system;
         this.counselorAppointments=d;
         this.flag=flag;
+        FieldsDecorator.decorateTable(tblpastAppointments);
+        
         if(flag==1){  
         populatepastCounselorAppointment();
           }

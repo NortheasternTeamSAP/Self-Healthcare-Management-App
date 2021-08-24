@@ -8,6 +8,7 @@ package Utils;
 import Enterprise.Enterprise;
 import Personnel.Person;
 import SysAdminUI.CreateRolesJPanel;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -49,6 +50,9 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
         jLabelAverageRatings.setText("Average Rating: " + getAverageRating(ratings));
         populateReviewsTable(this.ratings);
         setUpSortByActionListener();
+        
+        jTableReviews.getTableHeader().setOpaque(false);
+        jTableReviews.getTableHeader().setBackground(new Color(204, 239, 255));
     }
     
     void setUpSortByActionListener() {
@@ -259,7 +263,7 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
                 jButtonMoreDetailsActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, -1, -1));
+        jPanel1.add(jButtonMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 230, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Review");
@@ -269,7 +273,7 @@ public class ViewPersonRatingsJPanel extends javax.swing.JPanel implements NextS
         jTextAreaReview.setRows(5);
         jScrollPane2.setViewportView(jTextAreaReview);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 291, 115));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 570, 115));
 
         jLabelAverageRatings.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelAverageRatings.setText("Average Rating:    <PlaceHolder>");

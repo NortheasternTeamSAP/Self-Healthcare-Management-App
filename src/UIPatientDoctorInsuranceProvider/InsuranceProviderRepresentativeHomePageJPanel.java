@@ -22,10 +22,14 @@ import Personnel.PersonDetails;
 import SysAdminUI.Login;
 import Utils.ConsoleLogger;
 import Utils.EmailClient;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
+import java.awt.Color;
+import java.awt.Image;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -47,6 +51,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private EcoSystem ecoSystem;
     private LaboratoryAssistant laboratoryAssistant;
     Person insuranceProviderRepresentative;
+    String insuranceCompany;
     
     HealthInsuranceDepartmentOrganization healthInsuranceOrganization ;
     ConsoleLogger log = ConsoleLogger.getLogger();
@@ -63,6 +68,14 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         this.insuranceProviderRepresentative = insuranceProviderRepresentative;
         this.healthInsuranceOrganization = (HealthInsuranceDepartmentOrganization) healthInsuranceOrganization;
         
+        this.insuranceCompany = healthInsuranceOrganization.getEnterprise().getEnterpriseName();
+        FieldsDecorator.decorateTable(tblPendingHealthInsuranceClaims);
+        FieldsDecorator.decorateTable(tblProcessedHealthInsuranceClaims);
+        FieldsDecorator.decorateTable(tblUnProcessedInsuranceRequests, new Color(255, 204, 230));
+        FieldsDecorator.decorateTable(tblProcessedInsuranceRequests, new Color(255, 204, 230));
+        
+        String name = insuranceProviderRepresentative.getPersonDetails().getFullName();
+        lblPatientDetails.setText("Insurance Rep. Home - Welcome " + name + "!");
          healthInsuranceOrganization = getHealthInsuranceOrganization(insuranceProviderRepresentative);
         
         populatePendingHealthInsuranceClaimsTable();
@@ -93,11 +106,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         
         for (InsuranceDetails insuranceRequest : insuranceRequests) {
             Object row[] = new Object[5];
-            row[0] = insuranceRequest.getId();
-            row[1] = insuranceRequest.getRequestDate().toString();
-            row[2] = insuranceRequest.getPatient().getPersonDetails().getFullName();
-            row[3] = insuranceRequest.getPlanDetails().getPlanName();
-            row[4] = insuranceRequest.getInsuranceRequestApprovalStatus().toString();
+            row[0] = insuranceRequest.getRequestDate().toString();
+            row[1] = insuranceRequest.getPatient().getPersonDetails().getFullName();
+            row[2] = insuranceRequest.getPlanDetails().getPlanName();
+            row[3] = insuranceRequest.getInsuranceRequestApprovalStatus().toString();
+            row[4] = insuranceRequest.getId();
             model.addRow(row);
         }
     }
@@ -115,9 +128,9 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         for (PrimaryCareInsuranceClaim claim : pendingClaims) {
             if (claim.getClaimSatus().equals(ClaimStatus.PENDING)) {
                 Object row[] = new Object[3];
-                row[0] = claim.getClaimId();
-                row[1] = claim.getPatient().getPersonDetails().getFullName();
-                row[2] = claim.getClaimSatus();
+                row[0] = claim.getPatient().getPersonDetails().getFullName();
+                row[1] = claim.getClaimSatus();
+                row[2] = claim.getClaimId();
                 model.addRow(row);
             }
         }
@@ -136,9 +149,9 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         for (PrimaryCareInsuranceClaim claim : processedClaims) {
             if (!claim.getClaimSatus().equals(ClaimStatus.PENDING)) {
                 Object row[] = new Object[3];
-                row[0] = claim.getClaimId();
-                row[1] = claim.getPatient().getPersonDetails().getFullName();
-                row[2] = claim.getClaimSatus();
+                row[0] = claim.getPatient().getPersonDetails().getFullName();
+                row[1] = claim.getClaimSatus();
+                row[2] = claim.getClaimId();
                 model.addRow(row);
             }
         }
@@ -165,7 +178,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         lblPhoneNumber = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         lblEmailPlaceHolder = new javax.swing.JLabel();
-        lblGenderPlaceHolder = new javax.swing.JLabel();
+        lblInsuranceCompanyPlaceHolder = new javax.swing.JLabel();
         lblDobPlaceHolder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
@@ -193,56 +206,62 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
-        jPanel1.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 146, -1, -1));
+        jPanel1.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
 
         lblNamePlaceHolder.setText("NamePlaceHolder");
-        jPanel1.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 88, -1, -1));
+        jPanel1.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, 20));
 
-        lblDob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDob1.setForeground(new java.awt.Color(51, 153, 255));
         lblDob1.setText("Date Of Birth:");
         jPanel1.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 121, -1, -1));
 
-        lblWeight1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWeight1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWeight1.setForeground(new java.awt.Color(51, 153, 255));
         lblWeight1.setText("Email ID:");
         jPanel1.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 229, -1, -1));
 
-        lblGender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblGender.setText("Gender");
-        jPanel1.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 199, 56, -1));
+        lblGender.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblGender.setForeground(new java.awt.Color(51, 153, 255));
+        lblGender.setText("Insurance Company");
+        jPanel1.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 199, 150, -1));
 
         lblAddressPlaceHolder.setText("AddressPlaceHolder");
-        jPanel1.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
+        jPanel1.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/user1new.png"))); // NOI18N
         imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 120, 120));
+        jPanel1.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 120, 120));
 
         lblPatientDetails.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblPatientDetails.setText("Insurance Provider Home Page");
-        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 370, 40));
+        jPanel1.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 780, 40));
 
-        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(51, 153, 255));
         lblPhoneNumber.setText("Phone Number:");
         jPanel1.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 145, -1, -1));
 
-        lblAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAddress.setForeground(new java.awt.Color(51, 153, 255));
         lblAddress.setText("Address:");
         jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 169, 68, -1));
 
         lblEmailPlaceHolder.setText("EmailIdPlaceHolder");
-        jPanel1.add(lblEmailPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
+        jPanel1.add(lblEmailPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
 
-        lblGenderPlaceHolder.setText("GenderHolder");
-        jPanel1.add(lblGenderPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
+        lblInsuranceCompanyPlaceHolder.setText("GenderHolder");
+        jPanel1.add(lblInsuranceCompanyPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
 
         lblDobPlaceHolder.setText("DobPlaceHolder");
-        jPanel1.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 122, -1, -1));
+        jPanel1.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Pending Health Insurance Claims");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 275, 330, 26));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 330, 26));
 
-        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblName.setForeground(new java.awt.Color(51, 153, 255));
         lblName.setText("Name:");
         jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 87, -1, -1));
 
@@ -265,11 +284,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 {null, null, null}
             },
             new String [] {
-                "Claim Id", "Patient Name", "Status"
+                "Patient Name", "Status", "Claim Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -285,11 +304,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         });
         jScrollPane3.setViewportView(tblProcessedHealthInsuranceClaims);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 525, 104));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 450, 104));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("Processed Health Insurance Claims");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 330, 26));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 330, 26));
 
         btnBback.setBackground(new java.awt.Color(255, 255, 255));
         btnBback.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -310,11 +329,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 {null, null, null}
             },
             new String [] {
-                "Claim Id", "Patient Name", "Status"
+                "Patient Name", "Status", "Claim Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -335,7 +354,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             tblPendingHealthInsuranceClaims.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 299, 525, 104));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 299, 440, 104));
 
         btnReviewClaim.setBackground(new java.awt.Color(255, 255, 255));
         btnReviewClaim.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -346,7 +365,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 btnReviewClaimActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReviewClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, 160, -1));
+        jPanel1.add(btnReviewClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 160, -1));
 
         tblUnProcessedInsuranceRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -356,11 +375,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Request Date", "Beneficiary name", "Plan Details", "Request Status"
+                "Request Date", "Beneficiary name", "Plan Details", "Request Status", "Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -376,11 +395,11 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         });
         jScrollPane5.setViewportView(tblUnProcessedInsuranceRequests);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 690, 525, 104));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 770, 104));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setText("Pending insurance Requests");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, 330, 26));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 330, 26));
 
         btnAcceptInsuranceRequest.setBackground(new java.awt.Color(255, 255, 255));
         btnAcceptInsuranceRequest.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -391,7 +410,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 btnAcceptInsuranceRequestActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAcceptInsuranceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 800, 110, -1));
+        jPanel1.add(btnAcceptInsuranceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 600, 150, -1));
 
         btnDeclineInsuranceRequest.setBackground(new java.awt.Color(255, 255, 255));
         btnDeclineInsuranceRequest.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -402,7 +421,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 btnDeclineInsuranceRequestActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDeclineInsuranceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 802, 120, 40));
+        jPanel1.add(btnDeclineInsuranceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 600, 150, 40));
 
         tblProcessedInsuranceRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -412,14 +431,14 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Request Date", "Beneficiary name", "Plan Details", "Request Status"
+                "Request Date", "Beneficiary name", "Plan Details", "Request Status", "Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, true
+                false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -432,13 +451,13 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
         });
         jScrollPane6.setViewportView(tblProcessedInsuranceRequests);
 
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 880, 525, 104));
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 690, 780, 110));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setText("Processed insurance Requests");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 850, 330, 26));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, 330, 26));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 1090, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X960.jpg"))); // NOI18N
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1100, 980));
@@ -447,13 +466,13 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private void btnProcessClaimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessClaimActionPerformed
         // TODO add your handling code here:
         
-        int selectedRow = tblProcessedHealthInsuranceClaims.getSelectedRow();
+        int selectedRow = tblPendingHealthInsuranceClaims.getSelectedRow();
         if (selectedRow < 0) {
             log.error("Selected row from tblPendingHealthInsuranceClaims table is not >= 0");
             return;
         }
         
-        long claimId = (long) tblPendingHealthInsuranceClaims.getModel().getValueAt(selectedRow, 0);
+        long claimId = (long) tblPendingHealthInsuranceClaims.getModel().getValueAt(selectedRow, 2);
         PrimaryCareInsuranceClaim claimToBeProcessed = null;
         for (PrimaryCareInsuranceClaim claim : healthInsuranceOrganization.getPendingMedicalInsuranceClaims()) {
             if (claim.getClaimId() == claimId) {
@@ -467,7 +486,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        nextScreen(workAreaPanel, new PatientClaimDetailsJPanel(workAreaPanel, claimToBeProcessed, this), "PatientClaimDetailsJPanel");
+        nextScreen(workAreaPanel, new PatientClaimDetailsJPanel(workAreaPanel, ecoSystem, claimToBeProcessed, insuranceCompany, this), "PatientClaimDetailsJPanel");
     }//GEN-LAST:event_btnProcessClaimActionPerformed
 
     private void btnBbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBbackActionPerformed
@@ -483,7 +502,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        long claimId = (long) tblProcessedHealthInsuranceClaims.getModel().getValueAt(selectedRow, 0);
+        long claimId = (long) tblProcessedHealthInsuranceClaims.getModel().getValueAt(selectedRow, 2);
         PrimaryCareInsuranceClaim claimToBeProcessed = null;
         for (PrimaryCareInsuranceClaim claim : healthInsuranceOrganization.getPendingMedicalInsuranceClaims()) {
             if (claim.getClaimId() == claimId) {
@@ -497,7 +516,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        nextScreen(workAreaPanel, new PatientClaimDetailsJPanel(workAreaPanel, claimToBeProcessed, this), "PatientClaimDetailsJPanel");
+        nextScreen(workAreaPanel, new PatientClaimDetailsJPanel(workAreaPanel, ecoSystem, claimToBeProcessed, insuranceCompany, this), "PatientClaimDetailsJPanel");
     }//GEN-LAST:event_btnReviewClaimActionPerformed
 
     private void btnAcceptInsuranceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptInsuranceRequestActionPerformed
@@ -509,7 +528,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        long requestId = (long) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
+        long requestId = (long) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 4);
         InsuranceDetails insuranceDetails = healthInsuranceOrganization.getUnprocessedInsuranceRequest(requestId);
         if (insuranceDetails == null) {
             JOptionPane.showMessageDialog(null, "No pending insurance found with id: " + requestId, "Warning", JOptionPane.WARNING_MESSAGE);
@@ -568,7 +587,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
             return;
         }
         
-        long requestId = (long) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 0);
+        long requestId = (long) tblUnProcessedInsuranceRequests.getModel().getValueAt(selectedRow, 4);
         InsuranceDetails insuranceDetails = healthInsuranceOrganization.getUnprocessedInsuranceRequest(requestId);
         if (insuranceDetails == null) {
             JOptionPane.showMessageDialog(null, "No pending insurance found with id: " + requestId, "Warning", JOptionPane.WARNING_MESSAGE);
@@ -631,7 +650,7 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private javax.swing.JLabel lblDobPlaceHolder;
     private javax.swing.JLabel lblEmailPlaceHolder;
     private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblGenderPlaceHolder;
+    private javax.swing.JLabel lblInsuranceCompanyPlaceHolder;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNamePlaceHolder;
     private javax.swing.JLabel lblPatientDetails;
@@ -647,10 +666,26 @@ public class InsuranceProviderRepresentativeHomePageJPanel extends javax.swing.J
     private void populateInsuranceProviderRepresentativeInfoPlaceholders() {
         PersonDetails pd = insuranceProviderRepresentative.getPersonDetails();
         lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
-        lblGenderPlaceHolder.setText(pd.getDob().toString()); 
+        lblInsuranceCompanyPlaceHolder.setText(pd.getDob().toString()); 
         lblNamePlaceHolder.setText(pd.getFullName()); 
         lblPhoneNumberPlaceHolder.setText(pd.getPhoneNumber());
-        lblGenderPlaceHolder.setText(pd.getGender().toString());
+        String companyName = ecoSystem.organizationDirectory.getOrganization(insuranceProviderRepresentative.getOrganizationId()).getEnterprise().getEnterpriseName();
+        lblInsuranceCompanyPlaceHolder.setText(companyName);
+        lblEmailPlaceHolder.setText(pd.getEmailId());
+        lblDobPlaceHolder.setText(pd.getDob().toString());
         imgLogo.setIcon(pd.getLogoImage());
+        
+        if (pd.getLogoImage() != null) {
+            imgLogo.setIcon(pd.getLogoImage());
+            return;
+        }
+        
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images_icons/insurance-agent.jpeg"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);  // transform it back]
+        imgLogo.setIcon(imageIcon);
+        
     }
+    
 }

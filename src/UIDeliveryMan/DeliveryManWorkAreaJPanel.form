@@ -18,7 +18,7 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabelTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
@@ -28,7 +28,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="50" y="70" width="-1" height="-1"/>
+          <AbsoluteConstraints x="50" y="70" width="630" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -51,12 +51,12 @@
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="false" title="Order ID" type="java.lang.Object"/>
                 <Column editable="false" title="Patient UserName" type="java.lang.Object"/>
                 <Column editable="false" title="Patient Address" type="java.lang.Object"/>
                 <Column editable="false" title="Pharmacy Name" type="java.lang.Object"/>
                 <Column editable="false" title="Pharmacy Address" type="java.lang.Object"/>
                 <Column editable="false" title="Order Status" type="java.lang.Object"/>
+                <Column editable="false" title="Order ID" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -183,12 +183,12 @@
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="false" title="Order ID" type="java.lang.Object"/>
                 <Column editable="false" title="Patient Name" type="java.lang.Object"/>
                 <Column editable="false" title="Patient Address" type="java.lang.Object"/>
                 <Column editable="false" title="Pharmacy Name" type="java.lang.Object"/>
                 <Column editable="false" title="Pharmacy Address" type="java.lang.Object"/>
                 <Column editable="false" title="Order Status" type="java.lang.Object"/>
+                <Column editable="false" title="Order ID" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

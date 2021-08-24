@@ -117,14 +117,12 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         jButtonListEmployees = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
-        jPasswordLabel = new javax.swing.JLabel();
         lblAddrCity = new javax.swing.JLabel();
         lblAddrState = new javax.swing.JLabel();
         jPasswordTextField = new javax.swing.JPasswordField();
         txtName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmployees = new javax.swing.JTable();
-        lblEnterprise = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtAddressCountry = new javax.swing.JTextField();
         txtPhoneNumber = new javax.swing.JTextField();
@@ -134,7 +132,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         txtAddressZip = new javax.swing.JTextField();
         txtAddressCity = new javax.swing.JTextField();
         jComboBoxAddrState = new javax.swing.JComboBox<>();
-        lblOrg = new javax.swing.JLabel();
         lblAddrStreet1 = new javax.swing.JLabel();
         lblAddrCountry = new javax.swing.JLabel();
         lblDob = new javax.swing.JLabel();
@@ -144,7 +141,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         lblAddrStreet = new javax.swing.JLabel();
         btnLoadRole = new javax.swing.JButton();
         txtDobDateChooser = new com.toedter.calendar.JDateChooser();
-        jUsernameLabel = new javax.swing.JLabel();
         comboenterprise = new javax.swing.JComboBox<>();
         txtUsername = new javax.swing.JTextField();
         lblAddrState1 = new javax.swing.JLabel();
@@ -159,6 +155,10 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         lblAddrZip1 = new javax.swing.JLabel();
         lblAddrZip2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -202,18 +202,19 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
                 .addComponent(jButtonBack)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel6)
-                .addContainerGap(478, Short.MAX_VALUE))
+                .addContainerGap(500, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(119, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jComboRoleTypes, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jButtonListEmployees)))
-                .addGap(303, 303, 303))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,12 +233,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 150));
-
-        jPasswordLabel.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jPasswordLabel.setText("Password");
-        jPasswordLabel.setOpaque(true);
-        add(jPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 669, 70, 20));
 
         lblAddrCity.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAddrCity.setText("City");
@@ -293,15 +288,9 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 150, 700, 203));
 
-        lblEnterprise.setBackground(new java.awt.Color(255, 255, 255));
-        lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEnterprise.setText("Enterprise");
-        lblEnterprise.setOpaque(true);
-        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 70, -1));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 418, -1, 20));
+        jLabel1.setText("Password");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, -1, 30));
 
         txtAddressCountry.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtAddressCountry.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -341,12 +330,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         });
         add(jComboBoxAddrState, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 730, 260, -1));
 
-        lblOrg.setBackground(new java.awt.Color(255, 255, 255));
-        lblOrg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblOrg.setText("Organization");
-        lblOrg.setOpaque(true);
-        add(lblOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 600, -1, -1));
-
         lblAddrStreet1.setText("Unit");
         add(lblAddrStreet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 640, -1, -1));
 
@@ -384,12 +367,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         add(btnLoadRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, 45));
         add(txtDobDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 260, -1));
 
-        jUsernameLabel.setBackground(new java.awt.Color(255, 255, 255));
-        jUsernameLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jUsernameLabel.setText("Username");
-        jUsernameLabel.setOpaque(true);
-        add(jUsernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 630, 70, 29));
-
         comboenterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboenterpriseActionPerformed(evt);
@@ -420,7 +397,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
                 btnUpdateRolesActionPerformed(evt);
             }
         });
-        add(btnUpdateRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 700, 120, 41));
+        add(btnUpdateRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 720, 250, 50));
 
         btnDeleteRole1.setBackground(new java.awt.Color(255, 255, 255));
         btnDeleteRole1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -452,9 +429,8 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         add(txtPhoneNumberCountryCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 32, 26));
 
         imgLogo.setBackground(new java.awt.Color(255, 255, 204));
-        imgLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\sravy\\OneDrive\\Pictures\\FinalProject-Icons\\user1new.png")); // NOI18N
         imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 370, 120, 120));
+        add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, 120, 120));
 
         btnRemove1.setBackground(new java.awt.Color(255, 255, 255));
         btnRemove1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/disagree.png"))); // NOI18N
@@ -463,7 +439,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
                 btnRemove1ActionPerformed(evt);
             }
         });
-        add(btnRemove1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, 50, -1));
+        add(btnRemove1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 500, 50, -1));
 
         btnAttach.setBackground(new java.awt.Color(255, 255, 255));
         btnAttach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-attach-30.png"))); // NOI18N
@@ -472,7 +448,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
                 btnAttachActionPerformed(evt);
             }
         });
-        add(btnAttach, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 40, -1));
+        add(btnAttach, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 500, 40, -1));
 
         lblAddrZip1.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
         lblAddrZip1.setText("*10 digits");
@@ -482,9 +458,24 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
         lblAddrZip2.setText("*5 digits");
         add(lblAddrZip2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 710, -1, 10));
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Name");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 418, -1, 20));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Enterprise");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 560, -1, 20));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Organization");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 590, -1, 20));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Username");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 630, -1, 20));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1140, 860));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -750,18 +741,20 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
     private javax.swing.JComboBox<String> jComboBoxGender;
     private javax.swing.JComboBox<String> jComboRoleTypes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jPasswordLabel;
     private javax.swing.JPasswordField jPasswordTextField;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEmployees;
-    private javax.swing.JLabel jUsernameLabel;
     private javax.swing.JLabel lblAddrCity;
     private javax.swing.JLabel lblAddrCountry;
     private javax.swing.JLabel lblAddrState;
@@ -772,8 +765,6 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
     private javax.swing.JLabel lblAddrZip1;
     private javax.swing.JLabel lblAddrZip2;
     private javax.swing.JLabel lblDob;
-    private javax.swing.JLabel lblEnterprise;
-    private javax.swing.JLabel lblOrg;
     private javax.swing.JTextField txtAddressBuildingUnit;
     private javax.swing.JTextField txtAddressCity;
     private javax.swing.JTextField txtAddressCountry;
@@ -830,7 +821,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
 
         String[] splitResult = selectEnterprise.split(":");
         String enterpriseName = splitResult[0];
-        int enterpriseId = Integer.parseInt(splitResult[1]);
+        long enterpriseId = Long.parseLong(splitResult[1]);
         Enterprise enterprise = system.enterpriseDirectory.getEnterprise(enterpriseId);
         if (enterprise == null) {
             JOptionPane.showMessageDialog(jPanel1, "No enterprise found for id " + enterpriseId + "and name " + enterpriseName);
@@ -855,7 +846,7 @@ public class UpdateAndDeleteRolesJPanel extends javax.swing.JPanel implements Ne
 
         String[] splitResult = selectedOrganization.split(":");
         String orgName = splitResult[0];
-        int orgId = Integer.parseInt(splitResult[1]);
+        long orgId = Long.parseLong(splitResult[1]);
         Organization organization = selectedEnterprise.getOrganization(orgId);
         if (organization == null) {
             JOptionPane.showMessageDialog(jPanel1, "No organization found for id " + orgId + "and name " + orgName);

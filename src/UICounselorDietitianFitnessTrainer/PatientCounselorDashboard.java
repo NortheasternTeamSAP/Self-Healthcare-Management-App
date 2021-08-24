@@ -10,6 +10,7 @@ import Counselor.CounselorAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -35,6 +36,7 @@ public class PatientCounselorDashboard extends javax.swing.JPanel implements Nex
         this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        FieldsDecorator.decorateTable(UpcomingDieticianAppointments);
         populateUpcomingCounselorAppointments();
     }
 
@@ -101,7 +103,6 @@ public class PatientCounselorDashboard extends javax.swing.JPanel implements Nex
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 38, -1, -1));
 
         UpcomingDieticianAppointments.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        UpcomingDieticianAppointments.setForeground(new java.awt.Color(204, 255, 255));
         UpcomingDieticianAppointments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

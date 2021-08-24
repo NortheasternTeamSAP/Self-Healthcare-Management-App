@@ -10,6 +10,7 @@ import Dietitian.DietPlan;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessPlan;
 import Patient.Patient;
+import Utils.FieldsDecorator;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ Patient p;
          this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        FieldsDecorator.decorateTable(counselnote);
         
         
         DefaultTableModel model = (DefaultTableModel) counselnote.getModel();

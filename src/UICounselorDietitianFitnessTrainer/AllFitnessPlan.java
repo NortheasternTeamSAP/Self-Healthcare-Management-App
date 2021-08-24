@@ -10,6 +10,7 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessPlan;
 import FitnessTrainer.FitnessTrainer;
 import Patient.Patient;
+import Utils.FieldsDecorator;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -44,6 +45,10 @@ Patient p;
         this.system=system;
         this.p=p;
         report3.setVisible(false);
+        
+        FieldsDecorator.decorateTable(fitnessplan);
+        
+        
         DefaultTableModel model = (DefaultTableModel) fitnessplan.getModel();
         ArrayList<FitnessPlan> temp=p.getFitnessPlans();
         
@@ -132,7 +137,7 @@ Patient p;
         });
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 343, -1, 34));
 
-        report3.setBackground(new java.awt.Color(204, 255, 255));
+        report3.setBackground(new java.awt.Color(255, 255, 255));
         report3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         report3.setLayout(new javax.swing.BoxLayout(report3, javax.swing.BoxLayout.LINE_AXIS));
         add(report3, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 478, 990, 317));

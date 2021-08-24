@@ -12,6 +12,7 @@ import Enterprise.Enterprise;
 import Personnel.PersonDetails;
 import SysAdminUI.Login;
 import Utils.ConsoleLogger;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import Utils.ViewPersonRatingsJPanel;
 import java.awt.Image;
@@ -22,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.lang.StringUtils;
 
 /**
  *
@@ -47,6 +49,10 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         populateUpcomingAppointments();
         populateDoctorInfoPlaceholders();
         populateCompletedAppointments(null);
+        
+        lblPatientDetails.setText("Welcome " + doctor.getPersonDetails().getFullName());
+        FieldsDecorator.decorateTable(tblUpcomingPatientAppointments);
+        FieldsDecorator.decorateTable(tblCompletedPatientAppointments);
     }
 
     /**
@@ -72,7 +78,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         lblDob1 = new javax.swing.JLabel();
         lblDobPlaceHolder = new javax.swing.JLabel();
         lblPhoneNumberPlaceHolder = new javax.swing.JLabel();
-        lblAddressPlaceHolder = new javax.swing.JLabel();
+        lblHospitalPlaceHolder = new javax.swing.JLabel();
         lblSearchByDate = new javax.swing.JLabel();
         txtPatientUserNameSearch = new javax.swing.JTextField();
         jUserNameSearchBtn = new javax.swing.JButton();
@@ -93,14 +99,14 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
 
             },
             new String [] {
-                "Appointment id", "Patient Name", "Doctor Name", "Appointment Date", "Appointment Status"
+                "Patient Name", "Doctor Name", "Appointment Date", "Appointment Status", "Appointment Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -113,21 +119,24 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
         });
         jScrollPane1.setViewportView(tblCompletedPatientAppointments);
 
-        jPatientDetailPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 619, 790, 170));
+        jPatientDetailPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 790, 170));
 
-        lblAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblAddress.setText("Address:");
+        lblAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAddress.setForeground(new java.awt.Color(51, 153, 255));
+        lblAddress.setText("Hospital");
         jPatientDetailPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Upcoming Appointments");
         jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 190, 30));
 
-        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(51, 153, 255));
         lblPhoneNumber.setText("Phone Number:");
         jPatientDetailPanel.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
-        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblName.setForeground(new java.awt.Color(51, 153, 255));
         lblName.setText("Name:");
         jPatientDetailPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
 
@@ -137,31 +146,32 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
 
         lblPatientDetails.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblPatientDetails.setText(" Doctor Dashboard");
-        jPatientDetailPanel.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 20, 218, 40));
+        jPatientDetailPanel.add(lblPatientDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 20, 640, 40));
 
         lblNamePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblNamePlaceHolder.setText("NamePlaceHolder");
-        jPatientDetailPanel.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
+        jPatientDetailPanel.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 350, -1));
 
-        lblDob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDob1.setForeground(new java.awt.Color(51, 153, 255));
         lblDob1.setText("Date Of Birth:");
         jPatientDetailPanel.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
         lblDobPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblDobPlaceHolder.setText("DobPlaceHolder");
-        jPatientDetailPanel.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
+        jPatientDetailPanel.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
         lblPhoneNumberPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
-        jPatientDetailPanel.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
+        jPatientDetailPanel.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
 
-        lblAddressPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        lblAddressPlaceHolder.setText("AddressPlaceHolder");
-        jPatientDetailPanel.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
+        lblHospitalPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        lblHospitalPlaceHolder.setText("AddressPlaceHolder");
+        jPatientDetailPanel.add(lblHospitalPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 400, -1));
 
-        lblSearchByDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblSearchByDate.setText("Filter by Patient ID");
-        jPatientDetailPanel.add(lblSearchByDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 560, -1, -1));
+        lblSearchByDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSearchByDate.setText("Filter by Patient Name");
+        jPatientDetailPanel.add(lblSearchByDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 180, -1));
 
         txtPatientUserNameSearch.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtPatientUserNameSearch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -170,7 +180,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                 txtPatientUserNameSearchActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(txtPatientUserNameSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 149, 30));
+        jPatientDetailPanel.add(txtPatientUserNameSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 149, 40));
 
         jUserNameSearchBtn.setBackground(new java.awt.Color(255, 255, 255));
         jUserNameSearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-search-30.png"))); // NOI18N
@@ -179,7 +189,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                 jUserNameSearchBtnActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(jUserNameSearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 40, 40));
+        jPatientDetailPanel.add(jUserNameSearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 40, 40));
 
         btnOldAppointmentDetails.setBackground(new java.awt.Color(255, 255, 255));
         btnOldAppointmentDetails.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -190,7 +200,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                 btnOldAppointmentDetailsActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnOldAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 810, 160, 37));
+        jPatientDetailPanel.add(btnOldAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 770, 160, 37));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -217,11 +227,11 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
 
             },
             new String [] {
-                "Appointment id", "Patient Name", "Doctor Name", "Appointment Date"
+                "Patient Name", "Doctor Name", "Appointment Date", "Appointment Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -248,7 +258,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                 btnViewRatingsActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnViewRatings, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 180, 37));
+        jPatientDetailPanel.add(btnViewRatings, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 180, 37));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jPatientDetailPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 860));
@@ -284,17 +294,20 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
 
     private void txtPatientUserNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientUserNameSearchActionPerformed
         // TODO add your handling code here:
+        if (txtPatientUserNameSearch.getText() == null || txtPatientUserNameSearch.getText().isEmpty()) {
+            populateCompletedAppointments(null);
+        }
     }//GEN-LAST:event_txtPatientUserNameSearchActionPerformed
 
     private void jUserNameSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserNameSearchBtnActionPerformed
         // TODO add your handling code here:
 
-        String patientUserName = txtPatientUserNameSearch.getText();
-        if (patientUserName == null || patientUserName.isBlank()) {
-            JOptionPane.showMessageDialog(null,"Please enter a valid username", "Warning", JOptionPane.WARNING_MESSAGE);
+        String patientName = txtPatientUserNameSearch.getText();
+        if (patientName == null || patientName.isBlank()) {
+            JOptionPane.showMessageDialog(null,"Please enter a valid name", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        populateCompletedAppointments(patientUserName);
+        populateCompletedAppointments(patientName);
     }//GEN-LAST:event_jUserNameSearchBtnActionPerformed
 
     private void btnOldAppointmentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOldAppointmentDetailsActionPerformed
@@ -306,7 +319,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
             return;
         }
 
-        long appointmentId = (long) tblCompletedPatientAppointments.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (long) tblCompletedPatientAppointments.getModel().getValueAt(selectedRow, 4);
         Appointment selectedAppointment = null;
         for (Appointment apt : doctor.getPatientAppointments()) {
             if (apt.getId() == appointmentId) {
@@ -335,7 +348,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
             return;
         }
 
-        long appointmentId = (long) tblUpcomingPatientAppointments.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (long) tblUpcomingPatientAppointments.getModel().getValueAt(selectedRow, 3);
         Appointment selectedAppointment = null;
         for (Appointment apt : doctor.getPatientAppointments()) {
             if (apt.getId() == appointmentId) {
@@ -372,9 +385,9 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton jUserNameSearchBtn;
     private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblAddressPlaceHolder;
     private javax.swing.JLabel lblDob1;
     private javax.swing.JLabel lblDobPlaceHolder;
+    private javax.swing.JLabel lblHospitalPlaceHolder;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNamePlaceHolder;
     private javax.swing.JLabel lblPatientDetails;
@@ -407,10 +420,10 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
             }
             
             Object row[] = new Object[4];
-            row[0] = appointment.getId();
-            row[1] = appointment.getPatient().getPersonDetails().getFullName();
-            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
-            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
+            row[0] = appointment.getPatient().getPersonDetails().getFullName();
+            row[1] = appointment.getDoctor().getPersonDetails().getFullName();
+            row[2] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
+            row[3] = appointment.getId();
             model.addRow(row);
         }
         
@@ -418,7 +431,8 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
 
     private void populateDoctorInfoPlaceholders() {
         PersonDetails pd = doctor.getPersonDetails();
-        lblAddressPlaceHolder.setText(pd.getAddress().toString()); 
+        String hospitalName = ecoSystem.organizationDirectory.getOrganization(doctor.getOrganizationId()).getEnterprise().getEnterpriseName();
+        lblHospitalPlaceHolder.setText(hospitalName); 
         //lblAgePlaceHolder.setText(pd.getAge() + " years");  
          lblDobPlaceHolder.setText(pd.getDob().toString());
        
@@ -439,7 +453,7 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
        
     }
 
-    private void populateCompletedAppointments(String patientUserNameFilter) {
+    private void populateCompletedAppointments(String patientNameFilter) {
        DefaultTableModel  model = (DefaultTableModel) tblCompletedPatientAppointments.getModel();
         model.setRowCount(0);
         
@@ -457,16 +471,16 @@ public class DoctorWorkAreaPanel extends javax.swing.JPanel implements NextScree
                 continue;
             }
             
-            if (patientUserNameFilter != null && !appointment.getPatient().getUserAccount().getUsername().equals(patientUserNameFilter)) {
+            if (patientNameFilter != null && !StringUtils.containsIgnoreCase(appointment.getPatient().getPersonDetails().getFullName(), patientNameFilter)) {
                 continue;
             }
             
             Object row[] = new Object[5];
-            row[0] = appointment.getId();
-            row[1] = appointment.getPatient().getPersonDetails().getFullName();
-            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
-            row[3] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
-            row[4] = appointment.getStatus().toString();
+            row[0] = appointment.getPatient().getPersonDetails().getFullName();
+            row[1] = appointment.getDoctor().getPersonDetails().getFullName();
+            row[2] = appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs";
+            row[3] = appointment.getStatus().toString();
+            row[4] = appointment.getId();
             model.addRow(row);
         }
     }

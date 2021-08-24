@@ -12,6 +12,7 @@ import Patient.Patient;
 import Prescription.Dosage;
 import Prescription.Prescription;
 import Utils.ConsoleLogger;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,8 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
         this.backPage = backPage;
         this.patient = patient;
         
+        FieldsDecorator.decorateTable(tblSinglePrescriptionDetails);
+        FieldsDecorator.decorateTable(tblPrescriptionHistory);
         populatePrescriptionDetailsTable(patient.getLatestMedicinePrescription());
         populatePrescriptionHistoryTable();
     }
@@ -83,9 +86,9 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
         
         for (Prescription prescription : prescriptionList) {
             Object row[] = new Object[3];
-            row[0] = prescription.getAppointment().getId();
-            row[1] = prescription.getPrescriptionDate();
-            row[2] = prescription.getAppointment().getDoctor().getPersonDetails().getFullName();
+            row[0] = prescription.getPrescriptionDate();
+            row[1] = prescription.getAppointment().getDoctor().getPersonDetails().getFullName();
+            row[2] = prescription.getAppointment().getId();
             model.addRow(row);
         }
     }
@@ -128,7 +131,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Medicine Prescription Details");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 27, 361, 31));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 27, 520, 31));
 
         tblSinglePrescriptionDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,7 +165,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
 
             },
             new String [] {
-                "Id", "Prescription Date", "Referred by Doctor"
+                "Prescription Date", "Referred by Doctor", "Id"
             }
         ) {
             Class[] types = new Class [] {
@@ -201,7 +204,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
 
         jLabelPrescriptionTitlePlaceHolder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelPrescriptionTitlePlaceHolder.setText("Prescription from date <DATE>");
-        add(jLabelPrescriptionTitlePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 465, 31));
+        add(jLabelPrescriptionTitlePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 580, 31));
 
         btnShowCurrentPrescription1.setBackground(new java.awt.Color(255, 255, 255));
         btnShowCurrentPrescription1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -225,7 +228,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("My Current Medicine Prescription");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 113, 227, 31));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 113, 340, 31));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -4, 1100, 850));
@@ -239,7 +242,7 @@ public class PatientViewPrescriptionJPanel extends javax.swing.JPanel implements
             return;
         }
         
-        long appointmentId = (Long)tblPrescriptionHistory.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (Long)tblPrescriptionHistory.getModel().getValueAt(selectedRow, 2);
         Prescription selectedPrescription = ecoSystem.getPrescriptionDirectory().getPrescription(appointmentId);
         if (selectedPrescription == null) {
             JOptionPane.showMessageDialog(null, "No prescription found for appointment id: " + appointmentId);

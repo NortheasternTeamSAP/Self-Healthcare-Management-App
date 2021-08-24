@@ -248,6 +248,7 @@ public class Login extends javax.swing.JPanel implements NextScreen {
         ratingsPanel.setVisible(true);
         frame.setVisible(true);
         frame.setSize(700, 700);
+        frame.setResizable(false);
     }//GEN-LAST:event_jBtnForgetPasswordActionPerformed
 
 

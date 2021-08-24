@@ -11,6 +11,7 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainer;
 import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
+import Utils.FieldsDecorator;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -34,6 +35,9 @@ FitnessTrainer f;
         initComponents();
          initComponents();
          this.setSize(1100,850);
+         
+         
+       FieldsDecorator.decorateTable(tblpastapp);
       this.WorkArea=WorkArea;
       this.system=system;
       this.f=f;

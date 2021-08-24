@@ -52,7 +52,7 @@ public class PatientConfidentiality extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setBackground(new java.awt.Color(102, 255, 102));
+        jTextArea1.setBackground(new java.awt.Color(229, 255, 234));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setLineWrap(true);

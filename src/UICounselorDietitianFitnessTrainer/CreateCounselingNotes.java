@@ -10,6 +10,7 @@ import Counselor.CounselorAppointment;
 import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
+import Utils.FieldsDecorator;
 import VitalSign.VitalSigns;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -40,6 +41,7 @@ CounselorAppointment app;
         this.p=p;
         this.c=c;
         this.app=app;
+      FieldsDecorator.decorateTable(tblVitalSign);
         
       for(CounselorAppointment c1 :c.getCounselorSchedule().getCounselorAppointments()){
       jLabel7.setText(c1.getCheifcomplaints());
