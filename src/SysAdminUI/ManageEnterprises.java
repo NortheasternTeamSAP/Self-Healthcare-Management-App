@@ -16,6 +16,7 @@ import Enterprise.PharmacyEnterprise;
 import Enterprise.PhysicalWellnessEnterprise;
 import Personnel.Address;
 import Personnel.PersonDetails;
+import Utils.FieldsDecorator;
 import Utils.FieldsValidator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
@@ -48,6 +49,7 @@ public class ManageEnterprises extends javax.swing.JPanel implements NextScreen 
         this.WorkArea=WorkArea;
         this.system=system;
         this.backPage = backPage;
+        FieldsDecorator.decorateTable(tblenterprise);
         jComboBox1.setModel(new DefaultComboBoxModel(EnterpriseType.getPublicValues()));
         LoadEnterprises();
     }
@@ -139,7 +141,7 @@ public class ManageEnterprises extends javax.swing.JPanel implements NextScreen 
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Enterprise Name ");
+        jLabel3.setText("Name");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
         txtEnterpriseName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));

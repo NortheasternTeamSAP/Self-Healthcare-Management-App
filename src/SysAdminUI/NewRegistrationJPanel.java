@@ -122,14 +122,13 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
             return;
         }
         
-        Enterprise pharmacy = ecoSystem.enterpriseDirectory.getEnterprise(Integer.parseInt(selectedPharmacy.split(":")[1]));
+        Enterprise pharmacy = ecoSystem.enterpriseDirectory.getEnterprise(Long.parseLong(selectedPharmacy.split(":")[1]));
         if (pharmacy == null) {
             JOptionPane.showMessageDialog(jRegistrationpanel, "No pharmacy exists for the selected entry: " + selectedPharmacy);
             return;
         }
         
-        lblPharmacyAddressPlaceHolder.setText("Pharmacy Address: " + pharmacy.getEnterpriseAddress().toString());
-        lblPharmacyAddressPlaceHolder.setForeground(Color.GREEN);
+        lblPharmacyAddressPlaceHolder.setText("*Pharmacy Address: " + pharmacy.getEnterpriseAddress().toString());
     }
     
 
@@ -384,7 +383,10 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
             }
         });
         jRegistrationpanel.add(jComboBoxPreferredPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 190, -1));
-        jRegistrationpanel.add(lblPharmacyAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 752, 372, -1));
+
+        lblPharmacyAddressPlaceHolder.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblPharmacyAddressPlaceHolder.setForeground(new java.awt.Color(204, 0, 204));
+        jRegistrationpanel.add(lblPharmacyAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 650, 20));
 
         lblAddrZip1.setFont(new java.awt.Font("Lucida Grande", 2, 9)); // NOI18N
         lblAddrZip1.setText("*10 digits");
@@ -475,7 +477,7 @@ public class NewRegistrationJPanel extends javax.swing.JPanel implements NextScr
         UserAccount userAccount = new UserAccount(userName, password);
         
         String selectedPreferredPharmacy = (String)jComboBoxPreferredPharmacy.getSelectedItem();
-        Enterprise preferredPharmacy = ecoSystem.enterpriseDirectory.getEnterprise(Integer.parseInt(selectedPreferredPharmacy.split(":")[1]));
+        Enterprise preferredPharmacy = ecoSystem.enterpriseDirectory.getEnterprise(Long.parseLong(selectedPreferredPharmacy.split(":")[1]));
         if (preferredPharmacy == null) {
             JOptionPane.showMessageDialog(jRegistrationpanel, "No pharmacy found for selected item: " + selectedPreferredPharmacy);
             return;

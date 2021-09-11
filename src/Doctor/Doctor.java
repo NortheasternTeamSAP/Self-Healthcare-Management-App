@@ -42,7 +42,7 @@ public class Doctor implements Person {
             UserAccount account) {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage);
-        speciality = "Unknown";
+        speciality = "General Medicine";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
         this.personRatings = new PersonRatings();
@@ -59,7 +59,7 @@ public class Doctor implements Person {
             long organizationId) {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage, organizationId);
-        speciality = "Unknown";
+        speciality = "General Medicine";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
         this.personRatings = new PersonRatings();
@@ -77,10 +77,14 @@ public class Doctor implements Person {
             String emailId) {
         
         doctorDetails = new PersonDetails(fullName, dob, gender, address, phoneNumber, account, Role.DOCTOR, logoImage, organizationId, emailId);
-        speciality = "Unknown";
+        speciality = "General Medicine";
         this.patientAppointments = new ArrayList<>();
         this.doctorAvailability = new HashSet<>();
         this.personRatings = new PersonRatings();
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
     
     public String getSpeciality() {

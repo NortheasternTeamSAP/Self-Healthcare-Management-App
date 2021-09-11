@@ -95,19 +95,18 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         List<Organization> organizations = hospital.getOrganizations();
         for (Organization org : organizations) {
             if (org.getOrganizationType().equals(OrganizationType.LABORATORY)) {
-                jComboBoxLabAssistantList.addItem(org.getOrganizationId()+ ":" + org.getName());
+                jComboBoxLabAssistantList.addItem(org.getName() + ":" +org.getOrganizationId());
             }
         }
     }
     
     void populatePatientDetails() {
-        lblAptDatePlaceHolder.setText(appointment.getDate() + " at " + appointment.getAppointmentTimeHours() + ":00");
-        lblAddressPlaceHolder.setText(appointment.getPatient().getPersonDetails().getAddress().toString());
+        lblAptDatePlaceHolder.setText(appointment.getDate() + " at " + appointment.getAppointmentTimeHours() + ":00 hrs");
+        lblDobPlaceHolder.setText(appointment.getPatient().getPersonDetails().getDob().toString());
         lblAgePlaceHolder.setText(appointment.getPatient().getPersonDetails().getAge() + " years");
-        //lblEmailPlaceHolder.setText();
+        lblEmailPlaceHolder.setText(appointment.getPatient().getPersonDetails().getEmailId());
         lblNamePlaceHolder.setText(appointment.getPatient().getPersonDetails().getFullName());
         lblPhoneNumberPlaceHolder.setText(appointment.getPatient().getPersonDetails().getPhoneNumber());       
-        lblWeightPlaceHolder.setText(this.patient.getMostRecentVitalSigns() == null ? "Not Available" : this.patient.getMostRecentVitalSigns().getWeight() + " kgs");
     }
 
     /**
@@ -121,7 +120,6 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
 
         jPanel1 = new javax.swing.JPanel();
         jPatientDetailPanel = new javax.swing.JPanel();
-        lblAddress = new javax.swing.JLabel();
         lblPhoneNumber = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         imgLogo = new javax.swing.JLabel();
@@ -129,12 +127,9 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         lblDob1 = new javax.swing.JLabel();
         lblDobPlaceHolder = new javax.swing.JLabel();
         lblPhoneNumberPlaceHolder = new javax.swing.JLabel();
-        lblAddressPlaceHolder = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
         lblAgePlaceHolder = new javax.swing.JLabel();
-        lblWeight = new javax.swing.JLabel();
-        lblWeightPlaceHolder = new javax.swing.JLabel();
         lblWeight1 = new javax.swing.JLabel();
         lblEmailPlaceHolder = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -152,6 +147,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         btnNewAppointmentDetails = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -161,63 +157,52 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jPatientDetailPanel.setPreferredSize(new java.awt.Dimension(1000, 1000));
         jPatientDetailPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblAddress.setText("Address:");
-        jPatientDetailPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 150, -1));
-
-        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(51, 153, 255));
         lblPhoneNumber.setText("Phone Number:");
-        jPatientDetailPanel.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 150, -1));
+        jPatientDetailPanel.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 150, -1));
 
-        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblName.setForeground(new java.awt.Color(51, 153, 255));
         lblName.setText("Name:");
-        jPatientDetailPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 150, -1));
+        jPatientDetailPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 150, -1));
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/user1new.png"))); // NOI18N
         imgLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPatientDetailPanel.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 120));
+        jPatientDetailPanel.add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 120, 120));
 
         lblNamePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblNamePlaceHolder.setText("NamePlaceHolder");
-        jPatientDetailPanel.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 160, 20));
+        jPatientDetailPanel.add(lblNamePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, 20));
 
-        lblDob1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDob1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDob1.setForeground(new java.awt.Color(51, 153, 255));
         lblDob1.setText("Date Of Birth:");
-        jPatientDetailPanel.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 150, -1));
+        jPatientDetailPanel.add(lblDob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 150, -1));
 
         lblDobPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblDobPlaceHolder.setText("DobPlaceHolder");
-        jPatientDetailPanel.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 160, 20));
+        jPatientDetailPanel.add(lblDobPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 160, 20));
 
         lblPhoneNumberPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblPhoneNumberPlaceHolder.setText("Phone Number Place Holder");
-        jPatientDetailPanel.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
-
-        lblAddressPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        lblAddressPlaceHolder.setText("AddressPlaceHolder");
-        jPatientDetailPanel.add(lblAddressPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 180, -1));
+        jPatientDetailPanel.add(lblPhoneNumberPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setText("Appointment Details");
-        jPatientDetailPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 23, 248, 48));
+        jLabel4.setText("Patient Appointment Details");
+        jPatientDetailPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 23, 420, 48));
 
-        lblAge.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblAge.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAge.setForeground(new java.awt.Color(51, 153, 255));
         lblAge.setText("Age:");
-        jPatientDetailPanel.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 150, -1));
+        jPatientDetailPanel.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 150, -1));
 
         lblAgePlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lblAgePlaceHolder.setText("AgeHolder");
-        jPatientDetailPanel.add(lblAgePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 180, -1));
+        jPatientDetailPanel.add(lblAgePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 180, -1));
 
-        lblWeight.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblWeight.setText("Weight:");
-        jPatientDetailPanel.add(lblWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 150, -1));
-
-        lblWeightPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        lblWeightPlaceHolder.setText("WeightPlaceHolder");
-        jPatientDetailPanel.add(lblWeightPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 170, -1));
-
-        lblWeight1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWeight1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWeight1.setForeground(new java.awt.Color(0, 153, 255));
         lblWeight1.setText("Email ID:");
         jPatientDetailPanel.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 150, -1));
 
@@ -228,7 +213,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/prescription.png"))); // NOI18N
-        jButton1.setText("Prescription History");
+        jButton1.setText("Patient's prescription History");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,19 +225,19 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-money-bag-30.png"))); // NOI18N
-        jButton2.setText("Insurance Details");
+        jButton2.setText("Patient Insurance Details");
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 350, 48));
+        jPatientDetailPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 350, 48));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-graph-report-30.png"))); // NOI18N
-        jButton3.setText("Historical Vitals Report");
+        jButton3.setText("Patient's historical vitals Report");
         jButton3.setBorderPainted(false);
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -265,20 +250,20 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         btnViewLabTestResults.setBackground(new java.awt.Color(255, 255, 255));
         btnViewLabTestResults.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnViewLabTestResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-view-details-30.png"))); // NOI18N
-        btnViewLabTestResults.setText("View Results");
+        btnViewLabTestResults.setText("View Lab Results");
         btnViewLabTestResults.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewLabTestResultsActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnViewLabTestResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 150, -1));
+        jPatientDetailPanel.add(btnViewLabTestResults, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 210, 40));
 
         jComboBoxLabAssistantList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPatientDetailPanel.add(jComboBoxLabAssistantList, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 190, -1));
 
-        lblName3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblName3.setText("Perform new Lab Test");
-        jPatientDetailPanel.add(lblName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
+        lblName3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblName3.setText("Select Laboratory");
+        jPatientDetailPanel.add(lblName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, 20));
 
         btnPrescribeNewMedicines.setBackground(new java.awt.Color(255, 255, 255));
         btnPrescribeNewMedicines.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -290,9 +275,10 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
                 btnPrescribeNewMedicinesActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnPrescribeNewMedicines, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 350, 48));
+        jPatientDetailPanel.add(btnPrescribeNewMedicines, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 350, 350, 48));
 
-        lblWeight2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWeight2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWeight2.setForeground(new java.awt.Color(51, 153, 255));
         lblWeight2.setText("Appointment Date:");
         jPatientDetailPanel.add(lblWeight2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 150, -1));
 
@@ -303,7 +289,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         jBtnViewPreviousAppointments1.setBackground(new java.awt.Color(255, 255, 255));
         jBtnViewPreviousAppointments1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jBtnViewPreviousAppointments1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view_past_appointment.png"))); // NOI18N
-        jBtnViewPreviousAppointments1.setText("View previous appointments and lab tests");
+        jBtnViewPreviousAppointments1.setText("Patient's previous appointments and tests");
         jBtnViewPreviousAppointments1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnViewPreviousAppointments1ActionPerformed(evt);
@@ -321,30 +307,29 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
                 btnGeneratePatientBillActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnGeneratePatientBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 350, 50));
+        jPatientDetailPanel.add(btnGeneratePatientBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 350, 50));
 
         btnSubmitNewLabTestRequest1.setBackground(new java.awt.Color(255, 255, 255));
         btnSubmitNewLabTestRequest1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSubmitNewLabTestRequest1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-test-passed-30.png"))); // NOI18N
-        btnSubmitNewLabTestRequest1.setText("Request Test");
+        btnSubmitNewLabTestRequest1.setText("Request Lab Test");
         btnSubmitNewLabTestRequest1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitNewLabTestRequest1ActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnSubmitNewLabTestRequest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 150, -1));
+        jPatientDetailPanel.add(btnSubmitNewLabTestRequest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 210, 40));
 
         btnNewAppointmentDetails.setBackground(new java.awt.Color(255, 255, 255));
         btnNewAppointmentDetails.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNewAppointmentDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-double-tick-30.png"))); // NOI18N
         btnNewAppointmentDetails.setText("Complete Appointment");
-        btnNewAppointmentDetails.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNewAppointmentDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewAppointmentDetailsActionPerformed(evt);
             }
         });
-        jPatientDetailPanel.add(btnNewAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 470, 350, 50));
+        jPatientDetailPanel.add(btnNewAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 410, 60));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -357,6 +342,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 850));
+        jPatientDetailPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 320, -1));
 
         jPanel1.add(jPatientDetailPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1094, 840));
 
@@ -411,7 +397,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
         }
         
         String selectedLab = (String)jComboBoxLabAssistantList.getSelectedItem();
-        int labId = Integer.parseInt(selectedLab.split(":")[0]);
+        long labId = Long.parseLong(selectedLab.split(":")[1]);
         Organization laboratory = null;
         
         for (Organization org : (List<Organization>) hospital.getOrganizations()) {
@@ -549,8 +535,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPatientDetailPanel;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblAddressPlaceHolder;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAgePlaceHolder;
     private javax.swing.JLabel lblAptDatePlaceHolder;
@@ -562,9 +547,7 @@ public class PatientAppointmentDetailsPanel extends javax.swing.JPanel implement
     private javax.swing.JLabel lblNamePlaceHolder;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblPhoneNumberPlaceHolder;
-    private javax.swing.JLabel lblWeight;
     private javax.swing.JLabel lblWeight1;
     private javax.swing.JLabel lblWeight2;
-    private javax.swing.JLabel lblWeightPlaceHolder;
     // End of variables declaration//GEN-END:variables
 }

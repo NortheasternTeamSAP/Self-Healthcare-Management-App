@@ -16,6 +16,7 @@ import Personnel.Person;
 import Personnel.Role;
 import Enterprise.PharmacyEnterprise;
 import Prescription.Dosage;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -45,6 +46,10 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         this.backPage = backPage;
         initComponents();
         this.setSize(1100,850);
+        
+        FieldsDecorator.decorateTable(tblMedicineTableAddPres);
+        FieldsDecorator.decorateTable(tblCurrentPres);
+        
         populateCmbSelectPatientName();
         populateTblMedicineTableAddPres();
     }
@@ -92,39 +97,44 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel1.setText("Patient Details");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 73, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("Insurance ID:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 150, -1, -1));
 
         txtViewPatientInsuranceID.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtViewPatientInsuranceID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(txtViewPatientInsuranceID, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 148, 138, -1));
+        add(txtViewPatientInsuranceID, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 210, -1));
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("Date Of Birth:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 188, -1, -1));
 
         txtViewPatientDOB.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtViewPatientDOB.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(txtViewPatientDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 186, 138, -1));
+        add(txtViewPatientDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 210, -1));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 153, 255));
         jLabel5.setText("Address:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 224, -1, -1));
 
         txtViewPatientAddress.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtViewPatientAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(txtViewPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 224, 138, -1));
+        add(txtViewPatientAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 330, -1));
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 153, 255));
         jLabel7.setText("Preferred Pharmacy:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 140, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 150, -1));
 
-        lblSelectPatient1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        lblSelectPatient1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblSelectPatient1.setForeground(new java.awt.Color(51, 153, 255));
         lblSelectPatient1.setText("Select Patient:");
         add(lblSelectPatient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 109, -1, -1));
 
@@ -133,7 +143,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                 cmbSelectPatientName1ActionPerformed(evt);
             }
         });
-        add(cmbSelectPatientName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 104, 138, -1));
+        add(cmbSelectPatientName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 220, -1));
 
         jLabel9.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel9.setText("Prescribe Medicine");
@@ -144,7 +154,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
 
             },
             new String [] {
-                "Medicine ID", "Medicine Name"
+                "Medicine Name", "Medicine ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -158,9 +168,9 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         jScrollPane2.setViewportView(tblMedicineTableAddPres);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 680, 140));
-        add(jSpinQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 76, -1));
+        add(jSpinQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 76, -1));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel2.setText("Quantity");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, -1, 30));
 
@@ -173,9 +183,9 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                 btnAddQuantityActionPerformed(evt);
             }
         });
-        add(btnAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 630, -1, -1));
+        add(btnAddQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel6.setText("Medicines Table:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 305, -1, -1));
 
@@ -184,7 +194,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
 
             },
             new String [] {
-                "Medicine ID", "Medicine Name", "Quantity"
+                "Medicine Name", "Quantity", "Medicine ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -197,15 +207,15 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         });
         jScrollPane3.setViewportView(tblCurrentPres);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 710, 670, 130));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 660, 670, 100));
 
-        jLabel8.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel8.setText("Current Prescription Table:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 180, 30));
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel8.setText("Prescription Orders");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 630, 230, 30));
 
         txtPatientPharmName.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         txtPatientPharmName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(txtPatientPharmName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 138, -1));
+        add(txtPatientPharmName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 330, -1));
 
         jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         jButtonBack.setContentAreaFilled(false);
@@ -216,29 +226,33 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
         });
         add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 13, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel10.setText("Notes");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, -1, -1));
 
         jTextFieldDosage.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(jTextFieldDosage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 76, -1));
+        add(jTextFieldDosage, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 76, -1));
 
+        jCheckBoxPostLunch.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jCheckBoxPostLunch.setText("PostLunch");
-        add(jCheckBoxPostLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, -1, -1));
+        add(jCheckBoxPostLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
 
+        jCheckBoxPostDinner.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jCheckBoxPostDinner.setText("PostDinner");
-        add(jCheckBoxPostDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, -1, -1));
+        add(jCheckBoxPostDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, -1, -1));
         add(jTextFieldDosageNotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, 165, 69));
 
-        jLabel11.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel11.setText("Dosage");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, -1, 30));
 
+        jCheckBoxPreLunch.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jCheckBoxPreLunch.setText("PreLunch");
         add(jCheckBoxPreLunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, -1, -1));
 
+        jCheckBoxPreDinner.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jCheckBoxPreDinner.setText("PreDinner");
-        add(jCheckBoxPreDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
+        add(jCheckBoxPreDinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -4, 1100, 850));
@@ -279,7 +293,7 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
                 .getMedicineDirectory()
                 .getMedicineCatalogMap()
                 .get(tblMedicineTableAddPres
-                        .getValueAt(selectedRow, 0)
+                        .getValueAt(selectedRow, 1)
                         .toString()
                 );
         
@@ -334,8 +348,8 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
 
             for (ItemTuple tup: ecosys.getMedicineDirectory().medicineCatalogMap.getAllItems()){
                 Object[] row = new Object[2];
-                row[0] = tup.getKey().toString();
-                row[1] = tup.getValue().toString();
+                row[1] = tup.getKey().toString();
+                row[0] = tup.getValue().toString();
 
                 model.addRow(row);
             }
@@ -352,9 +366,9 @@ public class PrescribeMedicinesJPanel extends javax.swing.JPanel implements Next
             for (String orderId: this.currentOrders){
                 Order order = ecosys.getOrderDirectory().orderMap.get(orderId);
                 Object[] row = new Object[3];
-                row[0] = order.getMedicine().getMedicineId();
-                row[1] = order.getMedicine().getMedicineName();
-                row[2] = order.getQuantity();
+                row[0] = order.getMedicine().getMedicineName();
+                row[1] = order.getQuantity();
+                row[2] = order.getMedicine().getMedicineId();
                 model.addRow(row);
             }
         }

@@ -47,7 +47,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         if (appointment.getTotalAppointmentCharges() != 0.0) {
             jLabelClaimAlreadySubmittedMessage.setText("Claim of " + appointment.getTotalAppointmentCharges() + 
                     " USD has been submitted to the insurance provider. Cannot be changed now.");
-            jLabelClaimAlreadySubmittedMessage.setBackground(Color.red);
             jButtonSubmitInsuranceClaim.setEnabled(false);
             jTextFieldInsuranceCompanyCode.setEnabled(false);
             jTextFieldPrimaryCareCost.setEnabled(false);
@@ -60,8 +59,8 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     void populateAppointmentDetailsPlaceHolder() {
         String placeHolderValue = 
                 "<html>" +
-                "Patient Name: " + appointment.getPatient().getPersonDetails().getFullName() + "</br>" +
-                "Health Care Provider Name: " + appointment.getDoctor().getPersonDetails().getFullName() + "</br>" +
+                "Patient Name: " + appointment.getPatient().getPersonDetails().getFullName() + ", </br>" +
+                "Health Care Provider Name: " + appointment.getDoctor().getPersonDetails().getFullName() + ", </br>" +
                 "Appointment Date: " + appointment.getDate() + " " + appointment.getAppointmentTimeHours() + ":00 hrs" + "</br>" +
                 "</html>";
         jLabelAppointmentDetailsPlaceHolder.setText(placeHolderValue);
@@ -72,14 +71,14 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         if (appointment.getLabTestReport() == null) {
             labTestCostValue = 
                     "<html>" +
-                    "No lab tests performed. Lab Charges: 0.00$" +
+                    "No lab tests performed. Lab Charges: 0.00 USD" +
                     "</html>";
-                jLabelLabTestCostPlaceHolder.setText("0.00$");
+                jLabelLabTestCostPlaceHolder.setText("0.00 USD");
                 return;
         } else {
             labTestCostValue = 
                 "<html>" +
-                appointment.getLabTestReport().getLab().getName() + " test charges: " + appointment.getLabTestReport().getLabTestCost() +
+                appointment.getLabTestReport().getLab().getName() + " test charges: " + appointment.getLabTestReport().getLabTestCost() + " USD" +
                 "</html>";
         }
         jLabelLabTestCostPlaceHolder.setText(labTestCostValue);
@@ -96,7 +95,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabelLabTestCostPlaceHolder = new javax.swing.JLabel();
         jLabelLabAssistantPlaceHolder3 = new javax.swing.JLabel();
         jLabelLabAssistantPlaceHolder4 = new javax.swing.JLabel();
@@ -112,7 +110,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         jButtonCalculateTotalCost = new javax.swing.JButton();
         jLabelLabAssistantPlaceHolder5 = new javax.swing.JLabel();
         jLabelLabAssistantPlaceHolder7 = new javax.swing.JLabel();
-        jLabelLabAssistantPlaceHolder8 = new javax.swing.JLabel();
         jLabelClaimAlreadySubmittedMessage = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -122,21 +119,21 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         jLabel1.setText(" Patient Billing Dashboard");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 33, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel2.setText("Appointment Details");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 77, -1, -1));
-
-        jLabelLabTestCostPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelLabTestCostPlaceHolder.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelLabTestCostPlaceHolder.setForeground(new java.awt.Color(51, 153, 255));
         jLabelLabTestCostPlaceHolder.setText("Lab Test Cost PH");
-        jPanel1.add(jLabelLabTestCostPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 182, 228, 25));
+        jPanel1.add(jLabelLabTestCostPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 182, 620, 25));
 
         jLabelLabAssistantPlaceHolder3.setText("USD");
-        jPanel1.add(jLabelLabAssistantPlaceHolder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 251, 38, 25));
+        jPanel1.add(jLabelLabAssistantPlaceHolder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 38, 25));
 
-        jLabelLabAssistantPlaceHolder4.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelLabAssistantPlaceHolder4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelLabAssistantPlaceHolder4.setForeground(new java.awt.Color(51, 153, 255));
         jLabelLabAssistantPlaceHolder4.setText("Other Primary Care Provider Charges(tax etc.)");
         jPanel1.add(jLabelLabAssistantPlaceHolder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 250, -1, 25));
-        jPanel1.add(jLabelTotalAppointmentCostPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 151, 281, 25));
+
+        jLabelTotalAppointmentCostPlaceHolder.setForeground(new java.awt.Color(153, 0, 153));
+        jPanel1.add(jLabelTotalAppointmentCostPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, 320, 25));
 
         jButtonSubmitInsuranceClaim.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSubmitInsuranceClaim.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -147,7 +144,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 jButtonSubmitInsuranceClaimActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSubmitInsuranceClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 403, -1, -1));
+        jPanel1.add(jButtonSubmitInsuranceClaim, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -158,11 +155,12 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 23, 94, -1));
 
-        jLabelAppointmentDetailsPlaceHolder.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelAppointmentDetailsPlaceHolder.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelAppointmentDetailsPlaceHolder.setForeground(new java.awt.Color(153, 0, 153));
         jLabelAppointmentDetailsPlaceHolder.setText("Appointment Details Place Holder");
-        jPanel1.add(jLabelAppointmentDetailsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 114, -1, -1));
+        jPanel1.add(jLabelAppointmentDetailsPlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 114, 900, -1));
 
-        jLabelLabAssistantPlaceHolder6.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelLabAssistantPlaceHolder6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabelLabAssistantPlaceHolder6.setText("Billing Details");
         jPanel1.add(jLabelLabAssistantPlaceHolder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 151, 228, 25));
 
@@ -173,11 +171,12 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 jTextFieldInsuranceCompanyCodeActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldInsuranceCompanyCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 362, 153, -1));
+        jPanel1.add(jTextFieldInsuranceCompanyCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 398, 153, 30));
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("Insurance Group number");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 357, 279, 28));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 200, 28));
 
         jTextFieldPrimaryCareCost.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldPrimaryCareCost.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -186,7 +185,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 jTextFieldPrimaryCareCostActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPrimaryCareCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 222, 153, -1));
+        jPanel1.add(jTextFieldPrimaryCareCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 153, 20));
 
         jTextFieldPrimaryCareOtherCharges.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTextFieldPrimaryCareOtherCharges.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -195,7 +194,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
                 jTextFieldPrimaryCareOtherChargesActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPrimaryCareOtherCharges, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 253, 153, -1));
+        jPanel1.add(jTextFieldPrimaryCareOtherCharges, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 153, 20));
 
         jButtonCalculateTotalCost.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCalculateTotalCost.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -208,16 +207,17 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
         });
         jPanel1.add(jButtonCalculateTotalCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 288, -1, -1));
 
-        jLabelLabAssistantPlaceHolder5.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelLabAssistantPlaceHolder5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelLabAssistantPlaceHolder5.setForeground(new java.awt.Color(51, 153, 255));
         jLabelLabAssistantPlaceHolder5.setText("Primary Care Charges");
         jPanel1.add(jLabelLabAssistantPlaceHolder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 219, 172, 25));
 
         jLabelLabAssistantPlaceHolder7.setText("USD");
-        jPanel1.add(jLabelLabAssistantPlaceHolder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 220, 38, 25));
+        jPanel1.add(jLabelLabAssistantPlaceHolder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 38, 25));
 
-        jLabelLabAssistantPlaceHolder8.setText("USD");
-        jPanel1.add(jLabelLabAssistantPlaceHolder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 360, 38, 25));
-        jPanel1.add(jLabelClaimAlreadySubmittedMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 491, 584, 25));
+        jLabelClaimAlreadySubmittedMessage.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabelClaimAlreadySubmittedMessage.setForeground(new java.awt.Color(204, 0, 102));
+        jPanel1.add(jLabelClaimAlreadySubmittedMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 640, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 4, 1090, 840));
@@ -257,7 +257,7 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
             return;
         }
         
-        int insuranceCompanyId = Integer.parseInt(id);
+        long insuranceCompanyId = Long.parseLong(id);
         // Get Insurance Company from ID
         Enterprise insuranceCompany = ecosystem.enterpriseDirectory.getEnterprise(insuranceCompanyId);
         if (insuranceCompany == null) {
@@ -295,7 +295,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
           jLabelTotalAppointmentCostPlaceHolder.setText("Total Appointment Cost = " + appointment.getTotalAppointmentCharges() + " USD");
             jLabelClaimAlreadySubmittedMessage.setText("Claim of " + appointment.getTotalAppointmentCharges() + 
                     " USD has been submitted to the insurance provider. Cannot be changed now.");
-            jLabelClaimAlreadySubmittedMessage.setForeground(Color.red);
             
             boolean noLabReport = appointment.getLabTestReport() == null;
             PrimaryCareInsuranceClaim primaryCareInsuranceClaim = new PrimaryCareInsuranceClaim(
@@ -340,7 +339,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JButton jButtonCalculateTotalCost;
     private javax.swing.JButton jButtonSubmitInsuranceClaim;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAppointmentDetailsPlaceHolder;
@@ -350,7 +348,6 @@ public class GeneratePatientBillJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder5;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder6;
     private javax.swing.JLabel jLabelLabAssistantPlaceHolder7;
-    private javax.swing.JLabel jLabelLabAssistantPlaceHolder8;
     private javax.swing.JLabel jLabelLabTestCostPlaceHolder;
     private javax.swing.JLabel jLabelTotalAppointmentCostPlaceHolder;
     private javax.swing.JPanel jPanel1;

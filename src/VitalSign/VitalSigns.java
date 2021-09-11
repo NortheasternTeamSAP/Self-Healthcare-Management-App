@@ -19,6 +19,14 @@ public class VitalSigns {
     private int heartRate;
     private int respiratoryRate;
     private int weight;
+
+    public VitalSigns(Range bloodPressure, int heartRate, int respiratoryRate, int weight, LocalDate dateForVitalSigns) {
+        this.bloodPressure = bloodPressure;
+        this.dateForVitalSigns = dateForVitalSigns;
+        this.heartRate = heartRate;
+        this.respiratoryRate = respiratoryRate;
+        this.weight = weight;
+    }
     
     
     
@@ -28,8 +36,6 @@ public class VitalSigns {
         this.bloodPressure = new Range();
         this.weight=0;        
         this.dateForVitalSigns = null;
-
-
     }
 
     public Range getBloodPressure() {

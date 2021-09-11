@@ -89,10 +89,10 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
        }
         for (Appointment appointment : pastAppointments) {
             Object row[] = new Object[5];
-            row[0] = appointment.getId();
-            row[1] = appointment.getPatient().getPersonDetails().getFullName();
-            row[2] = appointment.getDoctor().getPersonDetails().getFullName();
-            row[3] = appointment.getDate();
+            row[0] = appointment.getPatient().getPersonDetails().getFullName();
+            row[1] = appointment.getDoctor().getPersonDetails().getFullName();
+            row[2] = appointment.getDate();
+            row[3] = appointment.getId();
             row[4] = appointment.getLabTestReport() == null ? "N/A" : appointment.getLabTestReport().getId();
             model.addRow(row);
         }
@@ -139,11 +139,11 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
                 {null, null, null, null, null}
             },
             new String [] {
-                "Appointment id", "Patient Name", "Doctor Name", "Appointment Date", "Lab test Id"
+                "Patient Name", "Doctor Name", "Appointment Date", "Appointment id", "Lab test Id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, true
@@ -263,7 +263,7 @@ public class PatientAppointmentHistoyJPanel extends javax.swing.JPanel implement
             return;
         }
         
-        long appointmentId = (long) tblPatientAppointmentHistory.getModel().getValueAt(selectedRow, 0);
+        long appointmentId = (long) tblPatientAppointmentHistory.getModel().getValueAt(selectedRow, 3);
         Appointment selectedAppointment = null;
         for (Appointment apt : patient.getDoctorAppointmentsHistory()) {
             if (apt.getId() == appointmentId) {

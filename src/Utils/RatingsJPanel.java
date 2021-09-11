@@ -112,6 +112,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButtonSubmitReview = new javax.swing.JButton();
         jLabel5Star = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,6 +178,9 @@ public class RatingsJPanel extends javax.swing.JPanel {
         jPanel1.add(jButtonSubmitReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 170, -1));
         jPanel1.add(jLabel5Star, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 113, -1, 26));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/ratings-funny.gif"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 250, 260));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,6 +224,7 @@ public class RatingsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonSubmitReview;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1Star;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2Star;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel3Star;

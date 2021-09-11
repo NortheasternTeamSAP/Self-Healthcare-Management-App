@@ -18,9 +18,11 @@ import Personnel.Person;
 import Prescription.Prescription;
 import Prescription.PrescriptionDirectory;
 import SysAdminUI.Login;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import Utils.SMSSender;
 import Utils.StarRatingsUtil;
+import java.awt.Color;
 import java.time.Instant;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -46,7 +48,9 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         this.workArea = workArea;
         this.ecoSystem = ecoSystem;
         this.deliveryMan = deliveryMan;
-        
+        jLabelTitle.setText("Delivery Man Home Page - Welcome " + deliveryMan.getPersonDetails().getFullName() + "!");
+        FieldsDecorator.decorateTable(tblDeliveryManAssigned, new Color(255, 204, 230));
+        FieldsDecorator.decorateTable(tblDelManOrderRequests);
         populateTblDelManOrderRequests();
     }
     
@@ -61,7 +65,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDelManOrderRequests = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
@@ -78,10 +82,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Hello Delivery Man!");
-        jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jLabelTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelTitle.setText("Hello Delivery Man!");
+        jLabelTitle.setToolTipText("");
+        add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 630, -1));
 
         tblDelManOrderRequests.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblDelManOrderRequests.setModel(new javax.swing.table.DefaultTableModel(
@@ -89,7 +93,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
 
             },
             new String [] {
-                "Order ID", "Patient UserName", "Patient Address", "Pharmacy Name", "Pharmacy Address", "Order Status"
+                "Patient UserName", "Patient Address", "Pharmacy Name", "Pharmacy Address", "Order Status", "Order ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -143,7 +147,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
 
             },
             new String [] {
-                "Order ID", "Patient Name", "Patient Address", "Pharmacy Name", "Pharmacy Address", "Order Status"
+                "Patient Name", "Patient Address", "Pharmacy Name", "Pharmacy Address", "Order Status", "Order ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -218,7 +222,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 .getOrderDirectory()
                 .getOrderMap()
                 .get(tblDelManOrderRequests
-                        .getValueAt(selectedRow,0)
+                        .getValueAt(selectedRow,5)
                         .toString()
                 );
         order.setOrderStatus(OrderStatus.INPROCESS);
@@ -239,7 +243,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 .getOrderDirectory()
                 .getOrderMap()
                 .get(tblDeliveryManAssigned
-                        .getValueAt(selectedRow,0)
+                        .getValueAt(selectedRow,5)
                         .toString()
                 );
         if(order.getOrderStatus().equals(OrderStatus.DELIVERED)) {
@@ -309,12 +313,12 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
                 continue;
             }
             Object [] row = new Object[6];
-            row[0] = order.getOrderId();
-            row[1] = order.getPatient().getPersonDetails().getFullName();
-            row[2] = order.getPatient().getPatientDetails().getAddress();
-            row[3] = order.getPharmacy().getEnterpriseName();
-            row[4] = order.getPharmacy().getEnterpriseAddress();
-            row[5] = order.getOrderStatus();
+            row[0] = order.getPatient().getPersonDetails().getFullName();
+            row[1] = order.getPatient().getPatientDetails().getAddress();
+            row[2] = order.getPharmacy().getEnterpriseName();
+            row[3] = order.getPharmacy().getEnterpriseAddress();
+            row[4] = order.getOrderStatus();
+            row[5] = order.getOrderId();
             dtm.addRow(row);
         }
     }
@@ -327,12 +331,12 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
         for (Order order: ecoSystem.getOrderDirectory().getOrdersByDelMan(deliveryMan)){
             if ((order.getOrderStatus().equals(OrderStatus.INPROCESS)) || (order.getOrderStatus().equals(OrderStatus.DELIVERED)) || (order.getOrderStatus().equals(OrderStatus.SHIPPED))){
                 Object [] row = new Object[6];
-                row[0] = order.getOrderId();
-                row[1] = order.getPatient().getPersonDetails().getFullName();
-                row[2] = order.getPatient().getPatientDetails().getAddress();
-                row[3] = order.getPharmacy().getEnterpriseName();
-                row[4] = order.getPharmacy().getEnterpriseAddress();
-                row[5] = order.getOrderStatus();
+                row[0] = order.getPatient().getPersonDetails().getFullName();
+                row[1] = order.getPatient().getPatientDetails().getAddress();
+                row[2] = order.getPharmacy().getEnterpriseName();
+                row[3] = order.getPharmacy().getEnterpriseAddress();
+                row[4] = order.getOrderStatus();
+                row[5] = order.getOrderId();
                 dtm.addRow(row);
             }
         }
@@ -345,10 +349,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel implements Nex
     private javax.swing.JButton btnProcessOrder;
     private javax.swing.JButton btnRefreshOrdersTable;
     private javax.swing.JButton btnViewRatings;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDelManOrderRequests;

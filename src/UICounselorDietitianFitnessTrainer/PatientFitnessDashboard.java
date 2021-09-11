@@ -10,6 +10,7 @@ import EcoSystem.EcoSystem;
 import FitnessTrainer.FitnessTrainerAppointment;
 import Patient.Patient;
 import UIPatientDoctorInsuranceProvider.PatientHomePagePanel;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -36,6 +37,8 @@ JPanel WorkArea;
            this.WorkArea=WorkArea;
         this.system=system;
         this.p=p;
+        FieldsDecorator.decorateTable(UpcomingFitnessAppointments);
+        
         populateUpcomingFitnessTrainerAppointments();
     }
 

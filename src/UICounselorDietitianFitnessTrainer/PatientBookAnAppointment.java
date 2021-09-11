@@ -111,7 +111,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 490, 50));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 780, 50));
 
         comboapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,11 +120,13 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
         add(comboapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 162, 32));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 153, 255));
         jLabel2.setText("Select the Dietitian :");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("Select a date :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 100, 20));
         add(datechooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 180, 32));
@@ -139,7 +141,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
                 confirmappActionPerformed(evt);
             }
         });
-        add(confirmapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, -1, 35));
+        add(confirmapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, 300, 50));
 
         backf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         backf.setContentAreaFilled(false);
@@ -249,18 +251,18 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         add(timepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 630, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/create_meal.png"))); // NOI18N
         jLabel4.setText("Specify any food allergies or Diet Restrictions");
         jLabel4.setOpaque(true);
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 320, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 330, 30));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/medication.png"))); // NOI18N
         jLabel5.setText("Specify Any Medications you are currently on ");
         jLabel5.setOpaque(true);
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 320, 30));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 330, 30));
 
         txtmedication.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtmedication.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +280,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
         add(txtallergies, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 233, 30));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox1.setText("I Agree to Recieve Marketing Email ");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,11 +289,11 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         });
         add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 590, -1, -1));
 
-        jCheckBox4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jCheckBox4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox4.setText(" I Agree To Terms and Conditions ");
         add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 650, -1, -1));
 
-        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jCheckBox3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jCheckBox3.setText("I Agree to the Privacy Policy ");
         add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 620, -1, -1));
 
@@ -304,7 +306,7 @@ public class PatientBookAnAppointment extends javax.swing.JPanel {
         add(txtDietrestrict1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 233, 30));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-complaint-30.png"))); // NOI18N
         jLabel6.setText("Chief Complaints");
         jLabel6.setOpaque(true);

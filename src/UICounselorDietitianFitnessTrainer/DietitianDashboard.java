@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import SysAdminUI.Login;
+import Utils.FieldsDecorator;
 
 /**
  *
@@ -36,6 +37,7 @@ Dietitian d;
       this.WorkArea=WorkArea;
       this.system=system;
       this.d=d;
+      FieldsDecorator.decorateTable(tblpastapp);
       populateupcomingAppointments();
     }
 

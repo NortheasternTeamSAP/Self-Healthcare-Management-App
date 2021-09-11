@@ -18,6 +18,7 @@ import Personnel.PersonDetails;
 import Prescription.Prescription;
 import SysAdminUI.Login;
 import Utils.ConsoleLogger;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import Utils.Rating;
 import Utils.StarRatingsUtil;
@@ -68,6 +69,9 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         populateUpcomingAppointmentsTable(allUpcomingAppointments);
         setUpDeliveryManReviewButton();
         updateDailyRemienders();
+        
+        FieldsDecorator.decorateTable(tblAllUpcomingAppointments);
+
     }
     
     public void updateDailyRemienders() {
@@ -204,6 +208,12 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         btnCouncellorSession = new javax.swing.JButton();
         btnFitnessInstructor = new javax.swing.JButton();
         jButtonUpdatePatientInsurance = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
         jWorkAreaPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPatientDetailPanel = new javax.swing.JPanel();
@@ -248,7 +258,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         btnBookFamilyDoctorAppointment.setBackground(new java.awt.Color(255, 255, 255));
         btnBookFamilyDoctorAppointment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBookFamilyDoctorAppointment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-hospital-sign-30.png"))); // NOI18N
-        btnBookFamilyDoctorAppointment.setText("Book Primary Care Visit");
+        btnBookFamilyDoctorAppointment.setText("Primary Care Visit");
         btnBookFamilyDoctorAppointment.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBookFamilyDoctorAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +291,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         btnViewOlderAppointments.setBackground(new java.awt.Color(255, 255, 255));
         btnViewOlderAppointments.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         btnViewOlderAppointments.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/calendar.png"))); // NOI18N
-        btnViewOlderAppointments.setText("Previous Primary Care Appointments");
+        btnViewOlderAppointments.setText("Previous Primary Care Visits");
         btnViewOlderAppointments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewOlderAppointmentsActionPerformed(evt);
@@ -312,7 +322,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         btnCouncellorSession.setBackground(new java.awt.Color(255, 255, 255));
         btnCouncellorSession.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         btnCouncellorSession.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-consultation-30.png"))); // NOI18N
-        btnCouncellorSession.setText("Councellor session");
+        btnCouncellorSession.setText("Counseller Visit");
         btnCouncellorSession.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCouncellorSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,45 +351,101 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
             }
         });
 
+        jSeparator1.setToolTipText("");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 204, 255));
+        jLabel2.setText("Book appointments");
+
+        jSeparator2.setToolTipText("");
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 204, 255));
+        jLabel3.setText("More Details");
+
+        jSeparator3.setToolTipText("");
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 204, 255));
+        jLabel5.setText("Categories");
+
         javax.swing.GroupLayout jControlPanelLayout = new javax.swing.GroupLayout(jControlPanel);
         jControlPanel.setLayout(jControlPanelLayout);
         jControlPanelLayout.setHorizontalGroup(
             jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jControlPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(24, 24, 24)
                 .addGroup(jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRecordPersonalVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewVitalSoignHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMyMedicinePrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonUpdatePatientInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBookFamilyDoctorAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewOlderAppointments, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDietitianSession, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFitnessInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCouncellorSession, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addComponent(jButtonUpdatePatientInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addGroup(jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRecordPersonalVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewOlderAppointments, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMyMedicinePrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewVitalSoignHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCouncellorSession, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFitnessInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDietitianSession, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBookFamilyDoctorAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jControlPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jControlPanelLayout.createSequentialGroup()
+                .addGroup(jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel2))
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel3))
+                    .addGroup(jControlPanelLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel5)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jControlPanelLayout.setVerticalGroup(
             jControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jControlPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRecordPersonalVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(btnViewVitalSoignHistory)
-                .addGap(18, 18, 18)
-                .addComponent(btnMyMedicinePrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonUpdatePatientInsurance)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(btnBookFamilyDoctorAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDietitianSession)
+                .addGap(18, 18, 18)
+                .addComponent(btnFitnessInstructor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCouncellorSession)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(15, 15, 15)
+                .addComponent(btnViewVitalSoignHistory)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMyMedicinePrescription)
                 .addGap(18, 18, 18)
                 .addComponent(btnViewOlderAppointments, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDietitianSession, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btnFitnessInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCouncellorSession, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout1)
                 .addContainerGap())
@@ -397,18 +463,21 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jPatientDetailPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAddress.setForeground(new java.awt.Color(51, 153, 255));
         lblAddress.setText("Address:");
         jPatientDetailPanel.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 155, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Your upcoming appointments with different health providers");
-        jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 440, 26));
+        jPatientDetailPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 500, 26));
 
         lblPhoneNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(51, 153, 255));
         lblPhoneNumber.setText("Phone Number:");
         jPatientDetailPanel.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 129, -1, -1));
 
         lblName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblName.setForeground(new java.awt.Color(51, 153, 255));
         lblName.setText("Name:");
         jPatientDetailPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 103, -1, -1));
 
@@ -436,6 +505,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jPatientDetailPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 0, -1, 48));
 
         lblAge.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAge.setForeground(new java.awt.Color(51, 153, 255));
         lblAge.setText("Date Of Birth");
         jPatientDetailPanel.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 181, -1, -1));
 
@@ -444,6 +514,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         jPatientDetailPanel.add(lblAgePlaceHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 181, -1, -1));
 
         lblWeight1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblWeight1.setForeground(new java.awt.Color(51, 153, 255));
         lblWeight1.setText("EmailId:");
         jPatientDetailPanel.add(lblWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 213, -1, -1));
 
@@ -479,24 +550,29 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
         });
         jScrollPane2.setViewportView(tblAllUpcomingAppointments);
 
-        jPatientDetailPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 660, 104));
+        jPatientDetailPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 730, 104));
 
-        jLabelRemienderToTakeMeds.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToTakeMeds.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelRemienderToTakeMeds.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelRemienderToTakeMeds.setForeground(new java.awt.Color(153, 0, 153));
         jLabelRemienderToTakeMeds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-pill-30.png"))); // NOI18N
         jLabelRemienderToTakeMeds.setText("Do not forget to take your daily medicines");
         jPatientDetailPanel.add(jLabelRemienderToTakeMeds, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 660, -1));
 
-        jLabelRemienderToCheckVitals.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToCheckVitals.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelRemienderToCheckVitals.setForeground(new java.awt.Color(153, 0, 153));
         jLabelRemienderToCheckVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-stethoscope-30.png"))); // NOI18N
         jLabelRemienderToCheckVitals.setText("Do not forget to check your vitals regularly. last vitals recorded on <bbb>");
         jPatientDetailPanel.add(jLabelRemienderToCheckVitals, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 720, -1));
 
-        jLabelRemienderToFollowDiet.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToFollowDiet.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelRemienderToFollowDiet.setForeground(new java.awt.Color(153, 0, 153));
         jLabelRemienderToFollowDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/create_meal.png"))); // NOI18N
         jLabelRemienderToFollowDiet.setText("Do not forget to check you diet plan and stick to it!");
         jPatientDetailPanel.add(jLabelRemienderToFollowDiet, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 329, 660, -1));
 
-        jLabelRemienderToExercise.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabelRemienderToExercise.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelRemienderToExercise.setForeground(new java.awt.Color(153, 0, 153));
         jLabelRemienderToExercise.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/view workout.png"))); // NOI18N
         jLabelRemienderToExercise.setText("All progress takes place outside your comfort zone. So exercise daily!");
         jPatientDetailPanel.add(jLabelRemienderToExercise, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 366, -1, -1));
@@ -607,7 +683,7 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
 
     private void jButtonDeliveryBoyReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeliveryBoyReviewActionPerformed
         // TODO add your handling code here:
-        
+
         Prescription prescription = patient.getLatestMedicinePrescription();
         DeliveryMan.DeliveryMan deliveryMan = prescription.getDeliveryMan();
         StarRatingsUtil starRatingsUtil = new StarRatingsUtil();
@@ -656,7 +732,10 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JButton jButtonUpdatePatientInsurance;
     private javax.swing.JPanel jControlPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelRemienderToCheckVitals;
     private javax.swing.JLabel jLabelRemienderToExercise;
@@ -666,6 +745,9 @@ public class PatientHomePagePanel extends javax.swing.JPanel implements NextScre
     private javax.swing.JPanel jPatientDetailPanel;
     private javax.swing.JPanel jPatientPanel;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel jWorkAreaPanel;
     private javax.swing.JLabel lblAddress;

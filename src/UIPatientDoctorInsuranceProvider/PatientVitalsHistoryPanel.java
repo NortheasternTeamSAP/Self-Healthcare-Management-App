@@ -8,6 +8,7 @@ package UIPatientDoctorInsuranceProvider;
 
 import EcoSystem.EcoSystem;
 import Patient.Patient;
+import Utils.FieldsDecorator;
 import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
 import VitalSign.VitalSigns;
@@ -47,6 +48,10 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
         this.WorkAreaPanel = WorkAreaPanel;
         this.patient = patient;
         this.ecoSystem = ecoSystem;
+        
+        FieldsDecorator.decorateTable(tblPatientsEncounterHistory);
+        tblPatientsEncounterHistory.getTableHeader().setOpaque(false);
+        tblPatientsEncounterHistory.getTableHeader().setBackground(new Color(204, 239, 255));
         populateVitalSignTable();
     }
 
@@ -74,8 +79,8 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
         jDataOfPatientVitalSignPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Data Of Patient Vital Signs");
-        jDataOfPatientVitalSignPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 20, 310, 42));
+        jLabel1.setText("Patient's self recorded vitals history");
+        jDataOfPatientVitalSignPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 530, 42));
 
         tblPatientsEncounterHistory.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         tblPatientsEncounterHistory.setModel(new javax.swing.table.DefaultTableModel(
@@ -111,7 +116,7 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
         });
         jScrollPane1.setViewportView(tblPatientsEncounterHistory);
 
-        jDataOfPatientVitalSignPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 94, 893, 280));
+        jDataOfPatientVitalSignPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 893, 280));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/back.png"))); // NOI18N
         btnBack.setContentAreaFilled(false);
@@ -120,7 +125,7 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
                 btnBackActionPerformed(evt);
             }
         });
-        jDataOfPatientVitalSignPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jDataOfPatientVitalSignPanel.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         jPanel1.setOpaque(false);
 
@@ -140,13 +145,13 @@ public class PatientVitalsHistoryPanel extends javax.swing.JPanel implements Nex
         btnLineChart.setBackground(new java.awt.Color(255, 255, 255));
         btnLineChart.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         btnLineChart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/icons8-submit-resume-30.png"))); // NOI18N
-        btnLineChart.setText("Show Vitals Trend");
+        btnLineChart.setText("Show Graphical Trends");
         btnLineChart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLineChartActionPerformed(evt);
             }
         });
-        jDataOfPatientVitalSignPanel.add(btnLineChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 403, -1, 38));
+        jDataOfPatientVitalSignPanel.add(btnLineChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 360, 38));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_icons/polygonal-bg1100X850.jpg"))); // NOI18N
         jDataOfPatientVitalSignPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 6, 1100, 840));

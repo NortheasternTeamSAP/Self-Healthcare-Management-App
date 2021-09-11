@@ -12,6 +12,7 @@ import Dietitian.DietitianAppointment;
 import EcoSystem.EcoSystem;
 import Patient.Patient;
 import SysAdminUI.Login;
+import Utils.FieldsDecorator;
 import Utils.NextScreen;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -35,6 +36,8 @@ Counselor c;
     public CounselorDashboard(JPanel WorkArea,EcoSystem system,Counselor c) {
         initComponents();
         this.setSize(1100, 850);
+     
+        FieldsDecorator.decorateTable(tblpastapp);
         
       this.WorkArea=WorkArea;
       this.system=system;

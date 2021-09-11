@@ -5,6 +5,7 @@
  */
 package Utils;
 
+import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import java.util.logging.Level;
@@ -32,33 +33,33 @@ class SMSSenderHelper implements Runnable {
             smsObject.getBody()
         ).create();
         
-        boolean pending = true;
-        while (pending) {
-            switch (message.getStatus()) {
-                // SENT, FAILED, DELIVERED, UNDELIVERED
-                case SENT:
-                case DELIVERED:
-                case UNDELIVERED:
-                    log.debug("SMS to" + smsObject.getToNumber() + " from: " + smsObject.getFromNumber() + " status: " + message.getStatus().toString());
-                    pending = false;
-                    break;
-                 
-                case FAILED:
-                    log.debug("SMS to" + smsObject.getToNumber() + " from: " + smsObject.getFromNumber() + " status: " + message.getStatus().toString());
-                    pending = false;
-                    break;
-                    
-                default:
-                {
-                    try {
-                        Thread.sleep(1000); // wait for 1 second before checking again
-                    } catch (InterruptedException ex) {
-                    }
-                }
-            }
-        }
-        
-        log.debug("Exiting SMSSender");
+//        boolean pending = true;
+//        while (pending) {
+//            switch (message.getStatus()) {
+//                // SENT, FAILED, DELIVERED, UNDELIVERED
+//                case SENT:
+//                case DELIVERED:
+//                case UNDELIVERED:
+//                    log.debug("SMS to" + smsObject.getToNumber() + " from: " + smsObject.getFromNumber() + " status: " + message.getStatus().toString());
+//                    pending = false;
+//                    break;
+//                 
+//                case FAILED:
+//                    log.debug("SMS to" + smsObject.getToNumber() + " from: " + smsObject.getFromNumber() + " status: " + message.getStatus().toString());
+//                    pending = false;
+//                    break;
+//                    
+//                default:
+//                {
+//                    try {
+//                        Thread.sleep(1000); // wait for 1 second before checking again
+//                    } catch (InterruptedException ex) {
+//                    }
+//                }
+//            }
+//        }
+//        
+//        log.debug("Exiting SMSSender");
     }
     
 }

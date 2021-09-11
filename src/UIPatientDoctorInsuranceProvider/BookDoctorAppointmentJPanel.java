@@ -17,6 +17,7 @@ import Utils.GraphPlotterUtils;
 import Utils.NextScreen;
 import Utils.AwsS3Helper;
 import Utils.EmailClient;
+import Utils.FieldsDecorator;
 import Utils.ViewPersonRatingsJPanel;
 import VitalSign.VitalSigns;
 import java.awt.Color;
@@ -66,6 +67,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         this.mainJFrame = mainJFrame;
         this.ecoSystem = ecoSystem;
         this.s3helper = new AwsS3Helper();
+        FieldsDecorator.decorateTable(tblDoctorList);
         
         tblDoctorList.setRowSelectionAllowed(true);
         tblDoctorList.setColumnSelectionAllowed(false);
@@ -75,6 +77,9 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         enableAppointmentFields(false);
         enableAppointmentAvailabilityButtons(false);
         enableDoctorFields(false);
+        
+        tblDoctorList.getTableHeader().setOpaque(false);
+        tblDoctorList.getTableHeader().setBackground(new Color(204, 239, 255));
     }
     
     void populateDoctorTable() {
@@ -144,10 +149,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
 
         jBookAppointment.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblDoctorTxt.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblDoctorTxt.setText("Select Doctor to check the availability");
         jBookAppointment.add(lblDoctorTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 75, -1, -1));
 
-        lblDoctorName.setBackground(new java.awt.Color(255, 102, 0));
+        lblDoctorName.setBackground(new java.awt.Color(255, 255, 255));
+        lblDoctorName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblDoctorName.setForeground(new java.awt.Color(51, 153, 255));
         lblDoctorName.setText("Doctor Name:");
         jBookAppointment.add(lblDoctorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 246, -1, -1));
 
@@ -166,13 +174,13 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
 
         tblDoctorList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"doc1", "AAA", "AAA"},
-                {"doc2", "BBB", "BBB"},
+                {"AAA", "AAA", "doc1"},
+                {"BBB", "BBB", "doc2"},
                 {null, null, null},
                 {null, null, null}
             },
             new String [] {
-                "Id", "Doctors Name", "Specialization"
+                "Doctors Name", "Specialization", "Id"
             }
         ) {
             Class[] types = new Class [] {
@@ -210,12 +218,16 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         lblDoctorNameValue.setText("Not Available");
         jBookAppointment.add(lblDoctorNameValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 246, -1, -1));
 
+        lblDoctorSpeciality.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblDoctorSpeciality.setForeground(new java.awt.Color(51, 153, 255));
         lblDoctorSpeciality.setText("Speciality:");
         jBookAppointment.add(lblDoctorSpeciality, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 268, -1, -1));
 
         lblDoctorSpecialityValue.setText("Not Available");
         jBookAppointment.add(lblDoctorSpecialityValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 268, -1, -1));
 
+        lblDoctorReviews.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblDoctorReviews.setForeground(new java.awt.Color(51, 153, 255));
         lblDoctorReviews.setText("Reviews:");
         jBookAppointment.add(lblDoctorReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 356, -1, -1));
 
@@ -229,8 +241,8 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btnDoctorReviewsActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btnDoctorReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 342, -1, -1));
-        jBookAppointment.add(jDateChooserDoctorAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 246, 184, -1));
+        jBookAppointment.add(btnDoctorReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, 30));
+        jBookAppointment.add(jDateChooserDoctorAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 184, -1));
 
         btn10am.setBackground(new java.awt.Color(255, 255, 255));
         btn10am.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -240,7 +252,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btn10amActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btn10am, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 293, -1, -1));
+        jBookAppointment.add(btn10am, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
 
         btn11am.setBackground(new java.awt.Color(255, 255, 255));
         btn11am.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -250,7 +262,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btn11amActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btn11am, new org.netbeans.lib.awtextra.AbsoluteConstraints(635, 293, -1, -1));
+        jBookAppointment.add(btn11am, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, -1, -1));
 
         btn2pm.setBackground(new java.awt.Color(255, 255, 255));
         btn2pm.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -260,7 +272,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btn2pmActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btn2pm, new org.netbeans.lib.awtextra.AbsoluteConstraints(808, 293, 64, -1));
+        jBookAppointment.add(btn2pm, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 90, -1));
 
         btn9am.setBackground(new java.awt.Color(255, 255, 255));
         btn9am.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -270,7 +282,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btn9amActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btn9am, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 293, 72, -1));
+        jBookAppointment.add(btn9am, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 90, -1));
 
         btn3pm.setBackground(new java.awt.Color(255, 255, 255));
         btn3pm.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -280,7 +292,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btn3pmActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btn3pm, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 293, 73, -1));
+        jBookAppointment.add(btn3pm, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 90, -1));
 
         btn1pm.setBackground(new java.awt.Color(255, 255, 255));
         btn1pm.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -290,7 +302,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
                 btn1pmActionPerformed(evt);
             }
         });
-        jBookAppointment.add(btn1pm, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 293, 68, -1));
+        jBookAppointment.add(btn1pm, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 320, 90, -1));
 
         btnConfirmDoctorAppointment.setBackground(new java.awt.Color(255, 255, 255));
         btnConfirmDoctorAppointment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -303,7 +315,8 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
         jBookAppointment.add(btnConfirmDoctorAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 721, 377, -1));
 
-        jCheckBoxShareCurrentPrescriptionWithDoctor.setText("Attach Current Prescription Report in email to send to primary care");
+        jCheckBoxShareCurrentPrescriptionWithDoctor.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jCheckBoxShareCurrentPrescriptionWithDoctor.setText("Share prescription history with primary care");
         jCheckBoxShareCurrentPrescriptionWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxShareCurrentPrescriptionWithDoctorActionPerformed(evt);
@@ -311,7 +324,8 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
         jBookAppointment.add(jCheckBoxShareCurrentPrescriptionWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
 
-        jCheckBoxShareInsuranceDetailsWithDoctor.setText("Attach insurance details in the email to be sent to primary care");
+        jCheckBoxShareInsuranceDetailsWithDoctor.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jCheckBoxShareInsuranceDetailsWithDoctor.setText("Share insurance details with primary care");
         jCheckBoxShareInsuranceDetailsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxShareInsuranceDetailsWithDoctorActionPerformed(evt);
@@ -319,6 +333,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
         jBookAppointment.add(jCheckBoxShareInsuranceDetailsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, -1, -1));
 
+        jCheckBoxSendAppointmentEmailConfirmation.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jCheckBoxSendAppointmentEmailConfirmation.setText("Send appointment confirmation email");
         jCheckBoxSendAppointmentEmailConfirmation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,6 +342,7 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
         jBookAppointment.add(jCheckBoxSendAppointmentEmailConfirmation, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, -1, -1));
 
+        jCheckBoxSendAppointmentTextConfirmation.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jCheckBoxSendAppointmentTextConfirmation.setText("Send appointment confirmation text");
         jCheckBoxSendAppointmentTextConfirmation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,10 +358,12 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
         jBookAppointment.add(jTextFieldAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 332, 87));
 
+        lblOtherAppointmentDetails.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblOtherAppointmentDetails.setText("Other Complaints:");
         jBookAppointment.add(lblOtherAppointmentDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 521, -1, -1));
 
-        jCheckBoxShareVitalsWithDoctor.setText("Attach vitals report in email to send to primary care");
+        jCheckBoxShareVitalsWithDoctor.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jCheckBoxShareVitalsWithDoctor.setText("Share vital signs history with primary care");
         jCheckBoxShareVitalsWithDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxShareVitalsWithDoctorActionPerformed(evt);
@@ -353,15 +371,20 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         });
         jBookAppointment.add(jCheckBoxShareVitalsWithDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
 
+        lblDoctorAddress.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblDoctorAddress.setForeground(new java.awt.Color(51, 153, 255));
         lblDoctorAddress.setText("Address:");
         jBookAppointment.add(lblDoctorAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 290, -1, -1));
 
         lblDoctorAddressValue.setText("Not Available");
         jBookAppointment.add(lblDoctorAddressValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 290, -1, -1));
 
+        lblCheckAvailability.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblCheckAvailability.setText("Check Availability");
-        jBookAppointment.add(lblCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, -1));
+        jBookAppointment.add(lblCheckAvailability, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
 
+        lblDoctorGender.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblDoctorGender.setForeground(new java.awt.Color(51, 153, 255));
         lblDoctorGender.setText("Gender:");
         jBookAppointment.add(lblDoctorGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 314, -1, -1));
 
@@ -425,12 +448,14 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         patient.addDoctorAppointment(apt);
         btnConfirmDoctorAppointment.setEnabled(false);
         
-        
         // Attach previous vitals report
         // Attach current prescription
         // Attach previous lab reports
         // Attach insurance details'
-
+        if (jCheckBoxSendAppointmentTextConfirmation.isSelected()) {
+            sendAppointmentConfirmationText(apt);
+        }
+        
         if (jCheckBoxShareVitalsWithDoctor.isSelected()) {
             log.debug("Selected jCheckBoxAttachVitalsToEmail");
             uploadVitalsHistoryToS3(apt);
@@ -448,10 +473,6 @@ public class BookDoctorAppointmentJPanel extends javax.swing.JPanel implements N
         
         if (jCheckBoxSendAppointmentEmailConfirmation.isSelected()) {
             sendAppointmentConfirmationEmail(apt);
-        }
-        
-        if (jCheckBoxSendAppointmentTextConfirmation.isSelected()) {
-            sendAppointmentConfirmationText(apt);
         }
         
         JOptionPane.showMessageDialog(null, "Appointment booked with primary care and the patient has been notified!");
